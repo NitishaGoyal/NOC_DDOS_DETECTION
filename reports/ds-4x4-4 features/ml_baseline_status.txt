@@ -1,0 +1,47 @@
+Current ML baseline status
+
+Project:
+- ML/GNN project directory: ~/research/projects/GNN-2d
+- gem5 directory: /home/zira/tools/architecture/gem5
+- gem5 Paper 1 experiment directory: /home/zira/tools/architecture/gem5/experiments/paper_1
+
+Dataset:
+- data/processed/graph_dataset/paper1_temporal_graphs_full.npz
+- data/processed/graph_dataset/paper1_temporal_graphs_full_4feat.npz
+
+Dataset linking:
+- data/processed/graph_dataset is a symlink to:
+  /home/zira/tools/architecture/gem5/experiments/paper_1/graph_dataset
+
+2-feature model:
+- input features:
+  1. ifd_in_norm
+  2. ifd_out_norm
+- graph detection: strong
+- localization: weak
+
+4-feature model:
+- input features:
+  1. ifd_in_norm
+  2. ifd_out_norm
+  3. input_flit_count_norm
+  4. output_flit_count_norm
+
+Best 4-feature prototype result:
+- graph accuracy: 0.9992
+- graph F1: 0.9996
+- graph FPR: 0.0061
+- node precision: 0.2366
+- node recall: 0.7857
+- node F1: 0.3637
+- exact localization: 0.1141
+
+Top-k localization result:
+- 1 attacker top-k exact: 0.4970
+- 2 attacker top-k exact: 0.0313
+- 3 attacker top-k exact: 0.0005
+
+Conclusion:
+- Current aggregate router-level features are enough for graph-level attack detection.
+- Current features are not enough for reliable malicious-router localization.
+- Need per-port directional features from gem5/frontend feature generation before continuing localization work.

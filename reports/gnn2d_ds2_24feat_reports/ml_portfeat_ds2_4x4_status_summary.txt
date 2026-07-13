@@ -1,0 +1,74 @@
+DS2 4x4 port-feature Temporal GCN status summary
+
+Purpose:
+- Continue from the previous aggregate-feature ML baseline.
+- Test whether per-port/directional NoC features improve attacker localization.
+
+Previous aggregate 4-feature result:
+- Dataset: data/processed/graph_dataset/paper1_temporal_graphs_full_4feat.npz
+- Shape: x = (42809, 16, 8, 4)
+- Features: ifd_in_norm, ifd_out_norm, input_flit_count_norm, output_flit_count_norm
+- Graph F1: 0.9996
+- Node F1: 0.3637
+- Exact localization: 0.1141
+- TopK exact: 0.1763
+
+Previous conclusion:
+- Aggregate router-level features are enough for graph-level detection.
+- Aggregate router-level features are not enough for reliable attacker localization.
+
+New port-feature dataset:
+- Source folder: /home/zira/tools/architecture/gem5/GNN-2D-NOC/ds-2-4x4
+- Converted dataset: data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+- Shape: x = (42809, 16, 8, 24)
+- Features include aggregate IFD/count features plus per-port local/north/east/south/west directional IFD and flit-count features.
+
+Port-feature prototype split:
+- Model: models/temporal_gcn_float_prototype_ds2_4x4_portfeat
+- Fixed 0.50:
+  - Graph F1: 0.9525
+  - Node F1: 0.8792
+  - Exact localization: 0.5871
+- Validation-tuned threshold 0.90:
+  - Graph F1: 0.9526
+  - Node F1: 0.9349
+  - Exact localization: 0.7677
+- TopK exact: 0.9431
+
+Port-feature placement split:
+- Model: models/temporal_gcn_float_placement_ds2_4x4_portfeat
+- Fixed 0.50:
+  - Graph F1: 0.9990
+  - Node F1: 0.9572
+  - Exact localization: 0.7798
+- Validation-tuned threshold 0.10:
+  - Graph F1: 0.9990
+  - Node F1: 0.9330
+  - Exact localization: 0.6520
+- TopK exact: 0.8934
+- Top4 all: 0.9953
+
+Main conclusion:
+- The bottleneck was not the GNN architecture.
+- The bottleneck was the feature representation.
+- Per-port directional features significantly improve localization.
+
+Final headline:
+- Node F1 improved from 0.3637 to 0.9349 on prototype split.
+- Exact localization improved from 0.1141 to 0.7677.
+- TopK exact improved from 0.1763 to 0.9431.
+- Placement split remained strong with graph F1 0.9990, node F1 0.9572, exact localization 0.7798, and topK exact 0.8934.
+
+Exact saved summary.json outputs:
+- Prototype model:
+  - summary: models/temporal_gcn_float_prototype_ds2_4x4_portfeat/summary.json
+  - best epoch: 37
+  - graph F1: 0.9524646340391881
+  - node F1: 0.8791665121797486
+  - exact localization: 0.5871017871017871
+- Placement model:
+  - summary: models/temporal_gcn_float_placement_ds2_4x4_portfeat/summary.json
+  - best epoch: 58
+  - graph F1: 0.9990129830688634
+  - node F1: 0.957221350078493
+  - exact localization: 0.7798333568704985
