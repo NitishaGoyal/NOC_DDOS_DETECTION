@@ -1,0 +1,191 @@
+{
+  "actual_shapes": {
+    "count_logits": [
+      2,
+      5
+    ],
+    "graph_logits": [
+      2
+    ],
+    "h_graph": [
+      2,
+      16,
+      16
+    ],
+    "h_local": [
+      2,
+      16,
+      16
+    ],
+    "h_node": [
+      2,
+      16,
+      32
+    ],
+    "local_input": [
+      2,
+      16,
+      37
+    ],
+    "mask": [
+      2,
+      16,
+      5
+    ],
+    "node_logits": [
+      2,
+      16
+    ],
+    "regional_embedding": [
+      2,
+      64
+    ],
+    "temporal_pooled": [
+      2,
+      16,
+      32
+    ],
+    "temporal_sequence": [
+      2,
+      16,
+      8,
+      16
+    ]
+  },
+  "checks": {
+    "count_head_five": true,
+    "exactly_one_gcn": true,
+    "local_skip": true,
+    "no_graph_gating": true,
+    "output_shapes": true,
+    "parameter_count": true,
+    "port_mask": true,
+    "regional_embedding_64": true
+  },
+  "expected_shapes": {
+    "count_logits": [
+      2,
+      5
+    ],
+    "graph_logits": [
+      2
+    ],
+    "h_graph": [
+      2,
+      16,
+      16
+    ],
+    "h_local": [
+      2,
+      16,
+      16
+    ],
+    "h_node": [
+      2,
+      16,
+      32
+    ],
+    "local_input": [
+      2,
+      16,
+      37
+    ],
+    "mask": [
+      2,
+      16,
+      5
+    ],
+    "node_logits": [
+      2,
+      16
+    ],
+    "regional_embedding": [
+      2,
+      64
+    ],
+    "temporal_pooled": [
+      2,
+      16,
+      32
+    ],
+    "temporal_sequence": [
+      2,
+      16,
+      8,
+      16
+    ]
+  },
+  "pass": true,
+  "ranking_uses_raw_logits": true,
+  "signature": {
+    "attacker_head": [
+      32,
+      16,
+      1
+    ],
+    "count_head": [
+      64,
+      5
+    ],
+    "expected_parameter_count": 2983,
+    "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+    "gcn": [
+      16,
+      16
+    ],
+    "gcn_count": 1,
+    "graph_gates_attacker_decoder": false,
+    "graph_head": [
+      64,
+      1
+    ],
+    "input": [
+      "B",
+      16,
+      8,
+      24
+    ],
+    "local_projection": [
+      37,
+      16
+    ],
+    "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+    "parameter_count": 2983,
+    "parameter_count_ok": true,
+    "physical_valid_port_mask": [
+      "local",
+      "north",
+      "east",
+      "south",
+      "west"
+    ],
+    "regional_embedding_dim": 64,
+    "source_preserving_fusion": "concat(h_local,h_graph)",
+    "stage_label": "V4-A3",
+    "temporal_conv": {
+      "in_channels": 24,
+      "kernel_size": [
+        3
+      ],
+      "out_channels": 16,
+      "padding": [
+        1
+      ]
+    },
+    "temporal_readout": "concatenate mean and max over 8 epochs"
+  },
+  "source_hashes": {
+    "common": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "trainer": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "source_paths": {
+    "common": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+    "trainer": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py"
+  },
+  "test_loader_constructed": false,
+  "training_path_split_loaders": [
+    "train",
+    "validation"
+  ],
+  "true_attackers_excluded_from_negative_pool": true
+}

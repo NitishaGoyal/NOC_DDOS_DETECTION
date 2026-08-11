@@ -1,0 +1,119 @@
+{
+  "checkpoint_selection": {
+    "graph_threshold_selection": "validation-only max graph F1 under FPR<=0.10",
+    "score": "graph_f1_fpr10 + attack_exact_topk + attack_node_f1_topk + 0.5*attack_count_accuracy",
+    "test_not_used": true,
+    "tie_breaks": [
+      "higher graph recall at constrained threshold",
+      "lower graph FPR",
+      "lower validation total loss"
+    ]
+  },
+  "contract_version": "1.1.0",
+  "decoder": {
+    "attacker_set": "empty for count=0, otherwise top-k raw node logits",
+    "count": "argmax five-class count logits",
+    "graph_gating": false
+  },
+  "model": {
+    "attacker_head": [
+      32,
+      16,
+      1
+    ],
+    "count_head": [
+      64,
+      5
+    ],
+    "expected_parameter_count": 2983,
+    "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+    "gcn": [
+      16,
+      16
+    ],
+    "gcn_count": 1,
+    "graph_gates_attacker_decoder": false,
+    "graph_head": [
+      64,
+      1
+    ],
+    "input": [
+      "B",
+      16,
+      8,
+      24
+    ],
+    "local_projection": [
+      37,
+      16
+    ],
+    "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+    "parameter_count": 2983,
+    "parameter_count_ok": true,
+    "physical_valid_port_mask": [
+      "local",
+      "north",
+      "east",
+      "south",
+      "west"
+    ],
+    "regional_embedding_dim": 64,
+    "source_preserving_fusion": "concat(h_local,h_graph)",
+    "stage_label": "V4-A3",
+    "temporal_conv": {
+      "in_channels": 24,
+      "kernel_size": [
+        3
+      ],
+      "out_channels": 16,
+      "padding": [
+        1
+      ]
+    },
+    "temporal_readout": "concatenate mean and max over 8 epochs"
+  },
+  "rtl_interface": {
+    "attacker_output": "[16]",
+    "count_output": "[5]",
+    "embedding_dimension_configurable_in_wrapper": true,
+    "graph_output": "scalar",
+    "physical_validity_distinct_from_regional_adjacency": true,
+    "regional_embedding": "[64]",
+    "regional_input": "[16,T,F]",
+    "weights_shared_across_regions": true
+  },
+  "source_hashes": {
+    "common": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "trainer": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "training": {
+    "amp_primary_run": false,
+    "batch_size": 256,
+    "batch_size_fallback": "128 only after recorded CUDA OOM in one-batch preflight",
+    "count_ce_weight": 0.5,
+    "graph_bce_weight": 1.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "minimum_delta": 0.0001,
+    "node_bce_weight": 1.0,
+    "optimizer": "AdamW",
+    "patience": 15,
+    "rank_loss_weight_final": 0.2,
+    "rank_margin": 0.2,
+    "rank_schedule": {
+      "epoch_9_onward": 0.2,
+      "epochs_1_3": 0.0,
+      "epochs_4_8": "linear 0.04,0.08,0.12,0.16,0.20"
+    },
+    "runtime_schedule": {
+      "checkpoint_only_on_full_validation": true,
+      "failure_diagnostics": "post-training only",
+      "full_validation": "epoch 1, every 3 epochs, and the patience boundary",
+      "ranking_skipped_when_weight_zero": true,
+      "training_topk_metrics": false
+    },
+    "seed": 7,
+    "test_access_during_training": false,
+    "weight_decay": 0.0001
+  }
+}

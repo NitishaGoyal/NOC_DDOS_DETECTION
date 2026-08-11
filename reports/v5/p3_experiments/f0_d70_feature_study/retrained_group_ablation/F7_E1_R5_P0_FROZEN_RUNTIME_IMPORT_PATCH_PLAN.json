@@ -1,0 +1,68 @@
+{
+  "historical_A4_trainer_claimed": false,
+  "must_preserve": [
+    "compute_loss exact source SHA-256",
+    "100 executed epoch maximum",
+    "AdamW lr=0.001 weight_decay=0.0001",
+    "ReduceLROnPlateau once per epoch",
+    "clip_grad_norm_ max_norm=1.0",
+    "early stop after 12 consecutive non-improvements, not before epoch 15",
+    "train length 110855",
+    "validation length 13863",
+    "seed 107 initial primary matrix",
+    "sealed-test quarantine"
+  ],
+  "must_remove_from_runtime": [
+    "execution of legacy loader module",
+    "execution of legacy model module",
+    "construction of V5P2PairAlignedPrimary58Dataset",
+    "construction of P2B3Conv1DOnlyCount4"
+  ],
+  "patch_scope": [
+    {
+      "operation": "remove_runtime_dynamic_import",
+      "replacement": "direct use of F7TrainDatasetAdapter and F7ValidationDatasetAdapter",
+      "target": "loader_module = import_module(loader_path, ...)"
+    },
+    {
+      "operation": "remove_runtime_dynamic_import",
+      "replacement": "direct use of F7Dynamic70ModelFactory",
+      "target": "model_module = import_module(model_path, ...)"
+    },
+    {
+      "operation": "replace_legacy_class_extraction",
+      "replacement": "F7 fixed-split guarded dataset adapters and fresh Dynamic70 model factory",
+      "target": "DatasetClass=V5P2PairAlignedPrimary58Dataset; ModelClass=P2B3Conv1DOnlyCount4"
+    },
+    {
+      "operation": "replace_constructor_calls",
+      "replacement": [
+        "train_dataset = F7TrainDatasetAdapter(...)",
+        "validation_dataset = F7ValidationDatasetAdapter(...)",
+        "model = F7Dynamic70ModelFactory().to(device)"
+      ],
+      "targets": [
+        "train_dataset = DatasetClass(...)",
+        "validation_dataset = DatasetClass(...)",
+        "model = ModelClass().to(device)"
+      ]
+    },
+    {
+      "loader_path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+      "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+      "model_path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py",
+      "model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+      "operation": "retain_frozen_legacy_identity_gates",
+      "reason": "B1/B0-R3 source integrity checks remain useful as compatibility provenance, but their files are not executed"
+    },
+    {
+      "operation": "disambiguate_output_provenance",
+      "requirement": "generated checkpoints/reports/locks must label frozen P2 source hashes as legacy_compatibility_* and separately record the actual F7 runtime-adapter SHA-256"
+    },
+    {
+      "operation": "isolate_outputs",
+      "requirement": "model_dir and report_dir must be distinct append-only subdirectories inside each F7 run directory"
+    }
+  ],
+  "status": "FROZEN"
+}

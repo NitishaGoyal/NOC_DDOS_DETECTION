@@ -1,0 +1,40 @@
+verdict: PASS WITH DOCUMENTED LIMITATIONS
+
+[PASS] [hard] x_shape: observed=(233803, 16, 8, 24) expected=(233803, 16, 8, 24)
+[PASS] [warning] x_dtype: observed=float32 expected=float32
+[PASS] [hard] x_memory_mapped: type=memmap
+[PASS] [hard] sample_array_alignment: y_graph=(233803,); y_node=(233803, 16); run_id=(233803,); end_epoch=(233803,); split=(233803,); active_cores=(233803,); profile=(233803,); seed=(233803,); strength=(233803,); attackers=(233803,)
+[PASS] [hard] y_node_shape: observed=(233803, 16)
+[PASS] [hard] feature_columns: observed_count=24 expected_count=24
+[PASS] [hard] unique_run_count: observed=71 expected=71
+[PASS] [hard] run_contiguity: segments=71 unique_runs=71
+[PASS] [hard] no_repeated_run_segments: repeated=[]
+[PASS] [hard] samples_per_run: expected=3293; failures=0
+[PASS] [hard] end_epoch_sequence: expected=7..3299; failures=0
+[PASS] [hard] run_level_split_isolation: run_counts_by_split={'train': 45, 'val': 13, 'test': 13}
+[PASS] [hard] graph_labels_constant_and_binary: Every run must have one graph label in {0,1}.
+[PASS] [hard] node_labels_constant_and_binary: Every run must have one binary 16-router bitmap.
+[PASS] [hard] scenario_metadata_constant: split/active_cores/profile/seed/strength/attackers must be constant within runs.
+[PASS] [hard] attacker_metadata_matches_node_labels: Normal runs must have zero bitmap; attacks must match attackers metadata.
+[PASS] [hard] expected_run_counts_by_split: observed={'train': 45, 'val': 13, 'test': 13} expected={'train': 45, 'val': 13, 'test': 13}
+[PASS] [hard] edge_index_shape: observed=(2, 64) expected=(2, 64)
+[PASS] [hard] edge_index_integer_dtype: dtype=int64
+[PASS] [hard] edge_index_router_ids: min=0 max=15
+[PASS] [hard] edge_index_no_duplicates: edges=64 unique=64
+[PASS] [hard] edge_index_self_loops: observed=16 expected=16
+[PASS] [hard] edge_index_nonself_edges: observed=48 expected=48
+[PASS] [hard] edge_index_all_nodes_present: nodes=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+[PASS] [hard] edge_index_connected: Connectivity checked after ignoring edge direction.
+[PASS] [warning] edge_index_reciprocal_nonself: reciprocal_nonself=48 nonself=48
+[PASS] [hard] feature_values_finite: nonfinite_total=0
+[PASS] [hard] feature_values_in_range: out_of_range_features=[]
+[PASS] [hard] aggregate_directional_count_consistency: total_violations=0; tolerance=1e-06
+[PASS] [hard] hard_runs_present_and_correct: Both dominant hard runs must exist with expected split and labels.
+
+DOCUMENTED LIMITATIONS
+- Directional IFD contains exact 1.0 values: 106351415/299267840 (35.537201%). Their physical causes are overloaded.
+- Boundary-port diagnostics use a provisional row-major 4x4 compass mapping and are not treated as hard failures.
+- Final arrays alone cannot distinguish invalid, idle, no-gap, and clipped-long-gap IFD states.
+- The dataset has many overlapping windows but only 71 independent simulation runs.
+- The current V3 test split has been used for diagnosis and is no longer an untouched final publication holdout.
+- Archive-derived 1980 modification times cannot establish the original generation date; hashes should be used for identity.

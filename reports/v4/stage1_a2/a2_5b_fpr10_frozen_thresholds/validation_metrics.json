@@ -1,0 +1,44 @@
+{
+  "designation": "validation-only frozen FPR-constrained operating point",
+  "graph": {
+    "accuracy": 0.8403742842349261,
+    "f1": 0.8728351164089952,
+    "fn": 58790.0,
+    "fp": 14275.0,
+    "fpr": 0.0963322873435233,
+    "precision": 0.9461375633426028,
+    "recall": 0.810074238713971,
+    "threshold": 0.5399999999999999,
+    "tn": 133910.0,
+    "tp": 250752.0
+  },
+  "node": {
+    "exact_localization": 0.5392887026546391,
+    "fn": 246419.0,
+    "fp": 110761.0,
+    "fpr": 0.016504066227853595,
+    "node_accuracy": 0.9512291169190369,
+    "node_f1": 0.6721127877665152,
+    "node_precision": 0.7677187316500294,
+    "node_recall": 0.5976819516145359,
+    "threshold": 0.8799999999999999,
+    "tn": 6600373.0,
+    "tp": 366079.0
+  },
+  "selection": {
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a2_capacitylift_conv1d_gcn_seed7/best_model.pt",
+    "checkpoint_sha256": "267eb8c9ac627cdae82633403fb0b6c1899e63922081ce89f5911eeda68ea6e1",
+    "expected_parameter_count": 2274,
+    "experiment_designation": "a2_capacity_lift",
+    "graph_fpr_constraint": 0.1,
+    "graph_selection_rule": "maximize validation graph F1 subject to validation FPR <= 0.100000; tie max recall; tie max precision; tie closest to 0.50",
+    "graph_threshold": 0.5399999999999999,
+    "model_name": "Conv1D-TemporalGCN-A2-CapacityLift",
+    "node_selection_rule": "preserve validation-selected maximum node F1 operating point",
+    "node_threshold": 0.8799999999999999,
+    "split": "validation",
+    "stage_label": "V4-A2",
+    "supersedes_unconstrained_graph_threshold": 0.30999999999999994,
+    "test_accessed": false
+  }
+}

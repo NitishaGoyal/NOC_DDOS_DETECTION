@@ -1,0 +1,58 @@
+{
+  "base_architecture": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY",
+  "changed_component": {
+    "active_raw_count_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "after": "Linear(64,4)",
+    "before": "Linear(64,3)",
+    "class_mapping": {
+      "1": 0,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "name": "count_head",
+    "zero_count_representation": "graph attack head predicts normal; count loss applies only to active attacks"
+  },
+  "contract_name": "V5_P2_B3_COUNT4_MINIMAL_ARCHITECTURAL_DELTA",
+  "contract_sha256": "433d75718a14c9dd480df903c0af02c197ba117add5d39d9cc5030cb333fc4d4",
+  "contract_version": 1,
+  "model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+  "p2_architecture": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY_P2_COUNT4",
+  "parameter_count_after": 43273,
+  "parameter_count_before": 43208,
+  "parameter_delta": 65,
+  "role_mask": {
+    "bookkeeping_only": true,
+    "learned_input": false,
+    "model_output": false,
+    "semantics": "source + 2*transit + 4*victim",
+    "training_loss_target": false
+  },
+  "test_boundary": {
+    "test_directory_enumerated": false,
+    "test_tensor_contents_accessed": false
+  },
+  "unchanged_components": [
+    "PRIMARY58 input contract",
+    "topology-derived Boolean [16,10] mask",
+    "Conv1d 58->64 input projection",
+    "causal depthwise-separable residual blocks",
+    "kernel size 3",
+    "dilations [1,2,4,8]",
+    "final causal timestep readout",
+    "node projection Linear(74,64)",
+    "source head",
+    "transit head",
+    "victim head",
+    "path head",
+    "mean+max graph pooling",
+    "graph projection",
+    "attack head",
+    "no message passing"
+  ]
+}

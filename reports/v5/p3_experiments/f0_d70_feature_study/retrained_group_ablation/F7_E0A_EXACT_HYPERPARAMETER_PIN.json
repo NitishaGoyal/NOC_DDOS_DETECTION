@@ -1,0 +1,48 @@
+{
+  "candidate_reduction_gates": {
+    "count_active_macro_F1_min": 0.98,
+    "graph_FPR_increase_max": 0.03,
+    "graph_average_precision_drop_max": 0.03,
+    "path_average_precision_drop_max": 0.03,
+    "selection_score_drop_max": 0.02,
+    "single_task_AP_collapse_max": 0.05,
+    "source_average_precision_drop_max": 0.03,
+    "transit_average_precision_drop_max": 0.03,
+    "victim_average_precision_drop_max": 0.03
+  },
+  "early_stopping_present": true,
+  "gradient_clipping_present": true,
+  "learning_rate": 0.001,
+  "loss_call_count": 11,
+  "loss_call_names": [
+    "F.binary_cross_entropy_with_logits",
+    "F.cross_entropy",
+    "compute_loss",
+    "loss.backward",
+    "loss.item"
+  ],
+  "max_epochs": 101,
+  "not_claimed": "byte-identical historical A4 recipe reproduction",
+  "optimizer": "torch.optim.adamw.AdamW",
+  "primary_seed": 107,
+  "route_type": "reconstructed_F7_recipe_from_exact_skeleton_behavior",
+  "scheduler_present": true,
+  "selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+  "status": "PARTIALLY_RESOLVED",
+  "threshold_policy": {
+    "graph_reporting_threshold": 0.5,
+    "selection_metrics_threshold_free_except_count_macro_f1": true,
+    "threshold_tuning_per_run": false
+  },
+  "train_batch_size": 1,
+  "unresolved_fields": [
+    {
+      "candidate_values": [],
+      "field": "early_stopping_policy",
+      "reason": "early-stopping-related source exists and requires a dedicated semantic pin before trainer generation"
+    }
+  ],
+  "validation_batch_size": 1,
+  "weight_decay": 0.0001,
+  "weight_decay_resolution_route": "literal"
+}

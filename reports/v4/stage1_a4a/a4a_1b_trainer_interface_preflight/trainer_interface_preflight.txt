@@ -1,0 +1,1078 @@
+===== STATUS =====
+status: PASS
+trainer: /home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py
+trainer_sha256: e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525
+model_source_sha256: 5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704
+checkpoint_sha256: f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923
+slot_module_sha256: 97b56aabb3239dfc7543c241665cacf998eb6b1a1f5f67f931cdeb70e75c111c
+
+===== ARGPARSE OPTIONS =====
+line=1115 flags=['--mode'] keywords={'required': True, 'choices': ['freeze-contract', 'authorize', 'source-audit', 'dataset-audit', 'one-batch', 'smoke', 'train']}
+line=1128 flags=['--data-dir'] keywords={}
+line=1129 flags=['--out-dir'] keywords={'required': True}
+line=1130 flags=['--contract-dir'] keywords={}
+line=1131 flags=['--a2-analysis-dir'] keywords={}
+line=1132 flags=['--approve'] keywords={'action': 'store_true'}
+line=1133 flags=['--resume'] keywords={'action': 'store_true'}
+line=1134 flags=['--batch-size'] keywords={'type': 'int', 'default': 256}
+line=1135 flags=['--batch-size-fallback-authorized'] keywords={'action': 'store_true'}
+line=1136 flags=['--batch-size-fallback-reason'] keywords={}
+line=1137 flags=['--num-workers'] keywords={'type': 'int', 'default': 2}
+line=1138 flags=['--pin-memory'] keywords={'action': 'argparse.BooleanOptionalAction', 'default': True}
+line=1139 flags=['--persistent-workers'] keywords={'action': 'argparse.BooleanOptionalAction', 'default': True}
+line=1140 flags=['--prefetch-factor'] keywords={'type': 'int', 'default': 2}
+line=1141 flags=['--epochs'] keywords={'type': 'int', 'default': 100}
+line=1142 flags=['--patience'] keywords={'type': 'int', 'default': 15}
+line=1143 flags=['--min-delta'] keywords={'type': 'float', 'default': 0.0001}
+line=1144 flags=['--lr'] keywords={'type': 'float', 'default': 0.001}
+line=1145 flags=['--weight-decay'] keywords={'type': 'float', 'default': 0.0001}
+line=1146 flags=['--graph-loss-weight'] keywords={'type': 'float', 'default': 1.0}
+line=1147 flags=['--node-loss-weight'] keywords={'type': 'float', 'default': 1.0}
+line=1148 flags=['--count-loss-weight'] keywords={'type': 'float', 'default': 0.5}
+line=1149 flags=['--rank-loss-weight'] keywords={'type': 'float', 'default': 0.2}
+line=1150 flags=['--rank-margin'] keywords={'type': 'float', 'default': 0.2}
+line=1151 flags=['--graph-threshold'] keywords={'type': 'float', 'default': 0.5}
+line=1152 flags=['--node-threshold'] keywords={'type': 'float', 'default': 0.5}
+line=1153 flags=['--graph-fpr-cap'] keywords={'type': 'float', 'default': 0.1}
+line=1154 flags=['--full-val-every'] keywords={'type': 'int', 'default': 3}
+line=1155 flags=['--seed'] keywords={'type': 'int', 'default': 7}
+line=1156 flags=['--amp'] keywords={'action': 'store_true'}
+line=1157 flags=['--smoke-epochs'] keywords={'type': 'int', 'default': 2}
+line=1158 flags=['--smoke-train-batches'] keywords={'type': 'int', 'default': 40}
+line=1159 flags=['--smoke-val-batches'] keywords={'type': 'int', 'default': 12}
+
+===== LIKELY PIPELINE SYMBOLS =====
+function compute_losses(output: 'Mapping[str, torch.Tensor]', y_graph: 'torch.Tensor', y_node: 'torch.Tensor', attacker_count: 'torch.Tensor', graph_loss_fn: 'nn.Module', node_loss_fn: 'nn.Module', count_loss_fn: 'nn.Module', distances: 'torch.Tensor', args: 'argparse.Namespace', rank_weight: 'float', compute_rank: 'bool' = True) -> 'tuple[torch.Tensor, dict[str, torch.Tensor], dict[str, Any]]' lines=439-482
+function dataset_audit(args: 'argparse.Namespace') -> 'int' lines=330-372
+function train(args: 'argparse.Namespace') -> 'int' lines=829-1110
+
+===== LIKELY CLASS METHODS =====
+
+===== SEARCH TERM HITS =====
+split_id.npy: []
+run_index.npy: []
+x.npy: [345, 408]
+y_graph.npy: []
+y_node.npy: []
+attacker_count.npy: []
+np.load: [345, 408]
+mmap_mode: []
+Dataset: [42, 369, 379, 392]
+DataLoader: [487]
+Subset: []
+WeightedRandomSampler: []
+A_hat: [971, 1001]
+physical_valid_port_mask: [50, 280, 343, 367, 410, 972, 1002]
+edge_index: [345, 346, 408, 409]
+optimizer: [10, 497, 503, 542, 547, 680, 698, 857, 867, 925, 968, 998]
+Adam: [680, 857]
+AdamW: [680, 857]
+clip_grad: []
+early: [133, 906, 1073, 1089]
+patience: [98, 132, 778, 816, 861, 871, 873, 930, 934, 995, 1006, 1028, 1040, 1059, 1069, 1072, 1142]
+best_model: [985, 1077, 1079]
+torch.save: []
+load_state_dict: [866, 867]
+train_loader: [380, 424, 603, 688, 915]
+val_loader: [390, 393, 425, 705, 945]
+test_loader: [318, 887]
+test: [11, 232, 260, 318, 737, 755, 760, 887, 888, 979, 1011, 1035, 1081, 1097, 1098]
+
+===== CHECKPOINT INVENTORY =====
+{
+  "A_hat": {
+    "dtype": "torch.float32",
+    "shape": [
+      16,
+      16
+    ],
+    "type": "Tensor"
+  },
+  "args": {
+    "keys": [
+      "a2_analysis_dir",
+      "amp",
+      "approve",
+      "batch_size",
+      "batch_size_fallback_authorized",
+      "batch_size_fallback_reason",
+      "contract_dir",
+      "count_loss_weight",
+      "data_dir",
+      "epochs",
+      "full_val_every",
+      "graph_fpr_cap",
+      "graph_loss_weight",
+      "graph_threshold",
+      "lr",
+      "min_delta",
+      "mode",
+      "node_loss_weight",
+      "node_threshold",
+      "num_workers",
+      "out_dir",
+      "patience",
+      "persistent_workers",
+      "pin_memory",
+      "prefetch_factor",
+      "rank_loss_weight",
+      "rank_margin",
+      "resume",
+      "seed",
+      "smoke_epochs",
+      "smoke_train_batches",
+      "smoke_val_batches",
+      "weight_decay"
+    ],
+    "type": "dict"
+  },
+  "best_epoch": 81,
+  "best_score": 2.322387199990036,
+  "immutable_config": {
+    "keys": [
+      "amp",
+      "batch_size",
+      "batch_size_fallback_authorized",
+      "batch_size_fallback_reason",
+      "count_loss_weight",
+      "data_dir",
+      "epochs",
+      "expected_parameter_count",
+      "experiment_designation",
+      "full_val_every",
+      "graph_fpr_cap",
+      "graph_loss_weight",
+      "graph_threshold_training",
+      "lr",
+      "min_delta",
+      "model_name",
+      "node_loss_weight",
+      "node_threshold_training",
+      "num_workers",
+      "patience",
+      "persistent_workers",
+      "pin_memory",
+      "prefetch_factor",
+      "rank_loss_weight",
+      "rank_margin",
+      "runtime_schedule_version",
+      "seed",
+      "weight_decay"
+    ],
+    "type": "dict"
+  },
+  "model_signature": {
+    "keys": [
+      "attacker_head",
+      "count_head",
+      "expected_parameter_count",
+      "experiment_designation",
+      "gcn",
+      "gcn_count",
+      "graph_gates_attacker_decoder",
+      "graph_head",
+      "input",
+      "local_projection",
+      "model_name",
+      "parameter_count",
+      "parameter_count_ok",
+      "physical_valid_port_mask",
+      "regional_embedding_dim",
+      "source_preserving_fusion",
+      "stage_label",
+      "temporal_conv",
+      "temporal_readout"
+    ],
+    "type": "dict"
+  },
+  "model_state_dict": {
+    "keys": [
+      "attacker_hidden.bias",
+      "attacker_hidden.weight",
+      "attacker_out.bias",
+      "attacker_out.weight",
+      "count_head.bias",
+      "count_head.weight",
+      "gcn.linear.bias",
+      "gcn.linear.weight",
+      "graph_head.bias",
+      "graph_head.weight",
+      "local_projection.bias",
+      "local_projection.weight",
+      "temporal_conv.bias",
+      "temporal_conv.weight"
+    ],
+    "tensor_inventory": {
+      "attacker_hidden.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          16
+        ]
+      },
+      "attacker_hidden.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          16,
+          32
+        ]
+      },
+      "attacker_out.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          1
+        ]
+      },
+      "attacker_out.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          16
+        ]
+      },
+      "count_head.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          5
+        ]
+      },
+      "count_head.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          5,
+          64
+        ]
+      },
+      "gcn.linear.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          16
+        ]
+      },
+      "gcn.linear.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          16,
+          16
+        ]
+      },
+      "graph_head.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          1
+        ]
+      },
+      "graph_head.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          1,
+          64
+        ]
+      },
+      "local_projection.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          16
+        ]
+      },
+      "local_projection.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          16,
+          37
+        ]
+      },
+      "temporal_conv.bias": {
+        "dtype": "torch.float32",
+        "shape": [
+          16
+        ]
+      },
+      "temporal_conv.weight": {
+        "dtype": "torch.float32",
+        "shape": [
+          16,
+          24,
+          3
+        ]
+      }
+    },
+    "type": "dict"
+  },
+  "optimizer_state_dict": {
+    "keys": [
+      "param_groups",
+      "state"
+    ],
+    "type": "dict"
+  },
+  "physical_valid_port_mask": {
+    "dtype": "torch.float32",
+    "shape": [
+      16,
+      5
+    ],
+    "type": "Tensor"
+  },
+  "runtime_schedule_version": "1.1.0",
+  "source_hashes": {
+    "keys": [
+      "common",
+      "trainer"
+    ],
+    "type": "dict"
+  },
+  "test_evaluated": false,
+  "top_level_keys": [
+    "A_hat",
+    "args",
+    "best_epoch",
+    "best_score",
+    "immutable_config",
+    "model_signature",
+    "model_state_dict",
+    "optimizer_state_dict",
+    "physical_valid_port_mask",
+    "runtime_schedule_version",
+    "source_hashes",
+    "test_evaluated",
+    "val_constrained_graph",
+    "val_losses",
+    "val_metrics"
+  ],
+  "val_constrained_graph": {
+    "keys": [
+      "accuracy",
+      "f1",
+      "fn",
+      "fp",
+      "fpr",
+      "precision",
+      "recall",
+      "threshold",
+      "tn",
+      "tp"
+    ],
+    "type": "dict"
+  },
+  "val_losses": {
+    "keys": [
+      "count",
+      "graph",
+      "node",
+      "rank",
+      "total"
+    ],
+    "type": "dict"
+  },
+  "val_metrics": {
+    "keys": [
+      "attack_count_accuracy",
+      "attack_count_mae",
+      "attack_empty_prediction_fraction",
+      "attack_node_topk",
+      "attack_samples",
+      "attack_topk_exact_localization",
+      "graph",
+      "node_threshold",
+      "node_topk",
+      "samples",
+      "threshold_exact_localization",
+      "topk_exact_localization",
+      "topk_metrics_computed"
+    ],
+    "type": "dict"
+  }
+}
+
+===== TARGETED SOURCE EXCERPTS =====
+
+--- lines 6-17 ---
+    6: freeze-contract  Write the immutable A3 experiment contract and review gate.
+    7: authorize        Verify A2 closure and create the explicit A3 training authorization.
+    8: source-audit     Verify model structure, source hashes, outputs, and parameter count.
+    9: dataset-audit    Verify V4 memmaps, split isolation, adjacency, and physical masks.
+   10: one-batch        Run one forward/backward audit without an optimizer step.
+   11: smoke            Run a bounded two-epoch integrity test in a separate directory.
+   12: train            Run/resume the primary seed-7 A3 experiment. Test samples are never loaded.
+   13: """
+   14: from __future__ import annotations
+   15: 
+   16: import argparse
+   17: import csv
+
+--- lines 38-56 ---
+   38:     EXPERIMENT_DESIGNATION,
+   39:     MODEL_NAME,
+   40:     PRIMARY_SEED,
+   41:     STAGE_LABEL,
+   42:     V4A3MemmapDataset,
+   43:     EpochMetrics,
+   44:     architecture_contract,
+   45:     atomic_csv_dump,
+   46:     atomic_json_dump,
+   47:     atomic_torch_save,
+   48:     build_loader,
+   49:     build_normalized_adjacency,
+   50:     build_physical_valid_port_mask,
+   51:     compute_training_class_weights,
+   52:     hard_negative_ranking_loss,
+   53:     load_metadata,
+   54:     load_split_indices,
+   55:     manhattan_distance_matrix,
+   56:     model_signature,
+
+--- lines 94-104 ---
+   94:         "pin_memory": bool(args.pin_memory),
+   95:         "persistent_workers": bool(args.persistent_workers),
+   96:         "prefetch_factor": int(args.prefetch_factor),
+   97:         "epochs": int(args.epochs),
+   98:         "patience": int(args.patience),
+   99:         "min_delta": float(args.min_delta),
+  100:         "lr": float(args.lr),
+  101:         "weight_decay": float(args.weight_decay),
+  102:         "graph_loss_weight": float(args.graph_loss_weight),
+  103:         "node_loss_weight": float(args.node_loss_weight),
+  104:         "count_loss_weight": float(args.count_loss_weight),
+
+--- lines 128-139 ---
+  128:         if args.batch_size not in {128}:
+  129:             raise RuntimeError("Only the predeclared batch-size fallback 128 is authorized")
+  130:         if not str(args.batch_size_fallback_reason or "").strip():
+  131:             raise RuntimeError("--batch-size-fallback-reason is required")
+  132:     if args.epochs <= 0 or args.patience <= 0 or args.min_delta < 0:
+  133:         raise ValueError("Invalid epoch/early-stopping settings")
+  134:     if args.full_val_every != 3:
+  135:         raise RuntimeError("Primary A3 full-validation cadence is frozen to every 3 epochs")
+  136:     expected = {
+  137:         "lr": 1e-3,
+  138:         "weight_decay": 1e-4,
+  139:         "graph_loss_weight": 1.0,
+
+--- lines 228-238 ---
+  228:         "a2_analysis_summary_sha256": sha256_file(a2 / "analysis_summary.json"),
+  229:         "a2_capacity_verdict_sha256": sha256_file(a2 / "a1_vs_a2_capacity_verdict.json"),
+  230:         "a3_recommendation_sha256": sha256_file(a2 / "a3_recommendation.json"),
+  231:         "checks": checks,
+  232:         "test_access_authorized_during_training": False,
+  233:     }
+  234:     atomic_json_dump(out / "A3_TRAINING_AUTHORIZATION.json", authorization)
+  235:     atomic_json_dump(
+  236:         gate_path,
+  237:         {
+  238:             "status": "APPROVED_FOR_A3_MAIN",
+
+--- lines 256-266 ---
+  256:         "status": value.get("status") == "APPROVED_FOR_A3_MAIN",
+  257:         "designation": value.get("experiment_designation") == EXPERIMENT_DESIGNATION,
+  258:         "variant": value.get("approved_variant") == MODEL_NAME,
+  259:         "contract_hash": value.get("contract_sha256") == sha256_file(contract_path),
+  260:         "no_test": value.get("test_access_authorized_during_training") is False,
+  261:     }
+  262:     if not all(checks.values()):
+  263:         raise RuntimeError(f"Training authorization invalid: {checks}")
+  264:     return value
+  265: 
+  266: 
+
+--- lines 276-286 ---
+  276:             return 0
+  277:         raise RuntimeError(f"Existing failed source audit: {report_path}")
+  278:     model = A3SourcePreserveModel()
+  279:     signature = model_signature(model)
+  280:     mask = build_physical_valid_port_mask()
+  281:     adjacency = torch.eye(16, dtype=torch.float32)
+  282:     sample = torch.zeros((2, 16, 8, 24), dtype=torch.float32)
+  283:     output = model(sample, adjacency, mask, return_intermediates=True)
+  284:     expected_shapes = {
+  285:         "graph_logits": [2],
+  286:         "node_logits": [2, 16],
+
+--- lines 314-324 ---
+  314:         "expected_shapes": expected_shapes,
+  315:         "source_hashes": {name: sha256_file(path) for name, path in paths.items()},
+  316:         "source_paths": {name: str(path) for name, path in paths.items()},
+  317:         "training_path_split_loaders": ["train", "validation"],
+  318:         "test_loader_constructed": False,
+  319:         "ranking_uses_raw_logits": True,
+  320:         "true_attackers_excluded_from_negative_pool": True,
+  321:     }
+  322:     atomic_json_dump(report_path, report)
+  323:     if not report["pass"]:
+  324:         raise RuntimeError(f"Source audit failed: {checks}")
+
+--- lines 330-399 ---
+  330: def dataset_audit(args: argparse.Namespace) -> int:
+  331:     out = Path(args.out_dir).resolve()
+  332:     out.mkdir(parents=True, exist_ok=True)
+  333:     report_path = out / "dataset_and_mask_audit.json"
+  334:     if report_path.exists():
+  335:         report = json.loads(report_path.read_text(encoding="utf-8"))
+  336:         if report.get("pass") is True:
+  337:             print("REUSE verified dataset audit")
+  338:             print(PASS["dataset-audit"])
+  339:             return 0
+  340:         raise RuntimeError(f"Existing failed dataset audit: {report_path}")
+  341:     data_dir = Path(args.data_dir).resolve()
+  342:     headers = validate_dataset_headers(data_dir)
+  343:     mask = build_physical_valid_port_mask()
+  344:     mask_report = validate_port_mask(mask)
+  345:     edge_index = np.load(data_dir / "edge_index.npy")
+  346:     adjacency = build_normalized_adjacency(edge_index)
+  347:     checks = {
+  348:         "headers": all(headers["checks"].values()),
+  349:         "mask": mask_report["pass"],
+  350:         "adjacency_shape": tuple(adjacency.shape) == (16, 16),
+  351:         "adjacency_finite": bool(torch.isfinite(adjacency).all().item()),
+  352:         "adjacency_symmetric": bool(torch.allclose(adjacency, adjacency.T, atol=1e-6)),
+  353:         "router_order": "router_id = row * 4 + column",
+  354:         "physical_mask_separate_from_regional_adjacency": True,
+  355:     }
+  356:     report = {
+  357:         "pass": all(value is True or isinstance(value, str) for value in checks.values()),
+  358:         "checks": checks,
+  359:         "headers": headers,
+  360:         "physical_port_mask": mask.tolist(),
+  361:         "port_order": ["local", "north", "east", "south", "west"],
+  362:         "mask_report": mask_report,
+  363:         "adjacency_shape": list(adjacency.shape),
+  364:         "data_dir": str(data_dir),
+  365:     }
+  366:     atomic_json_dump(report_path, report)
+  367:     np.save(out / "physical_valid_port_mask.npy", mask.numpy())
+  368:     if not report["pass"]:
+  369:         raise RuntimeError(f"Dataset audit failed: {checks}")
+  370:     print(json.dumps(report, indent=2))
+  371:     print(PASS["dataset-audit"])
+  372:     return 0
+  373: 
+  374: 
+  375: def prepare_objects(args: argparse.Namespace, include_val: bool = True) -> dict[str, Any]:
+  376:     data_dir = Path(args.data_dir).resolve()
+  377:     metadata = load_metadata(data_dir)
+  378:     splits = load_split_indices(data_dir, metadata)
+  379:     train_dataset = V4A3MemmapDataset(data_dir, splits["train"])
+  380:     train_loader = build_loader(
+  381:         train_dataset,
+  382:         args.batch_size,
+  383:         True,
+  384:         args.num_workers,
+  385:         args.pin_memory,
+  386:         args.persistent_workers,
+  387:         args.prefetch_factor,
+  388:         args.seed,
+  389:     )
+  390:     val_loader = None
+  391:     if include_val:
+  392:         val_dataset = V4A3MemmapDataset(data_dir, splits["val"])
+  393:         val_loader = build_loader(
+  394:             val_dataset,
+  395:             args.batch_size,
+  396:             False,
+  397:             args.num_workers,
+  398:             args.pin_memory,
+  399:             args.persistent_workers,
+
+--- lines 404-416 ---
+  404:     model = A3SourcePreserveModel().to(device)
+  405:     signature = model_signature(model)
+  406:     if signature["parameter_count"] != EXPECTED_PARAMETER_COUNT:
+  407:         raise RuntimeError(f"Parameter guard failed: {signature}")
+  408:     edge_index = np.load(data_dir / "edge_index.npy")
+  409:     adjacency = build_normalized_adjacency(edge_index).to(device)
+  410:     mask = build_physical_valid_port_mask().to(device)
+  411:     distances = manhattan_distance_matrix().to(device)
+  412:     weights = compute_training_class_weights(data_dir, splits["train"])
+  413:     graph_loss_fn = nn.BCEWithLogitsLoss(
+  414:         pos_weight=torch.tensor(weights["graph_pos_weight"], dtype=torch.float32, device=device)
+  415:     )
+  416:     node_loss_fn = nn.BCEWithLogitsLoss(
+
+--- lines 420-431 ---
+  420:     return {
+  421:         "data_dir": data_dir,
+  422:         "metadata": metadata,
+  423:         "splits": splits,
+  424:         "train_loader": train_loader,
+  425:         "val_loader": val_loader,
+  426:         "device": device,
+  427:         "model": model,
+  428:         "signature": signature,
+  429:         "adjacency": adjacency,
+  430:         "mask": mask,
+  431:         "distances": distances,
+
+--- lines 439-509 ---
+  439: def compute_losses(
+  440:     output: Mapping[str, torch.Tensor],
+  441:     y_graph: torch.Tensor,
+  442:     y_node: torch.Tensor,
+  443:     attacker_count: torch.Tensor,
+  444:     graph_loss_fn: nn.Module,
+  445:     node_loss_fn: nn.Module,
+  446:     count_loss_fn: nn.Module,
+  447:     distances: torch.Tensor,
+  448:     args: argparse.Namespace,
+  449:     rank_weight: float,
+  450:     compute_rank: bool = True,
+  451: ) -> tuple[torch.Tensor, dict[str, torch.Tensor], dict[str, Any]]:
+  452:     graph_loss = graph_loss_fn(output["graph_logits"], y_graph)
+  453:     node_loss = node_loss_fn(output["node_logits"], y_node)
+  454:     count_loss = count_loss_fn(output["count_logits"], attacker_count)
+  455: 
+  456:     rank_skipped = (not compute_rank) or rank_weight <= 0.0
+  457:     if rank_skipped:
+  458:         rank_loss = output["node_logits"].sum() * 0.0
+  459:         rank_stats: dict[str, Any] = {
+  460:             "attack_samples": 0,
+  461:             "pairs": 0,
+  462:             "skipped": True,
+  463:         }
+  464:     else:
+  465:         rank_loss, rank_stats = hard_negative_ranking_loss(
+  466:             output["node_logits"], y_node, distances, margin=args.rank_margin
+  467:         )
+  468:         rank_stats = dict(rank_stats)
+  469:         rank_stats["skipped"] = False
+  470: 
+  471:     total = (
+  472:         args.graph_loss_weight * graph_loss
+  473:         + args.node_loss_weight * node_loss
+  474:         + args.count_loss_weight * count_loss
+  475:         + rank_weight * rank_loss
+  476:     )
+  477:     return total, {
+  478:         "graph": graph_loss,
+  479:         "node": node_loss,
+  480:         "count": count_loss,
+  481:         "rank": rank_loss,
+  482:     }, rank_stats
+  483: 
+  484: 
+  485: def run_epoch(
+  486:     model: A3SourcePreserveModel,
+  487:     loader: torch.utils.data.DataLoader,
+  488:     adjacency: torch.Tensor,
+  489:     mask: torch.Tensor,
+  490:     distances: torch.Tensor,
+  491:     device: torch.device,
+  492:     graph_loss_fn: nn.Module,
+  493:     node_loss_fn: nn.Module,
+  494:     count_loss_fn: nn.Module,
+  495:     args: argparse.Namespace,
+  496:     epoch: int,
+  497:     optimizer: torch.optim.Optimizer | None,
+  498:     max_batches: int | None = None,
+  499:     collect_graph_scores: bool = False,
+  500:     compute_topk_metrics: bool = False,
+  501:     compute_rank_loss: bool = True,
+  502: ) -> tuple[dict[str, float], dict[str, Any], dict[str, Any]]:
+  503:     training = optimizer is not None
+  504:     model.train(training)
+  505:     metric = EpochMetrics(
+  506:         args.graph_threshold,
+  507:         args.node_threshold,
+  508:         compute_topk=compute_topk_metrics,
+  509:     )
+
+--- lines 538-553 ---
+  538:             )
+  539:             if not torch.isfinite(total_loss):
+  540:                 raise FloatingPointError(f"Non-finite loss at batch {batch_number}")
+  541:             if training:
+  542:                 optimizer.zero_grad(set_to_none=True)
+  543:                 total_loss.backward()
+  544:                 for name, parameter in model.named_parameters():
+  545:                     if parameter.grad is not None and not torch.isfinite(parameter.grad).all():
+  546:                         raise FloatingPointError(f"Non-finite gradient in {name}")
+  547:                 optimizer.step()
+  548:             batch_size = int(x.shape[0])
+  549:             samples += batch_size
+  550:             totals["total"] += float(total_loss.detach().item()) * batch_size
+  551:             for key, value in components.items():
+  552:                 totals[key] += float(value.detach().item()) * batch_size
+  553:             rank_pairs += int(rank_stats["pairs"])
+
+--- lines 599-609 ---
+  599:     set_seed(args.seed)
+  600:     objects = prepare_objects(args, include_val=False)
+  601:     model = objects["model"]
+  602:     model.train()
+  603:     batch = next(iter(objects["train_loader"]))
+  604:     device = objects["device"]
+  605:     x = batch["x"].to(device)
+  606:     y_graph = batch["y_graph"].to(device)
+  607:     y_node = batch["y_node"].to(device)
+  608:     count = batch["attacker_count"].to(device)
+  609:     if torch.cuda.is_available():
+
+--- lines 676-711 ---
+  676:     out.mkdir(parents=True, exist_ok=True)
+  677:     set_seed(args.seed)
+  678:     objects = prepare_objects(args, include_val=True)
+  679:     model = objects["model"]
+  680:     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+  681:     history: list[dict[str, Any]] = []
+  682: 
+  683:     # Exercise both runtime paths: epoch 1 skips ranking; epoch 4 activates it.
+  684:     schedule_epochs = [1, 4]
+  685:     for schedule_epoch in schedule_epochs[: args.smoke_epochs]:
+  686:         train_losses, train_metrics, train_extra = run_epoch(
+  687:             model,
+  688:             objects["train_loader"],
+  689:             objects["adjacency"],
+  690:             objects["mask"],
+  691:             objects["distances"],
+  692:             objects["device"],
+  693:             objects["graph_loss_fn"],
+  694:             objects["node_loss_fn"],
+  695:             objects["count_loss_fn"],
+  696:             args,
+  697:             schedule_epoch,
+  698:             optimizer,
+  699:             max_batches=args.smoke_train_batches,
+  700:             compute_topk_metrics=False,
+  701:             compute_rank_loss=True,
+  702:         )
+  703:         val_losses, val_metrics, val_extra = run_epoch(
+  704:             model,
+  705:             objects["val_loader"],
+  706:             objects["adjacency"],
+  707:             objects["mask"],
+  708:             objects["distances"],
+  709:             objects["device"],
+  710:             objects["graph_loss_fn"],
+  711:             objects["node_loss_fn"],
+
+--- lines 733-743 ---
+  733:         "model_state_dict": model.state_dict(),
+  734:         "args": vars(args),
+  735:         "model_signature": objects["signature"],
+  736:         "smoke_only": True,
+  737:         "test_evaluated": False,
+  738:     }
+  739:     atomic_torch_save(out / "smoke_last_model.pt", checkpoint)
+  740:     loaded = torch.load(out / "smoke_last_model.pt", map_location="cpu", weights_only=False)
+  741:     first = history[0]["train_extra"]
+  742:     second = history[-1]["train_extra"]
+  743:     report = {
+
+--- lines 751-766 ---
+  751:         "checkpoint_reload_pass": True,
+  752:         "parameter_count": EXPECTED_PARAMETER_COUNT,
+  753:         "zero_weight_rank_skip_verified": first.get("rank_computation_skipped") is True,
+  754:         "positive_weight_rank_active_verified": len(history) == 1 or second.get("rank_computation_skipped") is False,
+  755:         "test_evaluated": False,
+  756:         "smoke_output_must_not_be_used_as_full_model": True,
+  757:     }
+  758:     atomic_json_dump(out / "smoke_report.json", report)
+  759:     if not report["pass"]:
+  760:         raise RuntimeError("Smoke test failed")
+  761:     print(json.dumps(report, indent=2))
+  762:     print(PASS["smoke"])
+  763:     return 0
+  764: 
+  765: 
+  766: def flatten_history_record(
+
+--- lines 774-784 ---
+  774:     val_metrics: Mapping[str, Any] | None,
+  775:     val_extra: Mapping[str, Any] | None,
+  776:     best_score: float,
+  777:     best_epoch: int,
+  778:     patience_counter: int,
+  779:     improved: bool,
+  780:     gpu_peak: float,
+  781: ) -> dict[str, Any]:
+  782:     constrained = val_extra["constrained_graph"] if val_extra is not None else None
+  783:     return {
+  784:         "epoch": epoch,
+
+--- lines 812-822 ---
+  812:         "val_empty_attack_fraction": None if val_metrics is None else val_metrics["attack_empty_prediction_fraction"],
+  813:         "checkpoint_score": None if val_extra is None else val_extra["checkpoint_score"],
+  814:         "best_score_after_epoch": best_score,
+  815:         "best_epoch_after_epoch": best_epoch,
+  816:         "epochs_since_best": patience_counter,
+  817:         "improved": improved,
+  818:         "gpu_peak_allocated_mib": gpu_peak,
+  819:     }
+  820: 
+  821: 
+  822: def read_history(path: Path) -> list[dict[str, Any]]:
+
+--- lines 829-951 ---
+  829: def train(args: argparse.Namespace) -> int:
+  830:     validate_primary_args(args)
+  831:     data_dir = Path(args.data_dir).resolve()
+  832:     out = Path(args.out_dir).resolve()
+  833:     contract_dir = Path(args.contract_dir).resolve()
+  834:     contract_path = contract_dir / "A3_EXPERIMENT_CONTRACT.json"
+  835:     authorization_path = contract_dir / "A3_TRAINING_AUTHORIZATION.json"
+  836:     authorization = validate_authorization(authorization_path, contract_path)
+  837:     set_seed(args.seed)
+  838: 
+  839:     if args.resume:
+  840:         required = [out / "last_model.pt", out / "config.json", out / "training_history.csv"]
+  841:         missing = [str(path) for path in required if not path.is_file()]
+  842:         if missing:
+  843:             raise FileNotFoundError("Resume files missing:\n  " + "\n  ".join(missing))
+  844:         stored = json.loads((out / "config.json").read_text(encoding="utf-8"))
+  845:         if stored.get("immutable_config") != immutable_config(args):
+  846:             raise RuntimeError("Resume configuration differs from frozen original configuration")
+  847:     else:
+  848:         if out.exists() and any(out.iterdir()):
+  849:             raise RuntimeError(
+  850:                 f"Full-training output is non-empty: {out}. Use --resume only for a verified last_model.pt. "
+  851:                 "Otherwise archive the directory manually after reviewing it."
+  852:             )
+  853:         out.mkdir(parents=True, exist_ok=True)
+  854: 
+  855:     objects = prepare_objects(args, include_val=True)
+  856:     model: A3SourcePreserveModel = objects["model"]
+  857:     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+  858:     start_epoch = 1
+  859:     best_score = -float("inf")
+  860:     best_epoch = -1
+  861:     patience_counter = 0
+  862:     history_rows: list[dict[str, Any]] = []
+  863: 
+  864:     if args.resume:
+  865:         checkpoint = torch.load(out / "last_model.pt", map_location=objects["device"], weights_only=False)
+  866:         model.load_state_dict(checkpoint["model_state_dict"])
+  867:         optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+  868:         start_epoch = int(checkpoint["epoch"]) + 1
+  869:         best_score = float(checkpoint["best_score"])
+  870:         best_epoch = int(checkpoint["best_epoch"])
+  871:         patience_counter = int(checkpoint["patience_counter"])
+  872:         history_rows = read_history(out / "training_history.csv")
+  873:         print(f"RESUME epoch={start_epoch} best_epoch={best_epoch} patience={patience_counter}")
+  874:     else:
+  875:         paths = source_paths()
+  876:         config = {
+  877:             "immutable_config": immutable_config(args),
+  878:             "device": str(objects["device"]),
+  879:             "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
+  880:             "source_paths": {name: str(path) for name, path in paths.items()},
+  881:             "source_hashes": {name: sha256_file(path) for name, path in paths.items()},
+  882:             "contract_path": str(contract_path),
+  883:             "contract_sha256": sha256_file(contract_path),
+  884:             "authorization_path": str(authorization_path),
+  885:             "authorization": authorization,
+  886:             "checkpoint_selection": architecture_contract()["checkpoint_selection"],
+  887:             "test_loader_constructed": False,
+  888:             "test_evaluated": False,
+  889:         }
+  890:         atomic_json_dump(out / "config.json", config)
+  891:         atomic_json_dump(out / "class_weights.json", objects["weights"])
+  892:         atomic_json_dump(out / "model_signature.json", objects["signature"])
+  893:         atomic_json_dump(
+  894:             out / "split_counts.json",
+  895:             {"train": int(len(objects["splits"]["train"])), "validation": int(len(objects["splits"]["val"]))},
+  896:         )
+  897:         np.savez_compressed(
+  898:             out / "train_val_indices.npz",
+  899:             train_idx=objects["splits"]["train"],
+  900:             val_idx=objects["splits"]["val"],
+  901:         )
+  902: 
+  903:     if start_epoch > args.epochs:
+  904:         raise RuntimeError(f"Resume start epoch {start_epoch} exceeds maximum epochs {args.epochs}")
+  905: 
+  906:     stopped_early = False
+  907:     last_full_validation: dict[str, Any] | None = None
+  908:     for epoch in range(start_epoch, args.epochs + 1):
+  909:         started = time.perf_counter()
+  910:         if torch.cuda.is_available():
+  911:             torch.cuda.reset_peak_memory_stats()
+  912: 
+  913:         train_losses, train_metrics, train_extra = run_epoch(
+  914:             model,
+  915:             objects["train_loader"],
+  916:             objects["adjacency"],
+  917:             objects["mask"],
+  918:             objects["distances"],
+  919:             objects["device"],
+  920:             objects["graph_loss_fn"],
+  921:             objects["node_loss_fn"],
+  922:             objects["count_loss_fn"],
+  923:             args,
+  924:             epoch,
+  925:             optimizer,
+  926:             compute_topk_metrics=False,
+  927:             compute_rank_loss=True,
+  928:         )
+  929: 
+  930:         patience_boundary_due = best_epoch >= 1 and (epoch - best_epoch) >= args.patience
+  931:         full_validation_performed = (
+  932:             epoch == 1
+  933:             or epoch % args.full_val_every == 0
+  934:             or patience_boundary_due
+  935:         )
+  936:         val_losses: dict[str, float] | None = None
+  937:         val_metrics: dict[str, Any] | None = None
+  938:         val_extra: dict[str, Any] | None = None
+  939:         current_score: float | None = None
+  940:         improved = False
+  941: 
+  942:         if full_validation_performed:
+  943:             val_losses, val_metrics, val_extra = run_epoch(
+  944:                 model,
+  945:                 objects["val_loader"],
+  946:                 objects["adjacency"],
+  947:                 objects["mask"],
+  948:                 objects["distances"],
+  949:                 objects["device"],
+  950:                 objects["graph_loss_fn"],
+  951:                 objects["node_loss_fn"],
+
+--- lines 964-1017 ---
+  964:                 best_score = current_score
+  965:                 best_epoch = epoch
+  966:                 best_checkpoint = {
+  967:                     "model_state_dict": model.state_dict(),
+  968:                     "optimizer_state_dict": optimizer.state_dict(),
+  969:                     "args": vars(args),
+  970:                     "immutable_config": immutable_config(args),
+  971:                     "A_hat": objects["adjacency"].detach().cpu(),
+  972:                     "physical_valid_port_mask": objects["mask"].detach().cpu(),
+  973:                     "best_epoch": best_epoch,
+  974:                     "best_score": best_score,
+  975:                     "val_losses": val_losses,
+  976:                     "val_metrics": val_metrics,
+  977:                     "val_constrained_graph": val_extra["constrained_graph"],
+  978:                     "model_signature": objects["signature"],
+  979:                     "test_evaluated": False,
+  980:                     "runtime_schedule_version": "1.1.0",
+  981:                     "source_hashes": {
+  982:                         name: sha256_file(path) for name, path in source_paths().items()
+  983:                     },
+  984:                 }
+  985:                 atomic_torch_save(out / "best_model.pt", best_checkpoint)
+  986:             last_full_validation = {
+  987:                 "epoch": epoch,
+  988:                 "score": current_score,
+  989:                 "losses": val_losses,
+  990:                 "metrics": val_metrics,
+  991:                 "constrained_graph": val_extra["constrained_graph"],
+  992:                 "improved": improved,
+  993:             }
+  994: 
+  995:         patience_counter = 0 if best_epoch < 1 else max(0, epoch - best_epoch)
+  996:         last_checkpoint = {
+  997:             "model_state_dict": model.state_dict(),
+  998:             "optimizer_state_dict": optimizer.state_dict(),
+  999:             "args": vars(args),
+ 1000:             "immutable_config": immutable_config(args),
+ 1001:             "A_hat": objects["adjacency"].detach().cpu(),
+ 1002:             "physical_valid_port_mask": objects["mask"].detach().cpu(),
+ 1003:             "epoch": epoch,
+ 1004:             "best_epoch": best_epoch,
+ 1005:             "best_score": best_score,
+ 1006:             "patience_counter": patience_counter,
+ 1007:             "last_full_validation": last_full_validation,
+ 1008:             "full_validation_performed": full_validation_performed,
+ 1009:             "runtime_schedule_version": "1.1.0",
+ 1010:             "model_signature": objects["signature"],
+ 1011:             "test_evaluated": False,
+ 1012:         }
+ 1013:         atomic_torch_save(out / "last_model.pt", last_checkpoint)
+ 1014:         duration = time.perf_counter() - started
+ 1015:         gpu_peak = torch.cuda.max_memory_allocated() / 1024**2 if torch.cuda.is_available() else 0.0
+ 1016:         row = flatten_history_record(
+ 1017:             epoch,
+
+--- lines 1024-1046 ---
+ 1024:             val_metrics,
+ 1025:             val_extra,
+ 1026:             best_score,
+ 1027:             best_epoch,
+ 1028:             patience_counter,
+ 1029:             improved,
+ 1030:             gpu_peak,
+ 1031:         )
+ 1032:         history_rows.append(row)
+ 1033:         atomic_csv_dump(out / "training_history.csv", history_rows)
+ 1034:         atomic_json_dump(
+ 1035:             out / "latest_epoch.json",
+ 1036:             {
+ 1037:                 "epoch": epoch,
+ 1038:                 "best_epoch": best_epoch,
+ 1039:                 "best_score": best_score,
+ 1040:                 "patience_counter": patience_counter,
+ 1041:                 "full_validation_performed": full_validation_performed,
+ 1042:                 "record": row,
+ 1043:             },
+ 1044:         )
+ 1045: 
+ 1046:         if full_validation_performed:
+
+--- lines 1055-1110 ---
+ 1055:                 f"val_attack_exact={val_metrics['attack_topk_exact_localization']:.4f} "
+ 1056:                 f"val_node_f1={val_metrics['attack_node_topk']['f1']:.4f} "
+ 1057:                 f"val_count_acc={val_metrics['attack_count_accuracy']:.4f} "
+ 1058:                 f"score={current_score:.6f} best_epoch={best_epoch} "
+ 1059:                 f"epochs_since_best={patience_counter}/{args.patience} improved={improved}"
+ 1060:             )
+ 1061:         else:
+ 1062:             print(
+ 1063:                 f"epoch={epoch:03d} duration={duration:.1f}s rank_w={train_extra['rank_weight']:.3f} "
+ 1064:                 f"rank_skipped={train_extra['rank_computation_skipped']} "
+ 1065:                 f"train_loss={train_losses['total']:.4f} full_val=False "
+ 1066:                 f"train_g_f1_0.5={train_metrics['graph']['f1']:.4f} "
+ 1067:                 f"train_node_f1_0.5={train_metrics['node_threshold']['f1']:.4f} "
+ 1068:                 f"train_count_acc={train_metrics['attack_count_accuracy']:.4f} "
+ 1069:                 f"best_epoch={best_epoch} epochs_since_best={patience_counter}/{args.patience}"
+ 1070:             )
+ 1071: 
+ 1072:         if full_validation_performed and patience_counter >= args.patience:
+ 1073:             stopped_early = True
+ 1074:             print(f"EARLY_STOP epoch={epoch}")
+ 1075:             break
+ 1076: 
+ 1077:     best_path = out / "best_model.pt"
+ 1078:     if not best_path.is_file():
+ 1079:         raise RuntimeError("Training completed without best_model.pt")
+ 1080:     best = torch.load(best_path, map_location="cpu", weights_only=False)
+ 1081:     completed_epoch = int(json.loads((out / "latest_epoch.json").read_text(encoding="utf-8"))["epoch"])
+ 1082:     summary = {
+ 1083:         "model": MODEL_NAME,
+ 1084:         "experiment_designation": EXPERIMENT_DESIGNATION,
+ 1085:         "stage_label": STAGE_LABEL,
+ 1086:         "parameter_count": EXPECTED_PARAMETER_COUNT,
+ 1087:         "expected_parameter_count": EXPECTED_PARAMETER_COUNT,
+ 1088:         "epochs_completed": completed_epoch,
+ 1089:         "stopped_early": stopped_early,
+ 1090:         "best_epoch": int(best["best_epoch"]),
+ 1091:         "best_validation_score": float(best["best_score"]),
+ 1092:         "best_validation_losses": best["val_losses"],
+ 1093:         "best_validation_metrics": best["val_metrics"],
+ 1094:         "best_validation_graph_at_fpr10": best["val_constrained_graph"],
+ 1095:         "checkpoint_rule": architecture_contract()["checkpoint_selection"],
+ 1096:         "runtime_schedule": architecture_contract()["training"]["runtime_schedule"],
+ 1097:         "test_evaluated": False,
+ 1098:         "test_threshold_selected": False,
+ 1099:         "next_stage": "V4-A3.8 validation-only threshold and decoder selection",
+ 1100:         "checkpoint_sha256": sha256_file(best_path),
+ 1101:     }
+ 1102:     atomic_json_dump(out / "summary.json", summary)
+ 1103:     artifacts = []
+ 1104:     for path in sorted(out.iterdir()):
+ 1105:         if path.is_file() and path.name != "artifact_manifest.csv":
+ 1106:             artifacts.append({"filename": path.name, "bytes": path.stat().st_size, "sha256": sha256_file(path)})
+ 1107:     atomic_csv_dump(out / "artifact_manifest.csv", artifacts, ["filename", "bytes", "sha256"])
+ 1108:     print(PASS["train"])
+ 1109:     print(json.dumps(summary, indent=2))
+ 1110:     return 0
+
+--- lines 1138-1148 ---
+ 1138:     parser.add_argument("--pin-memory", action=argparse.BooleanOptionalAction, default=True)
+ 1139:     parser.add_argument("--persistent-workers", action=argparse.BooleanOptionalAction, default=True)
+ 1140:     parser.add_argument("--prefetch-factor", type=int, default=2)
+ 1141:     parser.add_argument("--epochs", type=int, default=100)
+ 1142:     parser.add_argument("--patience", type=int, default=15)
+ 1143:     parser.add_argument("--min-delta", type=float, default=1e-4)
+ 1144:     parser.add_argument("--lr", type=float, default=1e-3)
+ 1145:     parser.add_argument("--weight-decay", type=float, default=1e-4)
+ 1146:     parser.add_argument("--graph-loss-weight", type=float, default=1.0)
+ 1147:     parser.add_argument("--node-loss-weight", type=float, default=1.0)
+ 1148:     parser.add_argument("--count-loss-weight", type=float, default=0.5)

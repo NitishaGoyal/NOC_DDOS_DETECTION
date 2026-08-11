@@ -1,0 +1,85 @@
+{
+  "contract_name": "V5_P2_L0_ROUTE_AND_LABEL_SEMANTICS",
+  "multi_route_union_semantics": {
+    "each_router_counted_once_per_role_union": true,
+    "overlapping_paths_allowed": true,
+    "path_union": "bitwise OR of all selected path masks",
+    "role_overlap_across_routes_allowed": true,
+    "shared_transit_routers_allowed": true,
+    "shared_victims_allowed": true,
+    "source_may_be_transit_on_another_route": true,
+    "source_may_be_victim_on_another_route": true,
+    "source_union": "bitwise OR of all selected source masks",
+    "transit_union": "bitwise OR of all selected transit masks",
+    "victim_union": "bitwise OR of all selected victim masks"
+  },
+  "ports": {
+    "inter_router_hop_directions": {
+      "east": "same row, next_column = current_column + 1",
+      "north": "next_row = current_row - 1, same column",
+      "south": "next_row = current_row + 1, same column",
+      "west": "same row, next_column = current_column - 1"
+    },
+    "local_ports_used_for_inter_router_legality": false,
+    "model_physical_port_mask_order": [
+      "input_local",
+      "input_north",
+      "input_east",
+      "input_south",
+      "input_west",
+      "output_local",
+      "output_north",
+      "output_east",
+      "output_south",
+      "output_west"
+    ],
+    "route_legality_uses": "canonical static adjacency and valid inter-router directional ports"
+  },
+  "routing": {
+    "algorithm": "deterministic_XY",
+    "dimension_order": "X_then_Y",
+    "one_route_per_ordered_source_victim_pair": true,
+    "ordered_route_count": 240,
+    "route_id_equation": "route_id = 15 * source_router + (victim_router if victim_router < source_router else victim_router - 1)",
+    "route_order": "lexicographic ascending by (source_router, victim_router), excluding source_router == victim_router",
+    "source_equals_victim_allowed": false,
+    "x_phase": "change column one hop at a time until destination column",
+    "y_phase": "change row one hop at a time until destination row"
+  },
+  "single_route_masks": {
+    "path_identity": "path = source union transit union victim",
+    "path_mask": "contains source, every transit router, and victim",
+    "source_mask": "contains only the route source",
+    "transit_mask": "contains route nodes excluding source and victim",
+    "victim_mask": "contains only the route victim"
+  },
+  "topology": {
+    "coordinate_definition": {
+      "column": "x coordinate",
+      "row": "y coordinate",
+      "valid_columns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "valid_rows": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "x": "column",
+      "y": "row"
+    },
+    "diagonal_hops_allowed": false,
+    "directed_physical_edges": 48,
+    "edge_order": "lexicographic ascending by (source_router, destination_router)",
+    "kind": "4x4_2D_cardinal_mesh",
+    "router_count": 16,
+    "router_id_equation": "router_id = row * 4 + column",
+    "router_numbering": "row_major",
+    "undirected_physical_links": 24,
+    "wraparound_links_allowed": false
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "analysis_domain": "normalized Dynamic70 model input returned by the guarded loader; statistics exclude physically invalid ports using the separate 16x10 physical-port mask",
+  "artifacts": {
+    "attacker_count_statistics": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_ATTACKER_COUNT_STATISTICS.csv",
+    "constant_channels": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_CONSTANT_AND_NEAR_CONSTANT_CHANNELS.csv",
+    "control_attack_statistics": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_CONTROL_ATTACK_STATISTICS.csv",
+    "feature_statistics": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_FEATURE_STATISTICS.csv",
+    "figure": {
+      "exception": null,
+      "generated": true,
+      "pdf": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_ACTIVITY_HEATMAP.pdf",
+      "png": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_ACTIVITY_HEATMAP.png"
+    },
+    "group_summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_GROUP_SUMMARY.csv",
+    "invalid_channels": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_INVALID_CHANNELS.csv",
+    "rare_channels": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_RARE_CHANNELS.csv",
+    "router_position_statistics": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_ROUTER_POSITION_STATISTICS.csv",
+    "sample_keys": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_GUARDED_LOADER_SAMPLE_KEYS.json",
+    "topology_mask_audit": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/F2_TOPOLOGY_MASK_AUDIT.csv"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "Tranche-A training-only descriptive audit",
+  "created_utc": "2026-08-05T19:35:19.134727+00:00",
+  "dataset": {
+    "active_count_items": {
+      "1": 7523,
+      "2": 7514,
+      "3": 7467,
+      "4": 7398
+    },
+    "active_only": false,
+    "attack_items": 29902,
+    "control_items": 80953,
+    "distinct_pair_ids": 600,
+    "items": 110855,
+    "pair_id_available": true,
+    "split": "train"
+  },
+  "decision": {
+    "F2_complete": true,
+    "F3_authorized": false,
+    "next_stage": "V5_P3_F2R_DYNAMIC70_DEGENERACY_FINDING_REVIEW",
+    "sealed_test_access_authorized": false,
+    "validation_access_authorized": false
+  },
+  "findings": {
+    "active_channels": 64,
+    "constant_channels": [
+      "stall_no_credit_local",
+      "stall_ordering_local",
+      "stall_ordering_north",
+      "stall_ordering_east",
+      "stall_ordering_south",
+      "stall_ordering_west"
+    ],
+    "invalid_channels": [],
+    "near_constant_channels": [],
+    "nonfinite_value_count": 0,
+    "rare_channels": []
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": true,
+    "validation_tensors_loaded": false
+  },
+  "interface": {
+    "physical_mask_variation_count": 0,
+    "physical_port_mask_shape": [
+      16,
+      10
+    ],
+    "x_shape": [
+      16,
+      70,
+      32
+    ]
+  },
+  "provenance": {
+    "F0_lock_sha256": "632c494b4796e55d37c6c9d6211d858c7b96e6b739285d646ecd380c8687eba2",
+    "F1_lock_sha256": "3d2df9261a440f782ce80c080177215ea6e18a5f2a3b10abd361102b651af2ad",
+    "F1_report_sha256": "1d7b8ee5ceacd8b5eb75dc55b9789ffa89c24b7af98b592deccdfbcad5299081",
+    "data_access_contract_sha256": "ba352d5cb194ae15df0eb28b925744353bb66e0e5721fc03816b4a0a705666f4",
+    "feature_group_contract_sha256": "9e23e4ecebc2e518cafad407f71ba97cd07dda7f8676f3da81cd5a8a1db811d2",
+    "guarded_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "installed_script_sha256": "7a60025adfe9f18b799d091fa28dda40e11e31a23ec45de5ee0f1d3f8f6f38e7"
+  },
+  "stage": "V5_P3_F2_DYNAMIC70_TRAINING_ONLY_DEGENERACY_AND_OBSERVABILITY_AUDIT",
+  "status": "PASS"
+}

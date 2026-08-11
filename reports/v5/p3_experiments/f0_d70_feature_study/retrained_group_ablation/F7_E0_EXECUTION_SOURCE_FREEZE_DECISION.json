@@ -1,0 +1,51 @@
+{
+  "E1_trainer_generation_authorized": false,
+  "F8_multi_seed_authorized": false,
+  "P2_execution_authorization_verified": true,
+  "actual_scientific_training_started": false,
+  "adapter_plan_frozen": true,
+  "checkpoint_metadata_reviewed": true,
+  "compact_interface_equivalence_authorized": false,
+  "exact_recipe_fields": {
+    "candidate_reduction_gates": {
+      "count_active_macro_F1_min": 0.98,
+      "graph_FPR_increase_max": 0.03,
+      "graph_average_precision_drop_max": 0.03,
+      "path_average_precision_drop_max": 0.03,
+      "selection_score_drop_max": 0.02,
+      "single_task_AP_collapse_max": 0.05,
+      "source_average_precision_drop_max": 0.03,
+      "transit_average_precision_drop_max": 0.03,
+      "victim_average_precision_drop_max": 0.03
+    },
+    "model_class": "V6P0Dynamic70GraphConvCount4",
+    "parameter_count": 60553,
+    "reporting_threshold": 0.5,
+    "seed": 107,
+    "selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+    "threshold_tuning_per_run": false,
+    "train_items": 110855,
+    "validation_items": 13863
+  },
+  "feature_removal_authorized": false,
+  "hardware_reduction_claim_authorized": false,
+  "loss_call_count": 11,
+  "next_stage": "V5_P3_F7_E0A_EXACT_HYPERPARAMETER_AND_LOSS_ROUTE_PIN",
+  "optimizer_implementations": [
+    "torch.optim.AdamW"
+  ],
+  "sealed_test_access": false,
+  "training_skeleton_source_mapped": true,
+  "unresolved_execution_fields": [
+    {
+      "field": "batch_size",
+      "reason": "zero or multiple literal candidates remain after skeleton, A4/F4/F4M/P1B and checkpoint review",
+      "unique_literal_values": []
+    },
+    {
+      "field": "weight_decay",
+      "reason": "zero or multiple literal candidates remain after skeleton, A4/F4/F4M/P1B and checkpoint review",
+      "unique_literal_values": []
+    }
+  ]
+}

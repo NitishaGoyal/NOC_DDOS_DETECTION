@@ -1,0 +1,65 @@
+{
+  "created_utc": "2026-08-08T00:47:00.476479+00:00",
+  "decoder": {
+    "callable": "decode_eplr_v2",
+    "config_sha256": "ef0d2e677eb663e79f7ffca7e699af993e6d81f574a65868b71fa49d5f7d11e7",
+    "route_library": "/home/zira/research/projects/GNN-2d/src/decoders/v5_xy_route_library.py",
+    "route_library_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+    "source": "/home/zira/research/projects/GNN-2d/src/decoders/v5_p3_eplr_v2.py",
+    "source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de"
+  },
+  "governance": {
+    "decoder_tuning": false,
+    "performance_metric_tuning": false,
+    "sealed_test_access": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "logits": {
+    "checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+    "inference_time_excluded": true,
+    "source": "fresh frozen M7 validation inference generated before timing"
+  },
+  "primary_runtime_strata": {
+    "decoder_status": [
+      "inactive",
+      "unresolved",
+      "legal",
+      "legal_low_support"
+    ],
+    "predicted_raw_count": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "sealed_test_access": false,
+  "secondary_security_context_strata": {
+    "path_complexity": [
+      "low",
+      "medium",
+      "high"
+    ],
+    "true_attacker_count": [
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "split": "validation",
+  "stage": "V5_P3_P6_R1B_FROZEN_EPLR_V2_DECODER_LATENCY",
+  "status": "PROSPECTIVE_FREEZE_BEFORE_DECODER_TIMING",
+  "timing": {
+    "CPU_decoder_only": true,
+    "balanced_random_interleaving_per_factor": true,
+    "clock": "perf_counter_ns",
+    "inputs_precomputed_in_memory": true,
+    "max_frozen_sample_bank_per_group": 128,
+    "python_gc_disabled_during_round": true,
+    "rounds": 3,
+    "timings_per_group_per_round": 1000,
+    "warmups": 500
+  }
+}

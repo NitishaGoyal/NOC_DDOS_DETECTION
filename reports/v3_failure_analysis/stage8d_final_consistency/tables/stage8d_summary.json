@@ -1,0 +1,176 @@
+{
+  "checks_passed": 30,
+  "checks_total": 30,
+  "chunk_size": 512,
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+  "generated_at": "2026-07-18T18:28:36.795199+00:00",
+  "graph": {
+    "all_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "connected": true,
+    "dtype": "int64",
+    "edge_count": 64,
+    "maximum_router_id": 15,
+    "minimum_router_id": 0,
+    "nonself_edges": 48,
+    "reciprocal_nonself_edges": 48,
+    "self_loops": 16,
+    "shape": [
+      2,
+      64
+    ],
+    "unique_edge_count": 64
+  },
+  "hard_failures": [],
+  "input_files": {
+    "active_cores": {
+      "dtype": "<U14",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/active_cores.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 13093096
+    },
+    "attackers": {
+      "dtype": "<U7",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/attackers.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 6546612
+    },
+    "edge_index": {
+      "dtype": "int64",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/edge_index.npy",
+      "shape": [
+        2,
+        64
+      ],
+      "size_bytes": 1152
+    },
+    "end_epoch": {
+      "dtype": "int32",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/end_epoch.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 935340
+    },
+    "feature_cols": {
+      "dtype": "<U22",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/feature_cols.npy",
+      "shape": [
+        24
+      ],
+      "size_bytes": 2240
+    },
+    "profile": {
+      "dtype": "<U7",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/profile.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 6546612
+    },
+    "run_id": {
+      "dtype": "<U39",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/run_id.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 36473396
+    },
+    "seed": {
+      "dtype": "<U2",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/seed.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 1870552
+    },
+    "split": {
+      "dtype": "<U5",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/split.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 4676188
+    },
+    "strength": {
+      "dtype": "<U2",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/strength.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 1870552
+    },
+    "x": {
+      "dtype": "float32",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/x.npy",
+      "shape": [
+        233803,
+        16,
+        8,
+        24
+      ],
+      "size_bytes": 2872971392
+    },
+    "y_graph": {
+      "dtype": "float32",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/y_graph.npy",
+      "shape": [
+        233803
+      ],
+      "size_bytes": 935340
+    },
+    "y_node": {
+      "dtype": "float32",
+      "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/y_node.npy",
+      "shape": [
+        233803,
+        16
+      ],
+      "size_bytes": 14963520
+    }
+  },
+  "limitations": [
+    "Directional IFD contains exact 1.0 values: 106351415/299267840 (35.537201%). Their physical causes are overloaded.",
+    "Boundary-port diagnostics use a provisional row-major 4x4 compass mapping and are not treated as hard failures.",
+    "Final arrays alone cannot distinguish invalid, idle, no-gap, and clipped-long-gap IFD states.",
+    "The dataset has many overlapping windows but only 71 independent simulation runs.",
+    "The current V3 test split has been used for diagnosis and is no longer an untouched final publication holdout.",
+    "Archive-derived 1980 modification times cannot establish the original generation date; hashes should be used for identity."
+  ],
+  "numpy": "2.5.1",
+  "output_root": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "run_segments": 71,
+  "unique_runs": 71,
+  "verdict": "PASS WITH DOCUMENTED LIMITATIONS",
+  "warning_findings": [],
+  "x_dtype": "float32",
+  "x_memory_mapped": true,
+  "x_shape": [
+    233803,
+    16,
+    8,
+    24
+  ]
+}

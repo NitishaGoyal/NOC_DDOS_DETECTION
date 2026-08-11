@@ -1,0 +1,234 @@
+{
+  "audit_script_revision": "v2_list_tuple_window_start_support",
+  "cardinality": {
+    "K_pair_counts": {
+      "test": {
+        "K1": 19,
+        "K2": 18,
+        "K3": 19,
+        "K4": 19
+      },
+      "train": {
+        "K1": 150,
+        "K2": 150,
+        "K3": 150,
+        "K4": 150
+      },
+      "validation": {
+        "K1": 19,
+        "K2": 19,
+        "K3": 19,
+        "K4": 18
+      }
+    },
+    "pair_atomicity_failures": 0,
+    "pairs": {
+      "test": 75,
+      "train": 600,
+      "validation": 75
+    },
+    "runs": {
+      "test": 150,
+      "train": 1200,
+      "validation": 150
+    },
+    "total_pairs": 750,
+    "total_runs": 1500
+  },
+  "created_utc": "2026-08-04T20:42:22.395272+00:00",
+  "data_copied": false,
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+  "decision": {
+    "handover_integrity_passed": true,
+    "loader_schema_audit_authorized": true,
+    "next_stage": "V5_P3_A1_LOADER_SCHEMA_AND_EXACT_DATASET_INVENTORY",
+    "preliminary_baseline_authorized": false,
+    "sealed_test_evaluation_authorized": false,
+    "tiny_overfit_authorized": false
+  },
+  "integrity": {
+    "failed_pairs_reported": 0,
+    "internal_checksum_entries": 1514,
+    "internal_checksum_failures": 0,
+    "mandatory_files_present": true
+  },
+  "model_trained": false,
+  "sealed_test": {
+    "dataset_loader_guard_present": false,
+    "dataset_loader_guard_tokens": [],
+    "only_filenames_and_hashes_examined": true,
+    "tensor_loads": 0,
+    "test_pairs": 75,
+    "test_run_files": 150
+  },
+  "source_modified": false,
+  "stage": "V5_P3_A0_TRANCHE_A_PRELIMINARY_HANDOVER_PREFLIGHT",
+  "status": "PASS_WITH_TEST_LOADER_GUARD_GAP",
+  "support_artifacts": {
+    "dataset_summary_top_level_keys": [
+      "active_attack_graph_epochs",
+      "attack_runs",
+      "campaign_id",
+      "certified_pairs",
+      "certified_runs",
+      "control_runs",
+      "created_utc",
+      "dataset_name",
+      "failed_pairs",
+      "family_run_counts",
+      "final_v5_p3_handover",
+      "inactive_graph_epochs",
+      "loader_window_shape",
+      "normalization",
+      "physical_port_mask_shape",
+      "positive_node_epoch_labels",
+      "preliminary",
+      "raw_gem5_files_included",
+      "retained_graph_epochs",
+      "source_tranche_pairs",
+      "split_pair_counts",
+      "split_run_counts",
+      "startup_policy",
+      "stored_representation",
+      "stored_run_shape",
+      "stride",
+      "target_epoch",
+      "version",
+      "window",
+      "windows"
+    ],
+    "deep_audit_top_level_keys": [
+      "batch_status_file_count",
+      "batch_status_files",
+      "campaign_id",
+      "certified_pair_records",
+      "certified_pairs",
+      "created_utc",
+      "expected_pair_level_manifests",
+      "expected_run_level_manifests",
+      "failed_pair_records",
+      "failed_pairs",
+      "final_dataset_validation",
+      "finished_utc",
+      "maximum_allowed_failed_pairs",
+      "native_validators_rerun",
+      "output_bytes",
+      "output_root",
+      "physical_mask_validation",
+      "raw81_feature_name_authority",
+      "raw81_feature_names",
+      "source_compressed_bytes_audited",
+      "source_manifest",
+      "source_manifest_sha256",
+      "status",
+      "version",
+      "worker_provenance"
+    ],
+    "feature_schema_top_level_keys": [
+      "canonical_private_observation",
+      "canonical_raw_shape",
+      "dynamic70_raw_indices",
+      "excluded_status_raw_index",
+      "feature_name_authority",
+      "features",
+      "loader_window_shape",
+      "model_feature_count",
+      "name",
+      "physical_mask_names",
+      "physical_mask_raw_indices",
+      "physical_port_mask_shape",
+      "raw81_feature_names",
+      "source_v6_schema",
+      "source_v6_schema_sha256",
+      "stored_run_shape",
+      "version",
+      "warning"
+    ],
+    "normalization_provisional_keys": [
+      "feature_names",
+      "final_for_v5_p3",
+      "fit_pair_count",
+      "fit_router_epoch_rows",
+      "fit_run_count",
+      "loader_transform",
+      "mean",
+      "scope",
+      "std",
+      "std_epsilon",
+      "stored_transform",
+      "version",
+      "warning"
+    ],
+    "normalization_sufficient_statistics_keys": [
+      "combination_rule",
+      "count",
+      "feature_names",
+      "scope",
+      "stored_transform",
+      "sum",
+      "sum_of_squares",
+      "training_pair_count",
+      "training_run_count",
+      "version"
+    ]
+  },
+  "test_tensor_loaded": false,
+  "topology": {
+    "edge_index_key": "edge_index",
+    "edge_index_shape": [
+      2,
+      48
+    ],
+    "physical_port_mask_shape": [
+      16,
+      10
+    ]
+  },
+  "train_validation_tensor_audit": {
+    "T_max": 787,
+    "T_min": 756,
+    "T_unique": [
+      756,
+      757,
+      758,
+      759,
+      760,
+      761,
+      762,
+      763,
+      764,
+      765,
+      766,
+      767,
+      768,
+      769,
+      770,
+      771,
+      772,
+      773,
+      774,
+      775,
+      776,
+      777,
+      778,
+      779,
+      786,
+      787
+    ],
+    "files_loaded": 1350,
+    "label_contract_failures": 0,
+    "shape_failures": 0,
+    "test_files_loaded": 0,
+    "total_train_windows": 110855,
+    "total_validation_windows": 13863,
+    "valid_windows_max": 95,
+    "valid_windows_min": 91,
+    "valid_windows_unique": [
+      91,
+      92,
+      93,
+      94,
+      95
+    ]
+  }
+}

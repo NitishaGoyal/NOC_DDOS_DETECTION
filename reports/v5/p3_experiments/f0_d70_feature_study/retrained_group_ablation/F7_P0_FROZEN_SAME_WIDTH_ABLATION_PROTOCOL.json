@@ -1,0 +1,170 @@
+{
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:21:36.815044+00:00",
+  "governance": {
+    "A_test_access": false,
+    "F7_results_label": "VALIDATION-EXPLORATORY",
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "sealed_test_access": false,
+    "training_data_access_in_actual_F7": true,
+    "validation_data_access_in_actual_F7": true
+  },
+  "groups": {
+    "buffer_pressure": {
+      "channel_count": 15,
+      "end_exclusive": 55,
+      "start": 40
+    },
+    "directional_traffic_volume": {
+      "channel_count": 10,
+      "end_exclusive": 10,
+      "start": 0
+    },
+    "flow_control_stalls": {
+      "channel_count": 15,
+      "end_exclusive": 70,
+      "start": 55
+    },
+    "inter_flit_timing": {
+      "channel_count": 20,
+      "end_exclusive": 30,
+      "start": 10
+    },
+    "queue_activity": {
+      "channel_count": 10,
+      "end_exclusive": 40,
+      "start": 30
+    }
+  },
+  "masking_protocol": {
+    "control_run": "identical code path with no channel group masked",
+    "edge_index_operation": "unchanged",
+    "labels_operation": "unchanged",
+    "mask_insertion_point": "after the official guarded loader returns normalized model-input x and before the first model forward pass",
+    "model_parameter_count_preserved": 60553,
+    "no_compact_model_in_F7": true,
+    "no_parameter_pruning_in_F7": true,
+    "operation": "clone x and set x[:, :, start:end, :] = 0.0 for exactly one frozen macro-group",
+    "physical_port_mask_operation": "unchanged",
+    "tensor_shape_preserved": [
+      16,
+      70,
+      32
+    ],
+    "zero_semantics": "zero in the official post-loader model-input space; this is an information-suppression intervention, not a claim that zero is the physical mean of the raw counter"
+  },
+  "metric_protocol": {
+    "candidate_reduction_gates": {
+      "count_active_macro_F1_min": 0.98,
+      "graph_FPR_increase_max": 0.03,
+      "graph_average_precision_drop_max": 0.03,
+      "path_average_precision_drop_max": 0.03,
+      "selection_score_drop_max": 0.02,
+      "single_task_AP_collapse_max": 0.05,
+      "source_average_precision_drop_max": 0.03,
+      "transit_average_precision_drop_max": 0.03,
+      "victim_average_precision_drop_max": 0.03
+    },
+    "gate_interpretation": "passing marks a group as a candidate for F8 multi-seed confirmation; it does not authorize feature deletion",
+    "primary_comparison": "each masked seed-107 run versus the same-code-path seed-107 Dynamic70 control retraining",
+    "primary_selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+    "secondary_reference": "official frozen A4/F4 baseline; not substituted for the same-run control",
+    "threshold_policy": {
+      "graph_reporting_threshold": 0.5,
+      "selection_metrics_threshold_free_except_count_macro_f1": true,
+      "threshold_tuning_per_run": false
+    }
+  },
+  "primary_design": "same-width post-loader zero masking with one independently retrained control and five independently retrained group ablations at seed 107",
+  "run_matrix": [
+    {
+      "channel_end_exclusive": null,
+      "channel_start": null,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": null,
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "control_dynamic70",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 10,
+      "channel_start": 0,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "directional_traffic_volume",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_directional_traffic_volume",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 30,
+      "channel_start": 10,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "inter_flit_timing",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_inter_flit_timing",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 40,
+      "channel_start": 30,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "queue_activity",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_queue_activity",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 55,
+      "channel_start": 40,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "buffer_pressure",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_buffer_pressure",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 70,
+      "channel_start": 55,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "flow_control_stalls",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_flow_control_stalls",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    }
+  ],
+  "scientific_question": "How much does each Dynamic70 macro-group contribute when the model is retrained from scratch without that group's information, while architecture width, parameter count, data split, training budget and checkpoint-selection rule remain fixed?",
+  "stage": "V5_P3_F7_P0_SAME_WIDTH_RETRAINED_GROUP_ABLATION_PREFLIGHT",
+  "training_recipe_policy": {
+    "F8_extra_seeds": [
+      117,
+      127
+    ],
+    "F8_scope": "only the two most decision-relevant groups selected after the complete seed-107 matrix is reviewed",
+    "checkpoint_reuse_between_runs": false,
+    "fresh_initialization_per_run": true,
+    "inherit_without_change": "official A4 seed-107 training loop, optimizer, loss weights, batching, epoch budget, early stopping, checkpoint selection and official D1 runtime",
+    "only_allowed_code-path_difference": "the frozen post-loader channel-zeroing operation controlled by group_masked",
+    "seed_107_primary_matrix": true
+  }
+}

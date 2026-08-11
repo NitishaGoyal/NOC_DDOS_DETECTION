@@ -1,0 +1,252 @@
+{
+  "created_utc": "2026-08-05T15:23:54.928047+00:00",
+  "decision": {
+    "D8_authorized": true,
+    "endpoint_preservation_feasibility_pass": true,
+    "fail_closed_behavior_pass": true,
+    "graph_count_immutability_pass": true,
+    "next_stage": "V5_P3_D8_EPLR_V1_DETERMINISTIC_IMPLEMENTATION_AND_A_TRAIN_ONLY_CALIBRATION",
+    "role_overlap_semantics_pass": true,
+    "route_library_certified_for_EPLR": true,
+    "sealed_test_evaluation_authorized": false,
+    "shared_victim_semantics_pass": true,
+    "synthetic_endpoint_repair_pass": true,
+    "validation_replay_authorized": false
+  },
+  "frozen_reference_helper": {
+    "classification": "D7-tested reference semantics; not production decoder",
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d7_eplr_v1_route_library_and_synthetic_tests/V5_P3_EPLR_V1_D7_FROZEN_REFERENCE_SEMANTICS.py",
+    "sha256": "cc60a82f21470393d97ee6d8aa05c6f446dcd364f540f76aae098951f8467e44"
+  },
+  "governance": {
+    "logits_loaded": false,
+    "model_loaded": false,
+    "production_decoder_installed": false,
+    "test_tensor_loaded": false,
+    "threshold_tuning_performed": false,
+    "training_data_loaded": false,
+    "validation_data_loaded": false
+  },
+  "provenance": {
+    "D6_D7_matrix_sha256": "2f245fcd1782bf9a510df5cbfeffaa931dc4f4de87aeb0aff7d77ae6a4f7c89f",
+    "D6_lock_sha256": "a17885052363153900559ee30182b147c5be57e28750ec5609c369f764e7ef12",
+    "D6_objective_sha256": "a38210359277043495c8dfb1278196f11afa87ea582a7365bf2d23d4a408f5d8",
+    "D6_output_contract_sha256": "659e172c0f4b91bea790a4998b251f2313c0c43260283c0cb9e6f3c507b43831",
+    "D6_report_sha256": "22220e22b5acc1fd097aaa34eec1803adcb9ea03f3938e3a2962e2761d107d27",
+    "D6_semantic_sha256": "0bd99cec7d0d70ed4cf8795a6e588625c0dbde7dfbf5209fdf8fcbe70d652982",
+    "frozen_reference_helper_sha256": "cc60a82f21470393d97ee6d8aa05c6f446dcd364f540f76aae098951f8467e44",
+    "installed_script_sha256": "0099d55a11e259b8e85a0a8fa95d68744d641aeb337cd59fe4f43a6f1d8b180d",
+    "route_library_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+  },
+  "route_library": {
+    "directed_edge_count": 48,
+    "mesh_columns": 4,
+    "mesh_rows": 4,
+    "ordered_route_count": 240,
+    "route_id_max": 239,
+    "route_id_min": 0,
+    "route_library_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+    "router_count": 16
+  },
+  "scope": "Audit the frozen canonical 4x4 XY route library and validate EPLR-V1 semantics using synthetic/unit tests only.",
+  "stage": "V5_P3_D7_EPLR_V1_ROUTE_LIBRARY_AND_SYNTHETIC_UNIT_TESTS",
+  "status": "PASS",
+  "tests": {
+    "failed": 0,
+    "passed": 15,
+    "results": [
+      {
+        "details": {
+          "endpoint_pairs": 240,
+          "routes": 240
+        },
+        "id": "D7-T01",
+        "name": "route_inventory",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "round_trips": 240
+        },
+        "id": "D7-T02",
+        "name": "route_id_roundtrip",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "directed_edges": 48,
+          "routes_validated": 240
+        },
+        "id": "D7-T03",
+        "name": "topology_and_xy_legality",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "status": "INACTIVE_RAW"
+        },
+        "id": "D7-T04",
+        "name": "inactive_raw",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "nodes": [
+            0,
+            1,
+            2,
+            3,
+            7,
+            11,
+            15
+          ],
+          "route_id": 14
+        },
+        "id": "D7-T05",
+        "name": "K1_exact_preservation",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "2": {
+            "path_cardinality": 10,
+            "route_ids": [
+              14,
+              56
+            ],
+            "source_cardinality": 2,
+            "victim_cardinality": 2
+          },
+          "3": {
+            "path_cardinality": 13,
+            "route_ids": [
+              14,
+              28,
+              42
+            ],
+            "source_cardinality": 3,
+            "victim_cardinality": 3
+          },
+          "4": {
+            "path_cardinality": 16,
+            "route_ids": [
+              14,
+              28,
+              42,
+              56
+            ],
+            "source_cardinality": 4,
+            "victim_cardinality": 4
+          }
+        },
+        "id": "D7-T06",
+        "name": "K2_K4_union_semantics",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "route_ids": [
+            14,
+            59
+          ],
+          "victim_mask": 32768
+        },
+        "id": "D7-T07",
+        "name": "shared_victim",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "source_transit_overlap_router": 1,
+          "source_victim_overlap_router": 3
+        },
+        "id": "D7-T08",
+        "name": "role_overlap_across_routes",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "independent_cardinality": 12,
+          "union_cardinality": 10
+        },
+        "id": "D7-T09",
+        "name": "overlapping_path_union",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "candidate_route_tuples": [
+            [
+              11,
+              59
+            ],
+            [
+              14,
+              56
+            ]
+          ],
+          "score": -22.18070977791825,
+          "selected": [
+            11,
+            59
+          ]
+        },
+        "id": "D7-T10",
+        "name": "endpoint_assignment_tie_break",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "score": -0.9746946395106746,
+          "selected": [
+            14,
+            56
+          ]
+        },
+        "id": "D7-T11",
+        "name": "transit_path_support_selection",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "selected": [
+            14
+          ],
+          "source_repair_count": 1,
+          "victim_repair_count": 0
+        },
+        "id": "D7-T12",
+        "name": "endpoint_repair_reference",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "note": "threshold is synthetic test input, not calibrated/frozen",
+          "score": -165.78614669558124,
+          "status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+          "synthetic_test_threshold": -80.0
+        },
+        "id": "D7-T13",
+        "name": "low_route_support_diagnostic",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "status": "NO_CERTIFIED_LEGAL_EXPLANATION"
+        },
+        "id": "D7-T14",
+        "name": "no_legal_explanation_fail_closed",
+        "status": "PASS"
+      },
+      {
+        "details": {
+          "random_property_checks": 256
+        },
+        "id": "D7-T15",
+        "name": "graph_count_immutability_property",
+        "status": "PASS"
+      }
+    ],
+    "total": 15
+  }
+}

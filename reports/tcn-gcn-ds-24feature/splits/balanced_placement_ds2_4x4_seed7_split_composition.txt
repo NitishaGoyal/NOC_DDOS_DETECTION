@@ -1,0 +1,22 @@
+Balanced placement split - seed7
+================================================================================
+Dataset:
+data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+
+Split file:
+splits/balanced_placement_ds2_4x4_seed7.npz
+
+Purpose:
+Validation and test both include 1-attacker, 2-attacker, and 3-attacker cases.
+
+Validation runs from eval logs:
+- N-0-15-A-1-S20-V2                      k=1, n=3293
+- N-0-15-A-7-12-S63-V2                   k=2, n=3293
+- N-0-15-A-1-11-12-S77-V2                k=3, n=3293
+
+Test runs from eval logs:
+- N-0-15-A-12-S20-V2                     k=1, n=3293
+- N-0-15-A-1-7-S63-V2                    k=2, n=3293
+- N-0-15-A-7-11-12-S77-V2                k=3, n=3293
+
+Each validation/test attacker group contains 3293 windows. Total attack windows in validation = 9879, and total attack windows in test = 9879.

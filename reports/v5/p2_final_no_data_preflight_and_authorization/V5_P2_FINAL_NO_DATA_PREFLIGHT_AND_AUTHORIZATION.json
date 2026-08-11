@@ -1,0 +1,106 @@
+{
+  "A2_executed": false,
+  "authorization": {
+    "authorization_id": "V5P2-caaea91e4eb6772ace0dc1b43b7e28c4",
+    "contract_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_no_data_preflight_and_authorization/V5_P2_FINAL_ONE_SHOT_AUTHORIZATION.json",
+    "contract_sha256": "e0f62d2c83e77825ee3e39da351a8347cda1857eb4bc3f4295756d928bf9dfc1",
+    "evaluation_count": 1,
+    "single_use": true,
+    "successful_rerun_authorized": false,
+    "test_access_authorized": true,
+    "token_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_no_data_preflight_and_authorization/V5_P2_FINAL_ONE_SHOT_AUTHORIZATION_TOKEN.json",
+    "token_sha256": "2f374c0894f315a759c6ec08acb58c091c9ef185d6f7aef2670e19960e7d2186"
+  },
+  "bound_execution": {
+    "data_root_text": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "data_root_text_sha256": "24c4f428731863be76eaf7cce7b17e6df3ecc5c904f247d83ac6a9447ccd1fd0",
+    "evaluator_source": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_final_raw_a0_a1_one_shot.py",
+    "evaluator_source_sha256": "f6f061177b1621e3e7d8b3cbb32a401f83cdbf0488235125c62f3be17501ee44",
+    "launcher_path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/run_v5_p2_final_authorized_one_shot.sh",
+    "launcher_sha256": "569e38f315a2018c437cb73a22837cdfa610a3facb539c9bc6cc2d78d8dfe798",
+    "output_dir_text": "/home/zira/research/projects/GNN-2d/reports/v5/p2_final_raw_a0_a1_one_shot_blind_evaluation",
+    "output_dir_text_sha256": "0268911825c01546390aee695cd902d70e54c134f527965be4e8d34e48c03726"
+  },
+  "created_utc": "2026-07-29T22:41:31.194109+00:00",
+  "decision": "AUTHORIZE_EXACTLY_ONE_V5_P2_RAW_A0_A1_BLIND_TEST_EXECUTION",
+  "environment": {
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+    "python_version": "3.12.3"
+  },
+  "official_output_groups": [
+    "raw_neural",
+    "A0_lightweight",
+    "A1_exact_structured"
+  ],
+  "preflight": {
+    "all_frozen_hashes_verified": true,
+    "authorization_R0_schema_correction": {
+      "append_only_implementation_correction": true,
+      "scientific_contract_changed": false,
+      "trigger": "The first authorizer expected flat keys evaluator_source_sha256 and A2_executed, while the frozen source contract stores them at evaluator.sha256 and A2.executed."
+    },
+    "evaluator_AST_audit": {
+      "A1_margin_threshold": 8.720532088239842,
+      "A2_execution_absent": true,
+      "authorization_consumed_before_dataset_construction": true,
+      "batch_size": 128,
+      "dataset_constructed_before_single_inference": true,
+      "num_workers_zero": true,
+      "router_count": 16,
+      "shuffle_false": true,
+      "stride": 8,
+      "syntax_valid": true,
+      "training_and_threshold_selection_absent": true,
+      "window": 32
+    },
+    "evaluator_contract_schema_audit": {
+      "A0_thresholds_verified": true,
+      "A1_exact_decoder_contract_verified": true,
+      "A2_rejected_and_not_executed": true,
+      "contract_identity_verified": true,
+      "contract_status_frozen": true,
+      "evaluator_sha256_verified": true,
+      "freeze_report_and_lock_cross_hash_verified": true,
+      "neural_execution_verified": true,
+      "official_output_groups_verified": true,
+      "schema": "nested_V5_P2_FINAL_EVALUATOR_SOURCE_CONTRACT",
+      "security_boundary_verified": true,
+      "snapshot_sha256_verified": true,
+      "test_loader_verified": true
+    },
+    "fresh_source_only_self_test_log": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_no_data_preflight_and_authorization/FINAL_NO_DATA_SOURCE_ONLY_SELF_TEST.log",
+    "fresh_source_only_self_test_log_sha256": "7ac18f48ee2c77126ce05557bf212eea2f8de58c4d27e82ec3295637c7bf56e6",
+    "fresh_source_only_self_test_passed": true,
+    "output_guard_absent_before_authorization": true,
+    "source_only_self_test_scalar": {
+      "route_count": "240",
+      "status": "PASS",
+      "synthetic_A1_certified": "true",
+      "synthetic_forward_exact_repeat": "true",
+      "test_directory_enumerated": "false",
+      "test_directory_existence_checked": "false",
+      "test_path_resolved": "false",
+      "test_tensors_deserialized": "false"
+    }
+  },
+  "security_boundary": {
+    "data_root_bound_as_text": true,
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_path_resolved": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false
+  },
+  "stage": "V5_P2_FINAL_NO_DATA_PREFLIGHT_AND_AUTHORIZATION",
+  "state_after_authorization": {
+    "authorization_contract_created": true,
+    "authorization_token_consumed": false,
+    "authorization_token_created": true,
+    "evaluator_source_frozen": true,
+    "next_stage": "V5_P2_FINAL_AUTHORIZED_ONE_SHOT_EXECUTION",
+    "ready_for_one_shot_test": true
+  },
+  "status": "COMPLETE"
+}

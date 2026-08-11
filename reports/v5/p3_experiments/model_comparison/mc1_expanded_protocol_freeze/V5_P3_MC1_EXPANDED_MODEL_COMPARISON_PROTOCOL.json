@@ -1,0 +1,297 @@
+{
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "common_multitask_output_contract": {
+    "count_logits": "[B,4]",
+    "graph_logits": "[B,1]",
+    "path_logits": "[B,16]",
+    "source_logits": "[B,16]",
+    "transit_logits": "[B,16]",
+    "victim_logits": "[B,16]"
+  },
+  "dataset": {
+    "features_per_router": 70,
+    "name": "V5_P3_FINAL_AB_DYNAMIC70",
+    "normalization": "frozen final A+B train-only normalization",
+    "observation_window_epochs": 32,
+    "routers": 16,
+    "sealed_test_access": false,
+    "train_windows": 221773,
+    "validation_windows": 27722
+  },
+  "detection_only_models": [
+    {
+      "id": "D0",
+      "implementation_action": "ADAPT_AND_RETRAIN_FINAL_AB",
+      "model_id": "binary_conv1d",
+      "name": "Binary Conv1D"
+    },
+    {
+      "comparison_purpose": "measure incremental cost of multitask localization versus graph detection only",
+      "id": "D1",
+      "implementation_action": "IMPLEMENT_OR_ADAPT_AND_RETRAIN_FINAL_AB",
+      "model_id": "binary_conv1d_graphconv",
+      "name": "Binary Conv1D+GraphConv"
+    },
+    {
+      "feature_transform": {
+        "expected_features": 700,
+        "fit_source": "final A+B train only",
+        "per_channel_temporal_statistics": [
+          "mean",
+          "std",
+          "max",
+          "last",
+          "slope"
+        ],
+        "physical_port_validity_masking": true,
+        "router_aggregations": [
+          "mean",
+          "max"
+        ],
+        "status": "INHERIT_EXISTING_P4_FROZEN_TRANSFORM",
+        "validation_fit_forbidden": true
+      },
+      "id": "D2",
+      "implementation_action": "IMPLEMENT_FRESH_CPU",
+      "model_id": "xgboost",
+      "name": "XGBoost",
+      "task_scope": "graph_detection_only"
+    }
+  ],
+  "execution_latency_protocol": {
+    "batch_size": 1,
+    "canonical_latency_seed": 107,
+    "clock": "time.perf_counter_ns",
+    "cuda_sync_each_measurement": true,
+    "excluded": [
+      "checkpoint load",
+      "model construction",
+      "device transfer",
+      "input preparation",
+      "decoder",
+      "thresholding",
+      "metrics"
+    ],
+    "execution_context": "torch.inference_mode",
+    "gpu_idle_ack_required": true,
+    "harness": "scripts/v5/p3/post_training/v5_p3_posttrain_p6_inference_latency_benchmark.py",
+    "harness_sha256": "ecd79162044aecbfd7e7ea856a1b7d687b05e58fb4a7b240010aeb9ba49a5c1a",
+    "measured_iterations": 1000,
+    "timed_region": "one complete model forward producing all deployed neural outputs",
+    "warmup_iterations": 100
+  },
+  "external_comparison_policy": {
+    "GNS_timing_must_retain_original_platform_and_timing_definition": true,
+    "cross_platform_speedup_claims_forbidden": true,
+    "internal_controlled_latency_and_external_published_latency_in_separate_table_or_explicitly_qualified_columns": true,
+    "systems": [
+      "GNS",
+      "DL2Fence",
+      "UofF topology-aware GNN"
+    ]
+  },
+  "full_multitask_models": [
+    {
+      "id": "M0",
+      "implementation_action": "ADAPT_FROM_P2_AND_RETRAIN_FINAL_AB",
+      "model_id": "conv1d_only",
+      "name": "Conv1D-only",
+      "purpose": "temporal-only baseline"
+    },
+    {
+      "id": "M1",
+      "implementation_action": "ADAPT_OR_IMPLEMENT_AND_RETRAIN_FINAL_AB",
+      "model_id": "gcn_only_temporal_mean",
+      "name": "GCN-only + temporal mean pooling",
+      "purpose": "spatial-only learned-graph baseline using all 32 frames",
+      "temporal_policy": "apply GCN per frame then mean-pool embeddings across 32 frames"
+    },
+    {
+      "id": "M2",
+      "implementation_action": "IMPLEMENT_AND_RETRAIN_FINAL_AB",
+      "model_id": "graphconv_only_temporal_mean",
+      "name": "GraphConv-only + temporal mean pooling",
+      "purpose": "spatial-only GraphConv baseline using all 32 frames",
+      "temporal_policy": "apply GraphConv per frame then mean-pool embeddings across 32 frames"
+    },
+    {
+      "id": "M3",
+      "implementation_action": "ADAPT_FROM_P2_AND_RETRAIN_FINAL_AB",
+      "model_id": "conv1d_gcnconv",
+      "name": "Conv1D+GCNConv",
+      "purpose": "standard spatiotemporal GCN baseline"
+    },
+    {
+      "id": "M4",
+      "implementation_action": "ADAPT_FROM_P2_AND_RETRAIN_FINAL_AB",
+      "model_id": "conv1d_gatconv",
+      "name": "Conv1D+GATConv",
+      "purpose": "attention-based graph-operator comparison"
+    },
+    {
+      "historical_architecture_source": "scripts/train_temporal_tcn_gcn_v3.py",
+      "historical_architecture_source_sha256": "cd218697038f2a71df9efa4bccba610e22a241117fb1fe8f97fda601bb0b99fa",
+      "historical_class": "TemporalTCNGCN",
+      "id": "M5",
+      "implementation_action": "RECOVER_ARCHITECTURE_ADAPT_TO_DYNAMIC70_SIX_HEAD_AND_RETRAIN_FINAL_AB",
+      "model_id": "tcn_attention_gcn",
+      "name": "TCN-Attention+GCN",
+      "purpose": "dilated temporal convolution alternative"
+    },
+    {
+      "id": "M6",
+      "implementation_action": "IMPLEMENT_FRESH_AND_RETRAIN_FINAL_AB",
+      "model_id": "lstm_graphconv",
+      "name": "LSTM+GraphConv",
+      "purpose": "recurrent spatiotemporal baseline and GNS-relevant internal analogue"
+    },
+    {
+      "final_model_source": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+      "final_model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+      "id": "M7",
+      "model_id": "conv1d_graphconv",
+      "name": "Conv1D+GraphConv (proposed final V5-P3)",
+      "production_best_epoch": 5,
+      "production_checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+      "production_model_state_sha256": "f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432",
+      "production_parameter_count": 60553,
+      "production_seed": 107,
+      "purpose": "frozen production architecture",
+      "seed107_action": "REUSE_FROZEN_FINAL_AB_VALIDATION_AND_CHECKPOINT_NO_RETRAIN",
+      "seed117_127_action": "TRAIN_COMPARISON_REPLICAS_ONLY_IF_MULTI_SEED_CONFIRMATION_EXECUTED"
+    }
+  ],
+  "performance_reporting": {
+    "count": [
+      "active_macro_F1",
+      "accuracy",
+      "K1_accuracy",
+      "K2_accuracy",
+      "K3_accuracy",
+      "K4_accuracy"
+    ],
+    "detection_only_role_metrics": "NA never zero",
+    "graph": [
+      "AUROC",
+      "AP",
+      "accuracy",
+      "precision",
+      "recall",
+      "F1",
+      "FPR"
+    ],
+    "joint": [
+      "source+victim_exact",
+      "source+path+victim_exact",
+      "all_four_role_sets_exact"
+    ],
+    "roles_each": [
+      "AP",
+      "AUROC",
+      "precision",
+      "recall",
+      "F1",
+      "exact_set_accuracy"
+    ],
+    "three_seed_summary": "mean and sample standard deviation",
+    "victim_extra": [
+      "Top1",
+      "Recall@1",
+      "Recall@2",
+      "Recall@3",
+      "MRR"
+    ]
+  },
+  "sealed_test_policy": {
+    "baseline_test_access": false,
+    "model_comparison_test_access": false,
+    "only_final_frozen_system_may_receive_one_shot_sealed_test_later": true,
+    "sealed_test_results_must_not_feed_back_into_model_selection": true
+  },
+  "security_response_latency_protocol": {
+    "attack_onset_source": "authoritative runtime/packet truth in prediction archive",
+    "attack_termination_source": "authoritative runtime/packet truth in prediction archive",
+    "base_harness": "scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py",
+    "base_harness_sha256": "ae06da51bc895cd8def1b3da95d61f02c5d7d82d8c11f837ec12d47d209f10af",
+    "base_supported_roles": [
+      "source",
+      "victim",
+      "path"
+    ],
+    "cycle_conversion": "only with authoritative cycles_per_epoch",
+    "decision_epoch": "window_end_epoch",
+    "primary_latency_unit": "epochs",
+    "report": [
+      "coverage",
+      "median",
+      "IQR",
+      "p95",
+      "undetected_count"
+    ],
+    "stable_graph_q": 2,
+    "transit_policy": "implement MC extension using identical exact-set and chronological semantics; do not alter frozen P2",
+    "undetected_policy": "preserve null latency and explicit failure"
+  },
+  "seed_execution_policy": {
+    "binary_neural": "107,117,127",
+    "derivation": "M0-M6:21 + M7 replicas:2 + D0/D1:6",
+    "maximum_new_neural_training_jobs": 29,
+    "one_gpu_job_at_a_time": true,
+    "primary_full_multitask": "107,117,127 for M0-M6; M7 seed107 reused and 117/127 are comparison-only replicas",
+    "xgboost": "deterministic CPU baseline; record random_state=107 unless implementation requires repeated seeds"
+  },
+  "stage": "V5_P3_MC1_EXPANDED_MODEL_COMPARISON_PROTOCOL_FREEZE",
+  "status": "FROZEN",
+  "training_protocol": {
+    "batch_size": 256,
+    "checkpoint_selection": "mean(graph_AUROC, graph_AP, count_macroF1, source_AP, transit_AP, victim_AP, path_AP)",
+    "decoder_used_for_model_selection": false,
+    "early_stopping": {
+      "minimum_epoch": 15,
+      "minimum_improvement": 0.0001,
+      "patience": 12
+    },
+    "frozen_pos_weights": {
+      "graph": 2.7082685394,
+      "path": 8.2081214059,
+      "source": 20.0,
+      "transit": 17.1860338775,
+      "victim": 20.0
+    },
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.001,
+    "losses": {
+      "all_task_coefficients": 1.0,
+      "count": "active-only CE",
+      "graph": "weighted BCE",
+      "path": "weighted BCE",
+      "source": "weighted BCE",
+      "transit": "weighted BCE",
+      "victim": "weighted BCE"
+    },
+    "max_epochs": 100,
+    "optimizer": "AdamW",
+    "persistence_used_for_model_selection": false,
+    "scheduler": {
+      "factor": 0.5,
+      "min_lr": 1e-05,
+      "patience": 4,
+      "threshold": 0.0001,
+      "type": "ReduceLROnPlateau"
+    },
+    "seeds": [
+      107,
+      117,
+      127
+    ],
+    "thresholds": {
+      "graph": 0.5,
+      "path": 0.5,
+      "source": 0.5,
+      "threshold_tuning": false,
+      "transit": 0.5,
+      "victim": 0.5
+    },
+    "weight_decay": 0.0001
+  }
+}

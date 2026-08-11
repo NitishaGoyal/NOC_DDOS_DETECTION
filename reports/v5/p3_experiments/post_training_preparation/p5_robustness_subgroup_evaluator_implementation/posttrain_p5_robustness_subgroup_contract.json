@@ -1,0 +1,112 @@
+{
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "coverage_policy": {
+    "metadata_coverage_report_required": true,
+    "missing_subgroup_metadata": "reported as MISSING; never imputed",
+    "small_group_policy": "retain counts; do not suppress automatically, but downstream paper tables must expose n"
+  },
+  "metrics_per_subgroup": [
+    "window_count",
+    "active_attack_window_count",
+    "run_count",
+    "graph_auroc_all_windows",
+    "graph_average_precision_all_windows",
+    "source_average_precision_active_windows",
+    "transit_average_precision_active_windows",
+    "victim_average_precision_active_windows",
+    "path_average_precision_active_windows",
+    "p2_detected_during_attack_fraction_if_latency_csv_supplied",
+    "p2_graph_first_latency_epochs_median_detected_during_attack",
+    "p2_graph_first_latency_epochs_p95_detected_during_attack",
+    "p2_victim_first_correct_set_latency_epochs_median_before_termination",
+    "p2_victim_first_correct_set_latency_epochs_p95_before_termination"
+  ],
+  "primary_subgroup_dimensions": {
+    "attack_profile": {
+      "policy": "availability audited; missing values never inferred",
+      "source": "analysis_metadata.attack_profile when present"
+    },
+    "attack_strength": {
+      "policy": "exact archive metadata value; no regrouping by P5",
+      "source": "attack_strength"
+    },
+    "attacker_count": {
+      "labels": [
+        "K1",
+        "K2",
+        "K3",
+        "K4",
+        "OTHER_OR_UNKNOWN"
+      ],
+      "source": "attacker_count"
+    },
+    "route_overlap": {
+      "policy": "P5 never infers overlap from a binary union path mask",
+      "source": "analysis_metadata.path_overlap or analysis_metadata.route_overlap",
+      "status": "DEFERRED_UNLESS_EXPLICIT_METADATA_PRESENT"
+    },
+    "singleton_source_victim_manhattan_distance": {
+      "bins": {
+        "distance_0": [
+          0,
+          0
+        ],
+        "long_5_6": [
+          5,
+          6
+        ],
+        "medium_3_4": [
+          3,
+          4
+        ],
+        "short_1_2": [
+          1,
+          2
+        ]
+      },
+      "distance": "abs(src_row-victim_row)+abs(src_col-victim_col)",
+      "multi_endpoint_policy": "label MULTI_ENDPOINT_UNPAIRED; never invent source-victim pairing",
+      "router_coordinate_mapping": "4x4 row-major router_id -> (router_id // 4, router_id % 4)",
+      "scope": "only windows/runs with exactly one true source router and exactly one true victim router"
+    },
+    "source_location": {
+      "multi_endpoint_policy": "MULTI_LOCATION if true sources span categories",
+      "singleton_policy": "corner/edge/interior from true source router"
+    },
+    "traffic_or_workload_class": {
+      "policy": "exact archive metadata value",
+      "source": "traffic_or_workload_class"
+    },
+    "true_path_router_count": {
+      "source": "sum(path_truth)",
+      "warning": "reported as router-count descriptor, not automatically called path length for multi-endpoint cases"
+    },
+    "true_transit_router_count": {
+      "source": "sum(transit_truth)"
+    },
+    "victim_location": {
+      "multi_endpoint_policy": "MULTI_LOCATION if true victims span categories",
+      "singleton_policy": "corner/edge/interior from true victim router"
+    }
+  },
+  "scientific_boundary": {
+    "decoder_applied": false,
+    "model_inference_performed": false,
+    "sealed_test_access": false,
+    "threshold_tuning_performed": false,
+    "training_performed": false,
+    "validation_only": true
+  },
+  "scope": "validation_prediction_archive_and_optional_p2_latency_postprocessing_only",
+  "sealed_test_policy": {
+    "reject_split_tokens": [
+      "test",
+      "sealed"
+    ],
+    "sealed_test_access": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false
+  },
+  "stage": "V5_P3_POSTTRAIN_P5_ROBUSTNESS_SUBGROUP_EVALUATOR_IMPLEMENTATION"
+}

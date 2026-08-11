@@ -1,0 +1,51 @@
+{
+  "break_candidate_count": 1,
+  "candidates": [
+    {
+      "attributes": [],
+      "condition": "epoch >= 15 and early_stop_patience_counter >= 12",
+      "condition_parts": [
+        {
+          "boolean_parent": "AND",
+          "expression": "epoch >= 15",
+          "node_type": "Compare"
+        },
+        {
+          "boolean_parent": "AND",
+          "expression": "early_stop_patience_counter >= 12",
+          "node_type": "Compare"
+        }
+      ],
+      "excerpt": {
+        "context_end": 1655,
+        "context_start": 1614,
+        "numbered": "01614:             f\"seed={seed} epoch={epoch:03d} \"\n01615:             f\"train_loss={train_metrics['loss']:.6f} \"\n01616:             f\"val_loss={validation_metrics['loss']:.6f} \"\n01617:             f\"score={current_score:.6f} \"\n01618:             f\"g_auc={validation_metrics['graph']['auroc']:.6f} \"\n01619:             f\"g_ap={validation_metrics['graph']['average_precision']:.6f} \"\n01620:             f\"count_f1={validation_metrics['count_active']['macro_f1']:.6f} \"\n01621:             f\"src_ap={validation_metrics['roles']['source']['average_precision']:.6f} \"\n01622:             f\"tr_ap={validation_metrics['roles']['transit']['average_precision']:.6f} \"\n01623:             f\"vic_ap={validation_metrics['roles']['victim']['average_precision']:.6f} \"\n01624:             f\"path_ap={validation_metrics['roles']['path']['average_precision']:.6f} \"\n01625:             f\"lr={current_learning_rate:.8g} \"\n01626:             f\"best_epoch={best_epoch} \"\n01627:             f\"patience={early_stop_patience_counter}\"\n01628:         )\n01629: \n01630:         if (\n01631:             epoch >= 15\n01632:             and early_stop_patience_counter >= 12\n01633:         ):\n01634:             stopped_early = True\n01635:             print(\n01636:                 f\"early stopping at epoch {epoch}; \"\n01637:                 \"patience reached 12\"\n01638:             )\n01639:             break\n01640: \n01641:     if best_epoch is None:\n01642:         failures.append(\"no best checkpoint was selected\")\n01643:     if not checkpoint_path.is_file():\n01644:         failures.append(\"best checkpoint file is missing\")\n01645:     if best_checkpoint_sha256 is None:\n01646:         failures.append(\"best checkpoint SHA was not recorded\")\n01647:     elif (\n01648:         best_checkpoint_sha256\n01649:         != sha256_file(checkpoint_path)\n01650:     ):\n01651:         failures.append(\"best checkpoint SHA changed\")\n01652: \n01653:     total_elapsed_seconds = time.time() - start_time\n01654: \n01655:     seed_manifest = {",
+        "numbered_sha256": "8434e7e9cc2ab2429f40ff6808a212285eb12d5a68593db7929c9c4e49b1db98",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            f\"seed={seed} epoch={epoch:03d} \"\n            f\"train_loss={train_metrics['loss']:.6f} \"\n            f\"val_loss={validation_metrics['loss']:.6f} \"\n            f\"score={current_score:.6f} \"\n            f\"g_auc={validation_metrics['graph']['auroc']:.6f} \"\n            f\"g_ap={validation_metrics['graph']['average_precision']:.6f} \"\n            f\"count_f1={validation_metrics['count_active']['macro_f1']:.6f} \"\n            f\"src_ap={validation_metrics['roles']['source']['average_precision']:.6f} \"\n            f\"tr_ap={validation_metrics['roles']['transit']['average_precision']:.6f} \"\n            f\"vic_ap={validation_metrics['roles']['victim']['average_precision']:.6f} \"\n            f\"path_ap={validation_metrics['roles']['path']['average_precision']:.6f} \"\n            f\"lr={current_learning_rate:.8g} \"\n            f\"best_epoch={best_epoch} \"\n            f\"patience={early_stop_patience_counter}\"\n        )\n\n        if (\n            epoch >= 15\n            and early_stop_patience_counter >= 12\n        ):\n            stopped_early = True\n            print(\n                f\"early stopping at epoch {epoch}; \"\n                \"patience reached 12\"\n            )\n            break\n\n    if best_epoch is None:\n        failures.append(\"no best checkpoint was selected\")\n    if not checkpoint_path.is_file():\n        failures.append(\"best checkpoint file is missing\")\n    if best_checkpoint_sha256 is None:\n        failures.append(\"best checkpoint SHA was not recorded\")\n    elif (\n        best_checkpoint_sha256\n        != sha256_file(checkpoint_path)\n    ):\n        failures.append(\"best checkpoint SHA changed\")\n\n    total_elapsed_seconds = time.time() - start_time\n\n    seed_manifest = {",
+        "raw_sha256": "83cacf439e545ab4bab0129ecb1951b5d9b444857e0f1e9e4a51066c50d6d578",
+        "source_end": 1639,
+        "source_start": 1630
+      },
+      "full_source": "if epoch >= 15 and early_stop_patience_counter >= 12:\n    stopped_early = True\n    print(f'early stopping at epoch {epoch}; patience reached 12')\n    break",
+      "full_source_sha256": "44b7bea9a7cc6ebcb0d7dc7060389dd4d23d4e7ac7275855860039e293292223",
+      "function": "main",
+      "line_end": 1639,
+      "line_start": 1630,
+      "relevant_symbols": [
+        "early_stop_patience_counter",
+        "epoch"
+      ],
+      "symbols": [
+        "early_stop_patience_counter",
+        "epoch"
+      ],
+      "token_hits": [
+        "patience",
+        "early_stop",
+        "early_stopping"
+      ]
+    }
+  ],
+  "early_stop_candidate_count": 1
+}

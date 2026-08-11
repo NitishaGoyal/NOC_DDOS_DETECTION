@@ -1,0 +1,226 @@
+{
+  "candidates": [
+    {
+      "collate": "default",
+      "estimated_loader_only_epoch_speedup_vs_baseline": 1.0,
+      "name": "baseline_w0_default_collate",
+      "num_workers": 0,
+      "persistent_workers": false,
+      "prefetch_factor": null,
+      "train_equivalent": true,
+      "train_full_equivalence": {
+        "batches": 867,
+        "batches_per_second_with_full_batch_hashing": 1.9961491166369767,
+        "elapsed_seconds_with_full_batch_hashing": 434.33628919500916,
+        "equivalent_to_baseline": true,
+        "items": 221773,
+        "items_per_second_with_full_batch_hashing": 510.6020508003832,
+        "split": "train"
+      },
+      "train_speedup_vs_baseline": 1.0,
+      "train_unhashed_benchmark": {
+        "batches_per_second": 2.4354643816478334,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 26.278355981005006,
+        "items_per_second": 623.4788817018454
+      },
+      "validation_equivalent": true,
+      "validation_full_equivalence": {
+        "batches": 109,
+        "batches_per_second_with_full_batch_hashing": 14.640628398601406,
+        "elapsed_seconds_with_full_batch_hashing": 7.445035625001765,
+        "equivalent_to_baseline": true,
+        "items": 27722,
+        "items_per_second_with_full_batch_hashing": 3723.5550501470475,
+        "split": "validation"
+      },
+      "validation_speedup_vs_baseline": 1.0,
+      "validation_unhashed_benchmark": {
+        "batches_per_second": 13.668417726233406,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 4.682326900001499,
+        "items_per_second": 3499.114937915752
+      }
+    },
+    {
+      "collate": "promotion_safe",
+      "estimated_loader_only_epoch_speedup_vs_baseline": 2.524225407353134,
+      "name": "w2_t1_pf2_promotion_safe",
+      "num_workers": 2,
+      "persistent_workers": true,
+      "prefetch_factor": 2,
+      "train_equivalent": true,
+      "train_full_equivalence": {
+        "batches": 867,
+        "batches_per_second_with_full_batch_hashing": 5.936467013870431,
+        "elapsed_seconds_with_full_batch_hashing": 146.04646130000765,
+        "equivalent_to_baseline": true,
+        "items": 221773,
+        "items_per_second_with_full_batch_hashing": 1518.5099181857984,
+        "split": "train"
+      },
+      "train_speedup_vs_baseline": 2.512648243807578,
+      "train_unhashed_benchmark": {
+        "batches_per_second": 6.119465301403338,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 10.458430082988343,
+        "items_per_second": 1566.5831171592545
+      },
+      "validation_equivalent": true,
+      "validation_full_equivalence": {
+        "batches": 109,
+        "batches_per_second_with_full_batch_hashing": 24.45228166642329,
+        "elapsed_seconds_with_full_batch_hashing": 4.457661722000921,
+        "equivalent_to_baseline": true,
+        "items": 27722,
+        "items_per_second_with_full_batch_hashing": 6218.955526207215,
+        "split": "validation"
+      },
+      "validation_speedup_vs_baseline": 3.182600081774952,
+      "validation_unhashed_benchmark": {
+        "batches_per_second": 43.50110737324464,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 1.471226915004081,
+        "items_per_second": 11136.283487550629
+      }
+    },
+    {
+      "collate": "promotion_safe",
+      "estimated_loader_only_epoch_speedup_vs_baseline": 4.353771872053571,
+      "name": "w4_t1_pf2_promotion_safe",
+      "num_workers": 4,
+      "persistent_workers": true,
+      "prefetch_factor": 2,
+      "train_equivalent": true,
+      "train_full_equivalence": {
+        "batches": 867,
+        "batches_per_second_with_full_batch_hashing": 10.555903972801675,
+        "elapsed_seconds_with_full_batch_hashing": 82.13413102600316,
+        "equivalent_to_baseline": true,
+        "items": 221773,
+        "items_per_second_with_full_batch_hashing": 2700.132055086673,
+        "split": "train"
+      },
+      "train_speedup_vs_baseline": 4.3384139560822765,
+      "train_unhashed_benchmark": {
+        "batches_per_second": 10.566052662882253,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 6.057134300004691,
+        "items_per_second": 2704.909481697857
+      },
+      "validation_equivalent": true,
+      "validation_full_equivalence": {
+        "batches": 109,
+        "batches_per_second_with_full_batch_hashing": 23.420440532351677,
+        "elapsed_seconds_with_full_batch_hashing": 4.654054215992801,
+        "equivalent_to_baseline": true,
+        "items": 27722,
+        "items_per_second_with_full_batch_hashing": 5956.527086585809,
+        "split": "validation"
+      },
+      "validation_speedup_vs_baseline": 5.17650392850331,
+      "validation_unhashed_benchmark": {
+        "batches_per_second": 70.75461805627151,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 0.9045345979975536,
+        "items_per_second": 18113.182222405507
+      }
+    },
+    {
+      "collate": "promotion_safe",
+      "estimated_loader_only_epoch_speedup_vs_baseline": 6.233558643274171,
+      "name": "w8_t1_pf2_promotion_safe",
+      "num_workers": 8,
+      "persistent_workers": true,
+      "prefetch_factor": 2,
+      "train_equivalent": true,
+      "train_full_equivalence": {
+        "batches": 867,
+        "batches_per_second_with_full_batch_hashing": 14.751167851761563,
+        "elapsed_seconds_with_full_batch_hashing": 58.77500742400298,
+        "equivalent_to_baseline": true,
+        "items": 221773,
+        "items_per_second_with_full_batch_hashing": 3773.253457887794,
+        "split": "train"
+      },
+      "train_speedup_vs_baseline": 6.218780892354942,
+      "train_unhashed_benchmark": {
+        "batches_per_second": 15.14561936060259,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 4.22564429200429,
+        "items_per_second": 3877.278556314263
+      },
+      "validation_equivalent": true,
+      "validation_full_equivalence": {
+        "batches": 109,
+        "batches_per_second_with_full_batch_hashing": 23.81632595092851,
+        "elapsed_seconds_with_full_batch_hashing": 4.57669248500315,
+        "equivalent_to_baseline": true,
+        "items": 27722,
+        "items_per_second_with_full_batch_hashing": 6057.212734051744,
+        "split": "validation"
+      },
+      "validation_speedup_vs_baseline": 6.978046308417227,
+      "validation_unhashed_benchmark": {
+        "batches_per_second": 95.3788518564476,
+        "benchmark_batches": 64,
+        "benchmark_items": 16384,
+        "elapsed_seconds": 0.6710082869976759,
+        "items_per_second": 24416.986075250585
+      }
+    }
+  ],
+  "classification": "ENGINEERING_EXECUTION_EQUIVALENCE_AND_THROUGHPUT_CERTIFICATION",
+  "created_utc": "2026-08-07T14:33:03.420633+00:00",
+  "diagnosis": {
+    "t0_baseline_items_per_second": 563.9,
+    "t0_failure": "PyTorch multiworker default_collate preallocated shared-memory output with first-sample Byte dtype and failed on mixed sample dtypes.",
+    "t1_fix": "promotion_safe_collate replaces only the Tensor collator and uses torch.stack(batch,0) without out=, matching workers=0 dtype-promotion semantics."
+  },
+  "equivalence_scope": {
+    "same_batch_size": true,
+    "same_native_loader": true,
+    "same_train_sampler_seed_epoch": true,
+    "train_batches_compared": 867,
+    "train_items_compared": 221773,
+    "validation_batches_compared": 109,
+    "validation_items_compared": 27722
+  },
+  "recommendation": {
+    "candidate": "w8_t1_pf2_promotion_safe",
+    "collate_fn": "promotion_safe_collate",
+    "decision": "CERTIFY_PROMOTION_SAFE_MULTIWORKER_EXECUTION_ROUTE",
+    "estimated_loader_only_epoch_speedup_vs_baseline": 6.233558643274171,
+    "full_train_batches_equivalent": 867,
+    "full_validation_batches_equivalent": 109,
+    "next_stage": "MC4_S1_R1_FAST_SEED107_PRIMARY_TRAINING",
+    "num_workers": 8,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "scientific_training_semantics_changed": false,
+    "worker_torch_threads": 1
+  },
+  "safety": {
+    "checkpoint_loaded": false,
+    "checkpoint_saved": false,
+    "cuda_used": false,
+    "forward_backward": false,
+    "model_constructed": false,
+    "optimizer_step": false,
+    "scientific_training_performed": false,
+    "sealed_test_access": false,
+    "test_dataset_constructed": false,
+    "test_tensor_access": false,
+    "train_dataset_constructed": true,
+    "validation_dataset_constructed": true
+  },
+  "stage": "V5_P3_MC4_T1_PROMOTION_SAFE_COLLATE_FULL_SPLIT_EQUIVALENCE",
+  "status": "PASS"
+}

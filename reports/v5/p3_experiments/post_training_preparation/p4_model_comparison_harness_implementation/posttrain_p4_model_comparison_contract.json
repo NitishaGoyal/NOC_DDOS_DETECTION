@@ -1,0 +1,121 @@
+{
+  "aggregation": {
+    "confirmation": "mean and sample standard deviation across seeds 107,117,127",
+    "missing_role_metrics_for_graph_only_models": "leave blank/NA, never impute zero",
+    "ranking_policy": "no single universal winner score is created by P4; paper may discuss accuracy-cost tradeoffs separately",
+    "screening": "report seed-107 point estimates; label SCREENING"
+  },
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "comparison_layers": {
+    "graph_detection_family_screen": {
+      "models": [
+        "logistic_regression",
+        "random_forest",
+        "xgboost",
+        "mlp_detection",
+        "lstm_detection",
+        "conv1d_only",
+        "conv1d_gcnconv",
+        "conv1d_graphconv",
+        "conv1d_gatconv_optional"
+      ],
+      "required_graph_metrics": [
+        "graph_auroc",
+        "graph_average_precision",
+        "graph_f1",
+        "graph_precision",
+        "graph_recall",
+        "graph_false_positive_rate"
+      ],
+      "screening_seed": [
+        107
+      ]
+    },
+    "multitask_neural_comparison": {
+      "confirmation_seed_set": [
+        107,
+        117,
+        127
+      ],
+      "models": [
+        "lstm_multitask",
+        "conv1d_only",
+        "conv1d_gcnconv",
+        "conv1d_graphconv",
+        "conv1d_gatconv_optional"
+      ],
+      "required_metrics": [
+        "graph_auroc",
+        "graph_average_precision",
+        "count_active_macro_f1",
+        "source_average_precision",
+        "transit_average_precision",
+        "victim_average_precision",
+        "path_average_precision"
+      ],
+      "screening_seed": [
+        107
+      ]
+    }
+  },
+  "cost_metrics": [
+    "parameter_count",
+    "serialized_weight_bytes",
+    "estimated_macs_or_ops",
+    "batch1_cpu_latency_ms",
+    "batch1_gpu_latency_ms"
+  ],
+  "fairness_contract": {
+    "classical_models_are_graph_detection_only": true,
+    "classical_models_must_not_be_interpreted_as_failed_localizers": true,
+    "classical_temporal_summary_transform": {
+      "description": "Apply physical-port validity masking, then for each Dynamic70 channel compute across the 32-step window: mean, standard deviation, maximum, final value, and least-squares temporal slope per router; aggregate each statistic across routers by valid-router mean and maximum.",
+      "expected_features": 700,
+      "fit_or_normalization_source": "Tranche-A train only",
+      "router_aggregations": [
+        "mean",
+        "max"
+      ],
+      "statistics_per_channel": [
+        "mean",
+        "std",
+        "max",
+        "last",
+        "slope"
+      ],
+      "status": "FROZEN_FOR_FUTURE_EXECUTION",
+      "validation_fit_forbidden": true
+    },
+    "dynamic70_required_for_neural_runs": true,
+    "observation_window_epochs": 32,
+    "same_checkpoint_selection_rule_required_for_multitask_neural_runs": true,
+    "same_loss_contract_required_for_multitask_neural_runs": true,
+    "same_split_manifest_required_within_comparison_layer": true,
+    "same_threshold_source_required_for_thresholded_reporting": true
+  },
+  "scientific_boundary": {
+    "broad_screen_dataset": "V5_P3_TRANCHE_A_DYNAMIC70",
+    "broad_screen_sealed_test_access": false,
+    "broad_screen_splits": [
+      "train",
+      "validation"
+    ],
+    "decoder_used_for_model_selection": false,
+    "final_ab_confirmation_dataset": "V5_P3_FINAL_AB_DYNAMIC70",
+    "final_ab_confirmation_scope": "selected finalists only; execution deferred",
+    "final_ab_sealed_test_access": false,
+    "threshold_tuning_on_sealed_test": false
+  },
+  "scope": "result_contract_validation_and_aggregation_only",
+  "sealed_test_policy": {
+    "reject_split_tokens": [
+      "test",
+      "sealed"
+    ],
+    "sealed_test_access": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false
+  },
+  "stage": "V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_HARNESS_IMPLEMENTATION"
+}

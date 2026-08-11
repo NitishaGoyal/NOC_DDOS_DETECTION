@@ -1,0 +1,124 @@
+{
+  "stage": "V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS",
+  "status": "PASS",
+  "tests": [
+    {
+      "details": {
+        "status": "INACTIVE_RAW"
+      },
+      "id": "D12-T01",
+      "name": "inactive_raw",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "route_id": 14,
+        "status": "RAW_ENDPOINTS_LEGAL"
+      },
+      "id": "D12-T02",
+      "name": "K1_exact_endpoint_preservation",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "2": {
+          "route_ids": [
+            14,
+            59
+          ],
+          "victim_cardinality": 1
+        },
+        "3": {
+          "route_ids": [
+            14,
+            29,
+            44
+          ],
+          "victim_cardinality": 1
+        },
+        "4": {
+          "route_ids": [
+            14,
+            29,
+            44,
+            59
+          ],
+          "victim_cardinality": 1
+        }
+      },
+      "id": "D12-T03",
+      "name": "K2_K4_shared_victim_and_union_semantics",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "overlap_router": 1,
+        "route_ids": [
+          2,
+          19
+        ]
+      },
+      "id": "D12-T04",
+      "name": "cross_route_role_overlap",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "repair_solver_called": false,
+        "status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+      },
+      "id": "D12-T05",
+      "name": "infeasible_endpoint_passthrough",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "random_checks": 512
+      },
+      "id": "D12-T06",
+      "name": "global_graph_count_source_victim_immutability",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "config_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+        "low_support_threshold_by_k": [
+          -Infinity,
+          -157.2750984312622,
+          -8.82909992557325,
+          -15.743995066953527
+        ],
+        "path_weight": 1.0,
+        "transit_weight": 1.0
+      },
+      "id": "D12-T07",
+      "name": "D8_calibration_provenance",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "repeats": 10,
+        "route_ids": [
+          14,
+          56
+        ]
+      },
+      "id": "D12-T08",
+      "name": "deterministic_repeat",
+      "status": "PASS"
+    },
+    {
+      "details": {
+        "A_test_data_loaded": false,
+        "A_validation_data_loaded": false,
+        "D1_logits_loaded": false,
+        "D9_outputs_loaded": false,
+        "model_loaded": false,
+        "training_data_loaded": false
+      },
+      "id": "D12-T09",
+      "name": "no_validation_or_test_access",
+      "status": "PASS"
+    }
+  ]
+}

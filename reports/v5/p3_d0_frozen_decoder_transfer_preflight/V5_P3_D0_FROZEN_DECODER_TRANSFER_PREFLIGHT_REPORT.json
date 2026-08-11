@@ -1,0 +1,186 @@
+{
+  "audit_script_revision": "v2_recursive_exact_threshold_contract_resolution",
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "certified_dataset_modified": false,
+  "created_utc": "2026-08-04T23:54:06.538542+00:00",
+  "data": {
+    "probe_active_count_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "probe_graph_distribution": {
+      "active": 4,
+      "inactive": 4
+    },
+    "probe_indices": [
+      0,
+      1,
+      2,
+      3,
+      93,
+      3674,
+      7188,
+      10647
+    ],
+    "probe_items": 8,
+    "split": "validation",
+    "test_dataset_instantiated": false,
+    "test_tensor_loaded": false,
+    "validation_items": 13863
+  },
+  "decision": {
+    "frozen_decoder_transfer_compatible": true,
+    "full_A0_evaluation_authorized_from_export": false,
+    "immutable_validation_logit_export_authorized": true,
+    "next_stage": "V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT",
+    "resumable_A1_exact_evaluation_authorized_from_export": false,
+    "sealed_test_evaluation_authorized": false
+  },
+  "decoder": {
+    "canonical_preservation_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/decoder/v5_legal_xy_exact_decoder_certified.py",
+    "canonical_preservation_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+    "certification_policy": {
+      "high_precision_decimal_digits": 80,
+      "independent_certificate_gates_mandatory": true,
+      "integrality_abs_tolerance": 1e-09,
+      "linear_constraint_abs_tolerance": 1e-09,
+      "mip_gap_reporting_ceiling": 1e-12,
+      "objective_abs_tolerance": 1e-10,
+      "objective_rel_tolerance": 1e-12,
+      "policy_id": "V5P2-D1-6ce8cc7c76b8d2cff367631077d65f20",
+      "semantic_face_abs_tolerance": 1e-12,
+      "variable_bound_abs_tolerance": 1e-09
+    },
+    "decode_signature": "(graph_logit: 'float', count_logits: 'Sequence[float]', source_logits: 'Sequence[float]', transit_logits: 'Sequence[float]', victim_logits: 'Sequence[float]', path_logits: 'Sequence[float]') -> 'ExactAttackHypothesis'",
+    "solver_identity": {
+      "backend": "scipy.optimize.milp_with_embedded_HiGHS",
+      "highs_version": "1.12.0",
+      "numpy_version": "2.5.1",
+      "python_version": "3.12.3",
+      "scipy_version": "1.18.0"
+    },
+    "threshold_signature": "(hypothesis: 'ExactAttackHypothesis', threshold: 'float') -> 'DecodedStructuredOutput'",
+    "working_matches_canonical_preservation": true,
+    "working_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder_certified.py",
+    "working_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d"
+  },
+  "decoder_smoke_executed": true,
+  "frozen_transfer_policy": {
+    "A0_thresholds": {
+      "graph": 0.47174675035328983,
+      "path": 0.8339347466090468,
+      "source": 0.9496054929928593,
+      "transit": 0.8570333248835911,
+      "victim": 0.8260114802699812
+    },
+    "A1_margin_threshold": 8.720532088239842,
+    "beam_decoder_selected": false,
+    "beam_disposition": "P2 validation selected no eligible hardware beam configuration; exact certified A1 remains diagnostic.",
+    "decoder_retraining_performed": false,
+    "threshold_resolution_audit": {
+      "margin_candidates": [
+        {
+          "path": "$.A1.margin_threshold",
+          "value": 8.720532088239842
+        }
+      ],
+      "matching_margin_candidate_count": 1,
+      "matching_threshold_candidate_count": 1,
+      "selected_margin_path": "$.A1.margin_threshold",
+      "selected_threshold_path": "$.A0.thresholds",
+      "threshold_candidates": [
+        {
+          "path": "$.A0.thresholds",
+          "values": {
+            "graph": 0.47174675035328983,
+            "path": 0.8339347466090468,
+            "source": 0.9496054929928593,
+            "transit": 0.8570333248835911,
+            "victim": 0.8260114802699812
+          }
+        }
+      ]
+    },
+    "threshold_tuning_performed": false
+  },
+  "generalization_claim_authorized": false,
+  "model": {
+    "checkpoint_epoch": 14,
+    "class": "V6P0Dynamic70GraphConvCount4",
+    "input_shape": [
+      16,
+      70,
+      32
+    ],
+    "output_shapes": {
+      "attack_logits": [
+        8
+      ],
+      "count_logits": [
+        8,
+        4
+      ],
+      "path_logits": [
+        8,
+        16
+      ],
+      "source_logits": [
+        8,
+        16
+      ],
+      "transit_logits": [
+        8,
+        16
+      ],
+      "victim_logits": [
+        8,
+        16
+      ]
+    },
+    "parameter_count": 60553
+  },
+  "model_trained": false,
+  "numerical_smoke": {
+    "all_exact_decodes_completed": true,
+    "exact_decode_seconds": [
+      0.44274258098448627,
+      0.4353553719993215,
+      0.4268115930026397,
+      0.42930787400109693,
+      0.42829168899334036,
+      0.41629543498856947,
+      0.47392907898756675,
+      0.4985291119955946
+    ],
+    "maximum_exact_decode_seconds": 0.4985291119955946,
+    "mean_exact_decode_seconds": 0.44390784186907695,
+    "median_exact_decode_seconds": 0.4323316230002092,
+    "probe_artifact": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d0_frozen_decoder_transfer_preflight/V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_PROBES.json",
+    "probe_artifact_sha256": "32578a8fa43e1af974c5d67c3cc5b4934f0abb2c9cd53a290dc41b05ca19edf4"
+  },
+  "provenance": {
+    "a4_best_checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "a5_lock_sha256": "a2094b4a7b2e98509a2f23de146e5d41bebf56c5510c464aa4aabee4ece94de5",
+    "a5_report_sha256": "1617eeeed7c28ea5f90fdd870728d5140f24b4fbb9b2e851e3d4bbd3af80c373",
+    "d3_certification_report_sha256": "5705e0fdcbeb359a5a6e7b15c7c87de135d80ff9f3ef4d15a245bddb326f60d6",
+    "dynamic70_model_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "guarded_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "installed_script_sha256": "1ba8d7874aca88dc898c9d64b4a8498bd8f5b82c16aa0cb2a6f450ff1b701cb0",
+    "l4_selection_sha256": "9059b2354d143cd911e32e532312c708b46cd265aa48e0a28daa9b0b4443c5e7",
+    "l5_contract_sha256": "a9cd7b7d437e7e362b1bb942796df9773a603c90ab95e4b6647b9049114fc078"
+  },
+  "scope": "Compatibility and numerical smoke preflight for transferring the frozen P2 Raw/A0/A1 decoder policy to the V5-P3 Dynamic70 Tranche-A validation outputs.",
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "guard_negative_check": true,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_loaded_paths": [],
+    "test_tensor_loaded": false
+  },
+  "stage": "V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT",
+  "status": "PASS",
+  "validation_replayed": true
+}

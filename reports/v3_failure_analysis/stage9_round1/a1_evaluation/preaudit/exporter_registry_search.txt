@@ -1,0 +1,112 @@
+===== MODEL REGISTRY AND PATHS =====
+39:    model_dir: Path
+45:        name="conv1d_gcn",
+48:        model_dir=Path(
+49:            "models/v3/temporal_gcn_ports_v3_builtin_split"
+51:        output_filename="conv1d_gcn_predictions.npz",
+54:        name="tcn_attention_gcn",
+57:        model_dir=Path(
+60:        output_filename="tcn_attention_gcn_predictions.npz",
+63:        name="tcn_meanpool_gcn",
+64:        module_name="scripts.train_temporal_tcn_meanpool_gcn_v3",
+66:        model_dir=Path(
+67:            "models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split"
+69:        output_filename="tcn_meanpool_gcn_predictions.npz",
+72:        name="tcn_maxpool_gcn",
+73:        module_name="scripts.train_temporal_tcn_maxpool_gcn_v3",
+75:        model_dir=Path(
+76:            "models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split"
+78:        output_filename="tcn_maxpool_gcn_predictions.npz",
+236:def checkpoint_args_to_dict(value: Any) -> dict[str, Any]:
+247:        "Unsupported checkpoint argument type: "
+329:        split_path = PROJECT_ROOT / spec.model_dir / "splits.npz"
+362:    checkpoint_args: dict[str, Any],
+366:    temporal_dim = int(checkpoint_args.get("temporal_dim", 8))
+367:    gcn_hidden = int(checkpoint_args.get("gcn_hidden", 16))
+368:    gcn_out = int(checkpoint_args.get("gcn_out", 8))
+370:        checkpoint_args.get(
+372:            checkpoint_args.get("dropout", 0.1),
+415:    checkpoint_args: dict[str, Any],
+421:        checkpoint_args=checkpoint_args,
+431:        int(checkpoint_args.get("temporal_dim", 8)),
+432:        int(checkpoint_args.get("gcn_hidden", 16)),
+433:        int(checkpoint_args.get("gcn_out", 8)),
+434:        float(checkpoint_args.get("tcn_dropout", 0.1)),
+451:        elif name in checkpoint_args:
+452:            value = checkpoint_args[name]
+501:    model_dir = (PROJECT_ROOT / spec.model_dir).resolve()
+502:    checkpoint_path = model_dir / "best_model.pt"
+503:    summary_path = model_dir / "summary.json"
+505:    if not checkpoint_path.is_file():
+507:            f"Checkpoint missing: {checkpoint_path}"
+525:    checkpoint = torch.load(
+526:        checkpoint_path,
+531:    if not isinstance(checkpoint, dict):
+533:            f"Checkpoint is not a dictionary: {checkpoint_path}"
+536:    if "model_state_dict" not in checkpoint:
+538:            f"model_state_dict missing from {checkpoint_path}"
+541:    checkpoint_args = checkpoint_args_to_dict(
+542:        checkpoint.get("args")
+547:        checkpoint_args=checkpoint_args,
+553:        checkpoint["model_state_dict"],
+570:        "model_dir": str(model_dir),
+571:        "checkpoint_path": str(checkpoint_path),
+573:        "checkpoint_model_name": checkpoint.get("model_name"),
+574:        "checkpoint_best_epoch": checkpoint.get("best_epoch"),
+576:        "checkpoint_args": checkpoint_args,
+581:                for value in checkpoint[
+593:        checkpoint,
+1388:            checkpoint,
+
+===== OUTPUT AND MANIFEST LOGIC =====
+40:    output_filename: str
+51:        output_filename="conv1d_gcn_predictions.npz",
+60:        output_filename="tcn_attention_gcn_predictions.npz",
+69:        output_filename="tcn_meanpool_gcn_predictions.npz",
+78:        output_filename="tcn_maxpool_gcn_predictions.npz",
+171:            np.savez_compressed(handle, **arrays)
+604:            "graph_logits",
+609:            "node_logits",
+614:        graph_logits = next(
+622:        node_logits = next(
+631:        if graph_logits is None or node_logits is None:
+637:        return graph_logits, node_logits
+660:    graph_logits_out = np.empty(
+664:    node_logits_out = np.empty(
+697:            graph_logits, node_logits = unpack_model_output(output)
+699:            graph_logits = graph_logits.detach().float()
+701:            if graph_logits.ndim == 2 and graph_logits.shape[-1] == 1:
+702:                graph_logits = graph_logits.squeeze(-1)
+704:            graph_logits = graph_logits.reshape(-1)
+706:            node_logits = node_logits.detach().float()
+708:            if node_logits.ndim == 3 and node_logits.shape[-1] == 1:
+709:                node_logits = node_logits.squeeze(-1)
+711:            if node_logits.shape != (
+718:                    f"received {tuple(node_logits.shape)}"
+721:            if graph_logits.shape != (len(batch_indices),):
+725:                    f"received {tuple(graph_logits.shape)}"
+728:            graph_logits_out[start:end] = (
+729:                graph_logits.cpu().numpy()
+731:            node_logits_out[start:end] = (
+732:                node_logits.cpu().numpy()
+747:    return graph_logits_out, node_logits_out
+1165:    metadata_path = output_dir / "prediction_metadata.csv"
+1166:    manifest_path = output_dir / "prediction_manifest.json"
+1171:        output_dir / spec.output_filename
+1419:        graph_logits, node_logits = run_logits(
+1432:            1.0 / (1.0 + np.exp(-graph_logits))
+1436:            1.0 / (1.0 + np.exp(-node_logits))
+1456:            np.isfinite(graph_logits).all()
+1457:            and np.isfinite(node_logits).all()
+1463:            graph_logits.shape == (len(export_indices),)
+1466:            and node_logits.shape
+1478:        model_output_path = output_dir / spec.output_filename
+1492:            graph_logit=graph_logits,
+1499:            node_logits=node_logits,
+1584:                    <= args.metric_tolerance
+1645:                "output_file": str(model_output_path),
+1646:                "output_file_bytes": int(
+1653:                    "graph_logits": list(graph_logits.shape),
+1654:                    "node_logits": list(node_logits.shape),
+1672:                f"  output_file: {model_output_path}",
+1812:            "metric_tolerance": args.metric_tolerance,

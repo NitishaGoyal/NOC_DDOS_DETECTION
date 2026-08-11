@@ -1,0 +1,87 @@
+{
+  "artifacts": {
+    "current_runtime_provenance": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R3_CURRENT_REPLAY_RUNTIME_PROVENANCE.json",
+    "exporter_determinism_audit": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R3_D1_EXPORTER_DETERMINISM_AUDIT.json",
+    "reference_runtime_provenance": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R3_IMMUTABLE_REFERENCE_RUNTIME_PROVENANCE.json",
+    "runtime_mismatch_decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R3_RUNTIME_MISMATCH_DECISION.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "created_utc": "2026-08-05T20:39:16.712373+00:00",
+  "decision": {
+    "F4M_metric_adapter_certification_authorized": false,
+    "F4_complete": false,
+    "F5_permutation_authorized": false,
+    "classification": "REFERENCE_RUNTIME_PROVENANCE_INCOMPLETE",
+    "next_stage": "V5_P3_F4_R4_NUMERIC_STABILITY_AND_TOLERANCE_REVIEW",
+    "reasons": [
+      "reference device/version/batch provenance is not complete enough for a strict runtime-matched replay"
+    ],
+    "runtime_matched_replay_authorized": false,
+    "sealed_test_access_authorized": false,
+    "tolerance_relaxation_authorized": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "immutable_reference_modified": false,
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": false,
+    "validation_dataset_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": false
+  },
+  "input_finding": {
+    "F4_R2_classification": "LOGIT_NUMERIC_DRIFT_ONLY",
+    "maximum_observed_logit_difference": 1.52587890625e-05,
+    "mean_differences_order": "approximately 1e-7",
+    "nonlogit_arrays_exact": true,
+    "sample_order_equal": true
+  },
+  "provenance": {
+    "F4_R2_lock_sha256": "f88a1117b75d5014bd4b85f41f5e0c7618986d6c558607b6ccad6cfea64a4744",
+    "F4_R2_report_sha256": "0ecfdd7d0552c7e77654f30bf6aa8feee7b86423e2789ad8a1a68a777676d194",
+    "F4_R2_runtime_provenance_sha256": "72f9d9bb77be6ef671a2c75dab8273a9580b4e77669d7652974008fc67f77a62",
+    "exporter_log_sha256": "aeae29555b3b44682a4a9eadcd48405d8d7d1de676e272ef7a8b785a89e9b8fc",
+    "final_F4_contract_sha256": "d70a139798b3983f3087e5915df46b0713790f2c8aafa52311d0e9b92df285f3",
+    "installed_script_sha256": "7c601fd0a51e99156e283a0fc1153aea9e7aa870df3f57eb8d161f8b953d1fa1",
+    "invocation_contract_sha256": "8c63b0b958b9086f134cf8a7657422b4004e6e777883ecf85c1dc9cba7a4bff4",
+    "official_exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+  },
+  "runtime": {
+    "current_device": null,
+    "current_snapshot": {
+      "cuda_available": true,
+      "cuda_device_count": 1,
+      "cuda_devices": [
+        {
+          "index": 0,
+          "major": 8,
+          "minor": 9,
+          "multi_processor_count": 36,
+          "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+          "total_memory": 8184725504
+        }
+      ],
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "cudnn_available": true,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": false,
+      "cudnn_version": 92000,
+      "deterministic_algorithms_enabled": false,
+      "float32_matmul_precision": "highest",
+      "machine": "x86_64",
+      "numpy_version": "2.5.1",
+      "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+      "processor": "x86_64",
+      "python_executable": "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+      "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+      "torch_cuda_version": "13.0",
+      "torch_version": "2.12.1+cu130"
+    },
+    "reference_device": "cuda"
+  },
+  "scope": "Determine whether the F4 logit-only drift is explained by device, backend-policy, batch/runtime, or incomplete reference provenance without rerunning validation.",
+  "stage": "V5_P3_F4_R3_RUNTIME_DETERMINISM_AND_DEVICE_MATCH_REVIEW",
+  "status": "PASS"
+}

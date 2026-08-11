@@ -1,0 +1,1908 @@
+#!/usr/bin/env python3
+"""
+V5 P2-B2 Multi-Seed Training: one frozen seed run.
+
+This script implements the B1-locked training protocol for one of:
+    107, 117, 127
+
+It constructs TRAIN and VALIDATION only. It never enumerates or opens
+runs/test. It saves one best checkpoint for the requested seed and does not
+perform threshold tuning.
+
+The pair-block sampler preserves ATTACK/CONTROL adjacency and shuffles
+pair-aligned two-item blocks deterministically. Blocks remain grouped by run
+pair while loading to avoid pathological repeated .pt deserialization; pair
+keys are bookkeeping only and are never returned to or consumed by the model.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import importlib.util
+import io
+import json
+import math
+import os
+import random
+import sys
+import time
+from collections import OrderedDict, defaultdict
+from pathlib import Path
+from typing import Any, Iterator
+
+import numpy as np
+import torch
+import torch.nn.functional as F
+from torch.utils.data import DataLoader, Sampler
+
+
+STAGE = "V5_P2_B2_SINGLE_SEED_TRAINING"
+COMPLETE = f"{STAGE}_COMPLETE"
+
+EXPECTED_SEEDS = [107, 117, 127]
+EXPECTED_PARAMETER_COUNT = 43_273
+EXPECTED_TRAIN_ITEMS = 70_166
+EXPECTED_VALIDATION_ITEMS = 12_528
+EXPECTED_PROTOCOL_SHA = (
+    "0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60"
+)
+
+COUNT_CLASS_VALUES = [1, 2, 3, 4]
+COUNT_CLASS_MAPPING = {1: 0, 2: 1, 3: 2, 4: 3}
+
+LOSS_WEIGHTS = {
+    "attack": 1.0,
+    "count": 0.5,
+    "source": 1.0,
+    "transit": 0.5,
+    "victim": 0.75,
+    "path": 0.5,
+}
+
+SELECTION_WEIGHTS = {
+    "graph_auroc": 0.30,
+    "graph_average_precision": 0.15,
+    "count_macro_f1_active": 0.15,
+    "source_average_precision": 0.10,
+    "transit_average_precision": 0.10,
+    "victim_average_precision": 0.10,
+    "path_average_precision": 0.10,
+}
+
+
+def sha256_file(
+    path: Path,
+    chunk_size: int = 1024 * 1024,
+) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(chunk_size), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def sha256_state_dict(
+    state_dict: OrderedDict[str, torch.Tensor],
+) -> str:
+    buffer = io.BytesIO()
+    cpu_state = OrderedDict(
+        (
+            key,
+            value.detach().cpu().contiguous(),
+        )
+        for key, value in state_dict.items()
+    )
+    torch.save(cpu_state, buffer)
+    return hashlib.sha256(buffer.getvalue()).hexdigest()
+
+
+def atomic_write(path: Path, text: str) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(text, encoding="utf-8")
+    os.replace(temporary, path)
+
+
+def write_json(path: Path, value: Any) -> None:
+    atomic_write(
+        path,
+        json.dumps(value, indent=2, sort_keys=True) + "\n",
+    )
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    fields: list[str] = []
+    for row in rows:
+        for key in row:
+            if key not in fields:
+                fields.append(key)
+
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    with temporary.open(
+        "w",
+        encoding="utf-8",
+        newline="",
+    ) as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(rows)
+    os.replace(temporary, path)
+
+
+def atomic_torch_save(value: Any, path: Path) -> None:
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    torch.save(value, temporary)
+    os.replace(temporary, path)
+
+
+def load_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def import_module(path: Path, module_name: str):
+    spec = importlib.util.spec_from_file_location(
+        module_name,
+        path,
+    )
+    if spec is None or spec.loader is None:
+        raise ImportError(f"cannot import module from {path}")
+
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def set_seed(seed: int) -> None:
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
+
+    torch.use_deterministic_algorithms(True)
+    if torch.backends.cudnn.is_available():
+        torch.backends.cudnn.benchmark = False
+        torch.backends.cudnn.deterministic = True
+
+
+def binary_auroc(
+    truth: np.ndarray,
+    score: np.ndarray,
+) -> float:
+    y = truth.astype(np.int64).reshape(-1)
+    s = score.astype(np.float64).reshape(-1)
+
+    positive_count = int((y == 1).sum())
+    negative_count = int((y == 0).sum())
+    if positive_count == 0 or negative_count == 0:
+        raise ValueError(
+            "AUROC undefined because one binary class is absent"
+        )
+
+    order = np.argsort(s, kind="mergesort")
+    sorted_scores = s[order]
+    ranks = np.empty(len(s), dtype=np.float64)
+
+    start = 0
+    while start < len(s):
+        stop = start + 1
+        while (
+            stop < len(s)
+            and sorted_scores[stop] == sorted_scores[start]
+        ):
+            stop += 1
+
+        average_rank = 0.5 * ((start + 1) + stop)
+        ranks[order[start:stop]] = average_rank
+        start = stop
+
+    positive_rank_sum = ranks[y == 1].sum()
+    return float(
+        (
+            positive_rank_sum
+            - positive_count * (positive_count + 1) / 2
+        )
+        / (positive_count * negative_count)
+    )
+
+
+def average_precision(
+    truth: np.ndarray,
+    score: np.ndarray,
+) -> float:
+    y = truth.astype(np.int64).reshape(-1)
+    s = score.astype(np.float64).reshape(-1)
+
+    positive_count = int((y == 1).sum())
+    if positive_count == 0:
+        raise ValueError(
+            "average precision undefined because positives are absent"
+        )
+
+    order = np.argsort(-s, kind="mergesort")
+    sorted_truth = y[order]
+    cumulative_positive = np.cumsum(sorted_truth)
+    positions = np.arange(1, len(y) + 1)
+    precision_at_rank = cumulative_positive / positions
+
+    return float(
+        (precision_at_rank * sorted_truth).sum()
+        / positive_count
+    )
+
+
+def fixed_binary_metrics(
+    truth: np.ndarray,
+    score: np.ndarray,
+    threshold: float = 0.5,
+) -> dict[str, float | int]:
+    y = truth.astype(np.int64).reshape(-1)
+    prediction = (
+        score.astype(np.float64).reshape(-1)
+        >= threshold
+    ).astype(np.int64)
+
+    tn = int(((y == 0) & (prediction == 0)).sum())
+    fp = int(((y == 0) & (prediction == 1)).sum())
+    fn = int(((y == 1) & (prediction == 0)).sum())
+    tp = int(((y == 1) & (prediction == 1)).sum())
+
+    precision = tp / max(1, tp + fp)
+    recall = tp / max(1, tp + fn)
+    f1 = (
+        2 * precision * recall
+        / max(1e-12, precision + recall)
+    )
+
+    return {
+        "accuracy": (tp + tn) / max(1, len(y)),
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "fpr": fp / max(1, fp + tn),
+        "tn": tn,
+        "fp": fp,
+        "fn": fn,
+        "tp": tp,
+    }
+
+
+def multiclass_macro_f1(
+    truth: np.ndarray,
+    prediction: np.ndarray,
+    class_count: int,
+) -> float:
+    y = truth.astype(np.int64).reshape(-1)
+    p = prediction.astype(np.int64).reshape(-1)
+
+    f1_values: list[float] = []
+    for label in range(class_count):
+        tp = int(((y == label) & (p == label)).sum())
+        fp = int(((y != label) & (p == label)).sum())
+        fn = int(((y == label) & (p != label)).sum())
+
+        precision = tp / max(1, tp + fp)
+        recall = tp / max(1, tp + fn)
+        f1 = (
+            2 * precision * recall
+            / max(1e-12, precision + recall)
+        )
+        f1_values.append(f1)
+
+    return float(np.mean(f1_values))
+
+
+def parse_distribution(
+    value: dict[str, Any],
+) -> dict[int, int]:
+    return {
+        int(label): int(frequency)
+        for label, frequency in value.items()
+    }
+
+
+def role_positive_count(
+    distribution: dict[int, int],
+) -> int:
+    return sum(
+        role_count * frequency
+        for role_count, frequency in distribution.items()
+    )
+
+
+class PairBlockBatchSampler(Sampler[list[int]]):
+    """
+    Batch sampler over aligned ATTACK/CONTROL two-item blocks.
+
+    Pair groups are shuffled each epoch, and starts are shuffled inside each
+    pair group. The flattened block stream is then batched into 128 blocks
+    (256 items). This preserves the B1 block-shuffle contract while keeping
+    consecutive accesses run-local enough for the audited loader's cache.
+    """
+
+    def __init__(
+        self,
+        dataset,
+        *,
+        block_batch_size: int,
+        shuffle: bool,
+        seed: int,
+    ) -> None:
+        self.dataset = dataset
+        self.block_batch_size = int(block_batch_size)
+        self.shuffle = bool(shuffle)
+        self.seed = int(seed)
+        self.epoch = 0
+
+        if self.block_batch_size <= 0:
+            raise ValueError("block_batch_size must be positive")
+        if len(dataset) % 2 != 0:
+            raise ValueError("dataset item count must be even")
+
+        groups: OrderedDict[str, list[int]] = OrderedDict()
+        for base in range(0, len(dataset._index), 2):
+            attack = dataset._index[base]
+            control = dataset._index[base + 1]
+
+            if (
+                attack.mode != "attack"
+                or control.mode != "control"
+                or attack.pair_key != control.pair_key
+                or attack.start != control.start
+                or attack.target != control.target
+            ):
+                raise ValueError(
+                    f"pair-block contract failed at base {base}"
+                )
+
+            groups.setdefault(
+                attack.pair_key,
+                [],
+            ).append(base)
+
+        self.groups = groups
+        self.block_count = sum(
+            len(value)
+            for value in groups.values()
+        )
+
+        if self.block_count * 2 != len(dataset):
+            raise RuntimeError("pair-block count does not cover dataset")
+
+    def set_epoch(self, epoch: int) -> None:
+        self.epoch = int(epoch)
+
+    def __len__(self) -> int:
+        return math.ceil(
+            self.block_count / self.block_batch_size
+        )
+
+    def __iter__(self) -> Iterator[list[int]]:
+        rng = random.Random(
+            self.seed + self.epoch * 1_000_003
+        )
+
+        pair_keys = list(self.groups)
+        if self.shuffle:
+            rng.shuffle(pair_keys)
+
+        ordered_blocks: list[int] = []
+        for pair_key in pair_keys:
+            blocks = list(self.groups[pair_key])
+            if self.shuffle:
+                rng.shuffle(blocks)
+            ordered_blocks.extend(blocks)
+
+        for start in range(
+            0,
+            len(ordered_blocks),
+            self.block_batch_size,
+        ):
+            selected_blocks = ordered_blocks[
+                start:start + self.block_batch_size
+            ]
+            item_indices: list[int] = []
+            for base in selected_blocks:
+                item_indices.extend((base, base + 1))
+            yield item_indices
+
+
+def compute_loss(
+    outputs: dict[str, torch.Tensor],
+    batch: dict[str, torch.Tensor],
+    *,
+    graph_pos_weight: torch.Tensor,
+    role_pos_weights: dict[str, torch.Tensor],
+) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:
+    active = batch["y_attack"] >= 0.5
+
+    count_targets = torch.full(
+        batch["y_attacker_count"].shape,
+        fill_value=-100,
+        dtype=torch.int64,
+        device=batch["y_attacker_count"].device,
+    )
+    for raw_count, class_index in COUNT_CLASS_MAPPING.items():
+        selector = (
+            active
+            & (batch["y_attacker_count"] == raw_count)
+        )
+        count_targets[selector] = class_index
+
+    if bool(
+        (count_targets[active] < 0).any().item()
+    ):
+        raise RuntimeError(
+            "one or more active count labels are outside 1..4"
+        )
+
+    attack_loss = F.binary_cross_entropy_with_logits(
+        outputs["attack_logits"],
+        batch["y_attack"].float(),
+        pos_weight=graph_pos_weight,
+    )
+
+    if bool(active.any().item()):
+        count_loss = F.cross_entropy(
+            outputs["count_logits"][active],
+            count_targets[active],
+        )
+    else:
+        count_loss = (
+            outputs["count_logits"].sum() * 0.0
+        )
+
+    source_loss = F.binary_cross_entropy_with_logits(
+        outputs["source_logits"],
+        batch["y_source"].float(),
+        pos_weight=role_pos_weights["source"],
+    )
+    transit_loss = F.binary_cross_entropy_with_logits(
+        outputs["transit_logits"],
+        batch["y_transit"].float(),
+        pos_weight=role_pos_weights["transit"],
+    )
+    victim_loss = F.binary_cross_entropy_with_logits(
+        outputs["victim_logits"],
+        batch["y_victim"].float(),
+        pos_weight=role_pos_weights["victim"],
+    )
+    path_loss = F.binary_cross_entropy_with_logits(
+        outputs["path_logits"],
+        batch["y_attack_path"].float(),
+        pos_weight=role_pos_weights["path"],
+    )
+
+    components = {
+        "attack": attack_loss,
+        "count": count_loss,
+        "source": source_loss,
+        "transit": transit_loss,
+        "victim": victim_loss,
+        "path": path_loss,
+    }
+    total = sum(
+        LOSS_WEIGHTS[key] * value
+        for key, value in components.items()
+    )
+    return total, components
+
+
+def move_batch(
+    batch: dict[str, torch.Tensor],
+    device: torch.device,
+) -> dict[str, torch.Tensor]:
+    return {
+        key: value.to(
+            device,
+            non_blocking=(device.type == "cuda"),
+        )
+        for key, value in batch.items()
+    }
+
+
+def train_one_epoch(
+    *,
+    model,
+    loader: DataLoader,
+    optimizer: torch.optim.Optimizer,
+    device: torch.device,
+    graph_pos_weight: torch.Tensor,
+    role_pos_weights: dict[str, torch.Tensor],
+    gradient_clip: float,
+) -> dict[str, float]:
+    model.train()
+
+    item_count = 0
+    weighted_loss = 0.0
+    weighted_components = {
+        key: 0.0
+        for key in LOSS_WEIGHTS
+    }
+    maximum_preclip_gradient_norm = 0.0
+
+    for batch in loader:
+        batch = move_batch(batch, device)
+        batch_items = int(batch["x"].shape[0])
+
+        optimizer.zero_grad(set_to_none=True)
+        outputs = model(
+            batch["x"],
+            batch["physical_port_mask"],
+        )
+        loss, components = compute_loss(
+            outputs,
+            batch,
+            graph_pos_weight=graph_pos_weight,
+            role_pos_weights=role_pos_weights,
+        )
+
+        if not torch.isfinite(loss):
+            raise RuntimeError("non-finite training loss")
+
+        loss.backward()
+
+        gradient_norm = torch.nn.utils.clip_grad_norm_(
+            model.parameters(),
+            max_norm=gradient_clip,
+        )
+        maximum_preclip_gradient_norm = max(
+            maximum_preclip_gradient_norm,
+            float(gradient_norm.item()),
+        )
+
+        optimizer.step()
+
+        item_count += batch_items
+        weighted_loss += float(loss.item()) * batch_items
+        for key, value in components.items():
+            weighted_components[key] += (
+                float(value.item()) * batch_items
+            )
+
+    if item_count != EXPECTED_TRAIN_ITEMS:
+        raise RuntimeError(
+            f"training epoch consumed {item_count} items; "
+            f"expected {EXPECTED_TRAIN_ITEMS}"
+        )
+
+    result = {
+        "loss": weighted_loss / item_count,
+        "maximum_preclip_gradient_norm": (
+            maximum_preclip_gradient_norm
+        ),
+    }
+    for key, total in weighted_components.items():
+        result[f"{key}_loss"] = total / item_count
+    return result
+
+
+def validate(
+    *,
+    model,
+    loader: DataLoader,
+    device: torch.device,
+    graph_pos_weight: torch.Tensor,
+    role_pos_weights: dict[str, torch.Tensor],
+) -> dict[str, Any]:
+    model.eval()
+
+    item_count = 0
+    weighted_loss = 0.0
+    weighted_components = {
+        key: 0.0
+        for key in LOSS_WEIGHTS
+    }
+
+    graph_truth_parts = []
+    graph_score_parts = []
+    count_truth_parts = []
+    count_prediction_parts = []
+
+    role_truth_parts = {
+        "source": [],
+        "transit": [],
+        "victim": [],
+        "path": [],
+    }
+    role_score_parts = {
+        "source": [],
+        "transit": [],
+        "victim": [],
+        "path": [],
+    }
+
+    with torch.no_grad():
+        for batch in loader:
+            batch = move_batch(batch, device)
+            batch_items = int(batch["x"].shape[0])
+
+            outputs = model(
+                batch["x"],
+                batch["physical_port_mask"],
+            )
+            loss, components = compute_loss(
+                outputs,
+                batch,
+                graph_pos_weight=graph_pos_weight,
+                role_pos_weights=role_pos_weights,
+            )
+
+            if not torch.isfinite(loss):
+                raise RuntimeError("non-finite validation loss")
+
+            item_count += batch_items
+            weighted_loss += (
+                float(loss.item()) * batch_items
+            )
+            for key, value in components.items():
+                weighted_components[key] += (
+                    float(value.item()) * batch_items
+                )
+
+            graph_truth = (
+                batch["y_attack"]
+                .detach()
+                .cpu()
+                .numpy()
+                .astype(np.int64)
+            )
+            graph_score = (
+                torch.sigmoid(
+                    outputs["attack_logits"]
+                )
+                .detach()
+                .cpu()
+                .numpy()
+            )
+            graph_truth_parts.append(graph_truth)
+            graph_score_parts.append(graph_score)
+
+            active = batch["y_attack"] >= 0.5
+            if bool(active.any().item()):
+                raw_count = (
+                    batch["y_attacker_count"][active]
+                    .detach()
+                    .cpu()
+                    .numpy()
+                    .astype(np.int64)
+                )
+                mapped_count = np.array(
+                    [
+                        COUNT_CLASS_MAPPING[int(value)]
+                        for value in raw_count
+                    ],
+                    dtype=np.int64,
+                )
+                predicted_count = (
+                    outputs["count_logits"][active]
+                    .argmax(dim=-1)
+                    .detach()
+                    .cpu()
+                    .numpy()
+                    .astype(np.int64)
+                )
+                count_truth_parts.append(mapped_count)
+                count_prediction_parts.append(
+                    predicted_count
+                )
+
+            for role, output_key, target_key in (
+                (
+                    "source",
+                    "source_logits",
+                    "y_source",
+                ),
+                (
+                    "transit",
+                    "transit_logits",
+                    "y_transit",
+                ),
+                (
+                    "victim",
+                    "victim_logits",
+                    "y_victim",
+                ),
+                (
+                    "path",
+                    "path_logits",
+                    "y_attack_path",
+                ),
+            ):
+                role_truth_parts[role].append(
+                    batch[target_key]
+                    .detach()
+                    .cpu()
+                    .numpy()
+                    .astype(np.int64)
+                )
+                role_score_parts[role].append(
+                    torch.sigmoid(
+                        outputs[output_key]
+                    )
+                    .detach()
+                    .cpu()
+                    .numpy()
+                )
+
+    if item_count != EXPECTED_VALIDATION_ITEMS:
+        raise RuntimeError(
+            f"validation consumed {item_count} items; "
+            f"expected {EXPECTED_VALIDATION_ITEMS}"
+        )
+
+    graph_truth = np.concatenate(graph_truth_parts)
+    graph_score = np.concatenate(graph_score_parts)
+    count_truth = np.concatenate(count_truth_parts)
+    count_prediction = np.concatenate(
+        count_prediction_parts
+    )
+
+    graph_auroc = binary_auroc(
+        graph_truth,
+        graph_score,
+    )
+    graph_ap = average_precision(
+        graph_truth,
+        graph_score,
+    )
+    graph_fixed = fixed_binary_metrics(
+        graph_truth,
+        graph_score,
+    )
+
+    count_macro_f1 = multiclass_macro_f1(
+        count_truth,
+        count_prediction,
+        class_count=4,
+    )
+    count_accuracy = float(
+        (count_truth == count_prediction).mean()
+    )
+    count_confusion = np.zeros(
+        (4, 4),
+        dtype=np.int64,
+    )
+    for truth, prediction in zip(
+        count_truth,
+        count_prediction,
+    ):
+        count_confusion[truth, prediction] += 1
+
+    role_metrics: dict[str, Any] = {}
+    for role in role_truth_parts:
+        truth = np.concatenate(
+            role_truth_parts[role],
+            axis=0,
+        ).reshape(-1)
+        score = np.concatenate(
+            role_score_parts[role],
+            axis=0,
+        ).reshape(-1)
+
+        role_metrics[role] = {
+            "auroc": binary_auroc(truth, score),
+            "average_precision": average_precision(
+                truth,
+                score,
+            ),
+            "fixed_0_5": fixed_binary_metrics(
+                truth,
+                score,
+            ),
+            "positive_entries": int(
+                (truth == 1).sum()
+            ),
+            "negative_entries": int(
+                (truth == 0).sum()
+            ),
+        }
+
+    selection_score = (
+        SELECTION_WEIGHTS["graph_auroc"]
+        * graph_auroc
+        + SELECTION_WEIGHTS[
+            "graph_average_precision"
+        ]
+        * graph_ap
+        + SELECTION_WEIGHTS[
+            "count_macro_f1_active"
+        ]
+        * count_macro_f1
+        + SELECTION_WEIGHTS[
+            "source_average_precision"
+        ]
+        * role_metrics["source"][
+            "average_precision"
+        ]
+        + SELECTION_WEIGHTS[
+            "transit_average_precision"
+        ]
+        * role_metrics["transit"][
+            "average_precision"
+        ]
+        + SELECTION_WEIGHTS[
+            "victim_average_precision"
+        ]
+        * role_metrics["victim"][
+            "average_precision"
+        ]
+        + SELECTION_WEIGHTS[
+            "path_average_precision"
+        ]
+        * role_metrics["path"][
+            "average_precision"
+        ]
+    )
+
+    result: dict[str, Any] = {
+        "loss": weighted_loss / item_count,
+        "selection_score": selection_score,
+        "graph": {
+            "auroc": graph_auroc,
+            "average_precision": graph_ap,
+            "fixed_0_5": graph_fixed,
+            "positive_items": int(
+                (graph_truth == 1).sum()
+            ),
+            "negative_items": int(
+                (graph_truth == 0).sum()
+            ),
+        },
+        "count_active": {
+            "macro_f1": count_macro_f1,
+            "accuracy": count_accuracy,
+            "support": int(len(count_truth)),
+            "confusion_matrix": (
+                count_confusion.tolist()
+            ),
+        },
+        "roles": role_metrics,
+    }
+    for key, total in weighted_components.items():
+        result[f"{key}_loss"] = total / item_count
+    return result
+
+
+def checkpoint_rank(
+    validation_metrics: dict[str, Any],
+    epoch: int,
+) -> tuple[float, float, float, float, int]:
+    return (
+        float(validation_metrics["selection_score"]),
+        float(validation_metrics["graph"]["auroc"]),
+        float(
+            validation_metrics["graph"][
+                "average_precision"
+            ]
+        ),
+        -float(validation_metrics["loss"]),
+        -int(epoch),
+    )
+
+
+def flatten_epoch_row(
+    *,
+    epoch: int,
+    learning_rate: float,
+    train_metrics: dict[str, float],
+    validation_metrics: dict[str, Any],
+    elapsed_seconds: float,
+    is_best_checkpoint: bool,
+    early_stop_patience_counter: int,
+) -> dict[str, Any]:
+    return {
+        "epoch": epoch,
+        "learning_rate": learning_rate,
+        "train_loss": train_metrics["loss"],
+        "train_attack_loss": train_metrics[
+            "attack_loss"
+        ],
+        "train_count_loss": train_metrics[
+            "count_loss"
+        ],
+        "train_source_loss": train_metrics[
+            "source_loss"
+        ],
+        "train_transit_loss": train_metrics[
+            "transit_loss"
+        ],
+        "train_victim_loss": train_metrics[
+            "victim_loss"
+        ],
+        "train_path_loss": train_metrics[
+            "path_loss"
+        ],
+        "maximum_preclip_gradient_norm": (
+            train_metrics[
+                "maximum_preclip_gradient_norm"
+            ]
+        ),
+        "validation_loss": validation_metrics["loss"],
+        "validation_selection_score": (
+            validation_metrics["selection_score"]
+        ),
+        "graph_auroc": (
+            validation_metrics["graph"]["auroc"]
+        ),
+        "graph_average_precision": (
+            validation_metrics["graph"][
+                "average_precision"
+            ]
+        ),
+        "graph_fixed_0_5_f1": (
+            validation_metrics["graph"][
+                "fixed_0_5"
+            ]["f1"]
+        ),
+        "count_active_macro_f1": (
+            validation_metrics["count_active"][
+                "macro_f1"
+            ]
+        ),
+        "count_active_accuracy": (
+            validation_metrics["count_active"][
+                "accuracy"
+            ]
+        ),
+        "source_average_precision": (
+            validation_metrics["roles"]["source"][
+                "average_precision"
+            ]
+        ),
+        "transit_average_precision": (
+            validation_metrics["roles"]["transit"][
+                "average_precision"
+            ]
+        ),
+        "victim_average_precision": (
+            validation_metrics["roles"]["victim"][
+                "average_precision"
+            ]
+        ),
+        "path_average_precision": (
+            validation_metrics["roles"]["path"][
+                "average_precision"
+            ]
+        ),
+        "source_fixed_0_5_f1": (
+            validation_metrics["roles"]["source"][
+                "fixed_0_5"
+            ]["f1"]
+        ),
+        "transit_fixed_0_5_f1": (
+            validation_metrics["roles"]["transit"][
+                "fixed_0_5"
+            ]["f1"]
+        ),
+        "victim_fixed_0_5_f1": (
+            validation_metrics["roles"]["victim"][
+                "fixed_0_5"
+            ]["f1"]
+        ),
+        "path_fixed_0_5_f1": (
+            validation_metrics["roles"]["path"][
+                "fixed_0_5"
+            ]["f1"]
+        ),
+        "elapsed_seconds": elapsed_seconds,
+        "is_best_checkpoint": is_best_checkpoint,
+        "early_stop_patience_counter": (
+            early_stop_patience_counter
+        ),
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, required=True)
+    parser.add_argument("--b1-dir", type=Path, required=True)
+    parser.add_argument("--b0-r3-dir", type=Path, required=True)
+    parser.add_argument("--loader-path", type=Path, required=True)
+    parser.add_argument("--model-path", type=Path, required=True)
+    parser.add_argument("--seed", type=int, required=True)
+    parser.add_argument("--model-dir", type=Path, required=True)
+    parser.add_argument("--report-dir", type=Path, required=True)
+    args = parser.parse_args()
+
+    root = args.root.expanduser().resolve()
+    b1_dir = args.b1_dir.expanduser().resolve()
+    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+    loader_path = args.loader_path.expanduser().resolve()
+    model_path = args.model_path.expanduser().resolve()
+    model_dir = args.model_dir.expanduser().resolve()
+    report_dir = args.report_dir.expanduser().resolve()
+    seed = int(args.seed)
+
+    if seed not in EXPECTED_SEEDS:
+        print(
+            f"STOP: seed={seed} is not in {EXPECTED_SEEDS}",
+            file=sys.stderr,
+        )
+        return 2
+    if model_dir.exists():
+        print(
+            f"STOP: model directory already exists: {model_dir}",
+            file=sys.stderr,
+        )
+        return 2
+    if report_dir.exists():
+        print(
+            f"STOP: report directory already exists: {report_dir}",
+            file=sys.stderr,
+        )
+        return 2
+
+    model_dir.mkdir(parents=True)
+    report_dir.mkdir(parents=True)
+
+    failures: list[str] = []
+    warnings: list[str] = []
+
+    paths = {
+        "b1_report": (
+            b1_dir
+            / "V5_P2_B1_TRAINING_PROTOCOL_LOCK.json"
+        ),
+        "b1_lock": (
+            b1_dir
+            / "V5_P2_B1_TRAINING_PROTOCOL_LOCK_LOCK.json"
+        ),
+        "protocol": (
+            b1_dir
+            / "V5_P2_B1_TRAINING_PROTOCOL.json"
+        ),
+        "b0_r3_report": (
+            b0_r3_dir
+            / "V5_P2_B0_R3_CORRECTED_NONTEST_LABEL_AND_SHORTCUT_AUDIT.json"
+        ),
+        "b0_r3_lock": (
+            b0_r3_dir
+            / "V5_P2_B0_R3_CORRECTED_NONTEST_LABEL_AND_SHORTCUT_AUDIT_LOCK.json"
+        ),
+        "loader": loader_path,
+        "model": model_path,
+    }
+
+    for name, path in paths.items():
+        if not path.is_file():
+            failures.append(
+                f"missing prerequisite {name}: {path}"
+            )
+
+    if not root.is_dir():
+        failures.append(f"dataset root missing: {root}")
+
+    if failures:
+        report = {
+            "stage": STAGE,
+            "status": "HOLD",
+            "seed": seed,
+            "failures": failures,
+            "warnings": warnings,
+            "test_directory_enumerated": False,
+            "test_tensor_contents_accessed": False,
+        }
+        write_json(
+            report_dir / f"{STAGE}.json",
+            report,
+        )
+        atomic_write(
+            report_dir / f"{STAGE}_HOLD",
+            f"{STAGE}_HOLD\n",
+        )
+        print(f"{STAGE}_HOLD")
+        return 1
+
+    b1_report = load_json(paths["b1_report"])
+    b1_lock = load_json(paths["b1_lock"])
+    protocol = load_json(paths["protocol"])
+    b0_r3_report = load_json(
+        paths["b0_r3_report"]
+    )
+    b0_r3_lock = load_json(
+        paths["b0_r3_lock"]
+    )
+
+    if b1_report.get("status") != "COMPLETE":
+        failures.append("B1 status is not COMPLETE")
+    if (
+        b1_lock.get("report_sha256")
+        != sha256_file(paths["b1_report"])
+    ):
+        failures.append("B1 report SHA mismatch")
+    if (
+        b1_lock.get("protocol_file_sha256")
+        != sha256_file(paths["protocol"])
+    ):
+        failures.append("B1 protocol-file SHA mismatch")
+    if (
+        b1_lock.get("protocol_sha256")
+        != protocol.get("protocol_sha256")
+    ):
+        failures.append("B1 protocol SHA mismatch")
+    if protocol.get("protocol_sha256") != EXPECTED_PROTOCOL_SHA:
+        failures.append(
+            "B1 protocol SHA does not match the terminal-locked value"
+        )
+    if b1_lock.get("seeds") != EXPECTED_SEEDS:
+        failures.append("B1 seed set changed")
+    if (
+        b1_lock.get("model_sha256")
+        != sha256_file(paths["model"])
+    ):
+        failures.append("B1 model SHA mismatch")
+    if (
+        b1_lock.get("loader_sha256")
+        != sha256_file(paths["loader"])
+    ):
+        failures.append("B1 loader SHA mismatch")
+    if b1_lock.get("test_evaluation_authorized") is not False:
+        failures.append("B1 unexpectedly authorizes test evaluation")
+
+    if b0_r3_report.get("status") != "COMPLETE":
+        failures.append("B0-R3 status is not COMPLETE")
+    if (
+        b0_r3_lock.get("report_sha256")
+        != sha256_file(paths["b0_r3_report"])
+    ):
+        failures.append("B0-R3 report SHA mismatch")
+    if b0_r3_lock.get("shortcut_block_count") != 0:
+        failures.append("B0-R3 shortcut block count is not zero")
+    if b0_r3_lock.get("label_integrity_pass") is not True:
+        failures.append("B0-R3 label integrity did not pass")
+    if b0_r3_lock.get("count_head_logits") != 4:
+        failures.append("B0-R3 count-head width changed")
+    if (
+        b0_r3_lock.get("corrected_model_sha256")
+        != sha256_file(paths["model"])
+    ):
+        failures.append("B0-R3 model SHA mismatch")
+    if (
+        b1_report.get("provenance", {}).get(
+            "b0_r3_report"
+        )
+        != sha256_file(paths["b0_r3_report"])
+    ):
+        failures.append(
+            "B1 provenance does not match the B0-R3 report"
+        )
+
+    if failures:
+        report = {
+            "stage": STAGE,
+            "status": "HOLD",
+            "seed": seed,
+            "failures": failures,
+            "warnings": warnings,
+            "training_performed": False,
+            "test_directory_enumerated": False,
+            "test_tensor_contents_accessed": False,
+        }
+        write_json(
+            report_dir / f"{STAGE}.json",
+            report,
+        )
+        atomic_write(
+            report_dir / f"{STAGE}_HOLD",
+            f"{STAGE}_HOLD\n",
+        )
+        print(f"{STAGE}_HOLD")
+        for failure in failures:
+            print("FAIL:", failure)
+        return 1
+
+    set_seed(seed)
+
+    loader_module = import_module(
+        loader_path,
+        f"v5_p2_loader_seed_{seed}",
+    )
+    model_module = import_module(
+        model_path,
+        f"v5_p2_model_seed_{seed}",
+    )
+
+    DatasetClass = (
+        loader_module
+        .V5P2PairAlignedPrimary58Dataset
+    )
+    ModelClass = (
+        model_module
+        .P2B3Conv1DOnlyCount4
+    )
+
+    train_dataset = DatasetClass(
+        root=root,
+        split="train",
+        pair_manifest=(
+            Path(
+                b1_report["provenance_path"]
+            )
+            if "provenance_path" in b1_report
+            else (
+                Path(
+                    b1_report["protocol"]["data"][
+                        "pair_manifest_path"
+                    ]
+                )
+                if (
+                    "pair_manifest_path"
+                    in b1_report["protocol"]["data"]
+                )
+                else (
+                    b1_dir.parent
+                    / "p2_a1_r2_pair_aligned_window_contract"
+                    / "V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv"
+                )
+            )
+        ),
+    )
+    validation_dataset = DatasetClass(
+        root=root,
+        split="validation",
+        pair_manifest=train_dataset.pair_manifest,
+    )
+
+    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:
+        failures.append(
+            f"train length={len(train_dataset)}, "
+            f"expected {EXPECTED_TRAIN_ITEMS}"
+        )
+    if len(validation_dataset) != EXPECTED_VALIDATION_ITEMS:
+        failures.append(
+            f"validation length={len(validation_dataset)}, "
+            f"expected {EXPECTED_VALIDATION_ITEMS}"
+        )
+
+    b0_train_summary = (
+        b0_r3_report["label_summaries"]["train"]
+    )
+    graph_positive = int(
+        b0_train_summary["graph_positive"]
+    )
+    graph_negative = int(
+        b0_train_summary["graph_negative"]
+    )
+    graph_pos_weight_value = (
+        graph_negative / graph_positive
+    )
+
+    role_distribution_keys = {
+        "source": "active_source_count_distribution",
+        "transit": "active_transit_count_distribution",
+        "victim": "active_victim_count_distribution",
+        "path": "active_path_count_distribution",
+    }
+    role_weight_manifest: dict[str, Any] = {}
+    for role, distribution_key in (
+        role_distribution_keys.items()
+    ):
+        distribution = parse_distribution(
+            b0_train_summary[distribution_key]
+        )
+        positive_entries = role_positive_count(
+            distribution
+        )
+        total_entries = EXPECTED_TRAIN_ITEMS * 16
+        negative_entries = (
+            total_entries - positive_entries
+        )
+        raw_weight = (
+            negative_entries / positive_entries
+        )
+        clamped_weight = min(
+            20.0,
+            max(1.0, raw_weight),
+        )
+        role_weight_manifest[role] = {
+            "positive_entries": positive_entries,
+            "negative_entries": negative_entries,
+            "raw_positive_weight": raw_weight,
+            "clamped_positive_weight": (
+                clamped_weight
+            ),
+        }
+
+    count_distribution = parse_distribution(
+        b0_train_summary[
+            "active_count_distribution"
+        ]
+    )
+    if sorted(count_distribution) != COUNT_CLASS_VALUES:
+        failures.append(
+            "train count distribution does not contain 1,2,3,4"
+        )
+
+    if failures:
+        report = {
+            "stage": STAGE,
+            "status": "HOLD",
+            "seed": seed,
+            "failures": failures,
+            "warnings": warnings,
+            "training_performed": False,
+            "test_directory_enumerated": False,
+            "test_tensor_contents_accessed": False,
+        }
+        write_json(
+            report_dir / f"{STAGE}.json",
+            report,
+        )
+        atomic_write(
+            report_dir / f"{STAGE}_HOLD",
+            f"{STAGE}_HOLD\n",
+        )
+        print(f"{STAGE}_HOLD")
+        for failure in failures:
+            print("FAIL:", failure)
+        return 1
+
+    device = torch.device(
+        "cuda"
+        if torch.cuda.is_available()
+        else "cpu"
+    )
+    pin_memory = device.type == "cuda"
+
+    train_sampler = PairBlockBatchSampler(
+        train_dataset,
+        block_batch_size=128,
+        shuffle=True,
+        seed=seed,
+    )
+    validation_sampler = PairBlockBatchSampler(
+        validation_dataset,
+        block_batch_size=128,
+        shuffle=False,
+        seed=seed,
+    )
+
+    train_loader = DataLoader(
+        train_dataset,
+        batch_sampler=train_sampler,
+        num_workers=0,
+        pin_memory=pin_memory,
+    )
+    validation_loader = DataLoader(
+        validation_dataset,
+        batch_sampler=validation_sampler,
+        num_workers=0,
+        pin_memory=pin_memory,
+    )
+
+    model = ModelClass().to(device)
+    parameter_count = sum(
+        parameter.numel()
+        for parameter in model.parameters()
+    )
+    if parameter_count != EXPECTED_PARAMETER_COUNT:
+        raise RuntimeError(
+            f"model parameter count={parameter_count}, "
+            f"expected {EXPECTED_PARAMETER_COUNT}"
+        )
+
+    initial_state_sha256 = sha256_state_dict(
+        model.state_dict()
+    )
+
+    optimizer = torch.optim.AdamW(
+        model.parameters(),
+        lr=1e-3,
+        betas=(0.9, 0.999),
+        eps=1e-8,
+        weight_decay=1e-4,
+    )
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+        optimizer,
+        mode="max",
+        factor=0.5,
+        patience=4,
+        threshold=1e-4,
+        threshold_mode="abs",
+        cooldown=0,
+        min_lr=1e-5,
+    )
+
+    graph_pos_weight = torch.tensor(
+        graph_pos_weight_value,
+        dtype=torch.float32,
+        device=device,
+    )
+    role_pos_weights = {
+        role: torch.tensor(
+            details["clamped_positive_weight"],
+            dtype=torch.float32,
+            device=device,
+        )
+        for role, details in role_weight_manifest.items()
+    }
+
+    best_rank = None
+    best_epoch = None
+    best_validation_metrics = None
+    best_checkpoint_sha256 = None
+
+    best_early_stop_score = -float("inf")
+    early_stop_patience_counter = 0
+
+    history_rows: list[dict[str, Any]] = []
+    history_path = (
+        report_dir
+        / f"V5_P2_B2_SEED_{seed}_HISTORY.csv"
+    )
+    progress_path = (
+        report_dir
+        / f"V5_P2_B2_SEED_{seed}_PROGRESS.json"
+    )
+    checkpoint_path = (
+        model_dir
+        / f"v5_p2_b2_seed_{seed}_best.pt"
+    )
+
+    start_time = time.time()
+    stopped_early = False
+    completed_epoch = 0
+
+    print("===== V5 P2-B2 SINGLE-SEED TRAINING =====")
+    print("seed:", seed)
+    print("device:", device)
+    print("train_items:", len(train_dataset))
+    print("validation_items:", len(validation_dataset))
+    print("train_batches:", len(train_loader))
+    print("validation_batches:", len(validation_loader))
+    print("parameter_count:", parameter_count)
+    print("initial_state_sha256:", initial_state_sha256)
+    print("test_directory_enumerated: false")
+    print("test_tensor_contents_accessed: false")
+
+    for epoch in range(1, 101):
+        epoch_start = time.time()
+        train_sampler.set_epoch(epoch)
+
+        train_metrics = train_one_epoch(
+            model=model,
+            loader=train_loader,
+            optimizer=optimizer,
+            device=device,
+            graph_pos_weight=graph_pos_weight,
+            role_pos_weights=role_pos_weights,
+            gradient_clip=1.0,
+        )
+        validation_metrics = validate(
+            model=model,
+            loader=validation_loader,
+            device=device,
+            graph_pos_weight=graph_pos_weight,
+            role_pos_weights=role_pos_weights,
+        )
+
+        current_learning_rate = float(
+            optimizer.param_groups[0]["lr"]
+        )
+        candidate_rank = checkpoint_rank(
+            validation_metrics,
+            epoch,
+        )
+        is_best_checkpoint = (
+            best_rank is None
+            or candidate_rank > best_rank
+        )
+
+        if is_best_checkpoint:
+            best_rank = candidate_rank
+            best_epoch = epoch
+            best_validation_metrics = (
+                validation_metrics
+            )
+
+            checkpoint_payload = {
+                "stage": STAGE,
+                "seed": seed,
+                "epoch": epoch,
+                "model_state_dict": (
+                    model.state_dict()
+                ),
+                "optimizer_state_dict": (
+                    optimizer.state_dict()
+                ),
+                "scheduler_state_dict": (
+                    scheduler.state_dict()
+                ),
+                "protocol_sha256": (
+                    protocol["protocol_sha256"]
+                ),
+                "loader_sha256": (
+                    sha256_file(loader_path)
+                ),
+                "model_source_sha256": (
+                    sha256_file(model_path)
+                ),
+                "initial_state_sha256": (
+                    initial_state_sha256
+                ),
+                "train_label_weight_manifest": {
+                    "graph_positive_weight": (
+                        graph_pos_weight_value
+                    ),
+                    "role_positive_weights": (
+                        role_weight_manifest
+                    ),
+                    "count_distribution": (
+                        count_distribution
+                    ),
+                    "count_class_mapping": (
+                        COUNT_CLASS_MAPPING
+                    ),
+                },
+                "validation_metrics": (
+                    validation_metrics
+                ),
+                "test_tensor_contents_accessed": False,
+            }
+            atomic_torch_save(
+                checkpoint_payload,
+                checkpoint_path,
+            )
+            best_checkpoint_sha256 = (
+                sha256_file(checkpoint_path)
+            )
+
+        current_score = float(
+            validation_metrics["selection_score"]
+        )
+        if (
+            current_score
+            > best_early_stop_score + 1e-4
+        ):
+            best_early_stop_score = current_score
+            early_stop_patience_counter = 0
+        else:
+            early_stop_patience_counter += 1
+
+        scheduler.step(current_score)
+
+        completed_epoch = epoch
+        elapsed_seconds = time.time() - epoch_start
+        history_row = flatten_epoch_row(
+            epoch=epoch,
+            learning_rate=current_learning_rate,
+            train_metrics=train_metrics,
+            validation_metrics=validation_metrics,
+            elapsed_seconds=elapsed_seconds,
+            is_best_checkpoint=is_best_checkpoint,
+            early_stop_patience_counter=(
+                early_stop_patience_counter
+            ),
+        )
+        history_rows.append(history_row)
+        write_csv(history_path, history_rows)
+
+        progress = {
+            "stage": STAGE,
+            "status": "RUNNING",
+            "seed": seed,
+            "completed_epoch": completed_epoch,
+            "best_epoch": best_epoch,
+            "best_checkpoint_sha256": (
+                best_checkpoint_sha256
+            ),
+            "best_validation_metrics": (
+                best_validation_metrics
+            ),
+            "current_validation_metrics": (
+                validation_metrics
+            ),
+            "current_learning_rate_after_scheduler": (
+                float(optimizer.param_groups[0]["lr"])
+            ),
+            "early_stop_patience_counter": (
+                early_stop_patience_counter
+            ),
+            "elapsed_total_seconds": (
+                time.time() - start_time
+            ),
+            "test_directory_enumerated": False,
+            "test_tensor_contents_accessed": False,
+        }
+        write_json(progress_path, progress)
+
+        print(
+            f"seed={seed} epoch={epoch:03d} "
+            f"train_loss={train_metrics['loss']:.6f} "
+            f"val_loss={validation_metrics['loss']:.6f} "
+            f"score={current_score:.6f} "
+            f"g_auc={validation_metrics['graph']['auroc']:.6f} "
+            f"g_ap={validation_metrics['graph']['average_precision']:.6f} "
+            f"count_f1={validation_metrics['count_active']['macro_f1']:.6f} "
+            f"src_ap={validation_metrics['roles']['source']['average_precision']:.6f} "
+            f"tr_ap={validation_metrics['roles']['transit']['average_precision']:.6f} "
+            f"vic_ap={validation_metrics['roles']['victim']['average_precision']:.6f} "
+            f"path_ap={validation_metrics['roles']['path']['average_precision']:.6f} "
+            f"lr={current_learning_rate:.8g} "
+            f"best_epoch={best_epoch} "
+            f"patience={early_stop_patience_counter}"
+        )
+
+        if (
+            epoch >= 15
+            and early_stop_patience_counter >= 12
+        ):
+            stopped_early = True
+            print(
+                f"early stopping at epoch {epoch}; "
+                "patience reached 12"
+            )
+            break
+
+    if best_epoch is None:
+        failures.append("no best checkpoint was selected")
+    if not checkpoint_path.is_file():
+        failures.append("best checkpoint file is missing")
+    if best_checkpoint_sha256 is None:
+        failures.append("best checkpoint SHA was not recorded")
+    elif (
+        best_checkpoint_sha256
+        != sha256_file(checkpoint_path)
+    ):
+        failures.append("best checkpoint SHA changed")
+
+    total_elapsed_seconds = time.time() - start_time
+
+    seed_manifest = {
+        "stage": STAGE,
+        "status": (
+            "COMPLETE"
+            if not failures
+            else "HOLD"
+        ),
+        "seed": seed,
+        "architecture": {
+            "name": model.architecture_name,
+            "parameter_count": parameter_count,
+            "model_source_sha256": (
+                sha256_file(model_path)
+            ),
+            "loader_sha256": (
+                sha256_file(loader_path)
+            ),
+            "protocol_sha256": (
+                protocol["protocol_sha256"]
+            ),
+            "initial_state_sha256": (
+                initial_state_sha256
+            ),
+        },
+        "data": {
+            "train_items": len(train_dataset),
+            "validation_items": (
+                len(validation_dataset)
+            ),
+            "pair_block_batch_size": 128,
+            "item_batch_size": 256,
+            "train_batches": len(train_loader),
+            "validation_batches": (
+                len(validation_loader)
+            ),
+            "num_workers": 0,
+            "pair_keys_used_for_loading_only": True,
+            "pair_keys_returned_to_model": False,
+        },
+        "label_weights": {
+            "graph_positive_weight": (
+                graph_pos_weight_value
+            ),
+            "role_positive_weights": (
+                role_weight_manifest
+            ),
+            "count_distribution": (
+                count_distribution
+            ),
+            "count_class_mapping": (
+                COUNT_CLASS_MAPPING
+            ),
+            "count_class_weights_applied": False,
+        },
+        "training": {
+            "device": str(device),
+            "completed_epoch": completed_epoch,
+            "stopped_early": stopped_early,
+            "maximum_epochs": 100,
+            "minimum_epochs_before_stop": 15,
+            "early_stopping_patience": 12,
+            "optimizer": "AdamW",
+            "initial_learning_rate": 1e-3,
+            "weight_decay": 1e-4,
+            "gradient_clip_global_norm": 1.0,
+            "scheduler": "ReduceLROnPlateau",
+            "automatic_mixed_precision": False,
+            "total_elapsed_seconds": (
+                total_elapsed_seconds
+            ),
+        },
+        "best": {
+            "epoch": best_epoch,
+            "validation_metrics": (
+                best_validation_metrics
+            ),
+            "checkpoint_path": (
+                str(checkpoint_path)
+            ),
+            "checkpoint_sha256": (
+                best_checkpoint_sha256
+            ),
+            "ranking_tuple": (
+                list(best_rank)
+                if best_rank is not None
+                else None
+            ),
+        },
+        "artifacts": {
+            "history_csv": [
+                str(history_path),
+                sha256_file(history_path),
+            ],
+            "progress_json": [
+                str(progress_path),
+                sha256_file(progress_path),
+            ],
+            "best_checkpoint": [
+                str(checkpoint_path),
+                sha256_file(checkpoint_path),
+            ],
+        },
+        "security_boundary": {
+            "train_tensor_contents_accessed": True,
+            "validation_tensor_contents_accessed": True,
+            "threshold_tuning_performed": False,
+            "test_directory_existence_checked": False,
+            "test_directory_enumerated": False,
+            "test_tensor_files_opened": False,
+            "test_tensor_contents_accessed": False,
+            "test_dataset_constructed": False,
+            "test_windows_constructed": False,
+            "test_evaluation_performed": False,
+        },
+        "failures": failures,
+        "warnings": warnings,
+        "next_stage": (
+            "V5_P2_B2_MULTI_SEED_FINALIZATION"
+            if not failures
+            else None
+        ),
+    }
+
+    report_path = (
+        report_dir
+        / f"V5_P2_B2_SEED_{seed}_TRAINING_REPORT.json"
+    )
+    write_json(report_path, seed_manifest)
+
+    if failures:
+        atomic_write(
+            report_dir / f"{STAGE}_HOLD",
+            f"{STAGE}_HOLD\n",
+        )
+        print(f"{STAGE}_HOLD")
+        for failure in failures:
+            print("FAIL:", failure)
+        return 1
+
+    lock = {
+        "status": COMPLETE,
+        "seed": seed,
+        "report_sha256": sha256_file(report_path),
+        "history_sha256": sha256_file(history_path),
+        "checkpoint_sha256": (
+            sha256_file(checkpoint_path)
+        ),
+        "checkpoint_path": str(checkpoint_path),
+        "protocol_sha256": (
+            protocol["protocol_sha256"]
+        ),
+        "model_sha256": sha256_file(model_path),
+        "loader_sha256": sha256_file(loader_path),
+        "initial_state_sha256": (
+            initial_state_sha256
+        ),
+        "best_epoch": best_epoch,
+        "best_validation_selection_score": (
+            best_validation_metrics[
+                "selection_score"
+            ]
+        ),
+        "completed_epoch": completed_epoch,
+        "stopped_early": stopped_early,
+        "threshold_tuning_performed": False,
+        "test_directory_enumerated": False,
+        "test_tensor_contents_accessed": False,
+        "test_evaluation_performed": False,
+        "next_stage": (
+            "V5_P2_B2_MULTI_SEED_FINALIZATION"
+        ),
+        "script_sha256": sha256_file(Path(__file__)),
+    }
+    write_json(
+        report_dir / f"V5_P2_B2_SEED_{seed}_LOCK.json",
+        lock,
+    )
+    atomic_write(
+        report_dir / COMPLETE,
+        COMPLETE + "\n",
+    )
+
+    print("===== V5 P2-B2 SEED COMPLETE =====")
+    print("status: COMPLETE")
+    print("seed:", seed)
+    print("completed_epoch:", completed_epoch)
+    print("stopped_early:", str(stopped_early).lower())
+    print("best_epoch:", best_epoch)
+    print(
+        "best_validation_selection_score:",
+        best_validation_metrics[
+            "selection_score"
+        ],
+    )
+    print(
+        "best_graph_auroc:",
+        best_validation_metrics["graph"]["auroc"],
+    )
+    print(
+        "best_graph_average_precision:",
+        best_validation_metrics["graph"][
+            "average_precision"
+        ],
+    )
+    print(
+        "best_count_active_macro_f1:",
+        best_validation_metrics["count_active"][
+            "macro_f1"
+        ],
+    )
+    print(
+        "best_source_average_precision:",
+        best_validation_metrics["roles"]["source"][
+            "average_precision"
+        ],
+    )
+    print(
+        "best_transit_average_precision:",
+        best_validation_metrics["roles"]["transit"][
+            "average_precision"
+        ],
+    )
+    print(
+        "best_victim_average_precision:",
+        best_validation_metrics["roles"]["victim"][
+            "average_precision"
+        ],
+    )
+    print(
+        "best_path_average_precision:",
+        best_validation_metrics["roles"]["path"][
+            "average_precision"
+        ],
+    )
+    print(
+        "checkpoint_sha256:",
+        sha256_file(checkpoint_path),
+    )
+    print("threshold_tuning_performed: false")
+    print("test_directory_enumerated: false")
+    print("test_tensor_contents_accessed: false")
+    print("test_evaluation_performed: false")
+    print("failure_count:", len(failures))
+    print("warning_count:", len(warnings))
+    print(
+        "next_stage: "
+        "V5_P2_B2_MULTI_SEED_FINALIZATION"
+    )
+    print(COMPLETE)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

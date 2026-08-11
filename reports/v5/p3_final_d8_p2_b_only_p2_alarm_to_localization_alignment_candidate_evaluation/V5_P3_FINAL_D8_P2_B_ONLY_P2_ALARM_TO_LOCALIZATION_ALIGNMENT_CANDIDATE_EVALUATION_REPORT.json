@@ -1,0 +1,247 @@
+{
+  "B_partition": {
+    "P2_Raw_alignment_gap_items": 76,
+    "all_gaps_certified_history_1_1_0": true,
+    "false_positive_P2_alarm_items": 2383,
+    "false_positive_gap_items": 42,
+    "items": 13859,
+    "true_positive_P2_alarm_items": 3481,
+    "true_positive_gap_items": 34
+  },
+  "alignment_candidate_selected_in_this_stage": false,
+  "decision": {
+    "D8_P3_alignment_review_and_freeze_authorized": true,
+    "formal_alignment_freeze_authorized": true,
+    "next_stage": "V5_P3_FINAL_D8_P3_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_REVIEW_AND_FREEZE",
+    "sealed_test_evaluation_authorized": false,
+    "total_system_freeze_authorized": false
+  },
+  "eligibility": {
+    "L0_CURRENT_WINDOW_ONLY": {
+      "B_all_true_positive_P2_alarm_all_count_and_role_exactness_not_below_L0": true,
+      "B_true_positive_gap_all_count_and_role_exactness_not_below_L0": true,
+      "B_true_positive_gap_source_exactness_not_below_L0": true,
+      "B_true_positive_gap_victim_exactness_not_below_L0": true,
+      "eligible": true,
+      "hard_invariants_all_pass": true
+    },
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW": {
+      "B_all_true_positive_P2_alarm_all_count_and_role_exactness_not_below_L0": true,
+      "B_true_positive_gap_all_count_and_role_exactness_not_below_L0": true,
+      "B_true_positive_gap_source_exactness_not_below_L0": true,
+      "B_true_positive_gap_victim_exactness_not_below_L0": true,
+      "eligible": true,
+      "hard_invariants_all_pass": true
+    },
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW": {
+      "B_all_true_positive_P2_alarm_all_count_and_role_exactness_not_below_L0": true,
+      "B_true_positive_gap_all_count_and_role_exactness_not_below_L0": true,
+      "B_true_positive_gap_source_exactness_not_below_L0": true,
+      "B_true_positive_gap_victim_exactness_not_below_L0": true,
+      "eligible": true,
+      "hard_invariants_all_pass": true
+    }
+  },
+  "eligible_candidates": [
+    "L0_CURRENT_WINDOW_ONLY",
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW"
+  ],
+  "evidence_boundary": {
+    "A_alignment_metrics_computed": false,
+    "combined_AB_alignment_metrics_computed": false,
+    "protocol_frozen_before_B_results": true,
+    "selection_authority": "B_only"
+  },
+  "hard_invariants": {
+    "L0_CURRENT_WINDOW_ONLY": {
+      "P2_graph_alarm_bits_unchanged": true,
+      "candidate_changes_only_gap_rows": true,
+      "carried_payload_exactly_copied_from_same_run_t_minus_1": true,
+      "no_cross_run_carry": true,
+      "no_decoder_rerun_or_new_logits": true
+    },
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW": {
+      "P2_graph_alarm_bits_unchanged": true,
+      "candidate_changes_only_gap_rows": true,
+      "carried_payload_exactly_copied_from_same_run_t_minus_1": true,
+      "no_cross_run_carry": true,
+      "no_decoder_rerun_or_new_logits": true
+    },
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW": {
+      "P2_graph_alarm_bits_unchanged": true,
+      "candidate_changes_only_gap_rows": true,
+      "carried_payload_exactly_copied_from_same_run_t_minus_1": true,
+      "no_cross_run_carry": true,
+      "no_decoder_rerun_or_new_logits": true
+    }
+  },
+  "metrics": {
+    "L0_CURRENT_WINDOW_ONLY": {
+      "B_all_true_positive_P2_alarm_payload": {
+        "all_count_and_role_exact": 0.8193047974719908,
+        "all_count_and_role_exact_items": 2852,
+        "count_exact": 0.9902326917552428,
+        "items": 3481,
+        "nonempty_endpoint_payload_rate": 0.9902326917552428,
+        "nonempty_payload_rate": 0.9902326917552428,
+        "path_exact": 0.9006032749209997,
+        "route_certified_payload_rate": 0.9207124389543234,
+        "source_exact": 0.9767308244757253,
+        "transit_exact": 0.8342430336110314,
+        "victim_exact": 0.9661016949152542
+      },
+      "B_false_positive_gap_action_exposure": {
+        "items": 42,
+        "nonempty_endpoint_payload_rate": 0.0,
+        "nonempty_structured_payload_rate": 0.0,
+        "route_certified_structured_payload_rate": 0.0
+      },
+      "B_gap_partition": {
+        "all_false_positive_P2_alarm_items": 2383,
+        "all_true_positive_P2_alarm_items": 3481,
+        "candidate_carried_false_positive_gap_items": 0,
+        "candidate_carried_gap_items": 0,
+        "candidate_carried_true_positive_gap_items": 0,
+        "false_positive_gap_items": 42,
+        "gap_items": 76,
+        "true_positive_gap_items": 34
+      },
+      "B_true_positive_gap_payload": {
+        "all_count_and_role_exact": 0.0,
+        "all_count_and_role_exact_items": 0,
+        "count_exact": 0.0,
+        "items": 34,
+        "nonempty_endpoint_payload_rate": 0.0,
+        "nonempty_payload_rate": 0.0,
+        "path_exact": 0.0,
+        "route_certified_payload_rate": 0.0,
+        "source_exact": 0.0,
+        "transit_exact": 0.23529411764705882,
+        "victim_exact": 0.0
+      }
+    },
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW": {
+      "B_all_true_positive_P2_alarm_payload": {
+        "all_count_and_role_exact": 0.8273484630853203,
+        "all_count_and_role_exact_items": 2880,
+        "count_exact": 1.0,
+        "items": 3481,
+        "nonempty_endpoint_payload_rate": 1.0,
+        "nonempty_payload_rate": 1.0,
+        "path_exact": 0.9095087618500431,
+        "route_certified_payload_rate": 0.9299051996552715,
+        "source_exact": 0.9859235851766733,
+        "transit_exact": 0.8405630565929331,
+        "victim_exact": 0.9758690031600115
+      },
+      "B_false_positive_gap_action_exposure": {
+        "items": 42,
+        "nonempty_endpoint_payload_rate": 1.0,
+        "nonempty_structured_payload_rate": 1.0,
+        "route_certified_structured_payload_rate": 0.9285714285714286
+      },
+      "B_gap_partition": {
+        "all_false_positive_P2_alarm_items": 2383,
+        "all_true_positive_P2_alarm_items": 3481,
+        "candidate_carried_false_positive_gap_items": 42,
+        "candidate_carried_gap_items": 76,
+        "candidate_carried_true_positive_gap_items": 34,
+        "false_positive_gap_items": 42,
+        "gap_items": 76,
+        "true_positive_gap_items": 34
+      },
+      "B_true_positive_gap_payload": {
+        "all_count_and_role_exact": 0.8235294117647058,
+        "all_count_and_role_exact_items": 28,
+        "count_exact": 1.0,
+        "items": 34,
+        "nonempty_endpoint_payload_rate": 1.0,
+        "nonempty_payload_rate": 1.0,
+        "path_exact": 0.9117647058823529,
+        "route_certified_payload_rate": 0.9411764705882353,
+        "source_exact": 0.9411764705882353,
+        "transit_exact": 0.8823529411764706,
+        "victim_exact": 1.0
+      }
+    },
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW": {
+      "B_all_true_positive_P2_alarm_payload": {
+        "all_count_and_role_exact": 0.8273484630853203,
+        "all_count_and_role_exact_items": 2880,
+        "count_exact": 0.9994254524561907,
+        "items": 3481,
+        "nonempty_endpoint_payload_rate": 0.9994254524561907,
+        "nonempty_payload_rate": 0.9994254524561907,
+        "path_exact": 0.9089342143062339,
+        "route_certified_payload_rate": 0.9299051996552715,
+        "source_exact": 0.9859235851766733,
+        "transit_exact": 0.8399885090491238,
+        "victim_exact": 0.9752944556162022
+      },
+      "B_false_positive_gap_action_exposure": {
+        "items": 42,
+        "nonempty_endpoint_payload_rate": 0.9285714285714286,
+        "nonempty_structured_payload_rate": 0.9285714285714286,
+        "route_certified_structured_payload_rate": 0.9285714285714286
+      },
+      "B_gap_partition": {
+        "all_false_positive_P2_alarm_items": 2383,
+        "all_true_positive_P2_alarm_items": 3481,
+        "candidate_carried_false_positive_gap_items": 39,
+        "candidate_carried_gap_items": 71,
+        "candidate_carried_true_positive_gap_items": 32,
+        "false_positive_gap_items": 42,
+        "gap_items": 76,
+        "true_positive_gap_items": 34
+      },
+      "B_true_positive_gap_payload": {
+        "all_count_and_role_exact": 0.8235294117647058,
+        "all_count_and_role_exact_items": 28,
+        "count_exact": 0.9411764705882353,
+        "items": 34,
+        "nonempty_endpoint_payload_rate": 0.9411764705882353,
+        "nonempty_payload_rate": 0.9411764705882353,
+        "path_exact": 0.8529411764705882,
+        "route_certified_payload_rate": 0.9411764705882353,
+        "source_exact": 0.9411764705882353,
+        "transit_exact": 0.8235294117647058,
+        "victim_exact": 0.9411764705882353
+      }
+    }
+  },
+  "outputs": {
+    "npz": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d8_p2_b_only_p2_alarm_to_localization_alignment_candidate_evaluation/V5_P3_FINAL_D8_P2_B_ONLY_ALIGNMENT_CANDIDATE_OUTPUTS.npz",
+    "sha256": "8ff2055c2b7defdced6b7be9139c54d78f789726474a157263e236a274eccb11"
+  },
+  "predeclared_rule_ranking": [
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW",
+    "L0_CURRENT_WINDOW_ONLY"
+  ],
+  "predeclared_rule_winner": "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+  "provenance": {
+    "D1_npz_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+    "D6_R1_R1_outputs_sha256": "7b8e560fff2795132dbb618c74fe2ed6d042e82802818fd446cf591970e79e0b",
+    "D7_P0_temporal_map_sha256": "05d120ea2613a9d3e618cab0da13df3e1de75ce7532e005178b28cf452190c86",
+    "D7_R1_R2_outputs_sha256": "d8648fc66959895ff11387533aabf7470f0d297350bfad24c178a0a9173ffa69",
+    "D8_P0_A_audit_sha256": "923a43f63c1f7350d9a2efbfe2004763c8b2e6755c273e89a4b234c6f585d30f",
+    "protocol": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d8_p1_p2_alarm_to_localization_alignment_candidate_protocol_freeze/V5_P3_FINAL_D8_P1_ALIGNMENT_CANDIDATE_PROTOCOL.json",
+    "protocol_sha256": "e47df66da805241dcaf50af8e1c696a70cafd73f7e29724abe3c448f2c4165d6"
+  },
+  "scientific_boundary": {
+    "alignment_candidate_selected": false,
+    "calibration_retuning_performed": false,
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "independent Tranche-B-only evaluation of prospectively frozen P2/EPLR-V2 alignment candidates",
+  "stage": "V5_P3_FINAL_D8_P2_B_ONLY_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_CANDIDATE_EVALUATION",
+  "status": "PASS"
+}

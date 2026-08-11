@@ -1,0 +1,21 @@
+{
+  "changed_value_count": 9216,
+  "edge_index_and_model_buffers_changed": false,
+  "end_exclusive": 70,
+  "group": "flow_control_stalls",
+  "input_shape": [
+    2,
+    16,
+    70,
+    32
+  ],
+  "labels_changed": false,
+  "masked_region_all_zero": true,
+  "operation": "x.clone(); x[:,:,55:70,:]=0.0 after guarded loader output and before model forward",
+  "original_group_nonzero_count": 9216,
+  "outside_left_exactly_equal": true,
+  "outside_right_exactly_equal": true,
+  "physical_port_mask_exactly_reused": true,
+  "same_width_channels": 70,
+  "start": 55
+}

@@ -1,0 +1,123 @@
+{
+  "combined_AB_descriptive": {
+    "eplr_strict": 0.7696775124449895,
+    "raw_strict": 0.6611716326383378,
+    "route_certified_rate_on_raw_positive": 0.8852682760385567,
+    "strict_delta": 0.10850587980665172
+  },
+  "decision": {
+    "EPLR_V2_selected_as_final_runtime_structured_decoder": true,
+    "base_graph_alarm_policy_remains_RAW_NEURAL_THRESHOLD_0P5": true,
+    "next_stage": "V5_P3_FINAL_D7_P0_TEMPORAL_ORDER_AND_RUN_BOUNDARY_CERTIFICATION",
+    "persistence_candidate_selection_authorized_only_after_validation": true,
+    "persistence_validation_authorized": true,
+    "sealed_test_evaluation_authorized": false
+  },
+  "frozen_runtime_system_roles": {
+    "A0": {
+      "selected_for_runtime": false,
+      "status": "HISTORICAL_COMPARISON_ONLY"
+    },
+    "A1_exact": {
+      "selected_for_runtime": false,
+      "status": "OFFLINE_CERTIFIED_STRUCTURAL_REFERENCE"
+    },
+    "graph_alarm_base": {
+      "note": "EPLR-V2 does not alter the graph decision or solve the graph-level FPR problem.",
+      "policy": "RAW_NEURAL_THRESHOLD_0P5",
+      "status": "FROZEN",
+      "threshold": 0.5
+    },
+    "structured_runtime_decoder": {
+      "calibration_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+      "decoder": "EPLR_V2",
+      "handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+      "selection_basis": "all predeclared independent-B acceptance criteria met",
+      "source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+      "status": "FROZEN_SELECTED_RUNTIME_STRUCTURED_DECODER"
+    }
+  },
+  "independent_B_evidence": {
+    "eplr_graph_accuracy": 0.8082112706544484,
+    "eplr_graph_f1": 0.7236431690580162,
+    "eplr_graph_fpr": 0.23983459682977257,
+    "eplr_strict": 0.7649902590374486,
+    "path_true_positive_delta": 0.022413793103448265,
+    "raw_graph_accuracy": 0.8082112706544484,
+    "raw_graph_f1": 0.7236431690580162,
+    "raw_graph_fpr": 0.23983459682977257,
+    "raw_strict": 0.6626740746085577,
+    "route_certified_rate_on_raw_positive": 0.8990872210953347,
+    "strict_delta": 0.1023161844288909,
+    "tp_eplr_path_exact": 0.9094827586206896,
+    "tp_eplr_transit_exact": 0.8405172413793104,
+    "tp_raw_path_exact": 0.8870689655172413,
+    "tp_raw_transit_exact": 0.7422413793103448,
+    "transit_true_positive_delta": 0.09827586206896555,
+    "unresolved_rate_on_raw_positive": 0.10091277890466531
+  },
+  "provenance": {
+    "D5_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d5_raw_a0_a1_decoder_review_and_operating_policy_freeze/V5_P3_FINAL_D5_RAW_A0_A1_DECODER_REVIEW_AND_OPERATING_POLICY_FREEZE_LOCK.json",
+    "D5_lock_sha256": "cd530490c6ed275151ee1be1752451642409a3f6cdb599f44809b21256323b42",
+    "D6_R1_R1_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_r1_r1_frozen_eplr_v2_import_namespace_recovery_and_validation/V5_P3_FINAL_D6_R1_R1_EPLR_V2_A_B_STRATIFIED_VALIDATION_EVALUATION_LOCK.json",
+    "D6_R1_R1_lock_sha256": "a99a3018801bc8a459ec1c7ebfb3e6990a383872d07746190aa3a713d6ed89c6",
+    "D6_R1_R1_outputs": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_r1_r1_frozen_eplr_v2_import_namespace_recovery_and_validation/V5_P3_FINAL_D6_R1_R1_EPLR_V2_VALIDATION_OUTPUTS.npz",
+    "D6_R1_R1_outputs_sha256": "7b8e560fff2795132dbb618c74fe2ed6d042e82802818fd446cf591970e79e0b",
+    "D6_R1_R1_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_r1_r1_frozen_eplr_v2_import_namespace_recovery_and_validation/V5_P3_FINAL_D6_R1_R1_EPLR_V2_A_B_STRATIFIED_VALIDATION_EVALUATION_REPORT.json",
+    "D6_R1_R1_report_sha256": "fa62cd91d92277c30ad7eded7a8ebe6c2b8467425b7b007773be905dc5670724"
+  },
+  "remaining_false_positive_issue": {
+    "B_graph_fpr": 0.23983459682977257,
+    "candidate_selection_performed": false,
+    "combined_AB_raw_graph_fpr": 0.23170611,
+    "decoder_changes_graph_alarm": false,
+    "persistence_candidates": {
+      "P0": {
+        "name": "instantaneous_raw",
+        "rule": "alarm_t = raw_graph_prediction_t"
+      },
+      "P1": {
+        "name": "two_consecutive",
+        "rule": "alarm_t = raw_t AND raw_t_minus_1"
+      },
+      "P2": {
+        "name": "two_of_three",
+        "rule": "alarm_t = at_least_2_positive_raw_predictions_in_t_minus_2_to_t"
+      },
+      "P3": {
+        "name": "three_consecutive",
+        "rule": "alarm_t = raw_t AND raw_t_minus_1 AND raw_t_minus_2"
+      }
+    },
+    "resolution_stage": "temporal alarm confirmation validation"
+  },
+  "scientific_boundary": {
+    "calibration_retuning_performed": false,
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "persistence_candidate_selection_performed": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "formal validation-only runtime structured-decoder selection and freeze",
+  "selection_authority": {
+    "A_only_role": "DESCRIPTIVE_SUPPORTING_RESULT",
+    "all_predeclared_criteria_met": true,
+    "combined_AB_role": "DESCRIPTIVE_COMPLETE_VALIDATION_REPLAY",
+    "decoder_evidence_partition": "Tranche B only",
+    "selection_rule_predeclared_before_B_results": true
+  },
+  "software_timing": {
+    "max_seconds": 0.010077892991830595,
+    "mean_seconds": 6.204785664105811e-05,
+    "mean_speedup_vs_A1_exact": 9661.429619847979,
+    "p95_seconds": 0.00028048590174876146,
+    "p99_seconds": 0.0004110841249348596
+  },
+  "stage": "V5_P3_FINAL_D6_R2_EPLR_V2_RUNTIME_DECODER_REVIEW_AND_FREEZE",
+  "status": "PASS"
+}

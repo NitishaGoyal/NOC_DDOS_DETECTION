@@ -1,0 +1,33 @@
+{
+  "architecture": "frozen B3 Conv1D-only",
+  "architecture_search_reopening": "requires a new explicitly named phase and cannot be based on P0 or P1 test performance",
+  "before_training": [
+    "audit P1 tensors, labels, masks, normalization, and leakage",
+    "verify PRIMARY58, window 32, stride 8, and recovered Boolean mask",
+    "lock P1 train/validation/test manifests",
+    "keep P1 test inaccessible during development"
+  ],
+  "optional_zero_shot": {
+    "locked_P1_test_forbidden": true,
+    "source": "existing P0-trained B3 checkpoint",
+    "target": "P1 validation or separate locked transfer split"
+  },
+  "required_P1_baseline": "B2 temporal-mean MLP",
+  "test_boundary": {
+    "checkpoint_selection": false,
+    "development_access": false,
+    "final_evaluation_count": 1,
+    "threshold_calibration": false
+  },
+  "training": {
+    "fit_split": "P1 train only",
+    "multiple_preregistered_seeds_recommended": true,
+    "train_from_scratch": true,
+    "validation_may_control": [
+      "early stopping",
+      "checkpoint selection",
+      "learning-rate scheduling",
+      "threshold calibration"
+    ]
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "artifacts": {
+    "contract_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_c2_next_dataset_model_revision_contract/V5_P2_C2_NEXT_DATASET_AND_MODEL_REVISION_CONTRACT.json",
+      "e97401024c35ea8c566f60fb2f6e766ca5e2f6f74bd17441b0eb352e8caed9b5"
+    ],
+    "contract_markdown": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_c2_next_dataset_model_revision_contract/V5_P2_C2_NEXT_DATASET_AND_MODEL_REVISION_CONTRACT.md",
+      "54a0fac1461ec9c6e09ef6aec310acc755f320f26b6c79fa1924de1cfbb9c2c9"
+    ]
+  },
+  "contract": {
+    "acceptance_targets": {
+      "blind_test_research_goal": {
+        "graph_accuracy_min": 0.98,
+        "graph_fpr_max": 0.05,
+        "graph_recall_min": 0.95,
+        "note": "These are project goals, not guarantees. The final paper must report the frozen result even if a goal is missed."
+      },
+      "development_gates": {
+        "validation_count_macro_f1_min": 0.98,
+        "validation_graph_balanced_accuracy_min": 0.95,
+        "validation_graph_fpr_max": 0.05,
+        "validation_graph_recall_min": 0.95,
+        "validation_transit_node_f1_min": 0.75
+      }
+    },
+    "contract_name": "V5_P2_C2_FRESH_HARD_LEGITIMATE_TRAFFIC_REVISION",
+    "contract_sha256": "d863a0b14d5113f283208bafa2e5804da52336f11f8ddf001e6c332c942f34b0",
+    "contract_version": 1,
+    "experiment_order": [
+      {
+        "action": "Generate fresh matched legal-control/attack runs and freeze metadata manifests.",
+        "stage": "D0_FRESH_DATASET_GENERATION_AND_MANIFEST"
+      },
+      {
+        "action": "Audit pair alignment, labels, splits, hard-control coverage, and forbidden metadata leakage.",
+        "stage": "D1_DATASET_AUDIT_AND_SHORTCUT_AUDIT"
+      },
+      {
+        "action": "Train unchanged B3-count4 on the new dataset with multiple seeds.",
+        "stage": "D2_UNCHANGED_B3_BASELINE"
+      },
+      {
+        "action": "Train the zero-parameter matched-pair graph-margin variants using the frozen margin search.",
+        "stage": "D3_MATCHED_PAIR_MARGIN_ABLATION"
+      },
+      {
+        "action": "Select dataset/model variant using validation graph balanced accuracy, FPR, recall, and localization metrics.",
+        "stage": "D4_VALIDATION_SELECTION"
+      },
+      {
+        "action": "Freeze one checkpoint and all thresholds.",
+        "stage": "D5_VALIDATION_THRESHOLD_FREEZE"
+      },
+      {
+        "action": "Authorize and execute exactly one fresh blind-test pass.",
+        "stage": "D6_ONE_SHOT_BLIND_TEST"
+      }
+    ],
+    "fresh_dataset_contract": {
+      "attack_coverage": {
+        "attacker_counts": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "priority_categories": {
+          "K1": "weakest graph-recall category in P2-C1",
+          "K4": "weakest strict all-task exact category in P2-C1"
+        },
+        "strengths": "Include low, medium, and high attack strengths, with special emphasis on low-strength attacks overlapping hard legitimate traffic.",
+        "victims": "Retain one- and multi-victim cases when supported by the simulator and labels."
+      },
+      "balance_contract": {
+        "hard_control_emphasis": "Hard legitimate controls must form a substantial, explicitly reported portion of every non-test split.",
+        "pair_balance": "one ATTACK and one CONTROL member per pair",
+        "scenario_balance": "No single legitimate family, attack count, strength, victim placement, or router placement may dominate training or validation.",
+        "shortcut_audit_required": true
+      },
+      "feature_interface": {
+        "learned_features": "PRIMARY58",
+        "model_metadata_inputs": false,
+        "second_normalization": false,
+        "stored_features": 81,
+        "stride": 8,
+        "topology_mask": "[16,10] corrected physical-port mask",
+        "window": 32
+      },
+      "generation_metadata": {
+        "allowed_as_model_input": false,
+        "allowed_for_audit_and_split": true,
+        "required_fields": [
+          "run_id",
+          "pair_id",
+          "split_id",
+          "workload_family",
+          "workload_id",
+          "mapping_id",
+          "simulation_seed",
+          "traffic_phase",
+          "attack_enabled",
+          "attacker_count",
+          "attacker_nodes",
+          "victim_nodes",
+          "attack_strength",
+          "profile",
+          "start_epoch",
+          "end_epoch"
+        ]
+      },
+      "localization_coverage": {
+        "priority_role": "transit",
+        "required": [
+          "balanced transit path lengths",
+          "edge, corner, and interior transit routers",
+          "overlapping and non-overlapping routes",
+          "short and long paths",
+          "all router IDs represented where physically possible"
+        ]
+      },
+      "matched_pair_rule": {
+        "control_and_attack_share": [
+          "legal workload family",
+          "application/workload identity",
+          "mapping and active-core placement",
+          "simulation seed",
+          "start state",
+          "traffic phase",
+          "memory-controller/victim placement where applicable",
+          "collection duration"
+        ],
+        "only_attack_member_changes": [
+          "malicious injection enabled",
+          "attacker locations",
+          "attacker count K1/K2/K3/K4",
+          "attack strength/profile"
+        ],
+        "pair_alignment": "Use common-prefix chronological windows with identical ordered starts for ATTACK and CONTROL.",
+        "required": true
+      },
+      "required_legitimate_control_families": [
+        {
+          "family": "baseline_low_to_moderate_load",
+          "purpose": "preserve easy-normal coverage"
+        },
+        {
+          "family": "sustained_high_load",
+          "purpose": "teach high utilization without malicious injection"
+        },
+        {
+          "family": "bursty_and_on_off",
+          "purpose": "separate legal bursts from attack onset"
+        },
+        {
+          "family": "memory_controller_hotspot",
+          "purpose": "cover legitimate concentration near shared resources"
+        },
+        {
+          "family": "phase_change_and_ramp",
+          "purpose": "cover persistent false-alarm episodes around workload transitions"
+        },
+        {
+          "family": "multi_source_synchronized_benign",
+          "purpose": "cover coordinated-looking but legitimate traffic"
+        },
+        {
+          "family": "asymmetric_and_locality_skewed",
+          "purpose": "cover uneven router/port utilization"
+        },
+        {
+          "family": "backpressure_and_queue_build_up",
+          "purpose": "cover non-malicious congestion signatures"
+        }
+      ],
+      "source_rule": "Generate entirely fresh simulation runs. No P2 test tensor, P2 test window, or reconstructed P2 test feature may be copied into training, validation, or development analysis.",
+      "split_contract": {
+        "chronological": true,
+        "no_overlap_across_splits": [
+          "run ID",
+          "matched pair",
+          "simulation seed",
+          "application mapping",
+          "generated trace",
+          "window lineage"
+        ],
+        "scenario_holdout": "Validation and final blind test must contain complete unseen scenario families or workload/mapping groups, not merely later windows from training runs.",
+        "split_unit": "matched simulation pair/run family, never individual windows",
+        "test_policy": "Do not enumerate or deserialize the new blind-test tensors before checkpoint and thresholds are frozen."
+      },
+      "topology_scope": {
+        "primary": "4x4 2D mesh, 16 routers",
+        "reason": "Resolve the 4x4 regional-expert discrimination problem before replication to larger meshes."
+      },
+      "working_name": "V6_HARD_LEGITIMATE_MATCHED_CHRONO_GRAPH"
+    },
+    "model_revision_contract": {
+      "baseline_first": "First retrain the unchanged 43,273-parameter B3 model on the fresh dataset. This isolates dataset improvement from architecture improvement.",
+      "count_head": {
+        "change_allowed": false,
+        "classes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "logits": 4,
+        "reason": "P2 frozen blind-test active-count accuracy is 1.0."
+      },
+      "hardware_constraints": {
+        "deterministic_interface": true,
+        "primary_revision_extra_parameters": 0,
+        "quantizable": true,
+        "regional_4x4_expert_compatible": true,
+        "single_stage": true
+      },
+      "localization_priority": {
+        "allowed_change": "scenario balancing and modest loss-weight ablation",
+        "forbidden": "sacrificing graph false-positive control to inflate transit metrics",
+        "role": "transit"
+      },
+      "primary_revision": {
+        "architecture_change": false,
+        "inference_interface_change": false,
+        "name": "B3_COUNT4_PLUS_MATCHED_PAIR_GRAPH_MARGIN",
+        "parameter_change": 0,
+        "reason": "Directly increases separation between matched attacks and hard legitimate controls without adding hardware.",
+        "recommended_ablation_margins": [
+          0.25,
+          0.5,
+          1.0
+        ],
+        "selection_rule": "Choose the margin using validation only; freeze the search space before training.",
+        "training_only_objective": "For every aligned ATTACK/CONTROL pair-window block, enforce attack_logit >= control_logit + margin."
+      },
+      "reference_baseline": {
+        "name": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY_P2_COUNT4",
+        "parameter_count": 43273,
+        "selected_checkpoint_sha256": "7d4afae2214f67ecd9c65c6ff4614ba8238614234d7b07cdf1408b6d3efb07ef",
+        "selected_epoch": 59,
+        "selected_seed": 127
+      },
+      "secondary_revision_candidates": [
+        {
+          "constraint": "must be compared against the unchanged-B3 and matched-margin baselines",
+          "name": "control_false_positive_asymmetric_graph_loss",
+          "purpose": "penalize false-positive controls more strongly while preserving attack recall",
+          "type": "training-only loss"
+        },
+        {
+          "constraint": "no separate second-stage inference system",
+          "name": "graph_node_evidence_consistency_regularization",
+          "purpose": "discourage graph attack predictions when source/path heads provide no coherent attack evidence",
+          "type": "training-only regularizer"
+        }
+      ]
+    },
+    "prohibited_actions": [
+      "Do not retrain on or copy P2 blind-test tensors/windows.",
+      "Do not retune the frozen P2 checkpoint or thresholds.",
+      "Do not use IDs, profiles, mappings, strengths, seeds, or split metadata as learned inputs.",
+      "Do not start with a larger architecture before establishing the unchanged-B3 fresh-dataset baseline.",
+      "Do not redesign the count head.",
+      "Do not use a two-stage detector/localizer as the primary system.",
+      "Do not inspect the new blind-test contents before authorization."
+    ],
+    "root_cause": {
+      "attacker_count_accuracy": 1.0,
+      "false_negative_windows": 35,
+      "false_positive_scope": "broad_across_control_scenarios",
+      "false_positive_temporal_form": "persistent_false_alarm_episodes",
+      "false_positive_windows": 2307,
+      "interpretation": "The main failure is persistent, broad false-positive activation on legitimate/control traffic. The next revision must improve legal/control-versus-attack separation before increasing model capacity.",
+      "pairs_with_false_positive": 60,
+      "weakest_k_all_task_exact": 4,
+      "weakest_k_graph_recall": 1,
+      "weakest_localization_role": "transit"
+    },
+    "security_boundary": {
+      "contract_source": "P2-C1 frozen interpretation report and lock only",
+      "p2_checkpoint_loaded": false,
+      "p2_dataset_root_accessed": false,
+      "p2_prediction_cache_accessed": false,
+      "p2_test_directory_enumerated": false,
+      "p2_test_inference_rerun": false,
+      "p2_test_tensor_contents_accessed": false
+    },
+    "terminology": {
+      "hard_legitimate_control": "Fresh benign NoC traffic that produces congestion, hotspots, bursts, backpressure, or phase changes without any malicious injection.",
+      "legal_control_note": "The project shorthand 'legal NoC traffic' means legitimate or benign control traffic, not a legal/compliance category."
+    }
+  },
+  "decision": "FREEZE_FRESH_HARD_LEGITIMATE_MATCHED_DATASET_AND_ZERO_PARAMETER_PAIR_MARGIN_STUDY",
+  "failures": [],
+  "next_stage": "V6_D0_FRESH_HARD_LEGITIMATE_DATASET_GENERATION_PLAN",
+  "provenance": {
+    "c1_lock_sha256": "e81724a44b661cf9bcdc2de78b8ea95a8a96da20172bedf8b91056bfed57953c",
+    "c1_report_sha256": "3e47ebfd4db9ab5b93c6a07e684cb8281d4ad86d19c3b007ab82b156fef5e6a8"
+  },
+  "security_boundary": {
+    "contract_source": "P2-C1 frozen interpretation report and lock only",
+    "p2_checkpoint_loaded": false,
+    "p2_dataset_root_accessed": false,
+    "p2_prediction_cache_accessed": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_inference_rerun": false,
+    "p2_test_tensor_contents_accessed": false
+  },
+  "stage": "V5_P2_C2_NEXT_DATASET_AND_MODEL_REVISION_CONTRACT",
+  "status": "COMPLETE",
+  "warnings": []
+}

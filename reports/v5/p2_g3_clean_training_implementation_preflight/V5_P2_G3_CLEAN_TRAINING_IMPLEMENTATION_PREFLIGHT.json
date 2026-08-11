@@ -1,0 +1,160 @@
+{
+  "architecture_selected": false,
+  "b3_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+  "common_initialization_equal_across_operators": true,
+  "device": "cuda",
+  "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+  "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+  "g2_aggregation_report_sha256": "66748c90e128e2e869e30b55b461a49383a5253ccc4b49f3fb72111221b95a74",
+  "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+  "operator_pass_count": 3,
+  "operators": {
+    "conv1d": {
+      "clean_role_equivalence_max_abs_error": {
+        "path": 0.0,
+        "source": 0.0,
+        "transit": 0.0,
+        "victim": 0.0
+      },
+      "finite_gradients": true,
+      "nonzero_gradient": true,
+      "output_shapes": {
+        "path": [
+          8,
+          16
+        ],
+        "source": [
+          8,
+          16
+        ],
+        "transit": [
+          8,
+          16
+        ],
+        "victim": [
+          8,
+          16
+        ]
+      },
+      "parameter_count": 34692,
+      "status": "PASS",
+      "train_loss": 3.7354588508605957,
+      "train_role_losses": {
+        "path": 0.8572768568992615,
+        "source": 1.1322916746139526,
+        "transit": 0.6400312185287476,
+        "victim": 1.1058591604232788
+      },
+      "validation_loss": 2.7721495628356934,
+      "validation_role_losses": {
+        "path": 0.7129701375961304,
+        "source": 0.7652122974395752,
+        "transit": 0.6223487854003906,
+        "victim": 0.6716181635856628
+      }
+    },
+    "gcnconv": {
+      "clean_role_equivalence_max_abs_error": {
+        "path": 0.0,
+        "source": 0.0,
+        "transit": 0.0,
+        "victim": 0.0
+      },
+      "finite_gradients": true,
+      "nonzero_gradient": true,
+      "output_shapes": {
+        "path": [
+          8,
+          16
+        ],
+        "source": [
+          8,
+          16
+        ],
+        "transit": [
+          8,
+          16
+        ],
+        "victim": [
+          8,
+          16
+        ]
+      },
+      "parameter_count": 43012,
+      "status": "PASS",
+      "train_loss": 3.72782301902771,
+      "train_role_losses": {
+        "path": 0.8513861298561096,
+        "source": 1.1338088512420654,
+        "transit": 0.6352617740631104,
+        "victim": 1.1073663234710693
+      },
+      "validation_loss": 2.780039072036743,
+      "validation_role_losses": {
+        "path": 0.711258590221405,
+        "source": 0.7531864047050476,
+        "transit": 0.6245427131652832,
+        "victim": 0.6910512447357178
+      }
+    },
+    "graphconv": {
+      "clean_role_equivalence_max_abs_error": {
+        "path": 0.0,
+        "source": 0.0,
+        "transit": 0.0,
+        "victim": 0.0
+      },
+      "finite_gradients": true,
+      "nonzero_gradient": true,
+      "output_shapes": {
+        "path": [
+          8,
+          16
+        ],
+        "source": [
+          8,
+          16
+        ],
+        "transit": [
+          8,
+          16
+        ],
+        "victim": [
+          8,
+          16
+        ]
+      },
+      "parameter_count": 51204,
+      "status": "PASS",
+      "train_loss": 3.8317739963531494,
+      "train_role_losses": {
+        "path": 0.9079428315162659,
+        "source": 1.1370065212249756,
+        "transit": 0.675072968006134,
+        "victim": 1.1117517948150635
+      },
+      "validation_loss": 2.7997183799743652,
+      "validation_role_losses": {
+        "path": 0.750834584236145,
+        "source": 0.7537848949432373,
+        "transit": 0.62451171875,
+        "victim": 0.670587420463562
+      }
+    }
+  },
+  "p2_test_directory_enumerated": false,
+  "p2_test_tensors_deserialized": false,
+  "quantization_performed": false,
+  "reference_b3_initialization_equal_across_operators": true,
+  "role_positive_weights": {
+    "path": 7.375342240922689,
+    "source": 20.0,
+    "transit": 15.7433147902343,
+    "victim": 20.0
+  },
+  "rtl_generated": false,
+  "scientific_training_authorized": true,
+  "stage": "V5_P2_G3_CLEAN_TRAINING_IMPLEMENTATION_PREFLIGHT",
+  "status": "COMPLETE",
+  "trainer_sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d"
+}

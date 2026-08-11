@@ -1,0 +1,98 @@
+{
+  "authorization": {
+    "P1_contract_drafting_authorized": true,
+    "P1_generation_authorized": false,
+    "additional_P0_full_seeds_authorized": false,
+    "automatic_split_contract_replacement_authorized": false
+  },
+  "created_utc": "2026-08-03T12:55:15.697303+00:00",
+  "evaluation_requirements": {
+    "report_active_only_localization_metrics": true,
+    "report_control_false_positive_rate_by_family": true,
+    "report_count_accuracy_only_on_active_windows": true,
+    "report_family_strength_K_subgroups": true,
+    "report_global_and_pair_level_graph_metrics": true,
+    "report_weak_stealth_recall": true
+  },
+  "hard_requirements": {
+    "all_family_strength_K_primary_values_present_in_each_evaluation_split": true,
+    "final_epoch_attack_label_contract_preserved": true,
+    "hard_minimum_per_evaluated_family_strength_K_cell": {
+      "evaluation_pairs": 1,
+      "total_pairs": 4,
+      "training_pairs": 3
+    },
+    "no_family_strength_K_validation_or_test_value_absent_from_training": true,
+    "normalization_fit_on_training_pairs_only": true,
+    "pair_atomicity": true,
+    "raw81_expansion_not_required_for_initial_P1_baseline": true,
+    "recommended_minimum_per_priority_rare_cell": {
+      "evaluation_pairs": 2,
+      "total_pairs": 8,
+      "training_pairs": 6
+    },
+    "same_60553_parameter_dynamic70_baseline_runs_before_architecture_changes": true,
+    "sealed_test_split_required": true,
+    "split_assignment_frozen_before_model_training": true,
+    "test_not_used_for_thresholds_or_model_selection": true
+  },
+  "name": "V6_P1_DATASET_AND_SPLIT_REVISION_REQUIREMENTS",
+  "priority_cells": [
+    {
+      "current_total_pairs": 2,
+      "dimension": "familyxstrengthxattacker_count",
+      "hard_minimum_total_pairs": 4,
+      "minimum_additional_pairs_for_3_train_1_eval": 2,
+      "reason": "Current P0 cell cannot support robust stratified evaluation. Hard minimum enables 3 train + 1 evaluation; recommended minimum enables approximately 6 train + 2 evaluation.",
+      "recommended_additional_pairs": 6,
+      "recommended_total_pairs": 8,
+      "value": "multi_victim|p2_base|3"
+    },
+    {
+      "current_total_pairs": 3,
+      "dimension": "familyxstrengthxattacker_count",
+      "hard_minimum_total_pairs": 4,
+      "minimum_additional_pairs_for_3_train_1_eval": 1,
+      "reason": "Current P0 cell cannot support robust stratified evaluation. Hard minimum enables 3 train + 1 evaluation; recommended minimum enables approximately 6 train + 2 evaluation.",
+      "recommended_additional_pairs": 5,
+      "recommended_total_pairs": 8,
+      "value": "route_overlap|p2_base|4"
+    },
+    {
+      "current_total_pairs": 2,
+      "dimension": "familyxstrengthxattacker_count",
+      "hard_minimum_total_pairs": 4,
+      "minimum_additional_pairs_for_3_train_1_eval": 2,
+      "reason": "Current P0 cell cannot support robust stratified evaluation. Hard minimum enables 3 train + 1 evaluation; recommended minimum enables approximately 6 train + 2 evaluation.",
+      "recommended_additional_pairs": 6,
+      "recommended_total_pairs": 8,
+      "value": "weak_stealth|v6_stealth|1"
+    },
+    {
+      "current_total_pairs": 2,
+      "dimension": "familyxstrengthxattacker_count",
+      "hard_minimum_total_pairs": 4,
+      "minimum_additional_pairs_for_3_train_1_eval": 2,
+      "reason": "Current P0 cell cannot support robust stratified evaluation. Hard minimum enables 3 train + 1 evaluation; recommended minimum enables approximately 6 train + 2 evaluation.",
+      "recommended_additional_pairs": 6,
+      "recommended_total_pairs": 8,
+      "value": "weak_stealth|v6_weak|1"
+    }
+  ],
+  "scenario_requirements": {
+    "hard_benign_control_coverage_must_be_explicitly_balanced": true,
+    "multi_victim_K3_coverage_must_increase": true,
+    "route_overlap_K4_coverage_must_increase": true,
+    "v6_stealth_K1_coverage_must_increase": true,
+    "v6_weak_K1_coverage_must_increase": true,
+    "weak_stealth_attack_coverage_must_increase": true
+  },
+  "scientific_basis": {
+    "M8D": "Original P0 split had unseen and low-support validation family/strength/K combinations.",
+    "M8E": "Any-window labels and history-conflict downweighting improved score by only about 0.01-0.02 and did not resolve the failure.",
+    "M8G_A_R1": "A strict zero-residual 75/25 split is mathematically infeasible for the existing 100-pair pilot.",
+    "M8G_A_R2": "The lexicographically optimal relaxed split still has nine unavoidable low-support validation values.",
+    "M8G_B_R1": "Train-only-renormalized balanced resplitting improved graph selection score by more than 0.05, proving coverage shift materially contributed, but did not solve localization or overall generalization."
+  },
+  "status": "FROZEN_FOR_CONTRACT_DRAFTING"
+}

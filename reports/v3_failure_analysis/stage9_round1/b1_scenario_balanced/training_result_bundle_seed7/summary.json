@@ -1,0 +1,102 @@
+{
+  "model": "Conv1D-TemporalGCN",
+  "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+  "split_mode": "v3",
+  "splits_file": null,
+  "best_epoch": 95,
+  "best_val_score": 1.7987959177543544,
+  "parameters": 882,
+  "input_feature_dim": 24,
+  "num_nodes": 16,
+  "training": {
+    "maximum_epochs": 100,
+    "epochs_completed": 100,
+    "patience": 15,
+    "min_delta": 0.0001,
+    "stopped_early": false,
+    "stopped_epoch": null,
+    "seed": 7
+  },
+  "split_sizes": {
+    "train": 148185,
+    "val": 42809,
+    "test": 42809
+  },
+  "class_weights": {
+    "graph_pos_weight": 0.45161290322580644,
+    "node_pos_weight": 13.4
+  },
+  "thresholds": {
+    "graph": 0.5,
+    "node": 0.5
+  },
+  "train": {
+    "loss": 0.2081215727964934,
+    "acc": 0.9373620811823059,
+    "precision": 0.9834845943045295,
+    "recall": 0.9246005701243106,
+    "f1": 0.9531339937592778,
+    "fpr": 0.03438028718927595,
+    "tnr": 0.965619712810724,
+    "tn": 44517,
+    "fp": 1585,
+    "fn": 7697,
+    "tp": 94386,
+    "node_acc": 0.9704916995647332,
+    "node_precision": 0.7072079760857481,
+    "node_recall": 0.981384755542059,
+    "node_f1": 0.8220373257905086,
+    "exact_localization": 0.6569760772007963
+  },
+  "val": {
+    "loss": 0.34955084657780217,
+    "acc": 0.9234273166857436,
+    "precision": 0.9674741957223424,
+    "recall": 0.9203360664034821,
+    "f1": 0.9433166176724883,
+    "fpr": 0.06961737017916793,
+    "tnr": 0.9303826298208321,
+    "tn": 12255,
+    "fp": 917,
+    "fn": 2361,
+    "tp": 27276,
+    "node_acc": 0.9724225630124507,
+    "node_precision": 0.7827012194268274,
+    "node_recall": 0.9431791341903701,
+    "node_f1": 0.8554793000818662,
+    "exact_localization": 0.6934756710037608
+  },
+  "test": {
+    "loss": 0.9479293606501804,
+    "acc": 0.8268821976687145,
+    "precision": 0.846416231062284,
+    "recall": 0.8289011322719188,
+    "f1": 0.8375671232876712,
+    "fpr": 0.1754732260350238,
+    "tnr": 0.8245267739649762,
+    "tn": 16291,
+    "fp": 3467,
+    "fn": 3944,
+    "tp": 19107,
+    "node_acc": 0.9483008829918942,
+    "node_precision": 0.5556893800246906,
+    "node_recall": 0.8622018734378285,
+    "node_f1": 0.6758154736292811,
+    "exact_localization": 0.4563759957018384
+  },
+  "stage9_b1": {
+    "intervention": "graph_class_balanced_class_conditional_run_uniform_sampling",
+    "sampler_mode": "class_run_balanced",
+    "sampler_seed": 7001,
+    "samples_per_epoch": 148185,
+    "replacement": true,
+    "sampler_log_dir": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/b1_scenario_balanced/training_sampler_audit_seed7",
+    "train_metrics_distribution": "complete_original_training_cohort",
+    "optimization_distribution": "class_balanced_run_uniform_replacement",
+    "class_weights_source": "complete_unmodified_train_idx",
+    "graph_readout_changed": false,
+    "model_architecture_changed": false,
+    "validation_loader_changed": false,
+    "test_loader_changed": false
+  }
+}

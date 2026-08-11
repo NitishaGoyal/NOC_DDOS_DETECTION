@@ -1,0 +1,115 @@
+{
+  "case_count": 4,
+  "cases": [
+    {
+      "case_id": "P1_L2_CANDIDATE__run226__router3",
+      "false_decision_count": 15,
+      "false_interval_count": 4,
+      "matched_clean_reference_runs": [],
+      "maximum_false_streak": 5,
+      "placement_family": "interior_heavy",
+      "policy_name": "P1_L2_CANDIDATE",
+      "profile": "stream",
+      "run_id": "V4-N-0226-B0290-Pstream",
+      "run_index": 226,
+      "target_router": 3,
+      "target_router_active": false,
+      "true_attacker_reference_runs": [
+        635,
+        757,
+        355,
+        370,
+        590
+      ]
+    },
+    {
+      "case_id": "P1_L2_CANDIDATE__run178__router15",
+      "false_decision_count": 1,
+      "false_interval_count": 1,
+      "matched_clean_reference_runs": [
+        111
+      ],
+      "maximum_false_streak": 1,
+      "placement_family": "distributed",
+      "policy_name": "P1_L2_CANDIDATE",
+      "profile": "compute",
+      "run_id": "V4-N-0178-B0257-Pcompute",
+      "run_index": 178,
+      "target_router": 15,
+      "target_router_active": true,
+      "true_attacker_reference_runs": [
+        571,
+        799,
+        889,
+        576,
+        577
+      ]
+    },
+    {
+      "case_id": "P2_L2_CONFIRMED__run226__router3",
+      "false_decision_count": 6,
+      "false_interval_count": 3,
+      "matched_clean_reference_runs": [],
+      "maximum_false_streak": 4,
+      "placement_family": "interior_heavy",
+      "policy_name": "P2_L2_CONFIRMED",
+      "profile": "stream",
+      "run_id": "V4-N-0226-B0290-Pstream",
+      "run_index": 226,
+      "target_router": 3,
+      "target_router_active": false,
+      "true_attacker_reference_runs": [
+        635,
+        757,
+        355,
+        370,
+        590
+      ]
+    },
+    {
+      "case_id": "P3_MAX_SAFETY__run298__router3",
+      "false_decision_count": 4,
+      "false_interval_count": 1,
+      "matched_clean_reference_runs": [],
+      "maximum_false_streak": 4,
+      "placement_family": "distributed",
+      "policy_name": "P3_MAX_SAFETY",
+      "profile": "bursty",
+      "run_id": "V4-N-0298-B0297-Pbursty",
+      "run_index": 298,
+      "target_router": 3,
+      "target_router_active": true,
+      "true_attacker_reference_runs": [
+        590,
+        723,
+        355,
+        370,
+        635
+      ]
+    }
+  ],
+  "designation": "V4-A3.11-C Hard-Normal Feature and Score Trace",
+  "local_vs_graph_attribution_available": false,
+  "local_vs_graph_note": "The prediction archive contains final node scores only. Attributing an error to the local or graph branch requires checkpoint instrumentation in A3.13.",
+  "persistent_case_count": 3,
+  "persistent_target_routers": [
+    3
+  ],
+  "provenance": {
+    "analysis_role": "descriptive closure only",
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "development_test_role": "development comparison; not publication holdout",
+    "frozen_transfer_report_sha256": "8514e5a883ea5d58259981785462ef6d2f69c7ba28d49af32c13e3ff3df9b3f1",
+    "hard_normal_csv_sha256": "ff871966d89ff42c1d436f44e533055ffa275fbb4a2d027975e46d74b1a5765b",
+    "latency_policy_sha256": "b3a0f3dcd764c2aac965bdceec575bf7135a7db118fc5a21ac9b3f9bb6985ffc",
+    "metadata_sha256": "97ca343f292d67c1e4150e18df764156fab4472d16ba9c4ea1085957e6863b2e",
+    "operational_policy_sha256": "f989349fc47162898291a213bcb83d07cf4ebcfd75c62fac166f16784adf817f",
+    "policy_selection_performed_on_test": false,
+    "test_predictions_sha256": "f0df8d5d54fe1193ed9a9fa51ea6fa2bdfa3dff59c2b4515d01d54d5b1ac9dab",
+    "validation_search_script_sha256": "c38490dc8108f961468b733d7f66d786535bd7cda1cea0340bccad964fceaac4",
+    "x_npy_path": "/home/zira/research/projects/GNN-2d/data/processed/graph_dataset/paper1_temporal_graphs_ports_v4_all16_chrono_memmap/x.npy"
+  },
+  "recommended_next_stage": "A3.12 cardinality/ranking decomposition, followed by A3.13 local-versus-graph instrumentation and A3.15 directional source/transit analysis.",
+  "status": "PASS",
+  "structural_classification": "mixed legitimate-source and transit-hotspot ambiguity concentrated on one router"
+}

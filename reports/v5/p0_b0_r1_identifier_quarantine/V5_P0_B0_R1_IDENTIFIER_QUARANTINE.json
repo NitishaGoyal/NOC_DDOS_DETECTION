@@ -1,0 +1,106 @@
+{
+  "audit_boundary": {
+    "model_inference_performed": false,
+    "model_training_performed": false,
+    "test_directory_enumerated": false,
+    "test_performance_evaluated": false,
+    "test_tensors_read": false,
+    "train_tensors_read": false,
+    "validation_tensors_read": false
+  },
+  "b0_original_hold_reasons": [
+    "identifier/serialization probe predicts validation labels"
+  ],
+  "b0_original_status": "HOLD",
+  "classification": null,
+  "confusion_matrices_identical": true,
+  "direct_mode_confusion": {
+    "fn": 0,
+    "fp": 46,
+    "tn": 342,
+    "tp": 296
+  },
+  "failures": [
+    "train attack/control run lengths differ in pairs: ['V5-INITIAL24-D05-S1T14-S13T2-SEED510011', 'V5-INITIAL24-L01-S0T0-SEED510013', 'V5-INITIAL24-S06-S14T2-SEED510006', 'V5-INITIAL24-T01-S1T11-SEED510015']"
+  ],
+  "identifier_confusion": {
+    "fn": 0,
+    "fp": 46,
+    "tn": 342,
+    "tp": 296
+  },
+  "next_stage": "HOLD_REMEDIATE_B0_R1",
+  "provenance": {
+    "a2_contract_sha256": "b8d52a0d84c33de992bedd5dcafd138c048994695fa056c77c05dc0035f76cc6",
+    "a3_report_sha256": "18e1059aeceaf32d51900afa74e3676ff995cb56d26640e2e4f6a9f667d7bd3f",
+    "b0_decision_sha256": "08748c563a9a7fe84a77df3fe3e301e019be10925efee45beaa29beffcbe3169",
+    "b0_lock_sha256": "aa6d5210081470d4b29d1661b0c81fdaf8d02c59c0a9597c902d54050589d4e8",
+    "b0_report_sha256": "98d6cd99e1b5337d7a5812027c97ee449d193000416c9f5d7590d8bd08a2cbc8",
+    "identifier_inventory_sha256": "e6a20cb5d27e002cc9cb126c25fd7e1df9d90280d3c86ef1c73329b888582b15",
+    "script_sha256": "137f7f650510469e2bf07e5423e430a717ddb87a6ff899ea5368c45583d22b78"
+  },
+  "quarantine_contract": {
+    "allowed_model_inputs": [
+      "PRIMARY58 x",
+      "edge_index",
+      "topology-derived raw Boolean physical_port_mask"
+    ],
+    "b0_release_authorized": false,
+    "classification": "LABEL_BEARING_PROVENANCE_IDENTIFIERS_QUARANTINED",
+    "finding": "The B0 HOLD is explained by provenance fields that encode run mode, scenario identity, source routers, victim routers, seed, and attacker count. These fields are not traffic measurements.",
+    "forbidden_learned_inputs": [
+      "mode",
+      "run_id",
+      "case_id",
+      "pair_id",
+      "file name",
+      "file stem",
+      "seed",
+      "dataset index",
+      "run/file serialization order",
+      "run length",
+      "run window count",
+      "window_start",
+      "window_target",
+      "epoch_id",
+      "any parsed or hashed form of these fields"
+    ],
+    "metadata_permitted_only_for": [
+      "split construction and integrity checks",
+      "audit provenance",
+      "grouped reporting after predictions are produced",
+      "failure analysis after predictions are produced"
+    ],
+    "original_b0_hold_preserved": true,
+    "training_and_evaluation_requirements": [
+      "never concatenate metadata to x",
+      "never create embeddings from identifiers",
+      "never parse identifiers into router/count labels",
+      "never select checkpoints or thresholds using test",
+      "keep test untouched until the final locked model"
+    ]
+  },
+  "split_checks": {
+    "train": {
+      "equal_run_length_pair_count": 12,
+      "matched_pair_count": 16,
+      "pair_count": 16,
+      "pair_id_direct_source_victim_count_exact": true,
+      "run_count": 32,
+      "run_id_direct_source_victim_count_exact": true
+    },
+    "validation": {
+      "equal_run_length_pair_count": 4,
+      "matched_pair_count": 4,
+      "pair_count": 4,
+      "pair_id_direct_source_victim_count_exact": true,
+      "run_count": 8,
+      "run_id_direct_source_victim_count_exact": true
+    }
+  },
+  "stage": "V5_P0_B0_R1_IDENTIFIER_QUARANTINE_FREEZE",
+  "status": "HOLD",
+  "train_validation_pair_overlap": [],
+  "train_validation_run_overlap": [],
+  "warnings": []
+}

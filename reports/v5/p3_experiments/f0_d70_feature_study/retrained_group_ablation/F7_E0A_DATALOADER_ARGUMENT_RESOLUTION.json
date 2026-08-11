@@ -1,0 +1,108 @@
+{
+  "DataLoader_runtime_signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+  "rows": [
+    {
+      "batch_size": {
+        "argument_route": "runtime_default",
+        "callable": "torch.utils.data.dataloader.DataLoader",
+        "keyword": "batch_size",
+        "resolved": true,
+        "route": "runtime_signature_default",
+        "signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+        "torch_version": "2.12.1+cu130",
+        "value": 1
+      },
+      "classification": "train",
+      "dataset_expression": "train_dataset",
+      "drop_last": {
+        "argument_route": "runtime_default",
+        "callable": "torch.utils.data.dataloader.DataLoader",
+        "keyword": "drop_last",
+        "resolved": true,
+        "route": "runtime_signature_default",
+        "signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+        "torch_version": "2.12.1+cu130",
+        "value": false
+      },
+      "enclosing_function": "main",
+      "excerpt": "    train_loader = DataLoader(\n        train_dataset,\n        batch_sampler=train_sampler,\n        num_workers=0,\n        pin_memory=pin_memory,\n    )",
+      "line_end": 1369,
+      "line_start": 1364,
+      "num_workers": {
+        "argument_route": "keyword",
+        "expression": "0",
+        "keyword": "num_workers",
+        "resolved": true,
+        "route": "literal",
+        "value": 0
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "shuffle": {
+        "argument_route": "runtime_default",
+        "callable": "torch.utils.data.dataloader.DataLoader",
+        "keyword": "shuffle",
+        "resolved": true,
+        "route": "runtime_signature_default",
+        "signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+        "torch_version": "2.12.1+cu130",
+        "value": null
+      },
+      "source": "DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)"
+    },
+    {
+      "batch_size": {
+        "argument_route": "runtime_default",
+        "callable": "torch.utils.data.dataloader.DataLoader",
+        "keyword": "batch_size",
+        "resolved": true,
+        "route": "runtime_signature_default",
+        "signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+        "torch_version": "2.12.1+cu130",
+        "value": 1
+      },
+      "classification": "validation",
+      "dataset_expression": "validation_dataset",
+      "drop_last": {
+        "argument_route": "runtime_default",
+        "callable": "torch.utils.data.dataloader.DataLoader",
+        "keyword": "drop_last",
+        "resolved": true,
+        "route": "runtime_signature_default",
+        "signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+        "torch_version": "2.12.1+cu130",
+        "value": false
+      },
+      "enclosing_function": "main",
+      "excerpt": "    validation_loader = DataLoader(\n        validation_dataset,\n        batch_sampler=validation_sampler,\n        num_workers=0,\n        pin_memory=pin_memory,\n    )",
+      "line_end": 1375,
+      "line_start": 1370,
+      "num_workers": {
+        "argument_route": "keyword",
+        "expression": "0",
+        "keyword": "num_workers",
+        "resolved": true,
+        "route": "literal",
+        "value": 0
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "shuffle": {
+        "argument_route": "runtime_default",
+        "callable": "torch.utils.data.dataloader.DataLoader",
+        "keyword": "shuffle",
+        "resolved": true,
+        "route": "runtime_signature_default",
+        "signature": "(dataset: 'Dataset[_T_co]', batch_size: 'int | None' = 1, shuffle: 'bool | None' = None, sampler: 'Sampler | Iterable | None' = None, batch_sampler: 'Sampler[list] | Iterable[list] | None' = None, num_workers: 'int' = 0, collate_fn: '_collate_fn_t | None' = None, pin_memory: 'bool' = False, drop_last: 'bool' = False, timeout: 'float' = 0, worker_init_fn: '_worker_init_fn_t | None' = None, multiprocessing_context=None, generator=None, *, prefetch_factor: 'int | None' = None, persistent_workers: 'bool' = False, pin_memory_device: 'str' = '', in_order: 'bool' = True) -> 'None'",
+        "torch_version": "2.12.1+cu130",
+        "value": null
+      },
+      "source": "DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)"
+    }
+  ],
+  "torch_version": "2.12.1+cu130",
+  "train_batch_candidate_values": [
+    1
+  ],
+  "validation_batch_candidate_values": [
+    1
+  ]
+}

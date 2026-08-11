@@ -1,0 +1,106 @@
+{
+  "data_interface": {
+    "dataset": "V5_P2_PAIR_ALIGNED_PRIMARY58",
+    "directed_physical_edges": 48,
+    "learned_feature_set": "PRIMARY58",
+    "metadata_as_model_input": false,
+    "num_nodes": 16,
+    "pair_aligned_attack_control_batches": true,
+    "physical_port_mask_shape": [
+      16,
+      10
+    ],
+    "physical_port_mask_true_count": 128,
+    "second_normalization": false,
+    "splits": [
+      "train",
+      "validation"
+    ],
+    "stride": 8,
+    "test_access": false,
+    "topology": "4x4_2D_MESH",
+    "window": 32
+  },
+  "fairness_requirements": [
+    "same train/validation pair manifests",
+    "same batch construction",
+    "same temporal encoder implementation",
+    "same graph width/layer count across graph operators",
+    "same seeds within each comparison",
+    "same optimizer/scheduler/early stopping",
+    "same checkpoint-selection metric per task",
+    "same threshold-selection policy per task",
+    "no test access"
+  ],
+  "name": "V5_P2_G0_TRAINING_SELECTION_AND_SEED_POLICY",
+  "policy_sha256": "d24465718173fa64940338223fce3ba9292f79479a4486fe7f7f6d22940e7630",
+  "reporting": {
+    "inference_latency_proxy_required": true,
+    "mean_and_standard_deviation_required": true,
+    "operation_count_required": true,
+    "parameter_count_required": true,
+    "peak_memory_estimate_required": true,
+    "per_seed_required": true
+  },
+  "task_selection": {
+    "A_SOURCE_ONLY_LOCALIZATION": {
+      "checkpoint_score": {
+        "derived_graph_average_precision": 0.25,
+        "source_auroc": 0.25,
+        "source_average_precision": 0.5
+      },
+      "loss": "class_weighted_source_bce_with_logits",
+      "post_checkpoint_threshold_objective": {
+        "source_exact_set_attack": 0.4,
+        "source_node_f1": 0.6
+      }
+    },
+    "B_DIRECT_GRAPH_DETECTION": {
+      "checkpoint_score": {
+        "graph_auroc": 0.5,
+        "graph_average_precision": 0.5
+      },
+      "loss": "graph_bce_with_logits",
+      "post_checkpoint_threshold_objective": "maximize validation balanced accuracy"
+    },
+    "C_ROLE_AWARE_MULTILABEL_LOCALIZATION": {
+      "checkpoint_score": {
+        "path_average_precision": 0.2,
+        "source_average_precision": 0.3,
+        "transit_average_precision": 0.25,
+        "victim_average_precision": 0.25
+      },
+      "loss": "weighted source + transit + victim + path BCE losses",
+      "post_checkpoint_threshold_selection": "separate validation-only role thresholds using the same node-F1/exact-set policy for every operator"
+    },
+    "D_FULL_MULTITASK_SYSTEM": {
+      "loss_and_selection": "reuse frozen P2 B1 full multitask protocol",
+      "operator_count": 1
+    }
+  },
+  "training_base": {
+    "amp": false,
+    "checkpoint_selection_split": "validation_only",
+    "early_stopping_patience": 12,
+    "finalist_stability_seeds": [
+      107,
+      117,
+      127,
+      137,
+      147
+    ],
+    "initial_screening_seeds": [
+      107,
+      117,
+      127
+    ],
+    "learning_rate": 0.001,
+    "max_epochs": 100,
+    "minimum_epochs": 15,
+    "optimizer": "AdamW",
+    "scheduler": "ReduceLROnPlateau",
+    "threshold_tuning_during_training": false,
+    "weight_decay": 0.0001
+  },
+  "version": 1
+}

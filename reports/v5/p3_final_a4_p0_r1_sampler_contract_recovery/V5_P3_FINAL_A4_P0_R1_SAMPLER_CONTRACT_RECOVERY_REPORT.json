@@ -1,0 +1,295 @@
+{
+  "all_dataloader_calls": [
+    {
+      "call": "DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+      "end_line": 935,
+      "keywords": {
+        "batch_size": "batch_size",
+        "drop_last": "False",
+        "num_workers": "num_workers",
+        "pin_memory": "pin_memory",
+        "sampler": "sampler"
+      },
+      "line": 928,
+      "source": "0925:     )\n0926:     pin_memory = device.type == \"cuda\"\n0927: \n0928:     train_loader = DataLoader(\n0929:         train_dataset,\n0930:         batch_size=batch_size,\n0931:         sampler=sampler,\n0932:         num_workers=num_workers,\n0933:         pin_memory=pin_memory,\n0934:         drop_last=False,\n0935:     )\n0936:     validation_loader = DataLoader(\n0937:         validation_dataset,\n0938:         batch_size=batch_size,",
+      "targets": [
+        "train_loader"
+      ]
+    },
+    {
+      "call": "DataLoader(validation_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+      "end_line": 943,
+      "keywords": {
+        "batch_size": "batch_size",
+        "drop_last": "False",
+        "num_workers": "num_workers",
+        "pin_memory": "pin_memory",
+        "shuffle": "False"
+      },
+      "line": 936,
+      "source": "0933:         pin_memory=pin_memory,\n0934:         drop_last=False,\n0935:     )\n0936:     validation_loader = DataLoader(\n0937:         validation_dataset,\n0938:         batch_size=batch_size,\n0939:         shuffle=False,\n0940:         num_workers=num_workers,\n0941:         pin_memory=pin_memory,\n0942:         drop_last=False,\n0943:     )\n0944: \n0945:     first_train_sample = train_dataset[0]\n0946:     edge = torch.as_tensor(",
+      "targets": [
+        "validation_loader"
+      ]
+    }
+  ],
+  "dataset_loader_constructed": false,
+  "decoder_imported": false,
+  "imports": {
+    "Any": "typing.Any",
+    "Counter": "collections.Counter",
+    "DataLoader": "torch.utils.data.DataLoader",
+    "F": "torch.nn.functional",
+    "Iterator": "typing.Iterator",
+    "Path": "pathlib.Path",
+    "Sampler": "torch.utils.data.Sampler",
+    "annotations": "__future__.annotations",
+    "argparse": "argparse",
+    "csv": "csv",
+    "datetime": "datetime.datetime",
+    "hashlib": "hashlib",
+    "importlib.util": "importlib.util",
+    "json": "json",
+    "math": "math",
+    "np": "numpy",
+    "os": "os",
+    "random": "random",
+    "sys": "sys",
+    "time": "time",
+    "timezone": "datetime.timezone",
+    "torch": "torch"
+  },
+  "model_constructed": false,
+  "native_test_dataset_constructed": false,
+  "next_stage": "V5_P3_FINAL_A4_R1_FRESH_AB_FULL_TRAINING_SEED107_AFTER_SAMPLER_PIN",
+  "optimizer_constructed": false,
+  "resolved_dependency_graph": {
+    "EpochShuffleSampler": [
+      {
+        "unresolved_name": true
+      }
+    ],
+    "GuardedDataset": [
+      {
+        "assignment": "GuardedDataset = wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset",
+        "dependencies": [
+          "wrapper_mod"
+        ],
+        "end_line": 879,
+        "line": 877,
+        "source": "0874:         \"_v5_p3_a4_dynamic70\",\n0875:     )\n0876: \n0877:     GuardedDataset = (\n0878:         wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset\n0879:     )\n0880:     SealedTestAccessError = (\n0881:         wrapper_mod.SealedTestAccessError\n0882:     )",
+        "value": "wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset"
+      }
+    ],
+    "SEED": [
+      {
+        "assignment": "SEED = 107",
+        "dependencies": [],
+        "end_line": 26,
+        "line": 26,
+        "source": "0023: \n0024: STAGE = \"V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107\"\n0025: CAMPAIGN_LABEL = \"V5-P3-1500-D70 Tranche-A Preliminary Diagnostic\"\n0026: SEED = 107\n0027: EXPECTED_PARAMETER_COUNT = 60_553\n0028: EXPECTED_TRAIN_ITEMS = 110_855\n0029: EXPECTED_VALIDATION_ITEMS = 13_863",
+        "value": "107"
+      }
+    ],
+    "args": [
+      {
+        "assignment": "args = parse_args()",
+        "dependencies": [
+          "parse_args"
+        ],
+        "end_line": 731,
+        "line": 731,
+        "source": "0728: \n0729: \n0730: def main() -> int:\n0731:     args = parse_args()\n0732:     set_seed(SEED)\n0733: \n0734:     repo = Path(args.repo).expanduser().resolve()",
+        "value": "parse_args()"
+      }
+    ],
+    "data_link": [
+      {
+        "assignment": "data_link = Path(args.data_link).expanduser()",
+        "dependencies": [
+          "Path",
+          "args"
+        ],
+        "end_line": 735,
+        "line": 735,
+        "source": "0732:     set_seed(SEED)\n0733: \n0734:     repo = Path(args.repo).expanduser().resolve()\n0735:     data_link = Path(args.data_link).expanduser()\n0736:     data_root = data_link.resolve()\n0737:     output_dir = Path(args.output_dir).expanduser().resolve()\n0738:     installed_script = Path(",
+        "value": "Path(args.data_link).expanduser()"
+      }
+    ],
+    "data_root": [
+      {
+        "assignment": "data_root = data_link.resolve()",
+        "dependencies": [
+          "data_link"
+        ],
+        "end_line": 736,
+        "line": 736,
+        "source": "0733: \n0734:     repo = Path(args.repo).expanduser().resolve()\n0735:     data_link = Path(args.data_link).expanduser()\n0736:     data_root = data_link.resolve()\n0737:     output_dir = Path(args.output_dir).expanduser().resolve()\n0738:     installed_script = Path(\n0739:         args.installed_script",
+        "value": "data_link.resolve()"
+      }
+    ],
+    "import_module": [
+      {
+        "unresolved_name": true
+      }
+    ],
+    "parse_args": [
+      {
+        "unresolved_name": true
+      }
+    ],
+    "repo": [
+      {
+        "assignment": "repo = Path(args.repo).expanduser().resolve()",
+        "dependencies": [
+          "Path",
+          "args"
+        ],
+        "end_line": 734,
+        "line": 734,
+        "source": "0731:     args = parse_args()\n0732:     set_seed(SEED)\n0733: \n0734:     repo = Path(args.repo).expanduser().resolve()\n0735:     data_link = Path(args.data_link).expanduser()\n0736:     data_root = data_link.resolve()\n0737:     output_dir = Path(args.output_dir).expanduser().resolve()",
+        "value": "Path(args.repo).expanduser().resolve()"
+      }
+    ],
+    "sampler": [
+      {
+        "assignment": "sampler = EpochShuffleSampler(len(train_dataset), SEED)",
+        "dependencies": [
+          "EpochShuffleSampler",
+          "SEED",
+          "len",
+          "train_dataset"
+        ],
+        "end_line": 922,
+        "line": 919,
+        "source": "0916:         optimization[\"gradient_clip_norm\"]\n0917:     )\n0918: \n0919:     sampler = EpochShuffleSampler(\n0920:         len(train_dataset),\n0921:         SEED,\n0922:     )\n0923:     device = torch.device(\n0924:         \"cuda\" if torch.cuda.is_available() else \"cpu\"\n0925:     )",
+        "value": "EpochShuffleSampler(len(train_dataset), SEED)"
+      }
+    ],
+    "train_dataset": [
+      {
+        "assignment": "train_dataset = GuardedDataset(data_root, 'train', active_only=False)",
+        "dependencies": [
+          "GuardedDataset",
+          "data_root"
+        ],
+        "end_line": 896,
+        "line": 892,
+        "source": "0889:     if not test_negative_check:\n0890:         raise RuntimeError(\"guard failed to reject A_test\")\n0891: \n0892:     train_dataset = GuardedDataset(\n0893:         data_root,\n0894:         \"train\",\n0895:         active_only=False,\n0896:     )\n0897:     validation_dataset = GuardedDataset(\n0898:         data_root,\n0899:         \"validation\",",
+        "value": "GuardedDataset(data_root, 'train', active_only=False)"
+      }
+    ],
+    "wrapper_mod": [
+      {
+        "assignment": "wrapper_mod = import_module(wrapper_path, '_v5_p3_a4_guarded_loader')",
+        "dependencies": [
+          "import_module",
+          "wrapper_path"
+        ],
+        "end_line": 866,
+        "line": 863,
+        "source": "0860: \n0861:     torch.load = guarded_torch_load\n0862: \n0863:     wrapper_mod = import_module(\n0864:         wrapper_path,\n0865:         \"_v5_p3_a4_guarded_loader\",\n0866:     )\n0867:     b3_mod = import_module(b3_path, \"_v5_p3_a4_b3\")\n0868:     canonical_mod = import_module(\n0869:         canonical_path,",
+        "value": "import_module(wrapper_path, '_v5_p3_a4_guarded_loader')"
+      }
+    ],
+    "wrapper_path": [
+      {
+        "assignment": "wrapper_path = repo / 'src/data/v5_p3_tranche_a_guarded_loader.py'",
+        "dependencies": [
+          "repo"
+        ],
+        "end_line": 770,
+        "line": 768,
+        "source": "0765:         a3_dir\n0766:         / \"V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL.json\"\n0767:     )\n0768:     wrapper_path = (\n0769:         repo / \"src/data/v5_p3_tranche_a_guarded_loader.py\"\n0770:     )\n0771:     b3_path = (\n0772:         repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"\n0773:     )",
+        "value": "repo / 'src/data/v5_p3_tranche_a_guarded_loader.py'"
+      }
+    ]
+  },
+  "sampler_expression": "sampler",
+  "sampler_related_assignments": {
+    "SEED": [
+      {
+        "assignment": "SEED = 107",
+        "line": 26,
+        "source": "0024: STAGE = \"V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107\"\n0025: CAMPAIGN_LABEL = \"V5-P3-1500-D70 Tranche-A Preliminary Diagnostic\"\n0026: SEED = 107\n0027: EXPECTED_PARAMETER_COUNT = 60_553\n0028: EXPECTED_TRAIN_ITEMS = 110_855"
+      }
+    ],
+    "batch_size": [
+      {
+        "assignment": "batch_size = result['x'].shape[0]",
+        "line": 185,
+        "source": "0183:     }\n0184: \n0185:     batch_size = result[\"x\"].shape[0]\n0186:     expected_shapes = {\n0187:         \"x\": (batch_size, 16, 70, 32),"
+      },
+      {
+        "assignment": "batch_size = int(optimization['batch_size'])",
+        "line": 912,
+        "source": "0910: \n0911:     optimization = protocol[\"optimization\"]\n0912:     batch_size = int(optimization[\"batch_size\"])\n0913:     num_workers = int(optimization[\"num_workers\"])\n0914:     maximum_epochs = int(optimization[\"maximum_epochs\"])"
+      },
+      {
+        "assignment": "batch_size = int(moved['x'].shape[0])",
+        "line": 562,
+        "source": "0560:         optimizer.step()\n0561: \n0562:         batch_size = int(moved[\"x\"].shape[0])\n0563:         item_count += batch_size\n0564:         for key, value in losses.items():"
+      },
+      {
+        "assignment": "batch_size = int(moved['x'].shape[0])",
+        "line": 615,
+        "source": "0613:                 role_pos_weights,\n0614:             )\n0615:             batch_size = int(moved[\"x\"].shape[0])\n0616:             item_count += batch_size\n0617:             for key, value in losses.items():"
+      }
+    ],
+    "generator": [
+      {
+        "assignment": "generator = torch.Generator()",
+        "line": 109,
+        "source": "0107: \n0108:     def __iter__(self) -> Iterator[int]:\n0109:         generator = torch.Generator()\n0110:         generator.manual_seed(self.seed + self.epoch)\n0111:         permutation = torch.randperm("
+      }
+    ],
+    "graph_pos_weight": [
+      {
+        "assignment": "graph_pos_weight = torch.tensor(float(loss_protocol['graph_positive_weight']), dtype=torch.float32, device=device)",
+        "line": 982,
+        "source": "0980: \n0981:     loss_protocol = protocol[\"loss\"]\n0982:     graph_pos_weight = torch.tensor(\n0983:         float(loss_protocol[\"graph_positive_weight\"]),\n0984:         dtype=torch.float32,\n0985:         device=device,\n0986:     )\n0987:     role_pos_weights = {\n0988:         role: torch.tensor("
+      }
+    ],
+    "role_pos_weights": [
+      {
+        "assignment": "role_pos_weights = {role: torch.tensor(float(loss_protocol['role_positive_weights'][role]), dtype=torch.float32, device=device) for role in ('source', 'transit', 'victim', 'path')}",
+        "line": 987,
+        "source": "0985:         device=device,\n0986:     )\n0987:     role_pos_weights = {\n0988:         role: torch.tensor(\n0989:             float(\n0990:                 loss_protocol[\"role_positive_weights\"][role]\n0991:             ),\n0992:             dtype=torch.float32,\n0993:             device=device,\n0994:         )\n0995:         for role in (\n0996:             \"source\",\n0997:             \"transit\",\n0998:             \"victim\",\n0999:             \"path\",\n1000:         )\n1001:     }\n1002: \n1003:     optimizer = torch.optim.AdamW("
+      }
+    ],
+    "sampler": [
+      {
+        "assignment": "sampler = EpochShuffleSampler(len(train_dataset), SEED)",
+        "line": 919,
+        "source": "0917:     )\n0918: \n0919:     sampler = EpochShuffleSampler(\n0920:         len(train_dataset),\n0921:         SEED,\n0922:     )\n0923:     device = torch.device(\n0924:         \"cuda\" if torch.cuda.is_available() else \"cpu\""
+      }
+    ]
+  },
+  "sampler_root_names": [
+    "sampler"
+  ],
+  "scope": "read_only_pinned_A4_sampler_route_recovery",
+  "source": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+  "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2",
+  "stage": "V5_P3_FINAL_A4_P0_R1_SAMPLER_CONTRACT_RECOVERY",
+  "status": "PASS",
+  "test_tensor_deserialization": false,
+  "train_loader": {
+    "call": "DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+    "end_line": 935,
+    "keywords": {
+      "batch_size": "batch_size",
+      "drop_last": "False",
+      "num_workers": "num_workers",
+      "pin_memory": "pin_memory",
+      "sampler": "sampler"
+    },
+    "line": 928,
+    "source": "0925:     )\n0926:     pin_memory = device.type == \"cuda\"\n0927: \n0928:     train_loader = DataLoader(\n0929:         train_dataset,\n0930:         batch_size=batch_size,\n0931:         sampler=sampler,\n0932:         num_workers=num_workers,\n0933:         pin_memory=pin_memory,\n0934:         drop_last=False,\n0935:     )\n0936:     validation_loader = DataLoader(\n0937:         validation_dataset,\n0938:         batch_size=batch_size,",
+    "targets": [
+      "train_loader"
+    ]
+  },
+  "training_executed": false,
+  "validation_executed": false
+}

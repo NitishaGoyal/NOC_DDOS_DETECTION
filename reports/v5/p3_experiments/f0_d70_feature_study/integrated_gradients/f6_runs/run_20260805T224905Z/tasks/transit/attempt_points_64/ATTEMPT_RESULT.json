@@ -1,0 +1,529 @@
+{
+  "artifact_hashes": {
+    "channel_csv_sha256": "13de9915d6e75d6072dbe086e9bfc4eeedb1b97a7b52137fae44f9aecd2fe342",
+    "group_csv_sha256": "210b54f65342fbb8f471119603765e354d9b53fbad01e2c68a22680f61158607",
+    "per_sample_aggregates_sha256": "f8af9f6dd2429e67d5a7fae20abd37392177130d2ce859cb9b8b23c743d2ca98",
+    "router_csv_sha256": "3e0b5335999d233b5dc62d891e9b03bfa1e144a7013d82e2c0896a4200280cf3",
+    "time_csv_sha256": "824b2a98af94d5af16b2a4a197b9d07db744634c85c80aa44ae00fc700f207ce"
+  },
+  "artifacts": {
+    "channel_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/transit/attempt_points_64/CHANNEL_ATTRIBUTION.csv",
+    "group_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/transit/attempt_points_64/GROUP_ATTRIBUTION.csv",
+    "per_sample_aggregates": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/transit/attempt_points_64/PER_SAMPLE_AGGREGATES.npz",
+    "router_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/transit/attempt_points_64/ROUTER_ATTRIBUTION.csv",
+    "time_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/transit/attempt_points_64/TIME_ATTRIBUTION.csv"
+  },
+  "completeness": {
+    "gate": {
+      "median_relative_error_max": 0.02,
+      "p95_relative_error_max": 0.05
+    },
+    "maximum_relative_error": 0.7659075856208801,
+    "mean_absolute_error": 0.10579283535480499,
+    "median_relative_error": 0.0067957802675664425,
+    "p95_relative_error": 0.02583138272166252,
+    "pass": true
+  },
+  "group_ranking_by_total_absolute": [
+    {
+      "channel_count": 15,
+      "end_channel_exclusive": 55,
+      "fraction_ci95_lower": 0.34019279835289623,
+      "fraction_ci95_upper": 0.34491092928043765,
+      "group": "buffer_pressure",
+      "mean_absolute_attribution_per_channel": 4.311645984649658,
+      "mean_fraction_of_total_absolute": 0.3425656855106354,
+      "mean_total_absolute_attribution": 64.67472076416016,
+      "per_channel_ci95_lower": 4.207866031565709,
+      "per_channel_ci95_upper": 4.41373162967253,
+      "rank_by_per_channel_absolute": 1,
+      "rank_by_total_absolute": 1,
+      "start_channel": 40,
+      "total_absolute_ci95_lower": 63.13686276169609,
+      "total_absolute_ci95_upper": 66.2773290496669
+    },
+    {
+      "channel_count": 20,
+      "end_channel_exclusive": 30,
+      "fraction_ci95_lower": 0.3124284477081806,
+      "fraction_ci95_upper": 0.31521818210419855,
+      "group": "inter_flit_timing",
+      "mean_absolute_attribution_per_channel": 2.965763807296753,
+      "mean_fraction_of_total_absolute": 0.31383728981018066,
+      "mean_total_absolute_attribution": 59.31525802612305,
+      "per_channel_ci95_lower": 2.8993050608809536,
+      "per_channel_ci95_upper": 3.0342316384582824,
+      "rank_by_per_channel_absolute": 4,
+      "rank_by_total_absolute": 2,
+      "start_channel": 10,
+      "total_absolute_ci95_lower": 57.94746414507554,
+      "total_absolute_ci95_upper": 60.731340208424584
+    },
+    {
+      "channel_count": 10,
+      "end_channel_exclusive": 40,
+      "fraction_ci95_lower": 0.16963449090940866,
+      "fraction_ci95_upper": 0.17258121045540753,
+      "group": "queue_activity",
+      "mean_absolute_attribution_per_channel": 3.289492130279541,
+      "mean_fraction_of_total_absolute": 0.17108727991580963,
+      "mean_total_absolute_attribution": 32.89491271972656,
+      "per_channel_ci95_lower": 3.194753637364309,
+      "per_channel_ci95_upper": 3.3867761558335214,
+      "rank_by_per_channel_absolute": 2,
+      "rank_by_total_absolute": 3,
+      "start_channel": 30,
+      "total_absolute_ci95_lower": 31.988149188857875,
+      "total_absolute_ci95_upper": 33.8901468932765
+    },
+    {
+      "channel_count": 10,
+      "end_channel_exclusive": 10,
+      "fraction_ci95_lower": 0.16914815232754438,
+      "fraction_ci95_upper": 0.1723415808219386,
+      "group": "directional_traffic_volume",
+      "mean_absolute_attribution_per_channel": 3.277630567550659,
+      "mean_fraction_of_total_absolute": 0.17075765132904053,
+      "mean_total_absolute_attribution": 32.77629470825195,
+      "per_channel_ci95_lower": 3.182262173485974,
+      "per_channel_ci95_upper": 3.3707727766146105,
+      "rank_by_per_channel_absolute": 3,
+      "rank_by_total_absolute": 4,
+      "start_channel": 0,
+      "total_absolute_ci95_lower": 31.84336965613289,
+      "total_absolute_ci95_upper": 33.76587041079043
+    },
+    {
+      "channel_count": 15,
+      "end_channel_exclusive": 70,
+      "fraction_ci95_lower": 0.0012734260190380622,
+      "fraction_ci95_upper": 0.0022491808403750715,
+      "group": "flow_control_stalls",
+      "mean_absolute_attribution_per_channel": 0.024787714704871178,
+      "mean_fraction_of_total_absolute": 0.0017518318491056561,
+      "mean_total_absolute_attribution": 0.3718157410621643,
+      "per_channel_ci95_lower": 0.018243531382928346,
+      "per_channel_ci95_upper": 0.032175048125827325,
+      "rank_by_per_channel_absolute": 5,
+      "rank_by_total_absolute": 5,
+      "start_channel": 55,
+      "total_absolute_ci95_lower": 0.2704571601897169,
+      "total_absolute_ci95_upper": 0.4770769651299097
+    }
+  ],
+  "integration_points": 64,
+  "sample_count": 437,
+  "task": "transit",
+  "top_10_time_steps_by_absolute": [
+    {
+      "ci95_lower": 11.248673346700057,
+      "ci95_upper": 11.890472615283468,
+      "mean_absolute_attribution": 11.584818840026855,
+      "rank": 1,
+      "time_index": 31
+    },
+    {
+      "ci95_lower": 10.780158222942385,
+      "ci95_upper": 11.433619087845837,
+      "mean_absolute_attribution": 11.125020027160645,
+      "rank": 2,
+      "time_index": 27
+    },
+    {
+      "ci95_lower": 10.409732615865886,
+      "ci95_upper": 11.181329411159117,
+      "mean_absolute_attribution": 10.774986267089844,
+      "rank": 3,
+      "time_index": 23
+    },
+    {
+      "ci95_lower": 10.350826463901205,
+      "ci95_upper": 11.076386193648084,
+      "mean_absolute_attribution": 10.71243953704834,
+      "rank": 4,
+      "time_index": 15
+    },
+    {
+      "ci95_lower": 9.837738686909118,
+      "ci95_upper": 10.612694115987903,
+      "mean_absolute_attribution": 10.225788116455078,
+      "rank": 5,
+      "time_index": 11
+    },
+    {
+      "ci95_lower": 9.473869714270467,
+      "ci95_upper": 10.01629230003608,
+      "mean_absolute_attribution": 9.746020317077637,
+      "rank": 6,
+      "time_index": 29
+    },
+    {
+      "ci95_lower": 9.075532385536407,
+      "ci95_upper": 9.67016562400066,
+      "mean_absolute_attribution": 9.38553237915039,
+      "rank": 7,
+      "time_index": 21
+    },
+    {
+      "ci95_lower": 8.922018101327208,
+      "ci95_upper": 9.55015470255976,
+      "mean_absolute_attribution": 9.233318328857422,
+      "rank": 8,
+      "time_index": 13
+    },
+    {
+      "ci95_lower": 8.602254567211771,
+      "ci95_upper": 9.209516402799423,
+      "mean_absolute_attribution": 8.9097261428833,
+      "rank": 9,
+      "time_index": 19
+    },
+    {
+      "ci95_lower": 7.362808469742605,
+      "ci95_upper": 7.9317472603044195,
+      "mean_absolute_attribution": 7.651280403137207,
+      "rank": 10,
+      "time_index": 7
+    }
+  ],
+  "top_20_channels_by_absolute": [
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 47,
+      "channel_name": "occupancy_max_east",
+      "fraction_ci95_lower": 0.055065029726078144,
+      "fraction_ci95_upper": 0.05902508444315807,
+      "macro_group": "buffer_pressure",
+      "mean_absolute_attribution": 10.779979705810547,
+      "mean_absolute_ci95_lower": 10.298131033403104,
+      "mean_absolute_ci95_upper": 11.271484180787063,
+      "mean_fraction_of_total_absolute": 0.05698072537779808,
+      "mean_signed_attribution": -0.5111962556838989,
+      "rank_by_mean_absolute": 1
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 46,
+      "channel_name": "occupancy_max_north",
+      "fraction_ci95_lower": 0.056085487383948446,
+      "fraction_ci95_upper": 0.05918978151856779,
+      "macro_group": "buffer_pressure",
+      "mean_absolute_attribution": 10.74690055847168,
+      "mean_absolute_ci95_lower": 10.38374359345818,
+      "mean_absolute_ci95_upper": 11.095405188618862,
+      "mean_fraction_of_total_absolute": 0.05762651562690735,
+      "mean_signed_attribution": -1.7253278493881226,
+      "rank_by_mean_absolute": 2
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 48,
+      "channel_name": "occupancy_max_south",
+      "fraction_ci95_lower": 0.05138766163975017,
+      "fraction_ci95_upper": 0.05426498876876055,
+      "macro_group": "buffer_pressure",
+      "mean_absolute_attribution": 9.893077850341797,
+      "mean_absolute_ci95_lower": 9.574934238004467,
+      "mean_absolute_ci95_upper": 10.230511514777723,
+      "mean_fraction_of_total_absolute": 0.052824411541223526,
+      "mean_signed_attribution": -1.3169245719909668,
+      "rank_by_mean_absolute": 3
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 45,
+      "channel_name": "occupancy_max_local",
+      "fraction_ci95_lower": 0.04701830129409784,
+      "fraction_ci95_upper": 0.04881368310007456,
+      "macro_group": "buffer_pressure",
+      "mean_absolute_attribution": 9.321741104125977,
+      "mean_absolute_ci95_lower": 8.982252432279783,
+      "mean_absolute_ci95_upper": 9.668810355608741,
+      "mean_fraction_of_total_absolute": 0.047929197549819946,
+      "mean_signed_attribution": 0.720294177532196,
+      "rank_by_mean_absolute": 4
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 49,
+      "channel_name": "occupancy_max_west",
+      "fraction_ci95_lower": 0.04698644974727175,
+      "fraction_ci95_upper": 0.05084555114638614,
+      "macro_group": "buffer_pressure",
+      "mean_absolute_attribution": 8.88016128540039,
+      "mean_absolute_ci95_lower": 8.581300779761111,
+      "mean_absolute_ci95_upper": 9.189641450321647,
+      "mean_fraction_of_total_absolute": 0.04896865412592888,
+      "mean_signed_attribution": -0.7050919532775879,
+      "rank_by_mean_absolute": 5
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 0,
+      "channel_name": "in_count_local",
+      "fraction_ci95_lower": 0.029192954014711833,
+      "fraction_ci95_upper": 0.030531676776027326,
+      "macro_group": "directional_traffic_volume",
+      "mean_absolute_attribution": 5.888688564300537,
+      "mean_absolute_ci95_lower": 5.657165672222591,
+      "mean_absolute_ci95_upper": 6.11329027274517,
+      "mean_fraction_of_total_absolute": 0.02984130010008812,
+      "mean_signed_attribution": -0.07767881453037262,
+      "rank_by_mean_absolute": 6
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 25,
+      "channel_name": "out_gap_count_local",
+      "fraction_ci95_lower": 0.029251238285431753,
+      "fraction_ci95_upper": 0.030454491507485765,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 5.847231864929199,
+      "mean_absolute_ci95_lower": 5.6239858647301215,
+      "mean_absolute_ci95_upper": 6.06130670110612,
+      "mean_fraction_of_total_absolute": 0.029859762638807297,
+      "mean_signed_attribution": 1.1910864114761353,
+      "rank_by_mean_absolute": 7
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 5,
+      "channel_name": "out_count_local",
+      "fraction_ci95_lower": 0.025327024730167496,
+      "fraction_ci95_upper": 0.02679410019113727,
+      "macro_group": "directional_traffic_volume",
+      "mean_absolute_attribution": 5.1282548904418945,
+      "mean_absolute_ci95_lower": 4.901510961456076,
+      "mean_absolute_ci95_upper": 5.339878708066193,
+      "mean_fraction_of_total_absolute": 0.026062197983264923,
+      "mean_signed_attribution": 1.0374557971954346,
+      "rank_by_mean_absolute": 8
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 30,
+      "channel_name": "enqueue_count_local",
+      "fraction_ci95_lower": 0.025456741388388472,
+      "fraction_ci95_upper": 0.02630031568022739,
+      "macro_group": "queue_activity",
+      "mean_absolute_attribution": 4.994349479675293,
+      "mean_absolute_ci95_lower": 4.836444484553294,
+      "mean_absolute_ci95_upper": 5.157490913934784,
+      "mean_fraction_of_total_absolute": 0.02588832750916481,
+      "mean_signed_attribution": -0.3674202859401703,
+      "rank_by_mean_absolute": 9
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 15,
+      "channel_name": "in_gap_count_local",
+      "fraction_ci95_lower": 0.023691506097860447,
+      "fraction_ci95_upper": 0.02488012392445759,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 4.812800407409668,
+      "mean_absolute_ci95_lower": 4.620257283696048,
+      "mean_absolute_ci95_upper": 5.01473732488379,
+      "mean_fraction_of_total_absolute": 0.024275779724121094,
+      "mean_signed_attribution": -0.28962355852127075,
+      "rank_by_mean_absolute": 10
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 38,
+      "channel_name": "dequeue_count_south",
+      "fraction_ci95_lower": 0.021782556464986183,
+      "fraction_ci95_upper": 0.02294205551763498,
+      "macro_group": "queue_activity",
+      "mean_absolute_attribution": 4.3541669845581055,
+      "mean_absolute_ci95_lower": 4.184829024973941,
+      "mean_absolute_ci95_upper": 4.533643980406105,
+      "mean_fraction_of_total_absolute": 0.02237560786306858,
+      "mean_signed_attribution": 0.8901215195655823,
+      "rank_by_mean_absolute": 11
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 14,
+      "channel_name": "in_gap_sum_west",
+      "fraction_ci95_lower": 0.022100249937286886,
+      "fraction_ci95_upper": 0.02450071837261822,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 4.190581321716309,
+      "mean_absolute_ci95_lower": 3.989430558378009,
+      "mean_absolute_ci95_upper": 4.366747220453872,
+      "mean_fraction_of_total_absolute": 0.023305131122469902,
+      "mean_signed_attribution": 0.010871672071516514,
+      "rank_by_mean_absolute": 12
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 35,
+      "channel_name": "dequeue_count_local",
+      "fraction_ci95_lower": 0.019975450874926436,
+      "fraction_ci95_upper": 0.02124539574097258,
+      "macro_group": "queue_activity",
+      "mean_absolute_attribution": 4.077717304229736,
+      "mean_absolute_ci95_lower": 3.899323154331208,
+      "mean_absolute_ci95_upper": 4.253403366389482,
+      "mean_fraction_of_total_absolute": 0.020613595843315125,
+      "mean_signed_attribution": -0.026069587096571922,
+      "rank_by_mean_absolute": 13
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 19,
+      "channel_name": "in_gap_count_west",
+      "fraction_ci95_lower": 0.019887728148323295,
+      "fraction_ci95_upper": 0.020955702293588563,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 3.762878894805908,
+      "mean_absolute_ci95_lower": 3.651360752053337,
+      "mean_absolute_ci95_upper": 3.882791964365361,
+      "mean_fraction_of_total_absolute": 0.02040264382958412,
+      "mean_signed_attribution": 1.1160755157470703,
+      "rank_by_mean_absolute": 14
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 41,
+      "channel_name": "occupancy_cycle_sum_north",
+      "fraction_ci95_lower": 0.01883660971127915,
+      "fraction_ci95_upper": 0.0196985025523077,
+      "macro_group": "buffer_pressure",
+      "mean_absolute_attribution": 3.6838183403015137,
+      "mean_absolute_ci95_lower": 3.556234893059567,
+      "mean_absolute_ci95_upper": 3.8045156324346223,
+      "mean_fraction_of_total_absolute": 0.019250186160206795,
+      "mean_signed_attribution": 0.905288577079773,
+      "rank_by_mean_absolute": 15
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 7,
+      "channel_name": "out_count_east",
+      "fraction_ci95_lower": 0.019014683490522096,
+      "fraction_ci95_upper": 0.019956271143553427,
+      "macro_group": "directional_traffic_volume",
+      "mean_absolute_attribution": 3.6580746173858643,
+      "mean_absolute_ci95_lower": 3.546297285584754,
+      "mean_absolute_ci95_upper": 3.768593068833482,
+      "mean_fraction_of_total_absolute": 0.019492581486701965,
+      "mean_signed_attribution": 0.208952397108078,
+      "rank_by_mean_absolute": 16
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 26,
+      "channel_name": "out_gap_count_north",
+      "fraction_ci95_lower": 0.017821811915716815,
+      "fraction_ci95_upper": 0.01892474984416623,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 3.505635976791382,
+      "mean_absolute_ci95_lower": 3.3750296493075806,
+      "mean_absolute_ci95_upper": 3.6452860531599627,
+      "mean_fraction_of_total_absolute": 0.018359605222940445,
+      "mean_signed_attribution": 0.9442207217216492,
+      "rank_by_mean_absolute": 17
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 17,
+      "channel_name": "in_gap_count_east",
+      "fraction_ci95_lower": 0.017674255436840435,
+      "fraction_ci95_upper": 0.018431191013601675,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 3.4768452644348145,
+      "mean_absolute_ci95_lower": 3.361729858570159,
+      "mean_absolute_ci95_upper": 3.59550579776412,
+      "mean_fraction_of_total_absolute": 0.018052175641059875,
+      "mean_signed_attribution": 0.8245141506195068,
+      "rank_by_mean_absolute": 18
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 12,
+      "channel_name": "in_gap_sum_east",
+      "fraction_ci95_lower": 0.01736932035556353,
+      "fraction_ci95_upper": 0.018990143104371117,
+      "macro_group": "inter_flit_timing",
+      "mean_absolute_attribution": 3.4459004402160645,
+      "mean_absolute_ci95_lower": 3.258229864727987,
+      "mean_absolute_ci95_upper": 3.6424674618060036,
+      "mean_fraction_of_total_absolute": 0.018120985478162766,
+      "mean_signed_attribution": -0.0612429641187191,
+      "rank_by_mean_absolute": 19
+    },
+    {
+      "F2R_constant_zero": false,
+      "channel_index": 32,
+      "channel_name": "enqueue_count_east",
+      "fraction_ci95_lower": 0.01739324874261147,
+      "fraction_ci95_upper": 0.018125110249156536,
+      "macro_group": "queue_activity",
+      "mean_absolute_attribution": 3.3821308612823486,
+      "mean_absolute_ci95_lower": 3.277195406706846,
+      "mean_absolute_ci95_upper": 3.4895796492116133,
+      "mean_fraction_of_total_absolute": 0.017750335857272148,
+      "mean_signed_attribution": 0.9336562752723694,
+      "rank_by_mean_absolute": 20
+    }
+  ],
+  "top_8_routers_by_absolute": [
+    {
+      "ci95_lower": 15.593879897674244,
+      "ci95_upper": 18.514761294421124,
+      "mean_absolute_attribution": 17.061105728149414,
+      "rank": 1,
+      "router_index": 5
+    },
+    {
+      "ci95_lower": 14.412788960296721,
+      "ci95_upper": 17.95725490008257,
+      "mean_absolute_attribution": 16.113649368286133,
+      "rank": 2,
+      "router_index": 8
+    },
+    {
+      "ci95_lower": 14.579461628485053,
+      "ci95_upper": 16.7203864285684,
+      "mean_absolute_attribution": 15.662951469421387,
+      "rank": 3,
+      "router_index": 6
+    },
+    {
+      "ci95_lower": 13.9502142136648,
+      "ci95_upper": 16.04299153566906,
+      "mean_absolute_attribution": 14.970756530761719,
+      "rank": 4,
+      "router_index": 10
+    },
+    {
+      "ci95_lower": 13.74960086145854,
+      "ci95_upper": 15.690288228393284,
+      "mean_absolute_attribution": 14.762886047363281,
+      "rank": 5,
+      "router_index": 9
+    },
+    {
+      "ci95_lower": 12.766320597259348,
+      "ci95_upper": 15.052688746423689,
+      "mean_absolute_attribution": 13.83608627319336,
+      "rank": 6,
+      "router_index": 4
+    },
+    {
+      "ci95_lower": 12.72713617871023,
+      "ci95_upper": 14.784886154215314,
+      "mean_absolute_attribution": 13.780644416809082,
+      "rank": 7,
+      "router_index": 11
+    },
+    {
+      "ci95_lower": 11.231256678267393,
+      "ci95_upper": 13.336358873965537,
+      "mean_absolute_attribution": 12.251947402954102,
+      "rank": 8,
+      "router_index": 7
+    }
+  ]
+}

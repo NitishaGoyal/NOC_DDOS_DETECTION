@@ -1,0 +1,774 @@
+{
+  "b3_interface": {
+    "class": "P2B3Conv1DOnlyCount4",
+    "constructor_signature": "self",
+    "forward_signature": "self, x: torch.Tensor, physical_port_mask: torch.Tensor",
+    "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py"
+  },
+  "created_utc": "2026-07-27T22:50:02.851634+00:00",
+  "evidence_hashes": {
+    "E1_P1_json_sha256": "12a915ff680d534a89d31826f1fb6b8a2f2c19f7a5b5103d7faf35507194819a",
+    "E1_P1_marker_sha256": "9b853513c200b359941d947db81e1b097324812036e870b45a464551e706a8f6"
+  },
+  "exporter_ready": false,
+  "loader_interface": {
+    "class": "V5P2PairAlignedPrimary58Dataset",
+    "constructor_signature": "self, root: str | Path, split: str, pair_manifest: str | Path, *, window: int=WINDOW, stride: int=STRIDE",
+    "getitem_return_keys": [
+      "physical_port_mask",
+      "role_mask",
+      "x",
+      "y_attack",
+      "y_attack_path",
+      "y_attacker_count",
+      "y_source",
+      "y_transit",
+      "y_victim"
+    ],
+    "getitem_signature": "self, index: int",
+    "metadata_keys_available": [],
+    "missing_required_label_keys": [
+      "y_graph",
+      "y_path"
+    ],
+    "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py"
+  },
+  "model_interface": {
+    "class": "P2TaskDGraphConvCount4",
+    "constructor_signature": "self, reference_b3: nn.Module, base_edge_index: torch.Tensor",
+    "forward_return_keys": [
+      "attack_logits",
+      "count_logits",
+      "path_logits",
+      "source_logits",
+      "transit_logits",
+      "victim_logits"
+    ],
+    "forward_signature": "self, x: torch.Tensor, physical_port_mask: torch.Tensor",
+    "missing_required_output_keys": [],
+    "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_task_d_full_multitask_count4.py"
+  },
+  "resolved_classes": {
+    "b3_model": {
+      "bases": [
+        "nn.Module"
+      ],
+      "class_name": "P2B3Conv1DOnlyCount4",
+      "line": 59,
+      "methods": {
+        "__init__": {
+          "line": 86,
+          "return_dict_keys": [],
+          "self_assignments": {
+            "attack_head": "nn.Linear(64, 1)",
+            "count_head": "nn.Linear(64, 4)",
+            "graph_projection": "nn.Sequential(nn.Linear(128, 64), nn.ReLU())",
+            "input_projection": "nn.Conv1d(58, 64, kernel_size=1, bias=True)",
+            "node_projection": "nn.Linear(64 + 10, 64)",
+            "path_head": "nn.Sequential(nn.Linear(64, 32), nn.ReLU(), nn.Linear(32, 1))",
+            "source_head": "nn.Sequential(nn.Linear(64, 32), nn.ReLU(), nn.Linear(32, 1))",
+            "temporal_blocks": "nn.ModuleList([CausalDepthwiseSeparableResidualBlock(channels=64, kernel_size=3, dilation=dilation) for dilation in (1, 2, 4, 8)])",
+            "transit_head": "nn.Sequential(nn.Linear(64, 32), nn.ReLU(), nn.Linear(32, 1))",
+            "victim_head": "nn.Sequential(nn.Linear(64, 32), nn.ReLU(), nn.Linear(32, 1))"
+          },
+          "signature": "self",
+          "source": "def __init__(self) -> None:\n        super().__init__()\n\n        self.input_projection = nn.Conv1d(\n            58,\n            64,\n            kernel_size=1,\n            bias=True,\n        )\n\n        self.temporal_blocks = nn.ModuleList(\n            [\n                CausalDepthwiseSeparableResidualBlock(\n                    channels=64,\n                    kernel_size=3,\n                    dilation=dilation,\n                )\n                for dilation in (1, 2, 4, 8)\n            ]\n        )\n\n        self.node_projection = nn.Linear(64 + 10, 64)\n\n        self.source_head = nn.Sequential(\n            nn.Linear(64, 32),\n            nn.ReLU(),\n            nn.Linear(32, 1),\n        )\n        self.transit_head = nn.Sequential(\n            nn.Linear(64, 32),\n            nn.ReLU(),\n            nn.Linear(32, 1),\n        )\n        self.victim_head = nn.Sequential(\n            nn.Linear(64, 32),\n            nn.ReLU(),\n            nn.Linear(32, 1),\n        )\n        self.path_head = nn.Sequential(\n            nn.Linear(64, 32),\n            nn.ReLU(),\n            nn.Linear(32, 1),\n        )\n\n        self.graph_projection = nn.Sequential(\n            nn.Linear(128, 64),\n            nn.ReLU(),\n        )\n        self.attack_head = nn.Linear(64, 1)\n        self.count_head = nn.Linear(64, 4)\n\n        parameter_count = sum(\n            parameter.numel()\n            for parameter in self.parameters()\n        )\n        if parameter_count != self.expected_parameter_count:\n            raise RuntimeError(\n                f\"P2 B3 parameter count={parameter_count}, \"\n                f\"expected {self.expected_parameter_count}\"\n            )",
+          "subscript_string_keys": []
+        },
+        "forward": {
+          "line": 147,
+          "return_dict_keys": [
+            "attack_logits",
+            "count_logits",
+            "path_logits",
+            "source_logits",
+            "transit_logits",
+            "victim_logits"
+          ],
+          "self_assignments": {},
+          "signature": "self, x: torch.Tensor, physical_port_mask: torch.Tensor",
+          "source": "def forward(\n        self,\n        x: torch.Tensor,\n        physical_port_mask: torch.Tensor,\n    ) -> dict[str, torch.Tensor]:\n        if (\n            x.ndim != 4\n            or tuple(x.shape[1:]) != (16, 58, 32)\n        ):\n            raise ValueError(\n                f\"x shape={tuple(x.shape)}, \"\n                \"expected [B,16,58,32]\"\n            )\n        if (\n            physical_port_mask.ndim != 3\n            or tuple(\n                physical_port_mask.shape[1:]\n            ) != (16, 10)\n            or physical_port_mask.shape[0] != x.shape[0]\n        ):\n            raise ValueError(\n                \"physical_port_mask must have shape \"\n                \"[B,16,10]\"\n            )\n\n        batch_size, num_nodes, num_features, time_steps = (\n            x.shape\n        )\n\n        y = x.reshape(\n            batch_size * num_nodes,\n            num_features,\n            time_steps,\n        )\n        y = F.relu(self.input_projection(y))\n        for block in self.temporal_blocks:\n            y = block(y)\n\n        temporal_embedding = y[:, :, -1].reshape(\n            batch_size,\n            num_nodes,\n            64,\n        )\n\n        node_input = torch.cat(\n            (\n                temporal_embedding,\n                physical_port_mask.to(\n                    dtype=temporal_embedding.dtype\n                ),\n            ),\n            dim=-1,\n        )\n        node_embedding = F.relu(\n            self.node_projection(node_input)\n        )\n\n        source_logits = self.source_head(\n            node_embedding\n        ).squeeze(-1)\n        transit_logits = self.transit_head(\n            node_embedding\n        ).squeeze(-1)\n        victim_logits = self.victim_head(\n            node_embedding\n        ).squeeze(-1)\n        path_logits = self.path_head(\n            node_embedding\n        ).squeeze(-1)\n\n        pooled = torch.cat(\n            (\n                node_embedding.mean(dim=1),\n                node_embedding.amax(dim=1),\n            ),\n            dim=-1,\n        )\n        graph_embedding = self.graph_projection(pooled)\n\n        return {\n            \"attack_logits\": self.attack_head(\n                graph_embedding\n            ).squeeze(-1),\n            \"count_logits\": self.count_head(\n                graph_embedding\n            ),\n            \"source_logits\": source_logits,\n            \"transit_logits\": transit_logits,\n            \"victim_logits\": victim_logits,\n            \"path_logits\": path_logits,\n        }",
+          "subscript_string_keys": []
+        }
+      },
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py",
+      "role": "b3_model",
+      "sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def"
+    },
+    "loader": {
+      "bases": [
+        "Dataset"
+      ],
+      "class_name": "V5P2PairAlignedPrimary58Dataset",
+      "line": 137,
+      "methods": {
+        "__getitem__": {
+          "line": 335,
+          "return_dict_keys": [
+            "physical_port_mask",
+            "role_mask",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "self_assignments": {},
+          "signature": "self, index: int",
+          "source": "def __getitem__(self, index: int) -> dict[str, torch.Tensor]:\n        entry = self._index[index]\n        run = self._load_run(entry.file_path)\n\n        x_stored = run.get(\"x\")\n        if (\n            not isinstance(x_stored, torch.Tensor)\n            or x_stored.dtype != torch.float32\n            or x_stored.ndim != 3\n            or tuple(x_stored.shape[1:]) != (16, 81)\n        ):\n            raise ValueError(\n                f\"invalid stored x tensor in {entry.file_path}\"\n            )\n        if x_stored.shape[0] < entry.common_length:\n            raise ValueError(\n                f\"{entry.file_path} length={x_stored.shape[0]} \"\n                f\"is below common length={entry.common_length}\"\n            )\n\n        stop = entry.start + self.window\n        x = (\n            x_stored[\n                entry.start:stop,\n                :,\n                PRIMARY58_INDICES,\n            ]\n            .permute(1, 2, 0)\n            .contiguous()\n        )\n\n        if tuple(x.shape) != (16, 58, 32):\n            raise RuntimeError(\n                f\"constructed x shape={tuple(x.shape)}, \"\n                \"expected [16,58,32]\"\n            )\n\n        item = {\n            \"x\": x,\n            \"physical_port_mask\": (\n                self.physical_port_mask.clone()\n            ),\n            \"y_attack\": run[\"y_attack\"][entry.target].clone(),\n            \"y_attacker_count\": (\n                run[\"y_attacker_count\"][entry.target].clone()\n            ),\n            \"y_source\": run[\"y_source\"][entry.target].clone(),\n            \"y_transit\": run[\"y_transit\"][entry.target].clone(),\n            \"y_victim\": run[\"y_victim\"][entry.target].clone(),\n            \"y_attack_path\": (\n                run[\"y_attack_path\"][entry.target].clone()\n            ),\n            \"role_mask\": run[\"role_mask\"][entry.target].clone(),\n        }\n\n        if set(item) != MODEL_ITEM_KEYS:\n            raise RuntimeError(\"loader item-key contract changed\")\n        return item",
+          "subscript_string_keys": [
+            "role_mask",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ]
+        },
+        "__init__": {
+          "line": 151,
+          "return_dict_keys": [],
+          "self_assignments": {
+            "_index": "[]",
+            "_pair_count": "0",
+            "pair_manifest": "Path(pair_manifest).expanduser().resolve()",
+            "physical_port_mask": "derive_corrected_physical_port_mask(topology)",
+            "root": "Path(root).expanduser().resolve()",
+            "split": "str(split)",
+            "stride": "int(stride)",
+            "window": "int(window)"
+          },
+          "signature": "self, root: str | Path, split: str, pair_manifest: str | Path, *, window: int=WINDOW, stride: int=STRIDE",
+          "source": "def __init__(\n        self,\n        root: str | Path,\n        split: str,\n        pair_manifest: str | Path,\n        *,\n        window: int = WINDOW,\n        stride: int = STRIDE,\n    ) -> None:\n        self.root = Path(root).expanduser().resolve()\n        self.split = str(split)\n        self.pair_manifest = Path(pair_manifest).expanduser().resolve()\n        self.window = int(window)\n        self.stride = int(stride)\n\n        if self.split not in AUTHORIZED_SPLITS:\n            raise ValueError(\n                \"This audited loader authorizes only train and validation. \"\n                \"The P2 test split remains locked.\"\n            )\n        if self.window != WINDOW:\n            raise ValueError(\n                f\"window must remain frozen at {WINDOW}, got {self.window}\"\n            )\n        if self.stride != STRIDE:\n            raise ValueError(\n                f\"stride must remain frozen at {STRIDE}, got {self.stride}\"\n            )\n        if not self.root.is_dir():\n            raise FileNotFoundError(f\"dataset root missing: {self.root}\")\n        if not self.pair_manifest.is_file():\n            raise FileNotFoundError(\n                f\"pair manifest missing: {self.pair_manifest}\"\n            )\n\n        split_dir = self.root / \"runs\" / self.split\n        if not split_dir.is_dir():\n            raise FileNotFoundError(\n                f\"authorized split directory missing: {split_dir}\"\n            )\n\n        topology = torch.load(\n            self.root / \"topology.pt\",\n            map_location=\"cpu\",\n            weights_only=False,\n        )\n        if not isinstance(topology, dict):\n            raise TypeError(\"topology.pt payload must be a dictionary\")\n        self.physical_port_mask = (\n            derive_corrected_physical_port_mask(topology)\n        )\n\n        self._index: list[IndexEntry] = []\n        self._pair_count = 0\n\n        with self.pair_manifest.open(\n            \"r\",\n            encoding=\"utf-8\",\n            newline=\"\",\n        ) as handle:\n            rows = list(csv.DictReader(handle))\n\n        seen_pairs: set[str] = set()\n        for row in rows:\n            if row.get(\"split\") != self.split:\n                continue\n\n            pair_key = row.get(\"pair_key\", \"\")\n            if not pair_key:\n                raise ValueError(\"pair manifest row has empty pair_key\")\n            if pair_key in seen_pairs:\n                raise ValueError(\n                    f\"duplicate pair manifest row: \"\n                    f\"{self.split}/{pair_key}\"\n                )\n            seen_pairs.add(pair_key)\n            self._pair_count += 1\n\n            common_length = _as_int(row, \"common_length\")\n            window_count = _as_int(\n                row,\n                \"window_count_per_member\",\n            )\n            manifest_window = _as_int(row, \"window\")\n            manifest_stride = _as_int(row, \"stride\")\n\n            if manifest_window != self.window:\n                raise ValueError(\n                    f\"{self.split}/{pair_key}: manifest window=\"\n                    f\"{manifest_window}, expected {self.window}\"\n                )\n            if manifest_stride != self.stride:\n                raise ValueError(\n                    f\"{self.split}/{pair_key}: manifest stride=\"\n                    f\"{manifest_stride}, expected {self.stride}\"\n                )\n\n            expected_window_count = (\n                0\n                if common_length < self.window\n                else 1\n                + (common_length - self.window) // self.stride\n            )\n            if window_count != expected_window_count:\n                raise ValueError(\n                    f\"{self.split}/{pair_key}: manifest window count=\"\n                    f\"{window_count}, expected {expected_window_count}\"\n                )\n\n            attack_path = split_dir / f\"{pair_key}_ATTACK.pt\"\n            control_path = split_dir / f\"{pair_key}_CONTROL.pt\"\n            if not attack_path.is_file():\n                raise FileNotFoundError(\n                    f\"missing ATTACK tensor: {attack_path}\"\n                )\n            if not control_path.is_file():\n                raise FileNotFoundError(\n                    f\"missing CONTROL tensor: {control_path}\"\n                )\n\n            for window_index in range(window_count):\n                start = window_index * self.stride\n                target = start + self.window - 1\n\n                if target >= common_length:\n                    raise ValueError(\n                        f\"{self.split}/{pair_key}: target {target} \"\n                        f\"outside common length {common_length}\"\n                    )\n\n                # Pair-major, start-major, ATTACK then CONTROL.\n                self._index.append(\n                    IndexEntry(\n                        file_path=attack_path,\n                        pair_key=pair_key,\n                        mode=\"attack\",\n                        start=start,\n                        target=target,\n                        common_length=common_length,\n                    )\n                )\n                self._index.append(\n                    IndexEntry(\n                        file_path=control_path,\n                        pair_key=pair_key,\n                        mode=\"control\",\n                        start=start,\n                        target=target,\n                        common_length=common_length,\n                    )\n                )\n\n        if self._pair_count == 0:\n            raise ValueError(\n                f\"pair manifest contains no rows for split {self.split!r}\"\n            )\n        if not self._index:\n            raise ValueError(\n                f\"no aligned windows produced for split {self.split!r}\"\n            )\n        if len(self._index) % 2 != 0:\n            raise RuntimeError(\n                \"pair-aligned dataset length must be even\"\n            )",
+          "subscript_string_keys": []
+        },
+        "__len__": {
+          "line": 328,
+          "return_dict_keys": [],
+          "self_assignments": {},
+          "signature": "self",
+          "source": "def __len__(self) -> int:\n        return len(self._index)",
+          "subscript_string_keys": []
+        },
+        "_load_run": {
+          "line": 318,
+          "return_dict_keys": [],
+          "self_assignments": {},
+          "signature": "path: Path",
+          "source": "def _load_run(path: Path) -> dict[str, Any]:\n        payload = torch.load(\n            path,\n            map_location=\"cpu\",\n            weights_only=False,\n        )\n        if not isinstance(payload, dict):\n            raise TypeError(f\"run payload is not a dictionary: {path}\")\n        return payload",
+          "subscript_string_keys": []
+        },
+        "pair_count": {
+          "line": 332,
+          "return_dict_keys": [],
+          "self_assignments": {},
+          "signature": "self",
+          "source": "def pair_count(self) -> int:\n        return self._pair_count",
+          "subscript_string_keys": []
+        }
+      },
+      "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+      "role": "loader",
+      "sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+    },
+    "sampler": {
+      "bases": [
+        "Sampler[list[int]]"
+      ],
+      "class_name": "PairBlockBatchSampler",
+      "line": 316,
+      "methods": {
+        "__init__": {
+          "line": 326,
+          "return_dict_keys": [],
+          "self_assignments": {
+            "block_batch_size": "int(block_batch_size)",
+            "block_count": "sum((len(value) for value in groups.values()))",
+            "dataset": "dataset",
+            "epoch": "0",
+            "groups": "groups",
+            "seed": "int(seed)",
+            "shuffle": "bool(shuffle)"
+          },
+          "signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int",
+          "source": "def __init__(\n        self,\n        dataset,\n        *,\n        block_batch_size: int,\n        shuffle: bool,\n        seed: int,\n    ) -> None:\n        self.dataset = dataset\n        self.block_batch_size = int(block_batch_size)\n        self.shuffle = bool(shuffle)\n        self.seed = int(seed)\n        self.epoch = 0\n\n        if self.block_batch_size <= 0:\n            raise ValueError(\"block_batch_size must be positive\")\n        if len(dataset) % 2 != 0:\n            raise ValueError(\"dataset item count must be even\")\n\n        groups: OrderedDict[str, list[int]] = OrderedDict()\n        for base in range(0, len(dataset._index), 2):\n            attack = dataset._index[base]\n            control = dataset._index[base + 1]\n\n            if (\n                attack.mode != \"attack\"\n                or control.mode != \"control\"\n                or attack.pair_key != control.pair_key\n                or attack.start != control.start\n                or attack.target != control.target\n            ):\n                raise ValueError(\n                    f\"pair-block contract failed at base {base}\"\n                )\n\n            groups.setdefault(\n                attack.pair_key,\n                [],\n            ).append(base)\n\n        self.groups = groups\n        self.block_count = sum(\n            len(value)\n            for value in groups.values()\n        )\n\n        if self.block_count * 2 != len(dataset):\n            raise RuntimeError(\"pair-block count does not cover dataset\")",
+          "subscript_string_keys": []
+        },
+        "__iter__": {
+          "line": 383,
+          "return_dict_keys": [],
+          "self_assignments": {},
+          "signature": "self",
+          "source": "def __iter__(self) -> Iterator[list[int]]:\n        rng = random.Random(\n            self.seed + self.epoch * 1_000_003\n        )\n\n        pair_keys = list(self.groups)\n        if self.shuffle:\n            rng.shuffle(pair_keys)\n\n        ordered_blocks: list[int] = []\n        for pair_key in pair_keys:\n            blocks = list(self.groups[pair_key])\n            if self.shuffle:\n                rng.shuffle(blocks)\n            ordered_blocks.extend(blocks)\n\n        for start in range(\n            0,\n            len(ordered_blocks),\n            self.block_batch_size,\n        ):\n            selected_blocks = ordered_blocks[\n                start:start + self.block_batch_size\n            ]\n            item_indices: list[int] = []\n            for base in selected_blocks:\n                item_indices.extend((base, base + 1))\n            yield item_indices",
+          "subscript_string_keys": []
+        },
+        "__len__": {
+          "line": 378,
+          "return_dict_keys": [],
+          "self_assignments": {},
+          "signature": "self",
+          "source": "def __len__(self) -> int:\n        return math.ceil(\n            self.block_count / self.block_batch_size\n        )",
+          "subscript_string_keys": []
+        },
+        "set_epoch": {
+          "line": 375,
+          "return_dict_keys": [],
+          "self_assignments": {
+            "epoch": "int(epoch)"
+          },
+          "signature": "self, epoch: int",
+          "source": "def set_epoch(self, epoch: int) -> None:\n        self.epoch = int(epoch)",
+          "subscript_string_keys": []
+        }
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "role": "sampler",
+      "sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+    },
+    "task_d_model": {
+      "bases": [
+        "nn.Module"
+      ],
+      "class_name": "P2TaskDGraphConvCount4",
+      "line": 41,
+      "methods": {
+        "__init__": {
+          "line": 54,
+          "return_dict_keys": [],
+          "self_assignments": {
+            "activation": "nn.ReLU()",
+            "attack_head": "copy.deepcopy(reference_b3.attack_head)",
+            "count_head": "copy.deepcopy(reference_b3.count_head)",
+            "graph1": "GraphConv(64, 64, aggr='add', bias=True)",
+            "graph2": "GraphConv(64, 64, aggr='add', bias=True)",
+            "graph_projection": "copy.deepcopy(reference_b3.graph_projection)",
+            "input_projection": "copy.deepcopy(reference_b3.input_projection)",
+            "node_projection": "copy.deepcopy(reference_b3.node_projection)",
+            "path_head": "copy.deepcopy(reference_b3.path_head)",
+            "source_head": "copy.deepcopy(reference_b3.source_head)",
+            "temporal_blocks": "copy.deepcopy(reference_b3.temporal_blocks)",
+            "transit_head": "copy.deepcopy(reference_b3.transit_head)",
+            "victim_head": "copy.deepcopy(reference_b3.victim_head)"
+          },
+          "signature": "self, reference_b3: nn.Module, base_edge_index: torch.Tensor",
+          "source": "def __init__(self, reference_b3: nn.Module, base_edge_index: torch.Tensor) -> None:\n        super().__init__()\n        if GraphConv is None:\n            raise RuntimeError(f\"torch_geometric GraphConv unavailable: {_PYG_IMPORT_ERROR}\")\n\n        # Exact common B3 components.\n        self.input_projection = copy.deepcopy(reference_b3.input_projection)\n        self.temporal_blocks = copy.deepcopy(reference_b3.temporal_blocks)\n        self.node_projection = copy.deepcopy(reference_b3.node_projection)\n        self.source_head = copy.deepcopy(reference_b3.source_head)\n        self.transit_head = copy.deepcopy(reference_b3.transit_head)\n        self.victim_head = copy.deepcopy(reference_b3.victim_head)\n        self.path_head = copy.deepcopy(reference_b3.path_head)\n        self.graph_projection = copy.deepcopy(reference_b3.graph_projection)\n        self.attack_head = copy.deepcopy(reference_b3.attack_head)\n        self.count_head = copy.deepcopy(reference_b3.count_head)\n\n        self.register_buffer(\n            \"base_edge_index\",\n            base_edge_index.detach().cpu().long().contiguous(),\n        )\n        self.graph1 = GraphConv(64, 64, aggr=\"add\", bias=True)\n        self.graph2 = GraphConv(64, 64, aggr=\"add\", bias=True)\n        self.activation = nn.ReLU()\n\n        parameter_count = sum(parameter.numel() for parameter in self.parameters())\n        if parameter_count != self.expected_parameter_count:\n            raise RuntimeError(\n                f\"Task-D GraphConv parameter count={parameter_count}, \"\n                f\"expected {self.expected_parameter_count}\"\n            )",
+          "subscript_string_keys": []
+        },
+        "encode_pre_graph": {
+          "line": 86,
+          "return_dict_keys": [],
+          "self_assignments": {},
+          "signature": "self, x: torch.Tensor, physical_port_mask: torch.Tensor",
+          "source": "def encode_pre_graph(\n        self,\n        x: torch.Tensor,\n        physical_port_mask: torch.Tensor,\n    ) -> torch.Tensor:\n        if x.ndim != 4 or tuple(x.shape[1:]) != (16, 58, 32):\n            raise ValueError(f\"x shape={tuple(x.shape)}, expected [B,16,58,32]\")\n        if (\n            physical_port_mask.ndim != 3\n            or tuple(physical_port_mask.shape[1:]) != (16, 10)\n            or physical_port_mask.shape[0] != x.shape[0]\n        ):\n            raise ValueError(\"physical_port_mask must have shape [B,16,10]\")\n\n        batch_size, num_nodes, num_features, time_steps = x.shape\n        y = x.reshape(batch_size * num_nodes, num_features, time_steps)\n        y = F.relu(self.input_projection(y))\n        for block in self.temporal_blocks:\n            y = block(y)\n        temporal_embedding = y[:, :, -1].reshape(batch_size, num_nodes, 64)\n        node_input = torch.cat(\n            (\n                temporal_embedding,\n                physical_port_mask.to(dtype=temporal_embedding.dtype),\n            ),\n            dim=-1,\n        )\n        return F.relu(self.node_projection(node_input))",
+          "subscript_string_keys": []
+        },
+        "forward": {
+          "line": 115,
+          "return_dict_keys": [
+            "attack_logits",
+            "count_logits",
+            "path_logits",
+            "source_logits",
+            "transit_logits",
+            "victim_logits"
+          ],
+          "self_assignments": {},
+          "signature": "self, x: torch.Tensor, physical_port_mask: torch.Tensor",
+          "source": "def forward(\n        self,\n        x: torch.Tensor,\n        physical_port_mask: torch.Tensor,\n    ) -> dict[str, torch.Tensor]:\n        node_embedding = self.encode_pre_graph(x, physical_port_mask)\n        batch_size, num_nodes, embedding_dim = node_embedding.shape\n        flat = node_embedding.reshape(batch_size * num_nodes, embedding_dim)\n        edges = batched_edge_index(\n            self.base_edge_index,\n            batch_size,\n            num_nodes,\n            flat.device,\n        )\n        flat = self.activation(self.graph1(flat, edges))\n        flat = self.activation(self.graph2(flat, edges))\n        node_embedding = flat.reshape(batch_size, num_nodes, embedding_dim)\n\n        source_logits = self.source_head(node_embedding).squeeze(-1)\n        transit_logits = self.transit_head(node_embedding).squeeze(-1)\n        victim_logits = self.victim_head(node_embedding).squeeze(-1)\n        path_logits = self.path_head(node_embedding).squeeze(-1)\n\n        pooled = torch.cat(\n            (node_embedding.mean(dim=1), node_embedding.amax(dim=1)),\n            dim=-1,\n        )\n        graph_embedding = self.graph_projection(pooled)\n        outputs = {\n            \"attack_logits\": self.attack_head(graph_embedding).squeeze(-1),\n            \"count_logits\": self.count_head(graph_embedding),\n            \"source_logits\": source_logits,\n            \"transit_logits\": transit_logits,\n            \"victim_logits\": victim_logits,\n            \"path_logits\": path_logits,\n        }\n        expected = {\n            \"attack_logits\": (batch_size,),\n            \"count_logits\": (batch_size, 4),\n            \"source_logits\": (batch_size, 16),\n            \"transit_logits\": (batch_size, 16),\n            \"victim_logits\": (batch_size, 16),\n            \"path_logits\": (batch_size, 16),\n        }\n        for key, shape in expected.items():\n            if tuple(outputs[key].shape) != shape:\n                raise RuntimeError(f\"{key} shape={tuple(outputs[key].shape)}, expected {shape}\")\n        return outputs",
+          "subscript_string_keys": []
+        }
+      },
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_task_d_full_multitask_count4.py",
+      "role": "task_d_model",
+      "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+    }
+  },
+  "sampler_interface": {
+    "class": "PairBlockBatchSampler",
+    "constructor_signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int",
+    "iter_signature": "self",
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+  },
+  "security_boundary": {
+    "checkpoint_tensors_loaded": false,
+    "source_files_read": true,
+    "task_d_report_json_metadata_read": true,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false,
+    "validation_predictions_exported": false,
+    "validation_tensor_files_opened": false,
+    "validation_tensors_deserialized": false
+  },
+  "selected_checkpoint": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/selected_graphconv_checkpoint.pt",
+    "selected_epoch": 25,
+    "selected_seed": 107,
+    "sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+    "state_dict_container_key": "model_state_dict",
+    "state_dict_entry_count": 49,
+    "state_dict_prefix_counts": {
+      "attack_head": 2,
+      "base_edge_index": 1,
+      "count_head": 2,
+      "graph1": 3,
+      "graph2": 3,
+      "graph_projection": 2,
+      "input_projection": 2,
+      "node_projection": 2,
+      "path_head": 4,
+      "source_head": 4,
+      "temporal_blocks": 16,
+      "transit_head": 4,
+      "victim_head": 4
+    }
+  },
+  "stable_item_identity": {
+    "canonical_string_rule": "join present components as key=value using ASCII unit separator \\x1f in the component order above",
+    "components_in_frozen_loader_order": [],
+    "fallback_rule": "If the loader does not expose enough components to guarantee uniqueness, E1 must add immutable validation_item_index in emitted loader order and must not claim semantic identity beyond that index.",
+    "status": "PARTIALLY_RESOLVED"
+  },
+  "stage": "V5_P2_E1_P2_EXACT_SOURCE_INTERFACE_RESOLUTION",
+  "state_after_E1_P2": {
+    "E1_exporter_implemented": false,
+    "next_action": "Build and execute the immutable E1 validation-logit exporter using only the resolved interfaces.",
+    "validation_predictions_exported": false
+  },
+  "status": "COMPLETE",
+  "task_d_report_path_metadata": [
+    {
+      "matches": [
+        {
+          "key": "loader_sha256",
+          "value": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+        },
+        {
+          "key": "task_d_model_sha256",
+          "value": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_architecture_selection_freeze/V5_P2_TASK_D_ARCHITECTURE_SELECTION_FREEZE.json",
+      "sha256": "a722f47aacdcf598b1e09e0423b45dcf5586869ef0833a927291c629cce1bb25"
+    },
+    {
+      "matches": [
+        {
+          "key": "loader_sha256",
+          "value": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+        },
+        {
+          "key": "task_d_model_sha256",
+          "value": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/V5_P2_TASK_D_CHECKPOINT_SELECTION_FREEZE.json",
+      "sha256": "b5483ef18342e6ee21e35fbb2241e5ab40eef5bf1725999314c6685d8e4848b2"
+    },
+    {
+      "matches": [
+        {
+          "key": "loader_sha256",
+          "value": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+        },
+        {
+          "key": "task_d_model_sha256",
+          "value": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_formal_selection_review/V5_P2_TASK_D_FORMAL_SELECTION_REVIEW_EVIDENCE.json",
+      "sha256": "39e0c40742c2e444de41cec79591c286d02a6ae8679ae0fae8d576588ebec2e9"
+    },
+    {
+      "matches": [
+        {
+          "key": "provenance.b3_model",
+          "value": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def"
+        },
+        {
+          "key": "provenance.edge",
+          "value": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff"
+        },
+        {
+          "key": "provenance.loader",
+          "value": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+        },
+        {
+          "key": "provenance.task_d_model",
+          "value": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_full_multitask_preflight/V5_P2_TASK_D_FULL_MULTITASK_PREFLIGHT.json",
+      "sha256": "571e99dfb96fe77fe82b1ce22c3e42c809b5fedf57e5560253a62662226cd296"
+    },
+    {
+      "matches": [
+        {
+          "key": "data_or_split_changed",
+          "value": false
+        },
+        {
+          "key": "model_architecture_changed",
+          "value": false
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_python312_dynamic_import_compatibility_patch/V5_P2_TASK_D_PYTHON312_DYNAMIC_IMPORT_COMPATIBILITY_PATCH.json",
+      "sha256": "1946e10d12bf91e0e934a1fc2a0002084c41bbd5e3edc756c79b18f92758b991"
+    }
+  ],
+  "task_d_training_source": {
+    "evidence": {
+      "checkpoint_load": [
+        {
+          "context": [
+            "        )",
+            "        if epoch >= 15 and patience_counter >= 12:",
+            "            stopped_early = True",
+            "            print(f\"early stopping at epoch {epoch}; patience reached 12\")",
+            "            break",
+            "",
+            "    if best_epoch is None or best_validation_metrics is None or not checkpoint_path.is_file():",
+            "        raise RuntimeError(\"no best checkpoint was produced\")",
+            "    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)",
+            "    model.load_state_dict(checkpoint[\"model_state_dict\"])",
+            "    first_validation_batch = next(iter(validation_loader))",
+            "    latency_us = measure_latency(model, first_validation_batch, device)",
+            "    peak_memory = int(torch.cuda.max_memory_allocated(device)) if device.type == \"cuda\" else 0",
+            "    operation_proxy = td_mod.operation_count_proxy(candidate)",
+            "",
+            "    report = {",
+            "        \"stage\": STAGE,"
+          ],
+          "context_start_line": 388,
+          "match_line": 396
+        },
+        {
+          "context": [
+            "        if epoch >= 15 and patience_counter >= 12:",
+            "            stopped_early = True",
+            "            print(f\"early stopping at epoch {epoch}; patience reached 12\")",
+            "            break",
+            "",
+            "    if best_epoch is None or best_validation_metrics is None or not checkpoint_path.is_file():",
+            "        raise RuntimeError(\"no best checkpoint was produced\")",
+            "    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)",
+            "    model.load_state_dict(checkpoint[\"model_state_dict\"])",
+            "    first_validation_batch = next(iter(validation_loader))",
+            "    latency_us = measure_latency(model, first_validation_batch, device)",
+            "    peak_memory = int(torch.cuda.max_memory_allocated(device)) if device.type == \"cuda\" else 0",
+            "    operation_proxy = td_mod.operation_count_proxy(candidate)",
+            "",
+            "    report = {",
+            "        \"stage\": STAGE,",
+            "        \"status\": \"COMPLETE\","
+          ],
+          "context_start_line": 389,
+          "match_line": 397
+        }
+      ],
+      "dataset_and_loader": [
+        {
+          "context": [
+            "    b3_mod = import_module(paths[\"b3_model\"], f\"taskd_b3_{candidate}_{seed}\")",
+            "    td_mod = import_module(paths[\"task_d_model\"], f\"taskd_model_{candidate}_{seed}\")",
+            "",
+            "    b2.EXPECTED_SEEDS = SEEDS",
+            "    b2.EXPECTED_TRAIN_ITEMS = EXPECTED_TRAIN_ITEMS",
+            "    b2.EXPECTED_VALIDATION_ITEMS = EXPECTED_VALIDATION_ITEMS",
+            "    b2.set_seed(seed)",
+            "",
+            "    DatasetClass = loader_mod.V5P2PairAlignedPrimary58Dataset",
+            "    train_dataset = DatasetClass(root=root, split=\"train\", pair_manifest=paths[\"pair_manifest\"])",
+            "    validation_dataset = DatasetClass(root=root, split=\"validation\", pair_manifest=paths[\"pair_manifest\"])",
+            "    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:",
+            "        raise RuntimeError(f\"train length={len(train_dataset)}\")",
+            "    if len(validation_dataset) != EXPECTED_VALIDATION_ITEMS:",
+            "        raise RuntimeError(f\"validation length={len(validation_dataset)}\")",
+            "",
+            "    train_summary = b0_report[\"label_summaries\"][\"train\"]"
+          ],
+          "context_start_line": 193,
+          "match_line": 201
+        },
+        {
+          "context": [
+            "",
+            "    b2.EXPECTED_SEEDS = SEEDS",
+            "    b2.EXPECTED_TRAIN_ITEMS = EXPECTED_TRAIN_ITEMS",
+            "    b2.EXPECTED_VALIDATION_ITEMS = EXPECTED_VALIDATION_ITEMS",
+            "    b2.set_seed(seed)",
+            "",
+            "    DatasetClass = loader_mod.V5P2PairAlignedPrimary58Dataset",
+            "    train_dataset = DatasetClass(root=root, split=\"train\", pair_manifest=paths[\"pair_manifest\"])",
+            "    validation_dataset = DatasetClass(root=root, split=\"validation\", pair_manifest=paths[\"pair_manifest\"])",
+            "    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:",
+            "        raise RuntimeError(f\"train length={len(train_dataset)}\")",
+            "    if len(validation_dataset) != EXPECTED_VALIDATION_ITEMS:",
+            "        raise RuntimeError(f\"validation length={len(validation_dataset)}\")",
+            "",
+            "    train_summary = b0_report[\"label_summaries\"][\"train\"]",
+            "    graph_positive = int(train_summary[\"graph_positive\"])",
+            "    graph_negative = int(train_summary[\"graph_negative\"])"
+          ],
+          "context_start_line": 195,
+          "match_line": 203
+        },
+        {
+          "context": [
+            "        }",
+            "    count_distribution = b2.parse_distribution(train_summary[\"active_count_distribution\"])",
+            "    if sorted(count_distribution) != COUNT_CLASS_VALUES:",
+            "        raise RuntimeError(\"count distribution is not 1..4\")",
+            "",
+            "    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")",
+            "    pin_memory = device.type == \"cuda\"",
+            "    train_sampler = b2.PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+            "    validation_sampler = b2.PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+            "    train_loader = DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "    validation_loader = DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "",
+            "    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()",
+            "    edge = torch.from_numpy(np.load(paths[\"edge\"], allow_pickle=False)).long()",
+            "    if candidate == \"conv1d\":",
+            "        model = reference_b3",
+            "    else:"
+          ],
+          "context_start_line": 231,
+          "match_line": 239
+        },
+        {
+          "context": [
+            "    if sorted(count_distribution) != COUNT_CLASS_VALUES:",
+            "        raise RuntimeError(\"count distribution is not 1..4\")",
+            "",
+            "    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")",
+            "    pin_memory = device.type == \"cuda\"",
+            "    train_sampler = b2.PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+            "    validation_sampler = b2.PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+            "    train_loader = DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "    validation_loader = DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "",
+            "    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()",
+            "    edge = torch.from_numpy(np.load(paths[\"edge\"], allow_pickle=False)).long()",
+            "    if candidate == \"conv1d\":",
+            "        model = reference_b3",
+            "    else:",
+            "        model = td_mod.P2TaskDGraphConvCount4(reference_b3, edge)",
+            "    model = model.to(device)"
+          ],
+          "context_start_line": 233,
+          "match_line": 241
+        }
+      ],
+      "model_construction": [
+        {
+          "context": [
+            "",
+            "    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")",
+            "    pin_memory = device.type == \"cuda\"",
+            "    train_sampler = b2.PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+            "    validation_sampler = b2.PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+            "    train_loader = DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "    validation_loader = DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "",
+            "    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()",
+            "    edge = torch.from_numpy(np.load(paths[\"edge\"], allow_pickle=False)).long()",
+            "    if candidate == \"conv1d\":",
+            "        model = reference_b3",
+            "    else:",
+            "        model = td_mod.P2TaskDGraphConvCount4(reference_b3, edge)",
+            "    model = model.to(device)",
+            "    parameter_count = sum(p.numel() for p in model.parameters())",
+            "    if parameter_count != EXPECTED_PARAMS[candidate]:"
+          ],
+          "context_start_line": 235,
+          "match_line": 243
+        },
+        {
+          "context": [
+            "    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")",
+            "    pin_memory = device.type == \"cuda\"",
+            "    train_sampler = b2.PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+            "    validation_sampler = b2.PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+            "    train_loader = DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "    validation_loader = DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "",
+            "    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()",
+            "    edge = torch.from_numpy(np.load(paths[\"edge\"], allow_pickle=False)).long()",
+            "    if candidate == \"conv1d\":",
+            "        model = reference_b3",
+            "    else:",
+            "        model = td_mod.P2TaskDGraphConvCount4(reference_b3, edge)",
+            "    model = model.to(device)",
+            "    parameter_count = sum(p.numel() for p in model.parameters())",
+            "    if parameter_count != EXPECTED_PARAMS[candidate]:",
+            "        raise RuntimeError(f\"parameter count={parameter_count}, expected {EXPECTED_PARAMS[candidate]}\")"
+          ],
+          "context_start_line": 236,
+          "match_line": 244
+        },
+        {
+          "context": [
+            "    train_loader = DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "    validation_loader = DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "",
+            "    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()",
+            "    edge = torch.from_numpy(np.load(paths[\"edge\"], allow_pickle=False)).long()",
+            "    if candidate == \"conv1d\":",
+            "        model = reference_b3",
+            "    else:",
+            "        model = td_mod.P2TaskDGraphConvCount4(reference_b3, edge)",
+            "    model = model.to(device)",
+            "    parameter_count = sum(p.numel() for p in model.parameters())",
+            "    if parameter_count != EXPECTED_PARAMS[candidate]:",
+            "        raise RuntimeError(f\"parameter count={parameter_count}, expected {EXPECTED_PARAMS[candidate]}\")",
+            "",
+            "    full_initial_state_sha256 = b2.sha256_state_dict(model.state_dict())",
+            "    if candidate == \"conv1d\":",
+            "        common_initial_state = OrderedDict((k, v) for k, v in model.state_dict().items())"
+          ],
+          "context_start_line": 240,
+          "match_line": 248
+        }
+      ],
+      "validation_call": [
+        {
+          "context": [
+            "    if sorted(count_distribution) != COUNT_CLASS_VALUES:",
+            "        raise RuntimeError(\"count distribution is not 1..4\")",
+            "",
+            "    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")",
+            "    pin_memory = device.type == \"cuda\"",
+            "    train_sampler = b2.PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+            "    validation_sampler = b2.PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+            "    train_loader = DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "    validation_loader = DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "",
+            "    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()",
+            "    edge = torch.from_numpy(np.load(paths[\"edge\"], allow_pickle=False)).long()",
+            "    if candidate == \"conv1d\":",
+            "        model = reference_b3",
+            "    else:",
+            "        model = td_mod.P2TaskDGraphConvCount4(reference_b3, edge)",
+            "    model = model.to(device)"
+          ],
+          "context_start_line": 233,
+          "match_line": 241
+        },
+        {
+          "context": [
+            "        epoch_start = time.time()",
+            "        train_sampler.set_epoch(epoch)",
+            "        current_lr = float(optimizer.param_groups[0][\"lr\"])",
+            "        train_metrics = b2.train_one_epoch(",
+            "            model=model, loader=train_loader, optimizer=optimizer, device=device,",
+            "            graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights,",
+            "            gradient_clip=1.0,",
+            "        )",
+            "        validation_metrics = b2.validate(",
+            "            model=model, loader=validation_loader, device=device,",
+            "            graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights,",
+            "        )",
+            "        rank = b2.checkpoint_rank(validation_metrics, epoch)",
+            "        is_best = best_rank is None or rank > best_rank",
+            "        if is_best:",
+            "            best_rank = rank",
+            "            best_epoch = epoch"
+          ],
+          "context_start_line": 303,
+          "match_line": 311
+        },
+        {
+          "context": [
+            "        train_sampler.set_epoch(epoch)",
+            "        current_lr = float(optimizer.param_groups[0][\"lr\"])",
+            "        train_metrics = b2.train_one_epoch(",
+            "            model=model, loader=train_loader, optimizer=optimizer, device=device,",
+            "            graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights,",
+            "            gradient_clip=1.0,",
+            "        )",
+            "        validation_metrics = b2.validate(",
+            "            model=model, loader=validation_loader, device=device,",
+            "            graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights,",
+            "        )",
+            "        rank = b2.checkpoint_rank(validation_metrics, epoch)",
+            "        is_best = best_rank is None or rank > best_rank",
+            "        if is_best:",
+            "            best_rank = rank",
+            "            best_epoch = epoch",
+            "            best_validation_metrics = validation_metrics"
+          ],
+          "context_start_line": 304,
+          "match_line": 312
+        },
+        {
+          "context": [
+            "            stopped_early = True",
+            "            print(f\"early stopping at epoch {epoch}; patience reached 12\")",
+            "            break",
+            "",
+            "    if best_epoch is None or best_validation_metrics is None or not checkpoint_path.is_file():",
+            "        raise RuntimeError(\"no best checkpoint was produced\")",
+            "    checkpoint = torch.load(checkpoint_path, map_location=device, weights_only=False)",
+            "    model.load_state_dict(checkpoint[\"model_state_dict\"])",
+            "    first_validation_batch = next(iter(validation_loader))",
+            "    latency_us = measure_latency(model, first_validation_batch, device)",
+            "    peak_memory = int(torch.cuda.max_memory_allocated(device)) if device.type == \"cuda\" else 0",
+            "    operation_proxy = td_mod.operation_count_proxy(candidate)",
+            "",
+            "    report = {",
+            "        \"stage\": STAGE,",
+            "        \"status\": \"COMPLETE\",",
+            "        \"candidate\": candidate,"
+          ],
+          "context_start_line": 390,
+          "match_line": 398
+        },
+        {
+          "context": [
+            "            \"task_d_model_sha256\": sha256_file(paths[\"task_d_model\"]),",
+            "            \"loader_sha256\": sha256_file(paths[\"loader\"]),",
+            "            \"b1_protocol_sha256\": protocol[\"protocol_sha256\"],",
+            "            \"promotion_report_sha256\": sha256_file(paths[\"promotion_report\"]),",
+            "        },",
+            "        \"data\": {",
+            "            \"train_items\": len(train_dataset), \"validation_items\": len(validation_dataset),",
+            "            \"pair_block_batch_size\": 128, \"item_batch_size\": 256,",
+            "            \"train_batches\": len(train_loader), \"validation_batches\": len(validation_loader),",
+            "            \"pair_keys_returned_to_model\": False,",
+            "        },",
+            "        \"label_weights\": {",
+            "            \"graph_positive_weight\": graph_pos_weight_value,",
+            "            \"role_positive_weights\": role_weight_manifest,",
+            "            \"count_distribution\": count_distribution,",
+            "            \"count_class_weights_applied\": False,",
+            "        },"
+          ],
+          "context_start_line": 414,
+          "match_line": 422
+        }
+      ]
+    },
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_task_d_full_multitask_single_run.py",
+    "sha256": "553dd206a8e6518b3a1e768c8f9c69633fcada421475b8ca75fda57c2fc13766"
+  },
+  "validation_contract": {
+    "block_batch_size": 128,
+    "decoder_execution_performed": false,
+    "expected_items": 12528,
+    "model_eval_mode": true,
+    "num_workers": 0,
+    "pin_memory": "true only when device is CUDA",
+    "sampler": "PairBlockBatchSampler",
+    "seed": 107,
+    "shuffle": false,
+    "split": "validation",
+    "threshold_selection_performed": false,
+    "torch_inference_mode": true
+  }
+}

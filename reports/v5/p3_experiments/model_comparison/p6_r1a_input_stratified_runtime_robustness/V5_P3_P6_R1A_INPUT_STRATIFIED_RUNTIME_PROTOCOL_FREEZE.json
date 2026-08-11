@@ -1,0 +1,47 @@
+{
+  "created_utc": "2026-08-08T00:31:35.026671+00:00",
+  "governance": {
+    "accuracy_evaluation": false,
+    "decoder": false,
+    "sealed_test_access": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "group_semantics": {
+    "CONTROL": "windows from control-mode runs",
+    "K1-K4": "attack-active windows from MC6-R2 onset-observed attack runs, grouped by true K"
+  },
+  "groups": [
+    "CONTROL",
+    "K1",
+    "K2",
+    "K3",
+    "K4"
+  ],
+  "models": [
+    "M7",
+    "D1"
+  ],
+  "sample_bank_size_per_group": 64,
+  "sample_indices_sha256": "f7f06058922a5db3d37ad10c554bc8964efa5631525134cf8168bd5d3616c877",
+  "sealed_test_access": false,
+  "source_P6_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/p6_batch1_model_complexity_and_forward_latency/V5_P3_P6_BATCH1_MODEL_COMPLEXITY_AND_FORWARD_LATENCY_LOCK.json",
+  "source_P6_lock_sha256": "a22f2a7d7064004d435210cbea056233996c7b880b6d3134ebdbedc231c5435d",
+  "split": "validation",
+  "stage": "V5_P3_P6_R1A_INPUT_STRATIFIED_RUNTIME_ROBUSTNESS",
+  "status": "PROSPECTIVE_FREEZE_BEFORE_TIMING",
+  "timing": {
+    "batch": 1,
+    "clock": "perf_counter_ns",
+    "cuda_sync_before_after": true,
+    "device": "CUDA GPU",
+    "input_resident_before_timing": true,
+    "model_resident_before_timing": true,
+    "order": "balanced random interleaving per round; input slicing outside timed region",
+    "precision": "FP32",
+    "rounds": 3,
+    "timed_region": "model forward only",
+    "timings_per_group_per_round": 1000,
+    "warmups_interleaved": 500
+  }
+}

@@ -1,0 +1,874 @@
+{
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "candidate_audit": {
+    "D4_chunks_modified": false,
+    "candidate_results": {
+      "outward_rounding": {
+        "all_control_semantics_match": true,
+        "control_items": [
+          {
+            "dataset_index": 11752,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11753,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11755,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11756,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11757,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11758,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11759,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 0,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 981,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 1911,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 2750,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 3754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 4542,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 5555,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 6516,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          }
+        ],
+        "failure_item_result": {
+          "dataset_index": 11760,
+          "elapsed_seconds": 0.5438397830002941,
+          "exception": "ExactDecoderError(\"SOLVER_NOT_OPTIMAL: lexicographic success=False, status=2, message='The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)'\")",
+          "exception_type": "ExactDecoderError",
+          "lexicographic_solve_calls": 1,
+          "solver_trace": [
+            {
+              "call_index": 1,
+              "constraint_columns": 1032,
+              "constraint_rows": 156,
+              "fun": -19.271947633156415,
+              "last_lower": -Infinity,
+              "last_upper": 0.0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "primary",
+              "status": 0,
+              "success": true
+            },
+            {
+              "call_index": 2,
+              "constraint_columns": 1032,
+              "constraint_rows": 157,
+              "fun": null,
+              "last_lower": -19.271947633157417,
+              "last_upper": -19.271947633155413,
+              "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+              "mip_gap": null,
+              "mip_node_count": 0,
+              "phase": "lexicographic",
+              "status": 2,
+              "success": false
+            }
+          ],
+          "status": "FAIL",
+          "successful_lexicographic_candidates_before_failure": 0
+        },
+        "failure_item_succeeds": false,
+        "options": {
+          "outward_rounding": true
+        },
+        "source_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/CANDIDATE_MODULES/outward_rounding.py",
+        "source_sha256": "f6524847d7fcbb194d7cb26731549e47fa6f859166c1211210da1bd9df50471b",
+        "viable_numerical_candidate": false
+      },
+      "presolve_false": {
+        "all_control_semantics_match": true,
+        "control_items": [
+          {
+            "dataset_index": 11752,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11753,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11755,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11756,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11757,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11758,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11759,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 0,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 981,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 1911,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 2750,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 3754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 4542,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 5555,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 6516,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          }
+        ],
+        "failure_item_result": {
+          "dataset_index": 11760,
+          "elapsed_seconds": 0.3797236139944289,
+          "lexicographic_solve_calls": 1,
+          "semantic": {
+            "attacker_count": 4,
+            "margin": {
+              "hex": "0x1.edeca505d4348p+3",
+              "value": 15.435137282738324
+            },
+            "path_mask": 32063,
+            "route_ids": [
+              45,
+              64,
+              178,
+              214
+            ],
+            "source_mask": 18456,
+            "transit_mask": 13574,
+            "victim_mask": 16433
+          },
+          "solver_trace": [
+            {
+              "call_index": 1,
+              "constraint_columns": 1032,
+              "constraint_rows": 156,
+              "fun": -19.271947633156415,
+              "last_lower": -Infinity,
+              "last_upper": 0.0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "primary",
+              "status": 0,
+              "success": true
+            },
+            {
+              "call_index": 2,
+              "constraint_columns": 1032,
+              "constraint_rows": 157,
+              "fun": 14127258985.0,
+              "last_lower": -19.271947633157414,
+              "last_upper": -19.271947633155417,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "lexicographic",
+              "status": 0,
+              "success": true
+            }
+          ],
+          "status": "PASS"
+        },
+        "failure_item_succeeds": true,
+        "options": {
+          "presolve_false": true
+        },
+        "source_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/CANDIDATE_MODULES/presolve_false.py",
+        "source_sha256": "9e82942a6378ef727c5a1f0f88568920ceecabbff1d8d857ce665366988e2a29",
+        "viable_numerical_candidate": true
+      },
+      "recomputed_center": {
+        "all_control_semantics_match": true,
+        "control_items": [
+          {
+            "dataset_index": 11752,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11753,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11755,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11756,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11757,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11758,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11759,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 0,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 981,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 1911,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 2750,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 3754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 4542,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 5555,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 6516,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          }
+        ],
+        "failure_item_result": {
+          "dataset_index": 11760,
+          "elapsed_seconds": 0.5508768190047704,
+          "exception": "ExactDecoderError(\"SOLVER_NOT_OPTIMAL: lexicographic success=False, status=2, message='The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)'\")",
+          "exception_type": "ExactDecoderError",
+          "lexicographic_solve_calls": 1,
+          "solver_trace": [
+            {
+              "call_index": 1,
+              "constraint_columns": 1032,
+              "constraint_rows": 156,
+              "fun": -19.271947633156415,
+              "last_lower": -Infinity,
+              "last_upper": 0.0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "primary",
+              "status": 0,
+              "success": true
+            },
+            {
+              "call_index": 2,
+              "constraint_columns": 1032,
+              "constraint_rows": 157,
+              "fun": null,
+              "last_lower": -19.271947633157414,
+              "last_upper": -19.271947633155417,
+              "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+              "mip_gap": null,
+              "mip_node_count": 0,
+              "phase": "lexicographic",
+              "status": 2,
+              "success": false
+            }
+          ],
+          "status": "FAIL",
+          "successful_lexicographic_candidates_before_failure": 0
+        },
+        "failure_item_succeeds": false,
+        "options": {
+          "recomputed_center": true
+        },
+        "source_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/CANDIDATE_MODULES/recomputed_center.py",
+        "source_sha256": "cd458ee05c046d9275f2fc4b4f85ce43e0237259bd3860c1c38ef46d220c286e",
+        "viable_numerical_candidate": false
+      },
+      "recomputed_center_outward_rounding_presolve_false": {
+        "all_control_semantics_match": true,
+        "control_items": [
+          {
+            "dataset_index": 11752,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11753,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11755,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11756,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11757,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11758,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11759,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 0,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 981,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 1911,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 2750,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 3754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 4542,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 5555,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 6516,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          }
+        ],
+        "failure_item_result": {
+          "dataset_index": 11760,
+          "elapsed_seconds": 0.3844587499916088,
+          "lexicographic_solve_calls": 1,
+          "semantic": {
+            "attacker_count": 4,
+            "margin": {
+              "hex": "0x1.edeca505d4348p+3",
+              "value": 15.435137282738324
+            },
+            "path_mask": 32063,
+            "route_ids": [
+              45,
+              64,
+              178,
+              214
+            ],
+            "source_mask": 18456,
+            "transit_mask": 13574,
+            "victim_mask": 16433
+          },
+          "solver_trace": [
+            {
+              "call_index": 1,
+              "constraint_columns": 1032,
+              "constraint_rows": 156,
+              "fun": -19.271947633156415,
+              "last_lower": -Infinity,
+              "last_upper": 0.0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "primary",
+              "status": 0,
+              "success": true
+            },
+            {
+              "call_index": 2,
+              "constraint_columns": 1032,
+              "constraint_rows": 157,
+              "fun": 14127258984.999935,
+              "last_lower": -19.271947633157417,
+              "last_upper": -19.271947633155413,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "lexicographic",
+              "status": 0,
+              "success": true
+            }
+          ],
+          "status": "PASS"
+        },
+        "failure_item_succeeds": true,
+        "options": {
+          "outward_rounding": true,
+          "presolve_false": true,
+          "recomputed_center": true
+        },
+        "source_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/CANDIDATE_MODULES/recomputed_center_outward_rounding_presolve_false.py",
+        "source_sha256": "672ae931903ecc00b0faa01cafd8ba004d0f14d930d4d6672bf555880aa99c8b",
+        "viable_numerical_candidate": true
+      },
+      "recomputed_center_plus_outward_rounding": {
+        "all_control_semantics_match": true,
+        "control_items": [
+          {
+            "dataset_index": 11752,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11753,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11755,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11756,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11757,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11758,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 11759,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 0,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 981,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 1911,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 2750,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 3754,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 4542,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 5555,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          },
+          {
+            "dataset_index": 6516,
+            "exception": null,
+            "semantic_matches_canonical": true,
+            "status": "PASS"
+          }
+        ],
+        "failure_item_result": {
+          "dataset_index": 11760,
+          "elapsed_seconds": 0.6110001530032605,
+          "exception": "ExactDecoderError(\"SOLVER_NOT_OPTIMAL: lexicographic success=False, status=2, message='The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)'\")",
+          "exception_type": "ExactDecoderError",
+          "lexicographic_solve_calls": 1,
+          "solver_trace": [
+            {
+              "call_index": 1,
+              "constraint_columns": 1032,
+              "constraint_rows": 156,
+              "fun": -19.271947633156415,
+              "last_lower": -Infinity,
+              "last_upper": 0.0,
+              "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+              "mip_gap": 0.0,
+              "mip_node_count": 1,
+              "phase": "primary",
+              "status": 0,
+              "success": true
+            },
+            {
+              "call_index": 2,
+              "constraint_columns": 1032,
+              "constraint_rows": 157,
+              "fun": null,
+              "last_lower": -19.271947633157417,
+              "last_upper": -19.271947633155413,
+              "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+              "mip_gap": null,
+              "mip_node_count": 0,
+              "phase": "lexicographic",
+              "status": 2,
+              "success": false
+            }
+          ],
+          "status": "FAIL",
+          "successful_lexicographic_candidates_before_failure": 0
+        },
+        "failure_item_succeeds": false,
+        "options": {
+          "outward_rounding": true,
+          "recomputed_center": true
+        },
+        "source_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/CANDIDATE_MODULES/recomputed_center_plus_outward_rounding.py",
+        "source_sha256": "86e76f2f2ab54bdc1204a45175591e4260cb5f9c1cbd6766e18f7398d2c16e9a",
+        "viable_numerical_candidate": false
+      }
+    },
+    "control_indices": [
+      11752,
+      11753,
+      11754,
+      11755,
+      11756,
+      11757,
+      11758,
+      11759,
+      0,
+      981,
+      1911,
+      2750,
+      3754,
+      4542,
+      5555,
+      6516
+    ],
+    "diagnostic_only": true,
+    "repo_decoder_modified": false,
+    "viable_candidates": [
+      "presolve_false",
+      "recomputed_center_outward_rounding_presolve_false"
+    ],
+    "viable_candidates_agree_on_failure_semantics": true
+  },
+  "created_utc": "2026-08-05T07:51:30.894304+00:00",
+  "d4_prefix": {
+    "first_incomplete_chunk_start": 11700,
+    "first_incomplete_chunk_stop": 11800,
+    "hash_valid_contiguous_chunks": 117,
+    "hash_valid_contiguous_items": 11700,
+    "preserved": true,
+    "remaining_items_from_prefix": 2163
+  },
+  "decision": {
+    "beam_decoder_selected": false,
+    "candidate_directly_installable": false,
+    "canonical_decoder_full_validation_complete": false,
+    "existing_D4_prefix_reusable": true,
+    "next_stage": "V5_P3_D4_R2_PROSPECTIVE_NUMERICAL_IMPLEMENTATION_FREEZE_AND_FULL_REGRESSION",
+    "numerical_candidate_freeze_authorized": true,
+    "sealed_test_evaluation_authorized": false,
+    "threshold_or_margin_retuning_authorized": false
+  },
+  "failure": {
+    "artifact_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/V5_P3_D4_R1_ISOLATED_FAILURE_ITEM.json",
+    "artifact_sha256": "850eb26afa738a9b0c04c53dd6ec06550f686f93cdac7d1977d90f7202d893fd",
+    "canonical_exception": "ExactDecoderError(\"SOLVER_NOT_OPTIMAL: lexicographic success=False, status=2, message='The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)'\")",
+    "canonical_failure_deterministic": true,
+    "canonical_repeat_count": 3,
+    "canonical_solver_trace": [
+      {
+        "call_index": 1,
+        "constraint_columns": 1032,
+        "constraint_rows": 156,
+        "fun": -19.271947633156415,
+        "last_lower": -Infinity,
+        "last_upper": 0.0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "mip_gap": 0.0,
+        "mip_node_count": 1,
+        "phase": "primary",
+        "status": 0,
+        "success": true
+      },
+      {
+        "call_index": 2,
+        "constraint_columns": 1032,
+        "constraint_rows": 157,
+        "fun": null,
+        "last_lower": -19.271947633157414,
+        "last_upper": -19.271947633155417,
+        "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+        "mip_gap": null,
+        "mip_node_count": 0,
+        "phase": "lexicographic",
+        "status": 2,
+        "success": false
+      }
+    ],
+    "isolated_dataset_index": 11760
+  },
+  "provenance": {
+    "D1_export_sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f",
+    "D2_lock_sha256": "a3237b557728f972078fffaf92513fb1fc3dc01ecae17654880eabef6569ccf5",
+    "D3_lock_sha256": "13d0b60baa11e86728d852258e612fee706a6a25bcbadf7f0a44bd77f4f0af01",
+    "D4_failure_artifact_sha256": "78260160dcbc19dac6f58a455f2fd760bf981f26650cf1658e256172a23e94aa",
+    "canonical_decoder_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+    "installed_script_sha256": "8ee4f5c614a05145b5c7e08b189233c07e12a7e5013064c9ec97c2d824e3aab1"
+  },
+  "root_cause_disposition": "LEXICOGRAPHIC_FLOAT64_FORMULATION_OR_PRESOLVE_INFEASIBILITY_WITH_CERTIFIED_SEMANTIC_RECOVERY_CANDIDATE",
+  "scope": "Validation-only isolation and numerical root-cause audit of the first certified exact-decoder lexicographic infeasibility encountered during D4.",
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_tensor_loaded": false
+  },
+  "stage": "V5_P3_D4_R1_A1_LEXICOGRAPHIC_INFEASIBILITY_ROOT_CAUSE_AUDIT",
+  "status": "PASS"
+}

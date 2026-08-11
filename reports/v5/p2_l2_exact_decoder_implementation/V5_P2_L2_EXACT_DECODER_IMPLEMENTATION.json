@@ -1,0 +1,73 @@
+{
+  "created_utc": "2026-07-27T22:24:17.034414+00:00",
+  "evidence_hashes": {
+    "l0_lock_sha256": "e5cbe16c7483ce727523c54a09ef60a6dc3f97859bf43b65781938fd443715fe",
+    "l0_marker_sha256": "299d69c41a2e5986c85e070da1064fc685fb81b6d16b6b4a757ea85a54937b68",
+    "l0_protocol_sha256": "6b9de697bb8457e07162c28ade6d57d7779515a977b933543769f1aa7f3b8dc6",
+    "l1_lock_sha256": "747c3d284a18bf1429d59e6c9bdad23441a461560819b7b1b5dfd0c2975873c8",
+    "l1_marker_sha256": "8d5bcc8a0f8b1ee132b93bf68b04c22c7f0deb76eb8d24bc7e79106d4fd8693b",
+    "l1_report_sha256": "5f93ca38fd6093bace749ff543179dee1a00e4c4e31df7fd002423e4dbe99dd5"
+  },
+  "implementation": {
+    "backend": "scipy.optimize.milp_with_embedded_HiGHS",
+    "beam_search": false,
+    "candidate_pruning": false,
+    "failure_policy": "fail hard on nonoptimal solver status, nonzero MIP gap, missing solution, nonfinite input, or uncertified tie break",
+    "highs_version": "1.12.0",
+    "mip_relative_gap": 0.0,
+    "module_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+    "module_sha256": "0d6ae843a0503cf6aa347078dda50e570f69cbbffdaa7ee1e4b2dbfd3b7978bf",
+    "node_limit": null,
+    "numpy_version": "2.5.1",
+    "python_version": "3.12.3",
+    "route_library_module_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+    "route_table_sha256": "19624d95a83114fba1e27e647aab59a0231c97d45053b598692ae62578b321b0",
+    "scipy_version": "1.18.0",
+    "semantic_tie_tolerance": 1e-12,
+    "solver_options": {
+      "disp": false,
+      "mip_rel_gap": 0.0,
+      "presolve": true
+    },
+    "thread_policy": "threadpoolctl limit=1 around every solve; installer also sets OMP/BLAS/MKL/NUMEXPR thread counts to 1",
+    "time_limit": null,
+    "two_phase_optimization": [
+      "maximize frozen structured attack score",
+      "hold the semantic optimum face and minimize lower-K then lexicographic route-tuple code"
+    ]
+  },
+  "security_boundary": {
+    "dataset_directories_scanned": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false,
+    "validation_predictions_inspected": false
+  },
+  "stage": "V5_P2_L2_EXACT_DECODER_IMPLEMENTATION",
+  "state_after_L2": {
+    "beam_decoder_implemented": false,
+    "decoder_frozen": false,
+    "decoder_parameters_frozen": false,
+    "exact_decoder_backend_frozen": true,
+    "exact_decoder_implemented": true,
+    "next_stage": "V5_P2_L3_HARDWARE_BEAM_DECODER_IMPLEMENTATION",
+    "raw_thresholds_frozen": false,
+    "ready_for_one_shot_test": false,
+    "route_library_frozen": true,
+    "structured_decoder_protocol_locked": true,
+    "validation_predictions_exported": false
+  },
+  "status": "COMPLETE",
+  "verification": {
+    "repeat_determinism_test": true,
+    "restricted_exhaustive_oracle_comparison": true,
+    "result": "PASS",
+    "test_log_path": "/home/zira/research/projects/GNN-2d/logs/v5/v5_p2_l2_exact_decoder_unit_tests.log",
+    "test_log_sha256": "8a3fd8ef0d524ed41a318b3d4e2f79cb986d1c6e821b5e3309f9a4a1a2cbb4ff",
+    "test_source_path": "/home/zira/research/projects/GNN-2d/tests/decoders/test_v5_legal_xy_exact_decoder.py",
+    "test_source_sha256": "4a4d6310bae07f62d2ed738a95f33afcba80b2c19480e68e2d76585b813f93d8",
+    "tests_run": 10
+  }
+}

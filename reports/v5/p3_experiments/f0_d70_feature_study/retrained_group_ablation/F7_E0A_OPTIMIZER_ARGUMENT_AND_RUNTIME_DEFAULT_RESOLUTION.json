@@ -1,0 +1,38 @@
+{
+  "learning_rate_candidate_values": [
+    0.001
+  ],
+  "optimizer_rows": [
+    {
+      "enclosing_function": "main",
+      "excerpt": "    optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=1e-3,\n        betas=(0.9, 0.999),\n        eps=1e-8,\n        weight_decay=1e-4,\n    )",
+      "implementation": "torch.optim.adamw.AdamW",
+      "learning_rate": {
+        "argument_route": "keyword",
+        "expression": "0.001",
+        "keyword": "lr",
+        "resolved": true,
+        "route": "literal",
+        "value": 0.001
+      },
+      "line_end": 1398,
+      "line_start": 1392,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "runtime_signature": "(params: collections.abc.Iterable[torch.Tensor] | collections.abc.Iterable[dict[str, typing.Any]] | collections.abc.Iterable[tuple[str, torch.Tensor]], lr: float | torch.Tensor = 0.001, betas: tuple[float | torch.Tensor, float | torch.Tensor] = (0.9, 0.999), eps: float = 1e-08, weight_decay: float = 0.01, amsgrad: bool = False, *, maximize: bool = False, foreach: bool | None = None, capturable: bool = False, differentiable: bool = False, fused: bool | None = None) -> None",
+      "source": "torch.optim.AdamW(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001)",
+      "torch_version": "2.12.1+cu130",
+      "weight_decay": {
+        "argument_route": "keyword",
+        "expression": "0.0001",
+        "keyword": "weight_decay",
+        "resolved": true,
+        "route": "literal",
+        "value": 0.0001
+      }
+    }
+  ],
+  "runtime_default_note": "When weight_decay is omitted from torch.optim.AdamW, the runtime signature default is pinned rather than guessed.",
+  "weight_decay_candidate_values": [
+    0.0001
+  ]
+}

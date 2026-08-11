@@ -1,0 +1,165 @@
+{
+  "F5_F6_method_boundary": {
+    "F5": "Validation-wide performance degradation after shuffling an entire macro-group across samples.",
+    "F6": "Local absolute integrated-gradient attribution along a matched control-to-attack input path on a frozen stratified subset.",
+    "disagreement_is_not_automatically_a_contradiction": true,
+    "leader_match_required": false
+  },
+  "F6_task_interpretations": [
+    {
+      "F5_permutation_leading_group": "buffer_pressure",
+      "F6_leading_group": "inter_flit_timing",
+      "F6_leading_group_fraction": 0.33187562227249146,
+      "integration_points": 64,
+      "sample_count": 512,
+      "spearman_rank_correlation": 0.8,
+      "task": "graph",
+      "top1_concordance": false,
+      "top2_overlap": 2
+    },
+    {
+      "F5_permutation_leading_group": "directional_traffic_volume",
+      "F6_leading_group": "inter_flit_timing",
+      "F6_leading_group_fraction": 0.3464263081550598,
+      "integration_points": 256,
+      "sample_count": 512,
+      "spearman_rank_correlation": 0.5,
+      "task": "count",
+      "top1_concordance": false,
+      "top2_overlap": 1
+    },
+    {
+      "F5_permutation_leading_group": "buffer_pressure",
+      "F6_leading_group": "inter_flit_timing",
+      "F6_leading_group_fraction": 0.3309590816497803,
+      "integration_points": 64,
+      "sample_count": 512,
+      "spearman_rank_correlation": 0.9,
+      "task": "source",
+      "top1_concordance": false,
+      "top2_overlap": 2
+    },
+    {
+      "F5_permutation_leading_group": "inter_flit_timing",
+      "F6_leading_group": "buffer_pressure",
+      "F6_leading_group_fraction": 0.3425656855106354,
+      "integration_points": 64,
+      "sample_count": 437,
+      "spearman_rank_correlation": 0.7,
+      "task": "transit",
+      "top1_concordance": false,
+      "top2_overlap": 1
+    },
+    {
+      "F5_permutation_leading_group": "buffer_pressure",
+      "F6_leading_group": "inter_flit_timing",
+      "F6_leading_group_fraction": 0.34724530577659607,
+      "integration_points": 64,
+      "sample_count": 512,
+      "spearman_rank_correlation": 0.8,
+      "task": "victim",
+      "top1_concordance": false,
+      "top2_overlap": 2
+    },
+    {
+      "F5_permutation_leading_group": "inter_flit_timing",
+      "F6_leading_group": "buffer_pressure",
+      "F6_leading_group_fraction": 0.34373554587364197,
+      "integration_points": 64,
+      "sample_count": 512,
+      "spearman_rank_correlation": 0.8,
+      "task": "path",
+      "top1_concordance": false,
+      "top2_overlap": 2
+    }
+  ],
+  "claim_boundaries": {
+    "causal_feature_necessity_claim_authorized": false,
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_area_power_latency_savings_claim_authorized": false,
+    "task_specific_feature_importance_wording_authorized": true
+  },
+  "cross_method_group_triangulation": [
+    {
+      "F2R_constant_channel_count": 0,
+      "F5_overall_selection_rank": 1,
+      "F6_cross_task_mean_fraction_rank": 1,
+      "F6_max_fraction": 0.34724530577659607,
+      "F6_mean_fraction_of_total_absolute": 0.3323959708213806,
+      "F6_mean_rank": 1.3333333333333333,
+      "F6_min_fraction": 0.31383728981018066,
+      "F6_task_last_count": 0,
+      "F6_task_leader_count": 4,
+      "group": "inter_flit_timing"
+    },
+    {
+      "F2R_constant_channel_count": 0,
+      "F5_overall_selection_rank": 2,
+      "F6_cross_task_mean_fraction_rank": 2,
+      "F6_max_fraction": 0.34373554587364197,
+      "F6_mean_fraction_of_total_absolute": 0.3190653671820958,
+      "F6_mean_rank": 1.6666666666666667,
+      "F6_min_fraction": 0.28914788365364075,
+      "F6_task_last_count": 0,
+      "F6_task_leader_count": 2,
+      "group": "buffer_pressure"
+    },
+    {
+      "F2R_constant_channel_count": 0,
+      "F5_overall_selection_rank": 4,
+      "F6_cross_task_mean_fraction_rank": 3,
+      "F6_max_fraction": 0.18868327140808105,
+      "F6_mean_fraction_of_total_absolute": 0.1776365339756012,
+      "F6_mean_rank": 3.1666666666666665,
+      "F6_min_fraction": 0.1672632247209549,
+      "F6_task_last_count": 0,
+      "F6_task_leader_count": 0,
+      "group": "directional_traffic_volume"
+    },
+    {
+      "F2R_constant_channel_count": 0,
+      "F5_overall_selection_rank": 3,
+      "F6_cross_task_mean_fraction_rank": 4,
+      "F6_max_fraction": 0.17548620700836182,
+      "F6_mean_fraction_of_total_absolute": 0.16937286158402762,
+      "F6_mean_rank": 3.8333333333333335,
+      "F6_min_fraction": 0.15701599419116974,
+      "F6_task_last_count": 0,
+      "F6_task_leader_count": 0,
+      "group": "queue_activity"
+    },
+    {
+      "F2R_constant_channel_count": 6,
+      "F5_overall_selection_rank": 5,
+      "F6_cross_task_mean_fraction_rank": 5,
+      "F6_max_fraction": 0.001757460180670023,
+      "F6_mean_fraction_of_total_absolute": 0.001529225012442718,
+      "F6_mean_rank": 5.0,
+      "F6_min_fraction": 0.0011911229230463505,
+      "F6_task_last_count": 6,
+      "F6_task_leader_count": 0,
+      "group": "flow_control_stalls"
+    }
+  ],
+  "decision": {
+    "F6R_complete": true,
+    "F7_primary_experiments": [
+      "same-width normalized-neutral masking of directional traffic volume",
+      "same-width normalized-neutral masking of inter-flit timing",
+      "same-width normalized-neutral masking of queue activity",
+      "same-width normalized-neutral masking of buffer pressure",
+      "same-width normalized-neutral masking of flow-control stalls"
+    ],
+    "F7_priority_hypothesis": "flow_control_stalls_first",
+    "F7_protocol_preflight_authorized": true,
+    "F7_seed_policy": "seed 107 for all five primary ablations; seeds 117 and 127 only for the two most decision-relevant groups after the primary matrix is reviewed",
+    "actual_F7_retraining_authorized": false,
+    "feature_removal_authorized": false,
+    "next_stage": "V5_P3_F7_P0_SAME_WIDTH_RETRAINED_GROUP_ABLATION_PREFLIGHT",
+    "sealed_test_access_authorized": false
+  },
+  "flow_control_reduction_hypothesis_note": "A low-impact reduction hypothesis is suitable for retrained ablation only when F2R constant-channel evidence, F5 grouped permutation and F6 matched-control attribution all point in the same direction. It still does not authorize deletion.",
+  "flow_control_reduction_hypothesis_supported": true,
+  "paper_safe_claim": "Task-specific integrated gradients along frozen matched control-to-attack paths indicate that the checkpoint draws most strongly on inter-flit timing for graph detection, attacker-count prediction, source localization and victim localization, while buffer-pressure evidence is strongest for transit and path localization. These attribution results describe the frozen model's local pathwise dependence and do not establish causal necessity or authorize feature deletion."
+}

@@ -1,0 +1,75 @@
+{
+  "decision": {
+    "D7_R1_R2_episode_aware_persistence_validation_authorized": true,
+    "episode_based_persistence_evaluation_required": true,
+    "monotonic_attack_truth_assumption_rejected": true,
+    "next_stage": "V5_P3_FINAL_D7_R1_R2_EPISODE_AWARE_TEMPORAL_ALARM_CONFIRMATION_VALIDATION",
+    "sealed_test_evaluation_authorized": false
+  },
+  "failure_classification": {
+    "failed_stage": "V5_P3_FINAL_D7_R1_TEMPORAL_ALARM_CONFIRMATION_VALIDATION",
+    "failure_before_candidate_ranking": true,
+    "failure_before_candidate_selection": true,
+    "failure_before_policy_evaluation": true,
+    "failure_before_test_access": true,
+    "failure_reason": "invalid monotonic-truth assumption for attack runs",
+    "first_observed_reverting_run": "P3AVA-K1-005_ATTACK"
+  },
+  "scientific_boundary": {
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "persistence_candidate_selection_performed": false,
+    "persistence_evaluated": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "stage": "V5_P3_FINAL_D7_R1_R1_ATTACK_TRUTH_EPISODE_STRUCTURE_RECOVERY",
+  "status": "PASS",
+  "truth_structure_recovery": {
+    "attack_episode_definition": "maximal contiguous positive segment within a certified run",
+    "attack_runs_multiple_positive_segments": 0,
+    "attack_runs_truth_reverts_after_first_positive": 56,
+    "episode_map": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d7_r1_r1_attack_truth_episode_structure_recovery/V5_P3_FINAL_D7_R1_R1_VALIDATION_ATTACK_EPISODE_MAP.json",
+    "episode_map_sha256": "0a05a24088305a4b2d3468452327d871c01d39d42dec4dfcf6b3b1c6bbeea71f",
+    "internal_negative_gap_length_summary_windows": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "median": null,
+      "min": null,
+      "p95": null
+    },
+    "policy_results_used": false,
+    "positive_segment_length_summary_windows": {
+      "count": 150,
+      "max": 94,
+      "mean": 50.16,
+      "median": 43.0,
+      "min": 25,
+      "p95": 92.0
+    },
+    "prediction_outputs_used": false,
+    "tranche_stats": {
+      "A": {
+        "attack_runs": 75,
+        "control_runs": 75,
+        "multi_segment_attack_runs": 0,
+        "negative_windows": 10041,
+        "positive_segments": 75,
+        "positive_windows": 3822
+      },
+      "B": {
+        "attack_runs": 75,
+        "control_runs": 75,
+        "multi_segment_attack_runs": 0,
+        "negative_windows": 10157,
+        "positive_segments": 75,
+        "positive_windows": 3702
+      }
+    }
+  }
+}

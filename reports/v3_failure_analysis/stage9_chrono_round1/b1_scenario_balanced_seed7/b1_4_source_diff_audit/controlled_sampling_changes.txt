@@ -1,0 +1,16 @@
+7:+from samplers.chrono_b1_scenario_sampler import ScenarioBalancedBatchSampler
+15:+    parser.add_argument("--b1-samples-per-epoch", type=int, default=148185)
+16:+    parser.add_argument("--b1-max-temporal-retries", type=int, default=32)
+25:+        raise ValueError("--b1-samples-per-epoch must be positive.")
+27:+        raise ValueError("--b1-max-temporal-retries must be positive.")
+36:+    train_batch_sampler = ScenarioBalancedBatchSampler(
+53:+        batch_sampler=train_batch_sampler,
+56:+    train_eval_loader = DataLoader(
+65:+    print("\nChrono-B1 sampler:")
+77:+        train_batch_sampler.set_epoch(epoch - 1)
+85:+        sampler_stats = train_batch_sampler.last_epoch_stats()
+94:+        train_metrics = evaluate(model, train_eval_loader, **eval_kwargs)
+102:+            "sampler": sampler_stats,
+111:+    train_metrics = evaluate(model, train_eval_loader, **eval_kwargs)
+119:+        "sampling": {
+127:+            "final_epoch_stats": train_batch_sampler.last_epoch_stats(),

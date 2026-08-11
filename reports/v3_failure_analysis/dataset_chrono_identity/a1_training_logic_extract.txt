@@ -1,0 +1,84 @@
+24:        for name in ["attackers", "split", "feature_cols", "profile", "active_cores", "strength", "seed"]:
+64:from torch.utils.data import Dataset, DataLoader
+68:def set_seed(seed: int) -> None:
+69:    random.seed(seed)
+70:    np.random.seed(seed)
+71:    torch.manual_seed(seed)
+72:    torch.cuda.manual_seed_all(seed)
+101:def make_splits(npz_path: str, split_mode: str):
+114:    if split_mode == "prototype":
+131:    if split_mode == "placement":
+176:    raise ValueError(f"Unknown split mode: {split_mode}")
+203:def binary_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5):
+204:    y_pred = (y_prob >= threshold).astype(np.int64)
+228:def node_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5):
+229:    y_pred = (y_prob >= threshold).astype(np.int64)
+250:    loader: DataLoader,
+253:    graph_loss_fn: nn.Module,
+254:    node_loss_fn: nn.Module,
+255:    node_loss_weight: float,
+256:    graph_threshold: float = 0.5,
+257:    node_threshold: float = 0.5,
+271:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+272:        node_loss = node_loss_fn(node_logits, y_node)
+273:        loss = graph_loss + node_loss_weight * node_loss
+287:    graph_results = binary_metrics(graph_true, graph_probs, graph_threshold)
+288:    node_results = node_metrics(node_true, node_probs, node_threshold)
+358:    parser.add_argument("--patience", type=int, default=5)
+367:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+368:    parser.add_argument("--node-threshold", type=float, default=0.5)
+369:    parser.add_argument("--seed", type=int, default=7)
+375:    if args.patience <= 0:
+376:        raise ValueError("--patience must be positive.")
+377:    if args.min_delta < 0:
+380:    set_seed(args.seed)
+397:    if args.split_mode == "v3":
+406:        train_idx, val_idx, test_idx = make_splits(args.data, args.split_mode)
+417:    graph_pos_weight = graph_neg / max(graph_pos, 1.0)
+420:    node_pos_weight = node_neg / max(node_pos, 1.0)
+423:    print("  graph pos weight:", graph_pos_weight)
+424:    print("  node pos weight: ", node_pos_weight)
+430:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+431:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+432:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+443:    graph_loss_fn = nn.BCEWithLogitsLoss(
+444:        pos_weight=torch.tensor(graph_pos_weight, dtype=torch.float32, device=device)
+446:    node_loss_fn = nn.BCEWithLogitsLoss(
+447:        pos_weight=torch.tensor(node_pos_weight, dtype=torch.float32, device=device)
+449:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+451:    best_val_score = -float("inf")
+469:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+470:            node_loss = node_loss_fn(node_logits, y_node)
+471:            loss = graph_loss + args.node_loss_weight * node_loss
+485:            "graph_loss_fn": graph_loss_fn,
+486:            "node_loss_fn": node_loss_fn,
+487:            "node_loss_weight": args.node_loss_weight,
+488:            "graph_threshold": args.graph_threshold,
+489:            "node_threshold": args.node_threshold,
+499:        previous_best = None if best_val_score == -float("inf") else float(best_val_score)
+500:        improvement = val_score - best_val_score
+502:        if improvement > args.min_delta:
+503:            best_val_score = float(val_score)
+512:                "best_val_score": best_val_score,
+517:            print(f"  validation score improved to {best_val_score:.6f}; saved best_model.pt")
+520:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+528:            "best_val_score_before_epoch": previous_best,
+529:            "best_val_score_after_epoch": float(best_val_score),
+536:        if epochs_without_improvement >= args.patience:
+541:                f"Best epoch was {best_epoch} with validation score {best_val_score:.6f}."
+552:        "graph_loss_fn": graph_loss_fn,
+553:        "node_loss_fn": node_loss_fn,
+554:        "node_loss_weight": args.node_loss_weight,
+555:        "graph_threshold": args.graph_threshold,
+556:        "node_threshold": args.node_threshold,
+565:    print("best validation score:", checkpoint["best_val_score"])
+573:        "split_mode": args.split_mode,
+576:        "best_val_score": float(checkpoint["best_val_score"]),
+583:            "patience": int(args.patience),
+584:            "min_delta": float(args.min_delta),
+587:            "seed": int(args.seed),
+595:            "graph_pos_weight": float(graph_pos_weight),
+596:            "node_pos_weight": float(node_pos_weight),
+598:        "thresholds": {
+599:            "graph": float(args.graph_threshold),
+600:            "node": float(args.node_threshold),

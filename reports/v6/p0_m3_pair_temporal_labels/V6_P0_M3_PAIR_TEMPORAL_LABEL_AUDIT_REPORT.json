@@ -1,0 +1,96 @@
+{
+  "M2_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m2_normalization_leakage_r2/V6_P0_M2_R2_NORMALIZATION_LEAKAGE_REPORT.json",
+  "M2_report_sha256": "e4c5a7c1f562a87f48763d7da0363c52c5a05117f647349cb581819f6146bd9b",
+  "P2_test_used": false,
+  "attack_active_epochs": 25266,
+  "attack_active_windows": 3166,
+  "control_active_epochs": 0,
+  "created_utc": "2026-08-03T03:56:20.011768+00:00",
+  "data_copied": false,
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/V6_P0_PILOT100_ML_HANDOVER/v6_p0_pilot100_ml/dataset/processed_dynamic70",
+  "key_inventory": {
+    "attack": [
+      "y_attack"
+    ],
+    "count": [
+      "y_attacker_count"
+    ],
+    "path": [
+      "y_attack_path"
+    ],
+    "source": [
+      "y_source"
+    ],
+    "source_target_router": [
+      "source_target_router"
+    ],
+    "transit": [
+      "y_transit"
+    ],
+    "victim": [
+      "y_victim"
+    ],
+    "x": [
+      "x"
+    ]
+  },
+  "label_integrity": {
+    "active_epochs_have_source_victim_path": true,
+    "attacker_count_values_0_to_4": true,
+    "binary_graph_labels": true,
+    "binary_role_labels": true,
+    "control_labels_always_zero": true,
+    "failure_count": 0,
+    "inactive_epochs_have_zero_roles": true,
+    "source_count_equals_attacker_count": true,
+    "source_subset_of_path": true,
+    "source_target_association_checked": true,
+    "transit_subset_of_path": true,
+    "victim_subset_of_path": true
+  },
+  "pair_count": 100,
+  "pair_integrity": {
+    "active_pair_rms_max": 1.0472923911074523,
+    "active_pair_rms_median": 0.7288300434155608,
+    "active_pair_rms_min": 0.5389837966525813,
+    "complete_pairs": 100,
+    "cross_split_pairs": 0,
+    "incomplete_pairs": 0,
+    "pairs_with_active_divergence": 100,
+    "pairs_with_zero_active_divergence": 0,
+    "pre_onset_equality": true,
+    "pre_onset_mismatch_values": 0,
+    "pre_onset_values_compared": 35491680
+  },
+  "pair_summary_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m3_pair_temporal_labels/V6_P0_M3_PAIR_SUMMARY.csv",
+  "pair_summary_csv_sha256": "eb4ab7c68f8ff124543715d63fb615fa26a998133d50ad3a53e5652f6f7ff919",
+  "run_count": 200,
+  "source_modified": false,
+  "split_active_window_counts": {
+    "train": 2414,
+    "validation": 752
+  },
+  "split_pair_counts": {
+    "train": 75,
+    "validation": 25
+  },
+  "split_window_counts": {
+    "train": 17700,
+    "validation": 5900
+  },
+  "stage": "V6_P0_M3_PAIR_AND_TEMPORAL_LABEL_AUDIT",
+  "status": "PASS",
+  "total_windows": 23600,
+  "window_contract": {
+    "label_epoch": "window_start + 31",
+    "loader_source_policy_evidence": {
+      "contains_final_epoch_wording": true,
+      "contains_window_length_minus_one_expression": false,
+      "contains_window_start_indexing": true
+    },
+    "run_level_reconstruction_matches_dataset_summary": true,
+    "stride": 8,
+    "window_length": 32,
+    "windows_per_run": 118
+  }
+}

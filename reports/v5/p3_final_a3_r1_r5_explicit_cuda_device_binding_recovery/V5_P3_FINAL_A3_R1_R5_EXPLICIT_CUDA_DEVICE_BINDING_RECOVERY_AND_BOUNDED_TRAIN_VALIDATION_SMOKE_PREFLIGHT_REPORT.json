@@ -1,0 +1,1139 @@
+{
+  "authoritative_a4_io_contract_recovery": {
+    "A3_R1_R2_failure_classification": "historical_count_alias_missed",
+    "canonical_to_A4_training": {
+      "count": "y_attacker_count",
+      "graph": "y_attack",
+      "path": "y_path",
+      "source": "y_source",
+      "transit": "y_transit",
+      "victim": "y_victim"
+    },
+    "dataset_or_loader_modified": false,
+    "native_to_canonical": {
+      "y_attack": "y_attack",
+      "y_attacker_count": "y_attacker_count",
+      "y_path": "y_attack_path",
+      "y_source": "y_source",
+      "y_transit": "y_transit",
+      "y_victim": "y_victim"
+    },
+    "source_recovered_compute_losses_contract": {
+      "batch_literal_keys": [
+        "count",
+        "graph",
+        "path",
+        "source",
+        "transit",
+        "victim"
+      ],
+      "output_literal_keys": [
+        "attack_logits",
+        "count_logits",
+        "path_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits"
+      ],
+      "source_excerpt": "def compute_losses(\n    outputs: dict[str, torch.Tensor],\n    batch: dict[str, torch.Tensor],\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, torch.Tensor]:\n    active = batch[\"graph\"] > 0.5\n    if not bool(active.any()):\n        count_loss = outputs[\"count_logits\"].sum() * 0.0\n    else:\n        active_targets = batch[\"count\"][active] - 1\n        if not bool(\n            ((active_targets >= 0) & (active_targets <= 3)).all()\n        ):\n            raise RuntimeError(\n                \"active Count4 targets are outside 0..3\"\n            )\n        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            active_targets,\n        )\n\n    losses = {\n        \"graph\": F.binary_cross_entropy_with_logits(\n            outputs[\"attack_logits\"],\n            batch[\"graph\"],\n            pos_weight=graph_pos_weight,\n        ),\n        \"count\": count_loss,\n        \"source\": F.binary_cross_entropy_with_logits(\n            outputs[\"source_logits\"],\n            batch[\"source\"],\n            pos_weight=role_pos_weights[\"source\"],\n        ),\n        \"transit\": F.binary_cross_entropy_with_logits(\n            outputs[\"transit_logits\"],\n            batch[\"transit\"],\n            pos_weight=role_pos_weights[\"transit\"],\n        ),\n        \"victim\": F.binary_cross_entropy_with_logits(\n            outputs[\"victim_logits\"],\n            batch[\"victim\"],\n            pos_weight=role_pos_weights[\"victim\"],\n        ),\n        \"path\": F.binary_cross_entropy_with_logits(\n            outputs[\"path_logits\"],\n            batch[\"path\"],\n            pos_weight=role_pos_weights[\"path\"],\n        ),\n    }\n    losses[\"total\"] = sum(losses.values())\n    if not all(torch.isfinite(value) for value in losses.values()):\n        raise RuntimeError(\"non-finite multitask loss\")\n    return losses\n",
+      "source_sha256": "48cf329a11419759e8b4b648c9e01f08b892dac4d9d50c010eee5e21d310768b"
+    },
+    "transformation": "identity naming bridge only",
+    "validated_contract": {
+      "authoritative_batch_alias_map": {
+        "count": "y_attacker_count",
+        "graph": "y_attack",
+        "path": "y_path",
+        "source": "y_source",
+        "transit": "y_transit",
+        "victim": "y_victim"
+      },
+      "required_batch_keys": [
+        "count",
+        "graph",
+        "path",
+        "source",
+        "transit",
+        "victim"
+      ],
+      "required_output_keys": [
+        "attack_logits",
+        "count_logits",
+        "path_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits"
+      ],
+      "unknown_batch_keys": []
+    }
+  },
+  "authoritative_training_source": {
+    "compute_losses_signature": "(outputs: 'dict[str, torch.Tensor]', batch: 'dict[str, torch.Tensor]', graph_pos_weight: 'torch.Tensor', role_pos_weights: 'dict[str, torch.Tensor]') -> 'dict[str, torch.Tensor]'",
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+    "sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+  },
+  "authorization": {
+    "A3_preflight_complete": true,
+    "full_fresh_training_authorized": true,
+    "sealed_test_evaluation_authorized": false,
+    "smoke_checkpoint_must_not_be_reused": true
+  },
+  "campaign": "V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT",
+  "checkpoint_roundtrip": {
+    "artifact_role": "SMOKE_ONLY_DO_NOT_USE_FOR_TRAINING",
+    "model_state_exact_match": true,
+    "optimizer_state_exact_match": true,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_SMOKE_ONLY_DO_NOT_USE_FOR_TRAINING.pt",
+    "reload_state_sha256": "4bf448f94298bc4e977fef5593506bbdd2ceb4ecba6f192a2d86d3c720d7ebb8",
+    "scheduler_state_exact_match": true,
+    "sha256": "973eacee4f7c58f7995783df5ab10c67d416c5830f2439cc614ebdaa606b4a97"
+  },
+  "dataset": {
+    "loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "native_label_key_map": {
+      "y_attack": "y_attack",
+      "y_attacker_count": "y_attacker_count",
+      "y_path": "y_attack_path",
+      "y_source": "y_source",
+      "y_transit": "y_transit",
+      "y_victim": "y_victim"
+    },
+    "native_loader_class": "V5P3Dynamic70WindowDataset",
+    "train_constructor_attempts": [
+      {
+        "kwargs": {
+          "active_only": "False",
+          "root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+          "split": "train"
+        },
+        "mode": "signature_kwargs",
+        "success": true
+      }
+    ],
+    "train_items": 221773,
+    "train_smoke_coverage": {
+      "attack_count_coverage": {
+        "1": 112,
+        "2": 8,
+        "3": 8,
+        "4": 8
+      },
+      "contiguous_fallback_count": 0,
+      "controls": 120,
+      "coverage_complete": true,
+      "global_probe_count": 6170,
+      "role_positive_windows": {
+        "path": 136,
+        "source": 136,
+        "transit": 25,
+        "victim": 136
+      },
+      "scientific_role": "implementation coverage only; not production training order and not model selection",
+      "selected_count": 256,
+      "target": 256
+    },
+    "train_smoke_indices": [
+      0,
+      14,
+      27,
+      41,
+      54,
+      68,
+      81,
+      95,
+      108,
+      122,
+      135,
+      149,
+      162,
+      176,
+      190,
+      203,
+      284,
+      298,
+      311,
+      325,
+      338,
+      352,
+      365,
+      379,
+      393,
+      474,
+      487,
+      501,
+      514,
+      528,
+      541,
+      555,
+      9124,
+      27913,
+      27926,
+      27940,
+      28116,
+      28129,
+      28224,
+      28238,
+      28251,
+      55582,
+      55595,
+      55785,
+      55798,
+      56001,
+      56015,
+      56191,
+      56204,
+      83278,
+      83291,
+      83305,
+      83318,
+      83332,
+      83481,
+      83494,
+      83508,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130,
+      131,
+      132,
+      133,
+      134,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214
+    ],
+    "validation_constructor_attempts": [
+      {
+        "kwargs": {
+          "active_only": "False",
+          "root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+          "split": "validation"
+        },
+        "mode": "signature_kwargs",
+        "success": true
+      }
+    ],
+    "validation_items": 27722,
+    "validation_smoke_coverage": {
+      "attack_count_coverage": {
+        "1": 127,
+        "2": 8,
+        "3": 8,
+        "4": 8
+      },
+      "contiguous_fallback_count": 0,
+      "controls": 105,
+      "coverage_complete": true,
+      "global_probe_count": 6246,
+      "role_positive_windows": {
+        "path": 151,
+        "source": 151,
+        "transit": 25,
+        "victim": 151
+      },
+      "scientific_role": "implementation coverage only; not production training order and not model selection",
+      "selected_count": 256,
+      "target": 256
+    },
+    "validation_smoke_indices": [
+      0,
+      2,
+      3,
+      5,
+      7,
+      8,
+      10,
+      12,
+      93,
+      95,
+      96,
+      98,
+      100,
+      102,
+      103,
+      105,
+      107,
+      108,
+      110,
+      112,
+      113,
+      115,
+      117,
+      118,
+      120,
+      122,
+      124,
+      125,
+      127,
+      129,
+      130,
+      132,
+      403,
+      3582,
+      3584,
+      3585,
+      3587,
+      3589,
+      3591,
+      3592,
+      3594,
+      7096,
+      7098,
+      7100,
+      7102,
+      7103,
+      7105,
+      7107,
+      7108,
+      10555,
+      10557,
+      10558,
+      10560,
+      10562,
+      10564,
+      10565,
+      10567,
+      1,
+      4,
+      6,
+      9,
+      11,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      94,
+      97,
+      99,
+      101,
+      104,
+      106,
+      109,
+      111,
+      114,
+      116,
+      119,
+      121,
+      123,
+      126,
+      128,
+      131,
+      133,
+      134,
+      135,
+      136,
+      137,
+      138,
+      139,
+      140,
+      141,
+      142,
+      143,
+      144,
+      145,
+      146,
+      147,
+      148,
+      149,
+      150,
+      151,
+      152,
+      153,
+      154,
+      155,
+      156,
+      157,
+      158,
+      159,
+      160,
+      161,
+      162,
+      163,
+      164,
+      165,
+      166,
+      167,
+      168,
+      169,
+      170,
+      171,
+      172,
+      173,
+      174,
+      175,
+      176,
+      177,
+      178,
+      179,
+      180,
+      181,
+      182,
+      183,
+      184,
+      185,
+      186,
+      187,
+      188,
+      189,
+      190,
+      191,
+      192,
+      193,
+      194,
+      195,
+      196,
+      197,
+      198,
+      199,
+      200,
+      201,
+      202,
+      203,
+      204,
+      205,
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218,
+      219,
+      220,
+      221,
+      222,
+      223,
+      224,
+      225,
+      226,
+      227,
+      228,
+      229,
+      230
+    ]
+  },
+  "determinism": {
+    "loss_delta": 0.0,
+    "run_a_updated_state_sha256": "4bf448f94298bc4e977fef5593506bbdd2ceb4ecba6f192a2d86d3c720d7ebb8",
+    "run_b_updated_state_sha256": "4bf448f94298bc4e977fef5593506bbdd2ceb4ecba6f192a2d86d3c720d7ebb8",
+    "updated_state_exact_match": true
+  },
+  "environment": {
+    "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "device": "cuda:0",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "torch": "2.12.1+cu130"
+  },
+  "errors": [],
+  "explicit_cuda_device_binding_recovery": {
+    "A3_R1_R4_failure_classification": "torch_device_alias_comparison_cuda_vs_cuda_indexed",
+    "active_device": "cuda:0",
+    "cuda_current_device_index": 0,
+    "model_or_data_modified": false,
+    "recovery": "bind active logical CUDA index explicitly before tensor creation and comparison",
+    "requested_device_semantics_before": "torch.device('cuda')",
+    "scientific_hyperparameter_modified": false,
+    "tensor_runtime_device_observed": "cuda:0"
+  },
+  "initial_state_hash_recovery": {
+    "a3_r1_failure_classification": "hash_serialization_semantics_mismatch",
+    "authoritative_semantics": "A2-R3 exact key+dtype+JSON-shape+raw-bytes concatenation",
+    "authoritative_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+    "expected_a2_r3_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+    "model_or_dataset_modified": false,
+    "secondary_diagnostic_v2_sha256": "36122945ac800d1c754585cb5d6d9028af38594c52484eaa87c6db62f349ecb9"
+  },
+  "loss_weight_tensor_semantics_recovery": {
+    "A3_R1_R3_failure_classification": "graph_pos_weight_python_float_in_smoke_harness",
+    "authoritative_graph_positive_weight_value": 2.7082685394197807,
+    "authoritative_role_positive_weight_values": {
+      "path": 8.208121405883452,
+      "source": 20.0,
+      "transit": 17.186033877456886,
+      "victim": 20.0
+    },
+    "dataset_or_model_modified": false,
+    "graph_pos_weight_runtime_representation": "torch.float32 Tensor on active device",
+    "loss_equation_modified": false,
+    "role_pos_weights_runtime_representation": "dict[str, torch.float32 Tensor] on active device",
+    "weight_value_modified": false
+  },
+  "next_stage": "V5_P3_FINAL_A4_FRESH_AB_FULL_TRAINING",
+  "provenance": {
+    "hash_checks": {
+      "b3": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+      "canonical": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+      "dynamic70": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+      "loader": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+      "normalization": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49"
+    },
+    "lock_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_LOCK.json",
+    "lock_sha256": "59310f7f96782218341c3d1b9a8c3bdd23f23f3476244836f825755062018291",
+    "protocol_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+    "protocol_sha256": "47aeaa6d007fdfd951a7fb91519819745dff7fd0446ae37009f6c888f6a3e5bf",
+    "report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+    "report_sha256": "478518dd8ebe915f5e3051e98445cd52e4f2fc6ed2cf215530024fcf5b625194"
+  },
+  "scope": "one_train_batch_one_validation_batch_checkpoint_roundtrip",
+  "security": {
+    "checkpoint_selection": false,
+    "decoder_execution": false,
+    "decoder_import": false,
+    "full_epoch_training": false,
+    "native_test_dataset_constructed": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning": false
+  },
+  "status": "PASS",
+  "train_smoke": {
+    "clip_grad_norm_returned": 2.8912038803100586,
+    "construction": {
+      "canonical_parameter_count": 59785,
+      "edge": {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+        "sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+        "shape": [
+          2,
+          48
+        ]
+      },
+      "final_parameter_count": 60553,
+      "route": {
+        "b3": "P2B3Conv1DOnlyCount4()",
+        "canonical": "P2TaskDGraphConvCount4(b3, base_edge_index)",
+        "dynamic": "build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)"
+      }
+    },
+    "forward_binding": {
+      "binding": [
+        {
+          "parameter": "x",
+          "source": "batch[x]"
+        },
+        {
+          "parameter": "physical_port_mask",
+          "source": "batch[physical_port_mask]"
+        }
+      ],
+      "signature": "(x: 'torch.Tensor', physical_port_mask: 'torch.Tensor') -> 'dict[str, torch.Tensor]'"
+    },
+    "gradient_parameters_non_none": 48,
+    "gradient_parameters_nonfinite": 0,
+    "initial_state_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+    "loss": 6.889533996582031,
+    "loss_binding": {
+      "binding": [
+        {
+          "parameter": "outputs",
+          "source": "model_outputs"
+        },
+        {
+          "parameter": "batch",
+          "source": "canonicalized_batch"
+        },
+        {
+          "parameter": "graph_pos_weight",
+          "source": "A2-R3 graph_positive_weight as device float32 Tensor"
+        },
+        {
+          "parameter": "role_pos_weights",
+          "source": "A2-R3 role_positive_weights"
+        }
+      ],
+      "return_inventory": {
+        "count": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "graph": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "path": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "source": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "total": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "transit": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "victim": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        }
+      },
+      "signature": "(outputs: 'dict[str, torch.Tensor]', batch: 'dict[str, torch.Tensor]', graph_pos_weight: 'torch.Tensor', role_pos_weights: 'dict[str, torch.Tensor]') -> 'dict[str, torch.Tensor]'"
+    },
+    "loss_module_global_patches": {},
+    "loss_return_inventory": {
+      "count": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "graph": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "path": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "source": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "total": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "transit": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "victim": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      }
+    },
+    "output_inventory": {
+      "attack_logits": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          256
+        ],
+        "type": "tensor"
+      },
+      "count_logits": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          256,
+          4
+        ],
+        "type": "tensor"
+      },
+      "path_logits": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          256,
+          16
+        ],
+        "type": "tensor"
+      },
+      "source_logits": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          256,
+          16
+        ],
+        "type": "tensor"
+      },
+      "transit_logits": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          256,
+          16
+        ],
+        "type": "tensor"
+      },
+      "victim_logits": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [
+          256,
+          16
+        ],
+        "type": "tensor"
+      }
+    },
+    "pre_clip_global_grad_norm": 2.8912041279493126,
+    "updated_state_sha256": "4bf448f94298bc4e977fef5593506bbdd2ceb4ecba6f192a2d86d3c720d7ebb8"
+  },
+  "validation_smoke": {
+    "forward_binding": {
+      "binding": [
+        {
+          "parameter": "x",
+          "source": "batch[x]"
+        },
+        {
+          "parameter": "physical_port_mask",
+          "source": "batch[physical_port_mask]"
+        }
+      ],
+      "signature": "(x: 'torch.Tensor', physical_port_mask: 'torch.Tensor') -> 'dict[str, torch.Tensor]'"
+    },
+    "loss": 7.610619068145752,
+    "loss_binding": {
+      "binding": [
+        {
+          "parameter": "outputs",
+          "source": "model_outputs"
+        },
+        {
+          "parameter": "batch",
+          "source": "canonicalized_batch"
+        },
+        {
+          "parameter": "graph_pos_weight",
+          "source": "A2-R3 graph_positive_weight as device float32 Tensor"
+        },
+        {
+          "parameter": "role_pos_weights",
+          "source": "A2-R3 role_positive_weights"
+        }
+      ],
+      "return_inventory": {
+        "count": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "graph": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "path": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "source": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "total": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "transit": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "victim": {
+          "device": "cuda:0",
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        }
+      },
+      "signature": "(outputs: 'dict[str, torch.Tensor]', batch: 'dict[str, torch.Tensor]', graph_pos_weight: 'torch.Tensor', role_pos_weights: 'dict[str, torch.Tensor]') -> 'dict[str, torch.Tensor]'"
+    },
+    "model_construction": {
+      "canonical_parameter_count": 59785,
+      "edge": {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+        "sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+        "shape": [
+          2,
+          48
+        ]
+      },
+      "final_parameter_count": 60553,
+      "route": {
+        "b3": "P2B3Conv1DOnlyCount4()",
+        "canonical": "P2TaskDGraphConvCount4(b3, base_edge_index)",
+        "dynamic": "build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)"
+      }
+    },
+    "output_inventory": {
+      "count": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "graph": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "path": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "source": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "total": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "transit": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      },
+      "victim": {
+        "device": "cuda:0",
+        "dtype": "torch.float32",
+        "finite": true,
+        "shape": [],
+        "type": "tensor"
+      }
+    }
+  },
+  "warnings": []
+}

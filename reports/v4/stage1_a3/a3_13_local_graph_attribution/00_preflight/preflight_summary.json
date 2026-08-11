@@ -1,0 +1,757 @@
+{
+  "candidate_source_count": 93,
+  "checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a3_sourcepreserve_countaware_rank_mask_seed7/best_model.pt",
+  "checkpoint_object_type": "dict",
+  "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+  "checkpoint_top_level_inventory": {
+    "A_hat": {
+      "dtype": "torch.float32",
+      "shape": [
+        16,
+        16
+      ],
+      "type": "tensor"
+    },
+    "args": {
+      "a2_analysis_dir": null,
+      "amp": false,
+      "approve": false,
+      "batch_size": 256,
+      "batch_size_fallback_authorized": false,
+      "batch_size_fallback_reason": null,
+      "contract_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_0_contract",
+      "count_loss_weight": 0.5,
+      "data_dir": "/home/zira/research/projects/GNN-2d/data/processed/graph_dataset/paper1_temporal_graphs_ports_v4_all16_chrono_memmap",
+      "epochs": 100,
+      "full_val_every": 3,
+      "graph_fpr_cap": 0.1,
+      "graph_loss_weight": 1.0,
+      "graph_threshold": 0.5,
+      "lr": 0.001,
+      "min_delta": 0.0001,
+      "mode": "train",
+      "node_loss_weight": 1.0,
+      "node_threshold": 0.5,
+      "num_workers": 2,
+      "out_dir": "/home/zira/research/projects/GNN-2d/models/v4/v4_a3_sourcepreserve_countaware_rank_mask_seed7",
+      "patience": 15,
+      "persistent_workers": true,
+      "pin_memory": true,
+      "prefetch_factor": 2,
+      "rank_loss_weight": 0.2,
+      "rank_margin": 0.2,
+      "resume": true,
+      "seed": 7,
+      "smoke_epochs": 2,
+      "smoke_train_batches": 40,
+      "smoke_val_batches": 12,
+      "weight_decay": 0.0001
+    },
+    "best_epoch": 81,
+    "best_score": 2.322387199990036,
+    "immutable_config": {
+      "amp": false,
+      "batch_size": 256,
+      "batch_size_fallback_authorized": false,
+      "batch_size_fallback_reason": "",
+      "count_loss_weight": 0.5,
+      "data_dir": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v4_all16_chrono_memmap",
+      "epochs": 100,
+      "expected_parameter_count": 2983,
+      "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+      "full_val_every": 3,
+      "graph_fpr_cap": 0.1,
+      "graph_loss_weight": 1.0,
+      "graph_threshold_training": 0.5,
+      "lr": 0.001,
+      "min_delta": 0.0001,
+      "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+      "node_loss_weight": 1.0,
+      "node_threshold_training": 0.5,
+      "num_workers": 2,
+      "patience": 15,
+      "persistent_workers": true,
+      "pin_memory": true,
+      "prefetch_factor": 2,
+      "rank_loss_weight": 0.2,
+      "rank_margin": 0.2,
+      "runtime_schedule_version": "1.1.0",
+      "seed": 7,
+      "weight_decay": 0.0001
+    },
+    "model_signature": {
+      "attacker_head": [
+        32,
+        16,
+        1
+      ],
+      "count_head": [
+        64,
+        5
+      ],
+      "expected_parameter_count": 2983,
+      "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+      "gcn": [
+        16,
+        16
+      ],
+      "gcn_count": 1,
+      "graph_gates_attacker_decoder": false,
+      "graph_head": [
+        64,
+        1
+      ],
+      "input": [
+        "B",
+        16,
+        8,
+        24
+      ],
+      "local_projection": [
+        37,
+        16
+      ],
+      "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+      "parameter_count": 2983,
+      "parameter_count_ok": true,
+      "physical_valid_port_mask": [
+        "local",
+        "north",
+        "east",
+        "south",
+        "west"
+      ],
+      "regional_embedding_dim": 64,
+      "source_preserving_fusion": "concat(h_local,h_graph)",
+      "stage_label": "V4-A3",
+      "temporal_conv": {
+        "in_channels": 24,
+        "kernel_size": [
+          3
+        ],
+        "out_channels": 16,
+        "padding": [
+          1
+        ]
+      },
+      "temporal_readout": "concatenate mean and max over 8 epochs"
+    },
+    "optimizer_state_dict": {
+      "param_groups": [
+        {
+          "amsgrad": false,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "capturable": false,
+          "decoupled_weight_decay": true,
+          "differentiable": false,
+          "eps": 1e-08,
+          "foreach": null,
+          "fused": null,
+          "lr": 0.001,
+          "maximize": false,
+          "params": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "weight_decay": 0.0001
+        }
+      ],
+      "state": {
+        "0": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              24,
+              3
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              24,
+              3
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "1": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "10": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              64
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              64
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "11": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              1
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              1
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "12": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              5,
+              64
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              5,
+              64
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "13": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              5
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              5
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "2": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              37
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              37
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "3": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "4": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              16
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              16
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "5": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "6": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              32
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16,
+              32
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "7": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              16
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "8": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              16
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              1,
+              16
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        },
+        "9": {
+          "exp_avg": {
+            "dtype": "torch.float32",
+            "shape": [
+              1
+            ],
+            "type": "tensor"
+          },
+          "exp_avg_sq": {
+            "dtype": "torch.float32",
+            "shape": [
+              1
+            ],
+            "type": "tensor"
+          },
+          "step": {
+            "dtype": "torch.float32",
+            "shape": [],
+            "type": "tensor"
+          }
+        }
+      }
+    },
+    "physical_valid_port_mask": {
+      "dtype": "torch.float32",
+      "shape": [
+        16,
+        5
+      ],
+      "type": "tensor"
+    },
+    "runtime_schedule_version": "1.1.0",
+    "source_hashes": {
+      "common": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+      "trainer": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+    },
+    "test_evaluated": false,
+    "val_constrained_graph": {
+      "accuracy": 0.8777502747270753,
+      "f1": 0.9054954408732176,
+      "fn": 41466,
+      "fp": 14491,
+      "fpr": 0.0977899247562169,
+      "precision": 0.9487165875703816,
+      "recall": 0.866040795756311,
+      "threshold": 0.4599999999999999,
+      "tn": 133694,
+      "tp": 268076
+    },
+    "val_losses": {
+      "count": 0.9800672500809094,
+      "graph": 0.18743510078416414,
+      "node": 0.5469896252145363,
+      "rank": 0.14236050336586362,
+      "total": 1.252930451709659
+    },
+    "val_metrics": {
+      "attack_count_accuracy": 0.5173094442757364,
+      "attack_count_mae": 0.7086308158505147,
+      "attack_empty_prediction_fraction": 0.11533491416350608,
+      "attack_node_topk": {
+        "accuracy": 0.9371856242448521,
+        "f1": 0.7189170093251909,
+        "fn": 214654,
+        "fp": 96445,
+        "fpr": 0.02222145932398102,
+        "precision": 0.8048813548349245,
+        "recall": 0.6495433454476586,
+        "tn": 4243729,
+        "tp": 397844
+      },
+      "attack_samples": 309542,
+      "attack_topk_exact_localization": 0.43932002765375944,
+      "graph": {
+        "accuracy": 0.8732410366878074,
+        "f1": 0.9010925319500391,
+        "fn": 45243,
+        "fp": 12778,
+        "fpr": 0.0862300502749941,
+        "precision": 0.9538828556682799,
+        "recall": 0.8538388974678719,
+        "tn": 135407,
+        "tp": 264299
+      },
+      "node_threshold": {
+        "accuracy": 0.9220490598107606,
+        "f1": 0.6354568825804936,
+        "fn": 114927,
+        "fp": 455957,
+        "fpr": 0.06794038086558844,
+        "precision": 0.5218210687048519,
+        "recall": 0.8123634689419394,
+        "tn": 6255177,
+        "tp": 497571
+      },
+      "node_topk": {
+        "accuracy": 0.953770342365646,
+        "f1": 0.7015059197342401,
+        "fn": 214654,
+        "fp": 123915,
+        "fpr": 0.018464092655578027,
+        "precision": 0.762505294590031,
+        "recall": 0.6495433454476586,
+        "tn": 6587219,
+        "tp": 397844
+      },
+      "samples": 457727,
+      "threshold_exact_localization": 0.4493551833298014,
+      "topk_exact_localization": 0.5717359911038676,
+      "topk_metrics_computed": true
+    }
+  },
+  "designation": "V4-A3.13-P Frozen Local-vs-Graph Attribution Preflight",
+  "development_test_accessed": false,
+  "exact_instrumentation_ready": false,
+  "interpretation": "Do not implement branch attribution yet. Resolve the exact model class/module names from the reported checkpoint and source inventories.",
+  "likely_model_source": {
+    "classes": [
+      {
+        "bases": [
+          "Dataset"
+        ],
+        "forward_returns": [],
+        "methods": [
+          "__getitem__",
+          "__getstate__",
+          "__init__",
+          "__len__",
+          "_open"
+        ],
+        "name": "V4A3MemmapDataset",
+        "self_assignments": [
+          "_arrays",
+          "data_dir",
+          "include_metadata",
+          "indices"
+        ]
+      },
+      {
+        "bases": [
+          "nn.Module"
+        ],
+        "forward_returns": [
+          "self.linear(aggregate)"
+        ],
+        "methods": [
+          "__init__",
+          "forward"
+        ],
+        "name": "GCNLayer",
+        "self_assignments": [
+          "linear"
+        ]
+      },
+      {
+        "bases": [
+          "nn.Module"
+        ],
+        "forward_returns": [
+          "output"
+        ],
+        "methods": [
+          "__init__",
+          "forward"
+        ],
+        "name": "A3SourcePreserveModel",
+        "self_assignments": [
+          "attacker_hidden",
+          "attacker_out",
+          "count_head",
+          "gcn",
+          "graph_head",
+          "local_projection",
+          "temporal_conv"
+        ]
+      },
+      {
+        "bases": [],
+        "forward_returns": [],
+        "methods": [
+          "metrics",
+          "update"
+        ],
+        "name": "BinaryCounts",
+        "self_assignments": []
+      },
+      {
+        "bases": [],
+        "forward_returns": [],
+        "methods": [
+          "__init__",
+          "graph_arrays",
+          "metrics",
+          "update"
+        ],
+        "name": "EpochMetrics",
+        "self_assignments": [
+          "attack_count_abs_error",
+          "attack_count_correct",
+          "attack_node_topk_counts",
+          "attack_samples",
+          "attack_topk_exact",
+          "compute_topk",
+          "empty_attack_predictions",
+          "graph",
+          "graph_prob_parts",
+          "graph_threshold",
+          "graph_truth_parts",
+          "node_threshold",
+          "node_threshold_counts",
+          "node_topk_counts",
+          "samples",
+          "threshold_exact",
+          "topk_exact"
+        ]
+      }
+    ],
+    "nn_module_classes": [
+      "GCNLayer",
+      "A3SourcePreserveModel"
+    ],
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+    "score": 87,
+    "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704"
+  },
+  "likely_module_families": {
+    "count_head": [
+      "count_head"
+    ],
+    "graph": [
+      "gcn",
+      "graph_head"
+    ],
+    "graph_head": [
+      "graph_head"
+    ],
+    "local_projection": [
+      "local_projection"
+    ],
+    "node_head": [],
+    "temporal": [
+      "temporal_conv"
+    ]
+  },
+  "policy_selection_performed": false,
+  "provenance": {
+    "a3_12_lock_sha256": "550218e7b606d043a0d7ef9bff2372da8a054f93611f429c5dcd98aac6de792e",
+    "a3_12_summary_sha256": "00183eaa782f2b784bba8a77dc67ea3bba2aff6117e6ea3ff71b8a589db5bd5e",
+    "operational_policy_lock_sha256": "b6049d414fbc7cf4e3424739b4133e7b2d816af7d322790becf07b4bf896838c"
+  },
+  "python_file_count_scanned": 111,
+  "required_family_presence": {
+    "graph": true,
+    "local_projection": true,
+    "node_head": false,
+    "temporal": true
+  },
+  "source_matches_checkpoint_prefix": true,
+  "state_dict_location": "model_state_dict",
+  "state_dict_prefix_inventory": [
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "attacker_hidden"
+    },
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "attacker_out"
+    },
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "count_head"
+    },
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "gcn"
+    },
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "graph_head"
+    },
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "local_projection"
+    },
+    {
+      "tensor_count": 2,
+      "top_level_prefix": "temporal_conv"
+    }
+  ],
+  "state_dict_tensor_count": 14,
+  "state_dict_total_parameter_count": 2983,
+  "status": "HOLD",
+  "training_performed": false
+}

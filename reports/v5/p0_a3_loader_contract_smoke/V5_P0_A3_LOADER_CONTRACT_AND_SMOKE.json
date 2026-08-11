@@ -1,0 +1,202 @@
+{
+  "audit_boundary": {
+    "all_splits_read_for_loader_equality": true,
+    "checkpoint_selection_performed": false,
+    "label_distributions_computed": false,
+    "labels_read_only_for_final_target_equality": true,
+    "model_inference_performed": false,
+    "model_training_performed": false,
+    "test_performance_evaluated": false,
+    "threshold_selection_performed": false,
+    "validation_performance_evaluated": false
+  },
+  "batch_summary": {
+    "edge_index": {
+      "dtype": "torch.int64",
+      "shape": [
+        4,
+        2,
+        48
+      ]
+    },
+    "physical_port_mask": {
+      "dtype": "torch.bool",
+      "shape": [
+        4,
+        16,
+        10
+      ]
+    },
+    "role_mask": {
+      "dtype": "torch.uint8",
+      "shape": [
+        4,
+        16
+      ]
+    },
+    "x": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        16,
+        58,
+        32
+      ]
+    },
+    "y_attack_path": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        16
+      ]
+    },
+    "y_source": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        16
+      ]
+    },
+    "y_transit": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        16
+      ]
+    },
+    "y_victim": {
+      "dtype": "torch.float32",
+      "shape": [
+        4,
+        16
+      ]
+    }
+  },
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph",
+  "edge_index_shape": [
+    2,
+    48
+  ],
+  "failures": [],
+  "feature_count": 58,
+  "feature_variant": "PRIMARY58",
+  "first_batch_repeat_exact": true,
+  "next_stage": "V5_P0_A4_TINY_SUBSET_OVERFIT",
+  "normalization_applied_by_wrapper": false,
+  "provenance": {
+    "a2": {
+      "directory": "/home/zira/research/projects/GNN-2d/reports/v5/p0_a2_feature_contract",
+      "lock_path": "/home/zira/research/projects/GNN-2d/reports/v5/p0_a2_feature_contract/V5_P0_A2_FEATURE_AND_NORMALIZATION_CONTRACT_LOCK.json",
+      "lock_sha256": "c4c7462462bc5b6788930b3a6598c43ee63bd79e8e1e410f62efbc6833e96c51",
+      "lock_status": "V5_P0_A2_FEATURE_AND_NORMALIZATION_CONTRACT_PASS",
+      "marker_present": true,
+      "report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p0_a2_feature_contract/V5_P0_A2_FEATURE_AND_NORMALIZATION_CONTRACT.json",
+      "report_sha256": "b8d52a0d84c33de992bedd5dcafd138c048994695fa056c77c05dc0035f76cc6",
+      "report_status": "PASS"
+    },
+    "a3_0": {
+      "directory": "/home/zira/research/projects/GNN-2d/reports/v5/p0_a3_0_loader_interface",
+      "marker_present": true,
+      "report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p0_a3_0_loader_interface/V5_P0_A3_0_LOADER_INTERFACE_INSPECTION.json",
+      "report_sha256": "07f8a6663b273daee8331daced381e4ece053ec49ba40026ccd0c032aae6a9d6",
+      "report_status": "PASS"
+    },
+    "raw_mask_sha256": "4f3a86c03636b36fb79bbd0990ec061a2ab1887c9fbf02b908d3832b0b6519c8",
+    "supplied_loader_sha256": "da9455b3b7ffea7a5de4ebbe378a16c97ab35d3aa47754bf1772a5588bc98783",
+    "topology_sha256": "b71bd307fbddc3a7647a1151eb513a3000026092a0d46a60c2ae27b65f445875",
+    "wrapper_sha256": "1dc9953682afdc5b743e9e6005a00bc9bdf41a73bd2a80bbebd9d8ebb7783d67"
+  },
+  "raw_physical_mask_shape": [
+    16,
+    10
+  ],
+  "sample_0_repeat_exact": true,
+  "source_layout": "[T,16,81]",
+  "split_reports": {
+    "test": {
+      "dataset_length": 678,
+      "expected_window_count": 678,
+      "failure_count_added": 0,
+      "run_files": {
+        "V5-INITIAL24-D08-S2T15-S13T0-SEED510022-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/D08_ATTACK.pt",
+        "V5-INITIAL24-D08-S2T15-S13T0-SEED510022-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/D08_CONTROL.pt",
+        "V5-INITIAL24-L04-S15T15-SEED510023-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/L04_ATTACK.pt",
+        "V5-INITIAL24-L04-S15T15-SEED510023-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/L04_CONTROL.pt",
+        "V5-INITIAL24-S08-S9T0-SEED510021-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/S08_ATTACK.pt",
+        "V5-INITIAL24-S08-S9T0-SEED510021-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/S08_CONTROL.pt",
+        "V5-INITIAL24-T04-S11T4-SEED510024-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/T04_ATTACK.pt",
+        "V5-INITIAL24-T04-S11T4-SEED510024-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/test/T04_CONTROL.pt"
+      },
+      "samples_checked": 678,
+      "source_run_count": 8
+    },
+    "train": {
+      "dataset_length": 2707,
+      "expected_window_count": 2707,
+      "failure_count_added": 0,
+      "run_files": {
+        "V5-INITIAL24-D01-S0T10-S15T5-SEED510007-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D01_ATTACK.pt",
+        "V5-INITIAL24-D01-S0T10-S15T5-SEED510007-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D01_CONTROL.pt",
+        "V5-INITIAL24-D02-S0T5-S15T10-SEED510008-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D02_ATTACK.pt",
+        "V5-INITIAL24-D02-S0T5-S15T10-SEED510008-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D02_CONTROL.pt",
+        "V5-INITIAL24-D03-S0T10-S4T10-SEED510009-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D03_ATTACK.pt",
+        "V5-INITIAL24-D03-S0T10-S4T10-SEED510009-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D03_CONTROL.pt",
+        "V5-INITIAL24-D04-S3T12-S12T3-SEED510010-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D04_ATTACK.pt",
+        "V5-INITIAL24-D04-S3T12-S12T3-SEED510010-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D04_CONTROL.pt",
+        "V5-INITIAL24-D05-S1T14-S13T2-SEED510011-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D05_ATTACK.pt",
+        "V5-INITIAL24-D05-S1T14-S13T2-SEED510011-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D05_CONTROL.pt",
+        "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D06_ATTACK.pt",
+        "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D06_CONTROL.pt",
+        "V5-INITIAL24-L01-S0T0-SEED510013-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/L01_ATTACK.pt",
+        "V5-INITIAL24-L01-S0T0-SEED510013-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/L01_CONTROL.pt",
+        "V5-INITIAL24-L02-S5T5-SEED510014-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/L02_ATTACK.pt",
+        "V5-INITIAL24-L02-S5T5-SEED510014-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/L02_CONTROL.pt",
+        "V5-INITIAL24-S01-S0T15-SEED510001-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S01_ATTACK.pt",
+        "V5-INITIAL24-S01-S0T15-SEED510001-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S01_CONTROL.pt",
+        "V5-INITIAL24-S02-S15T0-SEED510002-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S02_ATTACK.pt",
+        "V5-INITIAL24-S02-S15T0-SEED510002-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S02_CONTROL.pt",
+        "V5-INITIAL24-S03-S4T7-SEED510003-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S03_ATTACK.pt",
+        "V5-INITIAL24-S03-S4T7-SEED510003-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S03_CONTROL.pt",
+        "V5-INITIAL24-S04-S7T4-SEED510004-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S04_ATTACK.pt",
+        "V5-INITIAL24-S04-S7T4-SEED510004-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S04_CONTROL.pt",
+        "V5-INITIAL24-S05-S2T14-SEED510005-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S05_ATTACK.pt",
+        "V5-INITIAL24-S05-S2T14-SEED510005-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S05_CONTROL.pt",
+        "V5-INITIAL24-S06-S14T2-SEED510006-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S06_ATTACK.pt",
+        "V5-INITIAL24-S06-S14T2-SEED510006-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S06_CONTROL.pt",
+        "V5-INITIAL24-T01-S1T11-SEED510015-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/T01_ATTACK.pt",
+        "V5-INITIAL24-T01-S1T11-SEED510015-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/T01_CONTROL.pt",
+        "V5-INITIAL24-T02-S12T3-SEED510016-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/T02_ATTACK.pt",
+        "V5-INITIAL24-T02-S12T3-SEED510016-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/T02_CONTROL.pt"
+      },
+      "samples_checked": 2707,
+      "source_run_count": 32
+    },
+    "validation": {
+      "dataset_length": 684,
+      "expected_window_count": 684,
+      "failure_count_added": 0,
+      "run_files": {
+        "V5-INITIAL24-D07-S0T10-S4T10-SEED510018-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/D07_ATTACK.pt",
+        "V5-INITIAL24-D07-S0T10-S4T10-SEED510018-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/D07_CONTROL.pt",
+        "V5-INITIAL24-L03-S10T10-SEED510019-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/L03_ATTACK.pt",
+        "V5-INITIAL24-L03-S10T10-SEED510019-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/L03_CONTROL.pt",
+        "V5-INITIAL24-S07-S3T12-SEED510017-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/S07_ATTACK.pt",
+        "V5-INITIAL24-S07-S3T12-SEED510017-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/S07_CONTROL.pt",
+        "V5-INITIAL24-T03-S6T15-SEED510020-ATTACK": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/T03_ATTACK.pt",
+        "V5-INITIAL24-T03-S6T15-SEED510020-CONTROL": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/validation/T03_CONTROL.pt"
+      },
+      "samples_checked": 684,
+      "source_run_count": 8
+    }
+  },
+  "stage": "V5_P0_A3_LOADER_CONTRACT_AND_SMOKE",
+  "status": "PASS",
+  "stride": 8,
+  "target_representations": {
+    "source_index": 4069
+  },
+  "total_samples_checked": 4069,
+  "warnings": [],
+  "window": 32,
+  "wrapped_layout": "[16,58,32]"
+}

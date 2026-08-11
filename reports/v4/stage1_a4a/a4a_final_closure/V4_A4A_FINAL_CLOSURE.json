@@ -1,0 +1,102 @@
+{
+  "a3_reference": {
+    "a3_12_summary_path": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_12_cardinality_ranking_decomposition/summary.json",
+    "a3_h32_validation_attack_exact": 0.7878215223097113,
+    "a3_h32_validation_oracle_count_exact": 0.9137007874015748,
+    "a3_h32_validation_oracle_gap": 0.12587926509186353,
+    "minimum_required_gain_percentage_points": 2.0,
+    "required_a4a_validation_attack_exact": 0.8078215223097113
+  },
+  "a4a_2b_outcome": {
+    "checkpoint_count_evaluated": 12,
+    "development_test_transfer_authorized": false,
+    "eligible_checkpoint_epochs": [],
+    "selected_checkpoint": null,
+    "selection_status": "HOLD_NO_CHECKPOINT_PASSES_ALL_FROZEN_GATES"
+  },
+  "audit_boundary": {
+    "dataset_samples_loaded": false,
+    "development_test_accessed": false,
+    "model_inference_performed": false,
+    "test_evaluated": false,
+    "test_loader_constructed": false,
+    "threshold_search_performed": false
+  },
+  "claim_boundary": {
+    "not_supported": [
+      "Autonomous attacker isolation using A4a on V4.",
+      "Development-test performance for A4a.",
+      "A claim that the structured slot decoder improves over A3-H32."
+    ],
+    "supported": [
+      "A4a preserved high attacker-set precision and zero persistent normal-run false isolation for its diagnostic best checkpoint.",
+      "A4a did not recover the frozen A3.12 cardinality gap on validation.",
+      "No A4a checkpoint passed every frozen promotion gate."
+    ]
+  },
+  "closed_actions": {
+    "a4a_development_test_transfer": false,
+    "additional_v4_decoder_architecture_search": false,
+    "additional_v4_loss_weight_search": false,
+    "cardinality_threshold_search": false,
+    "null_threshold_search": false
+  },
+  "designation": "V4 A4a Final Scientific Closure",
+  "diagnostic_best": {
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_024.pt",
+    "checkpoint_sha256": "21d9d71441f94f869ad3d010c3911a44ee1a6b109786971d6860111bac35f403",
+    "epoch": 24,
+    "exact_gain_over_a3_h32_percentage_points": -23.203328307365833,
+    "raw_validation_all_null_proposal_fraction": 0.4015013315797408,
+    "raw_validation_cardinality_accuracy": 0.6265852789981802,
+    "raw_validation_duplicate_proposal_fraction": 0.1280392024066747,
+    "raw_validation_membership_exact_fraction": 0.6092670958890343,
+    "raw_validation_membership_f1": 0.7048613596563305,
+    "raw_validation_membership_precision": 0.9214122856728653,
+    "raw_validation_membership_recall": 0.5707283942151647,
+    "temporal_attack_exact_localization": 0.5557882392360529,
+    "temporal_attack_set_precision": 0.9826515628277743,
+    "temporal_attack_set_recall": 0.6610080997939773,
+    "temporal_candidate_coverage": 0.8613391411179986,
+    "temporal_persistent_normal_run_false_isolation_fraction": 0.0,
+    "temporal_stable_attack_exact_point_rate": 0.5521025297369744,
+    "training_validation_total_loss": 1.250174526715873
+  },
+  "failures": [],
+  "frozen_gate_results": {
+    "all_gates_pass": false,
+    "checks": {
+      "attacker_set_precision": true,
+      "candidate_coverage": false,
+      "latency_budget": true,
+      "minimum_exact_improvement": false,
+      "parameter_budget": true,
+      "persistent_normal_run_false_isolation": true
+    },
+    "exact_gain_over_a3_h32_percentage_points": -23.781202881554698
+  },
+  "hypothesis": "A four-slot NULL-aware permutation-invariant decoder can recover a meaningful fraction of the A3.12 cardinality/set gap without changing the frozen A3 representation.",
+  "hypothesis_outcome": "FAILED_TO_RECOVER_CARDINALITY_GAP",
+  "interpretation": {
+    "dataset_implication": "V4 does not provide enough explicit source/transit/victim and route-transition evidence for reliable attacker-set cardinality and role separation.",
+    "decoder_result": "High precision and benign safety were retained, but recall, coverage, cardinality accuracy, and exact set localization were insufficient.",
+    "development_test_transfer_authorized": false,
+    "further_v4_decoder_tuning_authorized": false,
+    "next_stage": "Freeze and validate the V5 role-counterfactual dataset contract, then run the excluded instrumentation pilot.",
+    "primary_failure": "The structured slot decoder remained precision-oriented but under-predicted attacker membership and cardinality. The diagnostic checkpoint overused NULL, achieved insufficient membership recall, failed the candidate-coverage gate, and remained far below the frozen A3-H32 exact-localization reference."
+  },
+  "provenance": {
+    "a3_12_lock_sha256": "550218e7b606d043a0d7ef9bff2372da8a054f93611f429c5dcd98aac6de792e",
+    "a3_12_summary_sha256": "00183eaa782f2b784bba8a77dc67ea3bba2aff6117e6ea3ff71b8a589db5bd5e",
+    "base_checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "closure_script_sha256": "47b3ff7551b48db9a3d5b57b0796106b2d24c2ed1abe6e8a88dc3a78692726ee",
+    "diagnostic_checkpoint_sha256": "21d9d71441f94f869ad3d010c3911a44ee1a6b109786971d6860111bac35f403",
+    "full_training_contract_sha256": "59e9ef31814acbacb7601c11f83d92ed7926cb888a4862881ebc5b39c18dc853",
+    "primary_trainer_sha256": "c424a4877c39cdbf1df54dba89d152913c7aef3d7a265930f21c9af4ec52f42d",
+    "selection_lock_sha256": "76e08e737d430b15037f3a3f9e73d2df67d4fb4272721b3e20bbcea037f6a2e1",
+    "selection_report_sha256": "304ee6ac77f3fb3616953f0719a8e699aec69df88bfdde47604563dced05cf8b",
+    "selector_v2_sha256": "73c607fc721083ebb5549cf844edb6dc3e7fb53525f7e1d4eac3ed53a7f57da4",
+    "slot_contract_sha256": "71f7bdc1a940a8a80935095e0dafa6500c555fc659a9464de94a1375515a6e2b"
+  },
+  "status": "PASS"
+}

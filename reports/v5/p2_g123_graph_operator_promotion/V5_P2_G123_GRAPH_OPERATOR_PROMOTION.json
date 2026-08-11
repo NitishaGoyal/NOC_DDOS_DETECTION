@@ -1,0 +1,86 @@
+{
+  "decision": {
+    "architecture_selected": false,
+    "g0_case_2_material_promotion_pass": false,
+    "g0_case_4_lightweight_path_applies": true,
+    "main_lightweight_path_before_task_d": "EXISTING_B3_CONV1D_COUNT4",
+    "promotion_scope": "TASK_D_REVIEWER_CHALLENGER_ONLY",
+    "reason": "GraphConv is the strongest non-attention operator across G1-G3 and is the single frozen Task-D challenger. It does not satisfy every G0 case-2 material-gain condition, so B3 Conv1D remains the main lightweight path pending the prescribed full-multitask comparison.",
+    "task_d_candidates": [
+      "conv1d",
+      "graphconv"
+    ],
+    "task_d_challenger": "graphconv"
+  },
+  "joint_review": {
+    "case2_checks": {
+      "at_least_three_role_f1_gains_at_least_0_02": false,
+      "fpr_reduced": true,
+      "graph_balanced_accuracy_gain_at_least_0_02": false,
+      "no_role_degrades_more_than_0_02": true,
+      "strict_exactness_gain_at_least_0_03": true
+    },
+    "case2_pass": false,
+    "case4_applies": true,
+    "deltas_graphconv_minus_conv1d": {
+      "g1_exact_source_set_attack": 0.09916530575213212,
+      "g1_source_f1": 0.03220784617490535,
+      "g2_graph_balanced_accuracy": 0.009774760190689125,
+      "g2_graph_f1": 0.010191100561839805,
+      "g2_graph_fpr": -0.0042165499585874455,
+      "g3_joint_exact_all_roles_attack": 0.050807475957176496,
+      "g3_macro_exact_attack": 0.026265650517147576,
+      "g3_macro_role_f1": 0.018702969111531464,
+      "g3_path_f1": 0.020743894456759837,
+      "g3_source_f1": 0.040699224239170384,
+      "g3_transit_f1": 0.011069920353591445,
+      "g3_victim_f1": 0.00229883739660397
+    }
+  },
+  "next_stage": "V5_P2_TASK_D_FULL_MULTITASK_SYSTEM",
+  "provenance": {
+    "g1_lock": "79df8278e9b522d4c3796b30fab72ef75c50263e210830c36122b506254a6f0b",
+    "g1_report": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g1_summary": "4b66d5f465c1b90d2addaf9d93c4311935401d1fabe9644ea55abfa3595022e9",
+    "g2_lock": "b8baef9b0df3c79de2d72b857fa7c400440fe6274ce90c58c2bb1aa20c02798e",
+    "g2_report": "66748c90e128e2e869e30b55b461a49383a5253ccc4b49f3fb72111221b95a74",
+    "g2_summary": "7c1a890bf86eab6c3bb128a2c69824b9fef82b420594298d22739d92b57bfdda",
+    "g3_lock": "c8263eebde746a793fb240cf7d151f3078319e811f9d949496af4b7d4e0d5dfe",
+    "g3_report": "02fcfd64274b9db9a8823c786355e9f01998404c49af366b5ed9a2c78de2d5bf",
+    "g3_summary": "7c59d32cfb10a96daf8e7cd071271cce6ad3341282ed71dc67e3865dbdf9a290",
+    "seed_policy": "43c63a0d9144e0f314143f14a6039a6697a46eca277b299595be97fb0b2859bc",
+    "stage_plan": "2df9a44f5ed2a2251064fae24a931f298c9de31f59c0ff04ce10932cbda94e2a",
+    "stop_go": "fd2200dbac4fbf06a100308bda21bbebaa32c3f97d8fd3e41f58c009e97a0ebb",
+    "task_matrix": "98abc258137d61d0a13a239d1ea3af52ef89e20aad8ae9b29bd1036a2c62e67f",
+    "test_policy": "6b6ff4a87102a675c62cc11df18e018ac873b3bee41a0b7e8329badece0b1627"
+  },
+  "security_boundary": {
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensors_deserialized": false
+  },
+  "stage": "V5_P2_G123_GRAPH_OPERATOR_PROMOTION",
+  "status": "COMPLETE",
+  "task_d": {
+    "loss_and_checkpoint_selection": "reuse frozen P2 B1 full multitask protocol exactly",
+    "seeds": [
+      107,
+      117,
+      127,
+      137,
+      147
+    ],
+    "targets": [
+      "graph_attack",
+      "count_K1_K4",
+      "source[16]",
+      "transit[16]",
+      "victim[16]",
+      "path[16]"
+    ],
+    "threshold_tuning_during_training": false,
+    "total_runs": 10
+  }
+}

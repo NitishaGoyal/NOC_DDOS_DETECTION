@@ -1,0 +1,285 @@
+{
+  "artifacts": {
+    "attacker_count_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R1_COUNT_COMPLETENESS_BY_ATTACKER_COUNT.json",
+    "attempt_reconstruction": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R1_COUNT_64_AND_128_POINT_ATTEMPT_RECONSTRUCTION.json",
+    "classification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R1_COUNT_COMPLETENESS_FAILURE_CLASSIFICATION.json",
+    "convergence_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R1_COUNT_64_TO_128_POINT_CONVERGENCE_REVIEW.json",
+    "diagnostic_hybrid_gate_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R1_COUNT_DIAGNOSTIC_HYBRID_GATE_REVIEW.json",
+    "small_target_delta_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R1_COUNT_SMALL_TARGET_DELTA_REVIEW.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T22:55:49.458639+00:00",
+  "decision": {
+    "F6R_result_review_authorized": false,
+    "F6_R1_complete": true,
+    "F7_retraining_ablation_authorized": false,
+    "count_task_complete": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F6_R2_COUNT_256_POINT_TARGETED_RETRY",
+    "other_F6_tasks_authorized_to_continue": false,
+    "repair_authorized": false,
+    "sealed_test_access_authorized": false
+  },
+  "failure_classification": "COUNT_IG_DISCRETIZATION_NONCONVERGENCE_AT_128_POINTS",
+  "finding": {
+    "attempt_128": {
+      "completeness": {
+        "gate": {
+          "median_relative_error_max": 0.02,
+          "p95_relative_error_max": 0.05
+        },
+        "maximum_relative_error": 14.146437644958496,
+        "mean_absolute_error": 0.06431756168603897,
+        "median_relative_error": 0.010873917490243912,
+        "p95_relative_error": 0.08534369617700577,
+        "pass": false
+      },
+      "failure_counts": {
+        "relative_error_gt_0_02": 159,
+        "relative_error_gt_0_05": 47,
+        "relative_error_gt_0_10": 19,
+        "relative_error_gt_1_00": 1
+      }
+    },
+    "attempt_64": {
+      "completeness": {
+        "gate": {
+          "median_relative_error_max": 0.02,
+          "p95_relative_error_max": 0.05
+        },
+        "maximum_relative_error": 18.93121910095215,
+        "mean_absolute_error": 0.13556519150733948,
+        "median_relative_error": 0.020094487816095352,
+        "p95_relative_error": 0.18884913623332977,
+        "pass": false
+      },
+      "failure_counts": {
+        "relative_error_gt_0_02": 258,
+        "relative_error_gt_0_05": 119,
+        "relative_error_gt_0_10": 57,
+        "relative_error_gt_1_00": 3
+      }
+    },
+    "classification_reasons": [
+      "The 128-point attempt materially improves completeness relative to 64 points but remains outside the frozen gate.",
+      "This pattern is consistent with a path that requires a denser integration rule rather than a corrupted artifact."
+    ],
+    "convergence": {
+      "absolute_error_change": {
+        "exact_tie_count": 0,
+        "improved_sample_count": 378,
+        "mean_128": 0.06431756296660751,
+        "mean_64": 0.13556519674602896,
+        "median_128": 0.048999786376953125,
+        "median_128_over_64": 0.4625533412122983,
+        "median_64": 0.10278201103210449,
+        "p95_128": 0.16342406272888182,
+        "p95_64": 0.3530117511749267,
+        "worsened_sample_count": 134
+      },
+      "absolute_error_difference_quantiles": {
+        "maximum": 0.35564422607421875,
+        "mean": -0.07124763377942145,
+        "median": -0.05415081977844238,
+        "minimum": -0.7239751815795898,
+        "q01": -0.4579289972782135,
+        "q05": -0.28977706432342526,
+        "q10": -0.21002957820892335,
+        "q25": -0.1347498893737793,
+        "q75": 0.002898573875427246,
+        "q90": 0.05426285266876222,
+        "q95": 0.08262059688568113,
+        "q99": 0.15209941864013649
+      },
+      "identity_comparison": {
+        "attack_indices": {
+          "dtype_match": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0.0,
+          "mean_absolute_difference": 0.0,
+          "rmse": 0.0,
+          "shape_match": true
+        },
+        "control_indices": {
+          "dtype_match": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0.0,
+          "mean_absolute_difference": 0.0,
+          "rmse": 0.0,
+          "shape_match": true
+        },
+        "target_attack": {
+          "dtype_match": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0.0,
+          "mean_absolute_difference": 0.0,
+          "rmse": 0.0,
+          "shape_match": true
+        },
+        "target_control": {
+          "dtype_match": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0.0,
+          "mean_absolute_difference": 0.0,
+          "rmse": 0.0,
+          "shape_match": true
+        },
+        "target_delta": {
+          "dtype_match": true,
+          "exact_equal": true,
+          "maximum_absolute_difference": 0.0,
+          "mean_absolute_difference": 0.0,
+          "rmse": 0.0,
+          "shape_match": true
+        }
+      },
+      "relative_error_change": {
+        "exact_tie_count": 0,
+        "improved_sample_count": 378,
+        "median_128": 0.010873917955905199,
+        "median_128_over_64": 0.46255332608808686,
+        "median_64": 0.020094487816095352,
+        "p95_128": 0.0853436969220638,
+        "p95_64": 0.1888491310179233,
+        "worsened_sample_count": 134
+      },
+      "relative_error_difference_quantiles": {
+        "maximum": 0.32295751571655273,
+        "mean": -0.046571847529065735,
+        "median": -0.009187045448925346,
+        "minimum": -6.127276510000229,
+        "q01": -0.3755301120877266,
+        "q05": -0.1245261917298194,
+        "q10": -0.0678714138455689,
+        "q25": -0.027815204462967813,
+        "q75": 0.000477058463729918,
+        "q90": 0.012674027320463221,
+        "q95": 0.020955631928518393,
+        "q99": 0.06622484408318996
+      }
+    },
+    "small_target_delta_review_128": {
+      "1e-01": {
+        "absolute_error_mean": 0.03689873218536377,
+        "fraction": 0.0078125,
+        "relative_error_gt_0_02": 4,
+        "relative_error_gt_0_05": 4,
+        "relative_error_median": 0.552462562918663,
+        "sample_count": 4
+      },
+      "1e-02": {
+        "absolute_error_mean": 0.05585312843322754,
+        "fraction": 0.001953125,
+        "relative_error_gt_0_02": 1,
+        "relative_error_gt_0_05": 1,
+        "relative_error_median": 14.146437644958496,
+        "sample_count": 1
+      },
+      "1e-03": {
+        "absolute_error_mean": null,
+        "fraction": 0.0,
+        "relative_error_gt_0_02": 0,
+        "relative_error_gt_0_05": 0,
+        "relative_error_median": null,
+        "sample_count": 0
+      },
+      "1e-04": {
+        "absolute_error_mean": null,
+        "fraction": 0.0,
+        "relative_error_gt_0_02": 0,
+        "relative_error_gt_0_05": 0,
+        "relative_error_median": null,
+        "sample_count": 0
+      },
+      "1e-05": {
+        "absolute_error_mean": null,
+        "fraction": 0.0,
+        "relative_error_gt_0_02": 0,
+        "relative_error_gt_0_05": 0,
+        "relative_error_median": null,
+        "sample_count": 0
+      },
+      "1e-06": {
+        "absolute_error_mean": null,
+        "fraction": 0.0,
+        "relative_error_gt_0_02": 0,
+        "relative_error_gt_0_05": 0,
+        "relative_error_median": null,
+        "sample_count": 0
+      },
+      "5e-02": {
+        "absolute_error_mean": 0.022640466690063477,
+        "fraction": 0.005859375,
+        "relative_error_gt_0_02": 3,
+        "relative_error_gt_0_05": 3,
+        "relative_error_median": 0.21058645844459534,
+        "sample_count": 3
+      },
+      "five_percent_failure_concentration": {
+        "absolute_error_quantiles": {
+          "maximum": 0.5849685668945312,
+          "mean": 0.11169611393137181,
+          "median": 0.09055399894714355,
+          "minimum": 0.005712032318115234,
+          "q01": 0.006008367538452148,
+          "q05": 0.021341514587402344,
+          "q10": 0.037683200836181645,
+          "q25": 0.05647861957550049,
+          "q75": 0.12713021039962769,
+          "q90": 0.21017961502075191,
+          "q95": 0.2630078434944152,
+          "q99": 0.4465214538574216
+        },
+        "failure_count": 47,
+        "target_delta_absolute_quantiles": {
+          "maximum": 7.5725250244140625,
+          "mean": 1.2141331814705056,
+          "median": 1.0290069580078125,
+          "minimum": 0.003948211669921875,
+          "q01": 0.014609260559082031,
+          "q05": 0.0595144271850586,
+          "q10": 0.19648170471191412,
+          "q25": 0.5160789489746094,
+          "q75": 1.4675579071044922,
+          "q90": 2.2026397705078122,
+          "q95": 2.7017402648925763,
+          "q99": 5.760085296630856
+        }
+      }
+    }
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "IG_task_target_changed": false,
+    "checkpoint_loaded": false,
+    "completeness_gate_changed": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "saved_validation_output_artifacts_loaded": true,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "F6_P3_lock_sha256": "c38aabc5a5617beb842199feb0a0191d855b57787b30870ea7cc1b47d450069e",
+    "F6_P3_report_sha256": "99e964103ea2a21e2a89bd97a68be26726ac266bfd7793d3d2afe1d2470cb37c",
+    "F6_run_contract_sha256": "c0db9505af1ed56364eed7e962ce4d3b6733135fdccd1ac89ddd298e6f607e33",
+    "F6_selection_sha256": "5b9b441bebde509475cfd1e15706206c51fee04a0c7e535aa71380425dbcb4f6",
+    "attacker_count_review_sha256": "81366531dc9e2192bd7f1a7d81dabeda3294315710ae79ea6b13d4631e8bb34a",
+    "attempt_128_aggregate_sha256": "a484445cfae283e0f147b31bbe63bf1803cdc8dbc0dc8fa0e38d386cd470fb72",
+    "attempt_128_result_sha256": "e440665c6e302d69fbaaaf5a65436173e0eaf5846c44f6d4937e5abfd5dc2a38",
+    "attempt_64_aggregate_sha256": "fbc28866d5b3fd81211da0a6f407725aae04a1da377b805e15d3eb8e9644239f",
+    "attempt_64_result_sha256": "111448a0d643ed7b8fcff9b55a9e49085bd77927a87a4f8142d7c258634aee67",
+    "attempt_reconstruction_sha256": "044654a496779171cfc11d3aa3e8bee8defd41330205204086f6505df6428558",
+    "classification_sha256": "6ed37e9740d156a711e946045c1a8f0558ab59fe1e4055bb4a1e2cbfffb04391",
+    "convergence_review_sha256": "c8eae8e44e1610db31765217f0603c384555b3cafc4ec4d26641e59eb2332ffa",
+    "diagnostic_hybrid_gate_review_sha256": "0746249fe24f34c307a9327de3f51208095d601d2084499e26d0228416cbcf39",
+    "installed_script_sha256": "9139eb9e83b024f5edb25484b930e8bc6f70f26c539c44eb638ea2cb389caf38",
+    "small_target_delta_review_sha256": "9123d2e158d20d9710b80588a7d23ff2890191cb79d1846cf31262108ab9f804"
+  },
+  "scope": "Reconstruct the completed 64-point and 128-point count IG attempts from all 64 hashed microbatch artifacts, verify stored aggregate identity, compare endpoint targets and selected sample order, measure convergence and attacker-count-specific error, test whether relative failure is concentrated on near-zero target deltas, and classify the next recovery route without loading the model, checkpoint, or validation features.",
+  "stage": "V5_P3_F6_R1_COUNT_COMPLETENESS_FAILURE_DIAGNOSTIC",
+  "status": "PASS"
+}

@@ -1,0 +1,57 @@
+{
+  "artifacts": {
+    "repaired_baseline_gate": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/f5_runs/run_20260805T213252Z/results/F5_R3B_OFFICIAL_RUNTIME_BASELINE_REPRODUCTION_GATE.json",
+    "repaired_baseline_unit": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/f5_runs/run_20260805T213252Z/units/baseline_official_runtime",
+    "runtime_override": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/f5_runs/run_20260805T213252Z/F5_R3B_OFFICIAL_D1_RUNTIME_RECOVERY_OVERRIDE.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY runtime recovery",
+  "created_utc": "2026-08-05T22:04:13.249276+00:00",
+  "decision": {
+    "F5_baseline_gate_complete": true,
+    "F5_permutation_units_authorized": true,
+    "F6_integrated_gradients_authorized": false,
+    "F7_retraining_ablation_authorized": false,
+    "next_stage": "V5_P3_F5_DYNAMIC70_GROUP_BLOCK_PERMUTATION_RESUME",
+    "sealed_test_access_authorized": false
+  },
+  "finding": {
+    "baseline_all_14_metrics_pass": true,
+    "confirmed_causal_runtime_field": "cudnn_allow_tf32",
+    "historical_failed_value": false,
+    "official_D1_value": true,
+    "official_full_runtime": {
+      "cuda_available": true,
+      "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "cudnn_version": 92000,
+      "deterministic_algorithms_enabled": false,
+      "device": "cuda",
+      "float32_matmul_precision": "highest",
+      "torch_cuda_version": "13.0",
+      "torch_version": "2.12.1+cu130"
+    }
+  },
+  "governance": {
+    "historical_failed_baseline_overwritten": false,
+    "historical_run_contract_modified": false,
+    "metric_formulas_changed": false,
+    "model_weights_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "validation_cache_rebuilt": false
+  },
+  "provenance": {
+    "F5_R3A_lock_sha256": "d0df7317bea4a895c35ab03e6c6a76ff25d7a293754fe1c19149193ca605ce61",
+    "F5_R3A_report_sha256": "e38e33100432ec383a1f5072a425207c2fbbb7233205cec8221ed92b0aeed7e6",
+    "installed_script_sha256": "ddd04eec802330b493c5d22ea042786287da0979ada7c203304eb9aa9c86c653",
+    "repaired_baseline_gate_sha256": "1a99d52c591a2036833fbe9af9620d8e30d424f3043ed33f6415359b28f3c9f8",
+    "repaired_baseline_metrics_sha256": "acf22e51d31f932872f3e3eb36139e23575aa22c22834e40853d96fcf69f4a5f",
+    "runtime_override_sha256": "8b114f2e5bb58b95c82cd5cd436e9e9b78c2f1aff9a77c85f66c8245565a5c33"
+  },
+  "stage": "V5_P3_F5_R3B_OFFICIAL_RUNTIME_BASELINE_RECOVERY",
+  "status": "PASS"
+}

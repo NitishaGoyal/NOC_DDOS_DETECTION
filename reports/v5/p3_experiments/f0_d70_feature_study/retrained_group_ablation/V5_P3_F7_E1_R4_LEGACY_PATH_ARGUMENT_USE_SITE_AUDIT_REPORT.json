@@ -1,0 +1,246 @@
+{
+  "artifacts": {
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R4_NEXT_BINDING_ROUTE_DECISION.json",
+    "exact_source_excerpts": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R4_LEGACY_PATH_ARGUMENT_EXACT_SOURCE_EXCERPTS.txt",
+    "full_static_audit": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R4_LEGACY_PATH_ARGUMENT_FULL_STATIC_AUDIT.json",
+    "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R4_LEGACY_PATH_ARGUMENT_USE_SITE_SUMMARY.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-06T04:06:41.010952+00:00",
+  "decision": {
+    "E2_generated_trainer_preflight_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "R4_static_audit_complete": true,
+    "actual_F7_primary_matrix_execution_started": false,
+    "actual_scientific_training_started": false,
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "loader_path_classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+    "model_dir_classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+    "model_path_classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+    "next_stage": "V5_P3_F7_E1_R5_COMPATIBILITY_PROVENANCE_BINDING_AND_E2_GENERATION",
+    "next_stage_reason": "loader_path and model_path are compatibility/provenance-only or unused after constructor replacement",
+    "primary_matrix_execution_authorized": false,
+    "sealed_test_access": false
+  },
+  "finding": {
+    "arguments": {
+      "b0_r3_dir": {
+        "alias_names": [],
+        "assignment_count": 0,
+        "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+        "classifications_observed": [
+          "existence_or_path_normalization"
+        ],
+        "cli": {
+          "default": null,
+          "dest": "b0_r3_dir",
+          "line_end": 1003,
+          "line_start": 1003,
+          "options": [
+            "--b0-r3-dir"
+          ],
+          "required": true,
+          "source": "parser.add_argument('--b0-r3-dir', type=Path, required=True)"
+        },
+        "flags": {
+          "comparison_or_manifest_gate": false,
+          "copy_use": false,
+          "dynamic_runtime_use": false,
+          "existence_or_path_normalization": true,
+          "file_read_use": false,
+          "hash_use": false,
+          "output_or_mutation_use": false,
+          "provenance_or_log_use": false
+        },
+        "use_site_count": 1
+      },
+      "b1_dir": {
+        "alias_names": [],
+        "assignment_count": 0,
+        "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+        "classifications_observed": [
+          "existence_or_path_normalization"
+        ],
+        "cli": {
+          "default": null,
+          "dest": "b1_dir",
+          "line_end": 1002,
+          "line_start": 1002,
+          "options": [
+            "--b1-dir"
+          ],
+          "required": true,
+          "source": "parser.add_argument('--b1-dir', type=Path, required=True)"
+        },
+        "flags": {
+          "comparison_or_manifest_gate": false,
+          "copy_use": false,
+          "dynamic_runtime_use": false,
+          "existence_or_path_normalization": true,
+          "file_read_use": false,
+          "hash_use": false,
+          "output_or_mutation_use": false,
+          "provenance_or_log_use": false
+        },
+        "use_site_count": 1
+      },
+      "loader_path": {
+        "alias_names": [],
+        "assignment_count": 0,
+        "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+        "classifications_observed": [
+          "existence_or_path_normalization"
+        ],
+        "cli": {
+          "default": null,
+          "dest": "loader_path",
+          "line_end": 1004,
+          "line_start": 1004,
+          "options": [
+            "--loader-path"
+          ],
+          "required": true,
+          "source": "parser.add_argument('--loader-path', type=Path, required=True)"
+        },
+        "flags": {
+          "comparison_or_manifest_gate": false,
+          "copy_use": false,
+          "dynamic_runtime_use": false,
+          "existence_or_path_normalization": true,
+          "file_read_use": false,
+          "hash_use": false,
+          "output_or_mutation_use": false,
+          "provenance_or_log_use": false
+        },
+        "use_site_count": 1
+      },
+      "model_dir": {
+        "alias_names": [],
+        "assignment_count": 0,
+        "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+        "classifications_observed": [
+          "existence_or_path_normalization"
+        ],
+        "cli": {
+          "default": null,
+          "dest": "model_dir",
+          "line_end": 1007,
+          "line_start": 1007,
+          "options": [
+            "--model-dir"
+          ],
+          "required": true,
+          "source": "parser.add_argument('--model-dir', type=Path, required=True)"
+        },
+        "flags": {
+          "comparison_or_manifest_gate": false,
+          "copy_use": false,
+          "dynamic_runtime_use": false,
+          "existence_or_path_normalization": true,
+          "file_read_use": false,
+          "hash_use": false,
+          "output_or_mutation_use": false,
+          "provenance_or_log_use": false
+        },
+        "use_site_count": 1
+      },
+      "model_path": {
+        "alias_names": [],
+        "assignment_count": 0,
+        "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+        "classifications_observed": [
+          "existence_or_path_normalization"
+        ],
+        "cli": {
+          "default": null,
+          "dest": "model_path",
+          "line_end": 1005,
+          "line_start": 1005,
+          "options": [
+            "--model-path"
+          ],
+          "required": true,
+          "source": "parser.add_argument('--model-path', type=Path, required=True)"
+        },
+        "flags": {
+          "comparison_or_manifest_gate": false,
+          "copy_use": false,
+          "dynamic_runtime_use": false,
+          "existence_or_path_normalization": true,
+          "file_read_use": false,
+          "hash_use": false,
+          "output_or_mutation_use": false,
+          "provenance_or_log_use": false
+        },
+        "use_site_count": 1
+      },
+      "root": {
+        "alias_names": [],
+        "assignment_count": 0,
+        "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+        "classifications_observed": [
+          "existence_or_path_normalization"
+        ],
+        "cli": {
+          "default": null,
+          "dest": "root",
+          "line_end": 1001,
+          "line_start": 1001,
+          "options": [
+            "--root"
+          ],
+          "required": true,
+          "source": "parser.add_argument('--root', type=Path, required=True)"
+        },
+        "flags": {
+          "comparison_or_manifest_gate": false,
+          "copy_use": false,
+          "dynamic_runtime_use": false,
+          "existence_or_path_normalization": true,
+          "file_read_use": false,
+          "hash_use": false,
+          "output_or_mutation_use": false,
+          "provenance_or_log_use": false
+        },
+        "use_site_count": 1
+      }
+    },
+    "next_stage": "V5_P3_F7_E1_R5_COMPATIBILITY_PROVENANCE_BINDING_AND_E2_GENERATION",
+    "next_stage_reason": "loader_path and model_path are compatibility/provenance-only or unused after constructor replacement",
+    "skeleton": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "legacy_loader_path_opened": false,
+    "legacy_model_path_opened": false,
+    "model_loaded": false,
+    "optimizer_step_performed": false,
+    "primary_matrix_execution_authorized": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": false,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_constructed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "E0D_R1_lock_sha256": "79e92bee0b34c1896265ff0ff08969e177844bd4e2b68bdc5b08404a5fe94165",
+    "E0D_R1_report_sha256": "832d6b600d516a119ff9e5c1337088f040ca1a21fd9264fc8c1d323ba757ef00",
+    "P2_lock_sha256": "8989f4babc7a9f7c64e0dae5d3d03c0b69d19682363a73e4dc2fde4b7e0f64e3",
+    "decision_sha256": "fe21efa2c0318af06350a7ba33e4350f95ad6b2fef72c2c4201eb0f526e05724",
+    "excerpts_sha256": "323dfaa7cf7ec93b375b4585b2809ec6b1dd571679c20bd42648b0cfe2a06946",
+    "full_audit_sha256": "1071a72ad31cac05f150166b99598f1f344a9095d9c53eb25f8c27e47b651675",
+    "installed_script_sha256": "4bf2b5dc7aba8ea382fde32affc0d2e1950ad0a17bb01add5c4c8336e421d4e1",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "summary_sha256": "d9ebb042f7b93b2b9f63c1950ce69d65b257a2f26d9ae1e68368241f85eeedd2"
+  },
+  "scope": "Statically audit every definition, alias, call argument, comparison, manifest/log insertion, file read, hash, copy, dynamic import, execution, output and path-normalization use of root, b1_dir, b0_r3_dir, loader_path, model_path and model_dir in the frozen V5-P2 skeleton. No pointed-to path is opened or executed. Use the exact use sites to select the next compatibility route instead of guessing legacy source paths.",
+  "stage": "V5_P3_F7_E1_R4_LEGACY_PATH_ARGUMENT_USE_SITE_AUDIT",
+  "status": "PASS"
+}

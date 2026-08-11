@@ -1,0 +1,963 @@
+{
+  "blocked_sealed_or_test_paths_not_opened": 35,
+  "candidate_records": 2591,
+  "classification": "ENGINEERING",
+  "classification_policy": {
+    "ARCHITECTURE_ADAPTATION_CANDIDATE": "implementation may be reusable after adapting to frozen final A+B six-head protocol",
+    "FINAL_AB_REUSE_CANDIDATE_NEEDS_CERTIFICATION": "visible metadata/source signals final A+B + Dynamic70 + six heads; reuse NOT yet approved",
+    "HISTORICAL_REFERENCE_ONLY": "historical regime; metrics/checkpoints cannot enter controlled final A+B table",
+    "INFRASTRUCTURE_CANDIDATE": "comparison/training/export/latency infrastructure candidate",
+    "MANUAL_REVIEW": "insufficient evidence for automatic classification"
+  },
+  "cuda_used": false,
+  "decoder_applied": false,
+  "family_summary": {
+    "D0_BINARY_CONV1D": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 6,
+        "HISTORICAL_REFERENCE_ONLY": 17,
+        "INFRASTRUCTURE_CANDIDATE": 109,
+        "MANUAL_REVIEW": 1
+      },
+      "candidate_count": 133,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d2_p0_raw_a0_a1_validation_contract_recovery/V5_P3_FINAL_D2_P0_RAW_A0_A1_VALIDATION_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/final/archive_v5_p0_and_handoff_to_p2.py",
+          "score": 65
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_a3_preliminary_baseline_preflight.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_h0_current_4x4_dynamic70_rtl_handoff.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_final_results_archive_and_p2_handoff/V5_P0_FINAL_RESULTS_ARCHIVE_AND_P2_HANDOFF.json",
+          "score": 60
+        }
+      ]
+    },
+    "D1_BINARY_CONV1D_GRAPHCONV": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 1,
+        "HISTORICAL_REFERENCE_ONLY": 3,
+        "INFRASTRUCTURE_CANDIDATE": 58
+      },
+      "candidate_count": 62,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d2_p0_raw_a0_a1_validation_contract_recovery/V5_P3_FINAL_D2_P0_RAW_A0_A1_VALIDATION_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f5_dynamic70_group_block_permutation.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_a3_preliminary_baseline_preflight.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_h0_current_4x4_dynamic70_rtl_handoff.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p2_l0_r0_semantic_resolution/V5_P2_L0_R0_SEMANTIC_RESOLUTION.json",
+          "score": 58
+        }
+      ]
+    },
+    "D2_XGBOOST": {
+      "by_classification": {
+        "INFRASTRUCTURE_CANDIDATE": 2
+      },
+      "candidate_count": 2,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+          "score": 60
+        }
+      ]
+    },
+    "M0_CONV1D_ONLY": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 11,
+        "HISTORICAL_REFERENCE_ONLY": 171,
+        "INFRASTRUCTURE_CANDIDATE": 277,
+        "MANUAL_REVIEW": 11
+      },
+      "candidate_count": 470,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_p0_r1_sampler_contract_recovery/V5_P3_FINAL_A4_P0_R1_SAMPLER_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_REPORT.json",
+          "score": 68
+        }
+      ]
+    },
+    "M1_GCN_ONLY": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 7,
+        "HISTORICAL_REFERENCE_ONLY": 102,
+        "INFRASTRUCTURE_CANDIDATE": 98,
+        "MANUAL_REVIEW": 7
+      },
+      "candidate_count": 214,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b3_conv1d_only/V5_P0_B3_CONV1D_ONLY.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b5_conv1d_gcn/V5_P0_B5_CONV1D_GCN.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b6_dual_temporal_fusion_no_gcn/V5_P0_B6_DUAL_TEMPORAL_FUSION_NO_GCN.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE.json",
+          "score": 58
+        }
+      ]
+    },
+    "M2_GRAPHCONV_ONLY": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 1,
+        "HISTORICAL_REFERENCE_ONLY": 133,
+        "INFRASTRUCTURE_CANDIDATE": 104,
+        "MANUAL_REVIEW": 1
+      },
+      "candidate_count": 239,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d2_p0_raw_a0_a1_validation_contract_recovery/V5_P3_FINAL_D2_P0_RAW_A0_A1_VALIDATION_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p2/run_v5_p2_evaluator_d5_finalized_architecture_integration.py",
+          "score": 65
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p0_frozen_baseline_reproduction_preflight.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p1_official_evaluator_route_freeze.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_a3_preliminary_baseline_preflight.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_d5_decoder_review_and_4x4_interface_freeze.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/run_v5_p3_h0_current_4x4_dynamic70_rtl_handoff.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p2_task_d_formal_selection_review/V5_P2_TASK_D_ALL_RUNS.csv",
+          "score": 58
+        }
+      ]
+    },
+    "M3_CONV1D_GCN": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 9,
+        "HISTORICAL_REFERENCE_ONLY": 56,
+        "INFRASTRUCTURE_CANDIDATE": 99,
+        "MANUAL_REVIEW": 8
+      },
+      "candidate_count": 172,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+          "score": 60
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b3_conv1d_only/V5_P0_B3_CONV1D_ONLY.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b5_conv1d_gcn/V5_P0_B5_CONV1D_GCN.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b6_dual_temporal_fusion_no_gcn/V5_P0_B6_DUAL_TEMPORAL_FUSION_NO_GCN.json",
+          "score": 58
+        }
+      ]
+    },
+    "M4_CONV1D_GAT": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 7,
+        "HISTORICAL_REFERENCE_ONLY": 119,
+        "INFRASTRUCTURE_CANDIDATE": 220,
+        "MANUAL_REVIEW": 5
+      },
+      "candidate_count": 351,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+          "score": 73
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_p0_r1_sampler_contract_recovery/V5_P3_FINAL_A4_P0_R1_SAMPLER_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d2_p0_raw_a0_a1_validation_contract_recovery/V5_P3_FINAL_D2_P0_RAW_A0_A1_VALIDATION_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        }
+      ]
+    },
+    "M5_TCN_GCN": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 5,
+        "HISTORICAL_REFERENCE_ONLY": 20,
+        "INFRASTRUCTURE_CANDIDATE": 87
+      },
+      "candidate_count": 112,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+          "score": 60
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b3_conv1d_only/V5_P0_B3_CONV1D_ONLY.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b5_conv1d_gcn/V5_P0_B5_CONV1D_GCN.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b6_dual_temporal_fusion_no_gcn/V5_P0_B6_DUAL_TEMPORAL_FUSION_NO_GCN.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p0_b7a_directional_gated_graph_diagnostic/V5_P0_B7A_DIRECTIONAL_GATED_GRAPH_DIAGNOSTIC.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p2_l0_r0_semantic_resolution/V5_P2_L0_R0_SEMANTIC_RESOLUTION.json",
+          "score": 58
+        }
+      ]
+    },
+    "M6_LSTM_GRAPHCONV": {
+      "by_classification": {
+        "INFRASTRUCTURE_CANDIDATE": 4
+      },
+      "candidate_count": 4,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+          "score": 60
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v4/train/train_v4_a1_conv1d_gcn_memmap.py",
+          "score": 45
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v4/train/train_v4_conv1d_gcn_experiment.py",
+          "score": 45
+        }
+      ]
+    },
+    "M7_CONV1D_GRAPHCONV": {
+      "by_classification": {
+        "ARCHITECTURE_ADAPTATION_CANDIDATE": 1,
+        "HISTORICAL_REFERENCE_ONLY": 72,
+        "INFRASTRUCTURE_CANDIDATE": 160,
+        "MANUAL_REVIEW": 1
+      },
+      "candidate_count": 234,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+          "score": 73
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_REPORT.json",
+          "score": 68
+        }
+      ]
+    }
+  },
+  "infrastructure_summary": {
+    "DYNAMIC70_MODEL": {
+      "candidate_count": 1463,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+          "score": 73
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r2_label_schema_alias_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R2_TRAIN_LABEL_SCAN_RESUME_CACHE.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_A4_TRAINING_SOURCE_SEMANTICS_PIN.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_AMBIGUITY_ADJUDICATION.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_TRAIN_LABEL_SCAN_RESUME_CACHE.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        }
+      ]
+    },
+    "FINAL_AB_D1_EXPORT": {
+      "candidate_count": 618,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_A4_TRAINING_SOURCE_SEMANTICS_PIN.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_p0_r1_sampler_contract_recovery/V5_P3_FINAL_A4_P0_R1_SAMPLER_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_REPORT.json",
+          "score": 68
+        }
+      ]
+    },
+    "FINAL_AB_TRAINER_PROTOCOL": {
+      "candidate_count": 932,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+          "score": 73
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r2_label_schema_alias_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R2_TRAIN_LABEL_SCAN_RESUME_CACHE.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_A4_TRAINING_SOURCE_SEMANTICS_PIN.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_AMBIGUITY_ADJUDICATION.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_TRAIN_LABEL_SCAN_RESUME_CACHE.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        }
+      ]
+    },
+    "P2_RESPONSE_LATENCY": {
+      "candidate_count": 28,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p7_result_aggregator.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+          "score": 60
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py",
+          "score": 55
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p3_victim_role_path_evaluator.py",
+          "score": 55
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p5_robustness_subgroup_evaluator.py",
+          "score": 55
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p5_robustness_subgroup_evaluator_implementation/posttrain_p5_robustness_subgroup_contract.json",
+          "score": 50
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p7_result_aggregation_and_paper_artifact_implementation/SELFTEST/out/manuscript_numbers.json",
+          "score": 50
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p7_result_aggregation_and_paper_artifact_implementation/posttrain_p7_result_aggregation_contract.json",
+          "score": 50
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/tranche_a_victim_validation_exploratory_seed107_r1_metadata_semantics/V5_P3_TRANCHE_A_VICTIM_VALIDATION_EXPLORATORY_R1_REPORT.json",
+          "score": 48
+        }
+      ]
+    },
+    "P4_MODEL_COMPARISON": {
+      "candidate_count": 209,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+          "score": 73
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_execution/final_ab_victim_p0_frozen_validation_export_preflight/V5_P3_FINAL_AB_VICTIM_P0_FROZEN_VALIDATION_EXPORT_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_A4_TRAINING_SOURCE_SEMANTICS_PIN.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery/V5_P3_FINAL_A3_R1_R5_EXPLICIT_CUDA_DEVICE_BINDING_RECOVERY_AND_BOUNDED_TRAIN_VALIDATION_SMOKE_PREFLIGHT_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_d2_p0_raw_a0_a1_validation_contract_recovery/V5_P3_FINAL_D2_P0_RAW_A0_A1_VALIDATION_CONTRACT_RECOVERY_REPORT.json",
+          "score": 68
+        }
+      ]
+    },
+    "P6_EXECUTION_LATENCY": {
+      "candidate_count": 84,
+      "top_candidates": [
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+          "score": 68
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p7_result_aggregator.py",
+          "score": 63
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+          "score": 60
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p2_l0_r0_semantic_resolution/V5_P2_L0_R0_SEMANTIC_RESOLUTION.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1_EVALUATOR_MODEL_LOADER_RANKING.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P0_MATCHED_CONTROL_IDENTITY_ROUTE.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P1_MATCHED_CONTROL_CANDIDATE_EVALUATIONS.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_STRICT_TRAINER_CANDIDATE_REVIEW.json",
+          "score": 58
+        },
+        {
+          "classification": "INFRASTRUCTURE_CANDIDATE",
+          "relative_path": "reports/v5/p2_task_d_python312_dynamic_import_compatibility_patch/train_v5_p2_task_d_full_multitask_single_run.original.py",
+          "score": 55
+        }
+      ]
+    }
+  },
+  "model_inference": false,
+  "model_training": false,
+  "repo": "/home/zira/research/projects/GNN-2d",
+  "scanned_files": 4026,
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC0_MODEL_COMPARISON_INVENTORY_PROVENANCE_AUDIT",
+  "status": "PASS",
+  "target_model_families": [
+    "M0_CONV1D_ONLY",
+    "M1_GCN_ONLY",
+    "M2_GRAPHCONV_ONLY",
+    "M3_CONV1D_GCN",
+    "M4_CONV1D_GAT",
+    "M5_TCN_GCN",
+    "M6_LSTM_GRAPHCONV",
+    "M7_CONV1D_GRAPHCONV",
+    "D0_BINARY_CONV1D",
+    "D1_BINARY_CONV1D_GRAPHCONV",
+    "D2_XGBOOST"
+  ],
+  "test_evaluation": false,
+  "threshold_tuning": false
+}

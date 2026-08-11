@@ -1,0 +1,73 @@
+{
+  "critical_hold_reasons": [
+    "identifier/serialization probe predicts validation labels"
+  ],
+  "direct_metadata_policy": "mode and identifier leakage are documented, but become a dataset failure only if they enter learned inputs; A2/A3 forbid them",
+  "fixed_thresholds": {
+    "epoch_count_macro_f1": 0.75,
+    "epoch_graph_balanced_accuracy": 0.85,
+    "epoch_role_exact": 0.7,
+    "identifier_count_macro_f1": 0.75,
+    "identifier_graph_balanced_accuracy": 0.85,
+    "identifier_role_exact": 0.7,
+    "label_shuffle_all_tasks_exact": 0.2,
+    "label_shuffle_count_macro_f1": 0.55,
+    "label_shuffle_graph_balanced_accuracy": 0.7,
+    "label_shuffle_role_f1": 0.5,
+    "mask_graph_balanced_accuracy": 0.7,
+    "mask_role_exact": 0.5,
+    "mask_role_f1": 0.6,
+    "router_prior_role_exact": 0.5,
+    "router_prior_role_f1": 0.6
+  },
+  "next_stage": "HOLD_REMEDIATE_B0_SHORTCUTS",
+  "pair_integrity": {
+    "pair_overlap": [],
+    "run_overlap": [],
+    "train_pair_count": 16,
+    "validation_pair_count": 4
+  },
+  "status": "HOLD",
+  "time_diagnostic": {
+    "ordered_graph_balanced_accuracy": 0.9407216494845361,
+    "ordered_minus_shuffled": 0.0,
+    "shuffled_time_graph_balanced_accuracy": 0.9407216494845361,
+    "time_permutation": [
+      6,
+      30,
+      28,
+      27,
+      12,
+      24,
+      16,
+      17,
+      5,
+      26,
+      8,
+      18,
+      11,
+      14,
+      23,
+      1,
+      4,
+      25,
+      13,
+      19,
+      3,
+      29,
+      22,
+      9,
+      7,
+      21,
+      2,
+      31,
+      15,
+      20,
+      0,
+      10
+    ]
+  },
+  "warnings": [
+    "ordered and retrained shuffled-time probes differ by at most 0.02; temporal order may not be necessary for this summary probe"
+  ]
+}

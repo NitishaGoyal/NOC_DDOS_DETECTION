@@ -1,0 +1,107 @@
+{
+  "checkpoint_score": {
+    "path_average_precision": 0.2,
+    "source_average_precision": 0.3,
+    "transit_average_precision": 0.25,
+    "victim_average_precision": 0.25
+  },
+  "expected_parameter_counts": {
+    "conv1d": 34692,
+    "gcnconv": 43012,
+    "graphconv": 51204
+  },
+  "files": {
+    "README_G3.md": {
+      "mode": "0o444",
+      "sha256": "ad6de1abbed409e69eb50e625f3bd9a5f5c42fc6f8f4fa1820886ca4a5eb4fd8"
+    },
+    "aggregate_v5_p2_g3_role_aware_multilabel_training_matrix.py": {
+      "mode": "0o555",
+      "sha256": "08ce3ab6bcf263caf7584ee14cd718a699913b470147761550e14dedb9ef67b0"
+    },
+    "preflight_v5_p2_g3_clean_training_implementation.py": {
+      "mode": "0o555",
+      "sha256": "41638b8cad2c70bcfeda74d41176b1dd492838a14fdec6d692d282a67770e15d"
+    },
+    "run_v5_p2_g3_clean_training_implementation_preflight.sh": {
+      "mode": "0o555",
+      "sha256": "854bc06a2044010bfc1c16ab6a2c0365429499fe0f917cfebe1f7e73bf575bc8"
+    },
+    "run_v5_p2_g3_role_aware_multilabel_aggregation.sh": {
+      "mode": "0o555",
+      "sha256": "6044cdf0805daf90eadb6b489ae28198360a72747592d0113d1aff793947868a"
+    },
+    "run_v5_p2_g3_role_aware_multilabel_one_run.sh": {
+      "mode": "0o555",
+      "sha256": "4a63612ae9f0131bbd63903214dd8c870d40a454a20bf77623529d66e490062e"
+    },
+    "run_v5_p2_g3_role_aware_multilabel_training_matrix.sh": {
+      "mode": "0o555",
+      "sha256": "65ebba7dbf8cf404c3ab2fc2e1a93213b5e3b624a6da9a49c62266b6700ae323"
+    },
+    "train_v5_p2_g3_role_aware_multilabel_single_run.py": {
+      "mode": "0o555",
+      "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d"
+    }
+  },
+  "frozen_provenance": {
+    "b3_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g2_aggregation_report_sha256": "66748c90e128e2e869e30b55b461a49383a5253ccc4b49f3fb72111221b95a74",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+  },
+  "gat_status": "EXCLUDED_DO_NOT_PROMOTE_FROM_G1_AND_G2",
+  "loss": "sum of four independently class-weighted BCEWithLogits losses",
+  "operators": [
+    "conv1d",
+    "gcnconv",
+    "graphconv"
+  ],
+  "package": "V5_P2_G3_ROLE_AWARE_MULTILABEL_TRAINING_PACKAGE",
+  "roles_mutually_exclusive": false,
+  "run_count": 9,
+  "security_boundary": {
+    "architecture_selected": false,
+    "authorized_splits": [
+      "train",
+      "validation"
+    ],
+    "p2_test_directory_enumeration": false,
+    "p2_test_tensor_access": false,
+    "quantization": false,
+    "rtl_generation": false,
+    "test_evaluation": false
+  },
+  "seeds": [
+    107,
+    117,
+    127
+  ],
+  "source_intake": {
+    "filename": "p2_g3_implementation_intake.tar.gz",
+    "intake_internal_hash_entries_verified": 45,
+    "intake_internal_hash_failures": 0,
+    "sha256": "fbbc8a6ff32d6d53c280a041eea30cf95c3ae0919e39db2227b1f4fe63e80c0d"
+  },
+  "stage": "V5_P2_G3_ROLE_AWARE_MULTILABEL_LOCALIZATION",
+  "targets": [
+    "source[16]",
+    "transit[16]",
+    "victim[16]",
+    "path[16]"
+  ],
+  "task_id": "C_ROLE_AWARE_MULTILABEL_LOCALIZATION",
+  "threshold_policy": {
+    "grid_start": 0.0,
+    "grid_step": 0.001,
+    "grid_stop": 1.0,
+    "objective": {
+      "exact_set_attack": 0.4,
+      "node_f1": 0.6
+    },
+    "selection_split": "validation_only",
+    "separate_role_thresholds": true
+  },
+  "version": 1
+}

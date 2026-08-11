@@ -1,0 +1,13 @@
+{
+  "checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a1_conv1d_gcn_seed7/best_model.pt",
+  "checkpoint_sha256": "5687cca9a03340348ecea6aa27f9ce9c0663fb8ae63eddfa42a0d3cce5f707cd",
+  "graph_fpr_constraint": 0.1,
+  "graph_selection_rule": "maximize validation graph F1 subject to validation FPR <= 0.10; tie maximize recall; tie maximize precision; tie closest to 0.50",
+  "graph_threshold": 0.6,
+  "node_selection_rule": "maximize validation node F1; tie maximize exact localization; tie maximize precision; tie closest to 0.50",
+  "node_threshold": 0.71,
+  "reason_for_supersession": "The unconstrained F1 optimum produced validation FPR of approximately 0.463, which is operationally unacceptable.",
+  "split": "validation",
+  "supersedes_unconstrained_graph_threshold": 0.23,
+  "test_accessed": false
+}

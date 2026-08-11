@@ -1,0 +1,529 @@
+{
+  "E0A_epoch_budget_correction_required": true,
+  "E0A_max_epochs_field": 101,
+  "candidate_reduction_gates": {
+    "count_active_macro_F1_min": 0.98,
+    "graph_FPR_increase_max": 0.03,
+    "graph_average_precision_drop_max": 0.03,
+    "path_average_precision_drop_max": 0.03,
+    "selection_score_drop_max": 0.02,
+    "single_task_AP_collapse_max": 0.05,
+    "source_average_precision_drop_max": 0.03,
+    "transit_average_precision_drop_max": 0.03,
+    "victim_average_precision_drop_max": 0.03
+  },
+  "early_stopping": {
+    "active": true,
+    "classification": "EARLY_STOP_THRESHOLD_OR_COUNTER_UNRESOLVED",
+    "counter_candidates": [
+      "epoch",
+      "early_stop_patience_counter"
+    ],
+    "numeric_threshold_candidates": [
+      15.0,
+      12.0
+    ],
+    "operator_candidates": [
+      ">="
+    ],
+    "semantics_resolved": false,
+    "stop_candidates": [
+      {
+        "comparison_rows": [
+          {
+            "left_expression": "epoch",
+            "left_resolution": {
+              "assignment_count": 0,
+              "expression": "epoch",
+              "reason": "symbol_not_found",
+              "resolved": false,
+              "resolved_candidate_values": [],
+              "symbol": "epoch"
+            },
+            "operator": ">=",
+            "right_expression": "15",
+            "right_resolution": {
+              "expression": "15",
+              "resolved": true,
+              "route": "literal",
+              "value": 15
+            }
+          },
+          {
+            "left_expression": "early_stop_patience_counter",
+            "left_resolution": {
+              "candidate_count": 2,
+              "children": [
+                {
+                  "expression": "0",
+                  "resolved": true,
+                  "route": "literal",
+                  "value": 0
+                },
+                {
+                  "expression": "0",
+                  "resolved": true,
+                  "route": "literal",
+                  "value": 0
+                }
+              ],
+              "expression": "early_stop_patience_counter",
+              "resolved": true,
+              "route": "unique_resolved_assignment_value",
+              "symbol": "early_stop_patience_counter",
+              "value": 0
+            },
+            "operator": ">=",
+            "right_expression": "12",
+            "right_resolution": {
+              "expression": "12",
+              "resolved": true,
+              "route": "literal",
+              "value": 12
+            }
+          }
+        ],
+        "loop_ancestors": [
+          {
+            "iterator": "range(1, 101)",
+            "line_start": 1462,
+            "target": "epoch",
+            "type": "for"
+          }
+        ],
+        "record": {
+          "excerpt": "        if (\n            epoch >= 15\n            and early_stop_patience_counter >= 12\n        ):\n            stopped_early = True\n            print(\n                f\"early stopping at epoch {epoch}; \"\n                \"patience reached 12\"\n            )\n            break",
+          "excerpt_sha256": "1ef6c534962a04a5f6ed7717c319bdc34553eec7c83c4c99dd2a9c9fecc8ea60",
+          "line_end": 1639,
+          "line_start": 1630,
+          "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+          "source": "if epoch >= 15 and early_stop_patience_counter >= 12:\n    stopped_early = True\n    print(f'early stopping at epoch {epoch}; patience reached 12')\n    break"
+        }
+      }
+    ]
+  },
+  "epoch_loop": {
+    "arguments": [
+      {
+        "expression": "1",
+        "resolved": true,
+        "route": "literal",
+        "value": 1
+      },
+      {
+        "expression": "101",
+        "resolved": true,
+        "route": "literal",
+        "value": 101
+      }
+    ],
+    "executed_epoch_count": 100,
+    "first_epoch_index": 1,
+    "indices_sha256": "f9e2dbde0ae4640704fb66ee02c101cf84abe35137363d62647622606df61279",
+    "iterator": "range(1, 101)",
+    "last_epoch_index": 100,
+    "resolved": true,
+    "start": 1,
+    "step": 1,
+    "stop_exclusive": 101
+  },
+  "executed_epoch_budget": 100,
+  "gradient_clipping": {
+    "after_backward": true,
+    "before_optimizer_step": true,
+    "calls": [
+      {
+        "enclosing_function": "train_one_epoch",
+        "excerpt": "        gradient_norm = torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            max_norm=gradient_clip,\n        )",
+        "excerpt_sha256": "69f6ccf151f9b58ac2fedbe9c88ecfc97450d089abf19407b431b024fe2de080",
+        "implementation": "torch.nn.utils.clip_grad_norm_",
+        "line_end": 551,
+        "line_start": 548,
+        "loop_ancestors": [
+          {
+            "iterator": "loader",
+            "line_start": 527,
+            "target": "batch",
+            "type": "for"
+          }
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_clip)",
+        "threshold": {
+          "argument_route": "keyword",
+          "assignment_count": 0,
+          "expression": "gradient_clip",
+          "keyword": "max_norm",
+          "reason": "symbol_not_found",
+          "resolved": false,
+          "resolved_candidate_values": [],
+          "symbol": "gradient_clip"
+        }
+      }
+    ],
+    "clip_call_count": 1,
+    "policy": "ACTIVE_SINGLE_GRADIENT_CLIP",
+    "threshold_resolved": false
+  },
+  "loss": {
+    "compute_loss_call_count": 2,
+    "compute_loss_calls": [
+      {
+        "arguments": [
+          "outputs",
+          "batch"
+        ],
+        "enclosing_function": "train_one_epoch",
+        "excerpt": "        loss, components = compute_loss(\n            outputs,\n            batch,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n        )",
+        "excerpt_sha256": "b934490d590f0a05ef9b60f6e57e58fa4012ee767b10980cdb1da93a6b758eb9",
+        "keywords": {
+          "graph_pos_weight": "graph_pos_weight",
+          "role_pos_weights": "role_pos_weights"
+        },
+        "line_end": 541,
+        "line_start": 536,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "compute_loss(outputs, batch, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)"
+      },
+      {
+        "arguments": [
+          "outputs",
+          "batch"
+        ],
+        "enclosing_function": "validate",
+        "excerpt": "            loss, components = compute_loss(\n                outputs,\n                batch,\n                graph_pos_weight=graph_pos_weight,\n                role_pos_weights=role_pos_weights,\n            )",
+        "excerpt_sha256": "efe6dd964315306e81f9b7882f61b7e677a9e97b89916ebab059882e2c2ce7cd",
+        "keywords": {
+          "graph_pos_weight": "graph_pos_weight",
+          "role_pos_weights": "role_pos_weights"
+        },
+        "line_end": 632,
+        "line_start": 627,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "compute_loss(outputs, batch, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)"
+      }
+    ],
+    "compute_loss_function_count": 1,
+    "compute_loss_functions": [
+      {
+        "excerpt": "def compute_loss(\n    outputs: dict[str, torch.Tensor],\n    batch: dict[str, torch.Tensor],\n    *,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:\n    active = batch[\"y_attack\"] >= 0.5\n\n    count_targets = torch.full(\n        batch[\"y_attacker_count\"].shape,\n        fill_value=-100,\n        dtype=torch.int64,\n        device=batch[\"y_attacker_count\"].device,\n    )\n    for raw_count, class_index in COUNT_CLASS_MAPPING.items():\n        selector = (\n            active\n            & (batch[\"y_attacker_count\"] == raw_count)\n        )\n        count_targets[selector] = class_index\n\n    if bool(\n        (count_targets[active] < 0).any().item()\n    ):\n        raise RuntimeError(\n            \"one or more active count labels are outside 1..4\"\n        )\n\n    attack_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"attack_logits\"],\n        batch[\"y_attack\"].float(),\n        pos_weight=graph_pos_weight,\n    )\n\n    if bool(active.any().item()):\n        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            count_targets[active],\n        )\n    else:\n        count_loss = (\n            outputs[\"count_logits\"].sum() * 0.0\n        )\n\n    source_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"source_logits\"],\n        batch[\"y_source\"].float(),\n        pos_weight=role_pos_weights[\"source\"],\n    )\n    transit_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"transit_logits\"],\n        batch[\"y_transit\"].float(),\n        pos_weight=role_pos_weights[\"transit\"],\n    )\n    victim_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"victim_logits\"],\n        batch[\"y_victim\"].float(),\n        pos_weight=role_pos_weights[\"victim\"],\n    )\n    path_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"path_logits\"],\n        batch[\"y_attack_path\"].float(),\n        pos_weight=role_pos_weights[\"path\"],\n    )\n\n    components = {\n        \"attack\": attack_loss,\n        \"count\": count_loss,\n        \"source\": source_loss,\n        \"transit\": transit_loss,\n        \"victim\": victim_loss,\n        \"path\": path_loss,\n    }\n    total = sum(\n        LOSS_WEIGHTS[key] * value\n        for key, value in components.items()\n    )\n    return total, components",
+        "excerpt_sha256": "d9629317801a72a1905dbcd49eace1418f15014df3a2f55d097c25ae4997155f",
+        "function_name": "compute_loss",
+        "line_end": 491,
+        "line_start": 413,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "def compute_loss(outputs: dict[str, torch.Tensor], batch: dict[str, torch.Tensor], *, graph_pos_weight: torch.Tensor, role_pos_weights: dict[str, torch.Tensor]) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:\n    active = batch['y_attack'] >= 0.5\n    count_targets = torch.full(batch['y_attacker_count'].shape, fill_value=-100, dtype=torch.int64, device=batch['y_attacker_count'].device)\n    for raw_count, class_index in COUNT_CLASS_MAPPING.items():\n        selector = active & (batch['y_attacker_count'] == raw_count)\n        count_targets[selector] = class_index\n    if bool((count_targets[active] < 0).any().item()):\n        raise RuntimeError('one or more active count labels are outside 1..4')\n    attack_loss = F.binary_cross_entropy_with_logits(outputs['attack_logits'], batch['y_attack'].float(), pos_weight=graph_pos_weight)\n    if bool(active.any().item()):\n        count_loss = F.cross_entropy(outputs['count_logits'][active], count_targets[active])\n    else:\n        count_loss = outputs['count_logits'].sum() * 0.0\n    source_loss = F.binary_cross_entropy_with_logits(outputs['source_logits'], batch['y_source'].float(), pos_weight=role_pos_weights['source'])\n    transit_loss = F.binary_cross_entropy_with_logits(outputs['transit_logits'], batch['y_transit'].float(), pos_weight=role_pos_weights['transit'])\n    victim_loss = F.binary_cross_entropy_with_logits(outputs['victim_logits'], batch['y_victim'].float(), pos_weight=role_pos_weights['victim'])\n    path_loss = F.binary_cross_entropy_with_logits(outputs['path_logits'], batch['y_attack_path'].float(), pos_weight=role_pos_weights['path'])\n    components = {'attack': attack_loss, 'count': count_loss, 'source': source_loss, 'transit': transit_loss, 'victim': victim_loss, 'path': path_loss}\n    total = sum((LOSS_WEIGHTS[key] * value for key, value in components.items()))\n    return (total, components)"
+      }
+    ],
+    "primitive_loss_call_count": 6,
+    "primitive_loss_calls": [
+      {
+        "arguments": [
+          "outputs['attack_logits']",
+          "batch['y_attack'].float()"
+        ],
+        "enclosing_function": "compute_loss",
+        "excerpt": "    attack_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"attack_logits\"],\n        batch[\"y_attack\"].float(),\n        pos_weight=graph_pos_weight,\n    )",
+        "excerpt_sha256": "c7d327bb57c141e08533c61f44b0f816ff8c1a33e97993a54c73c1f630142951",
+        "implementation": "F.binary_cross_entropy_with_logits",
+        "keywords": {
+          "pos_weight": "graph_pos_weight"
+        },
+        "line_end": 446,
+        "line_start": 442,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "F.binary_cross_entropy_with_logits(outputs['attack_logits'], batch['y_attack'].float(), pos_weight=graph_pos_weight)"
+      },
+      {
+        "arguments": [
+          "outputs['source_logits']",
+          "batch['y_source'].float()"
+        ],
+        "enclosing_function": "compute_loss",
+        "excerpt": "    source_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"source_logits\"],\n        batch[\"y_source\"].float(),\n        pos_weight=role_pos_weights[\"source\"],\n    )",
+        "excerpt_sha256": "7dd9d7fdebeabd3028066f89fee6f922a7bd3c5d2fde84268cc647f2bc89d0ab",
+        "implementation": "F.binary_cross_entropy_with_logits",
+        "keywords": {
+          "pos_weight": "role_pos_weights['source']"
+        },
+        "line_end": 462,
+        "line_start": 458,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "F.binary_cross_entropy_with_logits(outputs['source_logits'], batch['y_source'].float(), pos_weight=role_pos_weights['source'])"
+      },
+      {
+        "arguments": [
+          "outputs['transit_logits']",
+          "batch['y_transit'].float()"
+        ],
+        "enclosing_function": "compute_loss",
+        "excerpt": "    transit_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"transit_logits\"],\n        batch[\"y_transit\"].float(),\n        pos_weight=role_pos_weights[\"transit\"],\n    )",
+        "excerpt_sha256": "951df7adbdae35e403c941b31ef916cad520397082b53030d2be469257ba369f",
+        "implementation": "F.binary_cross_entropy_with_logits",
+        "keywords": {
+          "pos_weight": "role_pos_weights['transit']"
+        },
+        "line_end": 467,
+        "line_start": 463,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "F.binary_cross_entropy_with_logits(outputs['transit_logits'], batch['y_transit'].float(), pos_weight=role_pos_weights['transit'])"
+      },
+      {
+        "arguments": [
+          "outputs['victim_logits']",
+          "batch['y_victim'].float()"
+        ],
+        "enclosing_function": "compute_loss",
+        "excerpt": "    victim_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"victim_logits\"],\n        batch[\"y_victim\"].float(),\n        pos_weight=role_pos_weights[\"victim\"],\n    )",
+        "excerpt_sha256": "dbc8d48417969bf5cc735eb24f0bc43ee3ed8c79b07998fa92cf2cf0364a639b",
+        "implementation": "F.binary_cross_entropy_with_logits",
+        "keywords": {
+          "pos_weight": "role_pos_weights['victim']"
+        },
+        "line_end": 472,
+        "line_start": 468,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "F.binary_cross_entropy_with_logits(outputs['victim_logits'], batch['y_victim'].float(), pos_weight=role_pos_weights['victim'])"
+      },
+      {
+        "arguments": [
+          "outputs['path_logits']",
+          "batch['y_attack_path'].float()"
+        ],
+        "enclosing_function": "compute_loss",
+        "excerpt": "    path_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"path_logits\"],\n        batch[\"y_attack_path\"].float(),\n        pos_weight=role_pos_weights[\"path\"],\n    )",
+        "excerpt_sha256": "07c57d924d92cab5f47d0f8959caf3695d6dac2de30ce303fc7d71d1e29d325d",
+        "implementation": "F.binary_cross_entropy_with_logits",
+        "keywords": {
+          "pos_weight": "role_pos_weights['path']"
+        },
+        "line_end": 477,
+        "line_start": 473,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "F.binary_cross_entropy_with_logits(outputs['path_logits'], batch['y_attack_path'].float(), pos_weight=role_pos_weights['path'])"
+      },
+      {
+        "arguments": [
+          "outputs['count_logits'][active]",
+          "count_targets[active]"
+        ],
+        "enclosing_function": "compute_loss",
+        "excerpt": "        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            count_targets[active],\n        )",
+        "excerpt_sha256": "4f81ea5d691e5a682c0bfd763432415e4c8cabef04e9f13c1f603353f4dd3e86",
+        "implementation": "F.cross_entropy",
+        "keywords": {},
+        "line_end": 452,
+        "line_start": 449,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "F.cross_entropy(outputs['count_logits'][active], count_targets[active])"
+      }
+    ],
+    "semantics_resolved": true,
+    "source_copy_policy": "E1 must copy the exact compute_loss function excerpt and verify its SHA-256 rather than reconstructing loss weights manually."
+  },
+  "not_claimed": "byte-identical historical A4 trainer reproduction",
+  "optimizer": {
+    "constructor": {
+      "excerpt": "    optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=1e-3,\n        betas=(0.9, 0.999),\n        eps=1e-8,\n        weight_decay=1e-4,\n    )",
+      "excerpt_sha256": "08ff5d5583f668ad11af319066ab8a77e2e351ce4a7df3416192b55d1cdbc745",
+      "implementation": "torch.optim.adamw.AdamW",
+      "learning_rate": {
+        "argument_route": "keyword",
+        "expression": "0.001",
+        "keyword": "lr",
+        "resolved": true,
+        "route": "literal",
+        "value": 0.001
+      },
+      "line_end": 1398,
+      "line_start": 1392,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.optim.AdamW(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001)",
+      "variable": "optimizer",
+      "weight_decay": {
+        "argument_route": "keyword",
+        "expression": "0.0001",
+        "keyword": "weight_decay",
+        "resolved": true,
+        "route": "literal",
+        "value": 0.0001
+      }
+    },
+    "optimizer_step": {
+      "argument_expressions": [],
+      "arguments": [],
+      "base": "optimizer",
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        optimizer.step()",
+      "excerpt_sha256": "cdf624930347aab933f7ecb21fd067333b0ec7d2869498c65605e80a96fd9c7f",
+      "line_end": 557,
+      "line_start": 557,
+      "loop_ancestors": [
+        {
+          "iterator": "loader",
+          "line_start": 527,
+          "target": "batch",
+          "type": "for"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "optimizer.step()"
+    },
+    "optimizer_step_inside_batch_loop": true,
+    "optimizer_step_inside_epoch_loop": false,
+    "semantics_resolved": false,
+    "unclassified_step_calls": [],
+    "variable": "optimizer"
+  },
+  "primary_seed": 107,
+  "range_stop_exclusive": 101,
+  "route_type": "reconstructed_F7_recipe_from_exact_skeleton_semantics",
+  "scheduler": {
+    "constructor_count": 1,
+    "constructors": [
+      {
+        "excerpt": "    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=\"max\",\n        factor=0.5,\n        patience=4,\n        threshold=1e-4,\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=1e-5,\n    )",
+        "excerpt_sha256": "477600888847a8f625affa7d77fcfbb0cd4c2775b64c3894f870b17894ccef6a",
+        "implementation": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+        "line_end": 1408,
+        "line_start": 1399,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "resolved_parameters": {
+          "cooldown": {
+            "argument_route": "keyword",
+            "expression": "0",
+            "keyword": "cooldown",
+            "resolved": true,
+            "route": "literal",
+            "value": 0
+          },
+          "eps": {
+            "argument_route": "runtime_default",
+            "callable": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+            "expression": null,
+            "keyword": "eps",
+            "resolved": true,
+            "route": "runtime_signature_default",
+            "signature": "(optimizer: 'Optimizer', mode: \"Literal['min', 'max']\" = 'min', factor: 'float' = 0.1, patience: 'int' = 10, threshold: 'float' = 0.0001, threshold_mode: \"Literal['rel', 'abs']\" = 'rel', cooldown: 'int' = 0, min_lr: 'list[float] | float' = 0, eps: 'float' = 1e-08) -> 'None'",
+            "torch_version": "2.12.1+cu130",
+            "value": 1e-08
+          },
+          "factor": {
+            "argument_route": "keyword",
+            "expression": "0.5",
+            "keyword": "factor",
+            "resolved": true,
+            "route": "literal",
+            "value": 0.5
+          },
+          "min_lr": {
+            "argument_route": "keyword",
+            "expression": "1e-05",
+            "keyword": "min_lr",
+            "resolved": true,
+            "route": "literal",
+            "value": 1e-05
+          },
+          "mode": {
+            "argument_route": "keyword",
+            "expression": "'max'",
+            "keyword": "mode",
+            "resolved": true,
+            "route": "literal",
+            "value": "max"
+          },
+          "patience": {
+            "argument_route": "keyword",
+            "expression": "4",
+            "keyword": "patience",
+            "resolved": true,
+            "route": "literal",
+            "value": 4
+          },
+          "threshold": {
+            "argument_route": "keyword",
+            "expression": "0.0001",
+            "keyword": "threshold",
+            "resolved": true,
+            "route": "literal",
+            "value": 0.0001
+          },
+          "threshold_mode": {
+            "argument_route": "keyword",
+            "expression": "'abs'",
+            "keyword": "threshold_mode",
+            "resolved": true,
+            "route": "literal",
+            "value": "abs"
+          }
+        },
+        "runtime_signature": "(optimizer: 'Optimizer', mode: \"Literal['min', 'max']\" = 'min', factor: 'float' = 0.1, patience: 'int' = 10, threshold: 'float' = 0.0001, threshold_mode: \"Literal['rel', 'abs']\" = 'rel', cooldown: 'int' = 0, min_lr: 'list[float] | float' = 0, eps: 'float' = 1e-08) -> 'None'",
+        "source": "torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=4, threshold=0.0001, threshold_mode='abs', cooldown=0, min_lr=1e-05)",
+        "variable": "scheduler"
+      }
+    ],
+    "policy": "ACTIVE_SCHEDULER_WITH_RESOLVED_SINGLE_STEP",
+    "step_after_optimizer_step": true,
+    "step_argument_expressions": [
+      "current_score"
+    ],
+    "step_cadence": "ONCE_PER_EPOCH",
+    "step_count": 1,
+    "steps": [
+      {
+        "argument_expressions": [
+          "current_score"
+        ],
+        "arguments": [
+          {
+            "assignment_count": 1,
+            "expression": "current_score",
+            "reason": "symbol_assignments_not_unique",
+            "resolved": false,
+            "resolved_candidate_values": [],
+            "symbol": "current_score"
+          }
+        ],
+        "base": "scheduler",
+        "enclosing_function": "main",
+        "excerpt": "        scheduler.step(current_score)",
+        "excerpt_sha256": "fb340cc3fe41cc76d3f55ee93460d812e39704b2eee4818bed3f187de455b063",
+        "line_end": 1566,
+        "line_start": 1566,
+        "loop_ancestors": [
+          {
+            "iterator": "range(1, 101)",
+            "line_start": 1462,
+            "target": "epoch",
+            "type": "for"
+          }
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "scheduler.step(current_score)"
+      }
+    ]
+  },
+  "selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+  "status": "PARTIALLY_RESOLVED",
+  "threshold_policy": {
+    "graph_reporting_threshold": 0.5,
+    "selection_metrics_threshold_free_except_count_macro_f1": true,
+    "threshold_tuning_per_run": false
+  },
+  "train_batch_size": 1,
+  "unresolved_fields": [
+    {
+      "field": "early_stopping_policy",
+      "reason": "EARLY_STOP_THRESHOLD_OR_COUNTER_UNRESOLVED"
+    },
+    {
+      "field": "gradient_clipping_policy",
+      "reason": "ACTIVE_SINGLE_GRADIENT_CLIP"
+    },
+    {
+      "field": "optimizer_step_cadence",
+      "reason": "optimizer.step was not uniquely placed inside both the training-batch and epoch loops"
+    }
+  ],
+  "validation_batch_size": 1
+}

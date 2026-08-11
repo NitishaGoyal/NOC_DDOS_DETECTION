@@ -1,0 +1,99 @@
+{
+  "A0": {
+    "count_rule": "argmax K1-K4",
+    "graph_negative_rule": "count zero and empty role masks",
+    "positive_rule": "probability >= threshold",
+    "thresholds": {
+      "graph": 0.47174675035328983,
+      "path": 0.8339347466090468,
+      "source": 0.9496054929928593,
+      "transit": 0.8570333248835911,
+      "victim": 0.8260114802699812
+    }
+  },
+  "A1": {
+    "attack_rule": "margin >= frozen threshold",
+    "decimal_precision_digits": 80,
+    "exact_decoder_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+    "exact_decoder_sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c",
+    "fail_hard_on_uncertified_item": true,
+    "margin_threshold": 8.720532088239842,
+    "reported_mip_gap_numerical_zero_tolerance": 1.4210854715202004e-14,
+    "route_table_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/decoders/xy4x4_route_table.json",
+    "route_table_sha256": "19624d95a83114fba1e27e647aab59a0231c97d45053b598692ae62578b321b0",
+    "semantic_tie_tolerance": 1e-12
+  },
+  "A2": {
+    "configuration_selection_allowed": false,
+    "official_execution_allowed": false,
+    "status": "REJECTED_VALIDATION_ONLY_APPROXIMATION_STUDY"
+  },
+  "contract": "V5_P2_ONE_SHOT_BLIND_EVALUATION_CONTRACT",
+  "created_utc": "2026-07-29T19:38:10.183278+00:00",
+  "dataset_contract": {
+    "pair_aligned_manifest_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+    "pair_aligned_manifest_sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5",
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_path_resolved_during_L5": false,
+    "test_tensors_deserialized": false
+  },
+  "metrics": {
+    "A1_additional": [
+      "margin_auroc",
+      "margin_average_precision",
+      "route_legality_rate",
+      "solver_certification_summary"
+    ],
+    "count": [
+      "attack_only_macro_f1_raw",
+      "all_item_accuracy_A0_A1",
+      "all_item_macro_f1_A0_A1",
+      "confusion_matrices"
+    ],
+    "graph": [
+      "accuracy",
+      "balanced_accuracy",
+      "precision",
+      "recall",
+      "f1",
+      "fpr",
+      "auroc",
+      "average_precision"
+    ],
+    "joint": [
+      "strict_all_task_exactness"
+    ],
+    "roles": [
+      "per_role_precision_recall_f1",
+      "macro_role_f1",
+      "per_role_exact_match",
+      "joint_role_exact_match"
+    ]
+  },
+  "neural_execution": {
+    "amp_enabled": false,
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/selected_graphconv_checkpoint.pt",
+    "checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+    "model_class": "P2TaskDGraphConvCount4",
+    "model_or_checkpoint_selection_allowed": false,
+    "model_source_path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_task_d_full_multitask_count4.py",
+    "model_source_sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "selected_epoch": 25,
+    "selected_seed": 107,
+    "single_inference_pass": true,
+    "threshold_search_allowed": false
+  },
+  "official_output_groups": [
+    "raw_neural",
+    "A0_lightweight",
+    "A1_exact_structured"
+  ],
+  "reporting": {
+    "A1_never_overwrites_raw_or_A0": true,
+    "raw_A0_A1_kept_separate": true,
+    "selective_scenario_or_sample_reruns_allowed": false,
+    "test_driven_changes_allowed": false
+  },
+  "status": "FROZEN"
+}

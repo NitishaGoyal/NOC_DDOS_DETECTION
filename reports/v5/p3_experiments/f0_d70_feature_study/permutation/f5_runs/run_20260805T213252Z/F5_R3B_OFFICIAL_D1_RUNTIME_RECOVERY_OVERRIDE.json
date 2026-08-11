@@ -1,0 +1,66 @@
+{
+  "authority": {
+    "F5_R3A_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/V5_P3_F5_R3A_BASELINE_PROCESS_RUNTIME_REVIEW_LOCK.json",
+    "F5_R3A_lock_sha256": "d0df7317bea4a895c35ab03e6c6a76ff25d7a293754fe1c19149193ca605ce61",
+    "F5_R3A_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/V5_P3_F5_R3A_BASELINE_PROCESS_RUNTIME_REVIEW_REPORT.json",
+    "F5_R3A_report_sha256": "e38e33100432ec383a1f5072a425207c2fbbb7233205cec8221ed92b0aeed7e6",
+    "classification": "F5_RUNTIME_CONFIGURATION_DRIFT_CONFIRMED",
+    "repair_authorized": true,
+    "runtime_drift_confirmed": true
+  },
+  "causal_change": {
+    "cudnn_allow_tf32": {
+      "failed_F5_value": false,
+      "official_D1_value": true
+    }
+  },
+  "created_utc": "2026-08-05T22:03:51.057158+00:00",
+  "full_official_alignment": {
+    "cudnn_allow_tf32": {
+      "failed_F5_value": false,
+      "official_D1_value": true
+    },
+    "deterministic_algorithms_enabled": {
+      "failed_F5_value": true,
+      "official_D1_value": false
+    }
+  },
+  "historical_failed_runtime": {
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_version": 92000,
+    "deterministic_algorithms_enabled": true,
+    "device": "cuda",
+    "float32_matmul_precision": "highest",
+    "torch_cuda_version": "13.0",
+    "torch_version": "2.12.1+cu130"
+  },
+  "historical_run_contract_modified": false,
+  "minimum_causal_subset": [
+    "cudnn_allow_tf32"
+  ],
+  "new_baseline_directory": "units/baseline_official_runtime",
+  "new_gate_artifact": "results/F5_R3B_OFFICIAL_RUNTIME_BASELINE_REPRODUCTION_GATE.json",
+  "official_recovered_runtime": {
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_version": 92000,
+    "deterministic_algorithms_enabled": false,
+    "device": "cuda",
+    "float32_matmul_precision": "highest",
+    "torch_cuda_version": "13.0",
+    "torch_version": "2.12.1+cu130"
+  },
+  "old_baseline_overwritten": false,
+  "sealed_test_access": false,
+  "stage": "V5_P3_F5_R3B_OFFICIAL_RUNTIME_BASELINE_RECOVERY_AND_PERMUTATION_RESUME",
+  "status": "FROZEN"
+}

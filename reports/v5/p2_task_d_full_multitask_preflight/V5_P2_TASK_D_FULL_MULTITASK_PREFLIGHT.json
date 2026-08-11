@@ -1,0 +1,78 @@
+{
+  "architecture_selected": false,
+  "candidate_results": {
+    "conv1d": {
+      "component_losses": {
+        "attack": 1.4683815240859985,
+        "count": 1.4349311590194702,
+        "path": 2.9132213592529297,
+        "source": 7.955698013305664,
+        "transit": 5.587884902954102,
+        "victim": 6.218484878540039
+      },
+      "operation_count_proxy": {
+        "graph_linear_macs": 0,
+        "graph_message_scalar_ops": 0,
+        "total_linear_macs": 10899776
+      },
+      "parameter_count": 43273,
+      "status": "PASS",
+      "synthetic_total_loss": 19.05596160888672
+    },
+    "graphconv": {
+      "component_losses": {
+        "attack": 1.5900614261627197,
+        "count": 1.5771774053573608,
+        "path": 2.624908924102783,
+        "source": 8.115806579589844,
+        "transit": 5.198885917663574,
+        "victim": 6.422794342041016
+      },
+      "operation_count_proxy": {
+        "graph_linear_macs": 262144,
+        "graph_message_scalar_ops": 6144,
+        "total_linear_macs": 11161920
+      },
+      "parameter_count": 59785,
+      "status": "PASS",
+      "synthetic_total_loss": 19.22344970703125
+    }
+  },
+  "candidates": [
+    "conv1d",
+    "graphconv"
+  ],
+  "device": "cuda",
+  "failures": [],
+  "matched_seed_common_initialization_sha256": "8ec0d46aee51318af938711fe8e2f479d0bffa46fb846c6fede70c0d76309f41",
+  "provenance": {
+    "b1_lock": "4bfbf2a555899a841c445c576b2431cb4eb8cfaea5a7d8c6698d022744f89587",
+    "b1_protocol": "e18253eb2545b453ffbfb3f627d8646307d7a0c3e9da337547f5d061553baa4a",
+    "b1_report": "523aa60c95d20f2223e43882ca7fb1077148c2b731f8f101c439451f6d8aa9b4",
+    "b2_train": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "b3_model": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "edge": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "g0_operator_contracts": "90dc352e737735da1eed2da1a5a846130440eeff3ebeafcd03fdaa2246f740dc",
+    "g0_seed_policy": "43c63a0d9144e0f314143f14a6039a6697a46eca277b299595be97fb0b2859bc",
+    "loader": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "promotion_lock": "da5f1b3e0f825069534b680b6d2923d8ba185f2a5e63c44e93ea5bdee9126075",
+    "promotion_marker": "aa81b458589363e6605cfedb6dc6eef96680ca84e79f306c10dae8c433ef0342",
+    "promotion_report": "130e47a3246f69f5de3f3cb5e212278e09f10368ef131cad9e9306141c4d8b6e",
+    "task_d_model": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "test_policy": "6b6ff4a87102a675c62cc11df18e018ac873b3bee41a0b7e8329badece0b1627"
+  },
+  "scientific_training_authorized": true,
+  "seeds": [
+    107,
+    117,
+    127,
+    137,
+    147
+  ],
+  "stage": "V5_P2_TASK_D_FULL_MULTITASK_PREFLIGHT",
+  "status": "COMPLETE",
+  "test_directory_enumerated": false,
+  "test_evaluation_performed": false,
+  "test_tensors_deserialized": false,
+  "total_runs": 10
+}

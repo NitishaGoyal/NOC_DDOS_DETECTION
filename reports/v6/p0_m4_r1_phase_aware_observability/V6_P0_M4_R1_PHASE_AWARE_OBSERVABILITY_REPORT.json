@@ -1,0 +1,151 @@
+{
+  "M4_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m4_dynamic70_observability/V6_P0_M4_DYNAMIC70_OBSERVABILITY_REPORT.json",
+  "M4_report_sha256": "c01c79de9d73b83a3fe9c27d3c07693d6b46196abcc81cf4f7c1669a81b11109",
+  "P2_test_used": false,
+  "activity_fraction_correlation": {
+    "pearson_with_pair_rms": 0.3298733037415421
+  },
+  "created_utc": "2026-08-03T04:02:57.738021+00:00",
+  "data_copied": false,
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/V6_P0_PILOT100_ML_HANDOVER/v6_p0_pilot100_ml/dataset/processed_dynamic70",
+  "deployment_model_training": false,
+  "diagnostic_aurocs_using_pair_rms_only": {
+    "any_attack_activity_inside_window": 0.6485718400442966,
+    "deployment_model_claim": false,
+    "final_epoch_attack_label": 0.6328112710462728,
+    "fully_active_vs_pre_onset_clean_inactive": 1.0
+  },
+  "diagnostic_only": true,
+  "interpretation": {
+    "P1_generation_decision_from_M4_R1_alone": "NOT_AUTHORIZED",
+    "aggregate_M4_serious_overlap_is_phase_confounded": true,
+    "final_timestep_label_contract": true,
+    "history_active_final_inactive_windows": 435,
+    "next_required_stage": "M5_RAW81_DYNAMIC70_MAPPING_AND_M6_TINY_OVERFIT_OR_M7_DIAGNOSTIC_CLASSIFIERS",
+    "post_onset_clean_inactive_windows": 4583
+  },
+  "lag_bin_artifact": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m4_r1_phase_aware_observability/V6_P0_M4_R1_INACTIVE_LAG_BINS.csv",
+    "sha256": "875d817e9b1838518f6141ad717dc9af15efc9dd4ebc803d7629c01b14f72a66"
+  },
+  "matched_window_count": 11800,
+  "operational_disposition_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m4_r1_phase_aware_observability/V6_P0_M4_AGGREGATE_INACTIVE_PHASE_CONFOUND_DISPOSITION.json",
+  "operational_disposition_sha256": "6b171d3ab37f736368700b1bb531d4d55849796ba700442afeeb4eecc68bdac5",
+  "overlap_comparisons": {
+    "active_final_vs_all_inactive_final": {
+      "reference_count": 8634,
+      "reference_p95": 1.0373448550701143,
+      "target_count": 3166,
+      "target_fraction_at_or_below_reference_p95": 0.934301958307012
+    },
+    "active_final_vs_history_active_final_inactive": {
+      "reference_count": 435,
+      "reference_p95": 1.109140825271606,
+      "target_count": 3166,
+      "target_fraction_at_or_below_reference_p95": 0.9620972836386608
+    },
+    "active_final_vs_post_onset_clean_inactive": {
+      "reference_count": 4583,
+      "reference_p95": 1.1152292847633358,
+      "target_count": 3166,
+      "target_fraction_at_or_below_reference_p95": 0.9636765634870499
+    },
+    "active_final_vs_pre_onset_clean_inactive": {
+      "reference_count": 3616,
+      "reference_p95": 0.0,
+      "target_count": 3166,
+      "target_fraction_at_or_below_reference_p95": 0.0015792798483891346
+    },
+    "fully_active_vs_post_onset_clean_inactive": {
+      "reference_count": 4583,
+      "reference_p95": 1.1152292847633358,
+      "target_count": 2705,
+      "target_fraction_at_or_below_reference_p95": 0.9574861367837338
+    },
+    "fully_active_vs_pre_onset_clean_inactive": {
+      "reference_count": 3616,
+      "reference_p95": 0.0,
+      "target_count": 2705,
+      "target_fraction_at_or_below_reference_p95": 0.0
+    }
+  },
+  "pair_count": 100,
+  "phase_counts": {
+    "FULLY_ACTIVE": 2705,
+    "HISTORY_ACTIVE_FINAL_INACTIVE": 435,
+    "PARTIAL_ACTIVE_FINAL_ACTIVE": 461,
+    "POST_ONSET_CLEAN_INACTIVE": 4583,
+    "PRE_ONSET_CLEAN_INACTIVE": 3616
+  },
+  "phase_rms_distributions": {
+    "FULLY_ACTIVE": {
+      "count": 2705,
+      "max": 1.7044252157211304,
+      "mean": 0.7449206544599339,
+      "median": 0.7131569385528564,
+      "min": 0.27776095271110535,
+      "p05": 0.490872323513031,
+      "p25": 0.6179561018943787,
+      "p75": 0.8483825325965881,
+      "p95": 1.0881638765335082,
+      "std": 0.1869870318003271
+    },
+    "HISTORY_ACTIVE_FINAL_INACTIVE": {
+      "count": 435,
+      "max": 1.4907622337341309,
+      "mean": 0.7649965040300084,
+      "median": 0.722596287727356,
+      "min": 0.4774264395236969,
+      "p05": 0.5602201521396637,
+      "p25": 0.6404159963130951,
+      "p75": 0.8454715311527252,
+      "p95": 1.109140825271606,
+      "std": 0.1818186001960681
+    },
+    "PARTIAL_ACTIVE_FINAL_ACTIVE": {
+      "count": 461,
+      "max": 0.9807398915290833,
+      "mean": 0.3619525315546657,
+      "median": 0.32136106491088867,
+      "min": 0.0,
+      "p05": 0.03966328501701355,
+      "p25": 0.15926295518875122,
+      "p75": 0.5568521022796631,
+      "p95": 0.7655287981033325,
+      "std": 0.238074283595249
+    },
+    "POST_ONSET_CLEAN_INACTIVE": {
+      "count": 4583,
+      "max": 1.762381911277771,
+      "mean": 0.791169383998992,
+      "median": 0.7526674270629883,
+      "min": 0.4516795575618744,
+      "p05": 0.5947109520435333,
+      "p25": 0.6803517043590546,
+      "p75": 0.8633300960063934,
+      "p95": 1.1152292847633358,
+      "std": 0.16567909390838792
+    },
+    "PRE_ONSET_CLEAN_INACTIVE": {
+      "count": 3616,
+      "max": 0.0,
+      "mean": 0.0,
+      "median": 0.0,
+      "min": 0.0,
+      "p05": 0.0,
+      "p25": 0.0,
+      "p75": 0.0,
+      "p95": 0.0,
+      "std": 0.0
+    }
+  },
+  "primary_interpretation": "TEMPORAL_HISTORY_LABEL_CONFLICT_DOMINATES",
+  "run_count": 200,
+  "source_modified": false,
+  "stage": "V6_P0_M4_R1_PHASE_AWARE_OBSERVABILITY_AUDIT",
+  "status": "PASS",
+  "window_artifact": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m4_r1_phase_aware_observability/V6_P0_M4_R1_PHASE_AWARE_WINDOWS.csv",
+    "sha256": "394424c7d80782158c2b53a2fc926d9400c4a6b78a4d1611777912ccd3f2a1c3"
+  }
+}

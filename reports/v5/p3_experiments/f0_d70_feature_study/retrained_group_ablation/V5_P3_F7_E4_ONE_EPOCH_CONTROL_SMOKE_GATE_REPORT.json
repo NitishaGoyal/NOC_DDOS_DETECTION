@@ -1,0 +1,232 @@
+{
+  "artifacts": {
+    "E2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_E2_GENERATED_TRAINER_STATIC_AND_RUNTIME_PREFLIGHT_LOCK.json",
+    "E3_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_E3_R1_RUNTIME_ADAPTER_ENVIRONMENT_RECOVERY_LOCK.json",
+    "console": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/console.log",
+    "model_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/model",
+    "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke",
+    "smoke_result": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/F7_E4_ONE_EPOCH_CONTROL_SMOKE_RESULT.json",
+    "smoke_trainer": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/run_v5_p3_f7_e4_one_epoch_control_smoke_trainer.py",
+    "source_matrix_launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix_e2_r6_r2.sh",
+    "source_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py",
+    "trainer_report_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "ENGINEERING",
+  "created_utc": "2026-08-06T09:03:34.332636+00:00",
+  "decision": {
+    "F8_multi_seed_authorized": false,
+    "classification": "ENGINEERING",
+    "clean_process_exit_verified": true,
+    "compact_interface_equivalence_authorized": false,
+    "complete_validation_pass_verified": true,
+    "disposable_checkpoint_verified": true,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F7_PRIMARY_SEED107_SAME_WIDTH_RETRAINED_GROUP_ABLATION_MATRIX_EXECUTION",
+    "one_complete_control_train_epoch_verified": true,
+    "primary_matrix_execution_started": false,
+    "primary_seed107_six_run_matrix_release_authorized": true,
+    "scheduler_step_verified": true,
+    "scientific_checkpoint_saved": false,
+    "sealed_test_access": false,
+    "stage": "V5_P3_F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE",
+    "status": "PASS",
+    "trainer_report_finalization_verified": true
+  },
+  "finding": {
+    "checkpoint_audits": [
+      {
+        "all_floating_tensors_finite": true,
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/model/v5_p2_b2_seed_107_best.pt",
+        "sha256": "1e9b320130095cbf9c64e0bbdd9cf9329e88d98e61b6074a283ed63d2064e4e2",
+        "size_bytes": 792443,
+        "tensor_count": 193,
+        "total_tensor_elements": 181803
+      }
+    ],
+    "instrumentation": {
+      "epoch_iterator": "range(1, 101)",
+      "epoch_loop_line": 1468,
+      "epoch_target": "epoch",
+      "one_epoch_break_inserted_after_complete_original_epoch_body": true,
+      "optimizer_step_wrapped": true,
+      "post_finalization_main_wrapper_added": true,
+      "scheduler_step_wrapped": true,
+      "smoke_trainer": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/run_v5_p3_f7_e4_one_epoch_control_smoke_trainer.py",
+      "smoke_trainer_sha256": "adf40d3db01589536aeb219f5cbd284630d0060be989229db4a7da3ca79b0e2e",
+      "source_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py",
+      "source_trainer_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf",
+      "train_loader_wrapped": true,
+      "validation_loader_wrapped": true
+    },
+    "process_wall_seconds": 320.40662654599873,
+    "run_file_inventory": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/F7_E4_ONE_EPOCH_CONTROL_SMOKE_RESULT.json",
+        "sha256": "b5d0a226ad51570372163f9547ea8622fd3dc36a43a54269acb61b495042cde1",
+        "size_bytes": 523
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+        "sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1",
+        "size_bytes": 4580
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/console.log",
+        "sha256": "ef3dbd1415edd066e75a3f9610c2a4c67fd30c7296a967f22d84eeb84c61c5e0",
+        "size_bytes": 1474
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/model/v5_p2_b2_seed_107_best.pt",
+        "sha256": "1e9b320130095cbf9c64e0bbdd9cf9329e88d98e61b6074a283ed63d2064e4e2",
+        "size_bytes": 792443
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/model_capture/F6_OFFICIAL_EXPORTER_MODEL_CAPTURE.json",
+        "sha256": "efffd65c499032f8ef35ede166431381aef46c04ba0cacfec1c67de67fa8b016",
+        "size_bytes": 593
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P2_B2_SEED_107_HISTORY.csv",
+        "sha256": "ccec0afa7532943619c40c6cec28422132a261f819c3ad4d15873f9ea3805277",
+        "size_bytes": 1019
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P2_B2_SEED_107_PROGRESS.json",
+        "sha256": "7dd5af8a8a768652be3c0dabb765b011194a33df72cfad0c4f80451d8e71b2aa",
+        "size_bytes": 7061
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P3_F7_SAME_WIDTH_RETRAINED_GROUP_ABLATION_COMPLETE",
+        "sha256": "e3f190ceb5f4cc450759553ced051c5ca321fa6592cf7ca6eac224edd1a04cf6",
+        "size_bytes": 54
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P3_F7_SEED_107_LOCK.json",
+        "sha256": "b8de9d38f4017141eb01274138b379cdadfbee29372d4c59d6a95827ceb8a81a",
+        "size_bytes": 1513
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P3_F7_SEED_107_TRAINING_REPORT.json",
+        "sha256": "f93997fdab2a72634277f861b02b6d9d6644f8ac36ae9b65be0521e065aada0c",
+        "size_bytes": 8230
+      }
+    ],
+    "runtime": {
+      "completed": true,
+      "cuda_available": true,
+      "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+      "cuda_max_memory_allocated_bytes": 624454144,
+      "cuda_max_memory_reserved_bytes": 763363328,
+      "elapsed_seconds": 318.8955328464508,
+      "epoch_completed": [
+        1
+      ],
+      "epoch_started": [
+        1
+      ],
+      "failure": null,
+      "loader_batches": {
+        "train": 434,
+        "validation": 55
+      },
+      "optimizer_steps": 434,
+      "return_value": 0,
+      "scheduler_steps": 1,
+      "sentinel": "F7_E4_ONE_EPOCH_CONTROL_SMOKE_COMPLETE"
+    },
+    "trainer_json_audits": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P2_B2_SEED_107_PROGRESS.json",
+        "sha256": "7dd5af8a8a768652be3c0dabb765b011194a33df72cfad0c4f80451d8e71b2aa",
+        "size_bytes": 7061,
+        "top_level_keys": [
+          "best_checkpoint_sha256",
+          "best_epoch",
+          "best_validation_metrics",
+          "completed_epoch",
+          "current_learning_rate_after_scheduler",
+          "current_validation_metrics",
+          "early_stop_patience_counter",
+          "elapsed_total_seconds",
+          "seed",
+          "stage",
+          "status",
+          "test_directory_enumerated",
+          "test_tensor_contents_accessed"
+        ]
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P3_F7_SEED_107_LOCK.json",
+        "sha256": "b8de9d38f4017141eb01274138b379cdadfbee29372d4c59d6a95827ceb8a81a",
+        "size_bytes": 1513,
+        "top_level_keys": [
+          "best_epoch",
+          "best_validation_selection_score",
+          "checkpoint_path",
+          "checkpoint_sha256",
+          "completed_epoch",
+          "history_sha256",
+          "initial_state_sha256",
+          "legacy_compatibility_loader_sha256",
+          "legacy_compatibility_model_sha256",
+          "next_stage",
+          "protocol_sha256",
+          "report_sha256",
+          "runtime_adapter_sha256",
+          "script_sha256",
+          "seed",
+          "status",
+          "stopped_early",
+          "test_directory_enumerated",
+          "test_evaluation_performed",
+          "test_tensor_contents_accessed",
+          "threshold_tuning_performed"
+        ]
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_SCRATCH/control_dynamic70_one_epoch_smoke/report/V5_P3_F7_SEED_107_TRAINING_REPORT.json",
+        "sha256": "f93997fdab2a72634277f861b02b6d9d6644f8ac36ae9b65be0521e065aada0c",
+        "size_bytes": 8230,
+        "top_level_keys": [
+          "artifacts",
+          "best",
+          "data",
+          "failures",
+          "label_weights",
+          "legacy_compatibility_loader_sha256",
+          "next_stage",
+          "runtime_adapter_sha256",
+          "security_boundary",
+          "seed",
+          "stage",
+          "status",
+          "training",
+          "warnings"
+        ]
+      }
+    ]
+  },
+  "governance": {
+    "disposable_checkpoint_saved": true,
+    "disposable_control_optimizer_steps": 434,
+    "primary_matrix_execution_started": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_optimizer_steps": 0,
+    "sealed_test_access": false
+  },
+  "provenance": {
+    "E2_lock_sha256": "94f0ab74f88899a7739b44949d68870dc0c88ae2a738a22cbe4e8da7d50c7bdc",
+    "E3_lock_sha256": "ee01fe6d3bce70f24f2aba312c4407e8315582b00b565053eeeb270bf9f7f258",
+    "console_sha256": "ef3dbd1415edd066e75a3f9610c2a4c67fd30c7296a967f22d84eeb84c61c5e0",
+    "installed_script_sha256": "f7ea5c7e57fa39a5146f9fb6c5806be86c8779abe99de6cf24008a52239f44b2",
+    "smoke_result_sha256": "b5d0a226ad51570372163f9547ea8622fd3dc36a43a54269acb61b495042cde1",
+    "smoke_trainer_sha256": "adf40d3db01589536aeb219f5cbd284630d0060be989229db4a7da3ca79b0e2e",
+    "source_matrix_launcher_sha256": "fa6e9690f55081ea3364a4a91c391ef08be52e38cfaddd43176051314e202f2a",
+    "source_trainer_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf"
+  },
+  "scope": "One disposable seed-107 Dynamic70 control epoch through all 434 training batches, at least one complete 55-batch validation pass, one scheduler step, checkpoint creation, report generation, and clean normal finalization.",
+  "stage": "V5_P3_F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE",
+  "status": "PASS"
+}

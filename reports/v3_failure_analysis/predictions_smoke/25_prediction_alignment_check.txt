@@ -1,0 +1,60 @@
+MODEL: conv1d_gcn
+  output_file: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/conv1d_gcn_predictions.npz
+  sample_index_aligned: True
+  sample_id_aligned: True
+  split_aligned: True
+  labels_aligned: True
+  finite_outputs: True
+  shapes_valid: True
+  deterministic_within_1e_7: True
+
+MODEL: tcn_attention_gcn
+  output_file: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_attention_gcn_predictions.npz
+  sample_index_aligned: True
+  sample_id_aligned: True
+  split_aligned: True
+  labels_aligned: True
+  finite_outputs: True
+  shapes_valid: True
+  deterministic_within_1e_7: True
+
+MODEL: tcn_meanpool_gcn
+  output_file: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_meanpool_gcn_predictions.npz
+  sample_index_aligned: True
+  sample_id_aligned: True
+  split_aligned: True
+  labels_aligned: True
+  finite_outputs: True
+  shapes_valid: True
+  deterministic_within_1e_7: True
+
+MODEL: tcn_maxpool_gcn
+  output_file: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_maxpool_gcn_predictions.npz
+  sample_index_aligned: True
+  sample_id_aligned: True
+  split_aligned: True
+  labels_aligned: True
+  finite_outputs: True
+  shapes_valid: True
+  deterministic_within_1e_7: True
+
+================================================================================
+GLOBAL ALIGNMENT CHECK
+================================================================================
+all sample indices aligned: True
+all sample IDs aligned: True
+all split labels aligned: True
+all true labels aligned: True
+all prediction arrays finite: True
+all output shapes valid: True
+all aggregate metrics reproduced: True
+all determinism checks passed: True
+full export: False
+overall success: True
+
+sample count: 512
+validation samples: 256
+test samples: 256
+expected full sample count: 85618
+sample order SHA-256: 9edfe62aa09972e05c85d1e297b396abbcee5a78b0431eacf8dfbd6eeb66ac14
+sample ID SHA-256: f663ff46f8a9df290a3bc17c1a6840aa834324c0b76fb0322968289945432b44

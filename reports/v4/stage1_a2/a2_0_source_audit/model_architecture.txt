@@ -1,0 +1,12 @@
+V4-A2 explicitly authorized architecture
+experiment_designation: a2_capacity_lift
+model_name: Conv1D-TemporalGCN-A2-CapacityLift
+parameter_count: 2274
+expected_parameter_count: 2274
+input: [B,16,8,24]
+temporal: Conv1d(24,16,kernel_size=3,stride=1,padding=1) -> ReLU -> max over time
+gcn1: normalized adjacency, Linear(16,32) -> ReLU
+gcn2: normalized adjacency, Linear(32,16) -> ReLU
+node_head: Linear(16,1) per node -> [B,16]
+graph_readout: mean over 16 routers
+graph_head: Linear(16,1) -> [B]

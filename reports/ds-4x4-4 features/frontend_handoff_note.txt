@@ -1,0 +1,49 @@
+Frontend/gem5 handoff note
+
+The ML branch showed that router-level aggregate features are enough for graph-level DoS detection but not enough for attacker localization.
+
+The current epoch CSVs only contain aggregate router-level features:
+- ifd_in
+- ifd_out
+- ifd_in_norm
+- ifd_out_norm
+- input_flit_count
+- output_flit_count
+
+The raw traces directory is empty, so we cannot reconstruct per-port/directional features from the current saved dataset.
+
+Required frontend/gem5 update:
+Emit per-router, per-epoch, per-port directional features.
+
+Minimum required columns:
+- input_flit_count_local
+- input_flit_count_north
+- input_flit_count_east
+- input_flit_count_south
+- input_flit_count_west
+- output_flit_count_local
+- output_flit_count_north
+- output_flit_count_east
+- output_flit_count_south
+- output_flit_count_west
+
+Stronger version:
+- ifd_in_local
+- ifd_in_north
+- ifd_in_east
+- ifd_in_south
+- ifd_in_west
+- ifd_out_local
+- ifd_out_north
+- ifd_out_east
+- ifd_out_south
+- ifd_out_west
+
+Target future output folder:
+- /home/zira/tools/architecture/gem5/experiments/paper_1/epoch_features_port
+
+Target future ML dataset:
+- data/processed/graph_dataset/paper1_temporal_graphs_full_portfeat.npz
+
+Reason:
+Aggregate traffic tells the GNN that a router/region is suspicious, but not which direction the attack traffic came from. Per-port directionality is needed for exact malicious-router localization.

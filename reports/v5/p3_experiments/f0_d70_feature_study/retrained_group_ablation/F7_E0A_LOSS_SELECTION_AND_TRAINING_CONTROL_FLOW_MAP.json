@@ -1,0 +1,362 @@
+{
+  "early_stopping_rows": [
+    {
+      "excerpt": "    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=\"max\",\n        factor=0.5,\n        patience=4,\n        threshold=1e-4,\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=1e-5,\n    )",
+      "line_end": 1408,
+      "line_start": 1399,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=4, threshold=0.0001, threshold_mode='abs', cooldown=0, min_lr=1e-05)"
+    },
+    {
+      "excerpt": "    best_early_stop_score = -float(\"inf\")",
+      "line_end": 1429,
+      "line_start": 1429,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "best_early_stop_score = -float('inf')"
+    },
+    {
+      "excerpt": "    early_stop_patience_counter = 0",
+      "line_end": 1430,
+      "line_start": 1430,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "early_stop_patience_counter = 0"
+    },
+    {
+      "excerpt": "    seed_manifest = {\n        \"stage\": STAGE,\n        \"status\": (\n            \"COMPLETE\"\n            if not failures\n            else \"HOLD\"\n        ),\n        \"seed\": seed,\n        \"architecture\": {\n            \"name\": model.architecture_name,\n            \"parameter_count\": parameter_count,\n            \"model_source_sha256\": (\n                sha256_file(model_path)\n            ),\n            \"loader_sha256\": (\n                sha256_file(loader_path)\n            ),\n            \"protocol_sha256\": (\n                protocol[\"protocol_sha256\"]\n            ),\n            \"initial_state_sha256\": (\n                initial_state_sha256\n            ),\n        },\n        \"data\": {\n            \"train_items\": len(train_dataset),\n            \"validation_items\": (\n                len(validation_dataset)\n            ),\n            \"pair_block_batch_size\": 128,\n            \"item_batch_size\": 256,\n            \"train_batches\": len(train_loader),\n            \"validation_batches\": (\n                len(validation_loader)\n            ),\n            \"num_workers\": 0,\n            \"pair_keys_used_for_loading_only\": True,\n            \"pair_keys_returned_to_model\": False,\n        },\n        \"label_weights\": {\n            \"graph_positive_weight\": (\n                graph_pos_weight_value\n            ),\n            \"role_positive_weights\": (\n                role_weight_manifest\n            ),\n            \"count_distribution\": (\n                count_distribution\n            ),\n            \"count_class_mapping\": (\n                COUNT_CLASS_MAPPING\n            ),\n            \"count_class_weights_applied\": False,\n        },\n        \"training\": {\n            \"device\": str(device),\n            \"completed_epoch\": completed_epoch,\n            \"stopped_early\": stopped_early,\n            \"maximum_epochs\": 100,\n            \"minimum_epochs_before_stop\": 15,\n            \"early_stopping_patience\": 12,\n            \"optimizer\": \"AdamW\",\n            \"initial_learning_rate\": 1e-3,\n            \"weight_decay\": 1e-4,\n            \"gradient_clip_global_norm\": 1.0,\n            \"scheduler\": \"ReduceLROnPlateau\",\n            \"automatic_mixed_precision\": False,\n            \"total_elapsed_seconds\": (\n                total_elapsed_seconds\n            ),\n        },\n        \"best\": {\n            \"epoch\": best_epoch,\n            \"validation_metrics\": (\n                best_validation_metrics\n            ),\n            \"checkpoint_path\": (\n                str(checkpoint_path)\n            ),\n            \"checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"ranking_tuple\": (\n                list(best_rank)\n                if best_rank is not None\n                else None\n            ),\n        },\n        \"artifacts\": {\n            \"history_csv\": [\n                str(history_path),\n                sha256_file(history_path),\n            ],\n            \"progress_json\": [\n                str(progress_path),\n                sha256_file(progress_path),\n            ],\n            \"best_checkpoint\": [\n                str(checkpoint_path),\n                sha256_file(checkpoint_path),\n            ],\n        },\n        \"security_boundary\": {\n            \"train_tensor_contents_accessed\": True,\n            \"validation_tensor_contents_accessed\": True,\n            \"threshold_tuning_performed\": False,\n            \"test_directory_existence_checked\": False,\n            \"test_directory_enumerated\": False,\n            \"test_tensor_files_opened\": False,\n            \"test_tensor_contents_accessed\": False,\n            \"test_dataset_constructed\": False,\n            \"test_windows_constructed\": False,\n            \"test_evaluation_performed\": False,\n        },\n        \"failures\": failures,\n        \"warnings\": warnings,\n        \"next_stage\": (\n            \"V5_P2_B2_MULTI_SEED_FINALIZATION\"\n            if not failures\n            else None\n        ),\n    }",
+      "line_end": 1776,
+      "line_start": 1655,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "seed_manifest = {'stage': STAGE, 'status': 'COMPLETE' if not failures else 'HOLD', 'seed': seed, 'architecture': {'name': model.architecture_name, 'parameter_count': parameter_count, 'model_source_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'protocol_sha256': protocol['protocol_sha256'], 'initial_state_sha256': initial_state_sha256}, 'data': {'train_items': len(train_dataset), 'validation_items': len(validation_dataset), 'pair_block_batch_size': 128, 'item_batch_size': 256, 'train_batches': len(train_loader), 'validation_batches': len(validation_loader), 'num_workers': 0, 'pair_keys_used_for_loading_only': True, 'pair_keys_returned_to_model': False}, 'label_weights': {'graph_positive_weight': graph_pos_weight_value, 'role_positive_weights': role_weight_manifest, 'count_distribution': count_distribution, 'count_class_mapping': COUNT_CLASS_MAPPING, 'count_class_weights_applied': False}, 'training': {'device': str(device), 'completed_epoch': completed_epoch, 'stopped_early': stopped_early, 'maximum_epochs': 100, 'minimum_epochs_before_stop': 15, 'early_stopping_patience': 12, 'optimizer': 'AdamW', 'initial_learning_rate': 0.001, 'weight_decay': 0.0001, 'gradient_clip_global_norm': 1.0, 'scheduler': 'ReduceLROnPlateau', 'automatic_mixed_precision': False, 'total_elapsed_seconds': total_elapsed_seconds}, 'best': {'epoch': best_epoch, 'validation_metrics': best_validation_metrics, 'checkpoint_path': str(checkpoint_path), 'checkpoint_sha256': best_checkpoint_sha256, 'ranking_tuple': list(best_rank) if best_rank is not None else None}, 'artifacts': {'history_csv': [str(history_path), sha256_file(history_path)], 'progress_json': [str(progress_path), sha256_file(progress_path)], 'best_checkpoint': [str(checkpoint_path), sha256_file(checkpoint_path)]}, 'security_boundary': {'train_tensor_contents_accessed': True, 'validation_tensor_contents_accessed': True, 'threshold_tuning_performed': False, 'test_directory_existence_checked': False, 'test_directory_enumerated': False, 'test_tensor_files_opened': False, 'test_tensor_contents_accessed': False, 'test_dataset_constructed': False, 'test_windows_constructed': False, 'test_evaluation_performed': False}, 'failures': failures, 'warnings': warnings, 'next_stage': 'V5_P2_B2_MULTI_SEED_FINALIZATION' if not failures else None}"
+    },
+    {
+      "excerpt": "    lock = {\n        \"status\": COMPLETE,\n        \"seed\": seed,\n        \"report_sha256\": sha256_file(report_path),\n        \"history_sha256\": sha256_file(history_path),\n        \"checkpoint_sha256\": (\n            sha256_file(checkpoint_path)\n        ),\n        \"checkpoint_path\": str(checkpoint_path),\n        \"protocol_sha256\": (\n            protocol[\"protocol_sha256\"]\n        ),\n        \"model_sha256\": sha256_file(model_path),\n        \"loader_sha256\": sha256_file(loader_path),\n        \"initial_state_sha256\": (\n            initial_state_sha256\n        ),\n        \"best_epoch\": best_epoch,\n        \"best_validation_selection_score\": (\n            best_validation_metrics[\n                \"selection_score\"\n            ]\n        ),\n        \"completed_epoch\": completed_epoch,\n        \"stopped_early\": stopped_early,\n        \"threshold_tuning_performed\": False,\n        \"test_directory_enumerated\": False,\n        \"test_tensor_contents_accessed\": False,\n        \"test_evaluation_performed\": False,\n        \"next_stage\": (\n            \"V5_P2_B2_MULTI_SEED_FINALIZATION\"\n        ),\n        \"script_sha256\": sha256_file(Path(__file__)),\n    }",
+      "line_end": 1827,
+      "line_start": 1794,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "lock = {'status': COMPLETE, 'seed': seed, 'report_sha256': sha256_file(report_path), 'history_sha256': sha256_file(history_path), 'checkpoint_sha256': sha256_file(checkpoint_path), 'checkpoint_path': str(checkpoint_path), 'protocol_sha256': protocol['protocol_sha256'], 'model_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'initial_state_sha256': initial_state_sha256, 'best_epoch': best_epoch, 'best_validation_selection_score': best_validation_metrics['selection_score'], 'completed_epoch': completed_epoch, 'stopped_early': stopped_early, 'threshold_tuning_performed': False, 'test_directory_enumerated': False, 'test_tensor_contents_accessed': False, 'test_evaluation_performed': False, 'next_stage': 'V5_P2_B2_MULTI_SEED_FINALIZATION', 'script_sha256': sha256_file(Path(__file__))}"
+    },
+    {
+      "excerpt": "        if (\n            current_score\n            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1",
+      "line_end": 1564,
+      "line_start": 1557,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "if current_score > best_early_stop_score + 0.0001:\n    best_early_stop_score = current_score\n    early_stop_patience_counter = 0\nelse:\n    early_stop_patience_counter += 1"
+    },
+    {
+      "excerpt": "        history_row = flatten_epoch_row(\n            epoch=epoch,\n            learning_rate=current_learning_rate,\n            train_metrics=train_metrics,\n            validation_metrics=validation_metrics,\n            elapsed_seconds=elapsed_seconds,\n            is_best_checkpoint=is_best_checkpoint,\n            early_stop_patience_counter=(\n                early_stop_patience_counter\n            ),\n        )",
+      "line_end": 1580,
+      "line_start": 1570,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "history_row = flatten_epoch_row(epoch=epoch, learning_rate=current_learning_rate, train_metrics=train_metrics, validation_metrics=validation_metrics, elapsed_seconds=elapsed_seconds, is_best_checkpoint=is_best_checkpoint, early_stop_patience_counter=early_stop_patience_counter)"
+    },
+    {
+      "excerpt": "        progress = {\n            \"stage\": STAGE,\n            \"status\": \"RUNNING\",\n            \"seed\": seed,\n            \"completed_epoch\": completed_epoch,\n            \"best_epoch\": best_epoch,\n            \"best_checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"best_validation_metrics\": (\n                best_validation_metrics\n            ),\n            \"current_validation_metrics\": (\n                validation_metrics\n            ),\n            \"current_learning_rate_after_scheduler\": (\n                float(optimizer.param_groups[0][\"lr\"])\n            ),\n            \"early_stop_patience_counter\": (\n                early_stop_patience_counter\n            ),\n            \"elapsed_total_seconds\": (\n                time.time() - start_time\n            ),\n            \"test_directory_enumerated\": False,\n            \"test_tensor_contents_accessed\": False,\n        }",
+      "line_end": 1610,
+      "line_start": 1584,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "progress = {'stage': STAGE, 'status': 'RUNNING', 'seed': seed, 'completed_epoch': completed_epoch, 'best_epoch': best_epoch, 'best_checkpoint_sha256': best_checkpoint_sha256, 'best_validation_metrics': best_validation_metrics, 'current_validation_metrics': validation_metrics, 'current_learning_rate_after_scheduler': float(optimizer.param_groups[0]['lr']), 'early_stop_patience_counter': early_stop_patience_counter, 'elapsed_total_seconds': time.time() - start_time, 'test_directory_enumerated': False, 'test_tensor_contents_accessed': False}"
+    },
+    {
+      "excerpt": "        if (\n            epoch >= 15\n            and early_stop_patience_counter >= 12\n        ):\n            stopped_early = True\n            print(\n                f\"early stopping at epoch {epoch}; \"\n                \"patience reached 12\"\n            )\n            break",
+      "line_end": 1639,
+      "line_start": 1630,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "if epoch >= 15 and early_stop_patience_counter >= 12:\n    stopped_early = True\n    print(f'early stopping at epoch {epoch}; patience reached 12')\n    break"
+    },
+    {
+      "excerpt": "            current_score\n            > best_early_stop_score + 1e-4",
+      "line_end": 1559,
+      "line_start": 1558,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "current_score > best_early_stop_score + 0.0001"
+    },
+    {
+      "excerpt": "            best_early_stop_score = current_score",
+      "line_end": 1561,
+      "line_start": 1561,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "best_early_stop_score = current_score"
+    },
+    {
+      "excerpt": "            early_stop_patience_counter = 0",
+      "line_end": 1562,
+      "line_start": 1562,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "early_stop_patience_counter = 0"
+    },
+    {
+      "excerpt": "            early_stop_patience_counter += 1",
+      "line_end": 1564,
+      "line_start": 1564,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "early_stop_patience_counter += 1"
+    },
+    {
+      "excerpt": "            and early_stop_patience_counter >= 12",
+      "line_end": 1632,
+      "line_start": 1632,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "early_stop_patience_counter >= 12"
+    }
+  ],
+  "epoch_rows": [
+    {
+      "enclosing_function": "main",
+      "excerpt": "    for epoch in range(1, 101):\n        epoch_start = time.time()\n        train_sampler.set_epoch(epoch)\n\n        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )\n        validation_metrics = validate(\n            model=model,\n            loader=validation_loader,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n        )\n\n        current_learning_rate = float(\n            optimizer.param_groups[0][\"lr\"]\n        )\n        candidate_rank = checkpoint_rank(\n            validation_metrics,\n            epoch,\n        )\n        is_best_checkpoint = (\n            best_rank is None\n            or candidate_rank > best_rank\n        )\n\n        if is_best_checkpoint:\n            best_rank = candidate_rank\n            best_epoch = epoch\n            best_validation_metrics = (\n                validation_metrics\n            )\n\n            checkpoint_payload = {\n                \"stage\": STAGE,\n                \"seed\": seed,\n                \"epoch\": epoch,\n                \"model_state_dict\": (\n                    model.state_dict()\n                ),\n                \"optimizer_state_dict\": (\n                    optimizer.state_dict()\n                ),\n                \"scheduler_state_dict\": (\n                    scheduler.state_dict()\n                ),\n                \"protocol_sha256\": (\n                    protocol[\"protocol_sha256\"]\n                ),\n                \"loader_sha256\": (\n                    sha256_file(loader_path)\n                ),\n                \"model_source_sha256\": (\n                    sha256_file(model_path)\n                ),\n                \"initial_state_sha256\": (\n                    initial_state_sha256\n                ),\n                \"train_label_weight_manifest\": {\n                    \"graph_positive_weight\": (\n                        graph_pos_weight_value\n                    ),\n                    \"role_positive_weights\": (\n                        role_weight_manifest\n                    ),\n                    \"count_distribution\": (\n                        count_distribution\n                    ),\n                    \"count_class_mapping\": (\n                        COUNT_CLASS_MAPPING\n                    ),\n                },\n                \"validation_metrics\": (\n                    validation_metrics\n                ),\n                \"test_tensor_contents_accessed\": False,\n            }\n            atomic_torch_save(\n                checkpoint_payload,\n                checkpoint_path,\n            )\n            best_checkpoint_sha256 = (\n                sha256_file(checkpoint_path)\n            )\n\n        current_score = float(\n            validation_metrics[\"selection_score\"]\n        )\n        if (\n            current_score\n            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1\n\n        scheduler.step(current_score)\n\n        completed_epoch = epoch\n        elapsed_seconds = time.time() - epoch_start\n        history_row = flatten_epoch_row(\n            epoch=epoch,\n            learning_rate=current_learning_rate,\n            train_metrics=train_metrics,\n            validation_metrics=validation_metrics,\n            elapsed_seconds=elapsed_seconds,\n            is_best_checkpoint=is_best_checkpoint,\n            early_stop_patience_counter=(\n                early_stop_patience_counter\n            ),\n        )\n        history_rows.append(history_row)\n        write_csv(history_path, history_rows)\n\n        progress = {\n            \"stage\": STAGE,\n            \"status\": \"RUNNING\",\n            \"seed\": seed,\n            \"completed_epoch\": completed_epoch,\n            \"best_epoch\": best_epoch,\n            \"best_checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"best_validation_metrics\": (\n                best_validation_metrics\n            ),\n            \"current_validation_metrics\": (\n                validation_metrics\n            ),\n            \"current_learning_rate_after_scheduler\": (\n                float(optimizer.param_groups[0][\"lr\"])\n            ),\n            \"early_stop_patience_counter\": (\n                early_stop_patience_counter\n            ),\n            \"elapsed_total_seconds\": (\n                time.time() - start_time\n            ),\n            \"test_directory_enumerated\": False,\n            \"test_tensor_contents_accessed\": False,\n        }\n        write_json(progress_path, progress)\n\n        print(\n            f\"seed={seed} epoch={epoch:03d} \"\n            f\"train_loss={train_metrics['loss']:.6f} \"\n            f\"val_loss={validation_metrics['loss']:.6f} \"\n            f\"score={current_score:.6f} \"\n            f\"g_auc={validation_metrics['graph']['auroc']:.6f} \"\n            f\"g_ap={validation_metrics['graph']['average_precision']:.6f} \"\n            f\"count_f1={validation_metrics['count_active']['macro_f1']:.6f} \"\n            f\"src_ap={validation_metrics['roles']['source']['average_precision']:.6f} \"\n            f\"tr_ap={validation_metrics['roles']['transit']['average_precision']:.6f} \"\n            f\"vic_ap={validation_metrics['roles']['victim']['average_precision']:.6f} \"\n            f\"path_ap={validation_metrics['roles']['path']['average_precision']:.6f} \"\n            f\"lr={current_learning_rate:.8g} \"\n            f\"best_epoch={best_epoch} \"\n            f\"patience={early_stop_patience_counter}\"\n        )\n\n        if (\n            epoch >= 15\n            and early_stop_patience_counter >= 12\n        ):\n            stopped_early = True\n            print(\n                f\"early stopping at epoch {epoch}; \"\n                \"patience reached 12\"\n            )\n            break",
+      "line_end": 1639,
+      "line_start": 1462,
+      "loop_type": "for",
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "range_stop_resolution": {
+        "expression": "101",
+        "resolved": true,
+        "route": "literal",
+        "value": 101
+      },
+      "source": "for epoch in range(1, 101):\n    epoch_start = time.time()\n    train_sampler.set_epoch(epoch)\n    train_metrics = train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)\n    validation_metrics = validate(model=model, loader=validation_loader, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)\n    current_learning_rate = float(optimizer.param_groups[0]['lr'])\n    candidate_rank = checkpoint_rank(validation_metrics, epoch)\n    is_best_checkpoint = best_rank is None or candidate_rank > best_rank\n    if is_best_checkpoint:\n        best_rank = candidate_rank\n        best_epoch = epoch\n        best_validation_metrics = validation_metrics\n        checkpoint_payload = {'stage': STAGE, 'seed': seed, 'epoch': epoch, 'model_state_dict': model.state_dict(), 'optimizer_state_dict': optimizer.state_dict(), 'scheduler_state_dict': scheduler.state_dict(), 'protocol_sha256': protocol['protocol_sha256'], 'loader_sha256': sha256_file(loader_path), 'model_source_sha256': sha256_file(model_path), 'initial_state_sha256': initial_state_sha256, 'train_label_weight_manifest': {'graph_positive_weight': graph_pos_weight_value, 'role_positive_weights': role_weight_manifest, 'count_distribution': count_distribution, 'count_class_mapping': COUNT_CLASS_MAPPING}, 'validation_metrics': validation_metrics, 'test_tensor_contents_accessed': False}\n        atomic_torch_save(checkpoint_payload, checkpoint_path)\n        best_checkpoint_sha256 = sha256_file(checkpoint_path)\n    current_score = float(validation_metrics['selection_score'])\n    if current_score > best_early_stop_score + 0.0001:\n        best_early_stop_score = current_score\n        early_stop_patience_counter = 0\n    else:\n        early_stop_patience_counter += 1\n    scheduler.step(current_score)\n    completed_epoch = epoch\n    elapsed_seconds = time.time() - epoch_start\n    history_row = flatten_epoch_row(epoch=epoch, learning_rate=current_learning_rate, train_metrics=train_metrics, validation_metrics=validation_metrics, elapsed_seconds=elapsed_seconds, is_best_checkpoint=is_best_checkpoint, early_stop_patience_counter=early_stop_patience_counter)\n    history_rows.append(history_row)\n    write_csv(history_path, history_rows)\n    progress = {'stage': STAGE, 'status': 'RUNNING', 'seed': seed, 'completed_epoch': completed_epoch, 'best_epoch': best_epoch, 'best_checkpoint_sha256': best_checkpoint_sha256, 'best_validation_metrics': best_validation_metrics, 'current_validation_metrics': validation_metrics, 'current_learning_rate_after_scheduler': float(optimizer.param_groups[0]['lr']), 'early_stop_patience_counter': early_stop_patience_counter, 'elapsed_total_seconds': time.time() - start_time, 'test_directory_enumerated': False, 'test_tensor_contents_accessed': False}\n    write_json(progress_path, progress)\n    print(f'seed={seed} epoch={epoch:03d} train_loss={train_metrics['loss']:.6f} val_loss={validation_metrics['loss']:.6f} score={current_score:.6f} g_auc={validation_metrics['graph']['auroc']:.6f} g_ap={validation_metrics['graph']['average_precision']:.6f} count_f1={validation_metrics['count_active']['macro_f1']:.6f} src_ap={validation_metrics['roles']['source']['average_precision']:.6f} tr_ap={validation_metrics['roles']['transit']['average_precision']:.6f} vic_ap={validation_metrics['roles']['victim']['average_precision']:.6f} path_ap={validation_metrics['roles']['path']['average_precision']:.6f} lr={current_learning_rate:.8g} best_epoch={best_epoch} patience={early_stop_patience_counter}')\n    if epoch >= 15 and early_stop_patience_counter >= 12:\n        stopped_early = True\n        print(f'early stopping at epoch {epoch}; patience reached 12')\n        break"
+    }
+  ],
+  "gradient_clipping_rows": [
+    {
+      "excerpt": "        gradient_norm = torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            max_norm=gradient_clip,\n        )",
+      "line_end": 551,
+      "line_start": 548,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_clip)"
+    }
+  ],
+  "loss_call_names": [
+    "F.binary_cross_entropy_with_logits",
+    "F.cross_entropy",
+    "compute_loss",
+    "loss.backward",
+    "loss.item"
+  ],
+  "loss_rows": [
+    {
+      "arguments": [
+        "outputs['attack_logits']",
+        "batch['y_attack'].float()"
+      ],
+      "assignment_target": "attack_loss",
+      "call_name": "F.binary_cross_entropy_with_logits",
+      "enclosing_function": "compute_loss",
+      "excerpt": "    attack_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"attack_logits\"],\n        batch[\"y_attack\"].float(),\n        pos_weight=graph_pos_weight,\n    )",
+      "keywords": {
+        "pos_weight": "graph_pos_weight"
+      },
+      "line_end": 446,
+      "line_start": 442,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['attack_logits'], batch['y_attack'].float(), pos_weight=graph_pos_weight)"
+    },
+    {
+      "arguments": [
+        "outputs['source_logits']",
+        "batch['y_source'].float()"
+      ],
+      "assignment_target": "source_loss",
+      "call_name": "F.binary_cross_entropy_with_logits",
+      "enclosing_function": "compute_loss",
+      "excerpt": "    source_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"source_logits\"],\n        batch[\"y_source\"].float(),\n        pos_weight=role_pos_weights[\"source\"],\n    )",
+      "keywords": {
+        "pos_weight": "role_pos_weights['source']"
+      },
+      "line_end": 462,
+      "line_start": 458,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['source_logits'], batch['y_source'].float(), pos_weight=role_pos_weights['source'])"
+    },
+    {
+      "arguments": [
+        "outputs['transit_logits']",
+        "batch['y_transit'].float()"
+      ],
+      "assignment_target": "transit_loss",
+      "call_name": "F.binary_cross_entropy_with_logits",
+      "enclosing_function": "compute_loss",
+      "excerpt": "    transit_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"transit_logits\"],\n        batch[\"y_transit\"].float(),\n        pos_weight=role_pos_weights[\"transit\"],\n    )",
+      "keywords": {
+        "pos_weight": "role_pos_weights['transit']"
+      },
+      "line_end": 467,
+      "line_start": 463,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['transit_logits'], batch['y_transit'].float(), pos_weight=role_pos_weights['transit'])"
+    },
+    {
+      "arguments": [
+        "outputs['victim_logits']",
+        "batch['y_victim'].float()"
+      ],
+      "assignment_target": "victim_loss",
+      "call_name": "F.binary_cross_entropy_with_logits",
+      "enclosing_function": "compute_loss",
+      "excerpt": "    victim_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"victim_logits\"],\n        batch[\"y_victim\"].float(),\n        pos_weight=role_pos_weights[\"victim\"],\n    )",
+      "keywords": {
+        "pos_weight": "role_pos_weights['victim']"
+      },
+      "line_end": 472,
+      "line_start": 468,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['victim_logits'], batch['y_victim'].float(), pos_weight=role_pos_weights['victim'])"
+    },
+    {
+      "arguments": [
+        "outputs['path_logits']",
+        "batch['y_attack_path'].float()"
+      ],
+      "assignment_target": "path_loss",
+      "call_name": "F.binary_cross_entropy_with_logits",
+      "enclosing_function": "compute_loss",
+      "excerpt": "    path_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"path_logits\"],\n        batch[\"y_attack_path\"].float(),\n        pos_weight=role_pos_weights[\"path\"],\n    )",
+      "keywords": {
+        "pos_weight": "role_pos_weights['path']"
+      },
+      "line_end": 477,
+      "line_start": 473,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['path_logits'], batch['y_attack_path'].float(), pos_weight=role_pos_weights['path'])"
+    },
+    {
+      "arguments": [
+        "outputs['count_logits'][active]",
+        "count_targets[active]"
+      ],
+      "assignment_target": "count_loss",
+      "call_name": "F.cross_entropy",
+      "enclosing_function": "compute_loss",
+      "excerpt": "        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            count_targets[active],\n        )",
+      "keywords": {},
+      "line_end": 452,
+      "line_start": 449,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.cross_entropy(outputs['count_logits'][active], count_targets[active])"
+    },
+    {
+      "arguments": [
+        "outputs",
+        "batch"
+      ],
+      "assignment_target": "(loss, components)",
+      "call_name": "compute_loss",
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        loss, components = compute_loss(\n            outputs,\n            batch,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n        )",
+      "keywords": {
+        "graph_pos_weight": "graph_pos_weight",
+        "role_pos_weights": "role_pos_weights"
+      },
+      "line_end": 541,
+      "line_start": 536,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "compute_loss(outputs, batch, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)"
+    },
+    {
+      "arguments": [],
+      "assignment_target": null,
+      "call_name": "loss.backward",
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        loss.backward()",
+      "keywords": {},
+      "line_end": 546,
+      "line_start": 546,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "loss.backward()"
+    },
+    {
+      "arguments": [
+        "outputs",
+        "batch"
+      ],
+      "assignment_target": "(loss, components)",
+      "call_name": "compute_loss",
+      "enclosing_function": "validate",
+      "excerpt": "            loss, components = compute_loss(\n                outputs,\n                batch,\n                graph_pos_weight=graph_pos_weight,\n                role_pos_weights=role_pos_weights,\n            )",
+      "keywords": {
+        "graph_pos_weight": "graph_pos_weight",
+        "role_pos_weights": "role_pos_weights"
+      },
+      "line_end": 632,
+      "line_start": 627,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "compute_loss(outputs, batch, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)"
+    },
+    {
+      "arguments": [],
+      "assignment_target": null,
+      "call_name": "loss.item",
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        weighted_loss += float(loss.item()) * batch_items",
+      "keywords": {},
+      "line_end": 560,
+      "line_start": 560,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "loss.item()"
+    },
+    {
+      "arguments": [],
+      "assignment_target": null,
+      "call_name": "loss.item",
+      "enclosing_function": "validate",
+      "excerpt": "                float(loss.item()) * batch_items",
+      "keywords": {},
+      "line_end": 639,
+      "line_start": 639,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "loss.item()"
+    }
+  ],
+  "scheduler_rows": [
+    {
+      "excerpt": "    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=\"max\",\n        factor=0.5,\n        patience=4,\n        threshold=1e-4,\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=1e-5,\n    )",
+      "line_end": 1408,
+      "line_start": 1399,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=4, threshold=0.0001, threshold_mode='abs', cooldown=0, min_lr=1e-05)"
+    },
+    {
+      "excerpt": "        scheduler.step(current_score)",
+      "line_end": 1566,
+      "line_start": 1566,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "scheduler.step(current_score)"
+    },
+    {
+      "excerpt": "                    scheduler.state_dict()",
+      "line_end": 1513,
+      "line_start": 1513,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "scheduler.state_dict()"
+    }
+  ],
+  "selection_rows": [
+    {
+      "excerpt": "    selection_score = (\n        SELECTION_WEIGHTS[\"graph_auroc\"]\n        * graph_auroc\n        + SELECTION_WEIGHTS[\n            \"graph_average_precision\"\n        ]\n        * graph_ap\n        + SELECTION_WEIGHTS[\n            \"count_macro_f1_active\"\n        ]\n        * count_macro_f1\n        + SELECTION_WEIGHTS[\n            \"source_average_precision\"\n        ]\n        * role_metrics[\"source\"][\n            \"average_precision\"\n        ]\n        + SELECTION_WEIGHTS[\n            \"transit_average_precision\"\n        ]\n        * role_metrics[\"transit\"][\n            \"average_precision\"\n        ]\n        + SELECTION_WEIGHTS[\n            \"victim_average_precision\"\n        ]\n        * role_metrics[\"victim\"][\n            \"average_precision\"\n        ]\n        + SELECTION_WEIGHTS[\n            \"path_average_precision\"\n        ]\n        * role_metrics[\"path\"][\n            \"average_precision\"\n        ]\n    )",
+      "line_end": 839,
+      "line_start": 804,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "selection_score = SELECTION_WEIGHTS['graph_auroc'] * graph_auroc + SELECTION_WEIGHTS['graph_average_precision'] * graph_ap + SELECTION_WEIGHTS['count_macro_f1_active'] * count_macro_f1 + SELECTION_WEIGHTS['source_average_precision'] * role_metrics['source']['average_precision'] + SELECTION_WEIGHTS['transit_average_precision'] * role_metrics['transit']['average_precision'] + SELECTION_WEIGHTS['victim_average_precision'] * role_metrics['victim']['average_precision'] + SELECTION_WEIGHTS['path_average_precision'] * role_metrics['path']['average_precision']"
+    },
+    {
+      "excerpt": "    result: dict[str, Any] = {\n        \"loss\": weighted_loss / item_count,\n        \"selection_score\": selection_score,\n        \"graph\": {\n            \"auroc\": graph_auroc,\n            \"average_precision\": graph_ap,\n            \"fixed_0_5\": graph_fixed,\n            \"positive_items\": int(\n                (graph_truth == 1).sum()\n            ),\n            \"negative_items\": int(\n                (graph_truth == 0).sum()\n            ),\n        },\n        \"count_active\": {\n            \"macro_f1\": count_macro_f1,\n            \"accuracy\": count_accuracy,\n            \"support\": int(len(count_truth)),\n            \"confusion_matrix\": (\n                count_confusion.tolist()\n            ),\n        },\n        \"roles\": role_metrics,\n    }",
+      "line_end": 864,
+      "line_start": 841,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "result: dict[str, Any] = {'loss': weighted_loss / item_count, 'selection_score': selection_score, 'graph': {'auroc': graph_auroc, 'average_precision': graph_ap, 'fixed_0_5': graph_fixed, 'positive_items': int((graph_truth == 1).sum()), 'negative_items': int((graph_truth == 0).sum())}, 'count_active': {'macro_f1': count_macro_f1, 'accuracy': count_accuracy, 'support': int(len(count_truth)), 'confusion_matrix': count_confusion.tolist()}, 'roles': role_metrics}"
+    },
+    {
+      "excerpt": "    lock = {\n        \"status\": COMPLETE,\n        \"seed\": seed,\n        \"report_sha256\": sha256_file(report_path),\n        \"history_sha256\": sha256_file(history_path),\n        \"checkpoint_sha256\": (\n            sha256_file(checkpoint_path)\n        ),\n        \"checkpoint_path\": str(checkpoint_path),\n        \"protocol_sha256\": (\n            protocol[\"protocol_sha256\"]\n        ),\n        \"model_sha256\": sha256_file(model_path),\n        \"loader_sha256\": sha256_file(loader_path),\n        \"initial_state_sha256\": (\n            initial_state_sha256\n        ),\n        \"best_epoch\": best_epoch,\n        \"best_validation_selection_score\": (\n            best_validation_metrics[\n                \"selection_score\"\n            ]\n        ),\n        \"completed_epoch\": completed_epoch,\n        \"stopped_early\": stopped_early,\n        \"threshold_tuning_performed\": False,\n        \"test_directory_enumerated\": False,\n        \"test_tensor_contents_accessed\": False,\n        \"test_evaluation_performed\": False,\n        \"next_stage\": (\n            \"V5_P2_B2_MULTI_SEED_FINALIZATION\"\n        ),\n        \"script_sha256\": sha256_file(Path(__file__)),\n    }",
+      "line_end": 1827,
+      "line_start": 1794,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "lock = {'status': COMPLETE, 'seed': seed, 'report_sha256': sha256_file(report_path), 'history_sha256': sha256_file(history_path), 'checkpoint_sha256': sha256_file(checkpoint_path), 'checkpoint_path': str(checkpoint_path), 'protocol_sha256': protocol['protocol_sha256'], 'model_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'initial_state_sha256': initial_state_sha256, 'best_epoch': best_epoch, 'best_validation_selection_score': best_validation_metrics['selection_score'], 'completed_epoch': completed_epoch, 'stopped_early': stopped_early, 'threshold_tuning_performed': False, 'test_directory_enumerated': False, 'test_tensor_contents_accessed': False, 'test_evaluation_performed': False, 'next_stage': 'V5_P2_B2_MULTI_SEED_FINALIZATION', 'script_sha256': sha256_file(Path(__file__))}"
+    },
+    {
+      "excerpt": "        current_score = float(\n            validation_metrics[\"selection_score\"]\n        )",
+      "line_end": 1556,
+      "line_start": 1554,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "current_score = float(validation_metrics['selection_score'])"
+    }
+  ]
+}

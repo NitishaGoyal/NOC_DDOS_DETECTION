@@ -1,0 +1,88 @@
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/preaudit/training_argument_inventory.txt:464:FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/preaudit/training_script_candidates.txt:4:2026-07-15 17:22	     22987	/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/preaudit/model_directory_references.txt:127:/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/26_builder_provenance_search.txt:18:1021:python scripts/train_temporal_gcn_v3.py   --data /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3   --out-dir models/v3/temporal_gcn_ports_v3_builtin_split   --split-mode v3   --epochs 100   --patience 15   --min-delta 1e-4   --batch-size 256   --lr 1e-3   --temporal-dim 8   --gcn-hidden 16   --gcn-out 8   --node-loss-weight 1.0   --seed 7   | tee logs/v3/train_temporal_gcn_ports_v3_builtin_split.log
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/preaudit/stage9_primary_artifacts_sha256.txt:7:2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b  /home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/00_environment.txt:34:?? scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/00_environment.txt:35:?? scripts/train_temporal_gcn_v3.py.broken
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:30:scripts/train_temporal_gcn_v3.py:35:def make_v3_splits(data_path):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:31:scripts/train_temporal_gcn_v3.py:39:        raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:32:scripts/train_temporal_gcn_v3.py:48:    print("using internal V3 split")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:33:scripts/train_temporal_gcn_v3.py:353:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:34:scripts/train_temporal_gcn_v3.py:355:    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:35:scripts/train_temporal_gcn_v3.py:397:    if args.split_mode == "v3":
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:36:scripts/train_temporal_gcn_v3.py:398:        train_idx, val_idx, test_idx = make_v3_splits(args.data)
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:121:reports/v3_failure_analysis/logs/00_environment.txt:34:?? scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:122:reports/v3_failure_analysis/logs/00_environment.txt:35:?? scripts/train_temporal_gcn_v3.py.broken
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:156:reports/v3_failure_analysis/logs/14_v3_path_references.txt:30:scripts/train_temporal_gcn_v3.py:35:def make_v3_splits(data_path):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:157:reports/v3_failure_analysis/logs/14_v3_path_references.txt:31:scripts/train_temporal_gcn_v3.py:39:        raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:158:reports/v3_failure_analysis/logs/14_v3_path_references.txt:32:scripts/train_temporal_gcn_v3.py:48:    print("using internal V3 split")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:159:reports/v3_failure_analysis/logs/14_v3_path_references.txt:33:scripts/train_temporal_gcn_v3.py:353:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:160:reports/v3_failure_analysis/logs/14_v3_path_references.txt:34:scripts/train_temporal_gcn_v3.py:355:    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:161:reports/v3_failure_analysis/logs/14_v3_path_references.txt:35:scripts/train_temporal_gcn_v3.py:397:    if args.split_mode == "v3":
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:162:reports/v3_failure_analysis/logs/14_v3_path_references.txt:36:scripts/train_temporal_gcn_v3.py:398:        train_idx, val_idx, test_idx = make_v3_splits(args.data)
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:236:reports/v3_failure_analysis/logs/12_dataset_builder_candidates.txt:13:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:250:reports/v3_failure_analysis/logs/13_dataset_builder_relevant_lines.txt:500:FILE: scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:378:reports/v3_failure_analysis/logs/02_script_definitions.txt:80:scripts/train_temporal_gcn_v3.py:10:def load_graph_arrays(data_path):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:379:reports/v3_failure_analysis/logs/02_script_definitions.txt:81:scripts/train_temporal_gcn_v3.py:35:def make_v3_splits(data_path):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:380:reports/v3_failure_analysis/logs/02_script_definitions.txt:82:scripts/train_temporal_gcn_v3.py:68:def set_seed(seed: int) -> None:
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:381:reports/v3_failure_analysis/logs/02_script_definitions.txt:83:scripts/train_temporal_gcn_v3.py:75:class NoCTemporalGraphDataset(Dataset):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:382:reports/v3_failure_analysis/logs/02_script_definitions.txt:84:scripts/train_temporal_gcn_v3.py:101:def make_splits(npz_path: str, split_mode: str):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:383:reports/v3_failure_analysis/logs/02_script_definitions.txt:85:scripts/train_temporal_gcn_v3.py:179:def build_normalized_adjacency(edge_index: np.ndarray, num_nodes: int) -> torch.Tensor:
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:384:reports/v3_failure_analysis/logs/02_script_definitions.txt:86:scripts/train_temporal_gcn_v3.py:193:class GCNLayer(nn.Module):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:385:reports/v3_failure_analysis/logs/02_script_definitions.txt:87:scripts/train_temporal_gcn_v3.py:203:def binary_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:386:reports/v3_failure_analysis/logs/02_script_definitions.txt:88:scripts/train_temporal_gcn_v3.py:228:def node_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:387:reports/v3_failure_analysis/logs/02_script_definitions.txt:89:scripts/train_temporal_gcn_v3.py:248:def evaluate(
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:388:reports/v3_failure_analysis/logs/02_script_definitions.txt:90:scripts/train_temporal_gcn_v3.py:296:def print_metrics(prefix: str, metrics: dict) -> None:
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:389:reports/v3_failure_analysis/logs/02_script_definitions.txt:91:scripts/train_temporal_gcn_v3.py:312:class TemporalEncoder(nn.Module):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:390:reports/v3_failure_analysis/logs/02_script_definitions.txt:92:scripts/train_temporal_gcn_v3.py:332:class TemporalGCN(nn.Module):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:391:reports/v3_failure_analysis/logs/02_script_definitions.txt:93:scripts/train_temporal_gcn_v3.py:351:def main():
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:446:reports/v3_failure_analysis/logs/11_evaluation_relevant_lines.txt:709:FILE: scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:524:reports/v3_failure_analysis/logs/01_scripts_inventory.txt:27:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:525:reports/v3_failure_analysis/logs/01_scripts_inventory.txt:28:scripts/train_temporal_gcn_v3.py.broken
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:535:reports/v3_failure_analysis/logs/10_evaluation_script_candidates.txt:12:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/12_dataset_builder_candidates.txt:13:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/26_builder_provenance_search.txt:18:1021:python scripts/train_temporal_gcn_v3.py   --data /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3   --out-dir models/v3/temporal_gcn_ports_v3_builtin_split   --split-mode v3   --epochs 100   --patience 15   --min-delta 1e-4   --batch-size 256   --lr 1e-3   --temporal-dim 8   --gcn-hidden 16   --gcn-out 8   --node-loss-weight 1.0   --seed 7   | tee logs/v3/train_temporal_gcn_ports_v3_builtin_split.log
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/26_builder_provenance_search.txt:52:2026-07-15 17:22	/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/26_builder_provenance_search.txt:89:/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py:21:            "end_epoch": np.load(data_path / "end_epoch.npy", mmap_mode="r"),
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/13_dataset_builder_relevant_lines.txt:500:FILE: scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/20_v3_builder_locations.txt:25:/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py:21:            "end_epoch": np.load(data_path / "end_epoch.npy", mmap_mode="r"),
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/20_v3_builder_locations.txt:26:/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py:39:        raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/20_v3_builder_locations.txt:52:/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:31:scripts/train_temporal_gcn_v3.py:39:        raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/20_v3_builder_locations.txt:64:/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/14_v3_path_references.txt:157:reports/v3_failure_analysis/logs/14_v3_path_references.txt:31:scripts/train_temporal_gcn_v3.py:39:        raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/20_v3_builder_locations.txt:217:/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:80:scripts/train_temporal_gcn_v3.py:10:def load_graph_arrays(data_path):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:81:scripts/train_temporal_gcn_v3.py:35:def make_v3_splits(data_path):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:82:scripts/train_temporal_gcn_v3.py:68:def set_seed(seed: int) -> None:
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:83:scripts/train_temporal_gcn_v3.py:75:class NoCTemporalGraphDataset(Dataset):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:84:scripts/train_temporal_gcn_v3.py:101:def make_splits(npz_path: str, split_mode: str):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:85:scripts/train_temporal_gcn_v3.py:179:def build_normalized_adjacency(edge_index: np.ndarray, num_nodes: int) -> torch.Tensor:
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:86:scripts/train_temporal_gcn_v3.py:193:class GCNLayer(nn.Module):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:87:scripts/train_temporal_gcn_v3.py:203:def binary_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:88:scripts/train_temporal_gcn_v3.py:228:def node_metrics(y_true: np.ndarray, y_prob: np.ndarray, threshold: float = 0.5):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:89:scripts/train_temporal_gcn_v3.py:248:def evaluate(
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:90:scripts/train_temporal_gcn_v3.py:296:def print_metrics(prefix: str, metrics: dict) -> None:
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:91:scripts/train_temporal_gcn_v3.py:312:class TemporalEncoder(nn.Module):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:92:scripts/train_temporal_gcn_v3.py:332:class TemporalGCN(nn.Module):
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/02_script_definitions.txt:93:scripts/train_temporal_gcn_v3.py:351:def main():
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/STAGE1_SUMMARY.txt:84:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/STAGE1_SUMMARY.txt:105:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/11_evaluation_relevant_lines.txt:709:FILE: scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/01_scripts_inventory.txt:27:scripts/train_temporal_gcn_v3.py
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/01_scripts_inventory.txt:28:scripts/train_temporal_gcn_v3.py.broken
+/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/10_evaluation_script_candidates.txt:12:scripts/train_temporal_gcn_v3.py
+574:cp scripts/train_temporal_gcn_early_stopping.py scripts/train_temporal_gcn_v3.py
+580:    Path("scripts/train_temporal_gcn_v3.py"),
+673:python -m py_compile scripts/train_temporal_gcn_v3.py scripts/train_temporal_tcn_gcn_v3.py
+723:nl -ba scripts/train_temporal_gcn_v3.py | sed -n '390,420p'
+731:    Path("scripts/train_temporal_gcn_v3.py"),
+764:python -m py_compile scripts/train_temporal_gcn_v3.py scripts/train_temporal_tcn_gcn_v3.py
+772:    Path("scripts/train_temporal_gcn_v3.py"),
+805:python -m py_compile scripts/train_temporal_gcn_v3.py scripts/train_temporal_tcn_gcn_v3.py
+809:cp scripts/train_temporal_gcn_v3.py scripts/train_temporal_gcn_v3.py.broken 2>/dev/null || true
+812:cp scripts/train_temporal_gcn_early_stopping.py scripts/train_temporal_gcn_v3.py
+818:    Path("scripts/train_temporal_gcn_v3.py"),
+941:python -m py_compile scripts/train_temporal_gcn_v3.py scripts/train_temporal_tcn_gcn_v3.py
+951:    Path("scripts/train_temporal_gcn_v3.py"),
+974:python -m py_compile scripts/train_temporal_gcn_v3.py scripts/train_temporal_tcn_gcn_v3.py
+975:grep -n "np.load(args.data\|np.load(npz_path" scripts/train_temporal_gcn_v3.py scripts/train_temporal_tcn_gcn_v3.py
+1021:python scripts/train_temporal_gcn_v3.py   --data /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3   --out-dir models/v3/temporal_gcn_ports_v3_builtin_split   --split-mode v3   --epochs 100   --patience 15   --min-delta 1e-4   --batch-size 256   --lr 1e-3   --temporal-dim 8   --gcn-hidden 16   --gcn-out 8   --node-loss-weight 1.0   --seed 7   | tee logs/v3/train_temporal_gcn_ports_v3_builtin_split.log

@@ -1,0 +1,109 @@
+{
+  "matrix_sha256": "b552b01ffaf94d09921028757a8444cc4c6b0c50b11039654e39d384448544d0",
+  "name": "V5_P2_G0_TASK_AND_MODEL_MATRIX",
+  "operator_suite": {
+    "gat_promotion_rule": "promote only if it beats GraphConv by at least 0.02 absolute F1 or balanced accuracy, or materially reduces multi-seed variance",
+    "mandatory": [
+      "CONV1D_ONLY",
+      "GCNCONV",
+      "GRAPHCONV"
+    ],
+    "screening_only": [
+      "GAT"
+    ]
+  },
+  "tasks": [
+    {
+      "excluded_losses": [
+        "graph",
+        "count",
+        "transit",
+        "victim",
+        "path"
+      ],
+      "graph_decision": "attack when at least one source prediction is positive",
+      "graph_score": "maximum sigmoid source score across 16 routers",
+      "models": [
+        "CONV1D_ONLY",
+        "CONV1D_PLUS_GCNCONV",
+        "CONV1D_PLUS_GRAPHCONV",
+        "CONV1D_PLUS_GAT_SCREENING"
+      ],
+      "participating_losses": [
+        "source_weighted_bce"
+      ],
+      "purpose": "UofF-equivalent binary malicious-source localization",
+      "targets": [
+        "source[16]"
+      ],
+      "task_id": "A_SOURCE_ONLY_LOCALIZATION"
+    },
+    {
+      "excluded_losses": [
+        "count",
+        "source",
+        "transit",
+        "victim",
+        "path"
+      ],
+      "graph_readout": "identical pooling and graph head across operators",
+      "graph_score": "direct learned graph logit",
+      "models": [
+        "CONV1D_ONLY",
+        "CONV1D_PLUS_GCNCONV",
+        "CONV1D_PLUS_GRAPHCONV",
+        "CONV1D_PLUS_GAT_SCREENING"
+      ],
+      "participating_losses": [
+        "graph_bce"
+      ],
+      "purpose": "test whether learned spatial aggregation improves attack-versus-control discrimination",
+      "targets": [
+        "graph_attack"
+      ],
+      "task_id": "B_DIRECT_GRAPH_DETECTION"
+    },
+    {
+      "label_type": "four_independent_binary_multilabel_heads",
+      "models": [
+        "CONV1D_ONLY",
+        "CONV1D_PLUS_GCNCONV",
+        "CONV1D_PLUS_GRAPHCONV",
+        "PROMOTED_GAT_ONLY"
+      ],
+      "mutually_exclusive_roles": false,
+      "participating_losses": [
+        "source_weighted_bce",
+        "transit_weighted_bce",
+        "victim_weighted_bce",
+        "path_weighted_bce"
+      ],
+      "purpose": "measure preservation of overlapping source, transit, victim, and path identities",
+      "targets": [
+        "source[16]",
+        "transit[16]",
+        "victim[16]",
+        "path[16]"
+      ],
+      "task_id": "C_ROLE_AWARE_MULTILABEL_LOCALIZATION"
+    },
+    {
+      "models": [
+        "EXISTING_B3_CONV1D_COUNT4",
+        "CONV1D_PLUS_ONE_PROMOTED_GRAPH_OPERATOR_COUNT4"
+      ],
+      "promotion_requirement": "operator must pass G1/G2 screening before full multitask training",
+      "purpose": "compare the complete B3 task interface against the single strongest promoted graph operator",
+      "targets": [
+        "graph_attack",
+        "count_K1_K4",
+        "source[16]",
+        "transit[16]",
+        "victim[16]",
+        "path[16]"
+      ],
+      "task_id": "D_FULL_MULTITASK_SYSTEM"
+    }
+  ],
+  "version": 1
+}

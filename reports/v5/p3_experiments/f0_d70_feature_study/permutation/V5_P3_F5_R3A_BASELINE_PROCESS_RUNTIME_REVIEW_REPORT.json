@@ -1,0 +1,198 @@
+{
+  "artifacts": {
+    "classification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3A_RUNTIME_DRIFT_CLASSIFICATION.json",
+    "runtime_configuration": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3A_OFFICIAL_VS_F5_RUNTIME_CONFIGURATION.json",
+    "runtime_replay": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3A_OFFICIAL_AND_F5_RUNTIME_REPLAY_COMPARISON.json",
+    "runtime_subset_search": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3A_RUNTIME_FIELD_SUBSET_SEARCH.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "F5_RUNTIME_CONFIGURATION_DRIFT_CONFIRMED",
+  "created_utc": "2026-08-05T22:00:01.506748+00:00",
+  "decision": {
+    "F5_baseline_gate_complete": false,
+    "F5_permutation_units_authorized": false,
+    "F6_integrated_gradients_authorized": false,
+    "F7_retraining_ablation_authorized": false,
+    "next_stage": "V5_P3_F5_R3B_OFFICIAL_RUNTIME_BASELINE_RECOVERY_AND_PERMUTATION_RESUME",
+    "official_runtime_repair_authorized": true,
+    "sealed_test_access_authorized": false
+  },
+  "findings": {
+    "F5_runtime_replay_matches_stored_baseline": true,
+    "classification_reasons": [
+      "The official runtime replay reproduces the official D1 first batch at the small F4 numeric scale.",
+      "The F5 run-contract runtime replay reproduces the stored F5 baseline.",
+      "The official and F5 runtime configurations differ.",
+      "A deterministic subset search identifies the smallest runtime field set that moves the output from the official result to the stored F5 baseline."
+    ],
+    "minimum_matching_subset": {
+      "aggregate_vs_official": {
+        "maximum_head_max_abs_difference": 0.00801849365234375,
+        "mean_of_head_mean_abs_differences": 0.0011131653154734522,
+        "mean_of_head_rmse": 0.0014399841865812243
+      },
+      "aggregate_vs_stored_F5_baseline": {
+        "maximum_head_max_abs_difference": 1.52587890625e-05,
+        "mean_of_head_mean_abs_differences": 9.066182731961211e-07,
+        "mean_of_head_rmse": 1.6394214714729093e-06
+      },
+      "changed_field_count": 1,
+      "changed_fields_from_official": [
+        "cudnn_allow_tf32"
+      ],
+      "configuration": {
+        "cuda_matmul_allow_tf32": false,
+        "cudnn_allow_tf32": false,
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "deterministic_algorithms_enabled": false,
+        "float32_matmul_precision": "highest"
+      },
+      "matches_official": false,
+      "matches_stored_F5_baseline": true,
+      "versus_official": {
+        "count": {
+          "exact_equal": false,
+          "max_abs_difference": 0.005771636962890625,
+          "mean_abs_difference": 0.0009059500880539417,
+          "rmse": 0.0012226327172020425,
+          "shape_match": true
+        },
+        "graph": {
+          "exact_equal": false,
+          "max_abs_difference": 0.0047779083251953125,
+          "mean_abs_difference": 0.0007759344298392534,
+          "rmse": 0.0010803740146775218,
+          "shape_match": true
+        },
+        "path": {
+          "exact_equal": false,
+          "max_abs_difference": 0.006836891174316406,
+          "mean_abs_difference": 0.0009232824377249926,
+          "rmse": 0.001178278951093814,
+          "shape_match": true
+        },
+        "source": {
+          "exact_equal": false,
+          "max_abs_difference": 0.0071315765380859375,
+          "mean_abs_difference": 0.0014741948107257485,
+          "rmse": 0.0018452807456356326,
+          "shape_match": true
+        },
+        "transit": {
+          "exact_equal": false,
+          "max_abs_difference": 0.00798797607421875,
+          "mean_abs_difference": 0.0009963060729205608,
+          "rmse": 0.0013016676727104055,
+          "shape_match": true
+        },
+        "victim": {
+          "exact_equal": false,
+          "max_abs_difference": 0.00801849365234375,
+          "mean_abs_difference": 0.001603324053576216,
+          "rmse": 0.002011671018167928,
+          "shape_match": true
+        }
+      },
+      "versus_stored_F5_baseline": {
+        "count": {
+          "exact_equal": false,
+          "max_abs_difference": 5.7220458984375e-06,
+          "mean_abs_difference": 8.586794137954712e-07,
+          "rmse": 1.403084982196491e-06,
+          "shape_match": true
+        },
+        "graph": {
+          "exact_equal": false,
+          "max_abs_difference": 1.9073486328125e-06,
+          "mean_abs_difference": 5.448237061500549e-07,
+          "rmse": 7.658530041133679e-07,
+          "shape_match": true
+        },
+        "path": {
+          "exact_equal": false,
+          "max_abs_difference": 5.7220458984375e-06,
+          "mean_abs_difference": 6.24597305431962e-07,
+          "rmse": 1.1175265519316195e-06,
+          "shape_match": true
+        },
+        "source": {
+          "exact_equal": false,
+          "max_abs_difference": 1.1444091796875e-05,
+          "mean_abs_difference": 1.2523378245532513e-06,
+          "rmse": 2.1099848250900528e-06,
+          "shape_match": true
+        },
+        "transit": {
+          "exact_equal": false,
+          "max_abs_difference": 7.62939453125e-06,
+          "mean_abs_difference": 8.24278686195612e-07,
+          "rmse": 1.414457945402963e-06,
+          "shape_match": true
+        },
+        "victim": {
+          "exact_equal": false,
+          "max_abs_difference": 1.52587890625e-05,
+          "mean_abs_difference": 1.334992703050375e-06,
+          "rmse": 3.0256215201029607e-06,
+          "shape_match": true
+        }
+      }
+    },
+    "official_runtime_replay_pass": true,
+    "runtime_drift_confirmed": true
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "cached_validation_features_loaded": false,
+    "checkpoint_loaded": true,
+    "metric_formulas_changed": false,
+    "model_loaded": true,
+    "model_weights_changed": false,
+    "official_D1_validation_first_batch_loaded": true,
+    "permutation_units_executed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false
+  },
+  "provenance": {
+    "F5_P0_route_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "F5_R3_lock_sha256": "81dd44f78609d6ca6e254fc433c50cf3981462f647f2709e7c5c79c1176bbfb8",
+    "F5_R3_report_sha256": "67c9ee3888a0a7529f71a5c4d1d83362bcaa64ef2bd92fe27cd452ce76471c23",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "classification_sha256": "3fa2cbcdea09e933c90ad5bc000c999cba22696bb8dc8d36bec937262850da62",
+    "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+    "fresh_certification_sha256": "35b216294366d45221d0af2d90c562aabb027b20c852f980575255ba2ce15993",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "installed_script_sha256": "c9cd6bab9bdbc81724d7933a5c41278ecb44f36ff68765d5301b984b532f3dc4",
+    "run_contract_sha256": "84382e2231aad8e38e0c8f6a3e1bbac280aeec758776146c3e1fc19d7231db4a",
+    "runtime_configuration_sha256": "5fd790584e79349c927d811132077482edf181400a958fce7266d61770d00264",
+    "runtime_replay_sha256": "08b89a1c9b0adafae98a527357c743a5b265bd9ae25b144d4c31226d9583cef5",
+    "runtime_subset_search_sha256": "b318f24bb210f2351eaa4faa281721c5e9ae783f71054d4b980e7db6fa82b730"
+  },
+  "runtime": {
+    "F5_run_contract": {
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": false,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms_enabled": true,
+      "float32_matmul_precision": "highest"
+    },
+    "configuration_count_tested": 4,
+    "differing_fields": [
+      "deterministic_algorithms_enabled",
+      "cudnn_allow_tf32"
+    ],
+    "official": {
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms_enabled": false,
+      "float32_matmul_precision": "highest"
+    }
+  },
+  "scope": "Capture the official D1 runtime state at first forward, replay the exact same checkpoint and first batch under both the official and frozen F5 runtime configurations, and exhaustively search all subsets of differing runtime fields.",
+  "stage": "V5_P3_F5_R3A_BASELINE_PROCESS_RUNTIME_REVIEW",
+  "status": "PASS"
+}

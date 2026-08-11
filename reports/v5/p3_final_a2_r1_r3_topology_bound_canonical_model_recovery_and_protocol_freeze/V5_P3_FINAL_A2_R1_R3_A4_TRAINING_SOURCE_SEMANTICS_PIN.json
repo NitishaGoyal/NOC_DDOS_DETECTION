@@ -1,0 +1,650 @@
+{
+  "classes": {
+    "EpochShuffleSampler": {
+      "line_end": 118,
+      "line_start": 97,
+      "sha256": "8399883d9ee3a06d5252bf22c7a07f3704d4581efe10a5738c5f5b51ac0e765a",
+      "source": "class EpochShuffleSampler(Sampler[int]):\n    \"\"\"Deterministic epoch-indexed full permutation for exact resume.\"\"\"\n\n    def __init__(self, length: int, seed: int) -> None:\n        self.length = int(length)\n        self.seed = int(seed)\n        self.epoch = 0\n\n    def set_epoch(self, epoch: int) -> None:\n        self.epoch = int(epoch)\n\n    def __iter__(self) -> Iterator[int]:\n        generator = torch.Generator()\n        generator.manual_seed(self.seed + self.epoch)\n        permutation = torch.randperm(\n            self.length,\n            generator=generator,\n        )\n        return iter(permutation.tolist())\n\n    def __len__(self) -> int:\n        return self.length"
+    }
+  },
+  "critical_statements": [
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "node_type": "alias",
+      "sha256": "70103cee506e057e5d876fa0186555ee1969ad4f3c605f6a9e7d449a9e31c822",
+      "source": "DataLoader"
+    },
+    {
+      "line_end": 21,
+      "line_start": 21,
+      "node_type": "ImportFrom",
+      "sha256": "aeba36cd9f3703aeb64daa01a2a99ec81455e74555614f76a908cdd791215142",
+      "source": "from torch.utils.data import DataLoader, Sampler"
+    },
+    {
+      "line_end": 73,
+      "line_start": 70,
+      "node_type": "FunctionDef",
+      "sha256": "e8e1a471987d71411d6686bbf8f16d42e2a7b48424ebf698b21234fba613d23d",
+      "source": "def atomic_torch_save(value: Any, path: Path) -> None:\n    temporary = path.with_suffix(path.suffix + \".tmp\")\n    torch.save(value, temporary)\n    os.replace(temporary, path)"
+    },
+    {
+      "line_end": 72,
+      "line_start": 72,
+      "node_type": "Attribute",
+      "sha256": "2464198e16cb2ba2ee963543fcddd3469141a0c79692fa333c0ed1b355ea2e23",
+      "source": "torch.save"
+    },
+    {
+      "line_end": 72,
+      "line_start": 72,
+      "node_type": "Expr",
+      "sha256": "457c9f7da8f26a0d4ed8a3448ed910c82d02c9ff147e3d717264736a63bc546d",
+      "source": "torch.save(value, temporary)"
+    },
+    {
+      "line_end": 577,
+      "line_start": 532,
+      "node_type": "FunctionDef",
+      "sha256": "1371ffe3c107e17a4a6cdd872ed4eabbe6d2ed24de71da374920e0fa28ff4053",
+      "source": "def train_one_epoch(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    optimizer: torch.optim.Optimizer,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n    gradient_clip: float,\n) -> dict[str, float]:\n    model.train()\n    loss_totals = Counter()\n    item_count = 0\n\n    for batch in loader:\n        moved = move_batch(batch, device)\n        optimizer.zero_grad(set_to_none=True)\n        outputs = model(moved[\"x\"], moved[\"mask\"])\n        losses = compute_losses(\n            outputs,\n            moved,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n        losses[\"total\"].backward()\n        torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            gradient_clip,\n        )\n        optimizer.step()\n\n        batch_size = int(moved[\"x\"].shape[0])\n        item_count += batch_size\n        for key, value in losses.items():\n            loss_totals[key] += (\n                float(value.detach().item()) * batch_size\n            )\n\n    if item_count != EXPECTED_TRAIN_ITEMS:\n        raise RuntimeError(\n            f\"train epoch saw {item_count} items, \"\n            f\"expected={EXPECTED_TRAIN_ITEMS}\"\n        )\n    return {\n        key: value / item_count\n        for key, value in loss_totals.items()\n    }"
+    },
+    {
+      "line_end": 534,
+      "line_start": 534,
+      "node_type": "arg",
+      "sha256": "39a986f4892c6b599dcae6442ba033566f7b64666058725272a08d4729fb4dc1",
+      "source": "loader: DataLoader"
+    },
+    {
+      "line_end": 567,
+      "line_start": 545,
+      "node_type": "For",
+      "sha256": "c1bab81895e5285f236962c974aec5e57b62c28ac5e37018980cc3513e17a332",
+      "source": "for batch in loader:\n        moved = move_batch(batch, device)\n        optimizer.zero_grad(set_to_none=True)\n        outputs = model(moved[\"x\"], moved[\"mask\"])\n        losses = compute_losses(\n            outputs,\n            moved,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n        losses[\"total\"].backward()\n        torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            gradient_clip,\n        )\n        optimizer.step()\n\n        batch_size = int(moved[\"x\"].shape[0])\n        item_count += batch_size\n        for key, value in losses.items():\n            loss_totals[key] += (\n                float(value.detach().item()) * batch_size\n            )"
+    },
+    {
+      "line_end": 556,
+      "line_start": 556,
+      "node_type": "Attribute",
+      "sha256": "d4f422d1761e93552c3c07031f3e506312198bbfbd08fb8555743a3fb014af6b",
+      "source": "torch.nn.utils.clip_grad_norm_"
+    },
+    {
+      "line_end": 559,
+      "line_start": 556,
+      "node_type": "Expr",
+      "sha256": "67528eefedc882db0566cd63abb2eeefe01c7e15225ffa47c4956d68ea97702e",
+      "source": "torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            gradient_clip,\n        )"
+    },
+    {
+      "line_end": 659,
+      "line_start": 580,
+      "node_type": "FunctionDef",
+      "sha256": "20324baf461071118f2c82ed7f572d83e2a973eae0191e6fc7aeff32c6f6963b",
+      "source": "def validate(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, Any]:\n    model.eval()\n    loss_totals = Counter()\n    item_count = 0\n    accum = {\n        \"attack_logits\": [],\n        \"graph_targets\": [],\n        \"count_logits\": [],\n        \"count_targets\": [],\n        \"source_logits\": [],\n        \"source_targets\": [],\n        \"transit_logits\": [],\n        \"transit_targets\": [],\n        \"victim_logits\": [],\n        \"victim_targets\": [],\n        \"path_logits\": [],\n        \"path_targets\": [],\n    }\n\n    with torch.no_grad():\n        for batch in loader:\n            moved = move_batch(batch, device)\n            outputs = model(moved[\"x\"], moved[\"mask\"])\n            losses = compute_losses(\n                outputs,\n                moved,\n                graph_pos_weight,\n                role_pos_weights,\n            )\n            batch_size = int(moved[\"x\"].shape[0])\n            item_count += batch_size\n            for key, value in losses.items():\n                loss_totals[key] += (\n                    float(value.detach().item()) * batch_size\n                )\n\n            accum[\"attack_logits\"].append(\n                outputs[\"attack_logits\"].detach().cpu().numpy()\n            )\n            accum[\"graph_targets\"].append(\n                moved[\"graph\"].detach().cpu().numpy()\n            )\n            accum[\"count_logits\"].append(\n                outputs[\"count_logits\"].detach().cpu().numpy()\n            )\n            accum[\"count_targets\"].append(\n                moved[\"count\"].detach().cpu().numpy()\n            )\n            for role in (\n                \"source\",\n                \"transit\",\n                \"victim\",\n                \"path\",\n            ):\n                accum[f\"{role}_logits\"].append(\n                    outputs[f\"{role}_logits\"]\n                    .detach()\n                    .cpu()\n                    .numpy()\n                )\n                accum[f\"{role}_targets\"].append(\n                    moved[role].detach().cpu().numpy()\n                )\n\n    if item_count != EXPECTED_VALIDATION_ITEMS:\n        raise RuntimeError(\n            f\"validation saw {item_count} items, \"\n            f\"expected={EXPECTED_VALIDATION_ITEMS}\"\n        )\n    return validation_metrics(\n        accum,\n        dict(loss_totals),\n        item_count,\n    )"
+    },
+    {
+      "line_end": 727,
+      "line_start": 662,
+      "node_type": "FunctionDef",
+      "sha256": "1faf01569f07b17cd6259b726e554647005a8d5f385298d629d1b159ed79272d",
+      "source": "def flatten_history_row(\n    epoch: int,\n    learning_rate: float,\n    train_metrics: dict[str, float],\n    validation: dict[str, Any],\n    elapsed_seconds: float,\n    best_epoch: int | None,\n    patience_counter: int,\n    is_best: bool,\n) -> dict[str, Any]:\n    return {\n        \"epoch\": epoch,\n        \"learning_rate\": learning_rate,\n        \"train_total_loss\": train_metrics[\"total\"],\n        \"train_graph_loss\": train_metrics[\"graph\"],\n        \"train_count_loss\": train_metrics[\"count\"],\n        \"train_source_loss\": train_metrics[\"source\"],\n        \"train_transit_loss\": train_metrics[\"transit\"],\n        \"train_victim_loss\": train_metrics[\"victim\"],\n        \"train_path_loss\": train_metrics[\"path\"],\n        \"validation_total_loss\": validation[\"loss\"][\"total\"],\n        \"selection_score\": validation[\"selection_score\"],\n        \"graph_auroc\": validation[\"graph\"][\"auroc\"],\n        \"graph_average_precision\": (\n            validation[\"graph\"][\"average_precision\"]\n        ),\n        \"graph_accuracy_at_0p5\": (\n            validation[\"graph\"][\"accuracy\"]\n        ),\n        \"graph_f1_at_0p5\": validation[\"graph\"][\"f1\"],\n        \"graph_fpr_at_0p5\": validation[\"graph\"][\"fpr\"],\n        \"count_active_accuracy\": (\n            validation[\"count_active\"][\"accuracy\"]\n        ),\n        \"count_active_macro_f1\": (\n            validation[\"count_active\"][\"macro_f1\"]\n        ),\n        \"source_average_precision\": (\n            validation[\"roles\"][\"source\"][\"average_precision\"]\n        ),\n        \"transit_average_precision\": (\n            validation[\"roles\"][\"transit\"][\"average_precision\"]\n        ),\n        \"victim_average_precision\": (\n            validation[\"roles\"][\"victim\"][\"average_precision\"]\n        ),\n        \"path_average_precision\": (\n            validation[\"roles\"][\"path\"][\"average_precision\"]\n        ),\n        \"source_exact_active_at_0p5\": (\n            validation[\"roles\"][\"source\"][\"exact_active\"]\n        ),\n        \"transit_exact_active_at_0p5\": (\n            validation[\"roles\"][\"transit\"][\"exact_active\"]\n        ),\n        \"victim_exact_active_at_0p5\": (\n            validation[\"roles\"][\"victim\"][\"exact_active\"]\n        ),\n        \"path_exact_active_at_0p5\": (\n            validation[\"roles\"][\"path\"][\"exact_active\"]\n        ),\n        \"is_best_checkpoint\": is_best,\n        \"best_epoch_after_epoch\": best_epoch,\n        \"early_stop_patience_counter\": patience_counter,\n        \"elapsed_seconds\": elapsed_seconds,\n    }"
+    },
+    {
+      "line_end": 668,
+      "line_start": 668,
+      "node_type": "arg",
+      "sha256": "bfb4a19876d7b0bbce1ef4588d6cded583913796e889c74e595ebae7a088fd17",
+      "source": "best_epoch: int | None"
+    },
+    {
+      "line_end": 669,
+      "line_start": 669,
+      "node_type": "arg",
+      "sha256": "3dc23fb822fe3141c2a40e84aacde516221b9497588f702960a42d0996cc9438",
+      "source": "patience_counter: int"
+    },
+    {
+      "line_end": 727,
+      "line_start": 672,
+      "node_type": "Dict",
+      "sha256": "9110ae1085a8cc40e59cd998115cec55570e3019820719baee044ce904a9fefc",
+      "source": "{\n        \"epoch\": epoch,\n        \"learning_rate\": learning_rate,\n        \"train_total_loss\": train_metrics[\"total\"],\n        \"train_graph_loss\": train_metrics[\"graph\"],\n        \"train_count_loss\": train_metrics[\"count\"],\n        \"train_source_loss\": train_metrics[\"source\"],\n        \"train_transit_loss\": train_metrics[\"transit\"],\n        \"train_victim_loss\": train_metrics[\"victim\"],\n        \"train_path_loss\": train_metrics[\"path\"],\n        \"validation_total_loss\": validation[\"loss\"][\"total\"],\n        \"selection_score\": validation[\"selection_score\"],\n        \"graph_auroc\": validation[\"graph\"][\"auroc\"],\n        \"graph_average_precision\": (\n            validation[\"graph\"][\"average_precision\"]\n        ),\n        \"graph_accuracy_at_0p5\": (\n            validation[\"graph\"][\"accuracy\"]\n        ),\n        \"graph_f1_at_0p5\": validation[\"graph\"][\"f1\"],\n        \"graph_fpr_at_0p5\": validation[\"graph\"][\"fpr\"],\n        \"count_active_accuracy\": (\n            validation[\"count_active\"][\"accuracy\"]\n        ),\n        \"count_active_macro_f1\": (\n            validation[\"count_active\"][\"macro_f1\"]\n        ),\n        \"source_average_precision\": (\n            validation[\"roles\"][\"source\"][\"average_precision\"]\n        ),\n        \"transit_average_precision\": (\n            validation[\"roles\"][\"transit\"][\"average_precision\"]\n        ),\n        \"victim_average_precision\": (\n            validation[\"roles\"][\"victim\"][\"average_precision\"]\n        ),\n        \"path_average_precision\": (\n            validation[\"roles\"][\"path\"][\"average_precision\"]\n        ),\n        \"source_exact_active_at_0p5\": (\n            validation[\"roles\"][\"source\"][\"exact_active\"]\n        ),\n        \"transit_exact_active_at_0p5\": (\n            validation[\"roles\"][\"transit\"][\"exact_active\"]\n        ),\n        \"victim_exact_active_at_0p5\": (\n            validation[\"roles\"][\"victim\"][\"exact_active\"]\n        ),\n        \"path_exact_active_at_0p5\": (\n            validation[\"roles\"][\"path\"][\"exact_active\"]\n        ),\n        \"is_best_checkpoint\": is_best,\n        \"best_epoch_after_epoch\": best_epoch,\n        \"early_stop_patience_counter\": patience_counter,\n        \"elapsed_seconds\": elapsed_seconds,\n    }"
+    },
+    {
+      "line_end": 727,
+      "line_start": 672,
+      "node_type": "Return",
+      "sha256": "ac0445545d8f969ac22e63a9d28c56b975d1c9f32f5457c8176a021e1b032b32",
+      "source": "return {\n        \"epoch\": epoch,\n        \"learning_rate\": learning_rate,\n        \"train_total_loss\": train_metrics[\"total\"],\n        \"train_graph_loss\": train_metrics[\"graph\"],\n        \"train_count_loss\": train_metrics[\"count\"],\n        \"train_source_loss\": train_metrics[\"source\"],\n        \"train_transit_loss\": train_metrics[\"transit\"],\n        \"train_victim_loss\": train_metrics[\"victim\"],\n        \"train_path_loss\": train_metrics[\"path\"],\n        \"validation_total_loss\": validation[\"loss\"][\"total\"],\n        \"selection_score\": validation[\"selection_score\"],\n        \"graph_auroc\": validation[\"graph\"][\"auroc\"],\n        \"graph_average_precision\": (\n            validation[\"graph\"][\"average_precision\"]\n        ),\n        \"graph_accuracy_at_0p5\": (\n            validation[\"graph\"][\"accuracy\"]\n        ),\n        \"graph_f1_at_0p5\": validation[\"graph\"][\"f1\"],\n        \"graph_fpr_at_0p5\": validation[\"graph\"][\"fpr\"],\n        \"count_active_accuracy\": (\n            validation[\"count_active\"][\"accuracy\"]\n        ),\n        \"count_active_macro_f1\": (\n            validation[\"count_active\"][\"macro_f1\"]\n        ),\n        \"source_average_precision\": (\n            validation[\"roles\"][\"source\"][\"average_precision\"]\n        ),\n        \"transit_average_precision\": (\n            validation[\"roles\"][\"transit\"][\"average_precision\"]\n        ),\n        \"victim_average_precision\": (\n            validation[\"roles\"][\"victim\"][\"average_precision\"]\n        ),\n        \"path_average_precision\": (\n            validation[\"roles\"][\"path\"][\"average_precision\"]\n        ),\n        \"source_exact_active_at_0p5\": (\n            validation[\"roles\"][\"source\"][\"exact_active\"]\n        ),\n        \"transit_exact_active_at_0p5\": (\n            validation[\"roles\"][\"transit\"][\"exact_active\"]\n        ),\n        \"victim_exact_active_at_0p5\": (\n            validation[\"roles\"][\"victim\"][\"exact_active\"]\n        ),\n        \"path_exact_active_at_0p5\": (\n            validation[\"roles\"][\"path\"][\"exact_active\"]\n        ),\n        \"is_best_checkpoint\": is_best,\n        \"best_epoch_after_epoch\": best_epoch,\n        \"early_stop_patience_counter\": patience_counter,\n        \"elapsed_seconds\": elapsed_seconds,\n    }"
+    },
+    {
+      "line_end": 724,
+      "line_start": 724,
+      "node_type": "Name",
+      "sha256": "514e32db03692fa3867a9a8536ac599a6902250cd6dc74c3f0f1adada2bfc551",
+      "source": "best_epoch"
+    },
+    {
+      "line_end": 724,
+      "line_start": 724,
+      "node_type": "Constant",
+      "sha256": "bc6582147f84c344fb0b6fdf24c4c6f8e6c06329b49cba3315f5779b6e3e4855",
+      "source": "\"best_epoch_after_epoch\""
+    },
+    {
+      "line_end": 725,
+      "line_start": 725,
+      "node_type": "Name",
+      "sha256": "5cb9e4ca2c07527b4b2cd41573d70c2d525d99217be0fcecd2bb5f78acb2ea4a",
+      "source": "patience_counter"
+    },
+    {
+      "line_end": 725,
+      "line_start": 725,
+      "node_type": "Constant",
+      "sha256": "74e0c5f44f99f1f43a1d4cf51f04e672739b1b18a20361b2a614cc89707604d4",
+      "source": "\"early_stop_patience_counter\""
+    },
+    {
+      "line_end": 837,
+      "line_start": 837,
+      "node_type": "Attribute",
+      "sha256": "65ef512e0143a3ef7b8fb0381dfa524902e60881e4a8c8efb751a49a6de89e19",
+      "source": "torch.load"
+    },
+    {
+      "line_end": 837,
+      "line_start": 837,
+      "node_type": "Assign",
+      "sha256": "9686768e0a24b0b763f61811b36f2e14a64c2da617482ca116acae608b227bc0",
+      "source": "original_torch_load = torch.load"
+    },
+    {
+      "line_end": 861,
+      "line_start": 861,
+      "node_type": "Assign",
+      "sha256": "6e67ba287d515192e52eff079fd741511b5024a34a1fc98b512e1d9af3ba2ad6",
+      "source": "torch.load = guarded_torch_load"
+    },
+    {
+      "line_end": 935,
+      "line_start": 928,
+      "node_type": "Call",
+      "sha256": "ff1dd7d00b5243a131af9031f2d1e6895d963b63524ce5174b918892b625792c",
+      "source": "DataLoader(\n        train_dataset,\n        batch_size=batch_size,\n        sampler=sampler,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )"
+    },
+    {
+      "line_end": 935,
+      "line_start": 928,
+      "node_type": "Assign",
+      "sha256": "fc0504cef976daf0515c2a28864c43bc74f76e08d31ee028dd80965af2928480",
+      "source": "train_loader = DataLoader(\n        train_dataset,\n        batch_size=batch_size,\n        sampler=sampler,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )"
+    },
+    {
+      "line_end": 943,
+      "line_start": 936,
+      "node_type": "Call",
+      "sha256": "7d3e54ad0d808734403dd765abe015ee6614847506bdf609b0952f193f3b2be8",
+      "source": "DataLoader(\n        validation_dataset,\n        batch_size=batch_size,\n        shuffle=False,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )"
+    },
+    {
+      "line_end": 943,
+      "line_start": 936,
+      "node_type": "Assign",
+      "sha256": "a746483ca712fd3da4de7d98dd61ba8fd211f97c9fd364397ac6057ed574aaaa",
+      "source": "validation_loader = DataLoader(\n        validation_dataset,\n        batch_size=batch_size,\n        shuffle=False,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )"
+    },
+    {
+      "line_end": 961,
+      "line_start": 961,
+      "node_type": "Attribute",
+      "sha256": "6803f263c84a646ca6ba0ee4790246860b1cc76f6813514cf138f1b8fd138cf1",
+      "source": "dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure"
+    },
+    {
+      "line_end": 964,
+      "line_start": 961,
+      "node_type": "Call",
+      "sha256": "1b34d75cc242936f8d8a38e159b17b8ab6d02b408b6ffb527c42f5bebb5877c3",
+      "source": "dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(\n        canonical_model,\n        seed=SEED,\n    )"
+    },
+    {
+      "line_end": 964,
+      "line_start": 961,
+      "node_type": "Assign",
+      "sha256": "9b8c524b9e5332082fd5dda00820943ca940102ae2e04722914334ab609d4c7b",
+      "source": "model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(\n        canonical_model,\n        seed=SEED,\n    )"
+    },
+    {
+      "line_end": 1003,
+      "line_start": 1003,
+      "node_type": "Attribute",
+      "sha256": "6238000d28b1b0f562de7b03577a95d207aa99736755c08d0c984fa4f60adc7d",
+      "source": "torch.optim.AdamW"
+    },
+    {
+      "line_end": 1011,
+      "line_start": 1003,
+      "node_type": "Call",
+      "sha256": "445003d3435c90f244bb468687c5af260461a56a2369f08053994b0c2d90f29d",
+      "source": "torch.optim.AdamW(\n        model.parameters(),\n        lr=float(optimization[\"learning_rate\"]),\n        betas=tuple(optimization[\"betas\"]),\n        eps=float(optimization[\"epsilon\"]),\n        weight_decay=float(\n            optimization[\"weight_decay\"]\n        ),\n    )"
+    },
+    {
+      "line_end": 1011,
+      "line_start": 1003,
+      "node_type": "Assign",
+      "sha256": "141ffdb0a900bc1889e96cb8df994789db602ed26e4a80d411ea3c04a9dc3a65",
+      "source": "optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=float(optimization[\"learning_rate\"]),\n        betas=tuple(optimization[\"betas\"]),\n        eps=float(optimization[\"epsilon\"]),\n        weight_decay=float(\n            optimization[\"weight_decay\"]\n        ),\n    )"
+    },
+    {
+      "line_end": 1013,
+      "line_start": 1013,
+      "node_type": "Attribute",
+      "sha256": "7d37a79f2261d4daca151cb3f2839d65bb4a7fd62214a1ec5501cddb7e3a92b0",
+      "source": "torch.optim.lr_scheduler.ReduceLROnPlateau"
+    },
+    {
+      "line_end": 1022,
+      "line_start": 1013,
+      "node_type": "Call",
+      "sha256": "9e885d498540863ab2e738d652804369196b23840c8610ada91f1293e8c79544",
+      "source": "torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=scheduler_cfg[\"mode\"],\n        factor=float(scheduler_cfg[\"factor\"]),\n        patience=int(scheduler_cfg[\"patience\"]),\n        threshold=float(scheduler_cfg[\"threshold\"]),\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=float(scheduler_cfg[\"minimum_lr\"]),\n    )"
+    },
+    {
+      "line_end": 1022,
+      "line_start": 1013,
+      "node_type": "Assign",
+      "sha256": "83c9cb8c4a5f8e9ad1cae7c51345df6c8afed757fae556fbdea0d5929528839d",
+      "source": "scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=scheduler_cfg[\"mode\"],\n        factor=float(scheduler_cfg[\"factor\"]),\n        patience=int(scheduler_cfg[\"patience\"]),\n        threshold=float(scheduler_cfg[\"threshold\"]),\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=float(scheduler_cfg[\"minimum_lr\"]),\n    )"
+    },
+    {
+      "line_end": 1027,
+      "line_start": 1027,
+      "node_type": "Assign",
+      "sha256": "7744118861ffdb17d3e40d2d9d9cfb635d145c1c2463d07a809b261eb10a2601",
+      "source": "best_epoch = None"
+    },
+    {
+      "line_end": 1031,
+      "line_start": 1031,
+      "node_type": "Assign",
+      "sha256": "12de59c531998f33ea79e47a8a9d053a48e5e82c70e2e1770afa562da959a779",
+      "source": "patience_counter = 0"
+    },
+    {
+      "line_end": 1085,
+      "line_start": 1035,
+      "node_type": "If",
+      "sha256": "4ff7d1934679bbdbef8866877494dfae697c07dc78e4eaa7e93ce00b673b58d9",
+      "source": "if last_checkpoint_path.is_file():\n        checkpoint = torch.load(\n            last_checkpoint_path,\n            map_location=device,\n            weights_only=False,\n        )\n        expected_provenance = {\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n        }\n        for key, expected in expected_provenance.items():\n            if checkpoint.get(key) != expected:\n                raise RuntimeError(\n                    f\"resume provenance mismatch for {key}\"\n                )\n        model.load_state_dict(\n            checkpoint[\"model_state_dict\"]\n        )\n        optimizer.load_state_dict(\n            checkpoint[\"optimizer_state_dict\"]\n        )\n        scheduler.load_state_dict(\n            checkpoint[\"scheduler_state_dict\"]\n        )\n        start_epoch = int(checkpoint[\"epoch\"]) + 1\n        best_rank = checkpoint[\"best_rank\"]\n        best_epoch = checkpoint[\"best_epoch\"]\n        best_validation = checkpoint[\"best_validation\"]\n        best_checkpoint_sha256 = checkpoint[\n            \"best_checkpoint_sha256\"\n        ]\n        best_early_stop_score = float(\n            checkpoint[\"best_early_stop_score\"]\n        )\n        patience_counter = int(\n            checkpoint[\"patience_counter\"]\n        )\n        history = checkpoint[\"history\"]\n        resumed = True\n        print(\n            f\"resume_from_epoch={start_epoch - 1}; \"\n            f\"next_epoch={start_epoch}\"\n        )"
+    },
+    {
+      "line_end": 1040,
+      "line_start": 1036,
+      "node_type": "Call",
+      "sha256": "392a3ac21bc2077d87ea4e65ae2f0a9c7d0a8701bf5d5d8eddfcfcdcaed79032",
+      "source": "torch.load(\n            last_checkpoint_path,\n            map_location=device,\n            weights_only=False,\n        )"
+    },
+    {
+      "line_end": 1040,
+      "line_start": 1036,
+      "node_type": "Assign",
+      "sha256": "0097f6ee254576766a7f944368c0d389f58adf999ac833fa5a3838100e313c01",
+      "source": "checkpoint = torch.load(\n            last_checkpoint_path,\n            map_location=device,\n            weights_only=False,\n        )"
+    },
+    {
+      "line_end": 1069,
+      "line_start": 1069,
+      "node_type": "Constant",
+      "sha256": "be54a193b97717748f221973aeb7ab3086546f2c459ac925e6aa7f8f767f4a2b",
+      "source": "\"best_epoch\""
+    },
+    {
+      "line_end": 1069,
+      "line_start": 1069,
+      "node_type": "Subscript",
+      "sha256": "5c425ce2238669e0e74a7d343d50a21f1d4629284ae80e8bf3dcb3a8bbc0fc40",
+      "source": "checkpoint[\"best_epoch\"]"
+    },
+    {
+      "line_end": 1069,
+      "line_start": 1069,
+      "node_type": "Assign",
+      "sha256": "1c19216603cbe0474fde4c2847f1cd51abf3b421855a30d51bb65e262a80a519",
+      "source": "best_epoch = checkpoint[\"best_epoch\"]"
+    },
+    {
+      "line_end": 1079,
+      "line_start": 1077,
+      "node_type": "Call",
+      "sha256": "a3942e7f53decd5795e5300ffd64fe67810893cf0186086777363d97ed03bce3",
+      "source": "int(\n            checkpoint[\"patience_counter\"]\n        )"
+    },
+    {
+      "line_end": 1079,
+      "line_start": 1077,
+      "node_type": "Assign",
+      "sha256": "6f71e5c4f471c526260c26898952c645ed338631fd776daffb7926d083a83984",
+      "source": "patience_counter = int(\n            checkpoint[\"patience_counter\"]\n        )"
+    },
+    {
+      "line_end": 1078,
+      "line_start": 1078,
+      "node_type": "Constant",
+      "sha256": "f5bb518adf2fd48e6c485ee8c0c7e1534e42dfba7be262734feb01b026aa598a",
+      "source": "\"patience_counter\""
+    },
+    {
+      "line_end": 1078,
+      "line_start": 1078,
+      "node_type": "Subscript",
+      "sha256": "5b92af1b4accf214f949b94602269d6143f01395f89d1e1ce39bb055c9f8036a",
+      "source": "checkpoint[\"patience_counter\"]"
+    },
+    {
+      "line_end": 1286,
+      "line_start": 1091,
+      "node_type": "For",
+      "sha256": "034d488557374ceffb20122e8ff0b61d83ce5aee8a902994be398482d48310e6",
+      "source": "for epoch in range(start_epoch, maximum_epochs + 1):\n        epoch_start = time.time()\n        sampler.set_epoch(epoch)\n        current_lr = float(\n            optimizer.param_groups[0][\"lr\"]\n        )\n\n        train_metrics = train_one_epoch(\n            model,\n            train_loader,\n            optimizer,\n            device,\n            graph_pos_weight,\n            role_pos_weights,\n            gradient_clip,\n        )\n        validation = validate(\n            model,\n            validation_loader,\n            device,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n\n        score = float(validation[\"selection_score\"])\n        validation_loss = float(\n            validation[\"loss\"][\"total\"]\n        )\n        rank = (\n            score,\n            -validation_loss,\n            -epoch,\n        )\n        is_best = best_rank is None or rank > tuple(best_rank)\n\n        if is_best:\n            best_rank = list(rank)\n            best_epoch = epoch\n            best_validation = validation\n            best_payload = {\n                \"stage\": STAGE,\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"epoch\": epoch,\n                \"model_state_dict\": model.state_dict(),\n                \"optimizer_state_dict\": optimizer.state_dict(),\n                \"scheduler_state_dict\": scheduler.state_dict(),\n                \"validation_metrics\": validation,\n                \"parameter_count\": parameter_count,\n                \"protocol_sha256\": sha256_file(\n                    protocol_path\n                ),\n                \"a3_report_sha256\": sha256_file(\n                    a3_report_path\n                ),\n                \"dynamic70_model_sha256\": sha256_file(\n                    dynamic_path\n                ),\n                \"guarded_loader_sha256\": sha256_file(\n                    wrapper_path\n                ),\n                \"normalization_sha256\": sha256_file(\n                    normalization_path\n                ),\n                \"threshold_tuning_performed\": False,\n                \"test_tensor_loaded\": False,\n            }\n            atomic_torch_save(\n                best_payload,\n                best_checkpoint_path,\n            )\n            best_checkpoint_sha256 = sha256_file(\n                best_checkpoint_path\n            )\n\n        if score > best_early_stop_score + float(\n            optimization[\"early_stopping\"][\n                \"minimum_improvement\"\n            ]\n        ):\n            best_early_stop_score = score\n            patience_counter = 0\n        else:\n            patience_counter += 1\n\n        scheduler.step(score)\n\n        row = flatten_history_row(\n            epoch=epoch,\n            learning_rate=current_lr,\n            train_metrics=train_metrics,\n            validation=validation,\n            elapsed_seconds=time.time() - epoch_start,\n            best_epoch=best_epoch,\n            patience_counter=patience_counter,\n            is_best=is_best,\n        )\n        history.append(row)\n        write_csv(history_path, history)\n\n        last_payload = {\n            \"stage\": STAGE,\n            \"campaign_label\": CAMPAIGN_LABEL,\n            \"seed\": SEED,\n            \"epoch\": epoch,\n            \"model_state_dict\": model.state_dict(),\n            \"optimizer_state_dict\": optimizer.state_dict(),\n            \"scheduler_state_dict\": scheduler.state_dict(),\n            \"best_rank\": best_rank,\n            \"best_epoch\": best_epoch,\n            \"best_validation\": best_validation,\n            \"best_checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"best_early_stop_score\": (\n                best_early_stop_score\n            ),\n            \"patience_counter\": patience_counter,\n            \"history\": history,\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"threshold_tuning_performed\": False,\n            \"test_tensor_loaded\": False,\n        }\n        atomic_torch_save(\n            last_payload,\n            last_checkpoint_path,\n        )\n\n        atomic_json(\n            progress_path,\n            {\n                \"stage\": STAGE,\n                \"status\": \"RUNNING\",\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"completed_epoch\": epoch,\n                \"best_epoch\": best_epoch,\n                \"best_checkpoint_sha256\": (\n                    best_checkpoint_sha256\n                ),\n                \"best_validation_metrics\": (\n                    best_validation\n                ),\n                \"current_validation_metrics\": validation,\n                \"current_learning_rate_after_scheduler\": (\n                    float(optimizer.param_groups[0][\"lr\"])\n                ),\n                \"early_stop_patience_counter\": (\n                    patience_counter\n                ),\n                \"resumed\": resumed,\n                \"threshold_tuning_performed\": False,\n                \"test_dataset_instantiated\": False,\n                \"test_tensor_loaded\": False,\n            },\n        )\n\n        print(\n            f\"epoch={epoch:03d} \"\n            f\"train_loss={train_metrics['total']:.6f} \"\n            f\"val_loss={validation_loss:.6f} \"\n            f\"score={score:.6f} \"\n            f\"g_auc={validation['graph']['auroc']:.6f} \"\n            f\"g_ap={validation['graph']['average_precision']:.6f} \"\n            f\"g_fpr={validation['graph']['fpr']:.6f} \"\n            f\"count_f1={validation['count_active']['macro_f1']:.6f} \"\n            f\"src_ap={validation['roles']['source']['average_precision']:.6f} \"\n            f\"tr_ap={validation['roles']['transit']['average_precision']:.6f} \"\n            f\"vic_ap={validation['roles']['victim']['average_precision']:.6f} \"\n            f\"path_ap={validation['roles']['path']['average_precision']:.6f} \"\n            f\"lr={current_lr:.8g} \"\n            f\"best_epoch={best_epoch} \"\n            f\"patience={patience_counter}\"\n        )\n\n        early_cfg = optimization[\"early_stopping\"]\n        if (\n            epoch >= int(early_cfg[\"minimum_epochs\"])\n            and patience_counter\n            >= int(early_cfg[\"patience\"])\n        ):\n            stopped_early = True\n            print(\n                f\"early_stopping_epoch={epoch}; \"\n                f\"patience={patience_counter}\"\n            )\n            break"
+    },
+    {
+      "line_end": 1164,
+      "line_start": 1126,
+      "node_type": "If",
+      "sha256": "dc9559d9549830159f5678db3eda1bd8f61741c75c32cd069d3bf529b5f4d8c3",
+      "source": "if is_best:\n            best_rank = list(rank)\n            best_epoch = epoch\n            best_validation = validation\n            best_payload = {\n                \"stage\": STAGE,\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"epoch\": epoch,\n                \"model_state_dict\": model.state_dict(),\n                \"optimizer_state_dict\": optimizer.state_dict(),\n                \"scheduler_state_dict\": scheduler.state_dict(),\n                \"validation_metrics\": validation,\n                \"parameter_count\": parameter_count,\n                \"protocol_sha256\": sha256_file(\n                    protocol_path\n                ),\n                \"a3_report_sha256\": sha256_file(\n                    a3_report_path\n                ),\n                \"dynamic70_model_sha256\": sha256_file(\n                    dynamic_path\n                ),\n                \"guarded_loader_sha256\": sha256_file(\n                    wrapper_path\n                ),\n                \"normalization_sha256\": sha256_file(\n                    normalization_path\n                ),\n                \"threshold_tuning_performed\": False,\n                \"test_tensor_loaded\": False,\n            }\n            atomic_torch_save(\n                best_payload,\n                best_checkpoint_path,\n            )\n            best_checkpoint_sha256 = sha256_file(\n                best_checkpoint_path\n            )"
+    },
+    {
+      "line_end": 1128,
+      "line_start": 1128,
+      "node_type": "Assign",
+      "sha256": "80ba57ed388ace371de6231f527fa0e3599bea0809e78f14ef15c50c97a7abfc",
+      "source": "best_epoch = epoch"
+    },
+    {
+      "line_end": 1174,
+      "line_start": 1166,
+      "node_type": "If",
+      "sha256": "0b2de7f7da6de973d6298e102277af85c3927e1271eb828a8b130d712d1bb9a1",
+      "source": "if score > best_early_stop_score + float(\n            optimization[\"early_stopping\"][\n                \"minimum_improvement\"\n            ]\n        ):\n            best_early_stop_score = score\n            patience_counter = 0\n        else:\n            patience_counter += 1"
+    },
+    {
+      "line_end": 1174,
+      "line_start": 1174,
+      "node_type": "AugAssign",
+      "sha256": "ee3c1b3260bb7dbbc469bbf829d0c7575ed0bcba044a1f2f259c0d91af7d8d30",
+      "source": "patience_counter += 1"
+    },
+    {
+      "line_end": 1176,
+      "line_start": 1176,
+      "node_type": "Attribute",
+      "sha256": "fc67045bdc8be6492405bd8569fc54f575cfe8835bba88946087f8aca12a980f",
+      "source": "scheduler.step"
+    },
+    {
+      "line_end": 1176,
+      "line_start": 1176,
+      "node_type": "Expr",
+      "sha256": "910ac3bdfe01e4a691e6c129654cd8194468d99121ff9f8af9c1f7837cadc16f",
+      "source": "scheduler.step(score)"
+    },
+    {
+      "line_end": 1187,
+      "line_start": 1178,
+      "node_type": "Call",
+      "sha256": "eba82c70e06f9cc09b878ebfa6f10055484412680094b4ec3a82a06b5c69a22e",
+      "source": "flatten_history_row(\n            epoch=epoch,\n            learning_rate=current_lr,\n            train_metrics=train_metrics,\n            validation=validation,\n            elapsed_seconds=time.time() - epoch_start,\n            best_epoch=best_epoch,\n            patience_counter=patience_counter,\n            is_best=is_best,\n        )"
+    },
+    {
+      "line_end": 1187,
+      "line_start": 1178,
+      "node_type": "Assign",
+      "sha256": "d9334c31b1458405785b989d412164ccb837e3d32bdfd7d92ce6a34e278e1038",
+      "source": "row = flatten_history_row(\n            epoch=epoch,\n            learning_rate=current_lr,\n            train_metrics=train_metrics,\n            validation=validation,\n            elapsed_seconds=time.time() - epoch_start,\n            best_epoch=best_epoch,\n            patience_counter=patience_counter,\n            is_best=is_best,\n        )"
+    },
+    {
+      "line_end": 1184,
+      "line_start": 1184,
+      "node_type": "keyword",
+      "sha256": "8958981f38a585d648249e0b9a1f5e80a4f6aeeca39d49152366a99d4d4e63ef",
+      "source": "best_epoch=best_epoch"
+    },
+    {
+      "line_end": 1185,
+      "line_start": 1185,
+      "node_type": "keyword",
+      "sha256": "4a31af187f7d286071aff8ae4363238321c96bc6e522cb8bffe0f36ee1c30d8e",
+      "source": "patience_counter=patience_counter"
+    },
+    {
+      "line_end": 1222,
+      "line_start": 1191,
+      "node_type": "Dict",
+      "sha256": "9c3f96355e8ad581eff2640c6885f4c6fd405b72747356058cf07db8e05b0b3c",
+      "source": "{\n            \"stage\": STAGE,\n            \"campaign_label\": CAMPAIGN_LABEL,\n            \"seed\": SEED,\n            \"epoch\": epoch,\n            \"model_state_dict\": model.state_dict(),\n            \"optimizer_state_dict\": optimizer.state_dict(),\n            \"scheduler_state_dict\": scheduler.state_dict(),\n            \"best_rank\": best_rank,\n            \"best_epoch\": best_epoch,\n            \"best_validation\": best_validation,\n            \"best_checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"best_early_stop_score\": (\n                best_early_stop_score\n            ),\n            \"patience_counter\": patience_counter,\n            \"history\": history,\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"threshold_tuning_performed\": False,\n            \"test_tensor_loaded\": False,\n        }"
+    },
+    {
+      "line_end": 1222,
+      "line_start": 1191,
+      "node_type": "Assign",
+      "sha256": "5419fff2ba8db5158076879674cbbd3b1339c2950ef7f25c0484bd9b7abf6e69",
+      "source": "last_payload = {\n            \"stage\": STAGE,\n            \"campaign_label\": CAMPAIGN_LABEL,\n            \"seed\": SEED,\n            \"epoch\": epoch,\n            \"model_state_dict\": model.state_dict(),\n            \"optimizer_state_dict\": optimizer.state_dict(),\n            \"scheduler_state_dict\": scheduler.state_dict(),\n            \"best_rank\": best_rank,\n            \"best_epoch\": best_epoch,\n            \"best_validation\": best_validation,\n            \"best_checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"best_early_stop_score\": (\n                best_early_stop_score\n            ),\n            \"patience_counter\": patience_counter,\n            \"history\": history,\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"threshold_tuning_performed\": False,\n            \"test_tensor_loaded\": False,\n        }"
+    },
+    {
+      "line_end": 1255,
+      "line_start": 1228,
+      "node_type": "Expr",
+      "sha256": "37f9b492844fb9a53d0f9658cc732dd469268c86a2e2f410bab1875c7a117e8f",
+      "source": "atomic_json(\n            progress_path,\n            {\n                \"stage\": STAGE,\n                \"status\": \"RUNNING\",\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"completed_epoch\": epoch,\n                \"best_epoch\": best_epoch,\n                \"best_checkpoint_sha256\": (\n                    best_checkpoint_sha256\n                ),\n                \"best_validation_metrics\": (\n                    best_validation\n                ),\n                \"current_validation_metrics\": validation,\n                \"current_learning_rate_after_scheduler\": (\n                    float(optimizer.param_groups[0][\"lr\"])\n                ),\n                \"early_stop_patience_counter\": (\n                    patience_counter\n                ),\n                \"resumed\": resumed,\n                \"threshold_tuning_performed\": False,\n                \"test_dataset_instantiated\": False,\n                \"test_tensor_loaded\": False,\n            },\n        )"
+    },
+    {
+      "line_end": 1254,
+      "line_start": 1230,
+      "node_type": "Dict",
+      "sha256": "bd0f118861add35da6b2a994f680c2c40158ecbff479a00486d16dff0e43fb09",
+      "source": "{\n                \"stage\": STAGE,\n                \"status\": \"RUNNING\",\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"completed_epoch\": epoch,\n                \"best_epoch\": best_epoch,\n                \"best_checkpoint_sha256\": (\n                    best_checkpoint_sha256\n                ),\n                \"best_validation_metrics\": (\n                    best_validation\n                ),\n                \"current_validation_metrics\": validation,\n                \"current_learning_rate_after_scheduler\": (\n                    float(optimizer.param_groups[0][\"lr\"])\n                ),\n                \"early_stop_patience_counter\": (\n                    patience_counter\n                ),\n                \"resumed\": resumed,\n                \"threshold_tuning_performed\": False,\n                \"test_dataset_instantiated\": False,\n                \"test_tensor_loaded\": False,\n            }"
+    },
+    {
+      "line_end": 1273,
+      "line_start": 1257,
+      "node_type": "Expr",
+      "sha256": "2c92dfbc7d2b5dcec6e3c13778166c6e9e7fc886fc0e723a86a7fae19d57638c",
+      "source": "print(\n            f\"epoch={epoch:03d} \"\n            f\"train_loss={train_metrics['total']:.6f} \"\n            f\"val_loss={validation_loss:.6f} \"\n            f\"score={score:.6f} \"\n            f\"g_auc={validation['graph']['auroc']:.6f} \"\n            f\"g_ap={validation['graph']['average_precision']:.6f} \"\n            f\"g_fpr={validation['graph']['fpr']:.6f} \"\n            f\"count_f1={validation['count_active']['macro_f1']:.6f} \"\n            f\"src_ap={validation['roles']['source']['average_precision']:.6f} \"\n            f\"tr_ap={validation['roles']['transit']['average_precision']:.6f} \"\n            f\"vic_ap={validation['roles']['victim']['average_precision']:.6f} \"\n            f\"path_ap={validation['roles']['path']['average_precision']:.6f} \"\n            f\"lr={current_lr:.8g} \"\n            f\"best_epoch={best_epoch} \"\n            f\"patience={patience_counter}\"\n        )"
+    },
+    {
+      "line_end": 1272,
+      "line_start": 1258,
+      "node_type": "JoinedStr",
+      "sha256": "e7d471e8564199c8f70da6353afd0354c8aab5c2df79bd4e11f48008896188b5",
+      "source": "f\"epoch={epoch:03d} \"\n            f\"train_loss={train_metrics['total']:.6f} \"\n            f\"val_loss={validation_loss:.6f} \"\n            f\"score={score:.6f} \"\n            f\"g_auc={validation['graph']['auroc']:.6f} \"\n            f\"g_ap={validation['graph']['average_precision']:.6f} \"\n            f\"g_fpr={validation['graph']['fpr']:.6f} \"\n            f\"count_f1={validation['count_active']['macro_f1']:.6f} \"\n            f\"src_ap={validation['roles']['source']['average_precision']:.6f} \"\n            f\"tr_ap={validation['roles']['transit']['average_precision']:.6f} \"\n            f\"vic_ap={validation['roles']['victim']['average_precision']:.6f} \"\n            f\"path_ap={validation['roles']['path']['average_precision']:.6f} \"\n            f\"lr={current_lr:.8g} \"\n            f\"best_epoch={best_epoch} \"\n            f\"patience={patience_counter}\""
+    },
+    {
+      "line_end": 1271,
+      "line_start": 1270,
+      "node_type": "Constant",
+      "sha256": "2b05be637bbb548dfcf950a968fe7a618ec056808d78ffb9816ab51462e7818d",
+      "source": " \"\n            f\"best_epoch="
+    },
+    {
+      "line_end": 1271,
+      "line_start": 1271,
+      "node_type": "FormattedValue",
+      "sha256": "ecd877b95044198ee7773b28434d58985e9dcb9cf6b86ea7b6744672d8f1608c",
+      "source": "{best_epoch}"
+    },
+    {
+      "line_end": 1272,
+      "line_start": 1272,
+      "node_type": "FormattedValue",
+      "sha256": "579f383082b2dd5029423a464baf16d6c7c870b56258ea81f0f7e8b54080454e",
+      "source": "{patience_counter}"
+    },
+    {
+      "line_end": 1286,
+      "line_start": 1276,
+      "node_type": "If",
+      "sha256": "47f48acc2f3fddd25ca6b0ecb0a086ae66a47c8a686df65bb045cca85fcf0bfd",
+      "source": "if (\n            epoch >= int(early_cfg[\"minimum_epochs\"])\n            and patience_counter\n            >= int(early_cfg[\"patience\"])\n        ):\n            stopped_early = True\n            print(\n                f\"early_stopping_epoch={epoch}; \"\n                f\"patience={patience_counter}\"\n            )\n            break"
+    },
+    {
+      "line_end": 1279,
+      "line_start": 1277,
+      "node_type": "BoolOp",
+      "sha256": "f333b1ff941cf403016de02847fee79a9d8d3300c50c0f7b2e724e73da15151c",
+      "source": "epoch >= int(early_cfg[\"minimum_epochs\"])\n            and patience_counter\n            >= int(early_cfg[\"patience\"])"
+    },
+    {
+      "line_end": 1279,
+      "line_start": 1278,
+      "node_type": "Compare",
+      "sha256": "47a5511747c63745852ed6eda4a2bfa6d62e3174426e21a89067286618c18392",
+      "source": "patience_counter\n            >= int(early_cfg[\"patience\"])"
+    },
+    {
+      "line_end": 1285,
+      "line_start": 1282,
+      "node_type": "Expr",
+      "sha256": "72fd4cfd4c5dfd56650441a0e54eb9ec1add70528daf20bc3335f0e11715636e",
+      "source": "print(\n                f\"early_stopping_epoch={epoch}; \"\n                f\"patience={patience_counter}\"\n            )"
+    },
+    {
+      "line_end": 1284,
+      "line_start": 1283,
+      "node_type": "JoinedStr",
+      "sha256": "55f2f95656a92d9284e4060c10f5eee1d32383c11bb9b54c3db7e6f8a55ee318",
+      "source": "f\"early_stopping_epoch={epoch}; \"\n                f\"patience={patience_counter}\""
+    },
+    {
+      "line_end": 1293,
+      "line_start": 1288,
+      "node_type": "If",
+      "sha256": "91622da92a22b09ecee3e8e7e42f51dfb21a4d852c526e66e2bf8313659d6dac",
+      "source": "if (\n        best_epoch is None\n        or best_validation is None\n        or not best_checkpoint_path.is_file()\n    ):\n        raise RuntimeError(\"no best checkpoint was produced\")"
+    },
+    {
+      "line_end": 1289,
+      "line_start": 1289,
+      "node_type": "Compare",
+      "sha256": "f889571a02d109065c0d9daca1c8232b94acddc1b457ac7044fb7c98600acdc2",
+      "source": "best_epoch is None"
+    },
+    {
+      "line_end": 1291,
+      "line_start": 1289,
+      "node_type": "BoolOp",
+      "sha256": "696ac9e2ae3798898c7500d849d551e8fbaf8050aa8146dbb058c551a1c42aa4",
+      "source": "best_epoch is None\n        or best_validation is None\n        or not best_checkpoint_path.is_file()"
+    },
+    {
+      "line_end": 1299,
+      "line_start": 1295,
+      "node_type": "Call",
+      "sha256": "9fc8da55972bcd9173da30ea7d16b12ca23176a5e173635bf056f59a0660f4d7",
+      "source": "torch.load(\n        best_checkpoint_path,\n        map_location=device,\n        weights_only=False,\n    )"
+    },
+    {
+      "line_end": 1299,
+      "line_start": 1295,
+      "node_type": "Assign",
+      "sha256": "53d260949891b2823f87bbac4a4b97d90d7e9d87481ddc7958e9c7e72b4f75ae",
+      "source": "checkpoint = torch.load(\n        best_checkpoint_path,\n        map_location=device,\n        weights_only=False,\n    )"
+    },
+    {
+      "line_end": 1459,
+      "line_start": 1323,
+      "node_type": "Dict",
+      "sha256": "9087895ce22b6f1a49a1c058e8cc5230be27a1631f6dcfb5cc3b4f9ace1a925a",
+      "source": "{\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"created_utc\": datetime.now(\n            timezone.utc\n        ).isoformat(),\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"interpretation\": (\n            \"Tranche-A train/validation preliminary diagnostic. \"\n            \"Not a sealed-test or final 1500-pair result.\"\n        ),\n        \"seed\": SEED,\n        \"device\": str(device),\n        \"resumed\": resumed,\n        \"model\": {\n            \"class\": model.__class__.__name__,\n            \"builder\": (\n                \"build_v6_p0_dynamic70_from_\"\n                \"canonical_structure\"\n            ),\n            \"input_shape\": [16, 70, 32],\n            \"parameter_count\": parameter_count,\n            \"all_parameters_trainable\": True,\n            \"fresh_initialization_at_original_start\": True,\n            \"historical_checkpoint_reused\": False,\n        },\n        \"data\": {\n            \"representation\": \"Dynamic70\",\n            \"train_items\": len(train_dataset),\n            \"validation_items\": len(\n                validation_dataset\n            ),\n            \"train_pairs\": 600,\n            \"validation_pairs\": 75,\n            \"normalization_scope\": (\n                \"Tranche-A provisional A_train-only\"\n            ),\n            \"test_dataset_instantiated\": False,\n            \"test_tensor_loaded\": False,\n        },\n        \"training\": {\n            \"epochs_completed\": completed_epoch,\n            \"best_epoch\": best_epoch,\n            \"stopped_early\": stopped_early,\n            \"optimizer\": \"AdamW\",\n            \"scheduler\": \"ReduceLROnPlateau\",\n            \"batch_size\": batch_size,\n            \"elapsed_seconds_this_invocation\": elapsed,\n            \"peak_cuda_memory_bytes\": peak_memory,\n        },\n        \"selection\": {\n            \"formula\": (\n                \"mean(graph_AUROC, graph_AP, \"\n                \"count_active_macro_F1, source_AP, \"\n                \"transit_AP, victim_AP, path_AP)\"\n            ),\n            \"threshold_tuning_performed\": False,\n            \"best_validation_selection_score\": (\n                best_validation[\"selection_score\"]\n            ),\n            \"best_validation_metrics\": best_validation,\n        },\n        \"artifacts\": {\n            \"best_checkpoint\": str(\n                best_checkpoint_path\n            ),\n            \"best_checkpoint_sha256\": sha256_file(\n                best_checkpoint_path\n            ),\n            \"last_checkpoint\": str(\n                last_checkpoint_path\n            ),\n            \"last_checkpoint_sha256\": sha256_file(\n                last_checkpoint_path\n            ),\n            \"history_csv\": str(history_path),\n            \"history_csv_sha256\": sha256_file(\n                history_path\n            ),\n            \"progress_json\": str(progress_path),\n            \"progress_json_sha256\": sha256_file(\n                progress_path\n            ),\n        },\n        \"sealed_test\": {\n            \"negative_guard_check\": test_negative_check,\n            \"test_dataset_instantiated\": False,\n            \"test_length_computed\": False,\n            \"test_tensor_loaded\": False,\n            \"test_loaded_paths\": test_loaded_paths,\n            \"evaluation_authorized\": False,\n        },\n        \"decision\": {\n            \"tranche_a_preliminary_diagnostic_complete\": True,\n            \"result_label\": CAMPAIGN_LABEL,\n            \"architecture_change_authorized\": False,\n            \"additional_tranche_a_seed_sweep_authorized\": False,\n            \"sealed_test_evaluation_authorized\": False,\n            \"next_stage\": (\n                \"V5_P3_A5_TRANCHE_A_PRELIMINARY_\"\n                \"DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS\"\n            ),\n        },\n        \"provenance\": {\n            \"a3_report_sha256\": sha256_file(\n                a3_report_path\n            ),\n            \"a3_lock_sha256\": sha256_file(\n                a3_lock_path\n            ),\n            \"protocol_sha256\": sha256_file(\n                protocol_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"b3_source_sha256\": sha256_file(b3_path),\n            \"canonical_model_sha256\": sha256_file(\n                canonical_path\n            ),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"installed_script_sha256\": sha256_file(\n                installed_script\n            ),\n        },\n        \"source_modified\": True,\n        \"certified_dataset_modified\": False,\n        \"generalization_claim_authorized\": (\n            \"A_validation preliminary only\"\n        ),\n        \"final_1500_pair_claim_authorized\": False,\n    }"
+    },
+    {
+      "line_end": 1459,
+      "line_start": 1323,
+      "node_type": "Assign",
+      "sha256": "bc67321a76835adf84d1742a67a0e0dcf7842c1a7198e695481e13e807b79e45",
+      "source": "report = {\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"created_utc\": datetime.now(\n            timezone.utc\n        ).isoformat(),\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"interpretation\": (\n            \"Tranche-A train/validation preliminary diagnostic. \"\n            \"Not a sealed-test or final 1500-pair result.\"\n        ),\n        \"seed\": SEED,\n        \"device\": str(device),\n        \"resumed\": resumed,\n        \"model\": {\n            \"class\": model.__class__.__name__,\n            \"builder\": (\n                \"build_v6_p0_dynamic70_from_\"\n                \"canonical_structure\"\n            ),\n            \"input_shape\": [16, 70, 32],\n            \"parameter_count\": parameter_count,\n            \"all_parameters_trainable\": True,\n            \"fresh_initialization_at_original_start\": True,\n            \"historical_checkpoint_reused\": False,\n        },\n        \"data\": {\n            \"representation\": \"Dynamic70\",\n            \"train_items\": len(train_dataset),\n            \"validation_items\": len(\n                validation_dataset\n            ),\n            \"train_pairs\": 600,\n            \"validation_pairs\": 75,\n            \"normalization_scope\": (\n                \"Tranche-A provisional A_train-only\"\n            ),\n            \"test_dataset_instantiated\": False,\n            \"test_tensor_loaded\": False,\n        },\n        \"training\": {\n            \"epochs_completed\": completed_epoch,\n            \"best_epoch\": best_epoch,\n            \"stopped_early\": stopped_early,\n            \"optimizer\": \"AdamW\",\n            \"scheduler\": \"ReduceLROnPlateau\",\n            \"batch_size\": batch_size,\n            \"elapsed_seconds_this_invocation\": elapsed,\n            \"peak_cuda_memory_bytes\": peak_memory,\n        },\n        \"selection\": {\n            \"formula\": (\n                \"mean(graph_AUROC, graph_AP, \"\n                \"count_active_macro_F1, source_AP, \"\n                \"transit_AP, victim_AP, path_AP)\"\n            ),\n            \"threshold_tuning_performed\": False,\n            \"best_validation_selection_score\": (\n                best_validation[\"selection_score\"]\n            ),\n            \"best_validation_metrics\": best_validation,\n        },\n        \"artifacts\": {\n            \"best_checkpoint\": str(\n                best_checkpoint_path\n            ),\n            \"best_checkpoint_sha256\": sha256_file(\n                best_checkpoint_path\n            ),\n            \"last_checkpoint\": str(\n                last_checkpoint_path\n            ),\n            \"last_checkpoint_sha256\": sha256_file(\n                last_checkpoint_path\n            ),\n            \"history_csv\": str(history_path),\n            \"history_csv_sha256\": sha256_file(\n                history_path\n            ),\n            \"progress_json\": str(progress_path),\n            \"progress_json_sha256\": sha256_file(\n                progress_path\n            ),\n        },\n        \"sealed_test\": {\n            \"negative_guard_check\": test_negative_check,\n            \"test_dataset_instantiated\": False,\n            \"test_length_computed\": False,\n            \"test_tensor_loaded\": False,\n            \"test_loaded_paths\": test_loaded_paths,\n            \"evaluation_authorized\": False,\n        },\n        \"decision\": {\n            \"tranche_a_preliminary_diagnostic_complete\": True,\n            \"result_label\": CAMPAIGN_LABEL,\n            \"architecture_change_authorized\": False,\n            \"additional_tranche_a_seed_sweep_authorized\": False,\n            \"sealed_test_evaluation_authorized\": False,\n            \"next_stage\": (\n                \"V5_P3_A5_TRANCHE_A_PRELIMINARY_\"\n                \"DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS\"\n            ),\n        },\n        \"provenance\": {\n            \"a3_report_sha256\": sha256_file(\n                a3_report_path\n            ),\n            \"a3_lock_sha256\": sha256_file(\n                a3_lock_path\n            ),\n            \"protocol_sha256\": sha256_file(\n                protocol_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"b3_source_sha256\": sha256_file(b3_path),\n            \"canonical_model_sha256\": sha256_file(\n                canonical_path\n            ),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"installed_script_sha256\": sha256_file(\n                installed_script\n            ),\n        },\n        \"source_modified\": True,\n        \"certified_dataset_modified\": False,\n        \"generalization_claim_authorized\": (\n            \"A_validation preliminary only\"\n        ),\n        \"final_1500_pair_claim_authorized\": False,\n    }"
+    },
+    {
+      "line_end": 1372,
+      "line_start": 1363,
+      "node_type": "Dict",
+      "sha256": "a4ff55b858b685555009ce37480cfdd7f0a4fb88db322bfcb30ca164b34008f0",
+      "source": "{\n            \"epochs_completed\": completed_epoch,\n            \"best_epoch\": best_epoch,\n            \"stopped_early\": stopped_early,\n            \"optimizer\": \"AdamW\",\n            \"scheduler\": \"ReduceLROnPlateau\",\n            \"batch_size\": batch_size,\n            \"elapsed_seconds_this_invocation\": elapsed,\n            \"peak_cuda_memory_bytes\": peak_memory,\n        }"
+    },
+    {
+      "line_end": 1368,
+      "line_start": 1368,
+      "node_type": "Constant",
+      "sha256": "51d91a027f9abe6512f9767874a77a472a7d33c5606387202db50bbe468e23c8",
+      "source": "\"ReduceLROnPlateau\""
+    },
+    {
+      "line_end": 1500,
+      "line_start": 1462,
+      "node_type": "Dict",
+      "sha256": "d1dc6044b6c45519666487d8636a62b08ce228bc4933866dfb9778c8e1e992ee",
+      "source": "{\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"seed\": SEED,\n        \"report_sha256\": sha256_file(report_path),\n        \"best_checkpoint_sha256\": sha256_file(\n            best_checkpoint_path\n        ),\n        \"last_checkpoint_sha256\": sha256_file(\n            last_checkpoint_path\n        ),\n        \"history_csv_sha256\": sha256_file(\n            history_path\n        ),\n        \"progress_json_sha256\": sha256_file(\n            progress_path\n        ),\n        \"protocol_sha256\": sha256_file(\n            protocol_path\n        ),\n        \"dynamic70_model_sha256\": sha256_file(\n            dynamic_path\n        ),\n        \"guarded_loader_sha256\": sha256_file(\n            wrapper_path\n        ),\n        \"normalization_sha256\": sha256_file(\n            normalization_path\n        ),\n        \"best_epoch\": best_epoch,\n        \"best_validation_selection_score\": (\n            best_validation[\"selection_score\"]\n        ),\n        \"parameter_count\": parameter_count,\n        \"input_features\": 70,\n        \"test_tensor_loaded\": False,\n        \"certified_dataset_modified\": False,\n    }"
+    },
+    {
+      "line_end": 1500,
+      "line_start": 1462,
+      "node_type": "Assign",
+      "sha256": "6d9e64b4a3d4392d6478a57b9c0e6e09b9302844fa307128560932242f751cac",
+      "source": "lock = {\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"seed\": SEED,\n        \"report_sha256\": sha256_file(report_path),\n        \"best_checkpoint_sha256\": sha256_file(\n            best_checkpoint_path\n        ),\n        \"last_checkpoint_sha256\": sha256_file(\n            last_checkpoint_path\n        ),\n        \"history_csv_sha256\": sha256_file(\n            history_path\n        ),\n        \"progress_json_sha256\": sha256_file(\n            progress_path\n        ),\n        \"protocol_sha256\": sha256_file(\n            protocol_path\n        ),\n        \"dynamic70_model_sha256\": sha256_file(\n            dynamic_path\n        ),\n        \"guarded_loader_sha256\": sha256_file(\n            wrapper_path\n        ),\n        \"normalization_sha256\": sha256_file(\n            normalization_path\n        ),\n        \"best_epoch\": best_epoch,\n        \"best_validation_selection_score\": (\n            best_validation[\"selection_score\"]\n        ),\n        \"parameter_count\": parameter_count,\n        \"input_features\": 70,\n        \"test_tensor_loaded\": False,\n        \"certified_dataset_modified\": False,\n    }"
+    },
+    {
+      "line_end": 1519,
+      "line_start": 1519,
+      "node_type": "Constant",
+      "sha256": "87aa696bb06b57f59a43b8305d9cd639bc88a0b33a687a53635c23a231770d87",
+      "source": "best_epoch="
+    },
+    {
+      "line_end": 1519,
+      "line_start": 1519,
+      "node_type": "JoinedStr",
+      "sha256": "641a93b1224317d677a7b48c41dd393201566bc3276ba2ac189f9cc492654cbb",
+      "source": "f\"best_epoch={best_epoch}\""
+    },
+    {
+      "line_end": 1519,
+      "line_start": 1519,
+      "node_type": "Expr",
+      "sha256": "415d2ba7a483688590603fb1d33026984b1904e43a080720f668240e33e3eebb",
+      "source": "print(f\"best_epoch={best_epoch}\")"
+    }
+  ],
+  "decoder_imports_or_calls": [],
+  "functions": {
+    "compute_losses": {
+      "line_end": 258,
+      "line_start": 205,
+      "sha256": "f6c90f64e7e2dc6d47cfc3372d0a48bcfbecc9ac937f8f7730876de8c1733c33",
+      "source": "def compute_losses(\n    outputs: dict[str, torch.Tensor],\n    batch: dict[str, torch.Tensor],\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, torch.Tensor]:\n    active = batch[\"graph\"] > 0.5\n    if not bool(active.any()):\n        count_loss = outputs[\"count_logits\"].sum() * 0.0\n    else:\n        active_targets = batch[\"count\"][active] - 1\n        if not bool(\n            ((active_targets >= 0) & (active_targets <= 3)).all()\n        ):\n            raise RuntimeError(\n                \"active Count4 targets are outside 0..3\"\n            )\n        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            active_targets,\n        )\n\n    losses = {\n        \"graph\": F.binary_cross_entropy_with_logits(\n            outputs[\"attack_logits\"],\n            batch[\"graph\"],\n            pos_weight=graph_pos_weight,\n        ),\n        \"count\": count_loss,\n        \"source\": F.binary_cross_entropy_with_logits(\n            outputs[\"source_logits\"],\n            batch[\"source\"],\n            pos_weight=role_pos_weights[\"source\"],\n        ),\n        \"transit\": F.binary_cross_entropy_with_logits(\n            outputs[\"transit_logits\"],\n            batch[\"transit\"],\n            pos_weight=role_pos_weights[\"transit\"],\n        ),\n        \"victim\": F.binary_cross_entropy_with_logits(\n            outputs[\"victim_logits\"],\n            batch[\"victim\"],\n            pos_weight=role_pos_weights[\"victim\"],\n        ),\n        \"path\": F.binary_cross_entropy_with_logits(\n            outputs[\"path_logits\"],\n            batch[\"path\"],\n            pos_weight=role_pos_weights[\"path\"],\n        ),\n    }\n    losses[\"total\"] = sum(losses.values())\n    if not all(torch.isfinite(value) for value in losses.values()):\n        raise RuntimeError(\"non-finite multitask loss\")\n    return losses"
+    },
+    "set_seed": {
+      "line_end": 50,
+      "line_start": 42,
+      "sha256": "7f9f89e9e2e642030fdb539d0ef7bbf6f248bb28b706a859b23d2475a8f41a00",
+      "source": "def set_seed(seed: int) -> None:\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n    if torch.cuda.is_available():\n        torch.backends.cudnn.deterministic = True\n        torch.backends.cudnn.benchmark = False\n    torch.use_deterministic_algorithms(True, warn_only=True)"
+    },
+    "train_one_epoch": {
+      "line_end": 577,
+      "line_start": 532,
+      "sha256": "1371ffe3c107e17a4a6cdd872ed4eabbe6d2ed24de71da374920e0fa28ff4053",
+      "source": "def train_one_epoch(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    optimizer: torch.optim.Optimizer,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n    gradient_clip: float,\n) -> dict[str, float]:\n    model.train()\n    loss_totals = Counter()\n    item_count = 0\n\n    for batch in loader:\n        moved = move_batch(batch, device)\n        optimizer.zero_grad(set_to_none=True)\n        outputs = model(moved[\"x\"], moved[\"mask\"])\n        losses = compute_losses(\n            outputs,\n            moved,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n        losses[\"total\"].backward()\n        torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            gradient_clip,\n        )\n        optimizer.step()\n\n        batch_size = int(moved[\"x\"].shape[0])\n        item_count += batch_size\n        for key, value in losses.items():\n            loss_totals[key] += (\n                float(value.detach().item()) * batch_size\n            )\n\n    if item_count != EXPECTED_TRAIN_ITEMS:\n        raise RuntimeError(\n            f\"train epoch saw {item_count} items, \"\n            f\"expected={EXPECTED_TRAIN_ITEMS}\"\n        )\n    return {\n        key: value / item_count\n        for key, value in loss_totals.items()\n    }"
+    },
+    "validate": {
+      "line_end": 659,
+      "line_start": 580,
+      "sha256": "20324baf461071118f2c82ed7f572d83e2a973eae0191e6fc7aeff32c6f6963b",
+      "source": "def validate(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, Any]:\n    model.eval()\n    loss_totals = Counter()\n    item_count = 0\n    accum = {\n        \"attack_logits\": [],\n        \"graph_targets\": [],\n        \"count_logits\": [],\n        \"count_targets\": [],\n        \"source_logits\": [],\n        \"source_targets\": [],\n        \"transit_logits\": [],\n        \"transit_targets\": [],\n        \"victim_logits\": [],\n        \"victim_targets\": [],\n        \"path_logits\": [],\n        \"path_targets\": [],\n    }\n\n    with torch.no_grad():\n        for batch in loader:\n            moved = move_batch(batch, device)\n            outputs = model(moved[\"x\"], moved[\"mask\"])\n            losses = compute_losses(\n                outputs,\n                moved,\n                graph_pos_weight,\n                role_pos_weights,\n            )\n            batch_size = int(moved[\"x\"].shape[0])\n            item_count += batch_size\n            for key, value in losses.items():\n                loss_totals[key] += (\n                    float(value.detach().item()) * batch_size\n                )\n\n            accum[\"attack_logits\"].append(\n                outputs[\"attack_logits\"].detach().cpu().numpy()\n            )\n            accum[\"graph_targets\"].append(\n                moved[\"graph\"].detach().cpu().numpy()\n            )\n            accum[\"count_logits\"].append(\n                outputs[\"count_logits\"].detach().cpu().numpy()\n            )\n            accum[\"count_targets\"].append(\n                moved[\"count\"].detach().cpu().numpy()\n            )\n            for role in (\n                \"source\",\n                \"transit\",\n                \"victim\",\n                \"path\",\n            ):\n                accum[f\"{role}_logits\"].append(\n                    outputs[f\"{role}_logits\"]\n                    .detach()\n                    .cpu()\n                    .numpy()\n                )\n                accum[f\"{role}_targets\"].append(\n                    moved[role].detach().cpu().numpy()\n                )\n\n    if item_count != EXPECTED_VALIDATION_ITEMS:\n        raise RuntimeError(\n            f\"validation saw {item_count} items, \"\n            f\"expected={EXPECTED_VALIDATION_ITEMS}\"\n        )\n    return validation_metrics(\n        accum,\n        dict(loss_totals),\n        item_count,\n    )"
+    }
+  },
+  "source_bytes": 48444,
+  "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+}

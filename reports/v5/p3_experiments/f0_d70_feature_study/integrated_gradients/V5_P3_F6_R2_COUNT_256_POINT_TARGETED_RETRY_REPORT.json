@@ -1,0 +1,110 @@
+{
+  "artifacts": {
+    "F6_run_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z",
+    "attempt_256_aggregate": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/count/attempt_points_256/PER_SAMPLE_AGGREGATES.npz",
+    "attempt_256_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/count/attempt_points_256",
+    "attempt_256_result": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/count/attempt_points_256/ATTEMPT_RESULT.json",
+    "convergence_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R2_COUNT_128_TO_256_POINT_CONVERGENCE.json",
+    "count_task_complete_marker": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/count/TASK_COMPLETE",
+    "count_task_result": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/count/TASK_RESULT.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_R2_COUNT_256_POINT_RETRY_DECISION.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T23:01:41.239753+00:00",
+  "decision": {
+    "F6R_result_review_authorized": false,
+    "F6_R2_complete": true,
+    "F7_retraining_ablation_authorized": false,
+    "count_task_complete": true,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F6_REMAINING_TASKS_RESUME",
+    "other_F6_tasks_authorized_to_continue": true,
+    "sealed_test_access_authorized": false
+  },
+  "finding": {
+    "R1_classification": "COUNT_IG_DISCRETIZATION_NONCONVERGENCE_AT_128_POINTS",
+    "attempt_128_completeness": {
+      "gate": {
+        "median_relative_error_max": 0.02,
+        "p95_relative_error_max": 0.05
+      },
+      "maximum_relative_error": 14.146437644958496,
+      "mean_absolute_error": 0.06431756168603897,
+      "median_relative_error": 0.010873917490243912,
+      "p95_relative_error": 0.08534369617700577,
+      "pass": false
+    },
+    "attempt_256_completeness": {
+      "gate": {
+        "median_relative_error_max": 0.02,
+        "p95_relative_error_max": 0.05
+      },
+      "maximum_relative_error": 9.560688018798828,
+      "mean_absolute_error": 0.033374667167663574,
+      "median_relative_error": 0.005212811287492514,
+      "p95_relative_error": 0.04283500462770462,
+      "pass": true
+    },
+    "comparison_128_to_256": {
+      "attack_indices_exact": true,
+      "control_indices_exact": true,
+      "median_absolute_error_128": 0.048999786376953125,
+      "median_absolute_error_256": 0.026104450225830078,
+      "median_relative_error_128": 0.010873917955905199,
+      "median_relative_error_256": 0.005212811287492514,
+      "median_relative_improvement_fraction": 0.5206133328731214,
+      "p95_absolute_error_128": 0.16342406272888182,
+      "p95_absolute_error_256": 0.08369152545928955,
+      "p95_relative_error_128": 0.0853436969220638,
+      "p95_relative_error_256": 0.04283500313758848,
+      "p95_relative_improvement_fraction": 0.49808826331128386,
+      "relative_error_gt_0_02_at_256": 68,
+      "relative_error_gt_0_05_at_256": 18,
+      "relative_error_gt_0_10_at_256": 8,
+      "relative_error_gt_1_00_at_256": 1,
+      "relative_error_improved_sample_count": 362,
+      "relative_error_tie_count": 0,
+      "relative_error_worsened_sample_count": 150,
+      "target_delta_maximum_absolute_difference": 0.0,
+      "target_delta_mean_absolute_difference": 0.0
+    },
+    "count_completeness_pass": true,
+    "repair_status": "COUNT_256_POINT_COMPLETENESS_RECOVERED"
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "attempt_128_preserved": true,
+    "attempt_64_preserved": true,
+    "checkpoint_loaded": true,
+    "completeness_gate_changed": false,
+    "count_target_changed": false,
+    "model_loaded": true,
+    "model_weights_changed": false,
+    "runtime_changed": false,
+    "sample_selection_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "validation_feature_tensors_loaded": true
+  },
+  "provenance": {
+    "F6_run_contract_sha256": "c0db9505af1ed56364eed7e962ce4d3b6733135fdccd1ac89ddd298e6f607e33",
+    "F6_selection_sha256": "5b9b441bebde509475cfd1e15706206c51fee04a0c7e535aa71380425dbcb4f6",
+    "R1_lock_sha256": "ae91d7c1d9d1ec18b5fadd7393266329df32194be31c1f14a7a82be93479a7bd",
+    "R1_report_sha256": "5f6bad290aaf6fb3826b9de8c3506e5017f2bee8c03593a70487df1aa6a33d99",
+    "attempt_128_aggregate_sha256": "a484445cfae283e0f147b31bbe63bf1803cdc8dbc0dc8fa0e38d386cd470fb72",
+    "attempt_128_result_sha256": "e440665c6e302d69fbaaaf5a65436173e0eaf5846c44f6d4937e5abfd5dc2a38",
+    "attempt_256_aggregate_sha256": "8de5cb81b8ae5c51474e73c6215ab71e28a49f19c7b5b978d5377466ce7bb62e",
+    "attempt_256_result_sha256": "b27aa2d93d4bdc784af28fbfd86089d524f350b14fd78fd5777a576ceeb840e2",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "convergence_review_sha256": "f9e6681e9b12d685dc2fa54b46dd96f9d57a2459b35d5f993d847420f0cfb748",
+    "decision_sha256": "2dcb1a7f45c62ca2ad94b93b9ba49cd4c59667c660d0e98022c032939b85a8a2",
+    "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+    "installed_script_sha256": "fcad3fcef39f922cf8370de2656628b35a67989c3967b113710a4a7e3d4e2431",
+    "model_capture_sha256": "efffd65c499032f8ef35ede166431381aef46c04ba0cacfec1c67de67fa8b016",
+    "original_F6_implementation_sha256": "2837d384ab6e2b12ceead378011daa1778c906bbab088154456c25dde03ced3a"
+  },
+  "scope": "Execute only the frozen 512-sample count integrated-gradients task at 256 trapezoidal points after R1 established material 64-to-128 convergence; preserve the 64/128 attempts; verify identical attack/control sample order and endpoint targets; apply the unchanged 2%-median/5%-p95 completeness gate; and authorize remaining F6 tasks only if the count task passes.",
+  "stage": "V5_P3_F6_R2_COUNT_256_POINT_TARGETED_RETRY",
+  "status": "PASS"
+}

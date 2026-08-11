@@ -1,0 +1,24 @@
+V3 TCN-MaxPool-GCN Graph Threshold Summary
+
+Dataset:
+paper1_temporal_graphs_ports_v3
+
+Default threshold 0.50:
+F1     = 0.8576
+FPR    = 0.1678
+Recall = 0.8587
+
+Best test F1 threshold:
+threshold = 0.25
+F1        = 0.8641
+FPR       = 0.2357
+Recall    = 0.9144
+
+Low-FPR threshold:
+threshold = 0.85
+F1        = 0.8449
+FPR       = 0.0920
+Recall    = 0.7891
+
+Interpretation:
+MaxPool TCN is the best TCN variant at the default graph threshold. It reduces false positives compared to attention and mean pooling while maintaining similar graph F1. For strict low-FPR operation, attention TCN with a high graph threshold remains slightly stronger, but MaxPool is more hardware-friendly.

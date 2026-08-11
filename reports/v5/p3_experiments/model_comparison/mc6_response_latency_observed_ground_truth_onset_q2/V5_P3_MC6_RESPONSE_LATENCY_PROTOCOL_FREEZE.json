@@ -1,0 +1,84 @@
+{
+  "created_utc": "2026-08-07T22:21:25.911719+00:00",
+  "decision_semantics": {
+    "alarm_primary": "operational q=2 confirmation epoch = SECOND decision in first pair of consecutive post-onset graph-positive decisions",
+    "decision_epoch": "dataset sample epoch_id at window target/window end",
+    "decoder": false,
+    "independent_role_first_exact": "saved as diagnostic only; not primary Table III response",
+    "legacy_p2_difference": "legacy engineering-only P2 helper returned streak_start; MC6 corrects this prospectively to the q-th confirmation decision before any MC6 result computation",
+    "persistence_q": 2,
+    "source_path_victim": "source exact AND path exact AND victim exact at same decision",
+    "source_victim": "source exact AND victim exact at same decision",
+    "stride": 8,
+    "structured_primary": "first exact 16-router role-set decision at or after successful q=2 alarm confirmation",
+    "threshold_graph": 0.5,
+    "threshold_path": 0.5,
+    "threshold_source": 0.5,
+    "threshold_transit": 0.5,
+    "threshold_victim": 0.5,
+    "transit_extension": "same exact-set rule prospectively extended to transit",
+    "window": 32
+  },
+  "models": {
+    "alarm_only": [
+      "D0",
+      "D1",
+      "D2"
+    ],
+    "checkpoint_selection": "already-frozen seed107 best checkpoints",
+    "decoder": false,
+    "multitask": [
+      "M0",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M7"
+    ],
+    "new_training": false,
+    "seed": 107,
+    "threshold_tuning": false
+  },
+  "onset_semantics": {
+    "left_censored_runs_allowed": false,
+    "onset_unit": "epoch_id",
+    "primary_source": "first stored per-epoch ground-truth y_attack==1 in each attack run",
+    "reason": "Final A+B target-window labels are sampled at window targets; the raw run tensor retains the authoritative per-epoch attack label.",
+    "right_censored_runs_allowed": false,
+    "scheduled_campaign_attack_start_tick_used": false,
+    "termination_source": "last stored per-epoch ground-truth y_attack==1"
+  },
+  "population": {
+    "eligible_units": "attack-mode validation runs with fully observed ground-truth attack interval",
+    "sealed_test_access": false,
+    "split": "validation",
+    "test_access": false
+  },
+  "provenance": {
+    "legacy_p2_evaluator": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py",
+    "legacy_p2_evaluator_sha256": "ae06da51bc895cd8def1b3da95d61f02c5d7d82d8c11f837ec12d47d209f10af",
+    "model_zoo": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_mc_comparison_zoo.py",
+    "model_zoo_sha256": "fcc77e5ceab02394b59472514d9205c23adbf1195482cb12df4352d6f5b2322b",
+    "native_loader": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "p6_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/p6_batch1_model_complexity_and_forward_latency/V5_P3_P6_BATCH1_MODEL_COMPLEXITY_AND_FORWARD_LATENCY_LOCK.json",
+    "p6_lock_sha256": "a22f2a7d7064004d435210cbea056233996c7b880b6d3134ebdbedc231c5435d"
+  },
+  "stage": "V5_P3_MC6_RESPONSE_LATENCY",
+  "status": "PROSPECTIVE_FREEZE_BEFORE_RESULT_COMPUTATION",
+  "summary_semantics": {
+    "coverage_denominator": "all eligible attack runs",
+    "latency": "decision_epoch - attack_onset_epoch",
+    "median_p95_denominator": "successful runs only; coverage reported separately",
+    "quantile": "NumPy linear / Hyndman-Fan type 7",
+    "stratify_K": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "success_requires_decision_at_or_before_attack_termination": true
+  }
+}

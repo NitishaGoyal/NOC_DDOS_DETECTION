@@ -1,0 +1,871 @@
+{
+  "artifacts": {
+    "hash_verification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a0_integrity_and_guarded_loader_preflight/V5_P3_FINAL_DYNAMIC70_INTERNAL_SHA256_VERIFICATION.json",
+    "hash_verification_sha256": "ecd4c764ab1742f1a4bd5eeac712441a6c1f4b3c7ba4b69b61686679a123236c",
+    "loader_preflight": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a0_integrity_and_guarded_loader_preflight/V5_P3_FINAL_DYNAMIC70_GUARDED_ACCESS_PREFLIGHT.json",
+    "loader_preflight_sha256": "3006041f2c05821318deda7ad26ac5b41a4fccf70a484d7323076439561d0355",
+    "split_inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a0_integrity_and_guarded_loader_preflight/V5_P3_FINAL_DYNAMIC70_SPLIT_AND_PAIR_INVENTORY.json",
+    "split_inventory_sha256": "974b7f354b911255e6fe6c0b5bf59ce3fffa2d5fa22d608c712183726ff067ea"
+  },
+  "campaign_label": "V5-P3-1500-D70 Final A+B Dataset \u2014 Integrity and Guarded-Loader Preflight",
+  "created_utc": "2026-08-06T14:17:38.181466+00:00",
+  "dataset": {
+    "archive_sha_reference_found_in_support_metadata": false,
+    "dataset_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70",
+    "expected_archive_sha256": "371137b88618db129c5ab32503c9081188cd64e88a0f9503d29c452d7705c3fa",
+    "physical_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "resolved_link": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "root_modified": false,
+    "symlink_target_exact": true
+  },
+  "decision": {
+    "final_dataset_integrity_preflight_passed": true,
+    "final_test_remains_sealed": true,
+    "guarded_access_boundary_installed": true,
+    "native_loader_integration_not_yet_frozen": true,
+    "next_stage": "V5_P3_FINAL_A1_TRAIN_ONLY_UNION_NORMALIZATION_AND_NATIVE_LOADER_CERTIFICATION"
+  },
+  "governance": {
+    "A_B_test_access": "sealed",
+    "A_B_train_access": "authorized for later governed stages",
+    "A_B_validation_access": "not evaluated here; only two representative allowed run tensors per tranche were structurally loaded",
+    "model_evaluation": false,
+    "model_training": false,
+    "test_file_bytes_hashed_for_integrity": true,
+    "test_filenames_counted_for_inventory": true,
+    "test_tensor_deserialized": false,
+    "threshold_tuning": false
+  },
+  "guarded_access": {
+    "allowed_sample_tensor_loads": {
+      "D70_dimension_observed": true,
+      "router16_dimension_observed": true,
+      "sample_details": [
+        {
+          "run": "P3ATR-K1-001_ATTACK.pt",
+          "split": "train",
+          "tensor_count": 14,
+          "tensor_shapes": [
+            {
+              "dtype": "torch.float32",
+              "numel": 863520,
+              "path": "$.x_log1p",
+              "shape": [
+                771,
+                16,
+                70
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 160,
+              "path": "$.physical_port_mask",
+              "shape": [
+                16,
+                10
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12336,
+              "path": "$.status_flags_private",
+              "shape": [
+                771,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.bool",
+              "numel": 771,
+              "path": "$.valid_epoch",
+              "shape": [
+                771
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 771,
+              "path": "$.epoch_id",
+              "shape": [
+                771
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 771,
+              "path": "$.epoch_tick",
+              "shape": [
+                771
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 771,
+              "path": "$.y_attack",
+              "shape": [
+                771
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 771,
+              "path": "$.y_attacker_count",
+              "shape": [
+                771
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12336,
+              "path": "$.y_source",
+              "shape": [
+                771,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12336,
+              "path": "$.y_transit",
+              "shape": [
+                771,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12336,
+              "path": "$.y_victim",
+              "shape": [
+                771,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12336,
+              "path": "$.y_attack_path",
+              "shape": [
+                771,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12336,
+              "path": "$.role_mask",
+              "shape": [
+                771,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int8",
+              "numel": 12336,
+              "path": "$.source_target_router",
+              "shape": [
+                771,
+                16
+              ]
+            }
+          ],
+          "tranche": "A"
+        },
+        {
+          "run": "P3BTR-K1-001_ATTACK.pt",
+          "split": "train",
+          "tensor_count": 16,
+          "tensor_shapes": [
+            {
+              "dtype": "torch.float32",
+              "numel": 865760,
+              "path": "$.x_log1p",
+              "shape": [
+                773,
+                16,
+                70
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 773,
+              "path": "$.epoch_id",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 773,
+              "path": "$.epoch_tick",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.bool",
+              "numel": 773,
+              "path": "$.valid_epoch",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 12368,
+              "path": "$.status_flags_private",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 160,
+              "path": "$.physical_port_mask",
+              "shape": [
+                16,
+                10
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 70,
+              "path": "$.dynamic70_raw_indices",
+              "shape": [
+                70
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 10,
+              "path": "$.physical_port_mask_raw_indices",
+              "shape": [
+                10
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 773,
+              "path": "$.y_attack",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 773,
+              "path": "$.y_attacker_count",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.y_source",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.y_transit",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.y_victim",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.y_attack_path",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.role_mask",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 12368,
+              "path": "$.source_target_router",
+              "shape": [
+                773,
+                16
+              ]
+            }
+          ],
+          "tranche": "B"
+        },
+        {
+          "run": "P3AVA-K1-001_ATTACK.pt",
+          "split": "validation",
+          "tensor_count": 14,
+          "tensor_shapes": [
+            {
+              "dtype": "torch.float32",
+              "numel": 865760,
+              "path": "$.x_log1p",
+              "shape": [
+                773,
+                16,
+                70
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 160,
+              "path": "$.physical_port_mask",
+              "shape": [
+                16,
+                10
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.status_flags_private",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.bool",
+              "numel": 773,
+              "path": "$.valid_epoch",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 773,
+              "path": "$.epoch_id",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 773,
+              "path": "$.epoch_tick",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 773,
+              "path": "$.y_attack",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 773,
+              "path": "$.y_attacker_count",
+              "shape": [
+                773
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12368,
+              "path": "$.y_source",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12368,
+              "path": "$.y_transit",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12368,
+              "path": "$.y_victim",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "numel": 12368,
+              "path": "$.y_attack_path",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12368,
+              "path": "$.role_mask",
+              "shape": [
+                773,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int8",
+              "numel": 12368,
+              "path": "$.source_target_router",
+              "shape": [
+                773,
+                16
+              ]
+            }
+          ],
+          "tranche": "A"
+        },
+        {
+          "run": "P3BVA-K1-001_ATTACK.pt",
+          "split": "validation",
+          "tensor_count": 16,
+          "tensor_shapes": [
+            {
+              "dtype": "torch.float32",
+              "numel": 855680,
+              "path": "$.x_log1p",
+              "shape": [
+                764,
+                16,
+                70
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 764,
+              "path": "$.epoch_id",
+              "shape": [
+                764
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 764,
+              "path": "$.epoch_tick",
+              "shape": [
+                764
+              ]
+            },
+            {
+              "dtype": "torch.bool",
+              "numel": 764,
+              "path": "$.valid_epoch",
+              "shape": [
+                764
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 12224,
+              "path": "$.status_flags_private",
+              "shape": [
+                764,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 160,
+              "path": "$.physical_port_mask",
+              "shape": [
+                16,
+                10
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 70,
+              "path": "$.dynamic70_raw_indices",
+              "shape": [
+                70
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 10,
+              "path": "$.physical_port_mask_raw_indices",
+              "shape": [
+                10
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 764,
+              "path": "$.y_attack",
+              "shape": [
+                764
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 764,
+              "path": "$.y_attacker_count",
+              "shape": [
+                764
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12224,
+              "path": "$.y_source",
+              "shape": [
+                764,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12224,
+              "path": "$.y_transit",
+              "shape": [
+                764,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12224,
+              "path": "$.y_victim",
+              "shape": [
+                764,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12224,
+              "path": "$.y_attack_path",
+              "shape": [
+                764,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "numel": 12224,
+              "path": "$.role_mask",
+              "shape": [
+                764,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "numel": 12224,
+              "path": "$.source_target_router",
+              "shape": [
+                764,
+                16
+              ]
+            }
+          ],
+          "tranche": "B"
+        }
+      ],
+      "samples_loaded": 4,
+      "test_tensor_deserialized": false
+    },
+    "installed_path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_final_dynamic70_guarded_access.py",
+    "installed_sha256": "fe74fac0b1afbbec5b17aa29a075fb983e7180fa59ab1781882dbc139fa5d006",
+    "native_dataset_loader_imported": false,
+    "native_dataset_loader_static_inventory": {
+      "classes": [
+        "V5P3Dynamic70WindowDataset"
+      ],
+      "dataset_accessed": false,
+      "functions": [],
+      "imported": false,
+      "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+      "python_syntax": "PASS",
+      "sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+      "source_bytes": 3840
+    },
+    "test_listing_denied": true,
+    "test_load_denied_before_deserialization": true,
+    "train_run_listing": 2400,
+    "validation_run_listing": 300
+  },
+  "integrity": {
+    "bytes_hashed": 11139427604,
+    "entries_verified": 3010,
+    "failures": [],
+    "internal_SHA256SUMS_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/SHA256SUMS.txt",
+    "internal_SHA256SUMS_sha256": "b32b1355d2d14d9cd178f21c4269de59072d42e3cb8f1a8389e13ecb9ec9dba8",
+    "test_files_hashed_for_integrity": 300
+  },
+  "manifest_parse": {
+    "campaign_manifest_loaded": true,
+    "dataset_summary_loaded": true,
+    "final_dataset_complete_loaded": true,
+    "final_handover_certification_loaded": true,
+    "split_manifest_loaded": true,
+    "tensor_manifest_loaded": true,
+    "test_tensor_loaded": false
+  },
+  "normalization_support": {
+    "D70_dimension_observed": true,
+    "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/normalization.pt",
+    "sha256": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49",
+    "support_artifact_loaded": true,
+    "tensor_shapes": [
+      {
+        "dtype": "torch.int64",
+        "numel": 70,
+        "path": "$.dynamic70_raw_indices",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "numel": 70,
+        "path": "$.mean",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "numel": 70,
+        "path": "$.std",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "numel": 70,
+        "path": "$.inverse_std",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "numel": 70,
+        "path": "$.sufficient_statistics.sum",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "numel": 70,
+        "path": "$.sufficient_statistics.sum_of_squares",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "numel": 70,
+        "path": "$.tranche_a_statistics.sum",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "numel": 70,
+        "path": "$.tranche_a_statistics.sum_of_squares",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "numel": 70,
+        "path": "$.tranche_b_statistics.sum",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "numel": 70,
+        "path": "$.tranche_b_statistics.sum_of_squares",
+        "shape": [
+          70
+        ]
+      }
+    ],
+    "test_tensor_loaded": false
+  },
+  "provenance": {
+    "candidate_guard_sha256": "fe74fac0b1afbbec5b17aa29a075fb983e7180fa59ab1781882dbc139fa5d006",
+    "installed_script_sha256": "945d15e1c7df5a81973dda5357148e14de3b2ee323554efa3d26d1b217ade0cb"
+  },
+  "schema": {
+    "D70_list_candidates": [
+      {
+        "all_strings": false,
+        "length": 70,
+        "path": "$.features"
+      }
+    ],
+    "D70_numeric_candidates": [
+      "$.features[69].raw81_index"
+    ],
+    "D70_supported": true,
+    "mask10_numeric_candidates": []
+  },
+  "scope": "Read-only final A+B dataset integrity, filename-level split and attack/control pair verification, D70 schema evidence, internal checksum verification, limited train/validation tensor sampling, and installation of a test-denying guarded access boundary.",
+  "splits": {
+    "test": {
+      "K_run_counts": {
+        "1": 74,
+        "2": 74,
+        "3": 76,
+        "4": 76
+      },
+      "attack_control_pairing": "PASS",
+      "filename_split_namespace": "PASS",
+      "pair_count": 150,
+      "run_count": 300,
+      "sample_first": [
+        "P3ATE-K1-001_ATTACK.pt",
+        "P3ATE-K1-001_CONTROL.pt",
+        "P3ATE-K1-002_ATTACK.pt"
+      ],
+      "sample_last": [
+        "P3BTE-K4-018_CONTROL.pt",
+        "P3BTE-K4-019_ATTACK.pt",
+        "P3BTE-K4-019_CONTROL.pt"
+      ],
+      "tranche_K_pair_counts": {
+        "A:K1": 19,
+        "A:K2": 18,
+        "A:K3": 19,
+        "A:K4": 19,
+        "B:K1": 18,
+        "B:K2": 19,
+        "B:K3": 19,
+        "B:K4": 19
+      },
+      "tranche_run_counts": {
+        "A": 150,
+        "B": 150
+      }
+    },
+    "train": {
+      "K_run_counts": {
+        "1": 600,
+        "2": 600,
+        "3": 600,
+        "4": 600
+      },
+      "attack_control_pairing": "PASS",
+      "filename_split_namespace": "PASS",
+      "pair_count": 1200,
+      "run_count": 2400,
+      "sample_first": [
+        "P3ATR-K1-001_ATTACK.pt",
+        "P3ATR-K1-001_CONTROL.pt",
+        "P3ATR-K1-002_ATTACK.pt"
+      ],
+      "sample_last": [
+        "P3BTR-K4-149_CONTROL.pt",
+        "P3BTR-K4-150_ATTACK.pt",
+        "P3BTR-K4-150_CONTROL.pt"
+      ],
+      "tranche_K_pair_counts": {
+        "A:K1": 150,
+        "A:K2": 150,
+        "A:K3": 150,
+        "A:K4": 150,
+        "B:K1": 150,
+        "B:K2": 150,
+        "B:K3": 150,
+        "B:K4": 150
+      },
+      "tranche_run_counts": {
+        "A": 1200,
+        "B": 1200
+      }
+    },
+    "validation": {
+      "K_run_counts": {
+        "1": 76,
+        "2": 76,
+        "3": 74,
+        "4": 74
+      },
+      "attack_control_pairing": "PASS",
+      "filename_split_namespace": "PASS",
+      "pair_count": 150,
+      "run_count": 300,
+      "sample_first": [
+        "P3AVA-K1-001_ATTACK.pt",
+        "P3AVA-K1-001_CONTROL.pt",
+        "P3AVA-K1-002_ATTACK.pt"
+      ],
+      "sample_last": [
+        "P3BVA-K4-018_CONTROL.pt",
+        "P3BVA-K4-019_ATTACK.pt",
+        "P3BVA-K4-019_CONTROL.pt"
+      ],
+      "tranche_K_pair_counts": {
+        "A:K1": 19,
+        "A:K2": 19,
+        "A:K3": 19,
+        "A:K4": 18,
+        "B:K1": 19,
+        "B:K2": 19,
+        "B:K3": 18,
+        "B:K4": 19
+      },
+      "tranche_run_counts": {
+        "A": 150,
+        "B": 150
+      }
+    }
+  },
+  "stage": "V5_P3_FINAL_A0_DYNAMIC70_INTEGRITY_AND_GUARDED_LOADER_PREFLIGHT",
+  "status": "PASS",
+  "support_artifact_hashes": {
+    "FINAL_DATASET_COMPLETE.json": "3224a565478c05eecb72e5436ae46f1d1214f8533a64d75a4f42aceea5cf447f",
+    "FINAL_HANDOVER_CERTIFICATION.json": "14cc5eb32de68dcc665929ce444c9cd76b91710018adf63f72115bbfcf0ed76d",
+    "README.md": "529b86a77686c0bef29ec43f28b647482e0989ceba049c562b50f7e41970fa34",
+    "SHA256SUMS.txt": "b32b1355d2d14d9cd178f21c4269de59072d42e3cb8f1a8389e13ecb9ec9dba8",
+    "campaign_manifest.json": "a4cf508eabe315e9958329d2603334edc725eac9e80bab11c30b62badb801aba",
+    "dataset_loader.py": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "dataset_summary.json": "2d434b0bf82067518c5515b89cab7a3ed3fc319e36924702b5913814638a8fbc",
+    "feature_schema.json": "b3522a0cfb4247ba105cf1195268d54d8cf6a25e00e4f422c37a3da165ce6fc7",
+    "normalization.pt": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49",
+    "split_manifest.json": "5bb328250cf23f992c384f35a67c89f814ba3889b1bfbdb39111352ecbc3ffb7",
+    "tensor_manifest.json": "932872830653b8fbd3e9ca0fb523313e0c49af3c0c219ed579d037d8aecd61da",
+    "topology.pt": "bc8dbf53869994e69f6832f6fa19055244b7ff2b8e5c53e1f153fa71fca09ddd"
+  }
+}

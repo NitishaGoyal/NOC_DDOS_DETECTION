@@ -1,0 +1,68 @@
+{
+  "artifacts": {
+    "F0_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/V5_P3_F0_D70_FEATURE_STUDY_LOCK.json",
+    "channel_inventory_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/DYNAMIC70_CHANNEL_INVENTORY.csv",
+    "channel_inventory_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/schema_audit/DYNAMIC70_CHANNEL_INVENTORY.json",
+    "data_access_contract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/DATA_ACCESS_CONTRACT.json",
+    "feature_group_contract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/FEATURE_GROUP_CONTRACT.json",
+    "metric_contract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/METRIC_CONTRACT.json",
+    "schema_discovery_debug": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/F1_SCHEMA_DISCOVERY_DEBUG.json"
+  },
+  "certified_interface": {
+    "dynamic_channels": 70,
+    "macro_group_counts": {
+      "buffer_pressure": 15,
+      "directional_traffic_volume": 10,
+      "flow_control_stalls": 15,
+      "inter_flit_timing": 20,
+      "queue_activity": 10
+    },
+    "physical_port_mask_separate": true,
+    "physical_port_mask_shape": [
+      16,
+      10
+    ],
+    "physical_port_validity_in_temporal_input": false,
+    "status_flags_in_temporal_input": false,
+    "temporal_input_shape": [
+      16,
+      70,
+      32
+    ]
+  },
+  "created_utc": "2026-08-05T19:27:07.048762+00:00",
+  "data_access": {
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": false,
+    "validation_tensors_loaded": false
+  },
+  "decision": {
+    "F0_complete": true,
+    "F1_complete": true,
+    "F2_authorized": true,
+    "F3_authorized": false,
+    "next_stage": "V5_P3_F2_DYNAMIC70_TRAINING_ONLY_DEGENERACY_AND_OBSERVABILITY_AUDIT",
+    "sealed_test_access_authorized": false,
+    "validation_access_authorized_now": false
+  },
+  "mask_shape_evidence": {
+    "companion_metadata_evidence_paths": [
+      "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/dataset_summary.json"
+    ],
+    "shape": [
+      16,
+      10
+    ]
+  },
+  "schema": {
+    "exact_order_match": true,
+    "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/feature_schema.json",
+    "selected_candidate_count": 81,
+    "selected_candidate_kind": "string_list_81",
+    "selected_candidate_path": "$.raw81_feature_names",
+    "sha256": "4c392673c4b3ded94f09433596ed72de89aef25d2163cca71b0493d4f9984155"
+  },
+  "stage": "V5_P3_F1_DYNAMIC70_SCHEMA_CERTIFICATION",
+  "status": "PASS"
+}

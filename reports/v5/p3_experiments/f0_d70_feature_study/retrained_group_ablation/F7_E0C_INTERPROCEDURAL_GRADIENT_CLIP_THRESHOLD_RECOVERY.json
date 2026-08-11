@@ -1,0 +1,164 @@
+{
+  "all_paths_batch": true,
+  "all_paths_epoch": true,
+  "clip_call": {
+    "context": {
+      "all_paths_batch": true,
+      "all_paths_epoch": true,
+      "any_path_batch": true,
+      "any_path_epoch": true,
+      "direct_context": {
+        "batch": true,
+        "epoch": false,
+        "loops": [
+          {
+            "iterator": "loader",
+            "line_start": 527,
+            "target": "batch",
+            "type": "for"
+          }
+        ]
+      },
+      "execution_paths": [
+        {
+          "batch": true,
+          "callsites": [
+            {
+              "callee": "main",
+              "caller": null,
+              "direct_loop_context": {
+                "batch": false,
+                "epoch": false,
+                "loops": []
+              },
+              "record": {
+                "excerpt": "    raise SystemExit(main())",
+                "excerpt_sha256": "cc79ea1de8f5cf7c4f02e7b43c494b1ae782416b138c209cd6f7b5ff347fc48c",
+                "line_end": 1908,
+                "line_start": 1908,
+                "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                "source": "main()"
+              }
+            },
+            {
+              "callee": "train_one_epoch",
+              "caller": "main",
+              "direct_loop_context": {
+                "batch": false,
+                "epoch": true,
+                "loops": [
+                  {
+                    "iterator": "range(1, 101)",
+                    "line_start": 1462,
+                    "target": "epoch",
+                    "type": "for"
+                  }
+                ]
+              },
+              "record": {
+                "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+                "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+                "line_end": 1474,
+                "line_start": 1466,
+                "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+              }
+            }
+          ],
+          "direct_node_context": {
+            "batch": true,
+            "epoch": false,
+            "loops": [
+              {
+                "iterator": "loader",
+                "line_start": 527,
+                "target": "batch",
+                "type": "for"
+              }
+            ]
+          },
+          "epoch": true,
+          "path": [
+            "<module>",
+            "main",
+            "train_one_epoch"
+          ]
+        }
+      ],
+      "function": "train_one_epoch"
+    },
+    "function": "train_one_epoch",
+    "implementation": "torch.nn.utils.clip_grad_norm_",
+    "record": {
+      "excerpt": "        gradient_norm = torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            max_norm=gradient_clip,\n        )",
+      "excerpt_sha256": "69f6ccf151f9b58ac2fedbe9c88ecfc97450d089abf19407b431b024fe2de080",
+      "line_end": 551,
+      "line_start": 548,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_clip)"
+    },
+    "threshold": {
+      "argument_route": "keyword",
+      "callsites": [
+        {
+          "caller": "main",
+          "callsite": {
+            "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+            "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+            "line_end": 1474,
+            "line_start": 1466,
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+          },
+          "resolution": {
+            "expression": "1.0",
+            "resolved": true,
+            "route": "literal",
+            "value": 1.0
+          }
+        }
+      ],
+      "expression": "gradient_clip",
+      "function": "train_one_epoch",
+      "keyword": "max_norm",
+      "parameter": "gradient_clip",
+      "resolved": true,
+      "route": "unique_interprocedural_parameter_binding",
+      "value": 1.0
+    }
+  },
+  "ordering": {
+    "after_backward": true,
+    "before_optimizer_step": true
+  },
+  "semantics_resolved": true,
+  "threshold": {
+    "argument_route": "keyword",
+    "callsites": [
+      {
+        "caller": "main",
+        "callsite": {
+          "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+          "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+          "line_end": 1474,
+          "line_start": 1466,
+          "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+          "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+        },
+        "resolution": {
+          "expression": "1.0",
+          "resolved": true,
+          "route": "literal",
+          "value": 1.0
+        }
+      }
+    ],
+    "expression": "gradient_clip",
+    "function": "train_one_epoch",
+    "keyword": "max_norm",
+    "parameter": "gradient_clip",
+    "resolved": true,
+    "route": "unique_interprocedural_parameter_binding",
+    "value": 1.0
+  }
+}

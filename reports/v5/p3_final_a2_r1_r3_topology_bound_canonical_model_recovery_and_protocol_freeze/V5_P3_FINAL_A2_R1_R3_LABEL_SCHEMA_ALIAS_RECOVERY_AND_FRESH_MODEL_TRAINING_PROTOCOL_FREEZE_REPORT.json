@@ -1,0 +1,793 @@
+{
+  "a2_p0": {
+    "ambiguous_fields": [
+      "model_constructor_or_class",
+      "expected_parameter_count",
+      "fresh_seed_policy",
+      "optimizer",
+      "initial_learning_rate",
+      "weight_decay",
+      "batch_size",
+      "maximum_epochs",
+      "scheduler_semantics",
+      "early_stop_or_fixed_epoch_semantics",
+      "checkpoint_selection_formula",
+      "loss_functions",
+      "loss_weights",
+      "positive_or_class_weights",
+      "gradient_handling",
+      "determinism_settings",
+      "train_shuffle_semantics",
+      "validation_partition_semantics",
+      "normalization_artifact",
+      "resume_semantics",
+      "decoder_absent_from_training",
+      "sealed_test_denial"
+    ],
+    "report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_p0_training_protocol_evidence_recovery/V5_P3_FINAL_A2_P0_TRAINING_PROTOCOL_EVIDENCE_RECOVERY_REPORT.json",
+    "sha256": "aa5b3c92d8bfa86a383e678bc2f2bd17fa6fde56d9fa41883daa1ffed38900ea",
+    "status": "PASS"
+  },
+  "ambiguity_adjudication": {
+    "fields": {
+      "batch_size": {
+        "selected": 256
+      },
+      "checkpoint_selection_formula": {
+        "selected": {
+          "checkpoint_selection_uses_validation": true,
+          "component_order": [
+            "graph_auroc",
+            "graph_average_precision",
+            "count_active_macro_f1",
+            "source_average_precision",
+            "transit_average_precision",
+            "victim_average_precision",
+            "path_average_precision"
+          ],
+          "early_stop_monitor": "selection_score",
+          "formula": "mean(graph_AUROC, graph_AP, count_active_macro_F1, source_AP, transit_AP, victim_AP, path_AP)",
+          "reporting_threshold": 0.5,
+          "test_used_for_selection": false,
+          "threshold_free_components": [
+            "graph_auroc",
+            "graph_average_precision",
+            "source_average_precision",
+            "transit_average_precision",
+            "victim_average_precision",
+            "path_average_precision"
+          ],
+          "threshold_tuning_during_training": false,
+          "tie_break_order": [
+            "lower_validation_loss",
+            "earlier_epoch"
+          ]
+        }
+      },
+      "decoder_absent_from_training": {
+        "selected": true
+      },
+      "determinism_settings": {
+        "selected": {
+          "exact_set_seed_source_sha256": "7f9f89e9e2e642030fdb539d0ef7bbf6f248bb28b706a859b23d2475a8f41a00",
+          "initial_state_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+          "same_seed_initial_state_reproduced": true,
+          "seed": 107,
+          "train_order": "A4 epoch-aware deterministic permutation sampler; exact source excerpt pinned",
+          "validation_order": "fixed order, shuffle=False"
+        }
+      },
+      "early_stop_or_fixed_epoch_semantics": {
+        "policy": "maximum 100 epochs with A4 early stopping; not fixed to preliminary best epoch 14",
+        "selected": {
+          "minimum_epochs": 15,
+          "minimum_improvement": 0.0001,
+          "patience": 12
+        }
+      },
+      "expected_parameter_count": {
+        "note": "60553 is the built Dynamic70 model; 59785 is the pre-expansion canonical count",
+        "selected": 60553
+      },
+      "fresh_seed_policy": {
+        "selected": "single fresh seed 107; no seed sweep; no warm start"
+      },
+      "gradient_handling": {
+        "selected": {
+          "clip_norm": 1.0,
+          "clip_type": "global norm",
+          "placement": "after backward and before optimizer step, inherited from pinned A4 trainer source"
+        }
+      },
+      "initial_learning_rate": {
+        "selected": 0.001
+      },
+      "loss_functions": {
+        "selected": "BCEWithLogits for graph/source/transit/victim/path; active-only CrossEntropy for count"
+      },
+      "loss_weights": {
+        "aggregation": "unweighted sum",
+        "selected": {
+          "count": 1.0,
+          "graph": 1.0,
+          "path": 1.0,
+          "source": 1.0,
+          "transit": 1.0,
+          "victim": 1.0
+        }
+      },
+      "maximum_epochs": {
+        "selected": 100
+      },
+      "model_constructor_or_class": {
+        "rejected": "bare canonical class/default parameter-count interpretation",
+        "runtime_class": "V6P0Dynamic70GraphConvCount4",
+        "selected": "build_v6_p0_dynamic70_from_canonical_structure"
+      },
+      "normalization_artifact": {
+        "selected": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/normalization.pt",
+        "sha256": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49"
+      },
+      "optimizer": {
+        "selected": "AdamW"
+      },
+      "positive_or_class_weights": {
+        "selected": {
+          "count_class_weights": false,
+          "graph": 2.7082685394197807,
+          "roles": {
+            "path": 8.208121405883452,
+            "source": 20.0,
+            "transit": 17.186033877456886,
+            "victim": 20.0
+          }
+        },
+        "source": "final A+B train-only scan"
+      },
+      "resume_semantics": {
+        "selected": {
+          "fresh_start_required": true,
+          "interruption_resume_allowed": true,
+          "preliminary_checkpoint_reuse_forbidden": true,
+          "required_identity_gates": [
+            "model source hash",
+            "trainer source hash",
+            "protocol hash",
+            "dataset root and manifests",
+            "normalization hash",
+            "seed",
+            "optimizer state",
+            "scheduler state",
+            "epoch-order controller"
+          ],
+          "resume_scope": "same final run/output directory only",
+          "resume_state_semantics": "A3 must recover and test the exact A4 checkpoint key set before A4 training"
+        }
+      },
+      "scheduler_semantics": {
+        "selected": {
+          "factor": 0.5,
+          "minimum_lr": 1e-05,
+          "mode": "max",
+          "name": "ReduceLROnPlateau",
+          "patience": 4,
+          "threshold": 0.0001
+        }
+      },
+      "sealed_test_denial": {
+        "guard_error": "SealedTestAccessError('V5-P3 final test access is sealed. This guarded interface authorizes only train and validation.')",
+        "selected": true
+      },
+      "train_shuffle_semantics": {
+        "selected": "A4 epoch-aware deterministic permutation sampler; exact source excerpt pinned"
+      },
+      "validation_partition_semantics": {
+        "note": "No source-level lock reserved B-validation as a separate confirmation partition",
+        "selected": "combined final A+B validation for checkpoint selection; sealed test remains the independent final evaluation"
+      },
+      "weight_decay": {
+        "selected": 0.0001
+      }
+    },
+    "production_authority_exclusion": {
+      "excluded_family": "V5-P3 F-series feature/ablation/decoder experiments",
+      "reason": "exploratory branch; cannot override production A3/A4/A5 training protocol"
+    },
+    "resolved_count": 22,
+    "stage": "V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE",
+    "unresolved_count": 0
+  },
+  "artifacts": {
+    "adjudication": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_AMBIGUITY_ADJUDICATION.json",
+    "label_statistics": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_AB_TRAIN_LABEL_STATISTICS.json",
+    "protocol": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_FINAL_FRESH_TRAINING_PROTOCOL.json",
+    "source_semantics_pin": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze/V5_P3_FINAL_A2_R1_R3_A4_TRAINING_SOURCE_SEMANTICS_PIN.json"
+  },
+  "authority_hashes": {
+    "reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT_LOCK.json": "2de63dc76a80d1de206e13856a570c508cd8cda4ed8c25a3ad5254aea03fc06d",
+    "reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT_REPORT.json": "d716a283da7dd52a190725e923789c8aa8d54f849d7eb8d2fcacf711afd3af3c",
+    "reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_A3_TRAIN_LABEL_AND_PAIR_STATISTICS.json": "beed403573ea7ed9093286b4755cfac4365d17fee6b4b8aabfd9c63ef16a3e59",
+    "reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_A3_VALIDATION_LABEL_AND_PAIR_STATISTICS.json": "59b92785decbc243caf5bb951e81a638420f47264999632e11d07f7337d7f305",
+    "reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL.json": "20c7cfebd06888f1cde9a29d388839f283240463127a44a2a2eb7484ad0869c4",
+    "reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_LOCK.json": "35574988ce63a49c9d7880990d10ef49549fb34cd4b82dbc323d4b4b2341539c",
+    "reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_REPORT.json": "cf18c1d27188446b73eae09cca189e27b9795feb5ab35d7cbb1daebc17fe5c63",
+    "reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness/V5_P3_A5_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS_LOCK.json": "a2094b4a7b2e98509a2f23de146e5d41bebf56c5510c464aa4aabee4ece94de5",
+    "reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness/V5_P3_A5_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS_REPORT.json": "1617eeeed7c28ea5f90fdd870728d5140f24b4fbb9b2e851e3d4bbd3af80c373",
+    "reports/v5/p3_final_a0_integrity_and_guarded_loader_preflight/V5_P3_FINAL_A0_DYNAMIC70_INTEGRITY_AND_GUARDED_LOADER_PREFLIGHT_LOCK.json": "6b0e820a77ddb4cd8fb9303ac64e0f7460c1f4ec9a2577be47b0b13f3725715a",
+    "reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_NATIVE_LOADER_CERTIFICATE.json": "2e679739b9e091b7b4defa544fb2ecfc47f32a2cf4607d0c36ec0a9bf998d20e",
+    "reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_NORMALIZATION_SEMANTICS_CERTIFICATE.json": "22dfe433c206c5a9aab12d5bb1135bbae841815e075d9fa6778bd569d515a871",
+    "reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_TRAIN_ONLY_NORMALIZATION_SEMANTICS_RECOVERY_AND_NATIVE_LOADER_CERTIFICATION_LOCK.json": "5adba626103d9b86e6c2f90c89c40a692ccf3a1e7c6a1821587829c42b9d4bd7",
+    "scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2",
+    "src/data/v5_p3_final_dynamic70_guarded_access.py": "fe74fac0b1afbbec5b17aa29a075fb983e7180fa59ab1781882dbc139fa5d006",
+    "src/models/v5_p2_b3_conv1d_only_count4.py": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "src/models/v5_p2_task_d_full_multitask_count4.py": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+  },
+  "authorization": {
+    "A2_protocol_frozen": true,
+    "A3_implementation_preflight_authorized": true,
+    "full_fresh_training_authorized": false,
+    "full_training_requires_A3_PASS": true,
+    "sealed_test_evaluation_authorized": false
+  },
+  "decoder": {
+    "executed": false,
+    "imported": false,
+    "training_source_dependencies": []
+  },
+  "elapsed_seconds": 3.750088930130005,
+  "errors": [],
+  "generated_at_utc": "2026-08-07T00:59:02.942819+00:00",
+  "git": {
+    "branch": {
+      "cmd": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "siya/gcn_model"
+    },
+    "head": {
+      "cmd": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "0c4c2d85976e648fd93df792cc19023bc2a61f9c"
+    },
+    "status_porcelain": {
+      "cmd": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "?? **Graph-level\n?? 10^{-4}\n?? Mean\n?? archive/\n?? artifacts/\n?? data/processed/v5/\n?? presentation_demo/\n?? references/GNN_UofF.pdf\n?? reports/balanced_placement_ds2_4x4_seed7_split_composition.txt\n?? reports/tcn-gcn-ds-24feature/\n?? reports/v3-ds-24feature/\n?? reports/v3_conv_vs_tcn_error_analysis.txt\n?? reports/v3_failure_analysis/\n?? reports/v3_tcn_gcn_builtin_split_result.txt\n?? reports/v4/\n?? reports/v5/\n?? reports/v6/\n?? retrospective/\n?? scripts/compare_v3_conv_vs_meanpool_errors.py\n?? scripts/compare_v3_conv_vs_tcn_errors.py\n?? scripts/eval_temporal_tcn_gcn.py\n?? scripts/failure_analysis/\n?? scripts/make_balanced_placement_splits.py\n?? scripts/samplers/\n?? scripts/sweep_v3_graph_thresholds.py\n?? scripts/sweep_v3_graph_thresholds_maxpool.py\n?? scripts/sweep_v3_graph_thresholds_meanpool.py\n?? scripts/train_temporal_gcn_early_stopping.py\n?? scripts/train_temporal_gcn_v3.py\n?? scripts/train_temporal_gcn_v3.py.broken\n?? scripts/train_temporal_gcn_v3_c1_meanmax.py\n?? scripts/train_temporal_gcn_v3_chrono_b1.py\n?? scripts/train_temporal_gcn_v3_g1_graphconv.py\n?? scripts/train_temporal_gcn_v3_stage9_b1.py\n?? scripts/train_temporal_tcn_gcn_early_stopping.py\n?? scripts/train_temporal_tcn_gcn_v3.py\n?? scripts/train_temporal_tcn_gcn_v3.py.broken\n?? scripts/train_temporal_tcn_maxpool_gcn_v3.py\n?? scripts/train_temporal_tcn_meanpool_gcn_v3.py\n?? scripts/v4/\n?? scripts/v5/\n?? src/\n?? tests/"
+    }
+  },
+  "guarded_access": {
+    "constructor_attempts": [
+      {
+        "args": [
+          "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70"
+        ],
+        "class": "GuardedFinalDynamic70Access",
+        "kwargs": {},
+        "success": true
+      }
+    ],
+    "test_listing_denied": true,
+    "test_listing_error": "SealedTestAccessError('V5-P3 final test access is sealed. This guarded interface authorizes only train and validation.')",
+    "test_tensor_deserialized": false,
+    "train_runs": 2400,
+    "train_tranche_counts": {
+      "A": 1200,
+      "B": 1200
+    },
+    "validation_runs": 300,
+    "validation_tranche_counts": {
+      "A": 150,
+      "B": 150
+    }
+  },
+  "model": {
+    "backward_performed": false,
+    "builder": "build_v6_p0_dynamic70_from_canonical_structure",
+    "deterministic_reconstruction": true,
+    "forward_performed": false,
+    "initial_state_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+    "optimizer_step_performed": false,
+    "parameter_count": 60553,
+    "runtime_class": "V6P0Dynamic70GraphConvCount4"
+  },
+  "native_loader": {
+    "class": "V5P3Dynamic70WindowDataset",
+    "label_alias_priority": {
+      "y_attack": [
+        "y_attack",
+        "y_graph",
+        "graph_label"
+      ],
+      "y_attacker_count": [
+        "y_attacker_count",
+        "y_count",
+        "count_label"
+      ],
+      "y_path": [
+        "y_attack_path",
+        "y_path",
+        "path_label"
+      ],
+      "y_source": [
+        "y_source",
+        "source_label"
+      ],
+      "y_transit": [
+        "y_transit",
+        "transit_label"
+      ],
+      "y_victim": [
+        "y_victim",
+        "victim_label"
+      ]
+    },
+    "native_label_key_map": {
+      "y_attack": "y_attack",
+      "y_attacker_count": "y_attacker_count",
+      "y_path": "y_attack_path",
+      "y_source": "y_source",
+      "y_transit": "y_transit",
+      "y_victim": "y_victim"
+    },
+    "path_alias_recovery": {
+      "certified_native_key": "y_attack_path",
+      "dataset_or_loader_modified": false,
+      "failed_required_key": "y_path",
+      "mapping_is_value_preserving": true
+    },
+    "test_dataset_constructed": false,
+    "train_constructor_attempts": [
+      {
+        "kwargs": {
+          "active_only": "False",
+          "root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+          "split": "train"
+        },
+        "mode": "signature_kwargs",
+        "success": true
+      }
+    ],
+    "train_length": 221773,
+    "train_sample_inventory": {
+      "items": [
+        {
+          "key": "case_id",
+          "python_type": "str",
+          "value_preview": "P3ATR-K1-001"
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "edge_index",
+          "numel": 96,
+          "shape": [
+            2,
+            48
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "epoch_id",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "epoch_tick",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "key": "mode",
+          "python_type": "str",
+          "value_preview": "attack"
+        },
+        {
+          "key": "pair_id",
+          "python_type": "str",
+          "value_preview": "V5-P3-1500-D70-P3ATR-K1-001-S1T1-SEED740001"
+        },
+        {
+          "dtype": "torch.uint8",
+          "key": "physical_port_mask",
+          "numel": 160,
+          "shape": [
+            16,
+            10
+          ]
+        },
+        {
+          "dtype": "torch.uint8",
+          "key": "role_mask",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "key": "run_id",
+          "python_type": "str",
+          "value_preview": "V5-P3-1500-D70-P3ATR-K1-001-S1T1-SEED740001-ATTACK"
+        },
+        {
+          "dtype": "torch.int8",
+          "key": "source_target_router",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "key": "window_start",
+          "python_type": "int",
+          "value_preview": "0"
+        },
+        {
+          "key": "window_target",
+          "python_type": "int",
+          "value_preview": "31"
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "x",
+          "numel": 35840,
+          "shape": [
+            16,
+            70,
+            32
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_attack",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_attack_path",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "y_attacker_count",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_source",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_transit",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_victim",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        }
+      ],
+      "keys": [
+        "case_id",
+        "edge_index",
+        "epoch_id",
+        "epoch_tick",
+        "mode",
+        "pair_id",
+        "physical_port_mask",
+        "role_mask",
+        "run_id",
+        "source_target_router",
+        "window_start",
+        "window_target",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ]
+    },
+    "validation_constructor_attempts": [
+      {
+        "kwargs": {
+          "active_only": "False",
+          "root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+          "split": "validation"
+        },
+        "mode": "signature_kwargs",
+        "success": true
+      }
+    ],
+    "validation_length": 27722,
+    "validation_sample_inventory": {
+      "items": [
+        {
+          "key": "case_id",
+          "python_type": "str",
+          "value_preview": "P3AVA-K1-001"
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "edge_index",
+          "numel": 96,
+          "shape": [
+            2,
+            48
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "epoch_id",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "epoch_tick",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "key": "mode",
+          "python_type": "str",
+          "value_preview": "attack"
+        },
+        {
+          "key": "pair_id",
+          "python_type": "str",
+          "value_preview": "V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601"
+        },
+        {
+          "dtype": "torch.uint8",
+          "key": "physical_port_mask",
+          "numel": 160,
+          "shape": [
+            16,
+            10
+          ]
+        },
+        {
+          "dtype": "torch.uint8",
+          "key": "role_mask",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "key": "run_id",
+          "python_type": "str",
+          "value_preview": "V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-ATTACK"
+        },
+        {
+          "dtype": "torch.int8",
+          "key": "source_target_router",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "key": "window_start",
+          "python_type": "int",
+          "value_preview": "0"
+        },
+        {
+          "key": "window_target",
+          "python_type": "int",
+          "value_preview": "31"
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "x",
+          "numel": 35840,
+          "shape": [
+            16,
+            70,
+            32
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_attack",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_attack_path",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "dtype": "torch.int64",
+          "key": "y_attacker_count",
+          "numel": 1,
+          "shape": []
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_source",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_transit",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        },
+        {
+          "dtype": "torch.float32",
+          "key": "y_victim",
+          "numel": 16,
+          "shape": [
+            16
+          ]
+        }
+      ],
+      "keys": [
+        "case_id",
+        "edge_index",
+        "epoch_id",
+        "epoch_tick",
+        "mode",
+        "pair_id",
+        "physical_port_mask",
+        "role_mask",
+        "run_id",
+        "source_target_router",
+        "window_start",
+        "window_target",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ]
+    }
+  },
+  "next_stage": "V5_P3_FINAL_A3_FRESH_TRAINING_IMPLEMENTATION_PREFLIGHT",
+  "paths": {
+    "dataset_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70",
+    "output_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze",
+    "physical_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "repo": "/home/zira/research/projects/GNN-2d"
+  },
+  "physical_artifacts": {
+    "native_loader": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "normalization": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/normalization.pt",
+    "normalization_sha256": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49"
+  },
+  "preliminary_weight_formula_reproduction": {
+    "graph": {
+      "recomputed": 2.7072771052103537,
+      "recorded": 2.7072771052103537
+    },
+    "path": {
+      "recomputed_clamped": 8.182011606417179,
+      "recomputed_raw": 8.182011606417179,
+      "recorded_clamped": 8.182011606417179,
+      "recorded_raw": 8.182011606417179
+    },
+    "source": {
+      "recomputed_clamped": 20.0,
+      "recomputed_raw": 22.79373256063533,
+      "recorded_clamped": 20.0,
+      "recorded_raw": 22.79373256063533
+    },
+    "transit": {
+      "recomputed_clamped": 17.295923419706224,
+      "recomputed_raw": 17.295923419706224,
+      "recorded_clamped": 17.295923419706224,
+      "recorded_raw": 17.295923419706224
+    },
+    "victim": {
+      "recomputed_clamped": 20.0,
+      "recomputed_raw": 28.394275865497754,
+      "recorded_clamped": 20.0,
+      "recorded_raw": 28.394275865497754
+    }
+  },
+  "recovery_from": {
+    "disposition": "HOLD_BEFORE_LABEL_SCAN",
+    "model_evaluation_started": false,
+    "root_cause": "preflight required export alias y_path while native loader exposes certified key y_attack_path",
+    "stage": "V5_P3_FINAL_A2_R1_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE",
+    "test_tensor_deserialized": false,
+    "training_started": false
+  },
+  "scope": "label_schema_alias_recovery_plus_production_mainline_protocol_adjudication_and_train_only_weight_freeze",
+  "stage": "V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE",
+  "status": "PASS",
+  "train_label_statistics": {
+    "active_count_distribution": {
+      "1": 15054,
+      "2": 15022,
+      "3": 14938,
+      "4": 14791
+    },
+    "attack_zero_count_targets": 0,
+    "control_nonzero_count_targets": 0,
+    "count_class_weights_applied": false,
+    "elapsed_seconds": 31.64223289489746,
+    "graph_negative": 161968,
+    "graph_positive": 59805,
+    "graph_positive_weight": 2.7082685394197807,
+    "items": 221773,
+    "positive_weight_formula": "min(negative_entries / positive_entries, 20.0)",
+    "role_statistics": {
+      "path": {
+        "canonical_clamped_positive_weight": 8.208121405883452,
+        "negative_entries": 3163016,
+        "positive_entries": 385352,
+        "raw_positive_weight": 8.208121405883452,
+        "windows_with_positive_label": 59805
+      },
+      "source": {
+        "canonical_clamped_positive_weight": 20.0,
+        "negative_entries": 3399292,
+        "positive_entries": 149076,
+        "raw_positive_weight": 22.802409509243606,
+        "windows_with_positive_label": 59805
+      },
+      "transit": {
+        "canonical_clamped_positive_weight": 17.186033877456886,
+        "negative_entries": 3353253,
+        "positive_entries": 195115,
+        "raw_positive_weight": 17.186033877456886,
+        "windows_with_positive_label": 51654
+      },
+      "victim": {
+        "canonical_clamped_positive_weight": 20.0,
+        "negative_entries": 3427625,
+        "positive_entries": 120743,
+        "raw_positive_weight": 28.387774032449087,
+        "windows_with_positive_label": 59805
+      }
+    },
+    "scan_batch_size": 512,
+    "scan_num_workers": 0
+  },
+  "warnings": []
+}

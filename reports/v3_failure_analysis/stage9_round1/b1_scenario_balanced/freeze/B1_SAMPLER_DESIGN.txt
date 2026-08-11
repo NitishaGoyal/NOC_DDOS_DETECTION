@@ -1,0 +1,27 @@
+Stage 9 B1 controlled intervention
+
+Model seed:
+7
+
+Sampler seed:
+7001
+
+Sampling hierarchy:
+1. Select normal or attack with probability 0.5 each.
+2. Select one training run uniformly within the selected class.
+3. Select one window uniformly within the selected run.
+4. Repeat with replacement for 148185 draws.
+
+Optimization loader:
+balanced replacement sampling.
+
+Train evaluation loader:
+complete original training cohort, shuffle=False, reporting only.
+
+Frozen:
+dataset, split, model, readout, losses, class weights, optimizer,
+batch size, early stopping, validation/test loaders and checkpoint score.
+
+Known objective interaction:
+graph_pos_weight remains 0.45161290322580644 under approximately
+50/50 graph-class sampling.

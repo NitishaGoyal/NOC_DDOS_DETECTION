@@ -1,0 +1,920 @@
+{
+  "A1_R1_native_loader_certificate": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_NATIVE_LOADER_CERTIFICATE.json",
+  "A1_R1_native_loader_certificate_sha256": "2e679739b9e091b7b4defa544fb2ecfc47f32a2cf4607d0c36ec0a9bf998d20e",
+  "A1_R1_recovery_script": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_final_a1_r1_normalization_semantics_recovery.py",
+  "A1_R1_recovery_script_excerpt": [
+    "0016: import numpy as np",
+    "0017: ",
+    "0018: ",
+    "0019: STAGE = (",
+    "0020:     \"V5_P3_FINAL_A1_R1_TRAIN_ONLY_NORMALIZATION_\"",
+    "0021:     \"SEMANTICS_RECOVERY_AND_NATIVE_LOADER_CERTIFICATION\"",
+    "0022: )",
+    "0023: CAMPAIGN_LABEL = (",
+    "0024:     \"V5-P3-1500-D70 Final A+B Dataset \u2014 \"",
+    "0025:     \"Train-Only Normalization-Semantics Recovery\"",
+    "0026: )",
+    "0087: def require(condition: bool, message: str) -> None:",
+    "0088:     if not condition:",
+    "0089:         raise RuntimeError(message)",
+    "0090: ",
+    "0091: ",
+    "0092: def import_source(path: Path, module_name: str):",
+    "0093:     spec = importlib.util.spec_from_file_location(module_name, path)",
+    "0094:     if spec is None or spec.loader is None:",
+    "0095:         raise RuntimeError(f\"cannot import {path}\")",
+    "0096:     module = importlib.util.module_from_spec(spec)",
+    "0097:     sys.modules[module_name] = module",
+    "0527:     if unresolved:",
+    "0528:         return None, unresolved",
+    "0529:     return kwargs, []",
+    "0530: ",
+    "0531: ",
+    "0532: def certify_native_loader(",
+    "0533:     loader_path: Path,",
+    "0534:     root: Path,",
+    "0535:     normalization_path: Path,",
+    "0536: ) -> dict[str, Any]:",
+    "0537:     import torch",
+    "0538: ",
+    "0543:         import_loads.append(repr(args[0]) if args else \"<unknown>\")",
+    "0544:         raise RuntimeError(\"torch.load called during loader import\")",
+    "0545: ",
+    "0546:     torch.load = forbidden_load",
+    "0547:     try:",
+    "0548:         module = import_source(",
+    "0549:             loader_path,",
+    "0550:             \"_v5_p3_final_a1_r1_native_loader\",",
+    "0551:         )",
+    "0552:     finally:",
+    "0553:         torch.load = original_load",
+    "0554: ",
+    "0555:     require(not import_loads, f\"import-time tensor loads: {import_loads}\")",
+    "0657:     )",
+    "0658: ",
+    "0659:     return {",
+    "0660:         \"import_side_effect_free\": True,",
+    "0661:         \"import_time_tensor_loads\": 0,",
+    "0662:         \"loader_path\": str(loader_path),",
+    "0663:         \"loader_sha256\": sha256_file(loader_path),",
+    "0664:         \"selected_class\": selected[\"class\"],",
+    "0665:         \"selected_signature\": selected[\"signature\"],",
+    "0666:         \"train_length\": selected[\"successes\"][\"train\"][\"length\"],",
+    "0667:         \"validation_length\": selected[\"successes\"][\"validation\"][\"length\"],",
+    "0668:         \"train_sample_tensor_inventory\": selected[\"successes\"][",
+    "0702:     )",
+    "0703:     a0_report = a0_dir / f\"{A0_STAGE}_REPORT.json\"",
+    "0704:     a0_lock = a0_dir / f\"{A0_STAGE}_LOCK.json\"",
+    "0705:     guard_path = repo / \"src/data/v5_p3_final_dynamic70_guarded_access.py\"",
+    "0706:     normalization_path = physical_root / \"normalization.pt\"",
+    "0707:     loader_path = physical_root / \"dataset_loader.py\"",
+    "0708: ",
+    "0709:     required = [",
+    "0710:         a0_report,",
+    "0711:         a0_lock,",
+    "0712:         guard_path,",
+    "0713:         normalization_path,",
+    "0714:         loader_path,",
+    "0715:     ]",
+    "0716:     missing = [str(path) for path in required if not path.is_file()]",
+    "0717:     require(not missing, f\"missing required artifacts: {missing}\")",
+    "0718: ",
+    "0719:     a0_report_payload = json.loads(a0_report.read_text(encoding=\"utf-8\"))",
+    "0734:     )",
+    "0735: ",
+    "0736:     if str(repo) not in sys.path:",
+    "0737:         sys.path.insert(0, str(repo))",
+    "0738: ",
+    "0739:     guard_module = import_source(",
+    "0740:         guard_path,",
+    "0741:         \"_v5_p3_final_a1_r1_guard\",",
+    "0742:     )",
+    "0743:     guard_module.assert_test_is_sealed()",
+    "0744:     guarded = guard_module.GuardedFinalDynamic70Access(physical_root)",
+    "0757:         guarded,",
+    "0758:         normalization_path,",
+    "0759:         moments_npz,",
+    "0760:     )",
+    "0761: ",
+    "0762:     native_loader_result = certify_native_loader(",
+    "0763:         loader_path,",
+    "0764:         physical_root,",
+    "0765:         normalization_path,",
+    "0766:     )",
+    "0767: ",
+    "0768:     try:",
+    "0774: ",
+    "0775:     normalization_certificate = output_dir / (",
+    "0776:         \"V5_P3_FINAL_A1_R1_NORMALIZATION_SEMANTICS_CERTIFICATE.json\"",
+    "0777:     )",
+    "0778:     loader_certificate = output_dir / (",
+    "0779:         \"V5_P3_FINAL_A1_R1_NATIVE_LOADER_CERTIFICATE.json\"",
+    "0780:     )",
+    "0781:     report_path = output_dir / f\"{STAGE}_REPORT.json\"",
+    "0782:     lock_path = output_dir / f\"{STAGE}_LOCK.json\"",
+    "0783:     complete_path = output_dir / f\"{STAGE}_COMPLETE\"",
+    "0784: ",
+    "0785:     atomic_json(normalization_certificate, normalization_result)",
+    "0786:     atomic_json(loader_certificate, native_loader_result)",
+    "0787: ",
+    "0788:     report = {",
+    "0789:         \"stage\": STAGE,",
+    "0790:         \"status\": \"PASS\",",
+    "0791:         \"created_utc\": datetime.now(timezone.utc).isoformat(),",
+    "0795:                 \"verification-assumption mismatch: the earlier verifier \"",
+    "0796:                 \"treated a delivered scale-like vector as literal std\"",
+    "0797:             ),",
+    "0798:             \"dataset_integrity_failure\": False,",
+    "0799:             \"normalization_artifact_failure\": False,",
+    "0800:             \"native_loader_failure\": False,",
+    "0801:         },",
+    "0802:         \"normalization\": normalization_result,",
+    "0803:         \"native_loader\": native_loader_result,",
+    "0804:         \"guard_boundary\": {",
+    "0805:             \"precheck\": guard_precheck,",
+    "0806:             \"postcheck\": guard_postcheck,",
+    "0807:             \"test_tensor_deserialized\": False,",
+    "0808:         },",
+    "0809:         \"governance\": {",
+    "0810:             \"train_runs_loaded\": 2400,",
+    "0811:             \"validation_runs_used_for_normalization\": 0,",
+    "0812:             \"test_runs_used_for_normalization\": 0,",
+    "0813:             \"native_loader_train_sample_loaded\": True,",
+    "0814:             \"native_loader_validation_sample_loaded\": True,",
+    "0815:             \"native_loader_test_constructed\": False,",
+    "0816:             \"model_loaded\": False,",
+    "0817:             \"training\": False,",
+    "0818:             \"evaluation\": False,",
+    "0819:             \"threshold_tuning\": False,",
+    "0820:         },",
+    "0821:         \"decision\": {",
+    "0822:             \"train_only_union_normalization_semantics_certified\": True,",
+    "0823:             \"native_loader_train_validation_certified\": True,",
+    "0824:             \"final_test_sealed\": True,",
+    "0825:             \"fresh_model_training_protocol_freeze_authorized\": True,",
+    "0826:             \"next_stage\": (",
+    "0827:                 \"V5_P3_FINAL_A2_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE\"",
+    "0828:             ),",
+    "0830:         \"artifacts\": {",
+    "0831:             \"normalization_certificate\": str(normalization_certificate),",
+    "0832:             \"normalization_certificate_sha256\": sha256_file(",
+    "0833:                 normalization_certificate",
+    "0834:             ),",
+    "0835:             \"native_loader_certificate\": str(loader_certificate),",
+    "0836:             \"native_loader_certificate_sha256\": sha256_file(",
+    "0837:                 loader_certificate",
+    "0838:             ),",
+    "0839:             \"moments_npz\": str(moments_npz),",
+    "0840:             \"moments_npz_sha256\": sha256_file(moments_npz),",
+    "0841:         },",
+    "0842:         \"provenance\": {",
+    "0843:             \"FINAL_A0_report_sha256\": sha256_file(a0_report),",
+    "0844:             \"FINAL_A0_lock_sha256\": sha256_file(a0_lock),",
+    "0845:             \"guard_sha256\": sha256_file(guard_path),",
+    "0846:             \"normalization_sha256\": sha256_file(normalization_path),",
+    "0847:             \"native_loader_sha256\": sha256_file(loader_path),",
+    "0848:             \"installed_script_sha256\": sha256_file(installed_script),",
+    "0849:         },",
+    "0850:     }",
+    "0851:     atomic_json(report_path, report)",
+    "0852: ",
+    "0855:         \"status\": \"PASS\",",
+    "0856:         \"report_sha256\": sha256_file(report_path),",
+    "0857:         \"normalization_certificate_sha256\": sha256_file(",
+    "0858:             normalization_certificate",
+    "0859:         ),",
+    "0860:         \"native_loader_certificate_sha256\": sha256_file(",
+    "0861:             loader_certificate",
+    "0862:         ),",
+    "0863:         \"moments_npz_sha256\": sha256_file(moments_npz),",
+    "0864:         \"train_runs_used\": 2400,",
+    "0865:         \"validation_runs_used_for_normalization\": 0,",
+    "0894:             for index in normalization_result[",
+    "0895:                 \"constant_feature_indices\"",
+    "0896:             ]",
+    "0897:         )",
+    "0898:     )",
+    "0899:     print(\"native_loader_import_side_effect_free=true\")",
+    "0900:     print(",
+    "0901:         \"native_loader_selected_class=\"",
+    "0902:         f\"{native_loader_result['selected_class']}\"",
+    "0903:     )",
+    "0904:     print(",
+    "0905:         \"native_loader_train_length=\"",
+    "0906:         f\"{native_loader_result['train_length']}\"",
+    "0907:     )",
+    "0908:     print(",
+    "0909:         \"native_loader_validation_length=\"",
+    "0910:         f\"{native_loader_result['validation_length']}\"",
+    "0911:     )",
+    "0912:     print(\"native_loader_train_sample=PASS\")",
+    "0913:     print(\"native_loader_validation_sample=PASS\")",
+    "0914:     print(\"native_loader_test_constructed=false\")",
+    "0915:     print(\"guarded_test_precheck=PASS\")",
+    "0916:     print(\"guarded_test_postcheck=PASS\")",
+    "0917:     print(\"test_tensor_deserialized=false\")",
+    "0918:     print(\"model_loaded=false\")",
+    "0919:     print(\"model_training=false\")"
+  ],
+  "A1_R1_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_TRAIN_ONLY_NORMALIZATION_SEMANTICS_RECOVERY_AND_NATIVE_LOADER_CERTIFICATION_REPORT.json",
+  "A1_R1_report_sha256": "fc2bd289c4e94aa65d9ebe8066dc587b52df7ae00a6784f2e123a0eb8c2c0ef7",
+  "candidate_count": 19,
+  "candidates": [
+    {
+      "bytes": 51266,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a2_r1_fresh_model_training_protocol_freeze_package/v5_p3_final_a2_r1_fresh_model_training_protocol_freeze.py",
+      "sha256": "0c75cf1314ac85173df5313d9a999d0ac544ecf16587346bd38dbf6dec766cb5"
+    },
+    {
+      "bytes": 56222,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a2_r1_r1_label_schema_alias_recovery_and_protocol_freeze_package/v5_p3_final_a2_r1_r1_label_schema_alias_recovery_and_protocol_freeze.py",
+      "sha256": "e80e0fdb58565e5a82ef426083461422224894e54edd4479becf889cd261adce"
+    },
+    {
+      "bytes": 65041,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a2_r1_r2_canonical_model_construction_recovery_and_protocol_freeze_package/v5_p3_final_a2_r1_r2_canonical_model_construction_recovery_and_protocol_freeze.py",
+      "sha256": "282d5c75da0ffde1360eba7c2e232dc1d95e7e023fd4908bd609552f453fb523"
+    },
+    {
+      "bytes": 72557,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze_package/v5_p3_final_a2_r1_r3_topology_bound_canonical_model_recovery_and_protocol_freeze.py",
+      "sha256": "95e015695238935919ddd7cbe773afedb554b3401132d8b3e378b58807e92f6c"
+    },
+    {
+      "bytes": 18281,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_p0_r1_native_loader_source_recovery_package/v5_p3_final_a3_p0_r1_native_loader_source_recovery.py",
+      "sha256": "69d6087ab9b5303e0f944910932e612aad85a94a07d1503f39eb991bbf260685"
+    },
+    {
+      "bytes": 15396,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_p0_training_implementation_route_recovery_package/v5_p3_final_a3_p0_training_implementation_route_recovery.py",
+      "sha256": "025ad7c725ee60235fb3290e51608edf95f03016836b6dad46288fea516d11f3"
+    },
+    {
+      "bytes": 53329,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_r1_bounded_train_validation_smoke_preflight_package/v5_p3_final_a3_r1_bounded_train_validation_smoke_preflight.py",
+      "sha256": "8450ea677a316f8bfb30a9e3f3c3808bb59cfdf36a5aa91dc7cf0ba83935e67e"
+    },
+    {
+      "bytes": 57196,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_r1_r1_initial_state_hash_semantics_recovery_package/v5_p3_final_a3_r1_r1_initial_state_hash_semantics_recovery.py",
+      "sha256": "28b1a62f04fdf029c7f5dce61ecc4def1aac3799a5e5364bf1dee77154927723"
+    },
+    {
+      "bytes": 60911,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_r1_r2_training_batch_alias_contract_recovery_package/v5_p3_final_a3_r1_r2_training_batch_alias_contract_recovery.py",
+      "sha256": "244e26f99a922356eb0f7a74552fa00931b00611aa40db326647e23a0a4e81f5"
+    },
+    {
+      "bytes": 66976,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_r1_r3_authoritative_a4_io_contract_recovery_package/v5_p3_final_a3_r1_r3_authoritative_a4_io_contract_recovery.py",
+      "sha256": "0452947c8d314ab715fb56e8f7e6d52fd0256953b12d82ecfe15700594130439"
+    },
+    {
+      "bytes": 69998,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_r1_r4_loss_weight_tensor_semantics_recovery_package/v5_p3_final_a3_r1_r4_loss_weight_tensor_semantics_recovery.py",
+      "sha256": "280705a87261e784f9e49959160f6445dbb8d6427c4141389a95b96f5d13ec2b"
+    },
+    {
+      "bytes": 72140,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery_package/v5_p3_final_a3_r1_r5_explicit_cuda_device_binding_recovery.py",
+      "sha256": "780a702311dbd1a64a33c84408418494e9f4c0957ee354ed514cbb645c721d6b"
+    },
+    {
+      "bytes": 72140,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a4_fresh_ab_full_training_seed107_package/v5_p3_final_a4_runtime_support.py",
+      "sha256": "780a702311dbd1a64a33c84408418494e9f4c0957ee354ed514cbb645c721d6b"
+    },
+    {
+      "bytes": 72140,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a4_r1_fresh_ab_full_training_seed107_exact_sampler_package/v5_p3_final_a4_runtime_support.py",
+      "sha256": "780a702311dbd1a64a33c84408418494e9f4c0957ee354ed514cbb645c721d6b"
+    },
+    {
+      "bytes": 75408,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge_package/v5_p3_final_a4_runtime_support.py",
+      "sha256": "e7a0c2e975663f0144c410b51d899c8747501a280c7910b3bd283591ef1bd180"
+    },
+    {
+      "bytes": 75408,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_d1_immutable_combined_ab_validation_logit_export_package/v5_p3_final_d1_runtime_support.py",
+      "sha256": "e7a0c2e975663f0144c410b51d899c8747501a280c7910b3bd283591ef1bd180"
+    },
+    {
+      "bytes": 22642,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_d6_p0_eplr_v2_independent_validation_partition_recovery_package/v5_p3_final_d6_p0_eplr_v2_independent_validation_partition_recovery.py",
+      "sha256": "becfa623c37fb2b0c5a7de6c90cf7327bf44774615c879095548675bb6aac4ec"
+    },
+    {
+      "bytes": 15782,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": false,
+      "path": "/home/zira/Downloads/v5_p3_final_d6_p0_r1_native_loader_route_recovery_package/v5_p3_final_d6_p0_r1_native_loader_route_recovery.py",
+      "sha256": "4a39432467288611e87e9289b91b5884143abbab2b0377bde08d3344ef86b2ae"
+    },
+    {
+      "bytes": 3840,
+      "contains_certified_class": true,
+      "explicitly_referenced_by_A1_R1_certificate_or_report": true,
+      "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+      "sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+    }
+  ],
+  "certificate_loader_references": [
+    {
+      "key": "report.artifacts.native_loader_certificate",
+      "value": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_NATIVE_LOADER_CERTIFICATE.json"
+    },
+    {
+      "key": "report.artifacts.native_loader_certificate_sha256",
+      "value": "2e679739b9e091b7b4defa544fb2ecfc47f32a2cf4607d0c36ec0a9bf998d20e"
+    },
+    {
+      "key": "report.native_loader.attempts[0].class",
+      "value": "V5P3Dynamic70WindowDataset"
+    },
+    {
+      "key": "report.native_loader.attempts[0].kwargs.active_only",
+      "value": "False"
+    },
+    {
+      "key": "report.native_loader.attempts[0].kwargs.root",
+      "value": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70"
+    },
+    {
+      "key": "report.native_loader.attempts[0].kwargs.split",
+      "value": "train"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[0].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[0].path",
+      "value": "$.x"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[1].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[1].path",
+      "value": "$.physical_port_mask"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[2].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[2].path",
+      "value": "$.edge_index"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[3].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[3].path",
+      "value": "$.y_attack"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[4].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[4].path",
+      "value": "$.y_attacker_count"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[5].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[5].path",
+      "value": "$.y_source"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[6].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[6].path",
+      "value": "$.y_transit"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[7].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[7].path",
+      "value": "$.y_victim"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[8].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[8].path",
+      "value": "$.y_attack_path"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[9].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[9].path",
+      "value": "$.role_mask"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[10].dtype",
+      "value": "torch.int8"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[10].path",
+      "value": "$.source_target_router"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[11].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[11].path",
+      "value": "$.epoch_id"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[12].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[0].sample_tensor_inventory[12].path",
+      "value": "$.epoch_tick"
+    },
+    {
+      "key": "report.native_loader.attempts[0].split",
+      "value": "train"
+    },
+    {
+      "key": "report.native_loader.attempts[0].status",
+      "value": "PASS"
+    },
+    {
+      "key": "report.native_loader.attempts[1].class",
+      "value": "V5P3Dynamic70WindowDataset"
+    },
+    {
+      "key": "report.native_loader.attempts[1].kwargs.active_only",
+      "value": "False"
+    },
+    {
+      "key": "report.native_loader.attempts[1].kwargs.root",
+      "value": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70"
+    },
+    {
+      "key": "report.native_loader.attempts[1].kwargs.split",
+      "value": "validation"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[0].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[0].path",
+      "value": "$.x"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[1].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[1].path",
+      "value": "$.physical_port_mask"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[2].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[2].path",
+      "value": "$.edge_index"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[3].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[3].path",
+      "value": "$.y_attack"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[4].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[4].path",
+      "value": "$.y_attacker_count"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[5].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[5].path",
+      "value": "$.y_source"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[6].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[6].path",
+      "value": "$.y_transit"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[7].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[7].path",
+      "value": "$.y_victim"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[8].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[8].path",
+      "value": "$.y_attack_path"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[9].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[9].path",
+      "value": "$.role_mask"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[10].dtype",
+      "value": "torch.int8"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[10].path",
+      "value": "$.source_target_router"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[11].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[11].path",
+      "value": "$.epoch_id"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[12].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.attempts[1].sample_tensor_inventory[12].path",
+      "value": "$.epoch_tick"
+    },
+    {
+      "key": "report.native_loader.attempts[1].split",
+      "value": "validation"
+    },
+    {
+      "key": "report.native_loader.attempts[1].status",
+      "value": "PASS"
+    },
+    {
+      "key": "report.native_loader.loader_path",
+      "value": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py"
+    },
+    {
+      "key": "report.native_loader.loader_sha256",
+      "value": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+    },
+    {
+      "key": "report.native_loader.selected_class",
+      "value": "V5P3Dynamic70WindowDataset"
+    },
+    {
+      "key": "report.native_loader.selected_signature",
+      "value": "(root, split, window=32, stride=8, active_only=False)"
+    },
+    {
+      "key": "report.native_loader.status",
+      "value": "PASS"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[0].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[0].path",
+      "value": "$.x"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[1].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[1].path",
+      "value": "$.physical_port_mask"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[2].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[2].path",
+      "value": "$.edge_index"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[3].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[3].path",
+      "value": "$.y_attack"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[4].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[4].path",
+      "value": "$.y_attacker_count"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[5].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[5].path",
+      "value": "$.y_source"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[6].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[6].path",
+      "value": "$.y_transit"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[7].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[7].path",
+      "value": "$.y_victim"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[8].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[8].path",
+      "value": "$.y_attack_path"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[9].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[9].path",
+      "value": "$.role_mask"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[10].dtype",
+      "value": "torch.int8"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[10].path",
+      "value": "$.source_target_router"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[11].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[11].path",
+      "value": "$.epoch_id"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[12].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.train_sample_tensor_inventory[12].path",
+      "value": "$.epoch_tick"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[0].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[0].path",
+      "value": "$.x"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[1].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[1].path",
+      "value": "$.physical_port_mask"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[2].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[2].path",
+      "value": "$.edge_index"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[3].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[3].path",
+      "value": "$.y_attack"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[4].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[4].path",
+      "value": "$.y_attacker_count"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[5].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[5].path",
+      "value": "$.y_source"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[6].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[6].path",
+      "value": "$.y_transit"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[7].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[7].path",
+      "value": "$.y_victim"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[8].dtype",
+      "value": "torch.float32"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[8].path",
+      "value": "$.y_attack_path"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[9].dtype",
+      "value": "torch.uint8"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[9].path",
+      "value": "$.role_mask"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[10].dtype",
+      "value": "torch.int8"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[10].path",
+      "value": "$.source_target_router"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[11].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[11].path",
+      "value": "$.epoch_id"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[12].dtype",
+      "value": "torch.int64"
+    },
+    {
+      "key": "report.native_loader.validation_sample_tensor_inventory[12].path",
+      "value": "$.epoch_tick"
+    },
+    {
+      "key": "report.provenance.native_loader_sha256",
+      "value": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+    },
+    {
+      "key": "report.stage",
+      "value": "V5_P3_FINAL_A1_R1_TRAIN_ONLY_NORMALIZATION_SEMANTICS_RECOVERY_AND_NATIVE_LOADER_CERTIFICATION"
+    },
+    {
+      "key": "certificate.attempts[0].class",
+      "value": "V5P3Dynamic70WindowDataset"
+    },
+    {
+      "key": "certificate.attempts[1].class",
+      "value": "V5P3Dynamic70WindowDataset"
+    },
+    {
+      "key": "certificate.loader_path",
+      "value": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py"
+    },
+    {
+      "key": "certificate.loader_sha256",
+      "value": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+    },
+    {
+      "key": "certificate.selected_class",
+      "value": "V5P3Dynamic70WindowDataset"
+    }
+  ],
+  "decision": {
+    "D6_P0_R2_exact_row_provenance_authorized": true,
+    "decoder_import_or_execution_authorized": false,
+    "loader_import_authorized_in_next_stage_validation_only": true,
+    "next_stage": "V5_P3_FINAL_D6_P0_R2_EXACT_VALIDATION_ROW_PROVENANCE_FREEZE",
+    "sealed_test_evaluation_authorized": false
+  },
+  "exact_loader_hits": [
+    "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py"
+  ],
+  "exact_loader_identity_recovered": true,
+  "expected_loader_class": "V5P3Dynamic70WindowDataset",
+  "expected_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+  "scientific_boundary": {
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "previous_D6_P0_failure_class": "implementation_route_assumption",
+    "previous_failure_before_any_test_access": true,
+    "previous_failure_before_decoder_import_or_execution": true,
+    "previous_failure_before_loader_import": true,
+    "previous_failure_before_validation_dataset_construction": true,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false,
+    "validation_dataset_constructed": false
+  },
+  "searched_roots": [
+    "/home/zira/research/projects/GNN-2d/src",
+    "/home/zira/research/projects/GNN-2d/scripts/v5/p3",
+    "/home/zira/research/projects/GNN-2d/models",
+    "/home/zira/research/projects/GNN-2d/artifacts",
+    "/home/zira/Downloads"
+  ],
+  "selected_loader_source": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+  "selected_loader_source_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+  "selection_rule": "prefer exact-byte-identical repository-resident copy; otherwise deterministic first exact hit",
+  "stage": "V5_P3_FINAL_D6_P0_R1_NATIVE_LOADER_ROUTE_RECOVERY",
+  "status": "PASS"
+}

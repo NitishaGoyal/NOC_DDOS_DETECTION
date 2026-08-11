@@ -1,0 +1,523 @@
+{
+  "artifacts": {
+    "contract_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_a3_pair_aligned_primary58_loader_contract/V5_P2_A3_PAIR_ALIGNED_PRIMARY58_LOADER_CONTRACT.json",
+      "645e4d49ab4a48714c68bd5f473f6246d99cf77afec8373a1300c74cb6f8728f"
+    ],
+    "contract_markdown": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_a3_pair_aligned_primary58_loader_contract/V5_P2_A3_PAIR_ALIGNED_PRIMARY58_LOADER_CONTRACT.md",
+      "4c2d018a55f443a760d94eecaae11560a374777edd9f7a78e805557e2a127d37"
+    ]
+  },
+  "contract": {
+    "authorized_splits": [
+      "train",
+      "validation"
+    ],
+    "contract_name": "V5_P2_PAIR_ALIGNED_PRIMARY58_FROZEN_B3_LOADER",
+    "contract_sha256": "35c3ecf8d48ed763341e45bad3a1730df4762f567d2d3d35380cbd72fbc9312d",
+    "contract_version": 1,
+    "dataset_class": "V5P2PairAlignedPrimary58Dataset",
+    "frozen_architecture": {
+      "edge_index_model_input": false,
+      "graph_message_passing": false,
+      "name": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY"
+    },
+    "index_policy": {
+      "common_length": "min(T_attack,T_control)",
+      "identical_pair_member_starts": true,
+      "order": "pair-major, window-start-major, ATTACK then CONTROL",
+      "source": "V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+      "stride": 8,
+      "total_non_test_items": 82694,
+      "window": 32
+    },
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "model_input_boundary": {
+      "edge_index_returned": false,
+      "metadata_returned": false,
+      "model_inputs": [
+        "x",
+        "physical_port_mask"
+      ],
+      "second_normalization": false,
+      "targets_only": [
+        "y_attack",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim",
+        "y_attack_path",
+        "role_mask"
+      ],
+      "window_position_returned": false
+    },
+    "returned_item": {
+      "keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "physical_port_mask_dtype": "torch.bool",
+      "physical_port_mask_shape": [
+        16,
+        10
+      ],
+      "target_epoch": "start + window - 1",
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ],
+      "x_values": "exact stored standardized PRIMARY58 slice; no normalization performed"
+    },
+    "test_boundary": {
+      "constructor_rejects_test": true,
+      "test_directory_enumerated": false,
+      "test_tensor_contents_accessed": false
+    },
+    "test_split_authorized": false
+  },
+  "dataset": {
+    "link_path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph"
+  },
+  "decision": "FREEZE_PAIR_ALIGNED_PRIMARY58_LOADER_AND_AUTHORIZE_A4",
+  "failures": [],
+  "index_checks": {
+    "pair_start_group_count": 41347,
+    "paired_adjacency_checks": 6,
+    "total_entries": 82694
+  },
+  "loader": {
+    "class": "V5P2PairAlignedPrimary58Dataset",
+    "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+    "sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2"
+  },
+  "next_stage": "V5_P2_A4_LOADER_INTEGRATION_AND_TINY_OVERFIT",
+  "provenance": {
+    "a0_lock_sha256": "3f302d6dcf47df735837f1b419ab83fab229f477e7292f4637c6998e7a7b4af6",
+    "a0_report_sha256": "584b9f5d2ef79bb2884bdf37a6f4ff09cca36a7247eef8765a7de56ace33397e",
+    "a1_r2_lock_sha256": "9f3630da32b621a0b766113eb9797289b8321ad3778bb33b5f4d7ec17c1263a4",
+    "a1_r2_report_sha256": "3762529be85efba13eff00dc6953f7e4474abfb8373084bb7e15dca9f23e9dc0",
+    "a2_r2_lock_sha256": "be278524e683db39d961d7aa01001f106c41260fc54a2d0973f66e7bbbefb9da",
+    "a2_r2_mask_sha256": "a93f81a9ce4315d0eef911f9b9c45529ceb9b2da726dd578a247b46d260e6a3a",
+    "a2_r2_report_sha256": "167c00abf6a87674366f73fc23dbca5367996f25a32e760a7fb6e9ff3ac68a6d",
+    "pair_manifest_sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5"
+  },
+  "sample_records": [
+    {
+      "common_length": 722,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "attack",
+      "pair_key": "P2TR-K1-001",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "train",
+      "start": 0,
+      "target": 31,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 722,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "control",
+      "pair_key": "P2TR-K1-001",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "train",
+      "start": 0,
+      "target": 31,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 709,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "attack",
+      "pair_key": "P2TR-K2-215",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "train",
+      "start": 328,
+      "target": 359,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 709,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "control",
+      "pair_key": "P2TR-K2-215",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "train",
+      "start": 328,
+      "target": 359,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 696,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "attack",
+      "pair_key": "P2TR-K4-480",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "train",
+      "start": 664,
+      "target": 695,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 696,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "control",
+      "pair_key": "P2TR-K4-480",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "train",
+      "start": 664,
+      "target": 695,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 703,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "attack",
+      "pair_key": "P2VA-K1-001",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "validation",
+      "start": 0,
+      "target": 31,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 703,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "control",
+      "pair_key": "P2VA-K1-001",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "validation",
+      "start": 0,
+      "target": 31,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 723,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "attack",
+      "pair_key": "P2VA-K2-039",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "validation",
+      "start": 544,
+      "target": 575,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 723,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "control",
+      "pair_key": "P2VA-K2-039",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "validation",
+      "start": 544,
+      "target": 575,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 702,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "attack",
+      "pair_key": "P2VA-K4-080",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "validation",
+      "start": 664,
+      "target": 695,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    },
+    {
+      "common_length": 702,
+      "exact_primary58_slice": true,
+      "mask_dtype": "torch.bool",
+      "mask_shape": [
+        16,
+        10
+      ],
+      "mode": "control",
+      "pair_key": "P2VA-K4-080",
+      "returned_keys": [
+        "physical_port_mask",
+        "role_mask",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ],
+      "split": "validation",
+      "start": 664,
+      "target": 695,
+      "x_dtype": "torch.float32",
+      "x_shape": [
+        16,
+        58,
+        32
+      ]
+    }
+  ],
+  "security_boundary": {
+    "test_constructor_attempted": true,
+    "test_constructor_rejected_before_filesystem_access": true,
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_tensor_bytes_read": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "train_tensor_contents_accessed": true,
+    "validation_tensor_contents_accessed": true
+  },
+  "split_index_summaries": {
+    "train": {
+      "dataset_length": 70166,
+      "maximum_entries_per_pair": 174,
+      "minimum_entries_per_pair": 164,
+      "pair_count": 415,
+      "pair_start_group_count": 35083,
+      "unique_pair_count": 415
+    },
+    "validation": {
+      "dataset_length": 12528,
+      "maximum_entries_per_pair": 174,
+      "minimum_entries_per_pair": 166,
+      "pair_count": 74,
+      "pair_start_group_count": 6264,
+      "unique_pair_count": 74
+    }
+  },
+  "stage": "V5_P2_A3_PAIR_ALIGNED_PRIMARY58_LOADER_CONTRACT",
+  "status": "COMPLETE",
+  "warnings": []
+}

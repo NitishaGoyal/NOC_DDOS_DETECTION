@@ -1,0 +1,75 @@
+{
+  "adapter": {
+    "path": "/home/zira/research/projects/GNN-2d/src/evaluation/v5_p3_f4m_canonical_metric_adapter.py",
+    "sha256": "9e2a9f36339550b86dee6d19e3b0403a9f70c06c8ad9afcf20c0c4797eba4384"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "certification": {
+    "all_14_metrics_certified": true,
+    "checkpoint_mean_identity_pass": true,
+    "fresh_replay_14_metric_pass": true,
+    "immutable_reference_14_metric_pass": true
+  },
+  "classification": "VALIDATION-EXPLORATORY canonical 14-metric adapter",
+  "created_utc": "2026-08-05T21:19:44.310381+00:00",
+  "decision": {
+    "F4M_complete": true,
+    "F5_group_block_permutation_authorized": true,
+    "F6_integrated_gradients_authorized": false,
+    "next_stage": "V5_P3_F5_DYNAMIC70_GROUP_BLOCK_PERMUTATION",
+    "sealed_test_access_authorized": false
+  },
+  "provenance": {
+    "F4M_R3A_lock_sha256": "81eaa6192919cb533f0b5da8ccdd350e25b236a6e1d14241c30f25733f5d7967",
+    "F4M_R3A_report_sha256": "fbe930f6c5c1fda95fdd6abaae16c25a32c6418fa97f4da439449468d9e40cc3",
+    "adapter_contract_sha256": "b851e9eac3266707b76e6cbad9c8144d1a1919f59f72f175b91e61aa2b64e287",
+    "selection_formula_spec_sha256": "7139f05bea1d95de96f62d6e0146f73c7c1d80c312cda7dd979610848392c562"
+  },
+  "selection_formula": {
+    "V4_constrained_threshold_formula_selected": false,
+    "V4_helper_role": "ancestor/call-site lineage evidence only; not authoritative for the V5-P3 seed-107 checkpoint selection score",
+    "adapter_component_order": [
+      "graph_auroc",
+      "graph_ap",
+      "source_ap",
+      "transit_ap",
+      "victim_ap",
+      "path_ap",
+      "count_active_macro_f1"
+    ],
+    "authority": "frozen seed-107 checkpoint validation_metrics.selection_components and selection_score",
+    "checkpoint_component_order": [
+      "graph_auroc",
+      "graph_average_precision",
+      "source_average_precision",
+      "transit_average_precision",
+      "victim_average_precision",
+      "path_average_precision",
+      "count_active_macro_f1"
+    ],
+    "checkpoint_component_values": {
+      "count_active_macro_f1": 0.9973039624464042,
+      "graph_auroc": 0.8908390955533386,
+      "graph_average_precision": 0.6891215624201737,
+      "path_average_precision": 0.6246351771235719,
+      "source_average_precision": 0.6446929029617371,
+      "transit_average_precision": 0.6369269223988839,
+      "victim_average_precision": 0.6248964174211628
+    },
+    "checkpoint_identity_absolute_difference": 0.0,
+    "checkpoint_identity_tolerance": 1e-15,
+    "checkpoint_reconstructed_selection_score": 0.7297737200464675,
+    "checkpoint_recorded_selection_score": 0.7297737200464675,
+    "equation": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+    "formula": "arithmetic_mean_of_seven_components",
+    "published_rounded_selection_score": 0.72977369,
+    "status": "FROZEN",
+    "threshold_policy": {
+      "reporting_threshold": 0.5,
+      "selection_metrics_are_threshold_free_except_count_macro_f1": true,
+      "threshold_tuning_performed": false
+    }
+  },
+  "stage": "V5_P3_F4M_CANONICAL_METRIC_ADAPTER_CERTIFICATION",
+  "status": "PASS"
+}

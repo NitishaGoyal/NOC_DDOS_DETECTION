@@ -1,0 +1,283 @@
+{
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "certified_dataset_modified": false,
+  "created_utc": "2026-08-05T00:00:02.725760+00:00",
+  "data": {
+    "batches": 55,
+    "items": 13863,
+    "optional_metadata_arrays_present": {
+      "epoch_id": true,
+      "epoch_tick": true,
+      "role_mask": true,
+      "source_target_router": true,
+      "window_start": true,
+      "window_target": true
+    },
+    "ordering": "ascending_dataset_index",
+    "split": "validation",
+    "test_dataset_instantiated": false,
+    "test_tensor_loaded": false
+  },
+  "decision": {
+    "A1_exact_full_evaluation_authorized": false,
+    "A1_exact_resumable_preflight_authorized": false,
+    "immutable_validation_export_complete": true,
+    "next_stage": "V5_P3_D2_RAW_AND_FROZEN_A0_TRANCHE_A_VALIDATION_EVALUATION",
+    "raw_and_A0_evaluation_authorized": true,
+    "sealed_test_evaluation_authorized": false
+  },
+  "decoder_executed": false,
+  "export": {
+    "arrays": {
+      "attack_logits": {
+        "dtype": "float32",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "count_logits": {
+        "dtype": "float32",
+        "finite": true,
+        "shape": [
+          13863,
+          4
+        ]
+      },
+      "dataset_index": {
+        "dtype": "int32",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "edge_index": {
+        "dtype": "int64",
+        "finite": true,
+        "shape": [
+          2,
+          48
+        ]
+      },
+      "epoch_id": {
+        "dtype": "int32",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "epoch_tick": {
+        "dtype": "int64",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "path_logits": {
+        "dtype": "float32",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "physical_port_mask_template": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          16,
+          10
+        ]
+      },
+      "role_mask": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "source_logits": {
+        "dtype": "float32",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "source_target_router": {
+        "dtype": "int8",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "transit_logits": {
+        "dtype": "float32",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "victim_logits": {
+        "dtype": "float32",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "window_start": {
+        "dtype": "int32",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "window_target": {
+        "dtype": "int32",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "y_attack": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "y_attack_path": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "y_attacker_count": {
+        "dtype": "int8",
+        "finite": true,
+        "shape": [
+          13863
+        ]
+      },
+      "y_source": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "y_transit": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      },
+      "y_victim": {
+        "dtype": "uint8",
+        "finite": true,
+        "shape": [
+          13863,
+          16
+        ]
+      }
+    },
+    "immutable_by_hash": true,
+    "items": 13863,
+    "manifest_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_EXPORT_MANIFEST.json",
+    "manifest_sha256": "b68b8baf9a9f37b8e424608533b23bf37be7128a205dd9d653d94e26bc62434b",
+    "metadata_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+    "metadata_sha256": "0e427b74ef85e5854b38999cec7f31124ef1ee9c440e27feb1bd69b3251b9466",
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+    "pickle_required": false,
+    "sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f",
+    "size_bytes": 3439335
+  },
+  "generalization_claim_authorized": false,
+  "metric_certification": {
+    "consistency_pass": true,
+    "count_macro_f1": 0.9973039624464042,
+    "graph_threshold_0p5": {
+      "accuracy": 0.8021351799754742,
+      "f1": 0.7011657043250901,
+      "fn": 604,
+      "fp": 2139,
+      "fpr": 0.21302659097699433,
+      "precision": 0.6007093522493934,
+      "recall": 0.8419675562532706,
+      "tn": 7902,
+      "tp": 3218
+    },
+    "maximum_absolute_delta_vs_A5": 1.042516916127667e-07,
+    "roles": {
+      "path": {
+        "average_precision": 0.624635212392569,
+        "exact_active_at_0p5": 0.8178963893249608
+      },
+      "source": {
+        "average_precision": 0.6446929824219041,
+        "exact_active_at_0p5": 0.9209837781266352
+      },
+      "transit": {
+        "average_precision": 0.6369271321910471,
+        "exact_active_at_0p5": 0.6802721088435374
+      },
+      "victim": {
+        "average_precision": 0.624896193057987,
+        "exact_active_at_0p5": 0.9481946624803768
+      }
+    },
+    "selection_components": {
+      "count_macro_f1": 0.9973039624464042,
+      "graph_auroc": 0.8908390825246004,
+      "graph_average_precision": 0.6891211441694642,
+      "path_average_precision": 0.624635212392569,
+      "source_average_precision": 0.6446929824219041,
+      "transit_average_precision": 0.6369271321910471,
+      "victim_average_precision": 0.624896193057987
+    },
+    "selection_score": 0.7297736727434252,
+    "tolerance": 1e-06
+  },
+  "model": {
+    "checkpoint_epoch": 14,
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "class": "V6P0Dynamic70GraphConvCount4",
+    "input_features": 70,
+    "parameter_count": 60553
+  },
+  "model_trained": false,
+  "provenance": {
+    "a4_checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "a5_stable_metrics_sha256": "a058a28cc21d82b293a2dbcdc7d0c15dd1b9c6084277430a428a515c899a71dc",
+    "d0_lock_sha256": "b4a9b98c8855fe2c50a0a3abe34c65cb12347e02db99fae25e40e6f04a6aa687",
+    "d0_report_sha256": "ed948466c97d30cf267f66b1153992877d0b2c0b2148ad6f3a71bb11fa0dbc40",
+    "dynamic70_model_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "guarded_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "installed_script_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+  },
+  "runtime": {
+    "device": "cuda",
+    "elapsed_seconds": 3.66583251953125
+  },
+  "scope": "Single deterministic replay of the A4 epoch-14 model on A_validation, producing an immutable-by-hash raw-logit and label export for decoder evaluation.",
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "guard_negative_check": true,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_loaded_paths": [],
+    "test_tensor_loaded": false
+  },
+  "stage": "V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT",
+  "status": "PASS",
+  "threshold_tuning_performed": false
+}

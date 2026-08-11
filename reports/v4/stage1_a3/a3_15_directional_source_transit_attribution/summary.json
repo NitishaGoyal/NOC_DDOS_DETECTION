@@ -1,0 +1,65 @@
+{
+  "best_validation_directional_proxy": {
+    "active_direction": "higher_in_true_attacker",
+    "active_source_separability": 0.7175310798,
+    "direction_consistent": true,
+    "eligible_univariate_proxy": true,
+    "inactive_direction": "higher_in_true_attacker",
+    "inactive_router_separability": 0.7378107262,
+    "mean_role_separability": 0.7276709029999999,
+    "metric_index": 101,
+    "metric_name": "peak__proxy_directional_out_minus_in_count",
+    "minimum_role_separability": 0.7175310798,
+    "validation_rank": 1
+  },
+  "derived_metric_warning": "All source/transit quantities are proxies derived from the saved 24 port features. V4 has no explicit source/transit label and no explicit valid/idle/clipped port masks in the saved sample semantics.",
+  "designation": "V4-A3.15 Directional Source-versus-Transit Attribution",
+  "development_test_role": "descriptive hard-normal comparison only",
+  "development_test_used_for_selection": false,
+  "hard_normal_top_metric_closeness": {
+    "P1_L2_CANDIDATE__run178__router15": {
+      "closer_to_role_matched_benign_count": 9,
+      "closer_to_true_attacker_count": 6,
+      "top_metric_count": 15
+    },
+    "P1_L2_CANDIDATE__run226__router3": {
+      "closer_to_role_matched_benign_count": 3,
+      "closer_to_true_attacker_count": 12,
+      "top_metric_count": 15
+    },
+    "P2_L2_CONFIRMED__run226__router3": {
+      "closer_to_role_matched_benign_count": 1,
+      "closer_to_true_attacker_count": 14,
+      "top_metric_count": 15
+    },
+    "P3_MAX_SAFETY__run298__router3": {
+      "closer_to_role_matched_benign_count": 2,
+      "closer_to_true_attacker_count": 13,
+      "top_metric_count": 15
+    }
+  },
+  "provenance": {
+    "a3_12_lock_sha256": "550218e7b606d043a0d7ef9bff2372da8a054f93611f429c5dcd98aac6de792e",
+    "a3_13_lock_sha256": "f21300b93b9515396726a23c922dee0ac99ce770aeb8b5306ab20058e3604a5b",
+    "hard_normal_csv_sha256": "ff871966d89ff42c1d436f44e533055ffa275fbb4a2d027975e46d74b1a5765b",
+    "latency_policy_sha256": "b3a0f3dcd764c2aac965bdceec575bf7135a7db118fc5a21ac9b3f9bb6985ffc",
+    "metadata_sha256": "97ca343f292d67c1e4150e18df764156fab4472d16ba9c4ea1085957e6863b2e",
+    "operational_policy_sha256": "f989349fc47162898291a213bcb83d07cf4ebcfd75c62fac166f16784adf817f",
+    "test_predictions_sha256": "f0df8d5d54fe1193ed9a9fa51ea6fa2bdfa3dff59c2b4515d01d54d5b1ac9dab",
+    "validation_predictions_sha256": "58531f5513889a3efc74caf54de0a7fa26dd6f23c43db4be091cc19e05f5f1d3",
+    "validation_search_script_sha256": "c38490dc8108f961468b733d7f66d786535bd7cda1cea0340bccad964fceaac4"
+  },
+  "status": "PASS",
+  "threshold_search_performed": false,
+  "training_performed": false,
+  "validation_based_decision_class": "moderate_univariate_directional_proxy_only",
+  "validation_based_recommendation": "Proceed to A4a with the full fused encoder, but treat directional proxies as auxiliary features rather than a hard gate. V5 should add explicit source/transit and valid-port semantics.",
+  "validation_metric_count": 114,
+  "validation_role_counts": {
+    "attack_legitimate_active": 122682,
+    "attack_other_router": 379476,
+    "benign_active_source": 71628,
+    "benign_inactive_router": 202692,
+    "true_attacker": 70866
+  }
+}

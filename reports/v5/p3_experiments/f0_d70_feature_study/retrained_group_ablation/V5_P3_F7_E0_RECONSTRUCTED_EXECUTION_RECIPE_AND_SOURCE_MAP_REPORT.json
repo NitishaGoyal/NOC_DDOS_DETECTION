@@ -1,0 +1,144 @@
+{
+  "artifacts": {
+    "adapter_plan": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0_RECONSTRUCTED_TRAINER_ADAPTER_PLAN.json",
+    "checkpoint_metadata_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0_CHECKPOINT_NON_TENSOR_METADATA_REVIEW.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0_EXECUTION_SOURCE_FREEZE_DECISION.json",
+    "recipe_candidate_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0_EXECUTION_RECIPE_CANDIDATE_EVIDENCE.json",
+    "static_source_map": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0_TRAINING_SKELETON_STATIC_SOURCE_MAP.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:47:13.998914+00:00",
+  "decision": {
+    "E1_trainer_generation_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "P2_execution_authorization_verified": true,
+    "actual_scientific_training_started": false,
+    "adapter_plan_frozen": true,
+    "checkpoint_metadata_reviewed": true,
+    "compact_interface_equivalence_authorized": false,
+    "exact_recipe_fields": {
+      "candidate_reduction_gates": {
+        "count_active_macro_F1_min": 0.98,
+        "graph_FPR_increase_max": 0.03,
+        "graph_average_precision_drop_max": 0.03,
+        "path_average_precision_drop_max": 0.03,
+        "selection_score_drop_max": 0.02,
+        "single_task_AP_collapse_max": 0.05,
+        "source_average_precision_drop_max": 0.03,
+        "transit_average_precision_drop_max": 0.03,
+        "victim_average_precision_drop_max": 0.03
+      },
+      "model_class": "V6P0Dynamic70GraphConvCount4",
+      "parameter_count": 60553,
+      "reporting_threshold": 0.5,
+      "seed": 107,
+      "selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+      "threshold_tuning_per_run": false,
+      "train_items": 110855,
+      "validation_items": 13863
+    },
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "loss_call_count": 11,
+    "next_stage": "V5_P3_F7_E0A_EXACT_HYPERPARAMETER_AND_LOSS_ROUTE_PIN",
+    "optimizer_implementations": [
+      "torch.optim.AdamW"
+    ],
+    "sealed_test_access": false,
+    "training_skeleton_source_mapped": true,
+    "unresolved_execution_fields": [
+      {
+        "field": "batch_size",
+        "reason": "zero or multiple literal candidates remain after skeleton, A4/F4/F4M/P1B and checkpoint review",
+        "unique_literal_values": []
+      },
+      {
+        "field": "weight_decay",
+        "reason": "zero or multiple literal candidates remain after skeleton, A4/F4/F4M/P1B and checkpoint review",
+        "unique_literal_values": []
+      }
+    ]
+  },
+  "finding": {
+    "backward_call_count": 1,
+    "checkpoint_call_count": 2,
+    "dataloader_call_count": 2,
+    "epoch_loop_count": 1,
+    "loss_call_count": 11,
+    "optimizer_call_count": 1,
+    "optimizer_step_call_count": 2,
+    "recipe_unique_literal_values": {
+      "batch_size": [],
+      "early_stopping_patience": [
+        0,
+        4
+      ],
+      "gradient_clip_norm": [],
+      "learning_rate": [
+        1e-05
+      ],
+      "max_epochs": [
+        2
+      ],
+      "num_workers": [],
+      "seed": [
+        6,
+        107,
+        true,
+        "seed 107 for all five primary ablations; seeds 117 and 127 only for the two most decision-relevant groups after the primary matrix is reviewed"
+      ],
+      "validation_batch_size": [],
+      "weight_decay": []
+    },
+    "skeleton_path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "unresolved_execution_fields": [
+      {
+        "field": "batch_size",
+        "reason": "zero or multiple literal candidates remain after skeleton, A4/F4/F4M/P1B and checkpoint review",
+        "unique_literal_values": []
+      },
+      {
+        "field": "weight_decay",
+        "reason": "zero or multiple literal candidates remain after skeleton, A4/F4/F4M/P1B and checkpoint review",
+        "unique_literal_values": []
+      }
+    ]
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_non_tensor_metadata_retained_only": true,
+    "checkpoint_tensors_loaded": true,
+    "model_loaded": false,
+    "optimizer_step_performed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": false,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_constructed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "F4M_report_sha256": "e7dc2dbafee80d96f156fb08f65abfd8781fe9cb04288cec8539ede9a0adf348",
+    "F4_report_sha256": "8ab88718e1dfdd5b27f77d4eebf5581df414ff767672cb054646e0c35a7cef76",
+    "F6R_report_sha256": "020b01b78f57d843a9914729d1a4b4c2d0b866a9bc96df5752133a41d0029065",
+    "F7_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "P1B_recipe_sha256": "38e718f7e8832a3f279918ae09e3bf38c31a4145dc6348bd54ac0b49e55de6a2",
+    "P1B_route_sha256": "b24276c374258990a33850a1aaf516d92a5636f09350d98bc5e353821293ec02",
+    "P2_lock_sha256": "8989f4babc7a9f7c64e0dae5d3d03c0b69d19682363a73e4dc2fde4b7e0f64e3",
+    "P2_report_sha256": "d4b725878b5cac2cf4efc3ad3d54d7285cd3d7afbe0f7498d8477532ef1b8e67",
+    "adapter_plan_sha256": "f59a049aae775627f51d3447466a37d6938a75b8efdf208fd2b4973eb52cfe9a",
+    "checkpoint_metadata_review_sha256": "197dda12e860bb2af748cc014749ae7e1393fcc5bda90ededc1b8a686387f6e3",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "decision_sha256": "1fc76f996d9e08a179fd2598e2de3064cfa342fba3418f6ffa7b39d6595adac0",
+    "installed_script_sha256": "c1185603178b70ac8404644421f5f5d7d3002d5fc036a1ea9c8329c5d55efaf6",
+    "recipe_candidate_evidence_sha256": "4bd3180adbcefbd67425bfdfbd99eafcb8cbb618ebeb8a64c1c5ea438683421a",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "static_source_map_sha256": "4b02410e1ce7e724c20db1415a0d39a9bd220870bd1de1fde924ea40f9f134f6"
+  },
+  "scope": "Materialize the authorized F7 execution route without starting scientific training: verify P2 authorization and the P1B reconstructed route; statically map the frozen V5-P2 training skeleton by exact source lines; inventory optimizer, DataLoader, loss, backward, step, checkpoint and epoch-loop routes; review non-tensor checkpoint metadata and frozen A4/F4/F4M/P1B evidence for exact hyperparameters; freeze the isolated F7 adapter plan; and authorize trainer generation only when all execution-critical fields are uniquely pinned.",
+  "stage": "V5_P3_F7_E0_RECONSTRUCTED_EXECUTION_RECIPE_AND_SOURCE_MAP",
+  "status": "PASS"
+}

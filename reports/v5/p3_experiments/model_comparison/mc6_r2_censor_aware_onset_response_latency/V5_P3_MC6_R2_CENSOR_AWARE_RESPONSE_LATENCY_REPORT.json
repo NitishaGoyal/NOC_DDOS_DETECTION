@@ -1,0 +1,3811 @@
+{
+  "R1_complete_case_sensitivity": {
+    "R1_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2",
+    "R1_fully_observed_runs": 56,
+    "retained": true
+  },
+  "by_K_table": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/MC6_R2_CENSOR_AWARE_BY_K_TABLE.csv",
+  "by_K_table_sha256": "3efe5d2e57c9d584971127e44c95113bbdc29d5030ccbb349c0266ad3291d0f0",
+  "censoring_classification": {
+    "classification_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/MC6_R2_ATTACK_RUN_CENSORING_CLASSIFICATION.csv",
+    "classification_sha256": "15db1af4a292aea13913e2a65ad4bcd25f53986a9d21bc05e4615f0c104ec84c",
+    "fully_observed_intervals": 56,
+    "left_censored_onset_excluded": 19,
+    "onset_observed_primary_runs": 131,
+    "primary_fraction_of_all_attacks": 0.8733333333333333,
+    "right_censored_termination_only": 75,
+    "total_attack_runs": 150
+  },
+  "classification": "primary_131_run_censor_aware_time_to_response_analysis",
+  "completed_utc": "2026-08-07T22:31:02.723660+00:00",
+  "estimator": {
+    "censoring": "no response by end of observed active interval or trace",
+    "event": "usable response observed while attack is known active / within observed interval",
+    "median_p95": "KM quantiles; p95 may be NR if CDF never reaches 0.95",
+    "name": "Kaplan-Meier",
+    "observed_event_fraction": "descriptive, not permanent-failure probability"
+  },
+  "governance": {
+    "checkpoint_selection": false,
+    "decoder": false,
+    "sealed_test_access": false,
+    "test_access": false,
+    "threshold_tuning": false,
+    "training": false,
+    "validation_only": true
+  },
+  "model_artifacts": {
+    "D0": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D0_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "01c6b298fe0ba52362e098d49868c723fe22bc1be922f60c1045dab26890e718",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D0_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "d4151bcec16460719915062847efd4ce49cf7cf37a69bc99f996d16bd604e639",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D0_MC6_R2_SUMMARY.json",
+      "summary_sha256": "16f3eed0ed1017a3fa0c0d091fcd996359fafb55f8ff749c2257e646c6247db7"
+    },
+    "D1": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D1_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "12a0d7b04667b7eea8eedd87281161eaed797084d4fee017a1366564807d8537",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D1_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "678cecc59e0d0275a7b74cc695e9a06a476f9f324d662fd01f82705332d5b8e9",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D1_MC6_R2_SUMMARY.json",
+      "summary_sha256": "48e1118b74b44f8217109ebc302b93e61a911ed314d4c9675a90c994cbc0b92b"
+    },
+    "D2": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D2_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "b65ba84bc18b73879b248fa308a5d3cf4ccc08d4a6101e903a8d3e1c67dbe85b",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D2_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "f394ae2902e065961100d1baddf3d3b25baf207f32375b318f52295ab9af253c",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/D2_MC6_R2_SUMMARY.json",
+      "summary_sha256": "99b16ff907d4ca0b4267051f9c08fbcbab7acb4a21e7d34454e3d75d07f67bb7"
+    },
+    "M0": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M0_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "88de242a1e27df9009ddcd2cc778a6beafd0d4c37a47cca44bec906321659124",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M0_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "43e61673915754190c2326b25c82fae3c6498013fed90953348254bbe70dadec",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M0_MC6_R2_SUMMARY.json",
+      "summary_sha256": "03cb16dc7f6c9adc82768ea910c9dc3ccffa6e1d18971090e22e58daa6cfe6a0"
+    },
+    "M1": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M1_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "5e02709ed0b663bc2b1df9fbbe818c7ab465fbc7428b86ec39aadbc963286c24",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M1_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "ee1f8f324d0987577dbc3b317e435a5cd3eb928fa2b219b4a5e3416f50653839",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M1_MC6_R2_SUMMARY.json",
+      "summary_sha256": "e7a0ab2e5d3d55377ea07ef19c0fb54dea6ed8ca33b94d45c53abe5fa6c82f9f"
+    },
+    "M2": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M2_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "4db5503b92c7a0766c84b73e446d6ae3bf2db0ac5161e3ed5118c0017683f62f",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M2_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "befe23c9732875503e8877e6a378d10fe26082d64aa8a3fa2214dbca6ca56113",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M2_MC6_R2_SUMMARY.json",
+      "summary_sha256": "e35040a3a86d9b3df42156f60d1e9f609bdcfaac34fea6a1e7970fb763fef1e7"
+    },
+    "M3": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M3_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "416b58931c056df23db43926a889c9754befe84f077f0fa17e8b0119f780d155",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M3_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "f0efcef5a6d5b7892979530b6de6e205ee3aa9a78fa875fd4f783f0f35bd169e",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M3_MC6_R2_SUMMARY.json",
+      "summary_sha256": "6be7f65aa2811cc21021b8a9f5a6f208f2fc297b21cef695408c804cce4c5d89"
+    },
+    "M4": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M4_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "8257ef6fa65aefabcae9fec46645a76691d60cd84653d87c39901f2d70c71528",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M4_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "76c69b05f0cae375cae269e01f46906f490321ae699acedd9cd399375408e3d3",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M4_MC6_R2_SUMMARY.json",
+      "summary_sha256": "437493fc59ab3f6a2052eb82c855e7486e3aa9737926360a22bc463b6c9df893"
+    },
+    "M5": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M5_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "e586a612f9d7474b0b5d5f9a7e4502c188479cf8a298f613353e475365b910de",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M5_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "c7863a1b4a074c2cf518ef84b252aaa6d496a3c51e8e6c21d97c545f48491bd6",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M5_MC6_R2_SUMMARY.json",
+      "summary_sha256": "dd22dc6fe59f31bec73334a87960724219bedd448403ed243e8a5be3ff38ae75"
+    },
+    "M6": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M6_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "4fac33e38290f2eb068acb1dc6ee31cc82229f902d8b7607e05db802f6e8a518",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M6_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "6d5fc5cc363f78f1ce751a75c513ca98f1b9b99e400fe32518f79743d274c8ff",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M6_MC6_R2_SUMMARY.json",
+      "summary_sha256": "19f731135b0fd23e2679afd98b09f30871cdaed1a7140892e4a8e9606d9e8497"
+    },
+    "M7": {
+      "km_curves": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M7_MC6_R2_KM_CURVES.csv",
+      "km_curves_sha256": "978cfe788e99a76df007a07d766263844c2cc71de77588a5493dd67c7427b9b5",
+      "per_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M7_MC6_R2_PER_RUN_CENSOR_AWARE.csv",
+      "per_run_sha256": "94020fc4319ef74de85749bcb87435549a3fde9fab2dc6eae58f437e8c26af0d",
+      "summary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/M7_MC6_R2_SUMMARY.json",
+      "summary_sha256": "333460991514d8fc37ecb764ad57c4cd353a42dafc7712f38302618896aeeabe"
+    }
+  },
+  "model_summaries": [
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 74,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 55,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 55,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 55,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 28,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.8484848484848485,
+            "right_censored": 5
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 55,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 43,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 49,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 49,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 28,
+            "km_median_epochs": 17,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.875,
+            "right_censored": 4
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 43,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 64,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 26,
+            "km_median_epochs": 19,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.7878787878787878,
+            "right_censored": 7
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 15,
+            "km_p95_epochs": 89,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 26,
+            "km_median_epochs": 19,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.7878787878787878,
+            "right_censored": 7
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 15,
+            "km_p95_epochs": 89,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 23,
+            "km_median_epochs": 34,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M0",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.696969696969697,
+            "right_censored": 10
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 64,
+            "km_p95_estimable": true,
+            "label": "M0",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M0",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 55.0,
+          "events_observed": 131,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 55,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 64.0,
+          "events_observed": 120,
+          "km_median_epochs": 14,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.916030534351145,
+          "right_censored": 11
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 59.39999999999998,
+          "events_observed": 130,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 64,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 64.0,
+          "events_observed": 120,
+          "km_median_epochs": 14,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.916030534351145,
+          "right_censored": 11
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 59.39999999999998,
+          "events_observed": 130,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 64,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 13.5,
+          "event_only_p95_epochs_diagnostic": 83.79999999999995,
+          "events_observed": 112,
+          "km_median_epochs": 15,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8549618320610687,
+          "right_censored": 19
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 55.0,
+          "events_observed": 131,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 55,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 103,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 195,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 103,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 195,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 103,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 103,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 103,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 12,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 12,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 12,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 29,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.8787878787878788,
+            "right_censored": 4
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 12,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 206,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 15,
+            "km_p95_epochs": 259,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 206,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 20,
+            "km_p95_epochs": 587,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 206,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 24,
+            "km_median_epochs": 41,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.75,
+            "right_censored": 8
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 206,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 390,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 29,
+            "km_median_epochs": 47,
+            "km_p95_epochs": 494,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.8787878787878788,
+            "right_censored": 4
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 27,
+            "km_median_epochs": 39,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.8181818181818182,
+            "right_censored": 6
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 23,
+            "km_median_epochs": 125,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.696969696969697,
+            "right_censored": 10
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 26,
+            "km_median_epochs": 53,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.7878787878787878,
+            "right_censored": 7
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 25,
+            "km_median_epochs": 83,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M1",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 31,
+            "km_median_epochs": 37,
+            "km_p95_epochs": 390,
+            "km_p95_estimable": true,
+            "label": "M1",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M1",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 118.69999999999976,
+          "events_observed": 127,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 206,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9694656488549618,
+          "right_censored": 4
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 14.0,
+          "event_only_p95_epochs_diagnostic": 204.39999999999995,
+          "events_observed": 123,
+          "km_median_epochs": 14,
+          "km_p95_epochs": 435,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9389312977099237,
+          "right_censored": 8
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 127.69999999999997,
+          "events_observed": 123,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 390,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9389312977099237,
+          "right_censored": 8
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 14.0,
+          "event_only_p95_epochs_diagnostic": 195.79999999999995,
+          "events_observed": 117,
+          "km_median_epochs": 15,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8931297709923665,
+          "right_censored": 14
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 143.04999999999978,
+          "events_observed": 122,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 587,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9312977099236641,
+          "right_censored": 9
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 14.0,
+          "event_only_p95_epochs_diagnostic": 180.0,
+          "events_observed": 111,
+          "km_median_epochs": 15,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8473282442748091,
+          "right_censored": 20
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 181.19999999999948,
+          "events_observed": 127,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 299,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9694656488549618,
+          "right_censored": 4
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 35,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 24,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 24,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 31,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 30,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.9090909090909091,
+            "right_censored": 3
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 31,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 17,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 41,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 39,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 12,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 39,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 28,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.875,
+            "right_censored": 4
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 17,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 27,
+            "km_median_epochs": 18,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.8181818181818182,
+            "right_censored": 6
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 94,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 27,
+            "km_median_epochs": 21,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.8181818181818182,
+            "right_censored": 6
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 94,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 21,
+            "km_median_epochs": 39,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M2",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.6363636363636364,
+            "right_censored": 12
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M2",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M2",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 27.5,
+          "events_observed": 131,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 31,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 70.64999999999992,
+          "events_observed": 122,
+          "km_median_epochs": 13,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.9312977099236641,
+          "right_censored": 9
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 45.39999999999995,
+          "events_observed": 129,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 67,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9847328244274809,
+          "right_censored": 2
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 71.0,
+          "events_observed": 121,
+          "km_median_epochs": 13,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.9236641221374046,
+          "right_censored": 10
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 45.39999999999995,
+          "events_observed": 129,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 67,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9847328244274809,
+          "right_censored": 2
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 67.0,
+          "events_observed": 112,
+          "km_median_epochs": 14,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8549618320610687,
+          "right_censored": 19
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 33.0,
+          "events_observed": 131,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 35,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 28,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 40,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 40,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 44,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 305,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 18,
+            "km_p95_epochs": 427,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 29,
+            "km_median_epochs": 40,
+            "km_p95_epochs": 435,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.90625,
+            "right_censored": 3
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 28,
+            "km_median_epochs": 24,
+            "km_p95_epochs": 427,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 0.875,
+            "right_censored": 4
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 23,
+            "km_median_epochs": 87,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.71875,
+            "right_censored": 9
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 26,
+            "km_median_epochs": 43,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 0.8125,
+            "right_censored": 6
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 26,
+            "km_median_epochs": 40,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.8125,
+            "right_censored": 6
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 28,
+            "km_median_epochs": 40,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 0.875,
+            "right_censored": 4
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 29,
+            "km_median_epochs": 31,
+            "km_p95_epochs": 286,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.8787878787878788,
+            "right_censored": 4
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 21,
+            "km_median_epochs": 195,
+            "km_p95_epochs": 472,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.6363636363636364,
+            "right_censored": 12
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 25,
+            "km_median_epochs": 120,
+            "km_p95_epochs": 497,
+            "km_p95_estimable": true,
+            "label": "M3",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 15,
+            "km_median_epochs": 502,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.45454545454545453,
+            "right_censored": 18
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 18,
+            "km_median_epochs": 230,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.5454545454545454,
+            "right_censored": 15
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 16,
+            "km_median_epochs": 304,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.48484848484848486,
+            "right_censored": 17
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 22,
+            "km_median_epochs": 149,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M3",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.6666666666666666,
+            "right_censored": 11
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M3",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 17.0,
+          "event_only_p95_epochs_diagnostic": 241.94999999999976,
+          "events_observed": 122,
+          "km_median_epochs": 24,
+          "km_p95_epochs": 305,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9312977099236641,
+          "right_censored": 9
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 36.0,
+          "event_only_p95_epochs_diagnostic": 264.9999999999997,
+          "events_observed": 113,
+          "km_median_epochs": 48,
+          "km_p95_epochs": 435,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.8625954198473282,
+          "right_censored": 18
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 29.5,
+          "event_only_p95_epochs_diagnostic": 286.25,
+          "events_observed": 116,
+          "km_median_epochs": 40,
+          "km_p95_epochs": 427,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.8854961832061069,
+          "right_censored": 15
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 40.0,
+          "event_only_p95_epochs_diagnostic": 303.0,
+          "events_observed": 101,
+          "km_median_epochs": 73,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.7709923664122137,
+          "right_censored": 30
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 31.0,
+          "event_only_p95_epochs_diagnostic": 239.39999999999986,
+          "events_observed": 107,
+          "km_median_epochs": 45,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.816793893129771,
+          "right_censored": 24
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 38.0,
+          "event_only_p95_epochs_diagnostic": 270.1999999999998,
+          "events_observed": 104,
+          "km_median_epochs": 53,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.7938931297709924,
+          "right_censored": 27
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 24.0,
+          "event_only_p95_epochs_diagnostic": 235.19999999999987,
+          "events_observed": 113,
+          "km_median_epochs": 36,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8625954198473282,
+          "right_censored": 18
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 93,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 115,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 93,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 115,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 93,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 99,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 10,
+            "km_p95_epochs": 93,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 167,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 29,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.8787878787878788,
+            "right_censored": 4
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 29,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.8787878787878788,
+            "right_censored": 4
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 30,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.9090909090909091,
+            "right_censored": 3
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 167,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M4",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 24,
+            "km_median_epochs": 46,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.75,
+            "right_censored": 8
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 28,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 0.875,
+            "right_censored": 4
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 20,
+            "km_median_epochs": 56,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.625,
+            "right_censored": 12
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 25,
+            "km_median_epochs": 39,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 0.78125,
+            "right_censored": 7
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 22,
+            "km_median_epochs": 56,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.6875,
+            "right_censored": 10
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 27,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 0.84375,
+            "right_censored": 5
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 21,
+            "km_median_epochs": 85,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.6363636363636364,
+            "right_censored": 12
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 25,
+            "km_median_epochs": 50,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 15,
+            "km_median_epochs": null,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.45454545454545453,
+            "right_censored": 18
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 16,
+            "km_median_epochs": null,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.48484848484848486,
+            "right_censored": 17
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 12,
+            "km_median_epochs": null,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.36363636363636365,
+            "right_censored": 21
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 21,
+            "km_median_epochs": 75,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M4",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.6363636363636364,
+            "right_censored": 12
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M4",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 158.09999999999974,
+          "events_observed": 127,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 198,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9694656488549618,
+          "right_censored": 4
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 14.0,
+          "event_only_p95_epochs_diagnostic": 160.09999999999974,
+          "events_observed": 107,
+          "km_median_epochs": 19,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.816793893129771,
+          "right_censored": 24
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 150.99999999999977,
+          "events_observed": 117,
+          "km_median_epochs": 14,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8931297709923665,
+          "right_censored": 14
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 14.0,
+          "event_only_p95_epochs_diagnostic": 146.19999999999987,
+          "events_observed": 97,
+          "km_median_epochs": 27,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.7404580152671756,
+          "right_censored": 34
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 120.19999999999997,
+          "events_observed": 105,
+          "km_median_epochs": 15,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8015267175572519,
+          "right_censored": 26
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 15.0,
+          "event_only_p95_epochs_diagnostic": 176.39999999999992,
+          "events_observed": 97,
+          "km_median_epochs": 38,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.7404580152671756,
+          "right_censored": 34
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 125.79999999999986,
+          "events_observed": 113,
+          "km_median_epochs": 14,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8625954198473282,
+          "right_censored": 18
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 18,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 18,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 18,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 31,
+            "km_median_epochs": 16,
+            "km_p95_epochs": 483,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 95,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 27,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.8181818181818182,
+            "right_censored": 6
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 95,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 27,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.8181818181818182,
+            "right_censored": 6
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 95,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 25,
+            "km_median_epochs": 19,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 32,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 95,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 391,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 27,
+            "km_median_epochs": 66,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.84375,
+            "right_censored": 5
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 27,
+            "km_median_epochs": 26,
+            "km_p95_epochs": 391,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 0.84375,
+            "right_censored": 5
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 20,
+            "km_median_epochs": 104,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.625,
+            "right_censored": 12
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 23,
+            "km_median_epochs": 46,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 0.71875,
+            "right_censored": 9
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 15,
+            "km_median_epochs": null,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.46875,
+            "right_censored": 17
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 27,
+            "km_median_epochs": 15,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 0.84375,
+            "right_censored": 5
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 248,
+            "km_p95_estimable": true,
+            "label": "M5",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 20,
+            "km_median_epochs": 131,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.6060606060606061,
+            "right_censored": 13
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 26,
+            "km_median_epochs": 46,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.7878787878787878,
+            "right_censored": 7
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 10,
+            "km_median_epochs": null,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.30303030303030304,
+            "right_censored": 23
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 20,
+            "km_median_epochs": 126,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.6060606060606061,
+            "right_censored": 13
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 10,
+            "km_median_epochs": null,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.30303030303030304,
+            "right_censored": 23
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 25,
+            "km_median_epochs": 42,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M5",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M5",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 176.5,
+          "events_observed": 126,
+          "km_median_epochs": 14,
+          "km_p95_epochs": 391,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9618320610687023,
+          "right_censored": 5
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 16.0,
+          "event_only_p95_epochs_diagnostic": 187.59999999999997,
+          "events_observed": 105,
+          "km_median_epochs": 42,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8015267175572519,
+          "right_censored": 26
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 14.5,
+          "event_only_p95_epochs_diagnostic": 186.25,
+          "events_observed": 116,
+          "km_median_epochs": 15,
+          "km_p95_epochs": 483,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.8854961832061069,
+          "right_censored": 15
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 17.0,
+          "event_only_p95_epochs_diagnostic": 185.7999999999999,
+          "events_observed": 88,
+          "km_median_epochs": 69,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.6717557251908397,
+          "right_censored": 43
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 15.0,
+          "event_only_p95_epochs_diagnostic": 188.75,
+          "events_observed": 106,
+          "km_median_epochs": 27,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8091603053435115,
+          "right_censored": 25
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 16.0,
+          "event_only_p95_epochs_diagnostic": 197.0,
+          "events_observed": 81,
+          "km_median_epochs": 89,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.6183206106870229,
+          "right_censored": 50
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 14.0,
+          "event_only_p95_epochs_diagnostic": 181.59999999999997,
+          "events_observed": 115,
+          "km_median_epochs": 15,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8778625954198473,
+          "right_censored": 16
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 163,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 171,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 163,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 171,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 163,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 163,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 163,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 15,
+            "km_p95_epochs": 151,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 28,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 119,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 39,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 122,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 39,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 114,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 28,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 30,
+            "km_median_epochs": 17,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M6",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9090909090909091,
+            "right_censored": 3
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 106,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 29,
+            "km_median_epochs": 23,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M6",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.8787878787878788,
+            "right_censored": 4
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 106,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 27,
+            "km_median_epochs": 23,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M6",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.8181818181818182,
+            "right_censored": 6
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M6",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M6",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 78.5,
+          "events_observed": 131,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 79,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 108.19999999999993,
+          "events_observed": 128,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 165,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9770992366412213,
+          "right_censored": 3
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 78.6,
+          "events_observed": 129,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 106,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9847328244274809,
+          "right_censored": 2
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 109.75,
+          "events_observed": 126,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 173,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9618320610687023,
+          "right_censored": 5
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 78.6,
+          "events_observed": 129,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 106,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9847328244274809,
+          "right_censored": 2
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 110.19999999999995,
+          "events_observed": 125,
+          "km_median_epochs": 14,
+          "km_p95_epochs": 187,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9541984732824428,
+          "right_censored": 6
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 78.5,
+          "events_observed": 131,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 79,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "victim": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 69,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 24,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 24,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 24,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 2,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.9393939393939394,
+            "right_censored": 2
+          },
+          "victim": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 24,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 122,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "path": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "path",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 151,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "source_path_victim": {
+            "attacker_count": 3,
+            "events_observed": 30,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "source_path_victim",
+            "n": 32,
+            "observed_event_fraction": 0.9375,
+            "right_censored": 2
+          },
+          "source_victim": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 151,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source_victim",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          },
+          "transit": {
+            "attacker_count": 3,
+            "events_observed": 27,
+            "km_median_epochs": 20,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "transit",
+            "n": 32,
+            "observed_event_fraction": 0.84375,
+            "right_censored": 5
+          },
+          "victim": {
+            "attacker_count": 3,
+            "events_observed": 31,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 122,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "victim",
+            "n": 32,
+            "observed_event_fraction": 0.96875,
+            "right_censored": 1
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "path": {
+            "attacker_count": 4,
+            "events_observed": 25,
+            "km_median_epochs": 14,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "path",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          },
+          "source": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "source_path_victim": {
+            "attacker_count": 4,
+            "events_observed": 25,
+            "km_median_epochs": 19,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "source_path_victim",
+            "n": 33,
+            "observed_event_fraction": 0.7575757575757576,
+            "right_censored": 8
+          },
+          "source_victim": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "source_victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          },
+          "transit": {
+            "attacker_count": 4,
+            "events_observed": 21,
+            "km_median_epochs": 40,
+            "km_p95_epochs": null,
+            "km_p95_estimable": false,
+            "label": "M7",
+            "metric": "transit",
+            "n": 33,
+            "observed_event_fraction": 0.6363636363636364,
+            "right_censored": 12
+          },
+          "victim": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 67,
+            "km_p95_estimable": true,
+            "label": "M7",
+            "metric": "victim",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "M7",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 68.1,
+          "events_observed": 130,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 79,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        },
+        "path": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 83.59999999999997,
+          "events_observed": 119,
+          "km_median_epochs": 13,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.9083969465648855,
+          "right_censored": 12
+        },
+        "source": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 68.1,
+          "events_observed": 130,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 83,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        },
+        "source_path_victim": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 89.69999999999996,
+          "events_observed": 119,
+          "km_median_epochs": 13,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.9083969465648855,
+          "right_censored": 12
+        },
+        "source_victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 68.1,
+          "events_observed": 130,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 83,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        },
+        "transit": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 104.39999999999986,
+          "events_observed": 112,
+          "km_median_epochs": 14,
+          "km_p95_epochs": null,
+          "km_p95_estimable": false,
+          "n": 131,
+          "observed_event_fraction": 0.8549618320610687,
+          "right_censored": 19
+        },
+        "victim": {
+          "event_only_median_epochs_diagnostic": 12.0,
+          "event_only_p95_epochs_diagnostic": 68.1,
+          "events_observed": 130,
+          "km_median_epochs": 12,
+          "km_p95_epochs": 79,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        }
+      },
+      "scope": "multitask"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 53,
+            "km_p95_estimable": true,
+            "label": "D0",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 111,
+            "km_p95_estimable": true,
+            "label": "D0",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 84,
+            "km_p95_estimable": true,
+            "label": "D0",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 13,
+            "km_p95_epochs": 221,
+            "km_p95_estimable": true,
+            "label": "D0",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "D0",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 13.0,
+          "event_only_p95_epochs_diagnostic": 88.5,
+          "events_observed": 131,
+          "km_median_epochs": 13,
+          "km_p95_epochs": 93,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        }
+      },
+      "scope": "graph_only"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 15,
+            "km_p95_estimable": true,
+            "label": "D1",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 15,
+            "km_p95_estimable": true,
+            "label": "D1",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 11,
+            "km_p95_epochs": 25,
+            "km_p95_estimable": true,
+            "label": "D1",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 33,
+            "km_median_epochs": 12,
+            "km_p95_epochs": 43,
+            "km_p95_estimable": true,
+            "label": "D1",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "D1",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 11.0,
+          "event_only_p95_epochs_diagnostic": 23.0,
+          "events_observed": 131,
+          "km_median_epochs": 11,
+          "km_p95_epochs": 23,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 1.0,
+          "right_censored": 0
+        }
+      },
+      "scope": "graph_only"
+    },
+    {
+      "K": {
+        "1": {
+          "alarm_q2": {
+            "attacker_count": 1,
+            "events_observed": 33,
+            "km_median_epochs": 14,
+            "km_p95_epochs": 229,
+            "km_p95_estimable": true,
+            "label": "D2",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "attacker_count": 2,
+            "events_observed": 33,
+            "km_median_epochs": 15,
+            "km_p95_epochs": 223,
+            "km_p95_estimable": true,
+            "label": "D2",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "attacker_count": 3,
+            "events_observed": 32,
+            "km_median_epochs": 22,
+            "km_p95_epochs": 142,
+            "km_p95_estimable": true,
+            "label": "D2",
+            "metric": "alarm_q2",
+            "n": 32,
+            "observed_event_fraction": 1.0,
+            "right_censored": 0
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "attacker_count": 4,
+            "events_observed": 32,
+            "km_median_epochs": 15,
+            "km_p95_epochs": 227,
+            "km_p95_estimable": true,
+            "label": "D2",
+            "metric": "alarm_q2",
+            "n": 33,
+            "observed_event_fraction": 0.9696969696969697,
+            "right_censored": 1
+          }
+        }
+      },
+      "eligible_onset_observed_runs": 131,
+      "label": "D2",
+      "metrics": {
+        "alarm_q2": {
+          "event_only_median_epochs_diagnostic": 15.5,
+          "event_only_p95_epochs_diagnostic": 211.39999999999998,
+          "events_observed": 130,
+          "km_median_epochs": 16,
+          "km_p95_epochs": 223,
+          "km_p95_estimable": true,
+          "n": 131,
+          "observed_event_fraction": 0.9923664122137404,
+          "right_censored": 1
+        }
+      },
+      "scope": "graph_only"
+    }
+  ],
+  "overall_table": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/MC6_R2_CENSOR_AWARE_OVERALL_TABLE.csv",
+  "overall_table_sha256": "ab3cd5242d80b2fa5876be510a203c822d40f3cc3a793a85dea4a4f495fd50a0",
+  "paper_use": {
+    "R1_role": "complete-case sensitivity analysis",
+    "must_not_call_censored_no-event_runs_permanent_failures": true,
+    "must_report_19_left_censored_exclusions": true,
+    "primary_Table_III": true
+  },
+  "protocol_freeze": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/V5_P3_MC6_R2_CENSOR_AWARE_PROTOCOL_FREEZE.json",
+  "protocol_freeze_sha256": "f3a6fb6932eeff9c1ad3bc47c68c54f1c88082b9861eaceb75481a9ff13bc52f",
+  "stage": "V5_P3_MC6_R2_CENSOR_AWARE_RESPONSE_LATENCY",
+  "status": "PASS",
+  "truth_archive": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/MC6_R2_PRIMARY_131_TRUTH_AND_METADATA.npz",
+  "truth_archive_sha256": "76123c7734ab79faa934b4ebacbb309f462a8c7fffc34b8a227d52e873ede95e"
+}

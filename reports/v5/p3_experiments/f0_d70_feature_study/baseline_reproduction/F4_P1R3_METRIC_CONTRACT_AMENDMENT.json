@@ -1,0 +1,26 @@
+{
+  "metric_count": 14,
+  "optional_not_frozen": [
+    "graph_accuracy",
+    "strict_all_task_exactness"
+  ],
+  "reason": "F4 must reproduce metrics that were actually frozen by A5. Graph accuracy and strict exactness were not part of the 14-value frozen A5 validation vector and are therefore optional diagnostics, not baseline-reproduction gates.",
+  "required_frozen_metrics": [
+    "selection_score",
+    "graph_auroc",
+    "graph_ap",
+    "graph_f1_at_0_5",
+    "graph_fpr_at_0_5",
+    "count_active_macro_f1",
+    "source_ap",
+    "source_exact_active",
+    "transit_ap",
+    "transit_exact_active",
+    "victim_ap",
+    "victim_exact_active",
+    "path_ap",
+    "path_exact_active"
+  ],
+  "status": "FROZEN",
+  "tolerance": 1e-06
+}

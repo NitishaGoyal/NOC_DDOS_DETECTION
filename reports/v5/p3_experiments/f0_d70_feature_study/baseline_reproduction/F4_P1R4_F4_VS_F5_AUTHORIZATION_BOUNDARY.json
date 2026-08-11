@@ -1,0 +1,16 @@
+{
+  "F4_baseline_reproduction": {
+    "authorized": true,
+    "purpose": "Replay the frozen checkpoint and prove that fresh validation labels/logits reproduce the immutable D1 six-head reference.",
+    "reason": "Exact reference-logit and label reproduction is sufficient to inherit the already frozen A4/A5 metric vector.",
+    "unique_metric_evaluator_required": false
+  },
+  "F5_permutation": {
+    "authorized": false,
+    "next_prerequisite": "V5_P3_F4M_CANONICAL_METRIC_ADAPTER_CERTIFICATION",
+    "purpose": "Generate new perturbed logits and compute new metrics.",
+    "unique_metric_adapter_required": true
+  },
+  "sealed_test_access": false,
+  "status": "FROZEN"
+}

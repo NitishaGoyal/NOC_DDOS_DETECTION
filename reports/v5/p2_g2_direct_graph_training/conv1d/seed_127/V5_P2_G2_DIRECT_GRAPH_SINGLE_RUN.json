@@ -1,0 +1,262 @@
+{
+  "architecture": {
+    "activation": "ReLU",
+    "clean_attack_head_sha256": "a2117c9997088f55c97bd26197b7ec839a35173df0d85817078e3d0b92e06ebb",
+    "clean_equivalence_max_abs_error": 0.0,
+    "clean_graph_projection_sha256": "5ece5dbee617b73022bec4b85207126c8750ad1d32b521c311090af77e416cde",
+    "dropout": 0.0,
+    "expected_parameter_count": 34561,
+    "graph_layers": 0,
+    "graph_width": 64,
+    "hook_based_extraction_used": false,
+    "initial_state_sha256": "c9763035fbee2da444cdbb5a18e1dfccf3bab96a7d4829369fa3f74ce55af7f0",
+    "name": "CLEAN_B3_DIRECT_GRAPH_CONV1D",
+    "operator_configuration": {
+      "graph_layers": 0,
+      "message_passing": false
+    },
+    "parameter_count": 34561,
+    "readout": "concatenate node mean and node max, Linear(128,64), ReLU, Linear(64,1)",
+    "readout_identical_across_operators": true,
+    "reference_attack_head_sha256": "a2117c9997088f55c97bd26197b7ec839a35173df0d85817078e3d0b92e06ebb",
+    "reference_b3_initial_state_sha256": "8b61044b46b4a4834c4efdbb18f600c3856c75f9b0b49d7b2688a511767825a7",
+    "reference_graph_projection_sha256": "5ece5dbee617b73022bec4b85207126c8750ad1d32b521c311090af77e416cde",
+    "residual": false,
+    "unused_multitask_heads_present": false
+  },
+  "artifacts": {
+    "checkpoint": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p2_g2_direct_graph/conv1d/seed_127/best_validation_checkpoint.pt",
+      "f323f44731a08072cdac5fb08423ae72434b6ed4cde3aa26615b272e556a9249"
+    ],
+    "history_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/conv1d/seed_127/training_history.csv",
+      "6461d5923a8954f95a4ce863e96c06434dcc866c40fe5e760ab38ca7f85924c7"
+    ],
+    "progress_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/conv1d/seed_127/progress.json",
+      "414bfd9e11fed97f212175df46f9f61608eba5ac2c36363f2b907dddb4cdb9e4"
+    ],
+    "threshold_sweep_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/conv1d/seed_127/validation_graph_threshold_sweep.csv",
+      "140b5eb4cb32ad17fc1fd37a1570f282aa8ea37c9073310b183fec872226b0a8"
+    ],
+    "validation_predictions": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/conv1d/seed_127/validation_predictions.npz",
+      "d1f1428a9b94b893adf8c7d4282e9ee2d868d035bbf3e853f1931bccf0df02e9"
+    ]
+  },
+  "best_checkpoint": {
+    "checkpoint_selection_weights": {
+      "graph_auroc": 0.5,
+      "graph_average_precision": 0.5
+    },
+    "epoch": 23,
+    "path": "/home/zira/research/projects/GNN-2d/models/v5/p2_g2_direct_graph/conv1d/seed_127/best_validation_checkpoint.pt",
+    "ranking_tuple": [
+      0.791699190156761,
+      0.6936436474235101,
+      0.889754732890012,
+      -0.35832789330951403,
+      -23
+    ],
+    "sha256": "f323f44731a08072cdac5fb08423ae72434b6ed4cde3aa26615b272e556a9249",
+    "validation_metrics_at_selection": {
+      "graph": {
+        "auroc": 0.889754732890012,
+        "average_precision": 0.6936436474235101,
+        "negative_items": 8854,
+        "positive_items": 3674,
+        "thresholded": {
+          "accuracy": 0.8019636015325671,
+          "balanced_accuracy": 0.8474731441484855,
+          "f1": 0.7393086056530419,
+          "fn": 156,
+          "fp": 2325,
+          "fpr": 0.26259317822453127,
+          "precision": 0.6020879685093274,
+          "recall": 0.9575394665215025,
+          "threshold": 0.5,
+          "tn": 6529,
+          "tnr": 0.7374068217754687,
+          "tp": 3518
+        }
+      },
+      "loss": 0.35832789330951403,
+      "selection_score": 0.791699190156761
+    }
+  },
+  "contracts": {
+    "b3_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g1_decision_sha256": "aede27f98706c0252536f7f79d1e397df2d8a65e3dc7d36e2e6dd9dcd6e7f50d",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "topology_contract_sha256": "74112ce145cd3347148d4c784be125add7945943e80e98948368f4c076d047af"
+  },
+  "cost": {
+    "inference_latency_proxy": {
+      "batch_items": 256,
+      "microseconds_per_item": 49.402026640734675,
+      "milliseconds_per_batch": 12.646918820028077,
+      "timed_iterations": 50,
+      "warmup_iterations": 10
+    },
+    "operation_count": {
+      "base_temporal_node_graph_head_macs": 10766400,
+      "graph_linear_macs": 0,
+      "graph_message_scalar_ops": 0,
+      "method": "analytic_per_sample_proxy",
+      "pooling_scalar_ops": 1984,
+      "total_linear_macs": 10766400
+    },
+    "peak_cuda_memory_allocated_bytes": 667510272
+  },
+  "data": {
+    "input_shape": [
+      "items",
+      16,
+      58,
+      32
+    ],
+    "item_batch_size": 256,
+    "num_workers": 0,
+    "pair_block_batch_size": 128,
+    "pair_manifest": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+    "stride": 8,
+    "train_batches": 275,
+    "train_graph_negative": 49848,
+    "train_graph_positive": 20318,
+    "train_items": 70166,
+    "validation_batches": 49,
+    "validation_graph_negative": 8854,
+    "validation_graph_positive": 3674,
+    "validation_items": 12528,
+    "window": 32
+  },
+  "loss": {
+    "class_weighted": false,
+    "name": "graph_bce_with_logits",
+    "positive_weight": null
+  },
+  "next_stage": "V5_P2_G2_DIRECT_GRAPH_MATRIX_AGGREGATION",
+  "operator": "conv1d",
+  "post_checkpoint_validation": {
+    "threshold_selection": {
+      "grid": {
+        "candidate_count": 1001,
+        "kind": "uniform_closed_interval",
+        "start": 0.0,
+        "step": 0.001,
+        "stop": 1.0
+      },
+      "primary_objective": "maximize_validation_balanced_accuracy",
+      "selected": {
+        "metrics": {
+          "auroc": 0.889754732890012,
+          "average_precision": 0.6936436474235101,
+          "negative_items": 8854,
+          "positive_items": 3674,
+          "thresholded": {
+            "accuracy": 0.79477969348659,
+            "balanced_accuracy": 0.8504322955624779,
+            "f1": 0.7378937710266082,
+            "fn": 55,
+            "fp": 2516,
+            "fpr": 0.2841653489948046,
+            "precision": 0.5898940505297473,
+            "recall": 0.9850299401197605,
+            "threshold": 0.381,
+            "tn": 6338,
+            "tnr": 0.7158346510051954,
+            "tp": 3619
+          }
+        },
+        "objective": 0.8504322955624779,
+        "ranking_tuple": [
+          0.8504322955624779,
+          0.7378937710266082,
+          0.79477969348659,
+          -0.2841653489948046,
+          -0.119,
+          -0.381
+        ],
+        "threshold": 0.381
+      },
+      "tie_break": [
+        "graph_f1",
+        "accuracy",
+        "lower_fpr",
+        "closer_to_0.5",
+        "lower_threshold"
+      ]
+    },
+    "untuned_metrics": {
+      "graph": {
+        "auroc": 0.889754732890012,
+        "average_precision": 0.6936436474235101,
+        "negative_items": 8854,
+        "positive_items": 3674,
+        "thresholded": {
+          "accuracy": 0.8019636015325671,
+          "balanced_accuracy": 0.8474731441484855,
+          "f1": 0.7393086056530419,
+          "fn": 156,
+          "fp": 2325,
+          "fpr": 0.26259317822453127,
+          "precision": 0.6020879685093274,
+          "recall": 0.9575394665215025,
+          "threshold": 0.5,
+          "tn": 6529,
+          "tnr": 0.7374068217754687,
+          "tp": 3518
+        }
+      },
+      "loss": 0.35832789330951403,
+      "selection_score": 0.791699190156761
+    }
+  },
+  "run_contract_sha256": "7ba98d6881542ae13bacdbbafb01672ae1d141edf0a03a3d038b82ca392fdcb1",
+  "security_boundary": {
+    "architecture_selected": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_directory_existence_checked": false,
+    "p2_test_evaluation_performed": false,
+    "p2_test_tensor_files_opened": false,
+    "p2_test_tensors_deserialized": false,
+    "p2_train_used": true,
+    "p2_validation_used": true,
+    "post_checkpoint_validation_threshold_tuning": true,
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "threshold_tuning_during_training": false
+  },
+  "seed": 127,
+  "stage": "V5_P2_G2_DIRECT_GRAPH_SINGLE_RUN",
+  "status": "COMPLETE",
+  "training": {
+    "automatic_mixed_precision": false,
+    "completed_epoch": 35,
+    "deterministic_algorithms": "enabled_warn_only",
+    "device": "cuda",
+    "early_stopping_minimum_delta": 0.0001,
+    "early_stopping_patience": 12,
+    "gradient_clip_global_norm": 1.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "minimum_epochs": 15,
+    "optimizer": "AdamW",
+    "scheduler": {
+      "factor": 0.5,
+      "minimum_learning_rate": 1e-05,
+      "mode": "max",
+      "name": "ReduceLROnPlateau",
+      "patience": 4,
+      "threshold": 0.0001,
+      "threshold_mode": "abs"
+    },
+    "stopped_early": true,
+    "total_elapsed_seconds": 780.4506158828735,
+    "weight_decay": 0.0001
+  }
+}

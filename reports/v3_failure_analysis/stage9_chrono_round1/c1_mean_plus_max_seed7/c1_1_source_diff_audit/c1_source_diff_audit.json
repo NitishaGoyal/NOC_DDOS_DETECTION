@@ -1,0 +1,112 @@
+{
+  "stage": "C1.1",
+  "status": "SOURCE_GENERATED_AND_AUDITED",
+  "created_utc": "2026-07-21T11:31:08.684061+00:00",
+  "training_started": false,
+  "a1_source": {
+    "path": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py",
+    "sha256": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b"
+  },
+  "c1_source": {
+    "path": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3_c1_meanmax.py",
+    "sha256": "6fe3bbbe20bcc508148da27e62e705a1c092ccd50945a089c6726aaf10ee8696",
+    "mode_octal": "0o555"
+  },
+  "c1_spec": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_0_experiment_spec/c1_experiment_spec.json",
+    "sha256": "7d8ec462f9f40e1a5a72b974df6fe1202ccc2655dfb73b9e3dac94a4d7d2ae94"
+  },
+  "permitted_changes": {
+    "graph_head": "nn.Linear(gcn_out, 1) -> nn.Linear(2 * gcn_out, 1)",
+    "graph_readout": "mean pooling -> concatenated mean-plus-max pooling",
+    "provenance_label": "Conv1D-TemporalGCN -> Conv1D-MeanMax-TemporalGCN"
+  },
+  "replacement_counts": {
+    "graph_head_statement": 1,
+    "mean_pooling_statement": 1,
+    "model_name_occurrences": 3
+  },
+  "audit_checks": {
+    "a1_hash_matches": true,
+    "stage_is_c1_0": true,
+    "status_is_frozen": true,
+    "control_is_a1": true,
+    "training_not_started": true,
+    "test_not_used_for_selection": true,
+    "b1_sampler_forbidden": true,
+    "single_change_is_graph_readout": true,
+    "expected_replacement_counts": true,
+    "reverse_patch_reproduces_a1_exactly": true,
+    "no_b1_sampler_tokens": true,
+    "generated_source_compiles": true,
+    "state_parameter_names_equal": true,
+    "shape_difference_only_graph_head_weight": true,
+    "shared_parameter_transplant_complete": true,
+    "graph_head_widths_correct": true,
+    "parameter_delta_correct": true,
+    "a1_graph_shape_correct": true,
+    "c1_graph_shape_correct": true,
+    "a1_node_shape_correct": true,
+    "c1_node_shape_correct": true,
+    "shared_backbone_outputs_identical_after_transplant": true,
+    "node_outputs_identical_after_transplant": true,
+    "c1_node_forward_matches_manual": true,
+    "c1_graph_forward_matches_manual_meanmax": true,
+    "c1_embedding_width_correct": true
+  },
+  "model_audit": {
+    "input_features": 24,
+    "temporal_dim": 8,
+    "gcn_hidden": 16,
+    "gcn_out": 8,
+    "a1_parameter_count": 882,
+    "c1_parameter_count": 890,
+    "parameter_delta": 8,
+    "expected_parameter_delta": 8,
+    "differing_parameter_shapes": {
+      "graph_head.weight": {
+        "a1": [
+          1,
+          8
+        ],
+        "c1": [
+          1,
+          16
+        ]
+      }
+    },
+    "direct_common_parameter_equality_diagnostic": {
+      "temporal.conv.weight": true,
+      "temporal.conv.bias": true,
+      "gcn1.linear.weight": true,
+      "gcn1.linear.bias": true,
+      "gcn2.linear.weight": true,
+      "gcn2.linear.bias": true,
+      "node_head.weight": true,
+      "node_head.bias": true,
+      "graph_head.bias": false
+    },
+    "direct_common_initialized_parameters_equal_diagnostic_only": false,
+    "direct_common_parameter_mismatches_diagnostic_only": [
+      "graph_head.bias"
+    ],
+    "initialization_note": "Changing graph-head width changes RNG consumption. Direct same-seed equality of later initialized layers is therefore not a valid source-structure requirement.",
+    "transplanted_same_shape_parameter_keys": [
+      "temporal.conv.weight",
+      "temporal.conv.bias",
+      "gcn1.linear.weight",
+      "gcn1.linear.bias",
+      "gcn2.linear.weight",
+      "gcn2.linear.bias",
+      "node_head.weight",
+      "node_head.bias",
+      "graph_head.bias"
+    ],
+    "shared_parameter_transplant_complete": true
+  },
+  "forbidden_token_hits": [],
+  "diff": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_1_source_diff_audit/a1_vs_c1_source.diff",
+    "sha256": "3e8828e39ddad480559d9078d6d1918aa455ef9e77531e1b154b783944930423"
+  }
+}

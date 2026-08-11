@@ -1,0 +1,116 @@
+{
+  "audit_boundary": {
+    "model_inference_performed": false,
+    "model_training_performed": false,
+    "test_directory_enumerated": false,
+    "test_performance_evaluated": false,
+    "test_tensors_read": false,
+    "train_tensors_read": false,
+    "validation_tensors_read": false
+  },
+  "b0_r1b_status": "PASS",
+  "classification": "PROVENANCE_ONLY_SHORTCUT_QUARANTINED",
+  "failures": [],
+  "next_stage": "V5_P0_B1_STATIC_FINAL_EPOCH_MLP",
+  "numeric_provenance_metrics": {
+    "all_numeric_provenance": {
+      "count_macro_f1": 0.0634920634920635,
+      "graph_balanced_accuracy": 0.5,
+      "source_exact": 0.25337839126586914,
+      "victim_exact": 0.25337839126586914
+    },
+    "run_length_only": {
+      "count_macro_f1": 0.31120642559077544,
+      "graph_balanced_accuracy": 0.5684905266090834,
+      "source_exact": 0.0,
+      "victim_exact": 0.0
+    },
+    "run_window_count_only": {
+      "count_macro_f1": 0.19703703703703704,
+      "graph_balanced_accuracy": 0.49573349122318194,
+      "source_exact": 0.0,
+      "victim_exact": 0.0
+    },
+    "within_run_position_only": {
+      "count_macro_f1": 0.24129353233830844,
+      "graph_balanced_accuracy": 0.5641717748676511,
+      "source_exact": 0.0,
+      "victim_exact": 0.0
+    }
+  },
+  "original_b0_r1_status": "HOLD",
+  "original_b0_status": "HOLD",
+  "provenance": {
+    "a2_report_sha256": "b8d52a0d84c33de992bedd5dcafd138c048994695fa056c77c05dc0035f76cc6",
+    "a3_report_sha256": "18e1059aeceaf32d51900afa74e3676ff995cb56d26640e2e4f6a9f667d7bd3f",
+    "b0_decision_sha256": "08748c563a9a7fe84a77df3fe3e301e019be10925efee45beaa29beffcbe3169",
+    "b0_lock_sha256": "aa6d5210081470d4b29d1661b0c81fdaf8d02c59c0a9597c902d54050589d4e8",
+    "b0_report_sha256": "98d6cd99e1b5337d7a5812027c97ee449d193000416c9f5d7590d8bd08a2cbc8",
+    "r1_report_sha256": "fa3d270f719eb29def729d405df14ec87b71310ece99598a64d948fb87ba3a22",
+    "r1b_decision_sha256": "fd816d3a2fb206f062882faaa3733e42b35b48adefa185849107a303388eb6fb",
+    "r1b_lock_sha256": "6a22fc7a22284106d0c3f6a3f949014b421a45c10b549566c25515297b125ad2",
+    "r1b_report_sha256": "ab13e318bb2d163ab7ef5c26cb8d2effcf52e3b5849c22331a2ba3ef523fcece",
+    "script_sha256": "1ab3ac0fac7ec7ca1e21a6a74cb4a2082f5a273dcc3fb435388b4b47d35da11e"
+  },
+  "quarantine_contract": {
+    "allowed_learned_inputs": [
+      "PRIMARY58 x",
+      "edge_index",
+      "topology-derived raw Boolean physical_port_mask"
+    ],
+    "b0_release_authorized": true,
+    "classification": "PROVENANCE_ONLY_SHORTCUT_QUARANTINED",
+    "forbidden_learned_inputs": [
+      "mode",
+      "run_id",
+      "case_id",
+      "pair_id",
+      "file name",
+      "file stem",
+      "seed",
+      "scenario identifier",
+      "source/victim tokens parsed from identifiers",
+      "dataset index",
+      "run/file serialization order",
+      "run length",
+      "run window count",
+      "window_start",
+      "window_target",
+      "epoch_id",
+      "any hash, embedding, parser output, or derivative of forbidden metadata"
+    ],
+    "mandatory_training_rules": [
+      "never concatenate metadata to model features",
+      "never create identifier embeddings",
+      "never parse filenames or IDs into model labels",
+      "fit normalization only as frozen in A2",
+      "use validation only for the declared baseline protocol",
+      "keep test untouched until the final locked model"
+    ],
+    "metadata_permitted_only_for": [
+      "split construction and overlap auditing",
+      "artifact provenance",
+      "grouped reporting after predictions are frozen",
+      "post-hoc failure analysis after predictions are frozen"
+    ],
+    "original_b0_hold_preserved": true,
+    "original_b0_r1_hold_preserved": true,
+    "scientific_interpretation": "Raw provenance identifiers encode attack/control mode, route endpoints, scenario identity, seed, and attacker count. Four TRAIN matched pairs also differ in run length, but TRAIN-only numeric-provenance probes fail to generalize strongly to numerically matched VALIDATION pairs."
+  },
+  "release_thresholds": {
+    "count_macro_f1": 0.55,
+    "graph_balanced_accuracy": 0.7,
+    "source_exact": 0.5,
+    "victim_exact": 0.5
+  },
+  "stage": "V5_P0_B0_R1C_FINAL_QUARANTINE_RELEASE",
+  "status": "PASS",
+  "validation_pair_numeric_matching": {
+    "malformed_pairs": [],
+    "pair_count": 4,
+    "run_length_and_window_position_are_pair_matched": true,
+    "unequal_length_pairs": [],
+    "unequal_window_count_pairs": []
+  },
+  "warnings": []
+}

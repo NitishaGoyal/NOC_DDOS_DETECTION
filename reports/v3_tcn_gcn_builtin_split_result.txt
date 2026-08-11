@@ -1,0 +1,36 @@
+V3 TCN-GCN Builtin Split Result
+
+Dataset:
+/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3
+
+Model:
+TCN-TemporalGCN
+
+Model folder:
+models/v3/temporal_tcn_gcn_ports_v3_builtin_split
+
+Best epoch:
+26
+
+Train:
+graph F1            = 0.9768
+graph FPR           = 0.0249
+node F1             = 0.8978
+exact localization  = 0.8419
+
+Validation:
+graph F1            = 0.9743
+graph FPR           = 0.0236
+node F1             = 0.8768
+exact localization  = 0.7681
+
+Test:
+graph F1            = 0.8578
+graph FPR           = 0.2468
+node precision      = 0.5667
+node recall         = 0.8822
+node F1             = 0.6901
+exact localization  = 0.4070
+
+Interpretation:
+The V3 dataset is significantly harder than DS2 because it contains diverse benign traffic patterns. The main weakness is high false positive rate on the blind test split. This confirms that V3 is useful for evaluating realistic false-positive behavior.

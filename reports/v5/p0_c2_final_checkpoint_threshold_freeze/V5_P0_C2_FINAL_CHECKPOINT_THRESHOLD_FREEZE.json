@@ -1,0 +1,426 @@
+{
+  "artifacts": {
+    "attack_threshold_sweep": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_ATTACK_THRESHOLD_SWEEP.csv",
+      "9b07b671932304e3b6e0476b9116bb02973f031fb1df475050ce6f07c4ab4398"
+    ],
+    "final_locked_checkpoint": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p0_c2_final_checkpoint_threshold_freeze/final_locked_b3_checkpoint.pt",
+      "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc"
+    ],
+    "frozen_validation_predictions": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p0_c2_final_checkpoint_threshold_freeze/frozen_validation_predictions_and_targets.pt",
+      "9f59f84df36a0a6285118302cb03829ebcc26cdfdf6361aeffb3ab6622876d69"
+    ],
+    "role_threshold_sweep": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_ROLE_THRESHOLD_SWEEP.csv",
+      "10d332954094400d8c8baabdf36b39a88b4bdd1a79bfed407e35642f2b45d539"
+    ],
+    "threshold_manifest": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_FROZEN_CHECKPOINT_THRESHOLDS.json",
+      "d8f53e6ece902737f988da893c8d6dfed51beead43a9137096588d4e36eaa5e5"
+    ]
+  },
+  "calibration_delta_vs_0_5": {
+    "all_tasks_exact": -0.04239767789840698,
+    "count_macro_f1": 0.0,
+    "graph_balanced_accuracy": 0.010535664530509914,
+    "graph_f1": 0.010594130279169667,
+    "graph_fpr": 0.0025773195876288707,
+    "graph_recall": 0.023648648648648685,
+    "path_f1_attack": 0.0026893389769905296,
+    "source_f1_attack": 0.0010230858661350872,
+    "transit_f1_attack": 0.00021796951629915462,
+    "victim_f1_attack": 0.013040984741256811
+  },
+  "dataset_constructed": false,
+  "decision": "FREEZE_SELECTED_B3_CHECKPOINT_AND_THRESHOLDS",
+  "failures": [],
+  "frozen_thresholds": {
+    "attack": 0.1,
+    "path": 0.15,
+    "source": 0.15,
+    "transit": 0.45,
+    "victim": 0.8
+  },
+  "next_stage": "V5_P0_C3_ONE_SHOT_LOCKED_TEST_EVALUATION",
+  "provenance": {
+    "b8_contract_file_sha256": "158285664c8b0ecd27b544ef0fd9338fc5d2adb29a33a1e74d328145fa9d43ac",
+    "b8_lock_sha256": "d6efc40006e408fd6eeeb9989a0dd5841be99ccfb453319e8d282b62e8eea0c1",
+    "b8_report_sha256": "f882db7a5b15c1bb1e6da63d3ecd91a6e0cab474838f5f38d2ba859260ae4750",
+    "c0_lock_sha256": "38cff2a5905367b546b203da7850b87afb81d87f8fca2bfe415cc1f20604f2f7",
+    "c0_protocol_file_sha256": "dc345753ce2cbfcb89bc460cb6b9369bd3bb50cd0bfce50d863cba5881f69dac",
+    "c0_report_sha256": "e8af4a9f5b0463f2108cda0ad87bbd2b3913cd3c152e77214f478b8d816e9e5a",
+    "c1_lock_sha256": "374a3cc6cba87ae9bb7bdb383ba498b577536afd900e1ce976d8c51a521028d5",
+    "c1_report_sha256": "ad348b09481c82932fad83ef8dc92a4aa1fdcb8b5c5aa9457e7cfb5b019246dc",
+    "c2_script_sha256": "ac72c94afd6799b20bc41500822895af0bd1eb937dff060095a28f4d1373327c",
+    "source_checkpoint_sha256": "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc",
+    "source_predictions_sha256": "9f59f84df36a0a6285118302cb03829ebcc26cdfdf6361aeffb3ab6622876d69"
+  },
+  "selected_checkpoint": {
+    "epoch": 101,
+    "frozen_path": "/home/zira/research/projects/GNN-2d/models/v5/p0_c2_final_checkpoint_threshold_freeze/final_locked_b3_checkpoint.pt",
+    "frozen_sha256": "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc",
+    "parameter_count": 43208,
+    "seed": 117,
+    "source_path": "/home/zira/research/projects/GNN-2d/models/v5/p0_c1_b3_multi_seed_validation_training/selected/selected_best_checkpoint.pt",
+    "source_sha256": "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc"
+  },
+  "stage": "V5_P0_C2_FINAL_CHECKPOINT_THRESHOLD_FREEZE",
+  "status": "COMPLETE",
+  "test_performance_evaluated": false,
+  "test_split_accessed": false,
+  "test_split_constructed": false,
+  "threshold_manifest_sha256": "4a3a17e5cb75429fd7c060d134a638094b52e90439e85d876b09b10ce10f38f5",
+  "training_performed": false,
+  "validation_metrics_at_frozen_thresholds": {
+    "all_tasks_exact": 0.6739766001701355,
+    "count": {
+      "accuracy": 0.9181286692619324,
+      "confusion_matrix": [
+        [
+          342,
+          36,
+          10
+        ],
+        [
+          10,
+          211,
+          0
+        ],
+        [
+          0,
+          0,
+          75
+        ]
+      ],
+      "macro_f1": 0.9211779086779086,
+      "per_class": {
+        "0": {
+          "f1": 0.9243243243243243,
+          "precision": 0.9715909090909091,
+          "recall": 0.8814432989690721,
+          "support": 388
+        },
+        "1": {
+          "f1": 0.9017094017094016,
+          "precision": 0.854251012145749,
+          "recall": 0.9547511312217195,
+          "support": 221
+        },
+        "2": {
+          "f1": 0.9375,
+          "precision": 0.8823529411764706,
+          "recall": 1.0,
+          "support": 75
+        }
+      }
+    },
+    "graph": {
+      "accuracy": 0.9254385964912281,
+      "balanced_accuracy": 0.9326762329339648,
+      "f1": 0.9196850393700788,
+      "fn": 4,
+      "fp": 47,
+      "fpr": 0.1211340206185567,
+      "precision": 0.8613569321533924,
+      "recall": 0.9864864864864865,
+      "support_negative": 388,
+      "support_positive": 296,
+      "tn": 341,
+      "tnr": 0.8788659793814433,
+      "tp": 292
+    },
+    "roles": {
+      "path": {
+        "all_windows": {
+          "exact_set": 0.6988304257392883,
+          "fn": 115,
+          "fp": 332,
+          "node_accuracy": 0.9591557017543859,
+          "node_f1": 0.8518395757374876,
+          "node_precision": 0.7946815089672232,
+          "node_recall": 0.9178571428571428,
+          "positive_entries": 1400,
+          "tn": 9212,
+          "tp": 1285,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.6824324131011963,
+          "fn": 115,
+          "fp": 47,
+          "node_accuracy": 0.965793918918919,
+          "node_f1": 0.9407027818448023,
+          "node_precision": 0.9647147147147147,
+          "node_recall": 0.9178571428571428,
+          "positive_entries": 1400,
+          "tn": 3289,
+          "tp": 1285,
+          "window_count": 296
+        }
+      },
+      "source": {
+        "all_windows": {
+          "exact_set": 0.7719298005104065,
+          "fn": 72,
+          "fp": 85,
+          "node_accuracy": 0.9856542397660819,
+          "node_f1": 0.7920529801324503,
+          "node_precision": 0.7786458333333334,
+          "node_recall": 0.8059299191374663,
+          "positive_entries": 371,
+          "tn": 10488,
+          "tp": 299,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7398648858070374,
+          "fn": 72,
+          "fp": 5,
+          "node_accuracy": 0.9837415540540541,
+          "node_f1": 0.8859259259259259,
+          "node_precision": 0.9835526315789473,
+          "node_recall": 0.8059299191374663,
+          "positive_entries": 371,
+          "tn": 4360,
+          "tp": 299,
+          "window_count": 296
+        }
+      },
+      "transit": {
+        "all_windows": {
+          "exact_set": 0.8084795475006104,
+          "fn": 65,
+          "fp": 153,
+          "node_accuracy": 0.9800804093567251,
+          "node_f1": 0.8738425925925927,
+          "node_precision": 0.8314977973568282,
+          "node_recall": 0.9207317073170732,
+          "positive_entries": 820,
+          "tn": 9971,
+          "tp": 755,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7770270109176636,
+          "fn": 65,
+          "fp": 28,
+          "node_accuracy": 0.9803631756756757,
+          "node_f1": 0.941983780411728,
+          "node_precision": 0.9642401021711366,
+          "node_recall": 0.9207317073170732,
+          "positive_entries": 820,
+          "tn": 3888,
+          "tp": 755,
+          "window_count": 296
+        }
+      },
+      "victim": {
+        "all_windows": {
+          "exact_set": 0.9239766001701355,
+          "fn": 5,
+          "fp": 47,
+          "node_accuracy": 0.9952485380116959,
+          "node_f1": 0.917981072555205,
+          "node_precision": 0.8609467455621301,
+          "node_recall": 0.9831081081081081,
+          "positive_entries": 296,
+          "tn": 10601,
+          "tp": 291,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.9831081032752991,
+          "fn": 5,
+          "fp": 0,
+          "node_accuracy": 0.9989442567567568,
+          "node_f1": 0.9914821124361158,
+          "node_precision": 1.0,
+          "node_recall": 0.9831081081081081,
+          "positive_entries": 296,
+          "tn": 4440,
+          "tp": 291,
+          "window_count": 296
+        }
+      }
+    },
+    "window_count": 684
+  },
+  "validation_metrics_at_threshold_0_5": {
+    "all_tasks_exact": 0.7163742780685425,
+    "count": {
+      "accuracy": 0.9181286692619324,
+      "confusion_matrix": [
+        [
+          342,
+          36,
+          10
+        ],
+        [
+          10,
+          211,
+          0
+        ],
+        [
+          0,
+          0,
+          75
+        ]
+      ],
+      "macro_f1": 0.9211779086779086,
+      "per_class": {
+        "0": {
+          "f1": 0.9243243243243243,
+          "precision": 0.9715909090909091,
+          "recall": 0.8814432989690721,
+          "support": 388
+        },
+        "1": {
+          "f1": 0.9017094017094016,
+          "precision": 0.854251012145749,
+          "recall": 0.9547511312217195,
+          "support": 221
+        },
+        "2": {
+          "f1": 0.9375,
+          "precision": 0.8823529411764706,
+          "recall": 1.0,
+          "support": 75
+        }
+      }
+    },
+    "graph": {
+      "accuracy": 0.9166666666666666,
+      "balanced_accuracy": 0.9221405684034549,
+      "f1": 0.9090909090909092,
+      "fn": 11,
+      "fp": 46,
+      "fpr": 0.11855670103092783,
+      "precision": 0.8610271903323263,
+      "recall": 0.9628378378378378,
+      "support_negative": 388,
+      "support_positive": 296,
+      "tn": 342,
+      "tnr": 0.8814432989690721,
+      "tp": 285
+    },
+    "roles": {
+      "path": {
+        "all_windows": {
+          "exact_set": 0.7441520690917969,
+          "fn": 144,
+          "fp": 259,
+          "node_accuracy": 0.9631761695906432,
+          "node_f1": 0.8617495711835333,
+          "node_precision": 0.829042904290429,
+          "node_recall": 0.8971428571428571,
+          "positive_entries": 1400,
+          "tn": 9285,
+          "tp": 1256,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.6993243098258972,
+          "fn": 144,
+          "fp": 22,
+          "node_accuracy": 0.9649493243243243,
+          "node_f1": 0.9380134428678117,
+          "node_precision": 0.9827856025039123,
+          "node_recall": 0.8971428571428571,
+          "positive_entries": 1400,
+          "tn": 3314,
+          "tp": 1256,
+          "window_count": 296
+        }
+      },
+      "source": {
+        "all_windows": {
+          "exact_set": 0.7894737124443054,
+          "fn": 75,
+          "fp": 70,
+          "node_accuracy": 0.986750730994152,
+          "node_f1": 0.8032564450474898,
+          "node_precision": 0.8087431693989071,
+          "node_recall": 0.7978436657681941,
+          "positive_entries": 371,
+          "tn": 10503,
+          "tp": 296,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7398648858070374,
+          "fn": 75,
+          "fp": 2,
+          "node_accuracy": 0.9837415540540541,
+          "node_f1": 0.8849028400597908,
+          "node_precision": 0.9932885906040269,
+          "node_recall": 0.7978436657681941,
+          "positive_entries": 371,
+          "tn": 4363,
+          "tp": 296,
+          "window_count": 296
+        }
+      },
+      "transit": {
+        "all_windows": {
+          "exact_set": 0.8084795475006104,
+          "fn": 68,
+          "fp": 150,
+          "node_accuracy": 0.9800804093567251,
+          "node_f1": 0.8734030197444831,
+          "node_precision": 0.8337028824833703,
+          "node_recall": 0.9170731707317074,
+          "positive_entries": 820,
+          "tn": 9974,
+          "tp": 752,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7770270109176636,
+          "fn": 68,
+          "fp": 25,
+          "node_accuracy": 0.9803631756756757,
+          "node_f1": 0.9417658108954289,
+          "node_precision": 0.9678249678249679,
+          "node_recall": 0.9170731707317074,
+          "positive_entries": 820,
+          "tn": 3891,
+          "tp": 752,
+          "window_count": 296
+        }
+      },
+      "victim": {
+        "all_windows": {
+          "exact_set": 0.9049707651138306,
+          "fn": 1,
+          "fp": 66,
+          "node_accuracy": 0.9938779239766082,
+          "node_f1": 0.8980213089802132,
+          "node_precision": 0.817174515235457,
+          "node_recall": 0.9966216216216216,
+          "positive_entries": 296,
+          "tn": 10582,
+          "tp": 295,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.9560810923576355,
+          "fn": 1,
+          "fp": 12,
+          "node_accuracy": 0.9972550675675675,
+          "node_f1": 0.978441127694859,
+          "node_precision": 0.9609120521172638,
+          "node_recall": 0.9966216216216216,
+          "positive_entries": 296,
+          "tn": 4428,
+          "tp": 295,
+          "window_count": 296
+        }
+      }
+    },
+    "window_count": 684
+  },
+  "validation_predictions_reused": true,
+  "warnings": []
+}

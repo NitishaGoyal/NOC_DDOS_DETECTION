@@ -1,0 +1,117 @@
+{
+  "decision": {
+    "D8_P0_alignment_audit_authorized": true,
+    "P2_formally_selected_and_frozen": true,
+    "final_temporal_graph_alarm_policy": "P2",
+    "next_stage": "V5_P3_FINAL_D8_P0_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_AUDIT",
+    "sealed_test_evaluation_authorized": false,
+    "total_system_freeze_authorized": false
+  },
+  "final_graph_alarm_policy": {
+    "base_neural_graph_signal": {
+      "frozen": true,
+      "source": "Raw neural graph prediction",
+      "threshold": 0.5
+    },
+    "temporal_confirmation": {
+      "cross_run_history": "forbidden",
+      "definition": "alarm_t = 1 iff at least 2 of Raw_(t-2), Raw_(t-1), Raw_t are positive",
+      "frozen": true,
+      "history_length_windows": 3,
+      "missing_pre_run_history": "zero",
+      "policy_id": "P2",
+      "required_positives": 2,
+      "state_reset": "at every certified gem5 run boundary"
+    }
+  },
+  "important_remaining_system_integration_boundary": {
+    "graph_alarm_policy_may_not_be_changed_by_alignment_stage": true,
+    "issue": "P2 may assert a confirmed graph alarm at time t even when Raw_t == 0 (for example history pattern 1,1,0). EPLR-V2's current-window contract returns INACTIVE_RAW/zero selected role masks whenever Raw_t == 0. Therefore final alarm-to-localization temporal alignment semantics must be audited and frozen before total-system freeze or sealed-test evaluation.",
+    "next_required_stage": "V5_P3_FINAL_D8_P0_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_AUDIT",
+    "status": "UNRESOLVED_AND_NOT_YET_FROZEN",
+    "structured_decoder_may_not_be_changed_by_alignment_stage": true
+  },
+  "independent_B_selection_evidence": {
+    "P0": {
+      "all_negative_false_alarm_events_total": 121,
+      "episode_detection_rate": 1.0,
+      "negative_window_fpr": 0.23983459682977257,
+      "window_recall": 0.940032414910859
+    },
+    "P2": {
+      "additional_first_detection_delay_vs_P0_windows": {
+        "common_detected_episodes": 75,
+        "max": 6.0,
+        "mean": 0.4266666666666667,
+        "median": 0.0,
+        "p95": 1.2999999999999972
+      },
+      "all_negative_false_alarm_events_total": 79,
+      "episode_detection_rate": 1.0,
+      "negative_window_fpr": 0.23461652062616914,
+      "window_recall": 0.9403025391680173
+    },
+    "P2_minus_P0": {
+      "episode_detection_rate_delta": 0.0,
+      "negative_false_alarm_event_reduction": 42,
+      "negative_false_alarm_event_relative_reduction": 0.34710743801652894,
+      "negative_window_fpr_absolute_reduction": 0.005218076203603428,
+      "negative_window_fpr_reduction_percentage_points": 0.5218076203603428,
+      "negative_window_fpr_relative_reduction": 0.021756978653530386,
+      "window_recall_delta": 0.0002701242571583329
+    },
+    "rejected_candidates": {
+      "P1": {
+        "episode_detection_rate": 0.9866666666666667,
+        "reason": "ineligible because episode detection count fell below P0"
+      },
+      "P3": {
+        "additional_delay_p95_windows": 4.0,
+        "episode_detection_rate": 0.9866666666666667,
+        "reason": "ineligible because episode detection count fell below P0 and p95 delay exceeded fixed horizon"
+      }
+    }
+  },
+  "provenance": {
+    "D6_R2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_r2_eplr_v2_runtime_decoder_review_and_freeze/V5_P3_FINAL_D6_R2_EPLR_V2_RUNTIME_DECODER_REVIEW_AND_FREEZE_LOCK.json",
+    "D6_R2_lock_sha256": "7406c59a946b2a2e3d56fdc31f2ed22e258e955910f3f5821597e54c80788447",
+    "D7_R1_R2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d7_r1_r2_episode_aware_temporal_alarm_confirmation_validation/V5_P3_FINAL_D7_R1_R2_EPISODE_AWARE_TEMPORAL_ALARM_CONFIRMATION_VALIDATION_LOCK.json",
+    "D7_R1_R2_lock_sha256": "a972f65d02b9cdc08c9327c02aa80c1a5d412a8c00534d3662aa8d02c0290600",
+    "D7_R1_R2_outputs": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d7_r1_r2_episode_aware_temporal_alarm_confirmation_validation/V5_P3_FINAL_D7_R1_R2_EPISODE_AWARE_TEMPORAL_ALARM_CONFIRMATION_OUTPUTS.npz",
+    "D7_R1_R2_outputs_sha256": "d8648fc66959895ff11387533aabf7470f0d297350bfad24c178a0a9173ffa69",
+    "D7_R1_R2_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d7_r1_r2_episode_aware_temporal_alarm_confirmation_validation/V5_P3_FINAL_D7_R1_R2_EPISODE_AWARE_TEMPORAL_ALARM_CONFIRMATION_VALIDATION_REPORT.json",
+    "D7_R1_R2_report_sha256": "e0dec29e91784cc196d839b59d6098ad17d72a38beb49be78f98c897b0315af7"
+  },
+  "runtime_structured_decoder": {
+    "decoder": "EPLR_V2",
+    "status": "FROZEN_FROM_D6_R2"
+  },
+  "scientific_boundary": {
+    "calibration_retuning_performed": false,
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "persistence_policy_re_evaluated": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "formal freeze of the predeclared-rule winner from independent Tranche-B temporal validation",
+  "selection_authority": {
+    "authority": "Tranche B only",
+    "eligible_policies": [
+      "P0",
+      "P2"
+    ],
+    "predeclared_rule_ranking": [
+      "P2",
+      "P0"
+    ],
+    "predeclared_rule_winner": "P2",
+    "rule_predeclared_before_policy_results": true
+  },
+  "stage": "V5_P3_FINAL_D7_R2_TEMPORAL_ALARM_POLICY_REVIEW_AND_FREEZE",
+  "status": "PASS"
+}

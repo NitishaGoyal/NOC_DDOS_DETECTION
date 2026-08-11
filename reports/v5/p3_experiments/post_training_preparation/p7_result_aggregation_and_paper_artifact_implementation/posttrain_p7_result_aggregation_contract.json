@@ -1,0 +1,79 @@
+{
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "formatting_contract": {
+    "display_rounding": "not applied by P7; manuscript formatting is downstream",
+    "paper_metric_names": {
+      "count_active_macro_f1": "Count Macro-F1",
+      "graph_auroc": "Graph AUROC",
+      "graph_average_precision": "Graph AP",
+      "path_average_precision": "Path AP",
+      "source_average_precision": "Source AP",
+      "transit_average_precision": "Transit AP",
+      "victim_average_precision": "Victim AP"
+    },
+    "raw_numeric_precision": "preserve source precision in JSON; CSV uses Python string conversion"
+  },
+  "inputs": {
+    "f7_optional": [
+      "feature_group_ablation_summary.csv"
+    ],
+    "p2": [
+      "per_run_onset_latency.csv",
+      "onset_latency_summary.json",
+      "graph_first_latency_cdf.csv"
+    ],
+    "p3": [
+      "victim_role_path_summary.json",
+      "per_window_role_exactness.csv",
+      "cross_head_role_confusion.csv"
+    ],
+    "p4": [
+      "model_comparison_aggregate.csv"
+    ],
+    "p5": [
+      "robustness_subgroup_metrics.csv",
+      "robustness_metadata_coverage.csv",
+      "robustness_summary.json"
+    ],
+    "p6": [
+      "inference_latency_result.json"
+    ]
+  },
+  "outputs": {
+    "figure_ready_data": [
+      "FIG_latency_cdf.csv",
+      "FIG_victim_ranking.csv",
+      "FIG_role_confusion.csv",
+      "FIG_robustness.csv",
+      "FIG_feature_group_ablation.csv"
+    ],
+    "machine_readable": [
+      "manuscript_numbers.json",
+      "artifact_manifest.json"
+    ],
+    "paper_tables": [
+      "TABLE_model_comparison.csv",
+      "TABLE_response_latency.csv",
+      "TABLE_victim_role_path.csv",
+      "TABLE_robustness.csv",
+      "TABLE_inference_cost.csv",
+      "TABLE_feature_group_ablation.csv"
+    ]
+  },
+  "paper_claim_boundary": {
+    "f7_feature_removal_claim_authorized": false,
+    "missing_inputs": "remain explicit NA / NOT_AVAILABLE; never fabricated",
+    "p7_does_not_promote_evidence_classification": true,
+    "sealed_test_claims_created_by_p7": false,
+    "training_results_label": "TRAIN-DERIVED where applicable",
+    "validation_results_label": "VALIDATION-EXPLORATORY unless separately promoted by an independent-validation lock"
+  },
+  "scope": "postprocessed_validation_result_aggregation_only",
+  "sealed_test_policy": {
+    "sealed_test_access": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false
+  },
+  "stage": "V5_P3_POSTTRAIN_P7_RESULT_AGGREGATION_AND_PAPER_ARTIFACT_IMPLEMENTATION"
+}

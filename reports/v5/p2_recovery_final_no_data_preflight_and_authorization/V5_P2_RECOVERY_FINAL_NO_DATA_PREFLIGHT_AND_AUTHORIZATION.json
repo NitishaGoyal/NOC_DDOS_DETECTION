@@ -1,0 +1,112 @@
+{
+  "A2_executed": false,
+  "authorization": {
+    "authorization_id": "V5P2-RECOVERY-1066fc8903ea19ba256b0924caf0be7b",
+    "contract_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_recovery_final_no_data_preflight_and_authorization/V5_P2_RECOVERY_ONE_SHOT_AUTHORIZATION.json",
+    "contract_sha256": "f51323d5496aa40dab5f73c504f79cdbb1e5b66789a46ed82d74fbf617840d7e",
+    "evaluation_count": 1,
+    "single_use": true,
+    "successful_rerun_authorized": false,
+    "test_access_authorized": true,
+    "token_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_recovery_final_no_data_preflight_and_authorization/V5_P2_RECOVERY_ONE_SHOT_AUTHORIZATION_TOKEN.json",
+    "token_sha256": "b0ae1535938594cf5e05e595f9c4b5dc52aa21ee102598b7ba5d54f906178f67"
+  },
+  "bound_execution": {
+    "data_root_text": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "data_root_text_sha256": "24c4f428731863be76eaf7cce7b17e6df3ecc5c904f247d83ac6a9447ccd1fd0",
+    "evaluator_source": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py",
+    "evaluator_source_sha256": "770ad8937427c32680c1cced7b3040bf6055662615c88edbf544e8805d9fe7c9",
+    "launcher_path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/run_v5_p2_recovery_authorized_one_shot.sh",
+    "launcher_sha256": "6fe6a2e785a4ef82178e25252aba3d75bba63a4088d1a51f1ffdaf05b10a84c8",
+    "output_dir_text": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation",
+    "output_dir_text_sha256": "55a2af0407fab88c6141e8f5cca8f38d30f5d5c933fd539cf7739ce2c9adf564"
+  },
+  "created_utc": "2026-07-30T00:23:57.721530+00:00",
+  "decision": "AUTHORIZE_EXACTLY_ONE_PROSPECTIVE_V5_P2_RECOVERY_RAW_A0_A1_EXECUTION",
+  "environment": {
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+    "python_version": "3.12.3"
+  },
+  "official_output_groups": [
+    "raw_neural",
+    "A0_lightweight",
+    "A1_exact_structured"
+  ],
+  "preflight": {
+    "all_frozen_hashes_verified": true,
+    "fresh_source_only_self_test_log": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_recovery_final_no_data_preflight_and_authorization/RECOVERY_FINAL_NO_DATA_SOURCE_ONLY_SELF_TEST.log",
+    "fresh_source_only_self_test_log_sha256": "7d422c48e2406f37f3d24a9fc166f25a07c5e6aad7bc65939c859f4a9bcac688",
+    "fresh_source_only_self_test_passed": true,
+    "recovery_evaluator_AST_audit": {
+      "A0_thresholds_verified": true,
+      "A1_margin_threshold_verified": true,
+      "authorization_consumed_before_dataset_construction": true,
+      "batch_size": 128,
+      "dataset_constructed_before_single_inference": true,
+      "exact_source_sha256_verified": true,
+      "expected_complete_pairs": 69,
+      "expected_test_tensor_files": 138,
+      "router_count": 16,
+      "stage": "V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION",
+      "stride": 8,
+      "syntax_valid": true,
+      "window": 32
+    },
+    "recovery_evaluator_contract_audit": {
+      "A2_rejected_and_not_executed": true,
+      "Raw_A0_A1_verified": true,
+      "contract_identity_verified": true,
+      "evaluator_and_snapshot_hashes_verified": true,
+      "freeze_report_and_lock_cross_hash_verified": true,
+      "nested_schema_verified": true,
+      "neural_execution_verified": true,
+      "original_abort_disclosure_verified": true,
+      "sole_amendment_verified": true,
+      "source_freeze_boundary_verified": true,
+      "test_pairing_verified": true
+    },
+    "recovery_output_guard_absent_before_authorization": true,
+    "source_only_self_test_scalar": {
+      "real_test_path_resolved": "false",
+      "route_count": "240",
+      "status": "PASS",
+      "synthetic_A1_certified": "true",
+      "synthetic_forward_exact_repeat": "true",
+      "synthetic_recovery_item_count": "276",
+      "synthetic_recovery_pair_count": "69",
+      "synthetic_recovery_pairing_passed": "true",
+      "test_directory_enumerated": "false",
+      "test_directory_existence_checked": "false",
+      "test_path_resolved": "false",
+      "test_tensors_deserialized": "false"
+    }
+  },
+  "recovery_disclosure": {
+    "original_authorization_consumed": true,
+    "original_authorization_id": "V5P2-caaea91e4eb6772ace0dc1b43b7e28c4",
+    "original_execution_completed": false,
+    "original_failure_classification": "PRE_INFERENCE_MANIFEST_WIRING_ABORT",
+    "original_test_result_obtained": false,
+    "recovery_reported_separately": true
+  },
+  "security_boundary": {
+    "data_root_bound_as_text": true,
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_path_resolved": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false
+  },
+  "stage": "V5_P2_RECOVERY_FINAL_NO_DATA_PREFLIGHT_AND_AUTHORIZATION",
+  "state_after_authorization": {
+    "authorization_contract_created": true,
+    "authorization_token_consumed": false,
+    "authorization_token_created": true,
+    "next_stage": "V5_P2_RECOVERY_AUTHORIZED_ONE_SHOT_EXECUTION",
+    "ready_for_recovery_test": true,
+    "recovery_evaluator_source_frozen": true
+  },
+  "status": "COMPLETE"
+}

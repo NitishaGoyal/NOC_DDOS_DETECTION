@@ -1,0 +1,155 @@
+========================================================================================
+ARGUMENT: root
+CLASSIFICATION: PROVENANCE_OR_COMPATIBILITY_ONLY
+ALIASES: []
+USE SITES: 1
+========================================================================================
+
+
+[root use 1]
+scope=main
+lines=1011-1011
+node_type=Call
+classifications=['existence_or_path_normalization']
+source=args.root.expanduser()
+01006:     parser.add_argument("--seed", type=int, required=True)
+01007:     parser.add_argument("--model-dir", type=Path, required=True)
+01008:     parser.add_argument("--report-dir", type=Path, required=True)
+01009:     args = parser.parse_args()
+01010: 
+01011:     root = args.root.expanduser().resolve()
+01012:     b1_dir = args.b1_dir.expanduser().resolve()
+01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+01014:     loader_path = args.loader_path.expanduser().resolve()
+01015:     model_path = args.model_path.expanduser().resolve()
+01016:     model_dir = args.model_dir.expanduser().resolve()
+
+========================================================================================
+ARGUMENT: b1_dir
+CLASSIFICATION: PROVENANCE_OR_COMPATIBILITY_ONLY
+ALIASES: []
+USE SITES: 1
+========================================================================================
+
+
+[b1_dir use 1]
+scope=main
+lines=1012-1012
+node_type=Call
+classifications=['existence_or_path_normalization']
+source=args.b1_dir.expanduser()
+01007:     parser.add_argument("--model-dir", type=Path, required=True)
+01008:     parser.add_argument("--report-dir", type=Path, required=True)
+01009:     args = parser.parse_args()
+01010: 
+01011:     root = args.root.expanduser().resolve()
+01012:     b1_dir = args.b1_dir.expanduser().resolve()
+01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+01014:     loader_path = args.loader_path.expanduser().resolve()
+01015:     model_path = args.model_path.expanduser().resolve()
+01016:     model_dir = args.model_dir.expanduser().resolve()
+01017:     report_dir = args.report_dir.expanduser().resolve()
+
+========================================================================================
+ARGUMENT: b0_r3_dir
+CLASSIFICATION: PROVENANCE_OR_COMPATIBILITY_ONLY
+ALIASES: []
+USE SITES: 1
+========================================================================================
+
+
+[b0_r3_dir use 1]
+scope=main
+lines=1013-1013
+node_type=Call
+classifications=['existence_or_path_normalization']
+source=args.b0_r3_dir.expanduser()
+01008:     parser.add_argument("--report-dir", type=Path, required=True)
+01009:     args = parser.parse_args()
+01010: 
+01011:     root = args.root.expanduser().resolve()
+01012:     b1_dir = args.b1_dir.expanduser().resolve()
+01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+01014:     loader_path = args.loader_path.expanduser().resolve()
+01015:     model_path = args.model_path.expanduser().resolve()
+01016:     model_dir = args.model_dir.expanduser().resolve()
+01017:     report_dir = args.report_dir.expanduser().resolve()
+01018:     seed = int(args.seed)
+
+========================================================================================
+ARGUMENT: loader_path
+CLASSIFICATION: PROVENANCE_OR_COMPATIBILITY_ONLY
+ALIASES: []
+USE SITES: 1
+========================================================================================
+
+
+[loader_path use 1]
+scope=main
+lines=1014-1014
+node_type=Call
+classifications=['existence_or_path_normalization']
+source=args.loader_path.expanduser()
+01009:     args = parser.parse_args()
+01010: 
+01011:     root = args.root.expanduser().resolve()
+01012:     b1_dir = args.b1_dir.expanduser().resolve()
+01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+01014:     loader_path = args.loader_path.expanduser().resolve()
+01015:     model_path = args.model_path.expanduser().resolve()
+01016:     model_dir = args.model_dir.expanduser().resolve()
+01017:     report_dir = args.report_dir.expanduser().resolve()
+01018:     seed = int(args.seed)
+01019: 
+
+========================================================================================
+ARGUMENT: model_path
+CLASSIFICATION: PROVENANCE_OR_COMPATIBILITY_ONLY
+ALIASES: []
+USE SITES: 1
+========================================================================================
+
+
+[model_path use 1]
+scope=main
+lines=1015-1015
+node_type=Call
+classifications=['existence_or_path_normalization']
+source=args.model_path.expanduser()
+01010: 
+01011:     root = args.root.expanduser().resolve()
+01012:     b1_dir = args.b1_dir.expanduser().resolve()
+01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+01014:     loader_path = args.loader_path.expanduser().resolve()
+01015:     model_path = args.model_path.expanduser().resolve()
+01016:     model_dir = args.model_dir.expanduser().resolve()
+01017:     report_dir = args.report_dir.expanduser().resolve()
+01018:     seed = int(args.seed)
+01019: 
+01020:     if seed not in EXPECTED_SEEDS:
+
+========================================================================================
+ARGUMENT: model_dir
+CLASSIFICATION: PROVENANCE_OR_COMPATIBILITY_ONLY
+ALIASES: []
+USE SITES: 1
+========================================================================================
+
+
+[model_dir use 1]
+scope=main
+lines=1016-1016
+node_type=Call
+classifications=['existence_or_path_normalization']
+source=args.model_dir.expanduser()
+01011:     root = args.root.expanduser().resolve()
+01012:     b1_dir = args.b1_dir.expanduser().resolve()
+01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()
+01014:     loader_path = args.loader_path.expanduser().resolve()
+01015:     model_path = args.model_path.expanduser().resolve()
+01016:     model_dir = args.model_dir.expanduser().resolve()
+01017:     report_dir = args.report_dir.expanduser().resolve()
+01018:     seed = int(args.seed)
+01019: 
+01020:     if seed not in EXPECTED_SEEDS:
+01021:         print(

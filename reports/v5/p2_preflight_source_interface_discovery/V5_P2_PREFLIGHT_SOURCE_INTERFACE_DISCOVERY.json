@@ -1,0 +1,7075 @@
+{
+  "checkpoint_interface": {
+    "loaded": true,
+    "payload_type": "dict",
+    "state_dict_key": "model_state_dict",
+    "state_entries": [
+      {
+        "dtype": "torch.int64",
+        "name": "base_edge_index",
+        "numel": 96,
+        "shape": [
+          2,
+          48
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "input_projection.weight",
+        "numel": 3712,
+        "shape": [
+          64,
+          58,
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "input_projection.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.0.depthwise.weight",
+        "numel": 192,
+        "shape": [
+          64,
+          1,
+          3
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.0.depthwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.0.pointwise.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64,
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.0.pointwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.1.depthwise.weight",
+        "numel": 192,
+        "shape": [
+          64,
+          1,
+          3
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.1.depthwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.1.pointwise.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64,
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.1.pointwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.2.depthwise.weight",
+        "numel": 192,
+        "shape": [
+          64,
+          1,
+          3
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.2.depthwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.2.pointwise.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64,
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.2.pointwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.3.depthwise.weight",
+        "numel": 192,
+        "shape": [
+          64,
+          1,
+          3
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.3.depthwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.3.pointwise.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64,
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "temporal_blocks.3.pointwise.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "node_projection.weight",
+        "numel": 4736,
+        "shape": [
+          64,
+          74
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "node_projection.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "source_head.0.weight",
+        "numel": 2048,
+        "shape": [
+          32,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "source_head.0.bias",
+        "numel": 32,
+        "shape": [
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "source_head.2.weight",
+        "numel": 32,
+        "shape": [
+          1,
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "source_head.2.bias",
+        "numel": 1,
+        "shape": [
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "transit_head.0.weight",
+        "numel": 2048,
+        "shape": [
+          32,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "transit_head.0.bias",
+        "numel": 32,
+        "shape": [
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "transit_head.2.weight",
+        "numel": 32,
+        "shape": [
+          1,
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "transit_head.2.bias",
+        "numel": 1,
+        "shape": [
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "victim_head.0.weight",
+        "numel": 2048,
+        "shape": [
+          32,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "victim_head.0.bias",
+        "numel": 32,
+        "shape": [
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "victim_head.2.weight",
+        "numel": 32,
+        "shape": [
+          1,
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "victim_head.2.bias",
+        "numel": 1,
+        "shape": [
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "path_head.0.weight",
+        "numel": 2048,
+        "shape": [
+          32,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "path_head.0.bias",
+        "numel": 32,
+        "shape": [
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "path_head.2.weight",
+        "numel": 32,
+        "shape": [
+          1,
+          32
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "path_head.2.bias",
+        "numel": 1,
+        "shape": [
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph_projection.0.weight",
+        "numel": 8192,
+        "shape": [
+          64,
+          128
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph_projection.0.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "attack_head.weight",
+        "numel": 64,
+        "shape": [
+          1,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "attack_head.bias",
+        "numel": 1,
+        "shape": [
+          1
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "count_head.weight",
+        "numel": 256,
+        "shape": [
+          4,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "count_head.bias",
+        "numel": 4,
+        "shape": [
+          4
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph1.lin_rel.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph1.lin_rel.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph1.lin_root.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph2.lin_rel.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph2.lin_rel.bias",
+        "numel": 64,
+        "shape": [
+          64
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "name": "graph2.lin_root.weight",
+        "numel": 4096,
+        "shape": [
+          64,
+          64
+        ]
+      }
+    ],
+    "state_tensor_count": 49,
+    "state_total_numel": 59881,
+    "top_level_keys": [
+      "b1_protocol_sha256",
+      "b3_model_sha256",
+      "candidate",
+      "common_initial_state_sha256",
+      "epoch",
+      "full_initial_state_sha256",
+      "loader_sha256",
+      "model_state_dict",
+      "optimizer_state_dict",
+      "promotion_report_sha256",
+      "scheduler_state_dict",
+      "seed",
+      "stage",
+      "task_d_model_sha256",
+      "test_tensors_deserialized",
+      "threshold_tuning_performed",
+      "train_label_weight_manifest",
+      "validation_metrics"
+    ]
+  },
+  "created_utc": "2026-07-29T19:43:12.198319+00:00",
+  "e1_report_status": "COMPLETE",
+  "evidence_hashes": {
+    "checkpoint": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/selected_graphconv_checkpoint.pt",
+      "sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc"
+    },
+    "dataset_manifest": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+      "sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5"
+    },
+    "e1_marker": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_immutable_validation_logit_export/V5_P2_E1_IMMUTABLE_VALIDATION_LOGIT_EXPORT_COMPLETE",
+      "sha256": "a315692904e72f303904acd238dbe51243a945ae5b369187969d13cc5cc2b3a1"
+    },
+    "e1_report": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_immutable_validation_logit_export/V5_P2_E1_IMMUTABLE_VALIDATION_LOGIT_EXPORT.json",
+      "sha256": "f848b93eeb4caffbdaef6f8cc4aee3d7d1e13c51add12e5c768d081ac380f110"
+    },
+    "exact_decoder": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+      "sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c"
+    },
+    "l5_contract": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_ONE_SHOT_BLIND_EVALUATION_CONTRACT.json",
+      "sha256": "a9cd7b7d437e7e362b1bb942796df9773a603c90ab95e4b6647b9049114fc078"
+    },
+    "l5_lock": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE_LOCK.json",
+      "sha256": "591ba3a3257613402f7a3ca2d7d67980f32079cd9c3d00cc52ff7a6dbcfaafca"
+    },
+    "l5_markdown": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE.md",
+      "sha256": "1ea001a4455fc4273f64b6f7f6115d34038058cab0260958fcbdbbbc54b6b39f"
+    },
+    "l5_marker": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE_COMPLETE",
+      "sha256": "f38f729de8dbcb40ea2599d3b90f6179a799983c3388755fc081c9135ec3c891"
+    },
+    "l5_report": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE.json",
+      "sha256": "f537c1a90818c68825c1ca3732a49825bb0d8ab9ec9507e83396fc2678e83988"
+    },
+    "model_source": {
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_task_d_full_multitask_count4.py",
+      "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+    },
+    "route_table": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/decoders/xy4x4_route_table.json",
+      "sha256": "19624d95a83114fba1e27e647aab59a0231c97d45053b598692ae62578b321b0"
+    }
+  },
+  "frozen_contract": {
+    "A2_official": false,
+    "official_output_groups": [
+      "raw_neural",
+      "A0_lightweight",
+      "A1_exact_structured"
+    ],
+    "official_test_decoders": [
+      "A0",
+      "A1"
+    ],
+    "single_neural_inference_pass": true
+  },
+  "loader_interface": {
+    "canonical_alias_candidates": [
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 96,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 105,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 111,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 115,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 130,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 134,
+              "name": "load_csv"
+            },
+            {
+              "args": [
+                "row",
+                "key"
+              ],
+              "line": 139,
+              "name": "as_int"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 149,
+              "name": "category_count"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 154,
+              "name": "is_binary_tensor"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 160,
+              "name": "confusion_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 192,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 230,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 252,
+              "name": "candidate_thresholds"
+            },
+            {
+              "args": [
+                "train_values",
+                "train_truth"
+              ],
+              "line": 288,
+              "name": "fit_threshold"
+            },
+            {
+              "args": [
+                "values",
+                "threshold",
+                "direction"
+              ],
+              "line": 323,
+              "name": "apply_threshold"
+            },
+            {
+              "args": [
+                "truth",
+                "predicted_node"
+              ],
+              "line": 335,
+              "name": "source_single_prediction_metrics"
+            },
+            {
+              "args": [
+                "mask"
+              ],
+              "line": 368,
+              "name": "mask_signature"
+            },
+            {
+              "args": [
+                "train_truth",
+                "validation_truth",
+                "node_signatures"
+              ],
+              "line": 381,
+              "name": "role_mask_prior_baseline"
+            },
+            {
+              "args": [],
+              "line": 447,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "count_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_b0_r3_corrected_nontest_label_shortcuts.py",
+        "score": 44,
+        "sha256": "3e61a69f24df1ba2ce83aac9ff79713c60518ff18ab1bb91e141d31fd760660f",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 5,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 86,
+          "validation": 106
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 96,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 105,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 111,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 115,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 130,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 134,
+              "name": "load_csv"
+            },
+            {
+              "args": [
+                "row",
+                "key"
+              ],
+              "line": 139,
+              "name": "as_int"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 149,
+              "name": "category_count"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 154,
+              "name": "is_binary_tensor"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 160,
+              "name": "confusion_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 192,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 230,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 252,
+              "name": "candidate_thresholds"
+            },
+            {
+              "args": [
+                "train_values",
+                "train_truth"
+              ],
+              "line": 288,
+              "name": "fit_threshold"
+            },
+            {
+              "args": [
+                "values",
+                "threshold",
+                "direction"
+              ],
+              "line": 323,
+              "name": "apply_threshold"
+            },
+            {
+              "args": [
+                "truth",
+                "predicted_node"
+              ],
+              "line": 335,
+              "name": "source_single_prediction_metrics"
+            },
+            {
+              "args": [
+                "mask"
+              ],
+              "line": 368,
+              "name": "mask_signature"
+            },
+            {
+              "args": [
+                "train_truth",
+                "validation_truth",
+                "node_signatures"
+              ],
+              "line": 381,
+              "name": "role_mask_prior_baseline"
+            },
+            {
+              "args": [],
+              "line": 447,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_b0_nontest_label_shortcuts.py",
+        "score": 42,
+        "sha256": "b5d8785070e0078ef000ce7af0ba049f1cf3cc6f207d40e1abd067655b16d77c",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 5,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 86,
+          "validation": 106
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 60,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 68,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 77,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 83,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 87,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 91,
+              "name": "pair_key"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 100,
+              "name": "class_name"
+            },
+            {
+              "args": [
+                "payload",
+                "aliases"
+              ],
+              "line": 108,
+              "name": "find_key"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 115,
+              "name": "tensor_record"
+            },
+            {
+              "args": [
+                "value",
+                "depth"
+              ],
+              "line": 147,
+              "name": "summarize_object"
+            },
+            {
+              "args": [
+                "payload",
+                "expected_nodes",
+                "expected_features"
+              ],
+              "line": 187,
+              "name": "infer_x_key"
+            },
+            {
+              "args": [
+                "shape",
+                "expected_nodes",
+                "expected_features"
+              ],
+              "line": 211,
+              "name": "infer_axes"
+            },
+            {
+              "args": [
+                "target",
+                "time_length",
+                "node_count"
+              ],
+              "line": 248,
+              "name": "target_time_compatible"
+            },
+            {
+              "args": [
+                "files"
+              ],
+              "line": 261,
+              "name": "select_pair_keys"
+            },
+            {
+              "args": [],
+              "line": 275,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "hashlib",
+            "json",
+            "math",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "score": 36,
+        "sha256": "5ea8db9aff3e2a4633b74212b20271084054872d0896c2591a89b54dcea749d1",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 15,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 9,
+          "shuffle=false": 0,
+          "split": 47,
+          "validation": 19
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 235,
+              "methods": [
+                "__init__",
+                "update",
+                "report"
+              ],
+              "name": "StreamingMoments"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 72,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 83,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 92,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 98,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 102,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 117,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 121,
+              "name": "scalar_string"
+            },
+            {
+              "args": [
+                "mapping",
+                "names"
+              ],
+              "line": 131,
+              "name": "find_alias"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 138,
+              "name": "tensor_summary"
+            },
+            {
+              "args": [
+                "rows",
+                "cols"
+              ],
+              "line": 152,
+              "name": "expected_mesh_edges"
+            },
+            {
+              "args": [
+                "edge_index"
+              ],
+              "line": 168,
+              "name": "edge_index_is_mesh"
+            },
+            {
+              "args": [
+                "root",
+                "explicit",
+                "candidates"
+              ],
+              "line": 184,
+              "name": "discover_split_dir"
+            },
+            {
+              "args": [
+                "directory"
+              ],
+              "line": 208,
+              "name": "pt_files"
+            },
+            {
+              "args": [
+                "split",
+                "root",
+                "path",
+                "payload_sha256"
+              ],
+              "line": 216,
+              "name": "metadata_manifest_row"
+            },
+            {
+              "args": [
+                "split",
+                "path",
+                "expected_feature_count"
+              ],
+              "line": 306,
+              "name": "audit_payload_file"
+            },
+            {
+              "args": [
+                "path",
+                "runtime",
+                "failures",
+                "warnings"
+              ],
+              "line": 396,
+              "name": "validate_runtime"
+            },
+            {
+              "args": [],
+              "line": 513,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p1/audit_v5_p1_a0_independent_dataset.py",
+        "score": 33,
+        "sha256": "d5f4ed87ed6393aacae6203affd10ab094f347776840158c7cd4d765165aaf5a",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 2,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 0,
+          "split": 53,
+          "validation": 65
+        }
+      }
+    ],
+    "canonical_aliases": {
+      "y_graph": "y_attack",
+      "y_path": "y_attack_path"
+    },
+    "complete_batch_key_candidates": [
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 65,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 73,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 82,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 88,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 92,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 107,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 111,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 122,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 134,
+              "name": "category_from_pair_key"
+            },
+            {
+              "args": [
+                "target"
+              ],
+              "line": 141,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "logits",
+                "target"
+              ],
+              "line": 156,
+              "name": "exact_binary_metrics"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "count_targets",
+                "active_mask"
+              ],
+              "line": 178,
+              "name": "evaluate"
+            },
+            {
+              "args": [],
+              "line": 231,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "re",
+            "sys",
+            "torch",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/run_v5_p2_a4_loader_integration_tiny_overfit.py",
+        "score": 53,
+        "sha256": "990bfefeaaa7a87607a13c99cd273734c941c6bbb9403fdc9c31deca4b154d4a",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 3,
+          "dataset": 15,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 15,
+          "shuffle=false": 1,
+          "split": 2,
+          "validation": 8
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 102,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 111,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 117,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 129,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 158,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 164,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 183,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 200,
+              "name": "category_from_pair_key"
+            },
+            {
+              "args": [
+                "target"
+              ],
+              "line": 210,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "logits",
+                "target"
+              ],
+              "line": 232,
+              "name": "exact_binary_metrics"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "count_targets",
+                "active_mask"
+              ],
+              "line": 261,
+              "name": "evaluate"
+            },
+            {
+              "args": [],
+              "line": 328,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "re",
+            "sys",
+            "torch",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/run_v5_p2_b0_r2_count_head_expansion_a4_repeat.py",
+        "score": 52,
+        "sha256": "e6c3f8ee2f92c5ffd297ace1bce28955f7190078f888fd2de66049617dd14d7d",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 2,
+          "dataset": 17,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 17,
+          "shuffle=false": 1,
+          "split": 1,
+          "validation": 8
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 90,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 101,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 110,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 116,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 123,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 142,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 146,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "document",
+                "key"
+              ],
+              "line": 160,
+              "name": "explicit_false"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 170,
+              "name": "create_exclusive_json"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 189,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 228,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 253,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "graph_truth"
+              ],
+              "line": 290,
+              "name": "node_set_metrics"
+            },
+            {
+              "args": [
+                "truth_raw",
+                "prediction_raw",
+                "classes"
+              ],
+              "line": 320,
+              "name": "multiclass_metrics_raw"
+            },
+            {
+              "args": [
+                "payload",
+                "path"
+              ],
+              "line": 375,
+              "name": "validate_run"
+            },
+            {
+              "args": [
+                "test_dir"
+              ],
+              "line": 430,
+              "name": "build_pair_index"
+            },
+            {
+              "args": [],
+              "line": 494,
+              "name": "stack_pair_batch"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 566,
+              "name": "concatenate"
+            },
+            {
+              "args": [],
+              "line": 575,
+              "name": "evaluate_test_once"
+            },
+            {
+              "args": [],
+              "line": 1003,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "io",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "traceback",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {},
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_b6_one_shot_test.py",
+        "score": 46,
+        "sha256": "29b5efbbbbadaee55984e4f80f96fc1cb23be2c09a9c1eda8b212b674d0480f1",
+        "term_counts": {
+          "checkpoint": 45,
+          "dataloader": 0,
+          "dataset": 1,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 18,
+          "shuffle=false": 0,
+          "split": 0,
+          "validation": 2
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 96,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 105,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 111,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 115,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 130,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 134,
+              "name": "load_csv"
+            },
+            {
+              "args": [
+                "row",
+                "key"
+              ],
+              "line": 139,
+              "name": "as_int"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 149,
+              "name": "category_count"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 154,
+              "name": "is_binary_tensor"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 160,
+              "name": "confusion_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 192,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 230,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 252,
+              "name": "candidate_thresholds"
+            },
+            {
+              "args": [
+                "train_values",
+                "train_truth"
+              ],
+              "line": 288,
+              "name": "fit_threshold"
+            },
+            {
+              "args": [
+                "values",
+                "threshold",
+                "direction"
+              ],
+              "line": 323,
+              "name": "apply_threshold"
+            },
+            {
+              "args": [
+                "truth",
+                "predicted_node"
+              ],
+              "line": 335,
+              "name": "source_single_prediction_metrics"
+            },
+            {
+              "args": [
+                "mask"
+              ],
+              "line": 368,
+              "name": "mask_signature"
+            },
+            {
+              "args": [
+                "train_truth",
+                "validation_truth",
+                "node_signatures"
+              ],
+              "line": 381,
+              "name": "role_mask_prior_baseline"
+            },
+            {
+              "args": [],
+              "line": 447,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "count_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_b0_r3_corrected_nontest_label_shortcuts.py",
+        "score": 44,
+        "sha256": "3e61a69f24df1ba2ce83aac9ff79713c60518ff18ab1bb91e141d31fd760660f",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 5,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 86,
+          "validation": 106
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 96,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 105,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 111,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 115,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 130,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 134,
+              "name": "load_csv"
+            },
+            {
+              "args": [
+                "row",
+                "key"
+              ],
+              "line": 139,
+              "name": "as_int"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 149,
+              "name": "category_count"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 154,
+              "name": "is_binary_tensor"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 160,
+              "name": "confusion_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 192,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 230,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 252,
+              "name": "candidate_thresholds"
+            },
+            {
+              "args": [
+                "train_values",
+                "train_truth"
+              ],
+              "line": 288,
+              "name": "fit_threshold"
+            },
+            {
+              "args": [
+                "values",
+                "threshold",
+                "direction"
+              ],
+              "line": 323,
+              "name": "apply_threshold"
+            },
+            {
+              "args": [
+                "truth",
+                "predicted_node"
+              ],
+              "line": 335,
+              "name": "source_single_prediction_metrics"
+            },
+            {
+              "args": [
+                "mask"
+              ],
+              "line": 368,
+              "name": "mask_signature"
+            },
+            {
+              "args": [
+                "train_truth",
+                "validation_truth",
+                "node_signatures"
+              ],
+              "line": 381,
+              "name": "role_mask_prior_baseline"
+            },
+            {
+              "args": [],
+              "line": 447,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_b0_nontest_label_shortcuts.py",
+        "score": 42,
+        "sha256": "b5d8785070e0078ef000ce7af0ba049f1cf3cc6f207d40e1abd067655b16d77c",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 5,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 86,
+          "validation": 106
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 62,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 73,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 79,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 83,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 87,
+              "name": "scalar"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 97,
+              "name": "metadata_text"
+            },
+            {
+              "args": [
+                "left",
+                "right"
+              ],
+              "line": 104,
+              "name": "exact_equal"
+            },
+            {
+              "args": [
+                "directory",
+                "marker_name",
+                "lock_name",
+                "report_name",
+                "expected_lock_status",
+                "failures"
+              ],
+              "line": 148,
+              "name": "verify_chain"
+            },
+            {
+              "args": [
+                "path",
+                "class_name"
+              ],
+              "line": 213,
+              "name": "import_class"
+            },
+            {
+              "args": [
+                "root",
+                "split"
+              ],
+              "line": 231,
+              "name": "load_split_sources"
+            },
+            {
+              "args": [
+                "source",
+                "window",
+                "stride"
+              ],
+              "line": 258,
+              "name": "expected_window_count"
+            },
+            {
+              "args": [],
+              "line": 269,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "score": 40,
+        "sha256": "530fcfd90da32524492739aa855ed2134bc00e839934f9e34acb0707cf88a6a9",
+        "term_counts": {
+          "checkpoint": 1,
+          "dataloader": 3,
+          "dataset": 28,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 48,
+          "validation": 4
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 77,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 85,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 94,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 100,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 104,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 108,
+              "name": "import_loader"
+            },
+            {
+              "args": [
+                "dataset"
+              ],
+              "line": 122,
+              "name": "deterministic_pair_sample_bases"
+            },
+            {
+              "args": [
+                "value",
+                "dtype",
+                "name",
+                "failures",
+                "context"
+              ],
+              "line": 135,
+              "name": "check_scalar_tensor"
+            },
+            {
+              "args": [
+                "value",
+                "allowed_dtypes",
+                "name",
+                "failures",
+                "context"
+              ],
+              "line": 155,
+              "name": "check_node_tensor"
+            },
+            {
+              "args": [],
+              "line": 176,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {},
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a3_loader_contract.py",
+        "score": 34,
+        "sha256": "09d646aa39d47b7e541d9cb5b167a49beda2dfa79bb27e935132e1156c9cbd86",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 55,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 38,
+          "validation": 23
+        }
+      }
+    ],
+    "expected_batch_keys": [
+      "x",
+      "physical_port_mask",
+      "role_mask",
+      "y_attack",
+      "y_attack_path",
+      "y_attacker_count",
+      "y_source",
+      "y_transit",
+      "y_victim"
+    ],
+    "ranked_source_candidates": [
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 65,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 73,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 82,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 88,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 92,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 107,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 111,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 122,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 134,
+              "name": "category_from_pair_key"
+            },
+            {
+              "args": [
+                "target"
+              ],
+              "line": 141,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "logits",
+                "target"
+              ],
+              "line": 156,
+              "name": "exact_binary_metrics"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "count_targets",
+                "active_mask"
+              ],
+              "line": 178,
+              "name": "evaluate"
+            },
+            {
+              "args": [],
+              "line": 231,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "re",
+            "sys",
+            "torch",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/run_v5_p2_a4_loader_integration_tiny_overfit.py",
+        "score": 53,
+        "sha256": "990bfefeaaa7a87607a13c99cd273734c941c6bbb9403fdc9c31deca4b154d4a",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 3,
+          "dataset": 15,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 15,
+          "shuffle=false": 1,
+          "split": 2,
+          "validation": 8
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 316,
+              "methods": [
+                "__init__",
+                "set_epoch",
+                "__len__",
+                "__iter__"
+              ],
+              "name": "PairBlockBatchSampler"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 75,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "state_dict"
+              ],
+              "line": 86,
+              "name": "sha256_state_dict"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 101,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 107,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 114,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "value",
+                "path"
+              ],
+              "line": 133,
+              "name": "atomic_torch_save"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 139,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 143,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 157,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 171,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 212,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "truth",
+                "score",
+                "threshold"
+              ],
+              "line": 237,
+              "name": "fixed_binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 273,
+              "name": "multiclass_macro_f1"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 298,
+              "name": "parse_distribution"
+            },
+            {
+              "args": [
+                "distribution"
+              ],
+              "line": 307,
+              "name": "role_positive_count"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch"
+              ],
+              "line": 413,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "batch",
+                "device"
+              ],
+              "line": 494,
+              "name": "move_batch"
+            },
+            {
+              "args": [],
+              "line": 507,
+              "name": "train_one_epoch"
+            },
+            {
+              "args": [],
+              "line": 583,
+              "name": "validate"
+            },
+            {
+              "args": [
+                "validation_metrics",
+                "epoch"
+              ],
+              "line": 870,
+              "name": "checkpoint_rank"
+            },
+            {
+              "args": [],
+              "line": 887,
+              "name": "flatten_epoch_row"
+            },
+            {
+              "args": [],
+              "line": 999,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "io",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "time",
+            "torch",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "score": 53,
+        "sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+        "term_counts": {
+          "checkpoint": 40,
+          "dataloader": 5,
+          "dataset": 31,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 10,
+          "shuffle=false": 1,
+          "split": 2,
+          "validation": 86
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 102,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 111,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 117,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 129,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 158,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 164,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 183,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 200,
+              "name": "category_from_pair_key"
+            },
+            {
+              "args": [
+                "target"
+              ],
+              "line": 210,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "logits",
+                "target"
+              ],
+              "line": 232,
+              "name": "exact_binary_metrics"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "count_targets",
+                "active_mask"
+              ],
+              "line": 261,
+              "name": "evaluate"
+            },
+            {
+              "args": [],
+              "line": 328,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "re",
+            "sys",
+            "torch",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/run_v5_p2_b0_r2_count_head_expansion_a4_repeat.py",
+        "score": 52,
+        "sha256": "e6c3f8ee2f92c5ffd297ace1bce28955f7190078f888fd2de66049617dd14d7d",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 2,
+          "dataset": 17,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 17,
+          "shuffle=false": 1,
+          "split": 1,
+          "validation": 8
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 149,
+              "methods": [
+                "__init__",
+                "__len__",
+                "__iter__"
+              ],
+              "name": "ValidationPairBlockBatchSampler"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 68,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 79,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 88,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 94,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 101,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 120,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 124,
+              "name": "import_module"
+            },
+            {
+              "args": [],
+              "line": 138,
+              "name": "set_deterministic_inference"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 218,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 257,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "truth",
+                "score",
+                "threshold"
+              ],
+              "line": 280,
+              "name": "binary_threshold_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score",
+                "graph_truth",
+                "threshold"
+              ],
+              "line": 321,
+              "name": "role_threshold_metrics"
+            },
+            {
+              "args": [],
+              "line": 368,
+              "name": "coarse_thresholds"
+            },
+            {
+              "args": [
+                "center"
+              ],
+              "line": 375,
+              "name": "fine_thresholds"
+            },
+            {
+              "args": [
+                "row"
+              ],
+              "line": 388,
+              "name": "graph_rank"
+            },
+            {
+              "args": [
+                "row"
+              ],
+              "line": 399,
+              "name": "role_rank"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 412,
+              "name": "sweep_graph"
+            },
+            {
+              "args": [
+                "truth",
+                "score",
+                "graph_truth"
+              ],
+              "line": 448,
+              "name": "sweep_role"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 487,
+              "name": "multiclass_macro_f1"
+            },
+            {
+              "args": [],
+              "line": 512,
+              "name": "end_to_end_metrics"
+            },
+            {
+              "args": [],
+              "line": 619,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {},
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/tune_v5_p2_b4_validation_thresholds.py",
+        "score": 47,
+        "sha256": "473123f27d8a59ac47506aab686524479e0210729e244d8b60a3661940d0267b",
+        "term_counts": {
+          "checkpoint": 38,
+          "dataloader": 2,
+          "dataset": 20,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 5,
+          "shuffle=false": 0,
+          "split": 3,
+          "validation": 60
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 90,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 101,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 110,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 116,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 123,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 142,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 146,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "document",
+                "key"
+              ],
+              "line": 160,
+              "name": "explicit_false"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 170,
+              "name": "create_exclusive_json"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 189,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 228,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 253,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "graph_truth"
+              ],
+              "line": 290,
+              "name": "node_set_metrics"
+            },
+            {
+              "args": [
+                "truth_raw",
+                "prediction_raw",
+                "classes"
+              ],
+              "line": 320,
+              "name": "multiclass_metrics_raw"
+            },
+            {
+              "args": [
+                "payload",
+                "path"
+              ],
+              "line": 375,
+              "name": "validate_run"
+            },
+            {
+              "args": [
+                "test_dir"
+              ],
+              "line": 430,
+              "name": "build_pair_index"
+            },
+            {
+              "args": [],
+              "line": 494,
+              "name": "stack_pair_batch"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 566,
+              "name": "concatenate"
+            },
+            {
+              "args": [],
+              "line": 575,
+              "name": "evaluate_test_once"
+            },
+            {
+              "args": [],
+              "line": 1003,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "io",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "traceback",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {},
+        "model_output_key_hits": [
+          "attack_logits",
+          "count_logits",
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_b6_one_shot_test.py",
+        "score": 46,
+        "sha256": "29b5efbbbbadaee55984e4f80f96fc1cb23be2c09a9c1eda8b212b674d0480f1",
+        "term_counts": {
+          "checkpoint": 45,
+          "dataloader": 0,
+          "dataset": 1,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 18,
+          "shuffle=false": 0,
+          "split": 0,
+          "validation": 2
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 434,
+              "methods": [
+                "__init__",
+                "set_epoch",
+                "__len__",
+                "__iter__"
+              ],
+              "name": "PairBlockBatchSampler"
+            },
+            {
+              "line": 541,
+              "methods": [
+                "__init__",
+                "encode_nodes",
+                "logits_without_graph",
+                "forward"
+              ],
+              "name": "CleanRoleAwareBaseline"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 106,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "state_dict"
+              ],
+              "line": 114,
+              "name": "sha256_state_dict"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 125,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 132,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 136,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "value",
+                "path"
+              ],
+              "line": 150,
+              "name": "atomic_torch_save"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 156,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path",
+                "module_name"
+              ],
+              "line": 163,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 173,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "numerator",
+                "denominator"
+              ],
+              "line": 185,
+              "name": "safe_divide"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 189,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 213,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "truth",
+                "score",
+                "threshold"
+              ],
+              "line": 226,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth_2d",
+                "score_2d",
+                "threshold",
+                "attack_truth"
+              ],
+              "line": 253,
+              "name": "exact_set_metrics"
+            },
+            {
+              "args": [
+                "truth_2d",
+                "score_2d",
+                "attack_truth",
+                "threshold"
+              ],
+              "line": 275,
+              "name": "role_metrics"
+            },
+            {
+              "args": [
+                "truths",
+                "scores",
+                "attack_truth",
+                "thresholds"
+              ],
+              "line": 297,
+              "name": "all_role_metrics"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 312,
+              "name": "checkpoint_selection_score"
+            },
+            {
+              "args": [
+                "truth_2d",
+                "score_2d",
+                "attack_truth"
+              ],
+              "line": 321,
+              "name": "tune_role_threshold"
+            },
+            {
+              "args": [
+                "truths",
+                "scores",
+                "thresholds",
+                "attack_truth"
+              ],
+              "line": 414,
+              "name": "joint_exact_metrics"
+            },
+            {
+              "args": [
+                "base_edge_index",
+                "batch_size",
+                "num_nodes",
+                "device"
+              ],
+              "line": 497,
+              "name": "batched_edge_index"
+            },
+            {
+              "args": [
+                "edge_index"
+              ],
+              "line": 515,
+              "name": "validate_edge_index"
+            },
+            {
+              "args": [
+                "batch",
+                "device"
+              ],
+              "line": 650,
+              "name": "move_batch"
+            },
+            {
+              "args": [
+                "logits",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 660,
+              "name": "weighted_role_losses"
+            },
+            {
+              "args": [],
+              "line": 679,
+              "name": "train_one_epoch"
+            },
+            {
+              "args": [],
+              "line": 729,
+              "name": "validate"
+            },
+            {
+              "args": [
+                "validation_metrics",
+                "epoch"
+              ],
+              "line": 791,
+              "name": "checkpoint_rank"
+            },
+            {
+              "args": [
+                "operator"
+              ],
+              "line": 807,
+              "name": "operator_configuration"
+            },
+            {
+              "args": [
+                "operator"
+              ],
+              "line": 833,
+              "name": "analytic_operation_count"
+            },
+            {
+              "args": [
+                "model",
+                "batch",
+                "device",
+                "warmup",
+                "repetitions"
+              ],
+              "line": 860,
+              "name": "measure_inference_latency"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 892,
+              "name": "parse_distribution"
+            },
+            {
+              "args": [
+                "distribution"
+              ],
+              "line": 896,
+              "name": "role_positive_count"
+            },
+            {
+              "args": [
+                "b0_report"
+              ],
+              "line": 900,
+              "name": "role_positive_weights"
+            },
+            {
+              "args": [
+                "args"
+              ],
+              "line": 920,
+              "name": "verify_contracts"
+            },
+            {
+              "args": [
+                "report_dir",
+                "model_dir",
+                "operator",
+                "seed",
+                "failure"
+              ],
+              "line": 1085,
+              "name": "write_hold"
+            },
+            {
+              "args": [
+                "args"
+              ],
+              "line": 1112,
+              "name": "run"
+            },
+            {
+              "args": [],
+              "line": 1635,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "copy",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "statistics",
+            "sys",
+            "time",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "source_logits",
+          "transit_logits",
+          "victim_logits",
+          "path_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_g3_role_aware_multilabel_single_run.py",
+        "score": 46,
+        "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d",
+        "term_counts": {
+          "checkpoint": 31,
+          "dataloader": 5,
+          "dataset": 27,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 8,
+          "shuffle=false": 1,
+          "split": 3,
+          "validation": 62
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 96,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 105,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 111,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 115,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 130,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 134,
+              "name": "load_csv"
+            },
+            {
+              "args": [
+                "row",
+                "key"
+              ],
+              "line": 139,
+              "name": "as_int"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 149,
+              "name": "category_count"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 154,
+              "name": "is_binary_tensor"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 160,
+              "name": "confusion_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 192,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 230,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 252,
+              "name": "candidate_thresholds"
+            },
+            {
+              "args": [
+                "train_values",
+                "train_truth"
+              ],
+              "line": 288,
+              "name": "fit_threshold"
+            },
+            {
+              "args": [
+                "values",
+                "threshold",
+                "direction"
+              ],
+              "line": 323,
+              "name": "apply_threshold"
+            },
+            {
+              "args": [
+                "truth",
+                "predicted_node"
+              ],
+              "line": 335,
+              "name": "source_single_prediction_metrics"
+            },
+            {
+              "args": [
+                "mask"
+              ],
+              "line": 368,
+              "name": "mask_signature"
+            },
+            {
+              "args": [
+                "train_truth",
+                "validation_truth",
+                "node_signatures"
+              ],
+              "line": 381,
+              "name": "role_mask_prior_baseline"
+            },
+            {
+              "args": [],
+              "line": 447,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [
+          "count_logits"
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_b0_r3_corrected_nontest_label_shortcuts.py",
+        "score": 44,
+        "sha256": "3e61a69f24df1ba2ce83aac9ff79713c60518ff18ab1bb91e141d31fd760660f",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 5,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 86,
+          "validation": 106
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 88,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 96,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 105,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 111,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 115,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 130,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 134,
+              "name": "load_csv"
+            },
+            {
+              "args": [
+                "row",
+                "key"
+              ],
+              "line": 139,
+              "name": "as_int"
+            },
+            {
+              "args": [
+                "pair_key"
+              ],
+              "line": 149,
+              "name": "category_count"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 154,
+              "name": "is_binary_tensor"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 160,
+              "name": "confusion_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 192,
+              "name": "binary_auroc"
+            },
+            {
+              "args": [
+                "truth",
+                "score"
+              ],
+              "line": 230,
+              "name": "average_precision"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 252,
+              "name": "candidate_thresholds"
+            },
+            {
+              "args": [
+                "train_values",
+                "train_truth"
+              ],
+              "line": 288,
+              "name": "fit_threshold"
+            },
+            {
+              "args": [
+                "values",
+                "threshold",
+                "direction"
+              ],
+              "line": 323,
+              "name": "apply_threshold"
+            },
+            {
+              "args": [
+                "truth",
+                "predicted_node"
+              ],
+              "line": 335,
+              "name": "source_single_prediction_metrics"
+            },
+            {
+              "args": [
+                "mask"
+              ],
+              "line": 368,
+              "name": "mask_signature"
+            },
+            {
+              "args": [
+                "train_truth",
+                "validation_truth",
+                "node_signatures"
+              ],
+              "line": 381,
+              "name": "role_mask_prior_baseline"
+            },
+            {
+              "args": [],
+              "line": 447,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "re",
+            "sys",
+            "torch",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_graph": "y_attack",
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_b0_nontest_label_shortcuts.py",
+        "score": 42,
+        "sha256": "b5d8785070e0078ef000ce7af0ba049f1cf3cc6f207d40e1abd067655b16d77c",
+        "term_counts": {
+          "checkpoint": 0,
+          "dataloader": 0,
+          "dataset": 5,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 11,
+          "shuffle=false": 0,
+          "split": 86,
+          "validation": 106
+        }
+      },
+      {
+        "ast": {
+          "classes": [],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 62,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 73,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 79,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 83,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 87,
+              "name": "scalar"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 97,
+              "name": "metadata_text"
+            },
+            {
+              "args": [
+                "left",
+                "right"
+              ],
+              "line": 104,
+              "name": "exact_equal"
+            },
+            {
+              "args": [
+                "directory",
+                "marker_name",
+                "lock_name",
+                "report_name",
+                "expected_lock_status",
+                "failures"
+              ],
+              "line": 148,
+              "name": "verify_chain"
+            },
+            {
+              "args": [
+                "path",
+                "class_name"
+              ],
+              "line": 213,
+              "name": "import_class"
+            },
+            {
+              "args": [
+                "root",
+                "split"
+              ],
+              "line": 231,
+              "name": "load_split_sources"
+            },
+            {
+              "args": [
+                "source",
+                "window",
+                "stride"
+              ],
+              "line": 258,
+              "name": "expected_window_count"
+            },
+            {
+              "args": [],
+              "line": 269,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "os",
+            "pathlib",
+            "sys",
+            "torch",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "role_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "score": 40,
+        "sha256": "530fcfd90da32524492739aa855ed2134bc00e839934f9e34acb0707cf88a6a9",
+        "term_counts": {
+          "checkpoint": 1,
+          "dataloader": 3,
+          "dataset": 28,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 48,
+          "validation": 4
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 242,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "StaticFinalEpochMLP"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 65,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 76,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 82,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 86,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 101,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 105,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 115,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "wrapper_path"
+              ],
+              "line": 138,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 333,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 363,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 374,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 397,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 451,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 488,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 539,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 583,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 706,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [],
+              "line": 742,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b1_static_final_epoch_mlp.py",
+        "score": 39,
+        "sha256": "90135bc195c2963e37242ad54a7bcdb2b3f4fc89b7e0a0fddfdd4d560345bfcb",
+        "term_counts": {
+          "checkpoint": 11,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 18,
+          "validation": 37
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 262,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "TemporalMeanPoolingMLP"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 66,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 77,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 83,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 87,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 101,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 105,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 115,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "b1_dir",
+                "wrapper_path"
+              ],
+              "line": 132,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 344,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 373,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 380,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 403,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 445,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 478,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 519,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 557,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 665,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 696,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "b2_metrics",
+                "b1_metrics"
+              ],
+              "line": 718,
+              "name": "metric_delta"
+            },
+            {
+              "args": [],
+              "line": 727,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b2_temporal_mean_pooling.py",
+        "score": 39,
+        "sha256": "f778385b6f082b74a2a78cf346f2471c6c734dc1ee44a3d33a6a188b398b16ca",
+        "term_counts": {
+          "checkpoint": 12,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 19,
+          "validation": 49
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 280,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "CausalDepthwiseResidualBlock"
+            },
+            {
+              "line": 313,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "Conv1DOnlyModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 64,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 75,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 81,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 85,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 100,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 104,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 114,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "b1_dir",
+                "b2_dir",
+                "wrapper_path"
+              ],
+              "line": 136,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 422,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 451,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 462,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 485,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 528,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 562,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 603,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 638,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 747,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 778,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "current",
+                "reference"
+              ],
+              "line": 800,
+              "name": "metric_delta"
+            },
+            {
+              "args": [],
+              "line": 812,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b3_conv1d_only.py",
+        "score": 39,
+        "sha256": "27bda802362849d801e7720bad1485b06a54fae3620b62751dadd793dc4a5054",
+        "term_counts": {
+          "checkpoint": 11,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 18,
+          "validation": 55
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 183,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "DenseGCNLayer"
+            },
+            {
+              "line": 195,
+              "methods": [
+                "__init__",
+                "_verify_edge_index",
+                "forward"
+              ],
+              "name": "GCNOnlyModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path"
+              ],
+              "line": 31,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 39,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "obj"
+              ],
+              "line": 45,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 49,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 63,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 67,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper"
+              ],
+              "line": 77,
+              "name": "import_dataset"
+            },
+            {
+              "args": [
+                "report",
+                "lock",
+                "stage"
+              ],
+              "line": 89,
+              "name": "verify_report_lock"
+            },
+            {
+              "args": [
+                "a2",
+                "a3",
+                "r1c",
+                "b1",
+                "b2",
+                "b3",
+                "wrapper"
+              ],
+              "line": 103,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "edge_index",
+                "node_count"
+              ],
+              "line": 168,
+              "name": "normalized_adjacency"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 240,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 264,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 270,
+              "name": "build_pos_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 278,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "pred"
+              ],
+              "line": 290,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "pred",
+                "classes"
+              ],
+              "line": 314,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "pred"
+              ],
+              "line": 338,
+              "name": "node_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 360,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 408,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "current",
+                "reference"
+              ],
+              "line": 422,
+              "name": "metric_delta"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 427,
+              "name": "flatten_rows"
+            },
+            {
+              "args": [],
+              "line": 439,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "score": 39,
+        "sha256": "ff2fadd15d2d8468cf289fec2756493d820e6172e7eeb5accd6d90a26a22901c",
+        "term_counts": {
+          "checkpoint": 5,
+          "dataloader": 6,
+          "dataset": 8,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 18,
+          "validation": 30
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 365,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "CausalDepthwiseResidualBlock"
+            },
+            {
+              "line": 398,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "DenseGCNLayer"
+            },
+            {
+              "line": 421,
+              "methods": [
+                "__init__",
+                "verify_edge_index",
+                "forward"
+              ],
+              "name": "Conv1DGCNModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 77,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 88,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 94,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 98,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 113,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 117,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 127,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "baseline_dirs",
+                "wrapper_path"
+              ],
+              "line": 146,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "edge_index",
+                "node_count"
+              ],
+              "line": 330,
+              "name": "normalized_adjacency"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 591,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 620,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 631,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 654,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 703,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 740,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 791,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 835,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 957,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 993,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "current",
+                "reference"
+              ],
+              "line": 1023,
+              "name": "metric_delta"
+            },
+            {
+              "args": [],
+              "line": 1035,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "score": 39,
+        "sha256": "22f8314a75e6bd2d7c7bcd675f454949c79362b1e4a15b916e560fbb22fe109d",
+        "term_counts": {
+          "checkpoint": 12,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 19,
+          "validation": 49
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 368,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "CausalDepthwiseResidualBlock"
+            },
+            {
+              "line": 401,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "DualTemporalFusionModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 86,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 97,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 103,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 107,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 122,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 126,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 136,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "baseline_dirs",
+                "wrapper_path"
+              ],
+              "line": 155,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 529,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 558,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 569,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 592,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 641,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 678,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 729,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 773,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 891,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 927,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "current",
+                "reference"
+              ],
+              "line": 961,
+              "name": "metric_delta"
+            },
+            {
+              "args": [],
+              "line": 973,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b6_dual_temporal_fusion_no_gcn.py",
+        "score": 39,
+        "sha256": "8490d40acea35ee971cc23b17442c2d12832749878c6be491df131e915442740",
+        "term_counts": {
+          "checkpoint": 12,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 19,
+          "validation": 51
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 471,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "CausalDepthwiseResidualBlock"
+            },
+            {
+              "line": 504,
+              "methods": [
+                "__init__",
+                "verify_edge_index",
+                "directional_context",
+                "forward"
+              ],
+              "name": "DirectionalGatedGraphDiagnosticModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 101,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 112,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 118,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 122,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 137,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 141,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 151,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "baseline_dirs",
+                "wrapper_path"
+              ],
+              "line": 170,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "rows",
+                "cols"
+              ],
+              "line": 389,
+              "name": "expected_mesh_edges"
+            },
+            {
+              "args": [
+                "edge_index"
+              ],
+              "line": 405,
+              "name": "validate_mesh_edge_index"
+            },
+            {
+              "args": [
+                "rows",
+                "cols"
+              ],
+              "line": 429,
+              "name": "cardinal_neighbor_tables"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 758,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 787,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 798,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 821,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 870,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 907,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 958,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 1002,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 1149,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 1185,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "current",
+                "reference"
+              ],
+              "line": 1219,
+              "name": "metric_delta"
+            },
+            {
+              "args": [
+                "validation_metrics",
+                "b3_validation_metrics"
+              ],
+              "line": 1231,
+              "name": "evaluate_success_gate"
+            },
+            {
+              "args": [],
+              "line": 1299,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "score": 39,
+        "sha256": "6580cc1f168f1a444f71352fa79a29c583a82b5512aa8d9ae666aa538a177d12",
+        "term_counts": {
+          "checkpoint": 12,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 19,
+          "validation": 65
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 471,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "CausalDepthwiseResidualBlock"
+            },
+            {
+              "line": 504,
+              "methods": [
+                "__init__",
+                "verify_edge_index",
+                "directional_context",
+                "forward"
+              ],
+              "name": "DirectionalGatedGraphDiagnosticModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 101,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 112,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 118,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 122,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 137,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 141,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 151,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a2_dir",
+                "a3_dir",
+                "r1c_dir",
+                "baseline_dirs",
+                "wrapper_path"
+              ],
+              "line": 170,
+              "name": "verify_prerequisites"
+            },
+            {
+              "args": [
+                "rows",
+                "cols"
+              ],
+              "line": 389,
+              "name": "expected_mesh_edges"
+            },
+            {
+              "args": [
+                "edge_index"
+              ],
+              "line": 405,
+              "name": "validate_mesh_edge_index"
+            },
+            {
+              "args": [
+                "rows",
+                "cols"
+              ],
+              "line": 429,
+              "name": "cardinal_neighbor_tables"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 761,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total",
+                "cap"
+              ],
+              "line": 790,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 801,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 824,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 873,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 910,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 961,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 1005,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "split",
+                "metrics"
+              ],
+              "line": 1152,
+              "name": "flatten_metric_rows"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 1188,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "current",
+                "reference"
+              ],
+              "line": 1222,
+              "name": "metric_delta"
+            },
+            {
+              "args": [
+                "validation_metrics",
+                "b3_validation_metrics"
+              ],
+              "line": 1234,
+              "name": "evaluate_success_gate"
+            },
+            {
+              "args": [],
+              "line": 1302,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "score": 39,
+        "sha256": "9855f1895c13edd1bf2553afa6891debe53e44abd28c43404b27c9d525f32904",
+        "term_counts": {
+          "checkpoint": 12,
+          "dataloader": 6,
+          "dataset": 19,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 19,
+          "validation": 65
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 126,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "CausalDepthwiseResidualBlock"
+            },
+            {
+              "line": 159,
+              "methods": [
+                "__init__",
+                "forward"
+              ],
+              "name": "FrozenB3Model"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 54,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 62,
+              "name": "canonical_sha256"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 71,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 77,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 81,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 95,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 99,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 109,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "loader"
+              ],
+              "line": 269,
+              "name": "target_statistics"
+            },
+            {
+              "args": [
+                "positives",
+                "total"
+              ],
+              "line": 298,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "stats",
+                "device"
+              ],
+              "line": 304,
+              "name": "build_positive_weights"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "positive_weights"
+              ],
+              "line": 327,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 376,
+              "name": "binary_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction",
+                "class_count"
+              ],
+              "line": 413,
+              "name": "multiclass_metrics"
+            },
+            {
+              "args": [
+                "truth",
+                "prediction"
+              ],
+              "line": 462,
+              "name": "node_role_metrics"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 505,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 611,
+              "name": "selection_score"
+            },
+            {
+              "args": [
+                "metrics",
+                "epoch"
+              ],
+              "line": 629,
+              "name": "tie_key"
+            },
+            {
+              "args": [
+                "score",
+                "metrics",
+                "epoch",
+                "best_score",
+                "best_metrics",
+                "best_epoch"
+              ],
+              "line": 640,
+              "name": "better_candidate"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 660,
+              "name": "compact_metrics"
+            },
+            {
+              "args": [
+                "values"
+              ],
+              "line": 686,
+              "name": "mean_std"
+            },
+            {
+              "args": [],
+              "line": 696,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "shutil",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/final/train_v5_p0_c1_b3_multi_seed_validation.py",
+        "score": 39,
+        "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4",
+        "term_counts": {
+          "checkpoint": 46,
+          "dataloader": 6,
+          "dataset": 21,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 2,
+          "split": 22,
+          "validation": 39
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 290,
+              "methods": [
+                "__init__",
+                "normalized_adjacency",
+                "forward"
+              ],
+              "name": "DenseTemporalGraphOverfitNet"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 52,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 63,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 69,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "seed"
+              ],
+              "line": 73,
+              "name": "set_seed"
+            },
+            {
+              "args": [
+                "value"
+              ],
+              "line": 81,
+              "name": "scalar_text"
+            },
+            {
+              "args": [
+                "wrapper_path"
+              ],
+              "line": 93,
+              "name": "import_contract_dataset"
+            },
+            {
+              "args": [
+                "a3_dir",
+                "failures"
+              ],
+              "line": 116,
+              "name": "verify_a3"
+            },
+            {
+              "args": [
+                "train_dir"
+              ],
+              "line": 171,
+              "name": "discover_pairs"
+            },
+            {
+              "args": [
+                "pairs"
+              ],
+              "line": 225,
+              "name": "select_pairs"
+            },
+            {
+              "args": [
+                "dataset"
+              ],
+              "line": 468,
+              "name": "collect_targets"
+            },
+            {
+              "args": [
+                "target",
+                "cap"
+              ],
+              "line": 505,
+              "name": "positive_weight"
+            },
+            {
+              "args": [
+                "outputs",
+                "batch",
+                "pos_weights"
+              ],
+              "line": 518,
+              "name": "compute_loss"
+            },
+            {
+              "args": [
+                "model",
+                "loader",
+                "device"
+              ],
+              "line": 598,
+              "name": "evaluate"
+            },
+            {
+              "args": [
+                "metrics"
+              ],
+              "line": 759,
+              "name": "gate_passed"
+            },
+            {
+              "args": [],
+              "line": 771,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "collections",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "math",
+            "numpy",
+            "os",
+            "pathlib",
+            "random",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_attacker_count",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/train/train_v5_p0_a4_tiny_subset_overfit.py",
+        "score": 39,
+        "sha256": "5bca622346487e5249ab69c87c143af297a02a9ce293ad92f1252d73de0f7d80",
+        "term_counts": {
+          "checkpoint": 5,
+          "dataloader": 4,
+          "dataset": 26,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 1,
+          "split": 5,
+          "validation": 4
+        }
+      },
+      {
+        "ast": {
+          "classes": [
+            {
+              "line": 87,
+              "methods": [
+                "__init__",
+                "verify_edge_index",
+                "forward"
+              ],
+              "name": "B3Conv1DOnlyModel"
+            }
+          ],
+          "functions": [
+            {
+              "args": [
+                "path",
+                "chunk_size"
+              ],
+              "line": 39,
+              "name": "sha256_file"
+            },
+            {
+              "args": [
+                "path",
+                "text"
+              ],
+              "line": 50,
+              "name": "atomic_write"
+            },
+            {
+              "args": [
+                "path",
+                "value"
+              ],
+              "line": 56,
+              "name": "write_json"
+            },
+            {
+              "args": [
+                "path",
+                "rows"
+              ],
+              "line": 60,
+              "name": "write_csv"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 74,
+              "name": "load_json"
+            },
+            {
+              "args": [
+                "path"
+              ],
+              "line": 78,
+              "name": "import_module"
+            },
+            {
+              "args": [
+                "module",
+                "metrics"
+              ],
+              "line": 202,
+              "name": "key_metrics"
+            },
+            {
+              "args": [
+                "module",
+                "model_name",
+                "seed",
+                "metrics"
+              ],
+              "line": 206,
+              "name": "metric_row"
+            },
+            {
+              "args": [
+                "rows",
+                "metric_names"
+              ],
+              "line": 210,
+              "name": "mean_std"
+            },
+            {
+              "args": [],
+              "line": 222,
+              "name": "train_one"
+            },
+            {
+              "args": [],
+              "line": 491,
+              "name": "main"
+            }
+          ],
+          "imports": [
+            "__future__",
+            "argparse",
+            "csv",
+            "hashlib",
+            "importlib.util",
+            "json",
+            "numpy",
+            "os",
+            "pathlib",
+            "statistics",
+            "sys",
+            "torch",
+            "torch.nn",
+            "torch.nn.functional",
+            "torch.utils.data",
+            "typing"
+          ],
+          "syntax_ok": true
+        },
+        "batch_key_hits": [
+          "x",
+          "physical_port_mask",
+          "y_attack",
+          "y_attack_path",
+          "y_source",
+          "y_transit",
+          "y_victim"
+        ],
+        "canonical_alias_hits": {
+          "y_path": "y_attack_path"
+        },
+        "model_output_key_hits": [],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "score": 36,
+        "sha256": "e28511cd929be54ad8c9cf5d5ee53a0ba9719a231fd0f092f5ee084fffa9df37",
+        "term_counts": {
+          "checkpoint": 14,
+          "dataloader": 5,
+          "dataset": 21,
+          "manifest_row_index": 0,
+          "no_shuffle": 0,
+          "pair_key": 0,
+          "shuffle=false": 3,
+          "split": 12,
+          "validation": 56
+        }
+      }
+    ]
+  },
+  "model_interface": {
+    "class_name": "P2TaskDGraphConvCount4",
+    "expected_output_keys": [
+      "attack_logits",
+      "count_logits",
+      "source_logits",
+      "transit_logits",
+      "victim_logits",
+      "path_logits"
+    ],
+    "missing_output_keys": [],
+    "source": {
+      "ast": {
+        "classes": [
+          {
+            "line": 41,
+            "methods": [
+              "__init__",
+              "encode_pre_graph",
+              "forward"
+            ],
+            "name": "P2TaskDGraphConvCount4"
+          }
+        ],
+        "functions": [
+          {
+            "args": [
+              "base_edge_index",
+              "batch_size",
+              "num_nodes",
+              "device"
+            ],
+            "line": 19,
+            "name": "batched_edge_index"
+          },
+          {
+            "args": [
+              "model"
+            ],
+            "line": 165,
+            "name": "common_state_dict"
+          },
+          {
+            "args": [
+              "candidate"
+            ],
+            "line": 175,
+            "name": "operation_count_proxy"
+          }
+        ],
+        "imports": [
+          "__future__",
+          "copy",
+          "torch",
+          "torch.nn",
+          "torch.nn.functional"
+        ],
+        "syntax_ok": true
+      },
+      "batch_key_hits": [
+        "x",
+        "physical_port_mask"
+      ],
+      "canonical_alias_hits": {},
+      "model_output_key_hits": [
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_task_d_full_multitask_count4.py",
+      "score": 18,
+      "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+      "term_counts": {
+        "checkpoint": 0,
+        "dataloader": 0,
+        "dataset": 0,
+        "manifest_row_index": 0,
+        "no_shuffle": 0,
+        "pair_key": 0,
+        "shuffle=false": 0,
+        "split": 0,
+        "validation": 0
+      }
+    }
+  },
+  "next_stage_requirements": {
+    "do_not_check_test_path_during_discovery": true,
+    "freeze_evaluator_source": true,
+    "freeze_exact_callable_and_argument_contract": true,
+    "run_source_only_dry_import": true,
+    "select_one_concrete_loader_builder_from_evidence": true
+  },
+  "purpose": "Resolve the concrete source files and callable surfaces needed to build the immutable one-shot evaluator without opening or enumerating the P2 test split.",
+  "security_boundary": {
+    "checkpoint_loaded_on_cpu_for_structure_only": true,
+    "dataset_builder_executed": false,
+    "dataset_builder_imported": false,
+    "enumerated_source_roots": [
+      "src",
+      "scripts"
+    ],
+    "excluded_path_parts": [
+      ".git",
+      ".venv",
+      "__pycache__",
+      "artifacts",
+      "data",
+      "datasets",
+      "logs",
+      "models"
+    ],
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_path_resolved": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false,
+    "validation_dataset_reopened": false
+  },
+  "stage": "V5_P2_PREFLIGHT_SOURCE_INTERFACE_DISCOVERY",
+  "state_after_discovery": {
+    "A0_frozen": true,
+    "A1_frozen": true,
+    "A2_rejected": true,
+    "L5_complete": true,
+    "architecture_frozen": true,
+    "checkpoint_frozen": true,
+    "next_stage": "V5_P2_PREFLIGHT_CONCRETE_EVALUATOR_FREEZE",
+    "ready_for_one_shot_test": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluator_source_frozen": false,
+    "test_tensors_deserialized": false
+  },
+  "status": "DISCOVERY_COMPLETE"
+}

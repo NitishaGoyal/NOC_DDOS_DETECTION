@@ -1,0 +1,156 @@
+{
+  "compute_loss_call_count": 2,
+  "compute_loss_calls": [
+    {
+      "arguments": [
+        "outputs",
+        "batch"
+      ],
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        loss, components = compute_loss(\n            outputs,\n            batch,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n        )",
+      "excerpt_sha256": "b934490d590f0a05ef9b60f6e57e58fa4012ee767b10980cdb1da93a6b758eb9",
+      "keywords": {
+        "graph_pos_weight": "graph_pos_weight",
+        "role_pos_weights": "role_pos_weights"
+      },
+      "line_end": 541,
+      "line_start": 536,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "compute_loss(outputs, batch, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)"
+    },
+    {
+      "arguments": [
+        "outputs",
+        "batch"
+      ],
+      "enclosing_function": "validate",
+      "excerpt": "            loss, components = compute_loss(\n                outputs,\n                batch,\n                graph_pos_weight=graph_pos_weight,\n                role_pos_weights=role_pos_weights,\n            )",
+      "excerpt_sha256": "efe6dd964315306e81f9b7882f61b7e677a9e97b89916ebab059882e2c2ce7cd",
+      "keywords": {
+        "graph_pos_weight": "graph_pos_weight",
+        "role_pos_weights": "role_pos_weights"
+      },
+      "line_end": 632,
+      "line_start": 627,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "compute_loss(outputs, batch, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights)"
+    }
+  ],
+  "compute_loss_function_count": 1,
+  "compute_loss_functions": [
+    {
+      "excerpt": "def compute_loss(\n    outputs: dict[str, torch.Tensor],\n    batch: dict[str, torch.Tensor],\n    *,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:\n    active = batch[\"y_attack\"] >= 0.5\n\n    count_targets = torch.full(\n        batch[\"y_attacker_count\"].shape,\n        fill_value=-100,\n        dtype=torch.int64,\n        device=batch[\"y_attacker_count\"].device,\n    )\n    for raw_count, class_index in COUNT_CLASS_MAPPING.items():\n        selector = (\n            active\n            & (batch[\"y_attacker_count\"] == raw_count)\n        )\n        count_targets[selector] = class_index\n\n    if bool(\n        (count_targets[active] < 0).any().item()\n    ):\n        raise RuntimeError(\n            \"one or more active count labels are outside 1..4\"\n        )\n\n    attack_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"attack_logits\"],\n        batch[\"y_attack\"].float(),\n        pos_weight=graph_pos_weight,\n    )\n\n    if bool(active.any().item()):\n        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            count_targets[active],\n        )\n    else:\n        count_loss = (\n            outputs[\"count_logits\"].sum() * 0.0\n        )\n\n    source_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"source_logits\"],\n        batch[\"y_source\"].float(),\n        pos_weight=role_pos_weights[\"source\"],\n    )\n    transit_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"transit_logits\"],\n        batch[\"y_transit\"].float(),\n        pos_weight=role_pos_weights[\"transit\"],\n    )\n    victim_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"victim_logits\"],\n        batch[\"y_victim\"].float(),\n        pos_weight=role_pos_weights[\"victim\"],\n    )\n    path_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"path_logits\"],\n        batch[\"y_attack_path\"].float(),\n        pos_weight=role_pos_weights[\"path\"],\n    )\n\n    components = {\n        \"attack\": attack_loss,\n        \"count\": count_loss,\n        \"source\": source_loss,\n        \"transit\": transit_loss,\n        \"victim\": victim_loss,\n        \"path\": path_loss,\n    }\n    total = sum(\n        LOSS_WEIGHTS[key] * value\n        for key, value in components.items()\n    )\n    return total, components",
+      "excerpt_sha256": "d9629317801a72a1905dbcd49eace1418f15014df3a2f55d097c25ae4997155f",
+      "function_name": "compute_loss",
+      "line_end": 491,
+      "line_start": 413,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "def compute_loss(outputs: dict[str, torch.Tensor], batch: dict[str, torch.Tensor], *, graph_pos_weight: torch.Tensor, role_pos_weights: dict[str, torch.Tensor]) -> tuple[torch.Tensor, dict[str, torch.Tensor]]:\n    active = batch['y_attack'] >= 0.5\n    count_targets = torch.full(batch['y_attacker_count'].shape, fill_value=-100, dtype=torch.int64, device=batch['y_attacker_count'].device)\n    for raw_count, class_index in COUNT_CLASS_MAPPING.items():\n        selector = active & (batch['y_attacker_count'] == raw_count)\n        count_targets[selector] = class_index\n    if bool((count_targets[active] < 0).any().item()):\n        raise RuntimeError('one or more active count labels are outside 1..4')\n    attack_loss = F.binary_cross_entropy_with_logits(outputs['attack_logits'], batch['y_attack'].float(), pos_weight=graph_pos_weight)\n    if bool(active.any().item()):\n        count_loss = F.cross_entropy(outputs['count_logits'][active], count_targets[active])\n    else:\n        count_loss = outputs['count_logits'].sum() * 0.0\n    source_loss = F.binary_cross_entropy_with_logits(outputs['source_logits'], batch['y_source'].float(), pos_weight=role_pos_weights['source'])\n    transit_loss = F.binary_cross_entropy_with_logits(outputs['transit_logits'], batch['y_transit'].float(), pos_weight=role_pos_weights['transit'])\n    victim_loss = F.binary_cross_entropy_with_logits(outputs['victim_logits'], batch['y_victim'].float(), pos_weight=role_pos_weights['victim'])\n    path_loss = F.binary_cross_entropy_with_logits(outputs['path_logits'], batch['y_attack_path'].float(), pos_weight=role_pos_weights['path'])\n    components = {'attack': attack_loss, 'count': count_loss, 'source': source_loss, 'transit': transit_loss, 'victim': victim_loss, 'path': path_loss}\n    total = sum((LOSS_WEIGHTS[key] * value for key, value in components.items()))\n    return (total, components)"
+    }
+  ],
+  "primitive_loss_call_count": 6,
+  "primitive_loss_calls": [
+    {
+      "arguments": [
+        "outputs['attack_logits']",
+        "batch['y_attack'].float()"
+      ],
+      "enclosing_function": "compute_loss",
+      "excerpt": "    attack_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"attack_logits\"],\n        batch[\"y_attack\"].float(),\n        pos_weight=graph_pos_weight,\n    )",
+      "excerpt_sha256": "c7d327bb57c141e08533c61f44b0f816ff8c1a33e97993a54c73c1f630142951",
+      "implementation": "F.binary_cross_entropy_with_logits",
+      "keywords": {
+        "pos_weight": "graph_pos_weight"
+      },
+      "line_end": 446,
+      "line_start": 442,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['attack_logits'], batch['y_attack'].float(), pos_weight=graph_pos_weight)"
+    },
+    {
+      "arguments": [
+        "outputs['source_logits']",
+        "batch['y_source'].float()"
+      ],
+      "enclosing_function": "compute_loss",
+      "excerpt": "    source_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"source_logits\"],\n        batch[\"y_source\"].float(),\n        pos_weight=role_pos_weights[\"source\"],\n    )",
+      "excerpt_sha256": "7dd9d7fdebeabd3028066f89fee6f922a7bd3c5d2fde84268cc647f2bc89d0ab",
+      "implementation": "F.binary_cross_entropy_with_logits",
+      "keywords": {
+        "pos_weight": "role_pos_weights['source']"
+      },
+      "line_end": 462,
+      "line_start": 458,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['source_logits'], batch['y_source'].float(), pos_weight=role_pos_weights['source'])"
+    },
+    {
+      "arguments": [
+        "outputs['transit_logits']",
+        "batch['y_transit'].float()"
+      ],
+      "enclosing_function": "compute_loss",
+      "excerpt": "    transit_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"transit_logits\"],\n        batch[\"y_transit\"].float(),\n        pos_weight=role_pos_weights[\"transit\"],\n    )",
+      "excerpt_sha256": "951df7adbdae35e403c941b31ef916cad520397082b53030d2be469257ba369f",
+      "implementation": "F.binary_cross_entropy_with_logits",
+      "keywords": {
+        "pos_weight": "role_pos_weights['transit']"
+      },
+      "line_end": 467,
+      "line_start": 463,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['transit_logits'], batch['y_transit'].float(), pos_weight=role_pos_weights['transit'])"
+    },
+    {
+      "arguments": [
+        "outputs['victim_logits']",
+        "batch['y_victim'].float()"
+      ],
+      "enclosing_function": "compute_loss",
+      "excerpt": "    victim_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"victim_logits\"],\n        batch[\"y_victim\"].float(),\n        pos_weight=role_pos_weights[\"victim\"],\n    )",
+      "excerpt_sha256": "dbc8d48417969bf5cc735eb24f0bc43ee3ed8c79b07998fa92cf2cf0364a639b",
+      "implementation": "F.binary_cross_entropy_with_logits",
+      "keywords": {
+        "pos_weight": "role_pos_weights['victim']"
+      },
+      "line_end": 472,
+      "line_start": 468,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['victim_logits'], batch['y_victim'].float(), pos_weight=role_pos_weights['victim'])"
+    },
+    {
+      "arguments": [
+        "outputs['path_logits']",
+        "batch['y_attack_path'].float()"
+      ],
+      "enclosing_function": "compute_loss",
+      "excerpt": "    path_loss = F.binary_cross_entropy_with_logits(\n        outputs[\"path_logits\"],\n        batch[\"y_attack_path\"].float(),\n        pos_weight=role_pos_weights[\"path\"],\n    )",
+      "excerpt_sha256": "07c57d924d92cab5f47d0f8959caf3695d6dac2de30ce303fc7d71d1e29d325d",
+      "implementation": "F.binary_cross_entropy_with_logits",
+      "keywords": {
+        "pos_weight": "role_pos_weights['path']"
+      },
+      "line_end": 477,
+      "line_start": 473,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.binary_cross_entropy_with_logits(outputs['path_logits'], batch['y_attack_path'].float(), pos_weight=role_pos_weights['path'])"
+    },
+    {
+      "arguments": [
+        "outputs['count_logits'][active]",
+        "count_targets[active]"
+      ],
+      "enclosing_function": "compute_loss",
+      "excerpt": "        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            count_targets[active],\n        )",
+      "excerpt_sha256": "4f81ea5d691e5a682c0bfd763432415e4c8cabef04e9f13c1f603353f4dd3e86",
+      "implementation": "F.cross_entropy",
+      "keywords": {},
+      "line_end": 452,
+      "line_start": 449,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "F.cross_entropy(outputs['count_logits'][active], count_targets[active])"
+    }
+  ],
+  "semantics_resolved": true,
+  "source_copy_policy": "E1 must copy the exact compute_loss function excerpt and verify its SHA-256 rather than reconstructing loss weights manually."
+}

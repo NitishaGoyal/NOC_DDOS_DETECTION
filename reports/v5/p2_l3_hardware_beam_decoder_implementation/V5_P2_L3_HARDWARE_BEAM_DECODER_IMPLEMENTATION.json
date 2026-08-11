@@ -1,0 +1,85 @@
+{
+  "created_utc": "2026-07-27T22:32:00.657455+00:00",
+  "evidence_hashes": {
+    "beam_module_sha256": "07a0a98dbe1395f92595cab11cbca6f17e376d26ef68604c19baab333319f3aa",
+    "exact_module_sha256": "0d6ae843a0503cf6aa347078dda50e570f69cbbffdaa7ee1e4b2dbfd3b7978bf",
+    "l0_lock_sha256": "e5cbe16c7483ce727523c54a09ef60a6dc3f97859bf43b65781938fd443715fe",
+    "l0_marker_sha256": "299d69c41a2e5986c85e070da1064fc685fb81b6d16b6b4a757ea85a54937b68",
+    "l0_protocol_sha256": "6b9de697bb8457e07162c28ade6d57d7779515a977b933543769f1aa7f3b8dc6",
+    "l1_lock_sha256": "747c3d284a18bf1429d59e6c9bdad23441a461560819b7b1b5dfd0c2975873c8",
+    "l1_marker_sha256": "8d5bcc8a0f8b1ee132b93bf68b04c22c7f0deb76eb8d24bc7e79106d4fd8693b",
+    "l1_report_sha256": "5f93ca38fd6093bace749ff543179dee1a00e4c4e31df7fd002423e4dbe99dd5",
+    "l2_lock_sha256": "ed0aafecf5c7527e647bea3dd91f696eb416f889c0541d48b627957a9e887ee0",
+    "l2_marker_sha256": "c9dbc59dfcda867d1cff77a4ea61d8d9be919cfd887c57468d01d8fa3c39f3d3",
+    "l2_report_sha256": "3ff7077f360906ada21a3ae16155f73e327925b72a032c3bb8122905bd6094d0",
+    "route_module_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+    "route_table_sha256": "19624d95a83114fba1e27e647aab59a0231c97d45053b598692ae62578b321b0",
+    "test_source_sha256": "a134823e00dbca5c9e5ec0f0210dbbd161674bb12af5f1aa6a25d5595a452e07"
+  },
+  "implementation": {
+    "beam_width_grid": [
+      4,
+      8,
+      16
+    ],
+    "deterministic_state_ordering": true,
+    "distinct_sources_enforced": true,
+    "exact_decoder_module_sha256": "0d6ae843a0503cf6aa347078dda50e570f69cbbffdaa7ee1e4b2dbfd3b7978bf",
+    "fixed_point_format": null,
+    "incremental_union_scoring": true,
+    "module_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_beam_decoder.py",
+    "module_sha256": "07a0a98dbe1395f92595cab11cbca6f17e376d26ef68604c19baab333319f3aa",
+    "numpy_version": "2.5.1",
+    "python_version": "3.12.3",
+    "route_library_module_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+    "route_table_sha256": "19624d95a83114fba1e27e647aab59a0231c97d45053b598692ae62578b321b0",
+    "rtl_implemented": false,
+    "score_tie_tolerance": 1e-12,
+    "top_B_grid": [
+      1,
+      2,
+      4
+    ]
+  },
+  "interface_manifest": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_hardware_beam_decoder_implementation/V5_P2_L3_HARDWARE_BEAM_DECODER_INTERFACE.json",
+    "sha256": "24f98dc086fb7f813a3d7445b8ba81281895ffb31f94675541587eb606316419"
+  },
+  "security_boundary": {
+    "dataset_directories_scanned": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false,
+    "validation_predictions_inspected": false
+  },
+  "stage": "V5_P2_L3_HARDWARE_BEAM_DECODER_IMPLEMENTATION",
+  "state_after_L3": {
+    "beam_decoder_grid_frozen": true,
+    "beam_decoder_implemented": true,
+    "decoder_frozen": false,
+    "decoder_parameters_frozen": false,
+    "exact_decoder_implemented": true,
+    "next_stage": "V5_P2_E1_IMMUTABLE_VALIDATION_LOGIT_EXPORT",
+    "raw_thresholds_frozen": false,
+    "ready_for_one_shot_test": false,
+    "route_library_frozen": true,
+    "structured_decoder_protocol_locked": true,
+    "validation_predictions_exported": false
+  },
+  "status": "COMPLETE",
+  "verification": {
+    "all_nine_grid_configurations_executed": true,
+    "incremental_union_recomputation": true,
+    "known_K1_exact_match": true,
+    "known_K2_exact_match": true,
+    "repeat_determinism": true,
+    "result": "PASS",
+    "test_log_path": "/home/zira/research/projects/GNN-2d/logs/v5/v5_p2_l3_hardware_beam_decoder_unit_tests.log",
+    "test_log_sha256": "f1a68dc659f971e9ad35be37125b26585cb68ea18507c518eb4e114250d36bcf",
+    "test_source_path": "/home/zira/research/projects/GNN-2d/tests/decoders/test_v5_legal_xy_beam_decoder.py",
+    "test_source_sha256": "a134823e00dbca5c9e5ec0f0210dbbd161674bb12af5f1aa6a25d5595a452e07",
+    "tests_run": 12
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "artifacts": {
+    "E2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_E2_GENERATED_TRAINER_STATIC_AND_RUNTIME_PREFLIGHT_LOCK.json",
+    "E4_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_E4_ONE_EPOCH_CONTROL_SMOKE_GATE_LOCK.json",
+    "launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix_e2_r6_r2.sh",
+    "master_log": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_PRIMARY_SEED107_MATRIX_M1_R1_MASTER.log",
+    "matrix_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS",
+    "pid_file": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_PRIMARY_SEED107_MATRIX_M1_R1.pid",
+    "run_root": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107",
+    "runtime_adapter": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_f7_r5_runtime_adapter.py",
+    "trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-06T09:25:33.106239+00:00",
+  "failure_classification": "matrix_wrapper_omitted_repository_from_PYTHONPATH_so_certified_trainer_could_not_import_src_runtime_adapter",
+  "finding": {
+    "launch": {
+      "master_log": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_PRIMARY_SEED107_MATRIX_M1_R1_MASTER.log",
+      "master_log_tail": "===== V5-P3 F7 M1-R1 PYTHONPATH IMPORT RECOVERY AND MATRIX RESUME =====\ncreated_utc=2026-08-06T09:25:21.099693+00:00\nrepo=/home/zira/research/projects/GNN-2d\ndata_link=/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary\nlauncher=/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix_e2_r6_r2.sh\nlauncher_sha256=fa6e9690f55081ea3364a4a91c391ef08be52e38cfaddd43176051314e202f2a\ntrainer_sha256=8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf\nadapter_sha256=6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059\nPYTHONPATH_prefix=/home/zira/research/projects/GNN-2d\ncompleted_labels=[]\npending_labels=['ablate_buffer_pressure', 'ablate_directional_traffic_volume', 'ablate_flow_control_stalls', 'ablate_inter_flit_timing', 'ablate_queue_activity', 'control_dynamic70']\nlaunch_order=['ablate_buffer_pressure', 'ablate_directional_traffic_volume', 'ablate_flow_control_stalls', 'ablate_inter_flit_timing', 'ablate_queue_activity', 'control_dynamic70']\nsealed_test_access=false\nF8_multi_seed_authorized=false\nfeature_removal_authorized=false\nscientific_matrix_resume=true\n===============================================\nlaunching ablate_buffer_pressure\ncommand: /home/zira/research/projects/GNN-2d/.venv/bin/python /home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py --root /home/zira/research/projects/GNN-2d --b1-dir /home/zira/research/projects/GNN-2d/reports/v5/p2_b1_training_protocol_lock --b0-r3-dir /home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r3_corrected_nontest_label_shortcut_audit --loader-path /home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py --model-path /home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py --model-dir /home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_buffer_pressure/model --report-dir /home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_buffer_pressure/report --seed 107",
+      "observation_seconds": 12,
+      "pid": 233244,
+      "pid_alive_after_observation": true,
+      "pid_file": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_PRIMARY_SEED107_MATRIX_M1_R1.pid"
+    },
+    "original_attempt": {
+      "failure_before_dataset_construction": true,
+      "failure_before_optimizer_step": true,
+      "first_sorted_label": "ablate_buffer_pressure",
+      "old_master_log": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_PRIMARY_SEED107_MATRIX_MASTER.log",
+      "old_master_log_sha256": "9e85603155099131b5306ffc53a64c604b226f6d655a697d64a8a410e66c10c5",
+      "old_pid": 232811,
+      "old_pid_alive": false,
+      "old_pid_command": "",
+      "old_pid_file": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/V5_P3_F7_PRIMARY_SEED107_MATRIX.pid",
+      "scientific_checkpoint_saved": false
+    },
+    "recovery": {
+      "archived_failure_logs": [
+        {
+          "archive": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_buffer_pressure/console.pre_pythonpath_import_failure.20260806T092519Z.log",
+          "label": "ablate_buffer_pressure",
+          "original": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_buffer_pressure/console.log",
+          "sha256": "21d79b154ac671b7d91dad5be577b4b4793a412c5db1e14f560bba908535bee2"
+        }
+      ],
+      "certified_launcher_modified": false,
+      "child_working_directory": "/home/zira/research/projects/GNN-2d",
+      "completed_labels": [],
+      "launch_order_from_sorted_spec_files": [
+        "ablate_buffer_pressure",
+        "ablate_directional_traffic_volume",
+        "ablate_flow_control_stalls",
+        "ablate_inter_flit_timing",
+        "ablate_queue_activity",
+        "control_dynamic70"
+      ],
+      "pending_labels": [
+        "ablate_buffer_pressure",
+        "ablate_directional_traffic_volume",
+        "ablate_flow_control_stalls",
+        "ablate_inter_flit_timing",
+        "ablate_queue_activity",
+        "control_dynamic70"
+      ],
+      "repository_prepended_to_PYTHONPATH": true,
+      "run_state_before_resume": [
+        {
+          "complete_marker_exists": false,
+          "label": "ablate_buffer_pressure",
+          "model_dir_exists": false,
+          "report_dir_exists": false,
+          "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_buffer_pressure",
+          "state": "pending"
+        },
+        {
+          "complete_marker_exists": false,
+          "label": "ablate_directional_traffic_volume",
+          "model_dir_exists": false,
+          "report_dir_exists": false,
+          "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_directional_traffic_volume",
+          "state": "pending"
+        },
+        {
+          "complete_marker_exists": false,
+          "label": "ablate_flow_control_stalls",
+          "model_dir_exists": false,
+          "report_dir_exists": false,
+          "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_flow_control_stalls",
+          "state": "pending"
+        },
+        {
+          "complete_marker_exists": false,
+          "label": "ablate_inter_flit_timing",
+          "model_dir_exists": false,
+          "report_dir_exists": false,
+          "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_inter_flit_timing",
+          "state": "pending"
+        },
+        {
+          "complete_marker_exists": false,
+          "label": "ablate_queue_activity",
+          "model_dir_exists": false,
+          "report_dir_exists": false,
+          "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_queue_activity",
+          "state": "pending"
+        },
+        {
+          "complete_marker_exists": false,
+          "label": "control_dynamic70",
+          "model_dir_exists": false,
+          "report_dir_exists": false,
+          "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/control_dynamic70",
+          "state": "pending"
+        }
+      ],
+      "runtime_adapter_import_self_test": {
+        "returncode": 0,
+        "status": "PASS",
+        "stderr": "",
+        "stdout": "F7_SRC_IMPORT_PASS\n/home/zira/research/projects/GNN-2d/src/__init__.py\n/home/zira/research/projects/GNN-2d/src/models/v5_p3_f7_r5_runtime_adapter.py\n"
+      }
+    }
+  },
+  "governance": {
+    "F8_multi_seed_authorized": false,
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "primary_seed107_matrix_execution_resumed": true,
+    "sealed_test_access": false
+  },
+  "provenance": {
+    "E2_lock_sha256": "94f0ab74f88899a7739b44949d68870dc0c88ae2a738a22cbe4e8da7d50c7bdc",
+    "E4_lock_sha256": "889645ee1e93fdee40b016dd035dec83103bf26ace9ac8f8f64ed6c4975fcfbe",
+    "installed_script_sha256": "19dd9744ed412f1c888eadebdbbf9e87638747137f506b342e6856f196b852d0",
+    "launcher_sha256": "fa6e9690f55081ea3364a4a91c391ef08be52e38cfaddd43176051314e202f2a",
+    "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059",
+    "specs": [
+      {
+        "label": "ablate_buffer_pressure",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_buffer_pressure.json",
+        "sha256": "d4d7e9a4856012520b05d3f1dbbfeb05de0279c00bd6a0b9a2f678cae94ace1b"
+      },
+      {
+        "label": "ablate_directional_traffic_volume",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_directional_traffic_volume.json",
+        "sha256": "f6f344900f6b54aa1bef35fbd53da24fa54de2eabcc2d2367f5a066ccfc53f02"
+      },
+      {
+        "label": "ablate_flow_control_stalls",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_flow_control_stalls.json",
+        "sha256": "31cdb2ccca74cade9c76a3c3822ea2258b6c8f8ea49ff0f4f960590cbdb8f6b4"
+      },
+      {
+        "label": "ablate_inter_flit_timing",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_inter_flit_timing.json",
+        "sha256": "35f406f0bf3def4307de31ff10d77220cf8c551b50044dd7fe8803149f304daa"
+      },
+      {
+        "label": "ablate_queue_activity",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_queue_activity.json",
+        "sha256": "0886ece154692ee44bec9c55239793eb715252b6452617770849cb43f0c5c4a1"
+      },
+      {
+        "label": "control_dynamic70",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/control_dynamic70.json",
+        "sha256": "25991e9d3616d975697e670ae066f84ffbceec3a0cb094b050ebe51e1584bbb5"
+      }
+    ],
+    "trainer_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf"
+  },
+  "stage": "V5_P3_F7_M1_R1_PYTHONPATH_IMPORT_RECOVERY_AND_MATRIX_RESUME",
+  "status": "LAUNCHED"
+}

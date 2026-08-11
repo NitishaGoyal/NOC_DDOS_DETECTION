@@ -1,0 +1,291 @@
+{
+  "authority_hierarchy": [
+    "V5-P3 FINAL-A0/A1-R1 for dataset, guarded access, and union normalization",
+    "V5-P3 A3/A4/A5 production-mainline preliminary baseline for model and training semantics",
+    "V5-P2-G0/B1 governance for frozen architecture, validation-only selection, and sealed-test quarantine",
+    "V5-P3 F-series experiments are corroborating/exploratory only and are not production protocol authorities"
+  ],
+  "authorization": {
+    "A2_protocol_frozen": true,
+    "A3_implementation_preflight_authorized": true,
+    "full_fresh_training_authorized": false,
+    "full_training_requires_A3_PASS": true,
+    "sealed_test_evaluation_authorized": false
+  },
+  "campaign": "V5-P3-1500-D70 Final A+B Production Mainline",
+  "data": {
+    "canonical_edge_index_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+    "canonical_edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "canonical_path_label": "y_path",
+    "canonical_topology_lock_sha256": "e77e43ef37f1ae0e4ad8a2b94106b4f16c05f5e50b1abcaa30174154d0339d8c",
+    "canonical_topology_report_sha256": "2adbf1c99065bb36d9e063c098709e23f410c8882a8112d917979cee7266ea34",
+    "dataset_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70",
+    "edge_index_shape": [
+      2,
+      48
+    ],
+    "input_shape": [
+      16,
+      70,
+      32
+    ],
+    "native_label_key_map": {
+      "y_attack": "y_attack",
+      "y_attacker_count": "y_attacker_count",
+      "y_path": "y_attack_path",
+      "y_source": "y_source",
+      "y_transit": "y_transit",
+      "y_victim": "y_victim"
+    },
+    "native_loader_class": "V5P3Dynamic70WindowDataset",
+    "native_loader_source": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "native_loader_source_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "native_path_label": "y_attack_path",
+    "normalization_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/normalization.pt",
+    "normalization_scope": "final A+B train only; validation and test excluded",
+    "normalization_sha256": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49",
+    "path_label_alias_semantics": "native y_attack_path is mapped losslessly to canonical internal y_path",
+    "physical_port_mask_shape": [
+      16,
+      10
+    ],
+    "physical_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "test_partition": "sealed; unavailable to A2/A3/A4/A5",
+    "train_items": 221773,
+    "train_pairs": 1200,
+    "train_runs": 2400,
+    "validation_items": 27722,
+    "validation_pairs": 150,
+    "validation_partition": "combined final A+B validation",
+    "validation_role": "checkpoint selection and reporting only",
+    "validation_runs": 300
+  },
+  "decoder": {
+    "imported_by_training_source": false,
+    "present_during_training": false,
+    "selection_uses_decoder": false,
+    "structured_decoding_deferred_until_immutable_logit_export": true
+  },
+  "determinism": {
+    "exact_set_seed_source_sha256": "7f9f89e9e2e642030fdb539d0ef7bbf6f248bb28b706a859b23d2475a8f41a00",
+    "initial_state_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+    "same_seed_initial_state_reproduced": true,
+    "seed": 107,
+    "train_order": "A4 epoch-aware deterministic permutation sampler; exact source excerpt pinned",
+    "validation_order": "fixed order, shuffle=False"
+  },
+  "generated_at_utc": "2026-08-07T00:59:02.938442+00:00",
+  "gradient_handling": {
+    "clip_norm": 1.0,
+    "clip_type": "global norm",
+    "placement": "after backward and before optimizer step, inherited from pinned A4 trainer source"
+  },
+  "loss": {
+    "count_class_weights_applied": false,
+    "count_semantics": {
+      "active_mapping": "target_minus_one",
+      "class_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "inactive_target_zero": "masked"
+    },
+    "graph_positive_weight": 2.7082685394197807,
+    "positive_weight_formula": "min(negative_entries / positive_entries, 20.0)",
+    "positive_weight_source": "V5-P3 final A+B train windows only",
+    "role_positive_weights": {
+      "path": 8.208121405883452,
+      "source": 20.0,
+      "transit": 17.186033877456886,
+      "victim": 20.0
+    },
+    "task_coefficients": {
+      "count": 1.0,
+      "graph": 1.0,
+      "path": 1.0,
+      "source": 1.0,
+      "transit": 1.0,
+      "victim": 1.0
+    }
+  },
+  "model": {
+    "all_parameters_trainable": true,
+    "authoritative_a4_builder_call": {
+      "expression": "dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(canonical_model, seed=SEED)",
+      "function": "dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure",
+      "keywords": {
+        "seed": "SEED"
+      },
+      "line": 961,
+      "positional_args": [
+        "canonical_model"
+      ]
+    },
+    "b3_source_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "builder": "build_v6_p0_dynamic70_from_canonical_structure",
+    "canonical_model_source_sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "construction": {
+      "all_parameters_trainable": true,
+      "attempts": [
+        {
+          "route": "P2B3Conv1DOnlyCount4()",
+          "runtime_type": "P2B3Conv1DOnlyCount4",
+          "success": true
+        },
+        {
+          "route": "P2TaskDGraphConvCount4(reference_b3, base_edge_index)",
+          "runtime_type": "P2TaskDGraphConvCount4",
+          "success": true
+        },
+        {
+          "parameter_count": 60553,
+          "route": "build_v6_p0_dynamic70_from_canonical_structure(canonical_model, seed=seed)",
+          "runtime_type": "V6P0Dynamic70GraphConvCount4",
+          "success": true
+        }
+      ],
+      "base_edge_index": {
+        "directed_edges": 48,
+        "dtype": "torch.int64",
+        "edge_index_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+        "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+        "node_max": 15,
+        "node_min": 0,
+        "shape": [
+          2,
+          48
+        ],
+        "structural_equivalence_to_generated_4x4_mesh": true,
+        "topology_lock_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT_LOCK.json",
+        "topology_lock_sha256": "e77e43ef37f1ae0e4ad8a2b94106b4f16c05f5e50b1abcaa30174154d0339d8c",
+        "topology_report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json",
+        "topology_report_sha256": "2adbf1c99065bb36d9e063c098709e23f410c8882a8112d917979cee7266ea34"
+      },
+      "canonical_parameter_count": 59785,
+      "parameter_count": 60553,
+      "runtime_class": "V6P0Dynamic70GraphConvCount4",
+      "selected_routes": {
+        "b3": "P2B3Conv1DOnlyCount4()",
+        "canonical": "P2TaskDGraphConvCount4(reference_b3, base_edge_index)",
+        "dynamic": "build_v6_p0_dynamic70_from_canonical_structure(canonical_model, seed=seed)"
+      },
+      "signatures": {
+        "b3": "() -> 'None'",
+        "canonical": "(reference_b3: 'nn.Module', base_edge_index: 'torch.Tensor') -> 'None'",
+        "dynamic_builder": "(canonical_model: 'nn.Module', *, seed: 'int' = 107) -> \"'V6P0Dynamic70GraphConvCount4'\""
+      }
+    },
+    "count_class_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "dynamic70_model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "fresh_seed": 107,
+    "historical_checkpoint_reuse": false,
+    "initial_state_sha256": "04b0def6db0e621b0d33342466432844dc92338f8702bb71d7281feec441e55c",
+    "module": "src.models.v6_p0_dynamic70_task_d_full_multitask_count4",
+    "outputs": [
+      "attack_logits",
+      "count_logits",
+      "source_logits",
+      "transit_logits",
+      "victim_logits",
+      "path_logits"
+    ],
+    "parameter_count": 60553,
+    "runtime_class": "V6P0Dynamic70GraphConvCount4"
+  },
+  "optimization": {
+    "batch_size": 256,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "early_stopping": {
+      "minimum_epochs": 15,
+      "minimum_improvement": 0.0001,
+      "patience": 12
+    },
+    "epsilon": 1e-08,
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "num_workers": 0,
+    "optimizer": "AdamW",
+    "scheduler": {
+      "factor": 0.5,
+      "minimum_lr": 1e-05,
+      "mode": "max",
+      "name": "ReduceLROnPlateau",
+      "patience": 4,
+      "threshold": 0.0001
+    },
+    "weight_decay": 0.0001
+  },
+  "resume": {
+    "fresh_start_required": true,
+    "interruption_resume_allowed": true,
+    "preliminary_checkpoint_reuse_forbidden": true,
+    "required_identity_gates": [
+      "model source hash",
+      "trainer source hash",
+      "protocol hash",
+      "dataset root and manifests",
+      "normalization hash",
+      "seed",
+      "optimizer state",
+      "scheduler state",
+      "epoch-order controller"
+    ],
+    "resume_scope": "same final run/output directory only",
+    "resume_state_semantics": "A3 must recover and test the exact A4 checkpoint key set before A4 training"
+  },
+  "schema_recovery": {
+    "canonical_internal_key": "y_path",
+    "dataset_modified": false,
+    "loader_modified": false,
+    "native_dataset_key": "y_attack_path",
+    "value_transform": "identity"
+  },
+  "sealed_test": {
+    "listing_denied": true,
+    "model_evaluation_authorized": false,
+    "native_test_dataset_constructed": false,
+    "tensor_deserialized": false
+  },
+  "selection": {
+    "checkpoint_selection_uses_validation": true,
+    "component_order": [
+      "graph_auroc",
+      "graph_average_precision",
+      "count_active_macro_f1",
+      "source_average_precision",
+      "transit_average_precision",
+      "victim_average_precision",
+      "path_average_precision"
+    ],
+    "early_stop_monitor": "selection_score",
+    "formula": "mean(graph_AUROC, graph_AP, count_active_macro_F1, source_AP, transit_AP, victim_AP, path_AP)",
+    "reporting_threshold": 0.5,
+    "test_used_for_selection": false,
+    "threshold_free_components": [
+      "graph_auroc",
+      "graph_average_precision",
+      "source_average_precision",
+      "transit_average_precision",
+      "victim_average_precision",
+      "path_average_precision"
+    ],
+    "threshold_tuning_during_training": false,
+    "tie_break_order": [
+      "lower_validation_loss",
+      "earlier_epoch"
+    ]
+  },
+  "stage": "V5_P3_FINAL_A2_R1_R3_LABEL_SCHEMA_ALIAS_RECOVERY_AND_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE",
+  "status": "FROZEN"
+}

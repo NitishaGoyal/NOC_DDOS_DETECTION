@@ -1,0 +1,547 @@
+#!/usr/bin/env python3
+"""
+Safe Stage 9 A1 wrapper for the existing Stage 7E graph-node interaction
+analysis.
+
+This runner does not modify the historical Stage 7E script and lets that
+implementation own its output directory. Wrapper-only reports are stored under
+preaudit/stage7e_wrapper/. It requires a
+passing A1 Stage 7A wrapper summary and a validation-only selected-threshold
+file, validates the A1 predictions/metadata and target runs, invokes the
+historical analysis, and freezes all outputs.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import shlex
+import subprocess
+import sys
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Iterable
+
+import numpy as np
+
+EXPECTED_TOTAL = 85618
+EXPECTED_VAL = 42809
+EXPECTED_TEST = 42809
+EXPECTED_NODES = 16
+A1_MODEL_FRAGMENT = "models/v3/stage9_a1_conv1d_exact_reproduction_seed7"
+HARD_ATTACK = "N-5-10-Pbursty-R51-A-12-S20-V3"
+HARD_NORMAL = "N-3-7-8-12-Pmixed-R18-V3"
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def expand(path: str | Path) -> Path:
+    return Path(path).expanduser().resolve()
+
+
+def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while block := handle.read(chunk_size):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def printable_command(command: list[str]) -> str:
+    return " ".join(shlex.quote(part) for part in command)
+
+
+def require_file(path: Path, label: str) -> None:
+    if not path.is_file():
+        raise RuntimeError(f"Missing {label}: {path}")
+
+
+def require_dir(path: Path, label: str) -> None:
+    if not path.is_dir():
+        raise RuntimeError(f"Missing {label}: {path}")
+
+
+def find_key(archive: Any, candidates: Iterable[str]) -> str:
+    for candidate in candidates:
+        if candidate in archive.files:
+            return candidate
+    raise RuntimeError(
+        f"None of the expected keys are present: {list(candidates)}; "
+        f"available={archive.files}"
+    )
+
+
+def validate_stage7a(stage7a_summary: Path) -> dict[str, Any]:
+    require_file(stage7a_summary, "Stage 7A wrapper summary")
+    data = json.loads(stage7a_summary.read_text(encoding="utf-8"))
+    if data.get("verdict") != "PASS":
+        raise RuntimeError(f"Stage 7A verdict is not PASS: {data.get('verdict')!r}")
+    if int(data.get("subprocess_exit_code", -1)) != 0:
+        raise RuntimeError("Stage 7A subprocess exit code was not zero")
+    return {
+        "verdict": data.get("verdict"),
+        "completed_at": data.get("completed_at"),
+        "summary_sha256": sha256_file(stage7a_summary),
+    }
+
+
+def validate_thresholds(selected_thresholds: Path, failure_root: Path) -> dict[str, Any]:
+    require_file(selected_thresholds, "selected graph-threshold CSV")
+    with selected_thresholds.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if not rows:
+        raise RuntimeError(f"Selected-threshold CSV has no rows: {selected_thresholds}")
+
+    conv_rows = [
+        row for row in rows
+        if row.get("model_name") == "conv1d_gcn" or row.get("model") == "conv1d_gcn"
+    ]
+    if not conv_rows:
+        raise RuntimeError("Selected-threshold CSV has no conv1d_gcn row")
+
+    threshold_key = next(
+        (name for name in ("selected_threshold", "threshold") if name in conv_rows[0]),
+        None,
+    )
+    if threshold_key is None:
+        raise RuntimeError("Could not identify the selected-threshold column")
+
+    thresholds: list[float] = []
+    for row in conv_rows:
+        try:
+            value = float(row[threshold_key])
+        except (TypeError, ValueError) as exc:
+            raise RuntimeError(
+                f"Invalid Conv1D selected threshold: {row.get(threshold_key)!r}"
+            ) from exc
+        if not 0.0 <= value <= 1.0:
+            raise RuntimeError(f"Selected threshold outside [0,1]: {value}")
+        thresholds.append(value)
+
+    validation_only_confirmed = False
+    if "selection_used_test_data" in rows[0]:
+        invalid = []
+        for row in rows:
+            value = str(row.get("selection_used_test_data", "")).strip().lower()
+            if value not in {"false", "0", "no"}:
+                invalid.append(value)
+        if invalid:
+            raise RuntimeError(
+                "Threshold table indicates or ambiguously reports test-data use: "
+                f"{invalid[:5]}"
+            )
+        validation_only_confirmed = True
+
+    validation_log_candidates = (
+        failure_root / "logs/30_graph_threshold_transfer_validation.txt",
+        failure_root / "logs/graph_threshold_transfer_validation.txt",
+    )
+    validation_log = next(
+        (path for path in validation_log_candidates if path.is_file()), None
+    )
+    if not validation_only_confirmed and validation_log is not None:
+        text = validation_log.read_text(encoding="utf-8", errors="replace").lower()
+        if "threshold selection used validation only: true" in text:
+            validation_only_confirmed = True
+
+    if not validation_only_confirmed:
+        raise RuntimeError(
+            "Could not prove validation-only threshold selection. Expected "
+            "selection_used_test_data=False in the CSV or a validation log "
+            "containing 'threshold selection used validation only: True'."
+        )
+
+    return {
+        "rows": len(rows),
+        "conv1d_selected_thresholds": thresholds,
+        "validation_only_confirmed": True,
+        "selected_thresholds_sha256": sha256_file(selected_thresholds),
+        "validation_log": str(validation_log) if validation_log else None,
+    }
+
+
+def validate_predictions(
+    predictions_dir: Path,
+    metadata_csv: Path,
+    manifest_json: Path,
+) -> dict[str, Any]:
+    conv_path = predictions_dir / "conv1d_gcn_predictions.npz"
+    require_file(conv_path, "A1 Conv1D prediction NPZ")
+    require_file(metadata_csv, "A1 prediction metadata CSV")
+    require_file(manifest_json, "A1 prediction manifest")
+
+    with metadata_csv.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if len(rows) != EXPECTED_TOTAL:
+        raise RuntimeError(
+            f"Metadata row count mismatch: expected {EXPECTED_TOTAL}, found {len(rows)}"
+        )
+    if not rows or "run_id" not in rows[0]:
+        raise RuntimeError("Metadata CSV has no run_id column")
+
+    split_counts = Counter(row.get("split") for row in rows)
+    if split_counts.get("val", 0) != EXPECTED_VAL:
+        raise RuntimeError(f"Validation count mismatch: {split_counts.get('val', 0)}")
+    if split_counts.get("test", 0) != EXPECTED_TEST:
+        raise RuntimeError(f"Test count mismatch: {split_counts.get('test', 0)}")
+
+    run_counts = Counter(row["run_id"] for row in rows)
+    if HARD_ATTACK not in run_counts:
+        raise RuntimeError(f"Hard attack is absent from metadata: {HARD_ATTACK}")
+    if HARD_NORMAL not in run_counts:
+        raise RuntimeError(f"Hard normal is absent from metadata: {HARD_NORMAL}")
+
+    with np.load(conv_path, allow_pickle=False) as archive:
+        graph_prob_key = find_key(
+            archive, ("graph_probability", "graph_prob", "graph_probabilities")
+        )
+        node_prob_key = find_key(
+            archive, ("node_probabilities", "node_probability", "node_prob")
+        )
+        graph_prob = archive[graph_prob_key]
+        node_prob = archive[node_prob_key]
+        if tuple(graph_prob.shape) != (EXPECTED_TOTAL,):
+            raise RuntimeError(f"Graph-probability shape mismatch: {graph_prob.shape}")
+        if tuple(node_prob.shape) != (EXPECTED_TOTAL, EXPECTED_NODES):
+            raise RuntimeError(f"Node-probability shape mismatch: {node_prob.shape}")
+        if not np.isfinite(graph_prob).all() or not np.isfinite(node_prob).all():
+            raise RuntimeError("Prediction probabilities contain NaN or infinity")
+        if not ((graph_prob >= 0.0) & (graph_prob <= 1.0)).all():
+            raise RuntimeError("Graph probabilities are outside [0,1]")
+        if not ((node_prob >= 0.0) & (node_prob <= 1.0)).all():
+            raise RuntimeError("Node probabilities are outside [0,1]")
+
+    manifest_text = manifest_json.read_text(encoding="utf-8")
+    if A1_MODEL_FRAGMENT not in manifest_text:
+        raise RuntimeError("Prediction manifest does not point to the A1 Conv1D model")
+
+    return {
+        "metadata_rows": len(rows),
+        "split_counts": dict(split_counts),
+        "hard_attack_windows": run_counts[HARD_ATTACK],
+        "hard_normal_windows": run_counts[HARD_NORMAL],
+        "conv1d_prediction_sha256": sha256_file(conv_path),
+        "metadata_sha256": sha256_file(metadata_csv),
+        "manifest_sha256": sha256_file(manifest_json),
+    }
+
+
+def run_streaming(command: list[str], cwd: Path, log_path: Path) -> int:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with log_path.open("x", encoding="utf-8") as log:
+        log.write(f"started_at={now_iso()}\n")
+        log.write(f"cwd={cwd}\n")
+        log.write(f"command={printable_command(command)}\n\n")
+        log.flush()
+        process = subprocess.Popen(
+            command,
+            cwd=str(cwd),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+        )
+        assert process.stdout is not None
+        for line in process.stdout:
+            print(line, end="")
+            log.write(line)
+        return process.wait()
+
+
+def write_hashes(root: Path, output: Path, extra: list[Path]) -> None:
+    paths = [path for path in root.rglob("*") if path.is_file()]
+    paths.extend(path for path in extra if path.is_file())
+    unique = sorted(set(path.resolve() for path in paths))
+    with output.open("x", encoding="utf-8") as handle:
+        for path in unique:
+            if path.resolve() == output.resolve():
+                continue
+            handle.write(f"{sha256_file(path)}  {path}\n")
+
+
+def compact_run_evidence(
+    output_root: Path,
+    run_id: str,
+    max_rows: int = 20,
+) -> dict[str, Any]:
+    matches: list[dict[str, Any]] = []
+    files_with_mentions: list[str] = []
+    for path in sorted(output_root.rglob("*")):
+        if not path.is_file():
+            continue
+        suffix = path.suffix.lower()
+        if suffix == ".csv":
+            try:
+                with path.open(
+                    "r", encoding="utf-8", errors="replace", newline=""
+                ) as handle:
+                    reader = csv.DictReader(handle)
+                    for row in reader:
+                        if run_id in row.values():
+                            files_with_mentions.append(str(path))
+                            if len(matches) < max_rows:
+                                compact = {
+                                    key: value for key, value in row.items()
+                                    if value not in ("", None)
+                                }
+                                matches.append({"file": str(path), "row": compact})
+            except csv.Error:
+                continue
+        elif suffix in {".json", ".md", ".txt", ".log"}:
+            text = path.read_text(encoding="utf-8", errors="replace")
+            if run_id in text:
+                files_with_mentions.append(str(path))
+    return {
+        "run_id": run_id,
+        "files_with_mentions": sorted(set(files_with_mentions)),
+        "sample_rows": matches,
+    }
+
+
+def parse_args() -> argparse.Namespace:
+    home = Path.home()
+    repo = home / "research/projects/GNN-2d"
+    failure_root = repo / "reports/v3_failure_analysis/stage9_round1/a1_evaluation"
+    parser = argparse.ArgumentParser(
+        description="Safely run Stage 7E graph-node interaction analysis for A1."
+    )
+    parser.add_argument("--repo-root", default=str(repo))
+    parser.add_argument(
+        "--dataset-root",
+        default=str(
+            home / "tools/architecture/gem5/experiments/"
+            "paper1_temporal_graphs_ports_v3"
+        ),
+    )
+    parser.add_argument("--failure-root", default=str(failure_root))
+    parser.add_argument(
+        "--implementation",
+        default=str(
+            repo / "scripts/failure_analysis/"
+            "analyze_stage7e_graph_node_interaction.py"
+        ),
+    )
+    parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--smoke-test",
+        action="store_true",
+        help="Use the historical Stage 7E implementation's synthetic smoke mode.",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    repo_root = expand(args.repo_root)
+    dataset_root = expand(args.dataset_root)
+    failure_root = expand(args.failure_root)
+    implementation = expand(args.implementation)
+
+    predictions_dir = failure_root / "predictions"
+    metadata_csv = predictions_dir / "prediction_metadata.csv"
+    manifest_json = predictions_dir / "prediction_manifest.json"
+    selected_thresholds = failure_root / "tables/selected_graph_thresholds.csv"
+    stage7a_summary = (
+        failure_root
+        / "preaudit/stage7a_wrapper/stage9_a1_stage7a_summary.json"
+    )
+
+    if args.smoke_test:
+        output_root = failure_root / "stage7e_smoke"
+        wrapper_output = failure_root / "preaudit/stage7e_wrapper_smoke"
+        log_path = failure_root / "logs/53_stage9_a1_stage7e_smoke.log"
+        status_path = failure_root / "logs/53_stage9_a1_stage7e_smoke_status.txt"
+    else:
+        output_root = failure_root / "stage7e_graph_node_interaction"
+        wrapper_output = failure_root / "preaudit/stage7e_wrapper"
+        log_path = failure_root / "logs/54_stage9_a1_stage7e.log"
+        status_path = failure_root / "logs/54_stage9_a1_stage7e_status.txt"
+
+    summary_path = wrapper_output / "stage9_a1_stage7e_summary.json"
+    report_path = wrapper_output / "STAGE9_A1_STAGE7E_REPORT.md"
+    hashes_path = wrapper_output / "stage9_a1_stage7e_outputs_sha256.txt"
+
+    try:
+        require_dir(repo_root, "repository root")
+        require_dir(dataset_root, "dataset root")
+        require_dir(failure_root, "A1 evaluation root")
+        require_dir(predictions_dir, "A1 predictions directory")
+        require_file(implementation, "historical Stage 7E implementation")
+
+        stage7a_info = validate_stage7a(stage7a_summary)
+        threshold_info = validate_thresholds(selected_thresholds, failure_root)
+        prediction_info = validate_predictions(
+            predictions_dir, metadata_csv, manifest_json
+        )
+
+        empty_historical_output = False
+        if output_root.exists():
+            if not output_root.is_dir():
+                raise RuntimeError(
+                    f"Stage 7E output path is not a directory: {output_root}"
+                )
+            existing_entries = sorted(output_root.iterdir())
+            if existing_entries:
+                listing = "\n".join(f"  {path}" for path in existing_entries)
+                raise RuntimeError(
+                    "Stage 7E output directory is nonempty. Refusing to "
+                    "overwrite:\n" + listing
+                )
+            empty_historical_output = True
+
+        if wrapper_output.exists():
+            raise RuntimeError(
+                f"Stage 7E wrapper report directory already exists: "
+                f"{wrapper_output}"
+            )
+        for path in (log_path, status_path):
+            if path.exists():
+                raise RuntimeError(f"Refusing to overwrite existing file: {path}")
+
+        command = [
+            sys.executable,
+            str(implementation),
+            "--predictions-dir", str(predictions_dir),
+            "--metadata-csv", str(metadata_csv),
+            "--dataset-root", str(dataset_root),
+            "--selected-thresholds", str(selected_thresholds),
+            "--output-root", str(output_root),
+        ]
+        if args.smoke_test:
+            command.append("--smoke-test")
+
+        print("===== STAGE 9 A1 STAGE 7E PREFLIGHT =====")
+        print(json.dumps({
+            "repo_root": str(repo_root),
+            "dataset_root": str(dataset_root),
+            "failure_root": str(failure_root),
+            "implementation": str(implementation),
+            "output_root": str(output_root),
+            "wrapper_output": str(wrapper_output),
+            "empty_output_root_will_be_removed": empty_historical_output,
+            "stage7a": stage7a_info,
+            "thresholds": threshold_info,
+            "predictions": prediction_info,
+            "hard_attack": HARD_ATTACK,
+            "hard_normal": HARD_NORMAL,
+            "command": command,
+        }, indent=2))
+        print("\nExact command:")
+        print(printable_command(command))
+
+        if args.dry_run:
+            print("\nDRY RUN PASSED: Stage 7E was not executed.")
+            return 0
+
+        if empty_historical_output:
+            output_root.rmdir()
+            print(
+                "Removed empty Stage 7E output directory left by a failed "
+                f"attempt: {output_root}"
+            )
+
+        output_root.parent.mkdir(parents=True, exist_ok=True)
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        exit_code = run_streaming(command, repo_root, log_path)
+        status_path.write_text(
+            f"stage7e_exit_code={exit_code}\n"
+            f"smoke_test={args.smoke_test}\n"
+            f"finished_at={now_iso()}\n",
+            encoding="utf-8",
+        )
+        if exit_code != 0:
+            print(f"STOP: Stage 7E failed with exit code {exit_code}")
+            return exit_code
+
+        if not output_root.is_dir():
+            raise RuntimeError(
+                "Stage 7E exited successfully but did not create its output directory"
+            )
+        produced = [path for path in output_root.rglob("*") if path.is_file()]
+        if not produced:
+            raise RuntimeError("Stage 7E exited successfully but produced no files")
+
+        hard_attack_summary = compact_run_evidence(output_root, HARD_ATTACK)
+        hard_normal_summary = compact_run_evidence(output_root, HARD_NORMAL)
+        if not args.smoke_test:
+            if not hard_attack_summary["files_with_mentions"]:
+                raise RuntimeError("Stage 7E outputs contain no hard-attack mention")
+            if not hard_normal_summary["files_with_mentions"]:
+                raise RuntimeError("Stage 7E outputs contain no hard-normal mention")
+
+        wrapper_output.mkdir(parents=True, exist_ok=False)
+
+        summary = {
+            "stage": "Stage 9 A1 Stage 7E",
+            "mode": "smoke_test" if args.smoke_test else "full",
+            "verdict": "PASS",
+            "completed_at": now_iso(),
+            "subprocess_exit_code": exit_code,
+            "command": command,
+            "implementation": str(implementation),
+            "implementation_sha256": sha256_file(implementation),
+            "predictions_dir": str(predictions_dir),
+            "metadata_csv": str(metadata_csv),
+            "selected_thresholds": str(selected_thresholds),
+            "selected_threshold_info": threshold_info,
+            "stage7a_info": stage7a_info,
+            "prediction_preflight": prediction_info,
+            "historical_output_root": str(output_root),
+            "wrapper_output_root": str(wrapper_output),
+            "output_file_count_before_wrapper_reports": len(produced),
+            "hard_attack": hard_attack_summary,
+            "hard_normal": hard_normal_summary,
+        }
+        summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+        report_lines = [
+            "# Stage 9 A1 — Stage 7E Graph–Node Interaction", "",
+            f"**Mode:** {'smoke test' if args.smoke_test else 'full'}", "",
+            "**Execution verdict: PASS**", "",
+            f"- Completed: `{summary['completed_at']}`",
+            f"- Stage 7A verdict: `{stage7a_info['verdict']}`",
+            f"- A1 selected threshold(s): `{threshold_info['conv1d_selected_thresholds']}`",
+            f"- Validation-only threshold selection confirmed: "
+            f"`{threshold_info['validation_only_confirmed']}`",
+            f"- Historical Stage 7E output: `{output_root}`",
+            f"- Wrapper report directory: `{wrapper_output}`",
+            f"- Output files produced: `{len(produced)}`", "",
+            "## Hard attack", "",
+            f"- Run: `{HARD_ATTACK}`",
+            f"- Metadata windows: `{prediction_info['hard_attack_windows']}`",
+            f"- Stage 7E files mentioning run: "
+            f"`{len(hard_attack_summary['files_with_mentions'])}`", "",
+            "## Hard normal", "",
+            f"- Run: `{HARD_NORMAL}`",
+            f"- Metadata windows: `{prediction_info['hard_normal_windows']}`",
+            f"- Stage 7E files mentioning run: "
+            f"`{len(hard_normal_summary['files_with_mentions'])}`", "",
+            "Detailed matched rows and file references are in the JSON summary.", "",
+        ]
+        report_path.write_text("\n".join(report_lines), encoding="utf-8")
+
+        write_hashes(
+            output_root,
+            hashes_path,
+            extra=[log_path, status_path, selected_thresholds, stage7a_summary],
+        )
+        print("\n===== STAGE 9 A1 STAGE 7E COMPLETE =====")
+        print("execution_verdict: PASS")
+        print("historical_output:", output_root)
+        print("summary:", summary_path)
+        print("report:", report_path)
+        print("hashes:", hashes_path)
+        print("next_gate: interpret Stage 7E and issue final A1 verdict")
+        return 0
+    except Exception as exc:
+        print(f"STOP: {exc}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

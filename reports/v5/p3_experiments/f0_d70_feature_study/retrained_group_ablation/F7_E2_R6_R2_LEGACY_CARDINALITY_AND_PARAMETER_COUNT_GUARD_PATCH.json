@@ -1,0 +1,71 @@
+{
+  "AST_integer_replacement_counts": {
+    "12528": 1,
+    "43273": 1,
+    "70166": 1
+  },
+  "certified_Dynamic70_parameter_count": 60553,
+  "certified_F7_train_items": 110855,
+  "certified_F7_validation_items": 13863,
+  "compute_loss_not_targeted": true,
+  "corrected_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_legacy_guards.py",
+  "corrected_trainer_sha256": "ffef481257a0a62830a2382851d08248da8084418039edb92c971580f23bba79",
+  "early_stop_not_targeted": true,
+  "exact_source_contexts": [
+    {
+      "context": "00056: \n00057: EXPECTED_SEEDS = [107, 117, 127]\n00058: EXPECTED_PARAMETER_COUNT = 43_273\n00059: EXPECTED_TRAIN_ITEMS = 70_166\n00060: EXPECTED_VALIDATION_ITEMS = 12_528\n00061: EXPECTED_PROTOCOL_SHA = (\n00062:     \"0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60\"",
+      "context_end": 62,
+      "context_start": 56,
+      "line_end": 59,
+      "line_start": 59,
+      "new_evaluated_value": 110855,
+      "old_evaluated_value": 70166,
+      "original_source_token": "70_166"
+    },
+    {
+      "context": "00057: EXPECTED_SEEDS = [107, 117, 127]\n00058: EXPECTED_PARAMETER_COUNT = 43_273\n00059: EXPECTED_TRAIN_ITEMS = 70_166\n00060: EXPECTED_VALIDATION_ITEMS = 12_528\n00061: EXPECTED_PROTOCOL_SHA = (\n00062:     \"0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60\"\n00063: )",
+      "context_end": 63,
+      "context_start": 57,
+      "line_end": 60,
+      "line_start": 60,
+      "new_evaluated_value": 13863,
+      "old_evaluated_value": 12528,
+      "original_source_token": "12_528"
+    },
+    {
+      "context": "00055: COMPLETE = f\"{STAGE}_COMPLETE\"\n00056: \n00057: EXPECTED_SEEDS = [107, 117, 127]\n00058: EXPECTED_PARAMETER_COUNT = 43_273\n00059: EXPECTED_TRAIN_ITEMS = 70_166\n00060: EXPECTED_VALIDATION_ITEMS = 12_528\n00061: EXPECTED_PROTOCOL_SHA = (",
+      "context_end": 61,
+      "context_start": 55,
+      "line_end": 58,
+      "line_start": 58,
+      "new_evaluated_value": 60553,
+      "old_evaluated_value": 43273,
+      "original_source_token": "43_273"
+    }
+  ],
+  "failure_classification": "instrumented_trainer_retained_legacy_P2_parameter_count_legacy_move_batch_called_to_on_list_metadata",
+  "feature_masking_not_targeted": true,
+  "legacy_P2_parameter_count": 43273,
+  "legacy_train_items": 70166,
+  "legacy_validation_items": 12528,
+  "model_architecture_not_targeted": true,
+  "optimizer_scheduler_clipping_not_targeted": true,
+  "original_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer.py",
+  "original_trainer_sha256": "a2662a0d6a0e06bce012b692c6be1e6e124a2a105348842672d493b112c5f08c",
+  "parameter_count_assignments": [
+    {
+      "line": 58,
+      "source": "EXPECTED_PARAMETER_COUNT = 60553",
+      "target": "EXPECTED_PARAMETER_COUNT",
+      "value": 60553
+    }
+  ],
+  "parameter_count_comparisons": [
+    {
+      "line": 1387,
+      "source": "parameter_count != EXPECTED_PARAMETER_COUNT"
+    }
+  ],
+  "patch_scope": "ast.Constant integer nodes only; evaluated_value 70166_to_110855, 12528_to_13863, and 43273_to_60553",
+  "textual_spelling_independent": true
+}

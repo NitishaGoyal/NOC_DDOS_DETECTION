@@ -1,0 +1,61 @@
+{
+  "artifacts": {
+    "F4_vs_F5_boundary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R4_F4_VS_F5_AUTHORIZATION_BOUNDARY.json",
+    "final_F4_contract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R4_FINAL_F4_REPLAY_CONTRACT.json",
+    "metric_provenance": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R4_A4_A5_14_METRIC_PROVENANCE.json",
+    "source_inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R4_A4_A5_SOURCE_INVENTORY.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "created_utc": "2026-08-05T20:20:14.118870+00:00",
+  "decision": {
+    "F4_P1R4_complete": true,
+    "F5_permutation_authorized": false,
+    "actual_F4_validation_reproduction_authorized": true,
+    "next_stage": "V5_P3_F4_FROZEN_CHECKPOINT_VALIDATION_BASELINE_REPRODUCTION",
+    "sealed_test_access_authorized": false,
+    "validation_access_used_in_P1R4": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "array_payloads_loaded": false,
+    "checkpoint_deserialized": false,
+    "model_instantiated": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": false,
+    "validation_tensors_loaded": false
+  },
+  "metric_recovery": {
+    "coverage": 1.0,
+    "low_confidence": [],
+    "missing": [],
+    "numeric_candidate_count": 135,
+    "resolved_metric_count": 14,
+    "resolved_vector": {
+      "count_active_macro_f1": 0.9973039624464042,
+      "graph_ap": 0.68912114,
+      "graph_auroc": 0.89083908,
+      "graph_f1_at_0_5": 0.7011657,
+      "graph_fpr_at_0_5": 0.21302659,
+      "path_ap": 0.6246353166442606,
+      "path_exact_active": 0.8178963893249608,
+      "selection_score": 0.72977369,
+      "source_ap": 0.6446929824219041,
+      "source_exact_active": 0.9209837781266352,
+      "transit_ap": 0.6369271265766875,
+      "transit_exact_active": 0.6802721088435374,
+      "victim_ap": 0.624896193057987,
+      "victim_exact_active": 0.9481946624803768
+    },
+    "source_file_count": 9
+  },
+  "provenance": {
+    "F4_P1R2_lock_sha256": "a5ec955fe95ae3d807c4faaaff286c634274c3a579ce1c053dc74ea2b29dd0a4",
+    "F4_P1R2_report_sha256": "44c127d33ecd137ed2f8e4286685175dcaf386aadb1b1c398cec1bd4fa9265eb",
+    "F4_P1R3_lock_sha256": "681dad52d1480833ccb7e635a01c67396d2c9dc5c9aa2e9f1efe7bd3cd7d9889",
+    "F4_P1R3_report_sha256": "41919be5e59b5d2d3c36ac08fb2f959bd5490d596c7fb7ec1221a40ee1a9e3f7",
+    "installed_script_sha256": "b3a2ab5fcd7041f6caf267aa9212cc5572fefa9eeeca5ef34f62871060ba125e"
+  },
+  "scope": "Recover the 14-value frozen A4/A5 validation metric vector from all authoritative A4/A5 JSON, CSV and text artifacts, and separate F4 logit-replay authorization from the later F5 metric-adapter requirement.",
+  "stage": "V5_P3_F4_P1R4_A4_A5_METRIC_PROVENANCE_RECOVERY",
+  "status": "PASS"
+}

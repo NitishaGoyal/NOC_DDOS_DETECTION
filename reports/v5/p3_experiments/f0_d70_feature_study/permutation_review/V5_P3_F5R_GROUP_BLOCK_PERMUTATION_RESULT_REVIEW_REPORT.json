@@ -1,0 +1,406 @@
+{
+  "artifacts": {
+    "figures": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_SELECTION_SCORE_REVIEW.png",
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_PRIMARY_TASK_IMPORTANCE_HEATMAP.png"
+    ],
+    "interpretation_and_decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_FEATURE_INTERPRETATION_AND_STAGE_DECISION.json",
+    "reviewed_results": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_REVIEWED_RESULTS.json",
+    "selection_score_pairwise_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_SELECTION_SCORE_PAIRWISE_REVIEW.csv",
+    "selection_score_ranking_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_SELECTION_SCORE_RANKING.csv",
+    "task_specific_rankings": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation_review/F5R_TASK_SPECIFIC_GROUP_RANKINGS.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T22:10:11.246190+00:00",
+  "decision": {
+    "F5R_complete": true,
+    "F6_integrated_gradients_authorized": true,
+    "F7_retraining_ablation_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F6_TASK_SPECIFIC_INTEGRATED_GRADIENTS",
+    "sealed_test_access_authorized": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "metric_formulas_changed": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "permutation_result_artifacts_loaded": true,
+    "sealed_test_tensors_loaded": false,
+    "validation_feature_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": false
+  },
+  "interpretation": {
+    "F6_integrated_gradients_authorized": true,
+    "F7_retraining_ablation_authorized": false,
+    "feature_removal_authorized": false,
+    "flow_control_stalls_low_effect": true,
+    "flow_control_stalls_note": "The full 15-channel stall group has a very small permutation effect. Combined with the prior F2R observation that six stall channels are constant zero, this makes the stall group the leading candidate for F6/F7 scrutiny. It does not authorize removing all stall channels because nine channels remain training-observed and permutation importance can be suppressed by correlated or redundant inputs.",
+    "hardware_reduction_claim_authorized": false,
+    "next_evidence_required": [
+      "F6 task-specific integrated gradients",
+      "F7 same-width retrained group ablation",
+      "later compact reduced-input retraining"
+    ],
+    "permutation_scope_note": "This is a grouped validation permutation-contribution result, not a causal proof and not a compact-interface result.",
+    "selection_score_order": [
+      "inter_flit_timing",
+      "buffer_pressure",
+      "queue_activity",
+      "directional_traffic_volume",
+      "flow_control_stalls"
+    ],
+    "strongest_group": "inter_flit_timing",
+    "weakest_group": "flow_control_stalls"
+  },
+  "provenance": {
+    "F5_R3B_lock_sha256": "139a68ce866cda14a60a46ec73a932fc74bb8b4837f9ee48fc78e9ae18f2dc6e",
+    "F5_R3B_report_sha256": "0e4a0bae7c89f8a825c4163c89fee5fb3b5f32ec1f5ba910e94192e3586615ea",
+    "F5_ranking_csv_sha256": "2a917306d7d5954f2f517d4e450fba1122a89b317c3ec2ac8d91e2ca960a7cc5",
+    "F5_repeat_csv_sha256": "b2f03a13dab71c93b47437c64bde475a27c84ae4e1dfee147604eb732bcafd1f",
+    "F5_results_json_sha256": "5237fa7a5164044a75edba7b02c7eeb63e77c2bc1f0f0720bcc5837758e2f533",
+    "F5_summary_csv_sha256": "86aef80a89395cfbb388ed95d472a0c306b919b8c24f3c2d621e1070c48239dd",
+    "canonical_F5_lock_sha256": "e22fe747a6e32c251d5a79f4b7ea2e7c720091d417cde82c726ab744d637813c",
+    "canonical_F5_report_sha256": "1f933f33479c49954ec6598742e385a81ced5c61fa8585f43f49f554c562fca2",
+    "installed_script_sha256": "d1508552ed14649fd9f43e0c154b9dde4ff8b63811a9ee9b5660d88079f2e923",
+    "interpretation_and_decision_sha256": "3b5449614a16b338674a2ca120f0d9a91b4fbfbf427d05e26240e14503de8960",
+    "reviewed_results_sha256": "869bdb27b31eb596cb16a7d37c9e44ec49e169de1e5e4aa50c0eee49da0cafb2",
+    "run_F5_lock_sha256": "16ad1eff8ac9f8c7f3dcb59157c451ec3e89d98857fbf6bdbb7a520bf7041401",
+    "run_F5_report_sha256": "9145764d7677b4ecd2bbc4846ca0363282e47249ca9738acbb709e769f6135ba",
+    "selection_score_pairwise_csv_sha256": "a8042f9e467e5541e7410ab5834f4c883908e715ff5c14390f602d64c5e7c2e5",
+    "selection_score_ranking_csv_sha256": "af9bf8d3f1ea1b7c85fbb40742356f03e73352692eb650bd1fab986f85331ee8",
+    "task_specific_rankings_sha256": "0a15432ba33189b663abc3a0d4af204cb7c4aeb3de1a8504a4b049de2f250381"
+  },
+  "results": {
+    "baseline_selection_score": 0.7297736857533778,
+    "flow_control_stalls_low_effect": true,
+    "selection_score_ranking": [
+      {
+        "ci95_lower": 0.3654270329184643,
+        "ci95_upper": 0.36835989014241705,
+        "ci_excludes_zero": true,
+        "fraction_of_baseline_percent": 50.27496451200214,
+        "group": "inter_flit_timing",
+        "mean_importance": 0.36689346153044067,
+        "positive_repeat_count": 10,
+        "rank": 1,
+        "standard_deviation": 0.002049925847834789
+      },
+      {
+        "ci95_lower": 0.3262213943613418,
+        "ci95_upper": 0.32885307115440676,
+        "ci_excludes_zero": true,
+        "fraction_of_baseline_percent": 44.8820283811334,
+        "group": "buffer_pressure",
+        "mean_importance": 0.3275372327578743,
+        "positive_repeat_count": 10,
+        "rank": 2,
+        "standard_deviation": 0.0018394152423076642
+      },
+      {
+        "ci95_lower": 0.2781486241864404,
+        "ci95_upper": 0.28132836182232346,
+        "ci_excludes_zero": true,
+        "fraction_of_baseline_percent": 38.33222524536432,
+        "group": "queue_activity",
+        "mean_importance": 0.2797384930043819,
+        "positive_repeat_count": 10,
+        "rank": 3,
+        "standard_deviation": 0.0022224833571491925
+      },
+      {
+        "ci95_lower": 0.2732424583196696,
+        "ci95_upper": 0.27659620482299124,
+        "ci_excludes_zero": true,
+        "fraction_of_baseline_percent": 37.6718614192726,
+        "group": "directional_traffic_volume",
+        "mean_importance": 0.2749193315713304,
+        "positive_repeat_count": 10,
+        "rank": 4,
+        "standard_deviation": 0.002344107168973905
+      },
+      {
+        "ci95_lower": 0.0019130316702914033,
+        "ci95_upper": 0.0024000416753025395,
+        "ci_excludes_zero": true,
+        "fraction_of_baseline_percent": 0.29550759569669643,
+        "group": "flow_control_stalls",
+        "mean_importance": 0.0021565366727969715,
+        "positive_repeat_count": 10,
+        "rank": 5,
+        "standard_deviation": 0.0003403965216148396
+      }
+    ],
+    "task_specific_rankings": {
+      "count_active_macro_f1": [
+        {
+          "ci95_lower": 0.3818573790368569,
+          "ci95_upper": 0.3900458637660712,
+          "group": "directional_traffic_volume",
+          "mean_importance": 0.38595162140146405,
+          "positive_repeat_count": 10,
+          "rank": 1
+        },
+        {
+          "ci95_lower": 0.3199633445941537,
+          "ci95_upper": 0.32617507613906366,
+          "group": "inter_flit_timing",
+          "mean_importance": 0.3230692103666087,
+          "positive_repeat_count": 10,
+          "rank": 2
+        },
+        {
+          "ci95_lower": 0.19169196579177,
+          "ci95_upper": 0.19983294319953632,
+          "group": "queue_activity",
+          "mean_importance": 0.19576245449565316,
+          "positive_repeat_count": 10,
+          "rank": 3
+        },
+        {
+          "ci95_lower": 0.04787552867388002,
+          "ci95_upper": 0.053970919673747966,
+          "group": "buffer_pressure",
+          "mean_importance": 0.050923224173813994,
+          "positive_repeat_count": 10,
+          "rank": 4
+        },
+        {
+          "ci95_lower": 0.0010430552446168463,
+          "ci95_upper": 0.0015606199002858266,
+          "group": "flow_control_stalls",
+          "mean_importance": 0.0013018375724513365,
+          "positive_repeat_count": 10,
+          "rank": 5
+        }
+      ],
+      "graph_ap": [
+        {
+          "ci95_lower": 0.29212294443066483,
+          "ci95_upper": 0.30156554375599104,
+          "group": "buffer_pressure",
+          "mean_importance": 0.29684424409332794,
+          "positive_repeat_count": 10,
+          "rank": 1
+        },
+        {
+          "ci95_lower": 0.2886164338531022,
+          "ci95_upper": 0.2919866940638771,
+          "group": "inter_flit_timing",
+          "mean_importance": 0.29030156395848966,
+          "positive_repeat_count": 10,
+          "rank": 2
+        },
+        {
+          "ci95_lower": 0.22598374213128022,
+          "ci95_upper": 0.2316805994402125,
+          "group": "queue_activity",
+          "mean_importance": 0.22883217078574636,
+          "positive_repeat_count": 10,
+          "rank": 3
+        },
+        {
+          "ci95_lower": 0.1622766501248211,
+          "ci95_upper": 0.1679358086972297,
+          "group": "directional_traffic_volume",
+          "mean_importance": 0.1651062294110254,
+          "positive_repeat_count": 10,
+          "rank": 4
+        },
+        {
+          "ci95_lower": -0.0042670207321605395,
+          "ci95_upper": -0.0032504521007145322,
+          "group": "flow_control_stalls",
+          "mean_importance": -0.003758736416437536,
+          "positive_repeat_count": 0,
+          "rank": 5
+        }
+      ],
+      "path_ap": [
+        {
+          "ci95_lower": 0.4794897442632301,
+          "ci95_upper": 0.481405784067926,
+          "group": "inter_flit_timing",
+          "mean_importance": 0.48044776416557805,
+          "positive_repeat_count": 10,
+          "rank": 1
+        },
+        {
+          "ci95_lower": 0.412232334103131,
+          "ci95_upper": 0.41683300016688685,
+          "group": "buffer_pressure",
+          "mean_importance": 0.4145326671350089,
+          "positive_repeat_count": 10,
+          "rank": 2
+        },
+        {
+          "ci95_lower": 0.3760197196934183,
+          "ci95_upper": 0.37925938592843544,
+          "group": "queue_activity",
+          "mean_importance": 0.37763955281092687,
+          "positive_repeat_count": 10,
+          "rank": 3
+        },
+        {
+          "ci95_lower": 0.3090131975067748,
+          "ci95_upper": 0.313972439403719,
+          "group": "directional_traffic_volume",
+          "mean_importance": 0.3114928184552469,
+          "positive_repeat_count": 10,
+          "rank": 4
+        },
+        {
+          "ci95_lower": 0.0037531340420629902,
+          "ci95_upper": 0.00438155037914034,
+          "group": "flow_control_stalls",
+          "mean_importance": 0.004067342210601665,
+          "positive_repeat_count": 10,
+          "rank": 5
+        }
+      ],
+      "source_ap": [
+        {
+          "ci95_lower": 0.34450424065223995,
+          "ci95_upper": 0.34821575307698904,
+          "group": "buffer_pressure",
+          "mean_importance": 0.3463599968646145,
+          "positive_repeat_count": 10,
+          "rank": 1
+        },
+        {
+          "ci95_lower": 0.2968745980441718,
+          "ci95_upper": 0.3038959199669653,
+          "group": "inter_flit_timing",
+          "mean_importance": 0.30038525900556856,
+          "positive_repeat_count": 10,
+          "rank": 2
+        },
+        {
+          "ci95_lower": 0.2839313942310252,
+          "ci95_upper": 0.29175577363609817,
+          "group": "directional_traffic_volume",
+          "mean_importance": 0.2878435839335617,
+          "positive_repeat_count": 10,
+          "rank": 3
+        },
+        {
+          "ci95_lower": 0.2481802112785243,
+          "ci95_upper": 0.25397648890365954,
+          "group": "queue_activity",
+          "mean_importance": 0.2510783500910919,
+          "positive_repeat_count": 10,
+          "rank": 4
+        },
+        {
+          "ci95_lower": 0.0022920920347635795,
+          "ci95_upper": 0.003393607608167018,
+          "group": "flow_control_stalls",
+          "mean_importance": 0.0028428498214652987,
+          "positive_repeat_count": 10,
+          "rank": 5
+        }
+      ],
+      "transit_ap": [
+        {
+          "ci95_lower": 0.5553824390020514,
+          "ci95_upper": 0.5567234937850705,
+          "group": "inter_flit_timing",
+          "mean_importance": 0.5560529663935609,
+          "positive_repeat_count": 10,
+          "rank": 1
+        },
+        {
+          "ci95_lower": 0.49893325422582663,
+          "ci95_upper": 0.5009417704102164,
+          "group": "queue_activity",
+          "mean_importance": 0.4999375123180215,
+          "positive_repeat_count": 10,
+          "rank": 2
+        },
+        {
+          "ci95_lower": 0.49691807525971593,
+          "ci95_upper": 0.5018745971601866,
+          "group": "buffer_pressure",
+          "mean_importance": 0.4993963362099513,
+          "positive_repeat_count": 10,
+          "rank": 3
+        },
+        {
+          "ci95_lower": 0.4236363324948099,
+          "ci95_upper": 0.4275010134896441,
+          "group": "directional_traffic_volume",
+          "mean_importance": 0.425568672992227,
+          "positive_repeat_count": 10,
+          "rank": 4
+        },
+        {
+          "ci95_lower": 0.00849833023829214,
+          "ci95_upper": 0.00902558361058965,
+          "group": "flow_control_stalls",
+          "mean_importance": 0.008761956924440895,
+          "positive_repeat_count": 10,
+          "rank": 5
+        }
+      ],
+      "victim_ap": [
+        {
+          "ci95_lower": 0.4541892446651667,
+          "ci95_upper": 0.4573790181976361,
+          "group": "buffer_pressure",
+          "mean_importance": 0.4557841314314014,
+          "positive_repeat_count": 10,
+          "rank": 1
+        },
+        {
+          "ci95_lower": 0.3970805863781661,
+          "ci95_upper": 0.4031928410274448,
+          "group": "inter_flit_timing",
+          "mean_importance": 0.40013671370280546,
+          "positive_repeat_count": 10,
+          "rank": 2
+        },
+        {
+          "ci95_lower": 0.2542490290121503,
+          "ci95_upper": 0.25910464853398585,
+          "group": "queue_activity",
+          "mean_importance": 0.2566768387730681,
+          "positive_repeat_count": 10,
+          "rank": 3
+        },
+        {
+          "ci95_lower": 0.2424139795546931,
+          "ci95_upper": 0.24931934608064085,
+          "group": "directional_traffic_volume",
+          "mean_importance": 0.24586666281766698,
+          "positive_repeat_count": 10,
+          "rank": 4
+        },
+        {
+          "ci95_lower": 0.0012209100826375567,
+          "ci95_upper": 0.0023490627245264005,
+          "group": "flow_control_stalls",
+          "mean_importance": 0.0017849864035819785,
+          "positive_repeat_count": 10,
+          "rank": 5
+        }
+      ]
+    }
+  },
+  "scope": "Verify all 50 completed permutation units and hashes, independently reconstruct all metric effects and confidence intervals, review task-specific rankings, and decide whether task-specific integrated gradients may begin.",
+  "stage": "V5_P3_F5R_GROUP_BLOCK_PERMUTATION_RESULT_REVIEW",
+  "status": "PASS",
+  "verification": {
+    "all_groups_selection_effect_positive_10_of_10": true,
+    "baseline_consistency_max_abs_difference": 0.0,
+    "baseline_reproduction_pass": true,
+    "expected_permutation_units": 50,
+    "parameter_count": 60553,
+    "protocol_complete": true,
+    "runtime_recovery_pass": true,
+    "validation_items": 13863,
+    "verified_permutation_units": 50
+  }
+}

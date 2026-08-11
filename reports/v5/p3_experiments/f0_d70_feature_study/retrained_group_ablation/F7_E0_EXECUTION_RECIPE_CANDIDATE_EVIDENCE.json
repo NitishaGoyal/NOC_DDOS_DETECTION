@@ -1,0 +1,208 @@
+{
+  "candidate_evidence": {
+    "batch_size": [
+      {
+        "expression": "self.block_batch_size = int(block_batch_size)",
+        "path": "line_335.self.block_batch_size",
+        "source": "skeleton_assignment",
+        "value": {
+          "literal": false,
+          "source": "int(block_batch_size)"
+        }
+      }
+    ],
+    "early_stopping_patience": [
+      {
+        "expression": "early_stop_patience_counter = 0",
+        "path": "line_1430.early_stop_patience_counter",
+        "source": "skeleton_assignment",
+        "value": 0
+      },
+      {
+        "expression": "early_stop_patience_counter = 0",
+        "path": "line_1562.early_stop_patience_counter",
+        "source": "skeleton_assignment",
+        "value": 0
+      },
+      {
+        "path": "root.checkpoint_metadata.scheduler_state_dict.patience",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 4
+      }
+    ],
+    "gradient_clip_norm": [],
+    "learning_rate": [
+      {
+        "expression": "current_learning_rate = float(optimizer.param_groups[0]['lr'])",
+        "path": "line_1483.current_learning_rate",
+        "source": "skeleton_assignment",
+        "value": {
+          "literal": false,
+          "source": "float(optimizer.param_groups[0]['lr'])"
+        }
+      },
+      {
+        "path": "root.checkpoint_metadata.scheduler_state_dict.default_min_lr",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 1e-05
+      }
+    ],
+    "max_epochs": [
+      {
+        "path": "root.checkpoint_metadata.scheduler_state_dict.num_bad_epochs",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 2
+      }
+    ],
+    "num_workers": [],
+    "seed": [
+      {
+        "expression": "EXPECTED_SEEDS = [107, 117, 127]",
+        "path": "line_44.EXPECTED_SEEDS",
+        "source": "skeleton_assignment",
+        "value": [
+          107,
+          117,
+          127
+        ]
+      },
+      {
+        "expression": "self.seed = int(seed)",
+        "path": "line_337.self.seed",
+        "source": "skeleton_assignment",
+        "value": {
+          "literal": false,
+          "source": "int(seed)"
+        }
+      },
+      {
+        "expression": "seed = int(args.seed)",
+        "path": "line_1018.seed",
+        "source": "skeleton_assignment",
+        "value": {
+          "literal": false,
+          "source": "int(args.seed)"
+        }
+      },
+      {
+        "expression": "seed_manifest = {'stage': STAGE, 'status': 'COMPLETE' if not failures else 'HOLD', 'seed': seed, 'architecture': {'name': model.architecture_name, 'parameter_count': parameter_count, 'model_source_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'protocol_sha256': protocol['protocol_sha256'], 'initial_state_sha256': initial_state_sha256}, 'data': {'train_items': len(train_dataset), 'validation_items': len(validation_dataset), 'pair_block_batch_size': 128, 'item_batch_size': 256, 'train_batches': len(train_loader), 'validation_batches': len(validation_loader), 'num_workers': 0, 'pair_keys_used_for_loading_only': True, 'pair_keys_returned_to_model': False}, 'label_weights': {'graph_positive_weight': graph_pos_weight_value, 'role_positive_weights': role_weight_manifest, 'count_distribution': count_distribution, 'count_class_mapping': COUNT_CLASS_MAPPING, 'count_class_weights_applied': False}, 'training': {'device': str(device), 'completed_epoch': completed_epoch, 'stopped_early': stopped_early, 'maximum_epochs': 100, 'minimum_epochs_before_stop': 15, 'early_stopping_patience': 12, 'optimizer': 'AdamW', 'initial_learning_rate': 0.001, 'weight_decay': 0.0001, 'gradient_clip_global_norm': 1.0, 'scheduler': 'ReduceLROnPlateau', 'automatic_mixed_precision': False, 'total_elapsed_seconds': total_elapsed_seconds}, 'best': {'epoch': best_epoch, 'validation_metrics': best_validation_metrics, 'checkpoint_path': str(checkpoint_path), 'checkpoint_sha256': best_checkpoint_sha256, 'ranking_tuple': list(best_rank) if best_rank is not None else None}, 'artifacts': {'history_csv': [str(history_path), sha256_file(history_path)], 'progress_json': [str(progress_path), sha256_file(progress_path)], 'best_checkpoint': [str(checkpoint_path), sha256_file(checkpoint_path)]}, 'security_boundary': {'train_tensor_contents_accessed': True, 'validation_tensor_contents_accessed': True, 'threshold_tuning_performed': False, 'test_directory_existence_checked': False, 'test_directory_enumerated': False, 'test_tensor_files_opened': False, 'test_tensor_contents_accessed': False, 'test_dataset_constructed': False, 'test_windows_constructed': False, 'test_evaluation_performed': False}, 'failures': failures, 'warnings': warnings, 'next_stage': 'V5_P2_B2_MULTI_SEED_FINALIZATION' if not failures else None}",
+        "path": "line_1655.seed_manifest",
+        "source": "skeleton_assignment",
+        "value": {
+          "literal": false,
+          "source": "{'stage': STAGE, 'status': 'COMPLETE' if not failures else 'HOLD', 'seed': seed, 'architecture': {'name': model.architecture_name, 'parameter_count': parameter_count, 'model_source_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'protocol_sha256': protocol['protocol_sha256'], 'initial_state_sha256': initial_state_sha256}, 'data': {'train_items': len(train_dataset), 'validation_items': len(validation_dataset), 'pair_block_batch_size': 128, 'item_batch_size': 256, 'train_batches': len(train_loader), 'validation_batches': len(validation_loader), 'num_workers': 0, 'pair_keys_used_for_loading_only': True, 'pair_keys_returned_to_model': False}, 'label_weights': {'graph_positive_weight': graph_pos_weight_value, 'role_positive_weights': role_weight_manifest, 'count_distribution': count_distribution, 'count_class_mapping': COUNT_CLASS_MAPPING, 'count_class_weights_applied': False}, 'training': {'device': str(device), 'completed_epoch': completed_epoch, 'stopped_early': stopped_early, 'maximum_epochs': 100, 'minimum_epochs_before_stop': 15, 'early_stopping_patience': 12, 'optimizer': 'AdamW', 'initial_learning_rate': 0.001, 'weight_decay': 0.0001, 'gradient_clip_global_norm': 1.0, 'scheduler': 'ReduceLROnPlateau', 'automatic_mixed_precision': False, 'total_elapsed_seconds': total_elapsed_seconds}, 'best': {'epoch': best_epoch, 'validation_metrics': best_validation_metrics, 'checkpoint_path': str(checkpoint_path), 'checkpoint_sha256': best_checkpoint_sha256, 'ranking_tuple': list(best_rank) if best_rank is not None else None}, 'artifacts': {'history_csv': [str(history_path), sha256_file(history_path)], 'progress_json': [str(progress_path), sha256_file(progress_path)], 'best_checkpoint': [str(checkpoint_path), sha256_file(checkpoint_path)]}, 'security_boundary': {'train_tensor_contents_accessed': True, 'validation_tensor_contents_accessed': True, 'threshold_tuning_performed': False, 'test_directory_existence_checked': False, 'test_directory_enumerated': False, 'test_tensor_files_opened': False, 'test_tensor_contents_accessed': False, 'test_dataset_constructed': False, 'test_windows_constructed': False, 'test_evaluation_performed': False}, 'failures': failures, 'warnings': warnings, 'next_stage': 'V5_P2_B2_MULTI_SEED_FINALIZATION' if not failures else None}"
+        }
+      },
+      {
+        "path": "root.lineage.P1B_recipe_evidence.seed_107_evidence_count",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 6
+      },
+      {
+        "path": "root.lineage.P1B_route.run_matrix[0].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.P1B_route.run_matrix[1].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.P1B_route.run_matrix[2].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.P1B_route.run_matrix[3].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.P1B_route.run_matrix[4].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.P1B_route.run_matrix[5].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.P1B_route.seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.run_matrix[0].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.run_matrix[1].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.run_matrix[2].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.run_matrix[3].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.run_matrix[4].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.run_matrix[5].seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      },
+      {
+        "path": "root.lineage.F7_protocol.training_recipe_policy.seed_107_primary_matrix",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": true
+      },
+      {
+        "path": "root.lineage.F6R_report.decision.F7_seed_policy",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": "seed 107 for all five primary ablations; seeds 117 and 127 only for the two most decision-relevant groups after the primary matrix is reviewed"
+      },
+      {
+        "path": "root.checkpoint_metadata.seed",
+        "source": "frozen_lineage_or_checkpoint",
+        "value": 107
+      }
+    ],
+    "validation_batch_size": [],
+    "weight_decay": []
+  },
+  "unique_literal_values": {
+    "batch_size": [],
+    "early_stopping_patience": [
+      0,
+      4
+    ],
+    "gradient_clip_norm": [],
+    "learning_rate": [
+      1e-05
+    ],
+    "max_epochs": [
+      2
+    ],
+    "num_workers": [],
+    "seed": [
+      6,
+      107,
+      true,
+      "seed 107 for all five primary ablations; seeds 117 and 127 only for the two most decision-relevant groups after the primary matrix is reviewed"
+    ],
+    "validation_batch_size": [],
+    "weight_decay": []
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "append_only_correction": true,
+  "authoritative_contiguous_done_bitmap_prefix": 7014,
+  "cache_entries_grandfathered_as_R3_certified": false,
+  "created_utc": "2026-07-28T22:24:45.147991+00:00",
+  "evidence_hashes": {
+    "exact_done_sha256": "7eb29cd3cae59381d9134032e54c131696817ce111264def934ca447a73d4160",
+    "failure_log_sha256": "8509bb44ab996b850de129664b5793951b1e47d7937654ab51467402cbb2df0b",
+    "work_manifest_before_sha256": "9f509e74235b897f311d6915772f595252d34e0f4249873b145778c94d6e53d5"
+  },
+  "extra_provisional_entries_beyond_failure_log": 4,
+  "failure_log_last_committed_prefix": 7010,
+  "full_R3_recertification_from_index_zero_required": true,
+  "resolution": "The failure log records the last periodic flush message, whereas exact_done.dat is the authoritative contiguous cache state. Every cached entry remains provisional and L4-R3 recertifies all 12,528 items from index zero, so accepting a larger contiguous historical prefix cannot affect final decoder selection.",
+  "stage": "V5_P2_L2_R2_R0_CACHE_PREFIX_RESOLUTION",
+  "status": "COMPLETE",
+  "test_directory_enumerated": false,
+  "test_tensors_deserialized": false
+}

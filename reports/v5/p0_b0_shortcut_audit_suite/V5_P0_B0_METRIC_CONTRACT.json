@@ -1,0 +1,38 @@
+{
+  "binary_threshold": 0.5,
+  "checkpoint_selection": "none_fixed_epochs",
+  "count_metrics": [
+    "accuracy",
+    "macro_f1",
+    "3x3_confusion_matrix"
+  ],
+  "evaluation_split": "validation",
+  "fit_split": "train",
+  "graph_metrics": [
+    "accuracy",
+    "balanced_accuracy",
+    "precision",
+    "recall",
+    "f1",
+    "fpr",
+    "tnr",
+    "confusion_counts"
+  ],
+  "node_metrics": {
+    "all_windows": [
+      "precision",
+      "recall",
+      "f1",
+      "exact_set"
+    ],
+    "attack_windows": [
+      "precision",
+      "recall",
+      "f1",
+      "exact_set"
+    ]
+  },
+  "reason_for_attack_window_metrics": "prevents all-zero control windows from inflating localization",
+  "test_split_accessed": false,
+  "version": "V5_P0_B0_METRICS_D0"
+}

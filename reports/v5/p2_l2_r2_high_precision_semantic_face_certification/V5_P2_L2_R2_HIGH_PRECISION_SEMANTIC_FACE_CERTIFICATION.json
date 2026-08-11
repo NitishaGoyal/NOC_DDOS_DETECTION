@@ -1,0 +1,102 @@
+{
+  "append_only_protocol_amendment": true,
+  "cache_prefix_resolution": {
+    "authoritative_contiguous_done_bitmap_prefix": 7014,
+    "completion_bitmap_is_cache_authority": true,
+    "extra_provisional_entries": 4,
+    "failure_log_prefix": 7010,
+    "progress_log_is_cache_authority": false,
+    "resolution_report_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r2_r0_cache_prefix_resolution"
+  },
+  "created_utc": "2026-07-28T22:24:45.800274+00:00",
+  "diagnostic_rerun": {
+    "attacker_count": 3,
+    "high_precision_primary_variable_score": "31.233756073908554906637391468393616378307342529296875",
+    "high_precision_selected_variable_score": "31.233756073908554906637391468393616378307342529296875",
+    "high_precision_semantic_face_certified": true,
+    "high_precision_semantic_face_difference": "0E-51",
+    "lexicographic_candidates_rejected_by_high_precision": 0,
+    "lexicographic_mip_gap": 0.0,
+    "primary_mip_gap": 0.0,
+    "route_ids": [
+      44,
+      89,
+      224
+    ],
+    "validation_item_index": 7010
+  },
+  "evidence_hashes": {
+    "L2_R1_json_sha256": "d6054a7a2a7c9d76fd80d1cc291ba636d2db35e01b793814e35f359ad58ee6b9",
+    "L2_R1_marker_sha256": "b0415315d8e7b4e60a6befe747d399778842133bc2f88b396131b8ef555042eb",
+    "failure_log_sha256": "8509bb44ab996b850de129664b5793951b1e47d7937654ab51467402cbb2df0b",
+    "patched_exact_decoder_sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c",
+    "test_log_sha256": "021cd6bdd63631f32d5bf9c156891a3f5e5cfe158f88058c066851eca28fd7d4"
+  },
+  "frozen_R3_certification": {
+    "MILP_feasible_route_space_changed": false,
+    "MILP_primary_objective_changed": false,
+    "candidate_rule": "Evaluate every lexicographic candidate in high precision. Accept only when absolute difference is <= 1e-12.",
+    "coefficient_interpretation": "Decimal.from_float over the exact binary64 coefficients used by the MILP objective",
+    "decimal_precision_digits": 80,
+    "float64_numerical_allowance_used_for_acceptance": false,
+    "invalid_candidate_policy": "Add an exact route-tuple-plus-count-class no-good cut and resolve the unchanged lexicographic MILP.",
+    "lexicographic_order_changed": false,
+    "maximum_rejected_candidates_before_hard_failure": 1024,
+    "primary_reference": "high-precision semantic score of the solver-certified primary route tuple",
+    "semantic_score_weights_changed": false,
+    "semantic_tie_tolerance": 1e-12,
+    "semantic_tie_tolerance_changed": false,
+    "validation_derived_tolerance_added": false
+  },
+  "historical_cache": {
+    "completed_prefix": 7014,
+    "full_prefix_revalidation_required": true,
+    "preserved_on_disk": true,
+    "revalidation_method": "Rerun R3 for every item using a separate resumable certification bitmap; compare with and overwrite the historical cached output only when necessary.",
+    "treated_as_final_R3_certified": false,
+    "work_manifest_after_sha256": "cfc24ddd3c239e51e2cb11e593133135f3a1ff0cb55dd699af976869c0303fee",
+    "work_manifest_before_sha256": "9f509e74235b897f311d6915772f595252d34e0f4249873b145778c94d6e53d5"
+  },
+  "historical_trigger": {
+    "authoritative_provisional_cache_prefix_at_L2_R2": 7014,
+    "extra_provisional_entries_beyond_failure_log": 4,
+    "failing_validation_item_index": 7010,
+    "failure_log_path": "/home/zira/research/projects/GNN-2d/logs/v5/v5_p2_l4_decoder_validation_selection_r2.log",
+    "failure_log_sha256": "8509bb44ab996b850de129664b5793951b1e47d7937654ab51467402cbb2df0b",
+    "last_periodic_progress_prefix_in_failure_log": 7010,
+    "reported_float64_difference": 2.454925152051146e-12,
+    "reported_numerical_allowance": 1e-12,
+    "reported_semantic_tolerance": 1e-12,
+    "reported_total_certification_tolerance": 2e-12
+  },
+  "new_exact_decoder_sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c",
+  "old_exact_decoder_sha256": "50b054ee07e46deface513ce468bdd7958c9138475659904a426d7112644e1f5",
+  "reason": "Repeated validation failures showed that a float64 post-solve allowance could not reliably certify a 1e-12 semantic face. The amendment therefore removes tolerance expansion and uses high-precision evaluation plus deterministic candidate rejection.",
+  "security_boundary": {
+    "model_checkpoint_loaded": false,
+    "model_inference_performed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false,
+    "validation_archive_item_read": true,
+    "validation_tensor_dataset_reopened": false
+  },
+  "stage": "V5_P2_L2_R2_HIGH_PRECISION_SEMANTIC_FACE_CERTIFICATION",
+  "state_after_L2_R2": {
+    "L4_R3_authorized": true,
+    "full_validation_recertification_required": true,
+    "high_precision_semantic_face_certification_frozen": true,
+    "historical_cache_preserved_but_provisional": true,
+    "next_action": "run_V5_P2_L4_R3_global_recertification",
+    "ready_for_one_shot_test": false,
+    "semantic_tie_tolerance_unchanged": true
+  },
+  "status": "COMPLETE",
+  "tests": {
+    "combined_tests_run": 28,
+    "result": "PASS",
+    "test_log_sha256": "021cd6bdd63631f32d5bf9c156891a3f5e5cfe158f88058c066851eca28fd7d4"
+  }
+}

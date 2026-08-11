@@ -1,0 +1,704 @@
+{
+  "conclusions": {
+    "attacker_count": {
+      "accuracy": 1.0,
+      "interpretation": "Do not redesign the four-class count head unless later datasets introduce new count classes or materially different attack semantics.",
+      "status": "solved_on_frozen_test"
+    },
+    "localization": {
+      "interpretation": "Localization remains secondary to graph false alarms. The weakest role and K category should receive targeted coverage, but improving graph discrimination is the first priority.",
+      "weakest_k_for_graph_recall": 1,
+      "weakest_k_for_strict_attack_exact": 4,
+      "weakest_role_by_mean_supported_node_f1": "transit"
+    },
+    "primary_failure": {
+      "component": "graph attack-versus-control detector",
+      "error_direction": "false positives dominate",
+      "evidence": {
+        "false_negative_windows": 35,
+        "false_positive_share": 0.9850555081127241,
+        "false_positive_windows": 2307,
+        "pair_scope": "broad_across_control_scenarios",
+        "pairs_with_false_positive": 60,
+        "temporal_form": "persistent_false_alarm_episodes"
+      },
+      "interpretation": "The model detects nearly every attack, but normal traffic frequently enters the learned attack region. This is a control/attack separability problem rather than an attacker-count problem."
+    },
+    "score_overlap": {
+      "attack_p05_minus_threshold": 0.2564592197537422,
+      "attack_p10_minus_threshold": 0.3718284130096436,
+      "control_attack_median_gap": 0.7903695699378659,
+      "control_p75_minus_threshold": 0.2494807794690132,
+      "control_p90_minus_threshold": 0.60145263671875,
+      "false_negative_median": 0.12474248558282852,
+      "false_positive_median": 0.7495311498641968,
+      "frozen_threshold": 0.2
+    }
+  },
+  "decision": "FREEZE_P2_ROOT_CAUSE_AS_BROAD_CONTROL_FALSE_POSITIVE_DOMINANCE_AND_PRIORITIZE_HARD_LEGITIMATE_TRAFFIC",
+  "error_episode_characterization": {
+    "false_negative": {
+      "buckets": {
+        "long_17_or_more": 0,
+        "medium_5_to_16": 1,
+        "short_2_to_4": 8,
+        "single_window": 8
+      },
+      "episode_count": 17,
+      "error_window_count": 35,
+      "long_episode_window_share": 0.0,
+      "maximum_episode_windows": 6,
+      "mean_episode_windows": 2.0588235294117645,
+      "median_episode_windows": 2.0,
+      "p90_episode_windows": 4.0
+    },
+    "false_positive": {
+      "buckets": {
+        "long_17_or_more": 58,
+        "medium_5_to_16": 15,
+        "short_2_to_4": 17,
+        "single_window": 8
+      },
+      "episode_count": 98,
+      "error_window_count": 2307,
+      "long_episode_window_share": 0.9258777633289987,
+      "maximum_episode_windows": 60,
+      "mean_episode_windows": 23.540816326530614,
+      "median_episode_windows": 22.0,
+      "p90_episode_windows": 50.0
+    }
+  },
+  "failures": [],
+  "graph_error_concentration": {
+    "false_negative": {
+      "gini": 0.9192546583850931,
+      "maximum": 11,
+      "median_all_pairs": 0.0,
+      "median_nonzero_pairs": 2.5,
+      "nonzero_pair_count": 10,
+      "p90_all_pairs": 1.0,
+      "top_10_share": 1.0,
+      "top_1_share": 0.3142857142857143,
+      "top_3_share": 0.6285714285714286,
+      "top_5_share": 0.8285714285714286,
+      "total": 35
+    },
+    "false_positive": {
+      "gini": 0.37182362438200056,
+      "maximum": 60,
+      "median_all_pairs": 40.0,
+      "median_nonzero_pairs": 49.0,
+      "nonzero_pair_count": 60,
+      "p90_all_pairs": 57.400000000000006,
+      "top_10_share": 0.2540095361941916,
+      "top_1_share": 0.02600780234070221,
+      "top_3_share": 0.07802340702210664,
+      "top_5_share": 0.12960554833116603,
+      "total": 2307
+    }
+  },
+  "k1_k2_k3_k4": [
+    {
+      "all_task_exact_accuracy": 0.9263932702418507,
+      "attack_window_count": 951,
+      "attacker_count": 1,
+      "count_accuracy": 1.0,
+      "graph_false_negative_count": 19,
+      "graph_recall": 0.9800210304942166,
+      "mean_graph_score": 0.7433769910776994,
+      "median_graph_score": 0.7866987586021423,
+      "path_gated_exact": 0.9505783385909569,
+      "path_ungated_exact": 0.9568874868559412,
+      "source_gated_exact": 0.9684542586750788,
+      "source_ungated_exact": 0.9758149316508938,
+      "transit_gated_exact": 0.9716088328075709,
+      "transit_ungated_exact": 0.9726603575184016,
+      "victim_gated_exact": 0.9663512092534174,
+      "victim_ungated_exact": 0.9863301787592008
+    },
+    {
+      "all_task_exact_accuracy": 0.6441717791411042,
+      "attack_window_count": 815,
+      "attacker_count": 2,
+      "count_accuracy": 1.0,
+      "graph_false_negative_count": 6,
+      "graph_recall": 0.992638036809816,
+      "mean_graph_score": 0.7532799493727143,
+      "median_graph_score": 0.7867128849029541,
+      "path_gated_exact": 0.7460122699386503,
+      "path_ungated_exact": 0.7460122699386503,
+      "source_gated_exact": 0.901840490797546,
+      "source_ungated_exact": 0.901840490797546,
+      "transit_gated_exact": 0.7680981595092025,
+      "transit_ungated_exact": 0.7680981595092025,
+      "victim_gated_exact": 0.9558282208588957,
+      "victim_ungated_exact": 0.9631901840490797
+    },
+    {
+      "all_task_exact_accuracy": 0.2776548672566372,
+      "attack_window_count": 904,
+      "attacker_count": 3,
+      "count_accuracy": 1.0,
+      "graph_false_negative_count": 7,
+      "graph_recall": 0.9922566371681416,
+      "mean_graph_score": 0.7501189081756546,
+      "median_graph_score": 0.7860826253890991,
+      "path_gated_exact": 0.5055309734513275,
+      "path_ungated_exact": 0.5055309734513275,
+      "source_gated_exact": 0.7588495575221239,
+      "source_ungated_exact": 0.7588495575221239,
+      "transit_gated_exact": 0.39601769911504425,
+      "transit_ungated_exact": 0.39823008849557523,
+      "victim_gated_exact": 0.9203539823008849,
+      "victim_ungated_exact": 0.9280973451327433
+    },
+    {
+      "all_task_exact_accuracy": 0.17027027027027028,
+      "attack_window_count": 740,
+      "attacker_count": 4,
+      "count_accuracy": 1.0,
+      "graph_false_negative_count": 3,
+      "graph_recall": 0.995945945945946,
+      "mean_graph_score": 0.7655312583454558,
+      "median_graph_score": 0.8091871738433838,
+      "path_gated_exact": 0.35945945945945945,
+      "path_ungated_exact": 0.35945945945945945,
+      "source_gated_exact": 0.7054054054054054,
+      "source_ungated_exact": 0.7054054054054054,
+      "transit_gated_exact": 0.22972972972972974,
+      "transit_ungated_exact": 0.22972972972972974,
+      "victim_gated_exact": 0.9013513513513514,
+      "victim_ungated_exact": 0.9013513513513514
+    }
+  ],
+  "next_revision_priorities": [
+    {
+      "action": "Build a new training corpus containing legitimate high-load, bursty, hotspot, phase-change, and memory-intensive control runs that resemble the 60 false-positive test pairs. Pair every such control with matched attacks under the same legal workload and placement.",
+      "priority": 1,
+      "reason": "98.51% of graph errors are false positives and false positives occur in 60 of 69 pairs.",
+      "target": "hard legitimate/control traffic"
+    },
+    {
+      "action": "Keep the frozen P2 result unchanged, but in the next revision test graph heads that explicitly learn normal-traffic evidence, margin separation, or consistency between graph detection and source/path node outputs.",
+      "priority": 2,
+      "reason": "Count is perfect while graph precision is low; the shared representation contains useful attack structure but the global decision boundary overfires on controls.",
+      "target": "graph decision mechanism"
+    },
+    {
+      "action": "Use the C0 error-episode CSV to oversample the legal traffic transitions immediately before and during long false-positive episodes. Preserve matched chronological splits and prevent windows from the same run crossing splits.",
+      "priority": 3,
+      "reason": "C1 classifies graph false alarms as persistent_false_alarm_episodes.",
+      "target": "temporal transitions"
+    },
+    {
+      "action": "Add scenario-balanced coverage for the worst role/node combinations listed in the ranked node-role bottleneck CSV.",
+      "priority": 4,
+      "reason": "transit has the lowest mean supported per-node F1 among the four localization roles.",
+      "target": "transit localization"
+    },
+    {
+      "action": "Freeze the current four-class count formulation as the baseline; do not spend the next iteration optimizing it.",
+      "priority": 5,
+      "reason": "Frozen blind-test count accuracy is 1.0.",
+      "target": "attacker-count head"
+    }
+  ],
+  "next_stage": "V5_P2_C2_NEXT_DATASET_AND_MODEL_REVISION_CONTRACT",
+  "pair_key_token_enrichment": {
+    "hard_exact_pair_count": 18,
+    "hard_fp_pair_count": 21,
+    "method": "lexical comparison of pair-key tokens in hard subsets against all 69 pairs",
+    "row_count": 9,
+    "semantic_warning": "Token names are not interpreted as dataset fields unless confirmed by the dataset naming contract."
+  },
+  "provenance": {
+    "c0_artifact_sha256": {
+      "analysis_markdown": "071fdc90781a8dd78a7ea6655d3fe53df5840b8b3725f6479be259daaaf24e27",
+      "artifact_hash_archive": "ba689109be5501225804a9bba4e58fc7425ed3b84009d5c48f84d6e45a25926e",
+      "graph_error_episodes": "68323af6d298dbd0092175ddc13fd54bf4cc11e6b0fb7d4ef2e4807fee20b4fd",
+      "graph_error_windows": "b1072d3fa0b78fde93eaed2c0a428d65be31e201bdd6e1696e3c80a5f5ffddf1",
+      "graph_score_distributions": "4a6f945c2bfca2c93d64153e4baf40163e5047ba9af0f17bbd6821127c052698",
+      "k_summary": "f2104d047c6f14a1d42a3f2ff15cf61df29b6eb5ed5f2893a295f72b88c1f7b9",
+      "per_node_role_metrics": "1627f6b4b4f4b453bd1a96ba52bad855ed454a36e58ef3a35eebff567800a11a",
+      "per_pair_summary": "11bcfe42d10ec522a85af0729f64a012c8c3c0c6db1cc1b69f713a8725fcebba"
+    },
+    "c0_lock_sha256": "84ecef7646ee5712898a61ab85bf99bb0d9dddaefc52802fbac50594af6b2465",
+    "c0_report_sha256": "deb47a372eca11899814b0175c56d6126f10deda20e05cda45e966c0e5b92b0c"
+  },
+  "role_and_node_bottlenecks": {
+    "path": {
+      "highest_false_negative_nodes": [
+        {
+          "f1": 0.6920366455250176,
+          "fn": 92,
+          "node": 3,
+          "recall": 0.9143389199255121
+        },
+        {
+          "f1": 0.7228298813125437,
+          "fn": 69,
+          "node": 9,
+          "recall": 0.9574599260172626
+        },
+        {
+          "f1": 0.7671432032953719,
+          "fn": 61,
+          "node": 5,
+          "recall": 0.9628953771289538
+        },
+        {
+          "f1": 0.7124201166990831,
+          "fn": 57,
+          "node": 4,
+          "recall": 0.9574309185959672
+        },
+        {
+          "f1": 0.71584518690043,
+          "fn": 53,
+          "node": 11,
+          "recall": 0.9533039647577093
+        }
+      ],
+      "highest_false_positive_nodes": [
+        {
+          "fp": 1420,
+          "fpr": 0.14547689785882595,
+          "node": 10,
+          "precision": 0.5665445665445665
+        },
+        {
+          "fp": 1374,
+          "fpr": 0.13635010419767787,
+          "node": 6,
+          "precision": 0.5294520547945205
+        },
+        {
+          "fp": 1342,
+          "fpr": 0.12987515726313753,
+          "node": 14,
+          "precision": 0.49301095579901777
+        },
+        {
+          "fp": 1149,
+          "fpr": 0.1117813016830431,
+          "node": 2,
+          "precision": 0.5394789579158317
+        },
+        {
+          "fp": 1122,
+          "fpr": 0.11170848267622462,
+          "node": 9,
+          "precision": 0.5805607476635514
+        }
+      ],
+      "mean_supported_node_f1": 0.7087486599029852,
+      "supported_node_count": 16,
+      "worst_nodes_by_f1": [
+        {
+          "f1": 0.6449978894048122,
+          "fn": 31,
+          "fp": 810,
+          "node": 15,
+          "precision": 0.48538754764930114,
+          "recall": 0.9610062893081761,
+          "support": 795
+        },
+        {
+          "f1": 0.6557788944723618,
+          "fn": 28,
+          "fp": 1342,
+          "node": 14,
+          "precision": 0.49301095579901777,
+          "recall": 0.9789947486871718,
+          "support": 1333
+        },
+        {
+          "f1": 0.6857396318474163,
+          "fn": 43,
+          "fp": 1374,
+          "node": 6,
+          "precision": 0.5294520547945205,
+          "recall": 0.9729389553178099,
+          "support": 1589
+        },
+        {
+          "f1": 0.6920366455250176,
+          "fn": 92,
+          "fp": 782,
+          "node": 3,
+          "precision": 0.5566893424036281,
+          "recall": 0.9143389199255121,
+          "support": 1074
+        },
+        {
+          "f1": 0.693456980937661,
+          "fn": 41,
+          "fp": 1149,
+          "node": 2,
+          "precision": 0.5394789579158317,
+          "recall": 0.9704397981254506,
+          "support": 1387
+        }
+      ]
+    },
+    "source": {
+      "highest_false_negative_nodes": [
+        {
+          "f1": 0.6331260599208592,
+          "fn": 80,
+          "node": 3,
+          "recall": 0.875
+        },
+        {
+          "f1": 0.7818930041152263,
+          "fn": 46,
+          "node": 11,
+          "recall": 0.9353023909985936
+        },
+        {
+          "f1": 0.7906602254428341,
+          "fn": 44,
+          "node": 12,
+          "recall": 0.9177570093457944
+        },
+        {
+          "f1": 0.813528336380256,
+          "fn": 37,
+          "node": 1,
+          "recall": 0.9232365145228216
+        },
+        {
+          "f1": 0.7124563445867287,
+          "fn": 35,
+          "node": 6,
+          "recall": 0.9459041731066461
+        }
+      ],
+      "highest_false_positive_nodes": [
+        {
+          "fp": 569,
+          "fpr": 0.051605296571739526,
+          "node": 3,
+          "precision": 0.49601417183348095
+        },
+        {
+          "fp": 464,
+          "fpr": 0.041903729793190646,
+          "node": 13,
+          "precision": 0.5529865125240848
+        },
+        {
+          "fp": 459,
+          "fpr": 0.04165532262455758,
+          "node": 6,
+          "precision": 0.5714285714285714
+        },
+        {
+          "fp": 448,
+          "fpr": 0.03997858290201678,
+          "node": 15,
+          "precision": 0.49206349206349204
+        },
+        {
+          "fp": 437,
+          "fpr": 0.03964078374455733,
+          "node": 10,
+          "precision": 0.586565752128666
+        }
+      ],
+      "mean_supported_node_f1": 0.7209303998052341,
+      "supported_node_count": 16,
+      "worst_nodes_by_f1": [
+        {
+          "f1": 0.6331260599208592,
+          "fn": 80,
+          "fp": 569,
+          "node": 3,
+          "precision": 0.49601417183348095,
+          "recall": 0.875,
+          "support": 640
+        },
+        {
+          "f1": 0.6361111111111111,
+          "fn": 21,
+          "fp": 241,
+          "node": 2,
+          "precision": 0.48723404255319147,
+          "recall": 0.916,
+          "support": 250
+        },
+        {
+          "f1": 0.6425591098748261,
+          "fn": 12,
+          "fp": 245,
+          "node": 9,
+          "precision": 0.4852941176470588,
+          "recall": 0.9506172839506173,
+          "support": 243
+        },
+        {
+          "f1": 0.646795827123696,
+          "fn": 26,
+          "fp": 448,
+          "node": 15,
+          "precision": 0.49206349206349204,
+          "recall": 0.9434782608695652,
+          "support": 460
+        },
+        {
+          "f1": 0.6623853211009174,
+          "fn": 16,
+          "fp": 352,
+          "node": 4,
+          "precision": 0.5063113604488079,
+          "recall": 0.9575596816976127,
+          "support": 377
+        }
+      ]
+    },
+    "transit": {
+      "highest_false_negative_nodes": [
+        {
+          "f1": 0.7371910789632308,
+          "fn": 119,
+          "node": 9,
+          "recall": 0.9113263785394933
+        },
+        {
+          "f1": 0.6256410256410256,
+          "fn": 71,
+          "node": 13,
+          "recall": 0.8729874776386404
+        },
+        {
+          "f1": 0.6616352201257861,
+          "fn": 56,
+          "node": 8,
+          "recall": 0.9337278106508876
+        },
+        {
+          "f1": 0.6766791823112224,
+          "fn": 56,
+          "node": 5,
+          "recall": 0.9354094579008074
+        },
+        {
+          "f1": 0.5488372093023256,
+          "fn": 55,
+          "node": 11,
+          "recall": 0.8428571428571429
+        }
+      ],
+      "highest_false_positive_nodes": [
+        {
+          "fp": 1123,
+          "fpr": 0.10634469696969696,
+          "node": 10,
+          "precision": 0.48367816091954025
+        },
+        {
+          "fp": 1070,
+          "fpr": 0.09990662931839403,
+          "node": 6,
+          "precision": 0.4620412267471091
+        },
+        {
+          "fp": 858,
+          "fpr": 0.07716521269898372,
+          "node": 14,
+          "precision": 0.3880171184022825
+        },
+        {
+          "fp": 787,
+          "fpr": 0.07327064519132297,
+          "node": 2,
+          "precision": 0.5278944211157769
+        },
+        {
+          "fp": 753,
+          "fpr": 0.07293684618364975,
+          "node": 9,
+          "precision": 0.6189271255060729
+        }
+      ],
+      "mean_supported_node_f1": 0.6498878286147141,
+      "supported_node_count": 16,
+      "worst_nodes_by_f1": [
+        {
+          "f1": 0.5488372093023256,
+          "fn": 55,
+          "fp": 430,
+          "node": 11,
+          "precision": 0.4068965517241379,
+          "recall": 0.8428571428571429,
+          "support": 350
+        },
+        {
+          "f1": 0.5582349923037455,
+          "fn": 3,
+          "fp": 858,
+          "node": 14,
+          "precision": 0.3880171184022825,
+          "recall": 0.9945155393053017,
+          "support": 547
+        },
+        {
+          "f1": 0.6066350710900473,
+          "fn": 0,
+          "fp": 249,
+          "node": 15,
+          "precision": 0.43537414965986393,
+          "recall": 1.0,
+          "support": 192
+        },
+        {
+          "f1": 0.6241086587436333,
+          "fn": 37,
+          "fp": 1070,
+          "node": 6,
+          "precision": 0.4620412267471091,
+          "recall": 0.9612970711297071,
+          "support": 956
+        },
+        {
+          "f1": 0.6256410256410256,
+          "fn": 71,
+          "fp": 513,
+          "node": 13,
+          "precision": 0.4875124875124875,
+          "recall": 0.8729874776386404,
+          "support": 559
+        }
+      ]
+    },
+    "victim": {
+      "highest_false_negative_nodes": [
+        {
+          "f1": 0.7472793228536881,
+          "fn": 26,
+          "node": 0,
+          "recall": 0.9727177334732424
+        },
+        {
+          "f1": 0.7868613138686131,
+          "fn": 21,
+          "node": 13,
+          "recall": 0.9625
+        },
+        {
+          "f1": 0.7060518731988473,
+          "fn": 18,
+          "node": 11,
+          "recall": 0.9645669291338582
+        },
+        {
+          "f1": 0.6955380577427821,
+          "fn": 14,
+          "node": 3,
+          "recall": 0.9498207885304659
+        },
+        {
+          "f1": 0.6980392156862745,
+          "fn": 12,
+          "node": 4,
+          "recall": 0.967391304347826
+        }
+      ],
+      "highest_false_positive_nodes": [
+        {
+          "fp": 601,
+          "fpr": 0.056100065341174274,
+          "node": 0,
+          "precision": 0.606675392670157
+        },
+        {
+          "fp": 444,
+          "fpr": 0.03971022269922189,
+          "node": 14,
+          "precision": 0.5205183585313174
+        },
+        {
+          "fp": 405,
+          "fpr": 0.03635221254824522,
+          "node": 12,
+          "precision": 0.5616883116883117
+        },
+        {
+          "fp": 390,
+          "fpr": 0.03495250044810898,
+          "node": 11,
+          "precision": 0.5568181818181818
+        },
+        {
+          "fp": 354,
+          "fpr": 0.031452687694358064,
+          "node": 10,
+          "precision": 0.5372549019607843
+        }
+      ],
+      "mean_supported_node_f1": 0.7336361014127504,
+      "supported_node_count": 16,
+      "worst_nodes_by_f1": [
+        {
+          "f1": 0.6801210898082746,
+          "fn": 4,
+          "fp": 313,
+          "node": 15,
+          "precision": 0.5184615384615384,
+          "recall": 0.9882697947214076,
+          "support": 341
+        },
+        {
+          "f1": 0.6832034018426647,
+          "fn": 3,
+          "fp": 444,
+          "node": 14,
+          "precision": 0.5205183585313174,
+          "recall": 0.9938144329896907,
+          "support": 485
+        },
+        {
+          "f1": 0.6927763272410792,
+          "fn": 1,
+          "fp": 352,
+          "node": 2,
+          "precision": 0.5306666666666666,
+          "recall": 0.9974937343358395,
+          "support": 399
+        },
+        {
+          "f1": 0.6955380577427821,
+          "fn": 14,
+          "fp": 218,
+          "node": 3,
+          "precision": 0.5486542443064182,
+          "recall": 0.9498207885304659,
+          "support": 279
+        },
+        {
+          "f1": 0.6980392156862745,
+          "fn": 12,
+          "fp": 296,
+          "node": 4,
+          "precision": 0.5460122699386503,
+          "recall": 0.967391304347826,
+          "support": 368
+        }
+      ]
+    }
+  },
+  "security_boundary": {
+    "analysis_source": "P2-C0 frozen analysis products only",
+    "b6_pair_manifest_opened": false,
+    "checkpoint_loaded": false,
+    "dataset_root_accessed": false,
+    "model_loaded": false,
+    "prediction_cache_opened": false,
+    "test_directory_enumerated": false,
+    "test_inference_rerun": false,
+    "test_tensor_contents_accessed": false
+  },
+  "stage": "V5_P2_C1_SCENARIO_AND_ROOT_CAUSE_INTERPRETATION",
+  "status": "COMPLETE",
+  "warnings": []
+}

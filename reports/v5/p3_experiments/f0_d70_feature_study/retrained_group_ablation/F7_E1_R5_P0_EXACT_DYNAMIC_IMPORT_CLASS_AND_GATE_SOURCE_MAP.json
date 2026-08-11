@@ -1,0 +1,318 @@
+{
+  "constructor_calls": [
+    {
+      "constructor": "DatasetClass",
+      "excerpt": {
+        "context_end": 1248,
+        "context_start": 1213,
+        "line_end": 1243,
+        "line_start": 1218,
+        "numbered": "01213:     ModelClass = (\n01214:         model_module\n01215:         .P2B3Conv1DOnlyCount4\n01216:     )\n01217: \n01218:     train_dataset = DatasetClass(\n01219:         root=root,\n01220:         split=\"train\",\n01221:         pair_manifest=(\n01222:             Path(\n01223:                 b1_report[\"provenance_path\"]\n01224:             )\n01225:             if \"provenance_path\" in b1_report\n01226:             else (\n01227:                 Path(\n01228:                     b1_report[\"protocol\"][\"data\"][\n01229:                         \"pair_manifest_path\"\n01230:                     ]\n01231:                 )\n01232:                 if (\n01233:                     \"pair_manifest_path\"\n01234:                     in b1_report[\"protocol\"][\"data\"]\n01235:                 )\n01236:                 else (\n01237:                     b1_dir.parent\n01238:                     / \"p2_a1_r2_pair_aligned_window_contract\"\n01239:                     / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n01240:                 )\n01241:             )\n01242:         ),\n01243:     )\n01244:     validation_dataset = DatasetClass(\n01245:         root=root,\n01246:         split=\"validation\",\n01247:         pair_manifest=train_dataset.pair_manifest,\n01248:     )",
+        "numbered_sha256": "4f05b5c999fa6baf4a2240b01a6857af8c0c721073531a303aac7578f7f4486e",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    ModelClass = (\n        model_module\n        .P2B3Conv1DOnlyCount4\n    )\n\n    train_dataset = DatasetClass(\n        root=root,\n        split=\"train\",\n        pair_manifest=(\n            Path(\n                b1_report[\"provenance_path\"]\n            )\n            if \"provenance_path\" in b1_report\n            else (\n                Path(\n                    b1_report[\"protocol\"][\"data\"][\n                        \"pair_manifest_path\"\n                    ]\n                )\n                if (\n                    \"pair_manifest_path\"\n                    in b1_report[\"protocol\"][\"data\"]\n                )\n                else (\n                    b1_dir.parent\n                    / \"p2_a1_r2_pair_aligned_window_contract\"\n                    / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n                )\n            )\n        ),\n    )\n    validation_dataset = DatasetClass(\n        root=root,\n        split=\"validation\",\n        pair_manifest=train_dataset.pair_manifest,\n    )",
+        "raw_sha256": "21246f72e0446ad78bdca74b677e261c862f528d09b009093fc6478039edcfd6"
+      },
+      "source": "DatasetClass(root=root, split='train', pair_manifest=Path(b1_report['provenance_path']) if 'provenance_path' in b1_report else Path(b1_report['protocol']['data']['pair_manifest_path']) if 'pair_manifest_path' in b1_report['protocol']['data'] else b1_dir.parent / 'p2_a1_r2_pair_aligned_window_contract' / 'V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv')"
+    },
+    {
+      "constructor": "DatasetClass",
+      "excerpt": {
+        "context_end": 1253,
+        "context_start": 1239,
+        "line_end": 1248,
+        "line_start": 1244,
+        "numbered": "01239:                     / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n01240:                 )\n01241:             )\n01242:         ),\n01243:     )\n01244:     validation_dataset = DatasetClass(\n01245:         root=root,\n01246:         split=\"validation\",\n01247:         pair_manifest=train_dataset.pair_manifest,\n01248:     )\n01249: \n01250:     if len(train_dataset) != EXPECTED_TRAIN_ITEMS:\n01251:         failures.append(\n01252:             f\"train length={len(train_dataset)}, \"\n01253:             f\"expected {EXPECTED_TRAIN_ITEMS}\"",
+        "numbered_sha256": "568a069746b5614632cce08bf49938cf6b1e206bb61df4f70ada943f1fb01dc9",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "                    / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n                )\n            )\n        ),\n    )\n    validation_dataset = DatasetClass(\n        root=root,\n        split=\"validation\",\n        pair_manifest=train_dataset.pair_manifest,\n    )\n\n    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:\n        failures.append(\n            f\"train length={len(train_dataset)}, \"\n            f\"expected {EXPECTED_TRAIN_ITEMS}\"",
+        "raw_sha256": "c585c894f8c26201ba8262b36d8574b19b94ca23953a30db934a3ba2817d478c"
+      },
+      "source": "DatasetClass(root=root, split='validation', pair_manifest=train_dataset.pair_manifest)"
+    },
+    {
+      "constructor": "ModelClass",
+      "excerpt": {
+        "context_end": 1382,
+        "context_start": 1372,
+        "line_end": 1377,
+        "line_start": 1377,
+        "numbered": "01372:         batch_sampler=validation_sampler,\n01373:         num_workers=0,\n01374:         pin_memory=pin_memory,\n01375:     )\n01376: \n01377:     model = ModelClass().to(device)\n01378:     parameter_count = sum(\n01379:         parameter.numel()\n01380:         for parameter in model.parameters()\n01381:     )\n01382:     if parameter_count != EXPECTED_PARAMETER_COUNT:",
+        "numbered_sha256": "6f65cfc5adb4aaacbc9eff9c10643d9194c4289abeb7c9b2cfa13d3bac8a0477",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "        batch_sampler=validation_sampler,\n        num_workers=0,\n        pin_memory=pin_memory,\n    )\n\n    model = ModelClass().to(device)\n    parameter_count = sum(\n        parameter.numel()\n        for parameter in model.parameters()\n    )\n    if parameter_count != EXPECTED_PARAMETER_COUNT:",
+        "raw_sha256": "68ef4f60dc51038978fad847a15c37845fbc494d8f15e51f55e082fdffb71a37"
+      },
+      "source": "ModelClass()"
+    }
+  ],
+  "corrected_R4_R1_loader_classification_override": {
+    "corrected": "DYNAMIC_RUNTIME_DEPENDENCY",
+    "reason": "exact source contains import_module(loader_path, ...); the R4-R1 call classifier failed to recognize the local helper name import_module as a dynamic import",
+    "reported": "FROZEN_MANIFEST_OR_IDENTITY_GATE"
+  },
+  "corrected_R4_R1_model_classification": "DYNAMIC_RUNTIME_DEPENDENCY",
+  "dynamic_import_calls": [
+    {
+      "excerpt": {
+        "context_end": 1208,
+        "context_start": 1195,
+        "line_end": 1203,
+        "line_start": 1200,
+        "numbered": "01195:             print(\"FAIL:\", failure)\n01196:         return 1\n01197: \n01198:     set_seed(seed)\n01199: \n01200:     loader_module = import_module(\n01201:         loader_path,\n01202:         f\"v5_p2_loader_seed_{seed}\",\n01203:     )\n01204:     model_module = import_module(\n01205:         model_path,\n01206:         f\"v5_p2_model_seed_{seed}\",\n01207:     )\n01208: ",
+        "numbered_sha256": "b48bd6dcbe94c8fdef034d89fb953d37f791f7d84e98dd8f4ec01e8245c54085",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            print(\"FAIL:\", failure)\n        return 1\n\n    set_seed(seed)\n\n    loader_module = import_module(\n        loader_path,\n        f\"v5_p2_loader_seed_{seed}\",\n    )\n    model_module = import_module(\n        model_path,\n        f\"v5_p2_model_seed_{seed}\",\n    )\n",
+        "raw_sha256": "9b102797277d333f841be45fe63acab71b630119e1c650d59086d983e7310b86"
+      },
+      "function": "import_module",
+      "path_argument": "loader_path",
+      "source": "import_module(loader_path, f'v5_p2_loader_seed_{seed}')"
+    },
+    {
+      "excerpt": {
+        "context_end": 1212,
+        "context_start": 1199,
+        "line_end": 1207,
+        "line_start": 1204,
+        "numbered": "01199: \n01200:     loader_module = import_module(\n01201:         loader_path,\n01202:         f\"v5_p2_loader_seed_{seed}\",\n01203:     )\n01204:     model_module = import_module(\n01205:         model_path,\n01206:         f\"v5_p2_model_seed_{seed}\",\n01207:     )\n01208: \n01209:     DatasetClass = (\n01210:         loader_module\n01211:         .V5P2PairAlignedPrimary58Dataset\n01212:     )",
+        "numbered_sha256": "58b5fbbeb84de5cf9cf775b8e58248f7ff4670aba8b8d29f1ad74d891706b97f",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "\n    loader_module = import_module(\n        loader_path,\n        f\"v5_p2_loader_seed_{seed}\",\n    )\n    model_module = import_module(\n        model_path,\n        f\"v5_p2_model_seed_{seed}\",\n    )\n\n    DatasetClass = (\n        loader_module\n        .V5P2PairAlignedPrimary58Dataset\n    )",
+        "raw_sha256": "22ad2ecb748f77606904fd2065b576157b3e632b89323bdb0354d3938029bcce"
+      },
+      "function": "import_module",
+      "path_argument": "model_path",
+      "source": "import_module(model_path, f'v5_p2_model_seed_{seed}')"
+    }
+  ],
+  "frozen_hash_identity_gates": [
+    {
+      "excerpt": {
+        "context_end": 1140,
+        "context_start": 1129,
+        "line_end": 1135,
+        "line_start": 1134,
+        "numbered": "01129:             \"B1 protocol SHA does not match the terminal-locked value\"\n01130:         )\n01131:     if b1_lock.get(\"seeds\") != EXPECTED_SEEDS:\n01132:         failures.append(\"B1 seed set changed\")\n01133:     if (\n01134:         b1_lock.get(\"model_sha256\")\n01135:         != sha256_file(paths[\"model\"])\n01136:     ):\n01137:         failures.append(\"B1 model SHA mismatch\")\n01138:     if (\n01139:         b1_lock.get(\"loader_sha256\")\n01140:         != sha256_file(paths[\"loader\"])",
+        "numbered_sha256": "3e1f2a24c35d4be396ee337dd5178d8eaeee471b07e6cac28997a7b47ab8ff13",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            \"B1 protocol SHA does not match the terminal-locked value\"\n        )\n    if b1_lock.get(\"seeds\") != EXPECTED_SEEDS:\n        failures.append(\"B1 seed set changed\")\n    if (\n        b1_lock.get(\"model_sha256\")\n        != sha256_file(paths[\"model\"])\n    ):\n        failures.append(\"B1 model SHA mismatch\")\n    if (\n        b1_lock.get(\"loader_sha256\")\n        != sha256_file(paths[\"loader\"])",
+        "raw_sha256": "6b3c25f570e60f78a531da0424d20c3e382507f78db155628e48c9f98a869bfd"
+      },
+      "source": "b1_lock.get('model_sha256') != sha256_file(paths['model'])"
+    },
+    {
+      "excerpt": {
+        "context_end": 1145,
+        "context_start": 1134,
+        "line_end": 1140,
+        "line_start": 1139,
+        "numbered": "01134:         b1_lock.get(\"model_sha256\")\n01135:         != sha256_file(paths[\"model\"])\n01136:     ):\n01137:         failures.append(\"B1 model SHA mismatch\")\n01138:     if (\n01139:         b1_lock.get(\"loader_sha256\")\n01140:         != sha256_file(paths[\"loader\"])\n01141:     ):\n01142:         failures.append(\"B1 loader SHA mismatch\")\n01143:     if b1_lock.get(\"test_evaluation_authorized\") is not False:\n01144:         failures.append(\"B1 unexpectedly authorizes test evaluation\")\n01145: ",
+        "numbered_sha256": "3b808aaf7441533f3ec45a15250f5f5897b9ddc9354a55b0a3e69bd9f01089d0",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "        b1_lock.get(\"model_sha256\")\n        != sha256_file(paths[\"model\"])\n    ):\n        failures.append(\"B1 model SHA mismatch\")\n    if (\n        b1_lock.get(\"loader_sha256\")\n        != sha256_file(paths[\"loader\"])\n    ):\n        failures.append(\"B1 loader SHA mismatch\")\n    if b1_lock.get(\"test_evaluation_authorized\") is not False:\n        failures.append(\"B1 unexpectedly authorizes test evaluation\")\n",
+        "raw_sha256": "bad4f7d64365388d770a0cffa3ea83a9c26db02fa630986a8f4344b0ecbc1c89"
+      },
+      "source": "b1_lock.get('loader_sha256') != sha256_file(paths['loader'])"
+    },
+    {
+      "excerpt": {
+        "context_end": 1166,
+        "context_start": 1155,
+        "line_end": 1161,
+        "line_start": 1160,
+        "numbered": "01155:     if b0_r3_lock.get(\"label_integrity_pass\") is not True:\n01156:         failures.append(\"B0-R3 label integrity did not pass\")\n01157:     if b0_r3_lock.get(\"count_head_logits\") != 4:\n01158:         failures.append(\"B0-R3 count-head width changed\")\n01159:     if (\n01160:         b0_r3_lock.get(\"corrected_model_sha256\")\n01161:         != sha256_file(paths[\"model\"])\n01162:     ):\n01163:         failures.append(\"B0-R3 model SHA mismatch\")\n01164:     if (\n01165:         b1_report.get(\"provenance\", {}).get(\n01166:             \"b0_r3_report\"",
+        "numbered_sha256": "bec30e8e7cad3cae91def014da8f100d40925432ae087d2797e09b25e2b711e2",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    if b0_r3_lock.get(\"label_integrity_pass\") is not True:\n        failures.append(\"B0-R3 label integrity did not pass\")\n    if b0_r3_lock.get(\"count_head_logits\") != 4:\n        failures.append(\"B0-R3 count-head width changed\")\n    if (\n        b0_r3_lock.get(\"corrected_model_sha256\")\n        != sha256_file(paths[\"model\"])\n    ):\n        failures.append(\"B0-R3 model SHA mismatch\")\n    if (\n        b1_report.get(\"provenance\", {}).get(\n            \"b0_r3_report\"",
+        "raw_sha256": "17afe1ce2f2d61a7a706cd3857827440b7d79484ee023f1c2b1cf22ba94b55f2"
+      },
+      "source": "b0_r3_lock.get('corrected_model_sha256') != sha256_file(paths['model'])"
+    }
+  ],
+  "model_dir_classification": "ISOLATED_OUTPUT_DIRECTORY",
+  "output_provenance_hash_rows": [
+    {
+      "excerpt": {
+        "context_end": 1550,
+        "context_start": 1497,
+        "line_end": 1545,
+        "line_start": 1502,
+        "numbered": "01497:             best_epoch = epoch\n01498:             best_validation_metrics = (\n01499:                 validation_metrics\n01500:             )\n01501: \n01502:             checkpoint_payload = {\n01503:                 \"stage\": STAGE,\n01504:                 \"seed\": seed,\n01505:                 \"epoch\": epoch,\n01506:                 \"model_state_dict\": (\n01507:                     model.state_dict()\n01508:                 ),\n01509:                 \"optimizer_state_dict\": (\n01510:                     optimizer.state_dict()\n01511:                 ),\n01512:                 \"scheduler_state_dict\": (\n01513:                     scheduler.state_dict()\n01514:                 ),\n01515:                 \"protocol_sha256\": (\n01516:                     protocol[\"protocol_sha256\"]\n01517:                 ),\n01518:                 \"loader_sha256\": (\n01519:                     sha256_file(loader_path)\n01520:                 ),\n01521:                 \"model_source_sha256\": (\n01522:                     sha256_file(model_path)\n01523:                 ),\n01524:                 \"initial_state_sha256\": (\n01525:                     initial_state_sha256\n01526:                 ),\n01527:                 \"train_label_weight_manifest\": {\n01528:                     \"graph_positive_weight\": (\n01529:                         graph_pos_weight_value\n01530:                     ),\n01531:                     \"role_positive_weights\": (\n01532:                         role_weight_manifest\n01533:                     ),\n01534:                     \"count_distribution\": (\n01535:                         count_distribution\n01536:                     ),\n01537:                     \"count_class_mapping\": (\n01538:                         COUNT_CLASS_MAPPING\n01539:                     ),\n01540:                 },\n01541:                 \"validation_metrics\": (\n01542:                     validation_metrics\n01543:                 ),\n01544:                 \"test_tensor_contents_accessed\": False,\n01545:             }\n01546:             atomic_torch_save(\n01547:                 checkpoint_payload,\n01548:                 checkpoint_path,\n01549:             )\n01550:             best_checkpoint_sha256 = (",
+        "numbered_sha256": "815ff7e4f052d3c73c3440e5b46b5b0ef317a6ab61fbd97894bd719f3e7f3a8d",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            best_epoch = epoch\n            best_validation_metrics = (\n                validation_metrics\n            )\n\n            checkpoint_payload = {\n                \"stage\": STAGE,\n                \"seed\": seed,\n                \"epoch\": epoch,\n                \"model_state_dict\": (\n                    model.state_dict()\n                ),\n                \"optimizer_state_dict\": (\n                    optimizer.state_dict()\n                ),\n                \"scheduler_state_dict\": (\n                    scheduler.state_dict()\n                ),\n                \"protocol_sha256\": (\n                    protocol[\"protocol_sha256\"]\n                ),\n                \"loader_sha256\": (\n                    sha256_file(loader_path)\n                ),\n                \"model_source_sha256\": (\n                    sha256_file(model_path)\n                ),\n                \"initial_state_sha256\": (\n                    initial_state_sha256\n                ),\n                \"train_label_weight_manifest\": {\n                    \"graph_positive_weight\": (\n                        graph_pos_weight_value\n                    ),\n                    \"role_positive_weights\": (\n                        role_weight_manifest\n                    ),\n                    \"count_distribution\": (\n                        count_distribution\n                    ),\n                    \"count_class_mapping\": (\n                        COUNT_CLASS_MAPPING\n                    ),\n                },\n                \"validation_metrics\": (\n                    validation_metrics\n                ),\n                \"test_tensor_contents_accessed\": False,\n            }\n            atomic_torch_save(\n                checkpoint_payload,\n                checkpoint_path,\n            )\n            best_checkpoint_sha256 = (",
+        "raw_sha256": "4149f1cec66a5692a799663699ee8124891f6c83150a72022871da91b0f913bc"
+      },
+      "keys": [
+        "loader_sha256",
+        "model_source_sha256"
+      ],
+      "source": "{'stage': STAGE, 'seed': seed, 'epoch': epoch, 'model_state_dict': model.state_dict(), 'optimizer_state_dict': optimizer.state_dict(), 'scheduler_state_dict': scheduler.state_dict(), 'protocol_sha256': protocol['protocol_sha256'], 'loader_sha256': sha256_file(loader_path), 'model_source_sha256': sha256_file(model_path), 'initial_state_sha256': initial_state_sha256, 'train_label_weight_manifest': {'graph_positive_weight': graph_pos_weight_value, 'role_positive_weights': role_weight_manifest, 'count_distribution': count_distribution, 'count_class_mapping': COUNT_CLASS_MAPPING}, 'validation_metrics': validation_metrics, 'test_tensor_contents_accessed': False}"
+    },
+    {
+      "excerpt": {
+        "context_end": 1683,
+        "context_start": 1658,
+        "line_end": 1678,
+        "line_start": 1663,
+        "numbered": "01658:             \"COMPLETE\"\n01659:             if not failures\n01660:             else \"HOLD\"\n01661:         ),\n01662:         \"seed\": seed,\n01663:         \"architecture\": {\n01664:             \"name\": model.architecture_name,\n01665:             \"parameter_count\": parameter_count,\n01666:             \"model_source_sha256\": (\n01667:                 sha256_file(model_path)\n01668:             ),\n01669:             \"loader_sha256\": (\n01670:                 sha256_file(loader_path)\n01671:             ),\n01672:             \"protocol_sha256\": (\n01673:                 protocol[\"protocol_sha256\"]\n01674:             ),\n01675:             \"initial_state_sha256\": (\n01676:                 initial_state_sha256\n01677:             ),\n01678:         },\n01679:         \"data\": {\n01680:             \"train_items\": len(train_dataset),\n01681:             \"validation_items\": (\n01682:                 len(validation_dataset)\n01683:             ),",
+        "numbered_sha256": "67415a120729d99ca65b78d9534822b017d0e3eec21a4ee69feff74e850cf52a",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            \"COMPLETE\"\n            if not failures\n            else \"HOLD\"\n        ),\n        \"seed\": seed,\n        \"architecture\": {\n            \"name\": model.architecture_name,\n            \"parameter_count\": parameter_count,\n            \"model_source_sha256\": (\n                sha256_file(model_path)\n            ),\n            \"loader_sha256\": (\n                sha256_file(loader_path)\n            ),\n            \"protocol_sha256\": (\n                protocol[\"protocol_sha256\"]\n            ),\n            \"initial_state_sha256\": (\n                initial_state_sha256\n            ),\n        },\n        \"data\": {\n            \"train_items\": len(train_dataset),\n            \"validation_items\": (\n                len(validation_dataset)\n            ),",
+        "raw_sha256": "e8469f56429c7570e62baccae84a734b1390b90f203c236429dd898d530142ab"
+      },
+      "keys": [
+        "model_source_sha256",
+        "loader_sha256"
+      ],
+      "source": "{'name': model.architecture_name, 'parameter_count': parameter_count, 'model_source_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'protocol_sha256': protocol['protocol_sha256'], 'initial_state_sha256': initial_state_sha256}"
+    },
+    {
+      "excerpt": {
+        "context_end": 1832,
+        "context_start": 1789,
+        "line_end": 1827,
+        "line_start": 1794,
+        "numbered": "01789:         print(f\"{STAGE}_HOLD\")\n01790:         for failure in failures:\n01791:             print(\"FAIL:\", failure)\n01792:         return 1\n01793: \n01794:     lock = {\n01795:         \"status\": COMPLETE,\n01796:         \"seed\": seed,\n01797:         \"report_sha256\": sha256_file(report_path),\n01798:         \"history_sha256\": sha256_file(history_path),\n01799:         \"checkpoint_sha256\": (\n01800:             sha256_file(checkpoint_path)\n01801:         ),\n01802:         \"checkpoint_path\": str(checkpoint_path),\n01803:         \"protocol_sha256\": (\n01804:             protocol[\"protocol_sha256\"]\n01805:         ),\n01806:         \"model_sha256\": sha256_file(model_path),\n01807:         \"loader_sha256\": sha256_file(loader_path),\n01808:         \"initial_state_sha256\": (\n01809:             initial_state_sha256\n01810:         ),\n01811:         \"best_epoch\": best_epoch,\n01812:         \"best_validation_selection_score\": (\n01813:             best_validation_metrics[\n01814:                 \"selection_score\"\n01815:             ]\n01816:         ),\n01817:         \"completed_epoch\": completed_epoch,\n01818:         \"stopped_early\": stopped_early,\n01819:         \"threshold_tuning_performed\": False,\n01820:         \"test_directory_enumerated\": False,\n01821:         \"test_tensor_contents_accessed\": False,\n01822:         \"test_evaluation_performed\": False,\n01823:         \"next_stage\": (\n01824:             \"V5_P2_B2_MULTI_SEED_FINALIZATION\"\n01825:         ),\n01826:         \"script_sha256\": sha256_file(Path(__file__)),\n01827:     }\n01828:     write_json(\n01829:         report_dir / f\"V5_P2_B2_SEED_{seed}_LOCK.json\",\n01830:         lock,\n01831:     )\n01832:     atomic_write(",
+        "numbered_sha256": "d09f84a753c487c9310313659e33638121dbf5db8e5e7f05187b9870e1209e06",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "        print(f\"{STAGE}_HOLD\")\n        for failure in failures:\n            print(\"FAIL:\", failure)\n        return 1\n\n    lock = {\n        \"status\": COMPLETE,\n        \"seed\": seed,\n        \"report_sha256\": sha256_file(report_path),\n        \"history_sha256\": sha256_file(history_path),\n        \"checkpoint_sha256\": (\n            sha256_file(checkpoint_path)\n        ),\n        \"checkpoint_path\": str(checkpoint_path),\n        \"protocol_sha256\": (\n            protocol[\"protocol_sha256\"]\n        ),\n        \"model_sha256\": sha256_file(model_path),\n        \"loader_sha256\": sha256_file(loader_path),\n        \"initial_state_sha256\": (\n            initial_state_sha256\n        ),\n        \"best_epoch\": best_epoch,\n        \"best_validation_selection_score\": (\n            best_validation_metrics[\n                \"selection_score\"\n            ]\n        ),\n        \"completed_epoch\": completed_epoch,\n        \"stopped_early\": stopped_early,\n        \"threshold_tuning_performed\": False,\n        \"test_directory_enumerated\": False,\n        \"test_tensor_contents_accessed\": False,\n        \"test_evaluation_performed\": False,\n        \"next_stage\": (\n            \"V5_P2_B2_MULTI_SEED_FINALIZATION\"\n        ),\n        \"script_sha256\": sha256_file(Path(__file__)),\n    }\n    write_json(\n        report_dir / f\"V5_P2_B2_SEED_{seed}_LOCK.json\",\n        lock,\n    )\n    atomic_write(",
+        "raw_sha256": "19c3f4985c442d41bc40d584ee9f6b5b0a7a9b8ab5dc7fe67b6a69d55fc2c7c5"
+      },
+      "keys": [
+        "model_sha256",
+        "loader_sha256"
+      ],
+      "source": "{'status': COMPLETE, 'seed': seed, 'report_sha256': sha256_file(report_path), 'history_sha256': sha256_file(history_path), 'checkpoint_sha256': sha256_file(checkpoint_path), 'checkpoint_path': str(checkpoint_path), 'protocol_sha256': protocol['protocol_sha256'], 'model_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'initial_state_sha256': initial_state_sha256, 'best_epoch': best_epoch, 'best_validation_selection_score': best_validation_metrics['selection_score'], 'completed_epoch': completed_epoch, 'stopped_early': stopped_early, 'threshold_tuning_performed': False, 'test_directory_enumerated': False, 'test_tensor_contents_accessed': False, 'test_evaluation_performed': False, 'next_stage': 'V5_P2_B2_MULTI_SEED_FINALIZATION', 'script_sha256': sha256_file(Path(__file__))}"
+    }
+  ],
+  "relevant_assignments": [
+    {
+      "excerpt": {
+        "context_end": 1208,
+        "context_start": 1195,
+        "line_end": 1203,
+        "line_start": 1200,
+        "numbered": "01195:             print(\"FAIL:\", failure)\n01196:         return 1\n01197: \n01198:     set_seed(seed)\n01199: \n01200:     loader_module = import_module(\n01201:         loader_path,\n01202:         f\"v5_p2_loader_seed_{seed}\",\n01203:     )\n01204:     model_module = import_module(\n01205:         model_path,\n01206:         f\"v5_p2_model_seed_{seed}\",\n01207:     )\n01208: ",
+        "numbered_sha256": "b48bd6dcbe94c8fdef034d89fb953d37f791f7d84e98dd8f4ec01e8245c54085",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            print(\"FAIL:\", failure)\n        return 1\n\n    set_seed(seed)\n\n    loader_module = import_module(\n        loader_path,\n        f\"v5_p2_loader_seed_{seed}\",\n    )\n    model_module = import_module(\n        model_path,\n        f\"v5_p2_model_seed_{seed}\",\n    )\n",
+        "raw_sha256": "9b102797277d333f841be45fe63acab71b630119e1c650d59086d983e7310b86"
+      },
+      "source": "loader_module = import_module(loader_path, f'v5_p2_loader_seed_{seed}')",
+      "targets": [
+        "loader_module"
+      ],
+      "value_source": "import_module(loader_path, f'v5_p2_loader_seed_{seed}')"
+    },
+    {
+      "excerpt": {
+        "context_end": 1212,
+        "context_start": 1199,
+        "line_end": 1207,
+        "line_start": 1204,
+        "numbered": "01199: \n01200:     loader_module = import_module(\n01201:         loader_path,\n01202:         f\"v5_p2_loader_seed_{seed}\",\n01203:     )\n01204:     model_module = import_module(\n01205:         model_path,\n01206:         f\"v5_p2_model_seed_{seed}\",\n01207:     )\n01208: \n01209:     DatasetClass = (\n01210:         loader_module\n01211:         .V5P2PairAlignedPrimary58Dataset\n01212:     )",
+        "numbered_sha256": "58b5fbbeb84de5cf9cf775b8e58248f7ff4670aba8b8d29f1ad74d891706b97f",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "\n    loader_module = import_module(\n        loader_path,\n        f\"v5_p2_loader_seed_{seed}\",\n    )\n    model_module = import_module(\n        model_path,\n        f\"v5_p2_model_seed_{seed}\",\n    )\n\n    DatasetClass = (\n        loader_module\n        .V5P2PairAlignedPrimary58Dataset\n    )",
+        "raw_sha256": "22ad2ecb748f77606904fd2065b576157b3e632b89323bdb0354d3938029bcce"
+      },
+      "source": "model_module = import_module(model_path, f'v5_p2_model_seed_{seed}')",
+      "targets": [
+        "model_module"
+      ],
+      "value_source": "import_module(model_path, f'v5_p2_model_seed_{seed}')"
+    },
+    {
+      "excerpt": {
+        "context_end": 1217,
+        "context_start": 1204,
+        "line_end": 1212,
+        "line_start": 1209,
+        "numbered": "01204:     model_module = import_module(\n01205:         model_path,\n01206:         f\"v5_p2_model_seed_{seed}\",\n01207:     )\n01208: \n01209:     DatasetClass = (\n01210:         loader_module\n01211:         .V5P2PairAlignedPrimary58Dataset\n01212:     )\n01213:     ModelClass = (\n01214:         model_module\n01215:         .P2B3Conv1DOnlyCount4\n01216:     )\n01217: ",
+        "numbered_sha256": "367f3c701d4734327c383733f121378ee6066c7b29300032a7e15421f18c19f9",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    model_module = import_module(\n        model_path,\n        f\"v5_p2_model_seed_{seed}\",\n    )\n\n    DatasetClass = (\n        loader_module\n        .V5P2PairAlignedPrimary58Dataset\n    )\n    ModelClass = (\n        model_module\n        .P2B3Conv1DOnlyCount4\n    )\n",
+        "raw_sha256": "e3adb91225cf35fe8c34bd471fb91300445763258b421378794e47b3a721e18a"
+      },
+      "source": "DatasetClass = loader_module.V5P2PairAlignedPrimary58Dataset",
+      "targets": [
+        "DatasetClass"
+      ],
+      "value_source": "loader_module.V5P2PairAlignedPrimary58Dataset"
+    },
+    {
+      "excerpt": {
+        "context_end": 1221,
+        "context_start": 1208,
+        "line_end": 1216,
+        "line_start": 1213,
+        "numbered": "01208: \n01209:     DatasetClass = (\n01210:         loader_module\n01211:         .V5P2PairAlignedPrimary58Dataset\n01212:     )\n01213:     ModelClass = (\n01214:         model_module\n01215:         .P2B3Conv1DOnlyCount4\n01216:     )\n01217: \n01218:     train_dataset = DatasetClass(\n01219:         root=root,\n01220:         split=\"train\",\n01221:         pair_manifest=(",
+        "numbered_sha256": "9e4cecc904c52c88fb941bfe2c0cffba3709585e3b1e133f98d6585ac17dae6f",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "\n    DatasetClass = (\n        loader_module\n        .V5P2PairAlignedPrimary58Dataset\n    )\n    ModelClass = (\n        model_module\n        .P2B3Conv1DOnlyCount4\n    )\n\n    train_dataset = DatasetClass(\n        root=root,\n        split=\"train\",\n        pair_manifest=(",
+        "raw_sha256": "141e28f783d9997beaa253a3179a6885e6703ecdf233cd4aa5c727ab1483a6f4"
+      },
+      "source": "ModelClass = model_module.P2B3Conv1DOnlyCount4",
+      "targets": [
+        "ModelClass"
+      ],
+      "value_source": "model_module.P2B3Conv1DOnlyCount4"
+    },
+    {
+      "excerpt": {
+        "context_end": 1248,
+        "context_start": 1213,
+        "line_end": 1243,
+        "line_start": 1218,
+        "numbered": "01213:     ModelClass = (\n01214:         model_module\n01215:         .P2B3Conv1DOnlyCount4\n01216:     )\n01217: \n01218:     train_dataset = DatasetClass(\n01219:         root=root,\n01220:         split=\"train\",\n01221:         pair_manifest=(\n01222:             Path(\n01223:                 b1_report[\"provenance_path\"]\n01224:             )\n01225:             if \"provenance_path\" in b1_report\n01226:             else (\n01227:                 Path(\n01228:                     b1_report[\"protocol\"][\"data\"][\n01229:                         \"pair_manifest_path\"\n01230:                     ]\n01231:                 )\n01232:                 if (\n01233:                     \"pair_manifest_path\"\n01234:                     in b1_report[\"protocol\"][\"data\"]\n01235:                 )\n01236:                 else (\n01237:                     b1_dir.parent\n01238:                     / \"p2_a1_r2_pair_aligned_window_contract\"\n01239:                     / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n01240:                 )\n01241:             )\n01242:         ),\n01243:     )\n01244:     validation_dataset = DatasetClass(\n01245:         root=root,\n01246:         split=\"validation\",\n01247:         pair_manifest=train_dataset.pair_manifest,\n01248:     )",
+        "numbered_sha256": "4f05b5c999fa6baf4a2240b01a6857af8c0c721073531a303aac7578f7f4486e",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    ModelClass = (\n        model_module\n        .P2B3Conv1DOnlyCount4\n    )\n\n    train_dataset = DatasetClass(\n        root=root,\n        split=\"train\",\n        pair_manifest=(\n            Path(\n                b1_report[\"provenance_path\"]\n            )\n            if \"provenance_path\" in b1_report\n            else (\n                Path(\n                    b1_report[\"protocol\"][\"data\"][\n                        \"pair_manifest_path\"\n                    ]\n                )\n                if (\n                    \"pair_manifest_path\"\n                    in b1_report[\"protocol\"][\"data\"]\n                )\n                else (\n                    b1_dir.parent\n                    / \"p2_a1_r2_pair_aligned_window_contract\"\n                    / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n                )\n            )\n        ),\n    )\n    validation_dataset = DatasetClass(\n        root=root,\n        split=\"validation\",\n        pair_manifest=train_dataset.pair_manifest,\n    )",
+        "raw_sha256": "21246f72e0446ad78bdca74b677e261c862f528d09b009093fc6478039edcfd6"
+      },
+      "source": "train_dataset = DatasetClass(root=root, split='train', pair_manifest=Path(b1_report['provenance_path']) if 'provenance_path' in b1_report else Path(b1_report['protocol']['data']['pair_manifest_path']) if 'pair_manifest_path' in b1_report['protocol']['data'] else b1_dir.parent / 'p2_a1_r2_pair_aligned_window_contract' / 'V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv')",
+      "targets": [
+        "train_dataset"
+      ],
+      "value_source": "DatasetClass(root=root, split='train', pair_manifest=Path(b1_report['provenance_path']) if 'provenance_path' in b1_report else Path(b1_report['protocol']['data']['pair_manifest_path']) if 'pair_manifest_path' in b1_report['protocol']['data'] else b1_dir.parent / 'p2_a1_r2_pair_aligned_window_contract' / 'V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv')"
+    },
+    {
+      "excerpt": {
+        "context_end": 1253,
+        "context_start": 1239,
+        "line_end": 1248,
+        "line_start": 1244,
+        "numbered": "01239:                     / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n01240:                 )\n01241:             )\n01242:         ),\n01243:     )\n01244:     validation_dataset = DatasetClass(\n01245:         root=root,\n01246:         split=\"validation\",\n01247:         pair_manifest=train_dataset.pair_manifest,\n01248:     )\n01249: \n01250:     if len(train_dataset) != EXPECTED_TRAIN_ITEMS:\n01251:         failures.append(\n01252:             f\"train length={len(train_dataset)}, \"\n01253:             f\"expected {EXPECTED_TRAIN_ITEMS}\"",
+        "numbered_sha256": "568a069746b5614632cce08bf49938cf6b1e206bb61df4f70ada943f1fb01dc9",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "                    / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\"\n                )\n            )\n        ),\n    )\n    validation_dataset = DatasetClass(\n        root=root,\n        split=\"validation\",\n        pair_manifest=train_dataset.pair_manifest,\n    )\n\n    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:\n        failures.append(\n            f\"train length={len(train_dataset)}, \"\n            f\"expected {EXPECTED_TRAIN_ITEMS}\"",
+        "raw_sha256": "c585c894f8c26201ba8262b36d8574b19b94ca23953a30db934a3ba2817d478c"
+      },
+      "source": "validation_dataset = DatasetClass(root=root, split='validation', pair_manifest=train_dataset.pair_manifest)",
+      "targets": [
+        "validation_dataset"
+      ],
+      "value_source": "DatasetClass(root=root, split='validation', pair_manifest=train_dataset.pair_manifest)"
+    },
+    {
+      "excerpt": {
+        "context_end": 1382,
+        "context_start": 1372,
+        "line_end": 1377,
+        "line_start": 1377,
+        "numbered": "01372:         batch_sampler=validation_sampler,\n01373:         num_workers=0,\n01374:         pin_memory=pin_memory,\n01375:     )\n01376: \n01377:     model = ModelClass().to(device)\n01378:     parameter_count = sum(\n01379:         parameter.numel()\n01380:         for parameter in model.parameters()\n01381:     )\n01382:     if parameter_count != EXPECTED_PARAMETER_COUNT:",
+        "numbered_sha256": "6f65cfc5adb4aaacbc9eff9c10643d9194c4289abeb7c9b2cfa13d3bac8a0477",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "        batch_sampler=validation_sampler,\n        num_workers=0,\n        pin_memory=pin_memory,\n    )\n\n    model = ModelClass().to(device)\n    parameter_count = sum(\n        parameter.numel()\n        for parameter in model.parameters()\n    )\n    if parameter_count != EXPECTED_PARAMETER_COUNT:",
+        "raw_sha256": "68ef4f60dc51038978fad847a15c37845fbc494d8f15e51f55e082fdffb71a37"
+      },
+      "source": "model = ModelClass().to(device)",
+      "targets": [
+        "model"
+      ],
+      "value_source": "ModelClass().to(device)"
+    }
+  ]
+}

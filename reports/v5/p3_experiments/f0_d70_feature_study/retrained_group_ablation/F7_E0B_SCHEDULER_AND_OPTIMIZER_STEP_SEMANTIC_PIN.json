@@ -1,0 +1,180 @@
+{
+  "optimizer": {
+    "constructor": {
+      "excerpt": "    optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=1e-3,\n        betas=(0.9, 0.999),\n        eps=1e-8,\n        weight_decay=1e-4,\n    )",
+      "excerpt_sha256": "08ff5d5583f668ad11af319066ab8a77e2e351ce4a7df3416192b55d1cdbc745",
+      "implementation": "torch.optim.adamw.AdamW",
+      "learning_rate": {
+        "argument_route": "keyword",
+        "expression": "0.001",
+        "keyword": "lr",
+        "resolved": true,
+        "route": "literal",
+        "value": 0.001
+      },
+      "line_end": 1398,
+      "line_start": 1392,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.optim.AdamW(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001)",
+      "variable": "optimizer",
+      "weight_decay": {
+        "argument_route": "keyword",
+        "expression": "0.0001",
+        "keyword": "weight_decay",
+        "resolved": true,
+        "route": "literal",
+        "value": 0.0001
+      }
+    },
+    "optimizer_step": {
+      "argument_expressions": [],
+      "arguments": [],
+      "base": "optimizer",
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        optimizer.step()",
+      "excerpt_sha256": "cdf624930347aab933f7ecb21fd067333b0ec7d2869498c65605e80a96fd9c7f",
+      "line_end": 557,
+      "line_start": 557,
+      "loop_ancestors": [
+        {
+          "iterator": "loader",
+          "line_start": 527,
+          "target": "batch",
+          "type": "for"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "optimizer.step()"
+    },
+    "optimizer_step_inside_batch_loop": true,
+    "optimizer_step_inside_epoch_loop": false,
+    "semantics_resolved": false,
+    "unclassified_step_calls": [],
+    "variable": "optimizer"
+  },
+  "scheduler": {
+    "constructor_count": 1,
+    "constructors": [
+      {
+        "excerpt": "    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=\"max\",\n        factor=0.5,\n        patience=4,\n        threshold=1e-4,\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=1e-5,\n    )",
+        "excerpt_sha256": "477600888847a8f625affa7d77fcfbb0cd4c2775b64c3894f870b17894ccef6a",
+        "implementation": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+        "line_end": 1408,
+        "line_start": 1399,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "resolved_parameters": {
+          "cooldown": {
+            "argument_route": "keyword",
+            "expression": "0",
+            "keyword": "cooldown",
+            "resolved": true,
+            "route": "literal",
+            "value": 0
+          },
+          "eps": {
+            "argument_route": "runtime_default",
+            "callable": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+            "expression": null,
+            "keyword": "eps",
+            "resolved": true,
+            "route": "runtime_signature_default",
+            "signature": "(optimizer: 'Optimizer', mode: \"Literal['min', 'max']\" = 'min', factor: 'float' = 0.1, patience: 'int' = 10, threshold: 'float' = 0.0001, threshold_mode: \"Literal['rel', 'abs']\" = 'rel', cooldown: 'int' = 0, min_lr: 'list[float] | float' = 0, eps: 'float' = 1e-08) -> 'None'",
+            "torch_version": "2.12.1+cu130",
+            "value": 1e-08
+          },
+          "factor": {
+            "argument_route": "keyword",
+            "expression": "0.5",
+            "keyword": "factor",
+            "resolved": true,
+            "route": "literal",
+            "value": 0.5
+          },
+          "min_lr": {
+            "argument_route": "keyword",
+            "expression": "1e-05",
+            "keyword": "min_lr",
+            "resolved": true,
+            "route": "literal",
+            "value": 1e-05
+          },
+          "mode": {
+            "argument_route": "keyword",
+            "expression": "'max'",
+            "keyword": "mode",
+            "resolved": true,
+            "route": "literal",
+            "value": "max"
+          },
+          "patience": {
+            "argument_route": "keyword",
+            "expression": "4",
+            "keyword": "patience",
+            "resolved": true,
+            "route": "literal",
+            "value": 4
+          },
+          "threshold": {
+            "argument_route": "keyword",
+            "expression": "0.0001",
+            "keyword": "threshold",
+            "resolved": true,
+            "route": "literal",
+            "value": 0.0001
+          },
+          "threshold_mode": {
+            "argument_route": "keyword",
+            "expression": "'abs'",
+            "keyword": "threshold_mode",
+            "resolved": true,
+            "route": "literal",
+            "value": "abs"
+          }
+        },
+        "runtime_signature": "(optimizer: 'Optimizer', mode: \"Literal['min', 'max']\" = 'min', factor: 'float' = 0.1, patience: 'int' = 10, threshold: 'float' = 0.0001, threshold_mode: \"Literal['rel', 'abs']\" = 'rel', cooldown: 'int' = 0, min_lr: 'list[float] | float' = 0, eps: 'float' = 1e-08) -> 'None'",
+        "source": "torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='max', factor=0.5, patience=4, threshold=0.0001, threshold_mode='abs', cooldown=0, min_lr=1e-05)",
+        "variable": "scheduler"
+      }
+    ],
+    "policy": "ACTIVE_SCHEDULER_WITH_RESOLVED_SINGLE_STEP",
+    "step_after_optimizer_step": true,
+    "step_argument_expressions": [
+      "current_score"
+    ],
+    "step_cadence": "ONCE_PER_EPOCH",
+    "step_count": 1,
+    "steps": [
+      {
+        "argument_expressions": [
+          "current_score"
+        ],
+        "arguments": [
+          {
+            "assignment_count": 1,
+            "expression": "current_score",
+            "reason": "symbol_assignments_not_unique",
+            "resolved": false,
+            "resolved_candidate_values": [],
+            "symbol": "current_score"
+          }
+        ],
+        "base": "scheduler",
+        "enclosing_function": "main",
+        "excerpt": "        scheduler.step(current_score)",
+        "excerpt_sha256": "fb340cc3fe41cc76d3f55ee93460d812e39704b2eee4818bed3f187de455b063",
+        "line_end": 1566,
+        "line_start": 1566,
+        "loop_ancestors": [
+          {
+            "iterator": "range(1, 101)",
+            "line_start": 1462,
+            "target": "epoch",
+            "type": "for"
+          }
+        ],
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "scheduler.step(current_score)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,1403 @@
+#!/usr/bin/env python3
+"""
+V4-A3.15
+Directional Source-versus-Transit Attribution
+
+This stage analyzes the frozen A3 input features and the frozen A3.13 branch
+scores without training or changing model weights.
+
+Validation is the only split used to rank directional/source-transit proxy
+metrics. The development-comparison test split is used only to describe the
+already identified hard-normal cases.
+
+Validation router roles:
+  benign_active_source
+  benign_inactive_router
+  true_attacker
+  attack_legitimate_active
+  attack_other_router
+
+Saved feature semantics:
+  0  ifd_in_norm
+  1  ifd_out_norm
+  2  input_flit_count_norm
+  3  output_flit_count_norm
+  4:9   in_count_norm_[local,north,east,south,west]
+  9:14  out_count_norm_[local,north,east,south,west]
+  14:19 ifd_in_norm_[local,north,east,south,west]
+  19:24 ifd_out_norm_[local,north,east,south,west]
+
+Derived quantities are explicitly labeled as proxies. They do not replace
+missing dataset semantics such as a direct source/transit/valid-port label.
+
+No threshold search, no classifier fitting, no test selection, and no training
+occur.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import importlib.util
+import json
+import math
+import sys
+from collections import defaultdict
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+
+
+FALLBACK_FEATURE_NAMES = [
+    "ifd_in_norm",
+    "ifd_out_norm",
+    "input_flit_count_norm",
+    "output_flit_count_norm",
+    "in_count_norm_local",
+    "in_count_norm_north",
+    "in_count_norm_east",
+    "in_count_norm_south",
+    "in_count_norm_west",
+    "out_count_norm_local",
+    "out_count_norm_north",
+    "out_count_norm_east",
+    "out_count_norm_south",
+    "out_count_norm_west",
+    "ifd_in_norm_local",
+    "ifd_in_norm_north",
+    "ifd_in_norm_east",
+    "ifd_in_norm_south",
+    "ifd_in_norm_west",
+    "ifd_out_norm_local",
+    "ifd_out_norm_north",
+    "ifd_out_norm_east",
+    "ifd_out_norm_south",
+    "ifd_out_norm_west",
+]
+
+ROLE_ORDER = [
+    "benign_active_source",
+    "benign_inactive_router",
+    "true_attacker",
+    "attack_legitimate_active",
+    "attack_other_router",
+]
+
+EPS = 1e-8
+
+
+def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(chunk_size)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def jsonable(value: Any) -> Any:
+    if isinstance(value, dict):
+        return {str(k): jsonable(v) for k, v in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [jsonable(v) for v in value]
+    if isinstance(value, np.ndarray):
+        return value.tolist()
+    if isinstance(value, np.integer):
+        return int(value)
+    if isinstance(value, np.floating):
+        return float(value)
+    if isinstance(value, Path):
+        return str(value)
+    return value
+
+
+def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
+    if not rows:
+        path.write_text("", encoding="utf-8")
+        return
+    fields: list[str] = []
+    seen: set[str] = set()
+    for row in rows:
+        for key in row:
+            if key not in seen:
+                seen.add(key)
+                fields.append(key)
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({key: row.get(key, "") for key in fields})
+
+
+def load_module(path: Path, name: str):
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"could not import {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def parse_nodes(value: Any) -> set[int]:
+    if value is None:
+        return set()
+    if isinstance(value, (list, tuple, np.ndarray)):
+        result: set[int] = set()
+        for item in value:
+            result |= parse_nodes(item)
+        return result
+    if isinstance(value, (int, np.integer)):
+        return {int(value)}
+    text = str(value).strip()
+    if not text:
+        return set()
+    for separator in (",", ";", " ", "|"):
+        text = text.replace(separator, "-")
+    result = set()
+    for token in text.split("-"):
+        token = token.strip()
+        if not token:
+            continue
+        try:
+            result.add(int(token))
+        except ValueError:
+            continue
+    return result
+
+
+def run_boundaries(run_index: np.ndarray) -> list[tuple[int, int]]:
+    values = np.asarray(run_index)
+    if values.size == 0:
+        return []
+    starts = np.flatnonzero(np.r_[True, values[1:] != values[:-1]])
+    ends = np.r_[starts[1:], values.size]
+    return [(int(s), int(e)) for s, e in zip(starts, ends)]
+
+
+def same_set_persistence(
+    pred: np.ndarray,
+    run_index: np.ndarray,
+    required: int,
+) -> np.ndarray:
+    values = np.asarray(pred, dtype=np.int8)
+    out = np.zeros_like(values)
+    for start, end in run_boundaries(run_index):
+        for i in range(start + required - 1, end):
+            window = values[i - required + 1 : i + 1]
+            current = window[-1]
+            if np.sum(current) == 0:
+                continue
+            if np.all(window == current):
+                out[i] = current
+    return out
+
+
+def router_three_of_four(
+    pred: np.ndarray,
+    run_index: np.ndarray,
+) -> np.ndarray:
+    values = np.asarray(pred, dtype=np.int8)
+    out = np.zeros_like(values)
+    for start, end in run_boundaries(run_index):
+        if end - start < 4:
+            continue
+        csum = np.cumsum(
+            np.vstack(
+                [
+                    np.zeros((1, values.shape[1]), dtype=np.int64),
+                    values[start:end],
+                ]
+            ),
+            axis=0,
+        )
+        sums = csum[4:] - csum[:-4]
+        out[start + 3 : end] = (sums >= 3).astype(np.int8)
+    return out
+
+
+def apply_persistence(
+    pred: np.ndarray,
+    run_index: np.ndarray,
+    rule: str,
+) -> np.ndarray:
+    if rule in ("", "none", None):
+        return np.asarray(pred, dtype=np.int8)
+    if rule.startswith("same_set_"):
+        required = int(rule.rsplit("_", 1)[1])
+        return same_set_persistence(pred, run_index, required)
+    if rule == "router_3_of_4":
+        return router_three_of_four(pred, run_index)
+    raise ValueError(f"unsupported persistence rule: {rule}")
+
+
+def aggregate_scores(
+    helper,
+    prepared,
+    node_prob: np.ndarray,
+    graph_prob: np.ndarray,
+    horizon: int,
+    stride: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    segments = helper.mode_segments(
+        helper.make_segments(prepared),
+        "deoverlap",
+        stride,
+    )
+    endpoints, node_agg = helper.aggregate_array(
+        helper.logit(node_prob),
+        segments,
+        horizon,
+        helper.uniform_weights(horizon),
+    )
+    graph_endpoints, graph_agg = helper.aggregate_array(
+        helper.logit(graph_prob),
+        segments,
+        horizon,
+        helper.uniform_weights(horizon),
+    )
+    if not np.array_equal(endpoints, graph_endpoints):
+        raise RuntimeError("node/graph endpoint mismatch")
+    return (
+        endpoints,
+        helper.sigmoid(node_agg),
+        helper.sigmoid(graph_agg),
+    )
+
+
+def rolling_mean_std_peak(
+    values: np.ndarray,
+    horizon: int,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    array = np.asarray(values, dtype=np.float32)
+    csum = np.cumsum(
+        np.concatenate(
+            [
+                np.zeros((1, *array.shape[1:]), dtype=np.float64),
+                array.astype(np.float64),
+            ],
+            axis=0,
+        ),
+        axis=0,
+    )
+    csum2 = np.cumsum(
+        np.concatenate(
+            [
+                np.zeros((1, *array.shape[1:]), dtype=np.float64),
+                np.square(array, dtype=np.float64),
+            ],
+            axis=0,
+        ),
+        axis=0,
+    )
+    mean = (csum[horizon:] - csum[:-horizon]) / float(horizon)
+    mean2 = (csum2[horizon:] - csum2[:-horizon]) / float(horizon)
+    std = np.sqrt(np.maximum(mean2 - np.square(mean), 0.0))
+
+    windows = np.lib.stride_tricks.sliding_window_view(
+        array,
+        window_shape=horizon,
+        axis=0,
+    )
+    peak = np.max(windows, axis=-1)
+
+    return (
+        mean.astype(np.float32),
+        std.astype(np.float32),
+        peak.astype(np.float32),
+    )
+
+
+def derive_proxy_matrix(base_feature_mean: np.ndarray) -> tuple[np.ndarray, list[str]]:
+    x = np.asarray(base_feature_mean, dtype=np.float32)
+
+    local_in = x[..., 4]
+    dir_in = np.sum(x[..., 5:9], axis=-1)
+    local_out = x[..., 9]
+    dir_out = np.sum(x[..., 10:14], axis=-1)
+
+    local_ifd_in = x[..., 14]
+    dir_ifd_in = np.sum(x[..., 15:19], axis=-1)
+    local_ifd_out = x[..., 19]
+    dir_ifd_out = np.sum(x[..., 20:24], axis=-1)
+
+    directional_in_max = np.max(x[..., 5:9], axis=-1)
+    directional_out_max = np.max(x[..., 10:14], axis=-1)
+
+    total_count = local_in + dir_in + local_out + dir_out
+    total_ifd = local_ifd_in + dir_ifd_in + local_ifd_out + dir_ifd_out
+
+    values = [
+        local_in,
+        dir_in,
+        local_out,
+        dir_out,
+        local_in / (local_in + dir_in + EPS),
+        local_out / (local_out + dir_out + EPS),
+        (local_in + local_out) / (total_count + EPS),
+        (dir_in + dir_out) / (total_count + EPS),
+        local_in - local_out,
+        dir_out - dir_in,
+        directional_in_max / (dir_in + EPS),
+        directional_out_max / (dir_out + EPS),
+        local_ifd_in,
+        dir_ifd_in,
+        local_ifd_out,
+        dir_ifd_out,
+        local_ifd_in / (local_ifd_in + dir_ifd_in + EPS),
+        local_ifd_out / (local_ifd_out + dir_ifd_out + EPS),
+        (local_ifd_in + local_ifd_out) / (total_ifd + EPS),
+        (dir_ifd_in + dir_ifd_out) / (total_ifd + EPS),
+        local_ifd_in - local_ifd_out,
+        dir_ifd_out - dir_ifd_in,
+    ]
+
+    names = [
+        "proxy_local_in_count",
+        "proxy_directional_in_count_sum",
+        "proxy_local_out_count",
+        "proxy_directional_out_count_sum",
+        "proxy_injection_share_count",
+        "proxy_ejection_share_count",
+        "proxy_local_port_share_count",
+        "proxy_directional_port_share_count",
+        "proxy_local_source_minus_sink_count",
+        "proxy_directional_out_minus_in_count",
+        "proxy_directional_in_concentration",
+        "proxy_directional_out_concentration",
+        "proxy_local_ifd_in",
+        "proxy_directional_ifd_in_sum",
+        "proxy_local_ifd_out",
+        "proxy_directional_ifd_out_sum",
+        "proxy_injection_share_ifd",
+        "proxy_ejection_share_ifd",
+        "proxy_local_port_share_ifd",
+        "proxy_directional_port_share_ifd",
+        "proxy_local_source_minus_sink_ifd",
+        "proxy_directional_out_minus_in_ifd",
+    ]
+    return np.stack(values, axis=-1).astype(np.float32), names
+
+
+def build_metric_matrix(
+    sample_feature_mean: np.ndarray,
+    sample_feature_peak: np.ndarray,
+    horizon: int,
+    feature_names: list[str],
+) -> tuple[np.ndarray, list[str]]:
+    base_mean, base_std, base_peak = rolling_mean_std_peak(
+        sample_feature_mean,
+        horizon,
+    )
+
+    proxy_sample, proxy_names = derive_proxy_matrix(sample_feature_mean)
+    proxy_mean, proxy_std, proxy_peak = rolling_mean_std_peak(
+        proxy_sample,
+        horizon,
+    )
+
+    selected_count_indices = list(range(2, 14))
+
+    matrices = [base_mean]
+    names = [f"mean__{name}" for name in feature_names]
+
+    matrices.append(base_std[..., selected_count_indices])
+    names.extend(
+        f"std__{feature_names[index]}"
+        for index in selected_count_indices
+    )
+
+    raw_peak_windows = np.lib.stride_tricks.sliding_window_view(
+        sample_feature_peak,
+        window_shape=horizon,
+        axis=0,
+    )
+    selected_peak = np.max(raw_peak_windows, axis=-1)[
+        ..., selected_count_indices
+    ]
+    matrices.append(selected_peak.astype(np.float32))
+    names.extend(
+        f"peak__{feature_names[index]}"
+        for index in selected_count_indices
+    )
+
+    matrices.extend([proxy_mean, proxy_std, proxy_peak])
+    names.extend(f"mean__{name}" for name in proxy_names)
+    names.extend(f"std__{name}" for name in proxy_names)
+    names.extend(f"peak__{name}" for name in proxy_names)
+
+    return np.concatenate(matrices, axis=-1), names
+
+
+def aggregate_run_metrics(
+    x_memmap: np.ndarray,
+    dataset_run_index: np.ndarray,
+    decision_global_indices: np.ndarray,
+    target_run: int,
+    horizon: int,
+    stride: int,
+    feature_names: list[str],
+) -> tuple[np.ndarray, list[str]]:
+    decision_gidx = np.asarray(decision_global_indices, dtype=np.int64)
+    if decision_gidx.size == 0:
+        raise ValueError(f"no decisions for run {target_run}")
+
+    first = int(decision_gidx[0]) - (horizon - 1) * stride
+    last = int(decision_gidx[-1])
+    base_gidx = np.arange(first, last + 1, stride, dtype=np.int64)
+
+    expected = base_gidx[horizon - 1 :]
+    if not np.array_equal(expected, decision_gidx):
+        raise RuntimeError(
+            f"feature endpoint alignment failed for run {target_run}, H={horizon}"
+        )
+    if np.any(np.asarray(dataset_run_index[base_gidx]) != target_run):
+        raise RuntimeError(
+            f"feature evidence crossed run boundary for run {target_run}"
+        )
+
+    block = np.asarray(x_memmap[base_gidx], dtype=np.float32)
+    sample_mean = np.mean(block, axis=2, dtype=np.float64).astype(np.float32)
+    sample_peak = np.max(block, axis=2)
+
+    matrix, metric_names = build_metric_matrix(
+        sample_mean,
+        sample_peak,
+        horizon,
+        feature_names,
+    )
+    if matrix.shape[0] != decision_gidx.size:
+        raise RuntimeError("aggregated feature length mismatch")
+    return matrix.astype(np.float32), metric_names
+
+
+def role_for_router(
+    run_meta: dict[str, Any],
+    router: int,
+) -> str:
+    label = int(run_meta.get("label", 0) or 0)
+    active = parse_nodes(run_meta.get("active_cores"))
+    attackers = parse_nodes(run_meta.get("attackers"))
+
+    if label == 0:
+        return (
+            "benign_active_source"
+            if router in active
+            else "benign_inactive_router"
+        )
+    if router in attackers:
+        return "true_attacker"
+    if router in active:
+        return "attack_legitimate_active"
+    return "attack_other_router"
+
+
+def deterministic_sample(values: np.ndarray, maximum: int) -> np.ndarray:
+    array = np.asarray(values)
+    row_count = int(array.shape[0]) if array.ndim > 0 else 1
+    if row_count <= maximum:
+        return array
+    indices = np.linspace(
+        0,
+        row_count - 1,
+        num=maximum,
+        dtype=np.int64,
+    )
+    return array[indices]
+
+
+def average_ranks(values: np.ndarray) -> np.ndarray:
+    array = np.asarray(values, dtype=np.float64)
+    order = np.argsort(array, kind="mergesort")
+    sorted_values = array[order]
+    ranks = np.empty(array.size, dtype=np.float64)
+
+    start = 0
+    while start < array.size:
+        end = start + 1
+        while end < array.size and sorted_values[end] == sorted_values[start]:
+            end += 1
+        average = (start + 1 + end) / 2.0
+        ranks[order[start:end]] = average
+        start = end
+    return ranks
+
+
+def roc_auc_pos_vs_neg(
+    positive: np.ndarray,
+    negative: np.ndarray,
+    maximum_per_role: int,
+) -> tuple[float, int, int]:
+    pos = deterministic_sample(
+        np.asarray(positive, dtype=np.float64),
+        maximum_per_role,
+    )
+    neg = deterministic_sample(
+        np.asarray(negative, dtype=np.float64),
+        maximum_per_role,
+    )
+    values = np.concatenate([pos, neg])
+    ranks = average_ranks(values)
+    n_pos = pos.size
+    n_neg = neg.size
+    rank_sum_pos = float(np.sum(ranks[:n_pos]))
+    u = rank_sum_pos - n_pos * (n_pos + 1) / 2.0
+    auc = u / (n_pos * n_neg)
+    return float(auc), int(n_pos), int(n_neg)
+
+
+def cohens_d(positive: np.ndarray, negative: np.ndarray) -> float:
+    pos = np.asarray(positive, dtype=np.float64)
+    neg = np.asarray(negative, dtype=np.float64)
+    if pos.size < 2 or neg.size < 2:
+        return math.nan
+    var_pos = float(np.var(pos, ddof=1))
+    var_neg = float(np.var(neg, ddof=1))
+    pooled = math.sqrt(
+        (
+            (pos.size - 1) * var_pos
+            + (neg.size - 1) * var_neg
+        )
+        / (pos.size + neg.size - 2)
+    )
+    if pooled <= 0:
+        return 0.0
+    return float((np.mean(pos) - np.mean(neg)) / pooled)
+
+
+def pearson_correlation(x: np.ndarray, y: np.ndarray) -> float:
+    a = np.asarray(x, dtype=np.float64)
+    b = np.asarray(y, dtype=np.float64)
+    if a.size < 2 or b.size != a.size:
+        return math.nan
+    a = a - np.mean(a)
+    b = b - np.mean(b)
+    denominator = math.sqrt(float(np.sum(a * a) * np.sum(b * b)))
+    if denominator <= 0:
+        return 0.0
+    return float(np.sum(a * b) / denominator)
+
+
+def summarize_values(values: np.ndarray) -> dict[str, Any]:
+    array = np.asarray(values, dtype=np.float64)
+    return {
+        "sample_count": int(array.size),
+        "mean": float(np.mean(array)),
+        "std": float(np.std(array)),
+        "p10": float(np.quantile(array, 0.10)),
+        "median": float(np.median(array)),
+        "p90": float(np.quantile(array, 0.90)),
+        "p95": float(np.quantile(array, 0.95)),
+        "minimum": float(np.min(array)),
+        "maximum": float(np.max(array)),
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data-dir", type=Path, required=True)
+    parser.add_argument("--metadata", type=Path, required=True)
+    parser.add_argument("--validation-predictions", type=Path, required=True)
+    parser.add_argument("--test-predictions", type=Path, required=True)
+    parser.add_argument("--a3-13-dir", type=Path, required=True)
+    parser.add_argument("--a3-13-lock", type=Path, required=True)
+    parser.add_argument("--a3-12-lock", type=Path, required=True)
+    parser.add_argument("--operational-policy", type=Path, required=True)
+    parser.add_argument("--operational-policy-lock", type=Path, required=True)
+    parser.add_argument("--latency-policy", type=Path, required=True)
+    parser.add_argument("--latency-policy-lock", type=Path, required=True)
+    parser.add_argument("--test-transfer-lock", type=Path, required=True)
+    parser.add_argument("--hard-normal-csv", type=Path, required=True)
+    parser.add_argument("--validation-search-script", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--deoverlap-stride", type=int, default=8)
+    parser.add_argument(
+        "--max-auc-samples-per-role",
+        type=int,
+        default=50000,
+    )
+    parser.add_argument(
+        "--max-correlation-samples-per-role",
+        type=int,
+        default=50000,
+    )
+    args = parser.parse_args()
+
+    x_path = args.data_dir / "x.npy"
+    dataset_run_index_path = args.data_dir / "run_index.npy"
+    end_epoch_path = args.data_dir / "end_epoch.npy"
+
+    branch_dir = args.a3_13_dir / "branch_probabilities"
+    required = [
+        args.data_dir,
+        args.metadata,
+        args.validation_predictions,
+        args.test_predictions,
+        args.a3_13_lock,
+        args.a3_12_lock,
+        args.operational_policy,
+        args.operational_policy_lock,
+        args.latency_policy,
+        args.latency_policy_lock,
+        args.test_transfer_lock,
+        args.hard_normal_csv,
+        args.validation_search_script,
+        x_path,
+        dataset_run_index_path,
+        end_epoch_path,
+        branch_dir / "validation__full__node_prob.npy",
+        branch_dir / "validation__local_only__node_prob.npy",
+        branch_dir / "development_test__full__node_prob.npy",
+        branch_dir / "development_test__local_only__node_prob.npy",
+    ]
+    missing = [str(path) for path in required if not path.exists()]
+    if missing:
+        print("A3.15 FAIL: missing required paths", file=sys.stderr)
+        for path in missing:
+            print(f"  {path}", file=sys.stderr)
+        return 2
+
+    if args.output_dir.exists():
+        print(
+            f"A3.15 FAIL: output exists: {args.output_dir}",
+            file=sys.stderr,
+        )
+        return 2
+    args.output_dir.mkdir(parents=True)
+
+    metadata = load_json(args.metadata)
+    runs = metadata.get(
+        "runs",
+        metadata.get(
+            "run_metadata",
+            metadata.get("completed_runs"),
+        ),
+    )
+    if not isinstance(runs, list):
+        raise RuntimeError("metadata run list not found")
+
+    feature_names = metadata.get("feature_cols")
+    if not isinstance(feature_names, list) or len(feature_names) != 24:
+        feature_names = FALLBACK_FEATURE_NAMES.copy()
+    else:
+        feature_names = [str(value) for value in feature_names]
+
+    a3_13_lock = load_json(args.a3_13_lock)
+    a3_12_lock = load_json(args.a3_12_lock)
+    operational = load_json(args.operational_policy)
+    operational_lock = load_json(args.operational_policy_lock)
+    latency = load_json(args.latency_policy)
+    latency_lock = load_json(args.latency_policy_lock)
+    test_lock = load_json(args.test_transfer_lock)
+
+    val_sha = sha256_file(args.validation_predictions)
+    test_sha = sha256_file(args.test_predictions)
+    operational_sha = sha256_file(args.operational_policy)
+    latency_sha = sha256_file(args.latency_policy)
+
+    failures: list[str] = []
+    if a3_13_lock.get("validation_predictions_sha256") != val_sha:
+        failures.append("A3.13 validation prediction hash mismatch")
+    if a3_13_lock.get("test_predictions_sha256") != test_sha:
+        failures.append("A3.13 test prediction hash mismatch")
+    if a3_13_lock.get("development_test_used_for_selection") is not False:
+        failures.append("A3.13 reports development-test selection")
+    if a3_12_lock.get("validation_predictions_sha256") != val_sha:
+        failures.append("A3.12 validation prediction hash mismatch")
+    if a3_12_lock.get("test_predictions_sha256") != test_sha:
+        failures.append("A3.12 test prediction hash mismatch")
+    if operational_lock.get("operational_policy_family_sha256") != operational_sha:
+        failures.append("operational policy hash mismatch")
+    if latency_lock.get("frozen_latency_policy_family_sha256") != latency_sha:
+        failures.append("latency policy hash mismatch")
+    if test_lock.get("test_predictions_sha256") != test_sha:
+        failures.append("test-transfer prediction hash mismatch")
+    if test_lock.get("policy_selection_performed_on_test") is not False:
+        failures.append("test-transfer reports test selection")
+
+    if failures:
+        payload = {"status": "FAIL", "failures": failures}
+        (args.output_dir / "a3_15_failure.json").write_text(
+            json.dumps(payload, indent=2, sort_keys=True),
+            encoding="utf-8",
+        )
+        print(json.dumps(payload, indent=2), file=sys.stderr)
+        return 1
+
+    helper = load_module(
+        args.validation_search_script,
+        "resolved_v4_a3_11_validation_search_for_a3_15",
+    )
+
+    x_memmap = np.load(x_path, mmap_mode="r")
+    dataset_run_index = np.load(dataset_run_index_path, mmap_mode="r")
+    dataset_end_epoch = np.load(end_epoch_path, mmap_mode="r")
+
+    candidate_policy = operational["policy_roles"][
+        "candidate_localization"
+    ]["policy"]
+    horizon = int(candidate_policy["horizon"])
+
+    with np.load(args.validation_predictions, allow_pickle=True) as archive:
+        val_graph_prob = np.asarray(archive["graph_prob"])
+        val_global_index = np.asarray(archive["global_index"], dtype=np.int64)
+        val_run_index = np.asarray(archive["run_index"], dtype=np.int64)
+
+    val_prepared = helper.prepare_data(
+        args.validation_predictions,
+        args.data_dir,
+    )
+    val_full_raw = np.load(
+        branch_dir / "validation__full__node_prob.npy",
+        mmap_mode="r",
+    )
+    val_local_raw = np.load(
+        branch_dir / "validation__local_only__node_prob.npy",
+        mmap_mode="r",
+    )
+
+    endpoints, val_full_scores, val_graph_scores = aggregate_scores(
+        helper,
+        val_prepared,
+        val_full_raw,
+        val_graph_prob,
+        horizon,
+        args.deoverlap_stride,
+    )
+    local_endpoints, val_local_scores, _ = aggregate_scores(
+        helper,
+        val_prepared,
+        val_local_raw,
+        val_graph_prob,
+        horizon,
+        args.deoverlap_stride,
+    )
+    if not np.array_equal(endpoints, local_endpoints):
+        raise RuntimeError("validation branch endpoints differ")
+
+    val_endpoint_runs = val_run_index[endpoints]
+    role_metric_parts: dict[str, list[np.ndarray]] = defaultdict(list)
+    role_full_score_parts: dict[str, list[np.ndarray]] = defaultdict(list)
+    role_local_score_parts: dict[str, list[np.ndarray]] = defaultdict(list)
+
+    metric_names: list[str] | None = None
+
+    unique_runs = sorted(int(value) for value in np.unique(val_endpoint_runs))
+    for run_number, target_run in enumerate(unique_runs, start=1):
+        if target_run >= len(runs) or not isinstance(runs[target_run], dict):
+            raise RuntimeError(f"metadata missing for run {target_run}")
+
+        positions = np.flatnonzero(val_endpoint_runs == target_run)
+        decision_gidx = val_global_index[endpoints[positions]]
+        metric_matrix, current_metric_names = aggregate_run_metrics(
+            x_memmap,
+            dataset_run_index,
+            decision_gidx,
+            target_run,
+            horizon,
+            args.deoverlap_stride,
+            feature_names,
+        )
+        if metric_names is None:
+            metric_names = current_metric_names
+        elif metric_names != current_metric_names:
+            raise RuntimeError("metric-name mismatch between runs")
+
+        run_meta = runs[target_run]
+        for router in range(metric_matrix.shape[1]):
+            role = role_for_router(run_meta, router)
+            role_metric_parts[role].append(metric_matrix[:, router, :])
+            role_full_score_parts[role].append(
+                val_full_scores[positions, router]
+            )
+            role_local_score_parts[role].append(
+                val_local_scores[positions, router]
+            )
+
+        if (
+            run_number == 1
+            or run_number == len(unique_runs)
+            or run_number % 20 == 0
+        ):
+            print(
+                f"validation feature aggregation "
+                f"{run_number}/{len(unique_runs)} runs",
+                flush=True,
+            )
+
+    if metric_names is None:
+        raise RuntimeError("no validation metrics generated")
+
+    role_metrics = {
+        role: np.concatenate(parts, axis=0)
+        for role, parts in role_metric_parts.items()
+    }
+    role_full_scores = {
+        role: np.concatenate(parts, axis=0)
+        for role, parts in role_full_score_parts.items()
+    }
+    role_local_scores = {
+        role: np.concatenate(parts, axis=0)
+        for role, parts in role_local_score_parts.items()
+    }
+
+    role_summary_rows: list[dict[str, Any]] = []
+    for role in ROLE_ORDER:
+        if role not in role_metrics:
+            continue
+        matrix = role_metrics[role]
+        for index, metric_name in enumerate(metric_names):
+            role_summary_rows.append(
+                {
+                    "split": "validation",
+                    "role": role,
+                    "metric_index": index,
+                    "metric_name": metric_name,
+                    **summarize_values(matrix[:, index]),
+                }
+            )
+    write_csv(
+        args.output_dir / "validation_role_metric_summary.csv",
+        role_summary_rows,
+    )
+
+    comparisons = [
+        ("attacker_vs_benign_active", "true_attacker", "benign_active_source"),
+        ("attacker_vs_benign_inactive", "true_attacker", "benign_inactive_router"),
+    ]
+    separation_rows: list[dict[str, Any]] = []
+    separation_lookup: dict[tuple[str, str], dict[str, Any]] = {}
+
+    for comparison, positive_role, negative_role in comparisons:
+        positive_matrix = role_metrics[positive_role]
+        negative_matrix = role_metrics[negative_role]
+        for index, metric_name in enumerate(metric_names):
+            auc, sampled_positive, sampled_negative = roc_auc_pos_vs_neg(
+                positive_matrix[:, index],
+                negative_matrix[:, index],
+                args.max_auc_samples_per_role,
+            )
+            separability = max(auc, 1.0 - auc)
+            direction = (
+                "higher_in_true_attacker"
+                if auc >= 0.5
+                else "lower_in_true_attacker"
+            )
+            row = {
+                "split": "validation",
+                "comparison": comparison,
+                "positive_role": positive_role,
+                "negative_role": negative_role,
+                "metric_index": index,
+                "metric_name": metric_name,
+                "roc_auc_signed": auc,
+                "roc_auc_separability": separability,
+                "direction": direction,
+                "cohens_d": cohens_d(
+                    positive_matrix[:, index],
+                    negative_matrix[:, index],
+                ),
+                "positive_count_full": int(positive_matrix.shape[0]),
+                "negative_count_full": int(negative_matrix.shape[0]),
+                "positive_count_auc": sampled_positive,
+                "negative_count_auc": sampled_negative,
+            }
+            separation_rows.append(row)
+            separation_lookup[(comparison, metric_name)] = row
+
+    write_csv(
+        args.output_dir / "validation_pairwise_separation.csv",
+        separation_rows,
+    )
+
+    ranking_rows: list[dict[str, Any]] = []
+    for metric_index, metric_name in enumerate(metric_names):
+        active = separation_lookup[
+            ("attacker_vs_benign_active", metric_name)
+        ]
+        inactive = separation_lookup[
+            ("attacker_vs_benign_inactive", metric_name)
+        ]
+        consistent_direction = active["direction"] == inactive["direction"]
+        minimum = min(
+            float(active["roc_auc_separability"]),
+            float(inactive["roc_auc_separability"]),
+        )
+        mean_sep = (
+            float(active["roc_auc_separability"])
+            + float(inactive["roc_auc_separability"])
+        ) / 2.0
+        ranking_rows.append(
+            {
+                "metric_index": metric_index,
+                "metric_name": metric_name,
+                "active_source_separability": active[
+                    "roc_auc_separability"
+                ],
+                "inactive_router_separability": inactive[
+                    "roc_auc_separability"
+                ],
+                "minimum_role_separability": minimum,
+                "mean_role_separability": mean_sep,
+                "active_direction": active["direction"],
+                "inactive_direction": inactive["direction"],
+                "direction_consistent": consistent_direction,
+                "eligible_univariate_proxy": bool(
+                    consistent_direction and minimum >= 0.70
+                ),
+            }
+        )
+
+    ranking_rows.sort(
+        key=lambda row: (
+            not bool(row["direction_consistent"]),
+            -float(row["minimum_role_separability"]),
+            -float(row["mean_role_separability"]),
+            str(row["metric_name"]),
+        )
+    )
+    for rank, row in enumerate(ranking_rows, start=1):
+        row["validation_rank"] = rank
+
+    write_csv(
+        args.output_dir / "validation_metric_ranking.csv",
+        ranking_rows,
+    )
+
+    correlation_rows: list[dict[str, Any]] = []
+    correlation_groups = {
+        "all_roles": ROLE_ORDER,
+        "benign_roles": [
+            "benign_active_source",
+            "benign_inactive_router",
+        ],
+        "attack_roles": [
+            "true_attacker",
+            "attack_legitimate_active",
+            "attack_other_router",
+        ],
+    }
+
+    for group_name, group_roles in correlation_groups.items():
+        available = [role for role in group_roles if role in role_metrics]
+        metric_matrix = np.concatenate(
+            [
+                deterministic_sample(
+                    role_metrics[role],
+                    args.max_correlation_samples_per_role,
+                )
+                for role in available
+            ],
+            axis=0,
+        )
+        full_scores = np.concatenate(
+            [
+                deterministic_sample(
+                    role_full_scores[role],
+                    args.max_correlation_samples_per_role,
+                )
+                for role in available
+            ]
+        )
+        local_scores = np.concatenate(
+            [
+                deterministic_sample(
+                    role_local_scores[role],
+                    args.max_correlation_samples_per_role,
+                )
+                for role in available
+            ]
+        )
+
+        for index, metric_name in enumerate(metric_names):
+            correlation_rows.append(
+                {
+                    "split": "validation",
+                    "group": group_name,
+                    "metric_index": index,
+                    "metric_name": metric_name,
+                    "sample_count": int(metric_matrix.shape[0]),
+                    "pearson_with_full_score": pearson_correlation(
+                        metric_matrix[:, index],
+                        full_scores,
+                    ),
+                    "pearson_with_local_only_score": pearson_correlation(
+                        metric_matrix[:, index],
+                        local_scores,
+                    ),
+                }
+            )
+
+    write_csv(
+        args.output_dir / "validation_score_feature_correlations.csv",
+        correlation_rows,
+    )
+
+    policies = {
+        "P1_L2_CANDIDATE": candidate_policy,
+        "P2_L2_CONFIRMED": operational["policy_roles"][
+            "confirmed_isolation"
+        ]["policy"],
+        "P3_MAX_SAFETY": latency["policies"]["P3_MAX_SAFETY"],
+    }
+
+    with args.hard_normal_csv.open(
+        newline="",
+        encoding="utf-8",
+    ) as handle:
+        hard_rows = list(csv.DictReader(handle))
+
+    with np.load(args.test_predictions, allow_pickle=True) as archive:
+        test_graph_prob = np.asarray(archive["graph_prob"])
+        test_global_index = np.asarray(archive["global_index"], dtype=np.int64)
+        test_run_index = np.asarray(archive["run_index"], dtype=np.int64)
+
+    test_prepared = helper.prepare_data(
+        args.test_predictions,
+        args.data_dir,
+    )
+    test_full_raw = np.load(
+        branch_dir / "development_test__full__node_prob.npy",
+        mmap_mode="r",
+    )
+    test_local_raw = np.load(
+        branch_dir / "development_test__local_only__node_prob.npy",
+        mmap_mode="r",
+    )
+
+    aggregate_cache: dict[int, dict[str, np.ndarray]] = {}
+    hard_trace_rows: list[dict[str, Any]] = []
+    hard_summary_rows: list[dict[str, Any]] = []
+    hard_metric_means: dict[str, np.ndarray] = {}
+    hard_role_match: dict[str, str] = {}
+
+    for hard in hard_rows:
+        policy_name = hard["policy_name"]
+        if policy_name not in policies:
+            continue
+        policy = policies[policy_name]
+        current_horizon = int(policy["horizon"])
+        target_run = int(hard["run_index"])
+        target_router = int(hard["top_false_router"])
+        case_id = f"{policy_name}__run{target_run}__router{target_router}"
+
+        if current_horizon not in aggregate_cache:
+            full_endpoints, full_scores, graph_scores = aggregate_scores(
+                helper,
+                test_prepared,
+                test_full_raw,
+                test_graph_prob,
+                current_horizon,
+                args.deoverlap_stride,
+            )
+            local_endpoints, local_scores, _ = aggregate_scores(
+                helper,
+                test_prepared,
+                test_local_raw,
+                test_graph_prob,
+                current_horizon,
+                args.deoverlap_stride,
+            )
+            if not np.array_equal(full_endpoints, local_endpoints):
+                raise RuntimeError("test branch endpoints differ")
+            aggregate_cache[current_horizon] = {
+                "endpoints": full_endpoints,
+                "full_scores": full_scores,
+                "local_scores": local_scores,
+                "graph_scores": graph_scores,
+            }
+
+        cached = aggregate_cache[current_horizon]
+        all_endpoints = cached["endpoints"]
+        run_at_endpoint = test_run_index[all_endpoints]
+        positions = np.flatnonzero(run_at_endpoint == target_run)
+        decision_endpoints = all_endpoints[positions]
+        decision_gidx = test_global_index[decision_endpoints]
+
+        metric_matrix, current_metric_names = aggregate_run_metrics(
+            x_memmap,
+            dataset_run_index,
+            decision_gidx,
+            target_run,
+            current_horizon,
+            args.deoverlap_stride,
+            feature_names,
+        )
+        if current_metric_names != metric_names:
+            raise RuntimeError("hard-normal metric-name mismatch")
+
+        full_scores = cached["full_scores"][positions]
+        local_scores = cached["local_scores"][positions]
+        graph_scores = cached["graph_scores"][positions]
+
+        gated = (
+            full_scores >= float(policy["node_threshold"])
+        ).astype(np.int8)
+        gated[
+            graph_scores < float(policy["graph_threshold"])
+        ] = 0
+        final = apply_persistence(
+            gated,
+            run_at_endpoint,
+            str(policy.get("persistence_rule", "none")),
+        )[positions]
+
+        selected = final[:, target_router] == 1
+        if int(np.sum(selected)) != int(hard["false_isolation_decisions"]):
+            raise RuntimeError(
+                f"hard-normal reconstruction mismatch for {case_id}"
+            )
+
+        run_meta = runs[target_run]
+        role = role_for_router(run_meta, target_router)
+        role_match = (
+            "benign_active_source"
+            if role == "benign_active_source"
+            else "benign_inactive_router"
+        )
+        hard_role_match[case_id] = role_match
+
+        false_matrix = metric_matrix[selected, target_router, :]
+        nonselected_matrix = metric_matrix[~selected, target_router, :]
+        hard_metric_means[case_id] = np.mean(false_matrix, axis=0)
+
+        false_ordinals = np.flatnonzero(selected)
+        for ordinal in false_ordinals:
+            row: dict[str, Any] = {
+                "case_id": case_id,
+                "policy_name": policy_name,
+                "run_index": target_run,
+                "run_id": run_meta.get("run_id", ""),
+                "profile": run_meta.get("profile", ""),
+                "placement_family": run_meta.get("placement_family", ""),
+                "target_router": target_router,
+                "router_role": role,
+                "decision_ordinal": int(ordinal),
+                "archive_endpoint_row": int(decision_endpoints[ordinal]),
+                "global_index": int(decision_gidx[ordinal]),
+                "end_epoch": int(dataset_end_epoch[decision_gidx[ordinal]]),
+                "full_node_score": float(
+                    full_scores[ordinal, target_router]
+                ),
+                "local_only_node_score": float(
+                    local_scores[ordinal, target_router]
+                ),
+                "graph_score": float(graph_scores[ordinal]),
+            }
+            for metric_index, metric_name in enumerate(metric_names):
+                row[metric_name] = float(
+                    metric_matrix[ordinal, target_router, metric_index]
+                )
+            hard_trace_rows.append(row)
+
+        for cohort_name, matrix in [
+            ("hard_false_decisions", false_matrix),
+            ("same_run_nonselected_decisions", nonselected_matrix),
+        ]:
+            for metric_index, metric_name in enumerate(metric_names):
+                hard_summary_rows.append(
+                    {
+                        "case_id": case_id,
+                        "policy_name": policy_name,
+                        "run_index": target_run,
+                        "target_router": target_router,
+                        "router_role": role,
+                        "cohort": cohort_name,
+                        "metric_index": metric_index,
+                        "metric_name": metric_name,
+                        **summarize_values(matrix[:, metric_index]),
+                    }
+                )
+
+    write_csv(
+        args.output_dir / "hard_normal_directional_trace.csv",
+        hard_trace_rows,
+    )
+    write_csv(
+        args.output_dir / "hard_normal_metric_summary.csv",
+        hard_summary_rows,
+    )
+
+    top_metrics = [
+        row
+        for row in ranking_rows
+        if bool(row["direction_consistent"])
+    ][:15]
+
+    closeness_rows: list[dict[str, Any]] = []
+    for case_id, hard_mean_vector in hard_metric_means.items():
+        matched_role = hard_role_match[case_id]
+        attacker_matrix = role_metrics["true_attacker"]
+        benign_matrix = role_metrics[matched_role]
+
+        for ranking in top_metrics:
+            metric_index = int(ranking["metric_index"])
+            metric_name = str(ranking["metric_name"])
+
+            attacker_mean = float(np.mean(attacker_matrix[:, metric_index]))
+            attacker_std = float(np.std(attacker_matrix[:, metric_index]))
+            benign_mean = float(np.mean(benign_matrix[:, metric_index]))
+            benign_std = float(np.std(benign_matrix[:, metric_index]))
+            hard_mean = float(hard_mean_vector[metric_index])
+
+            scale = max(
+                (attacker_std + benign_std) / 2.0,
+                EPS,
+            )
+            attacker_distance = abs(hard_mean - attacker_mean) / scale
+            benign_distance = abs(hard_mean - benign_mean) / scale
+
+            closeness_rows.append(
+                {
+                    "case_id": case_id,
+                    "matched_validation_benign_role": matched_role,
+                    "validation_metric_rank": ranking["validation_rank"],
+                    "metric_index": metric_index,
+                    "metric_name": metric_name,
+                    "validation_minimum_role_separability": ranking[
+                        "minimum_role_separability"
+                    ],
+                    "hard_false_mean": hard_mean,
+                    "validation_true_attacker_mean": attacker_mean,
+                    "validation_role_matched_benign_mean": benign_mean,
+                    "standardized_distance_to_true_attacker": attacker_distance,
+                    "standardized_distance_to_role_matched_benign": benign_distance,
+                    "hard_false_closer_to": (
+                        "true_attacker"
+                        if attacker_distance < benign_distance
+                        else "role_matched_benign"
+                    ),
+                }
+            )
+
+    write_csv(
+        args.output_dir / "hard_normal_top_metric_closeness.csv",
+        closeness_rows,
+    )
+
+    eligible = [
+        row
+        for row in ranking_rows
+        if bool(row["direction_consistent"])
+    ]
+    best = eligible[0] if eligible else None
+    best_minimum = (
+        float(best["minimum_role_separability"])
+        if best is not None
+        else 0.5
+    )
+
+    if best_minimum >= 0.80:
+        decision_class = "strong_univariate_directional_proxy_exists"
+        recommendation = (
+            "Proceed to A4a with the full fused encoder. The top validation-"
+            "ranked source/transit proxy may be tested as an explicit auxiliary "
+            "input or abstention feature using validation-only selection. Do "
+            "not create a development-test threshold."
+        )
+    elif best_minimum >= 0.70:
+        decision_class = "moderate_univariate_directional_proxy_only"
+        recommendation = (
+            "Proceed to A4a with the full fused encoder, but treat directional "
+            "proxies as auxiliary features rather than a hard gate. V5 should "
+            "add explicit source/transit and valid-port semantics."
+        )
+    else:
+        decision_class = "no_stable_univariate_directional_proxy"
+        recommendation = (
+            "Proceed to A4a for cardinality/set decoding, but do not add a "
+            "hand-designed source/transit gate. V5 must add explicit role and "
+            "port-validity semantics to address hard-normal safety."
+        )
+
+    case_closeness_summary: dict[str, Any] = {}
+    for case_id in sorted(hard_metric_means):
+        rows = [row for row in closeness_rows if row["case_id"] == case_id]
+        attacker_count = sum(
+            row["hard_false_closer_to"] == "true_attacker"
+            for row in rows
+        )
+        case_closeness_summary[case_id] = {
+            "top_metric_count": len(rows),
+            "closer_to_true_attacker_count": attacker_count,
+            "closer_to_role_matched_benign_count": len(rows) - attacker_count,
+        }
+
+    summary = {
+        "status": "PASS",
+        "designation": "V4-A3.15 Directional Source-versus-Transit Attribution",
+        "validation_metric_count": len(metric_names),
+        "validation_role_counts": {
+            role: int(matrix.shape[0])
+            for role, matrix in role_metrics.items()
+        },
+        "best_validation_directional_proxy": best,
+        "validation_based_decision_class": decision_class,
+        "validation_based_recommendation": recommendation,
+        "hard_normal_top_metric_closeness": case_closeness_summary,
+        "derived_metric_warning": (
+            "All source/transit quantities are proxies derived from the saved "
+            "24 port features. V4 has no explicit source/transit label and no "
+            "explicit valid/idle/clipped port masks in the saved sample "
+            "semantics."
+        ),
+        "development_test_used_for_selection": False,
+        "development_test_role": (
+            "descriptive hard-normal comparison only"
+        ),
+        "training_performed": False,
+        "threshold_search_performed": False,
+        "provenance": {
+            "validation_predictions_sha256": val_sha,
+            "test_predictions_sha256": test_sha,
+            "a3_13_lock_sha256": sha256_file(args.a3_13_lock),
+            "a3_12_lock_sha256": sha256_file(args.a3_12_lock),
+            "operational_policy_sha256": operational_sha,
+            "latency_policy_sha256": latency_sha,
+            "metadata_sha256": sha256_file(args.metadata),
+            "validation_search_script_sha256": sha256_file(
+                args.validation_search_script
+            ),
+            "hard_normal_csv_sha256": sha256_file(args.hard_normal_csv),
+        },
+    }
+
+    summary_path = args.output_dir / "summary.json"
+    summary_path.write_text(
+        json.dumps(jsonable(summary), indent=2, sort_keys=True),
+        encoding="utf-8",
+    )
+
+    lock = {
+        "status": "A3_15_DIRECTIONAL_SOURCE_TRANSIT_COMPLETE",
+        "validation_predictions_sha256": val_sha,
+        "test_predictions_sha256": test_sha,
+        "summary_sha256": sha256_file(summary_path),
+        "development_test_used_for_selection": False,
+        "training_performed": False,
+        "threshold_search_performed": False,
+    }
+    (args.output_dir / "A3_15_LOCK.json").write_text(
+        json.dumps(lock, indent=2, sort_keys=True),
+        encoding="utf-8",
+    )
+    (args.output_dir / "V4_A3_15_DIRECTIONAL_SOURCE_TRANSIT_PASS").write_text(
+        "V4_A3_15_DIRECTIONAL_SOURCE_TRANSIT_PASS\n",
+        encoding="utf-8",
+    )
+
+    print(json.dumps(jsonable(summary), indent=2, sort_keys=True))
+    print("V4_A3_15_DIRECTIONAL_SOURCE_TRANSIT_PASS")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

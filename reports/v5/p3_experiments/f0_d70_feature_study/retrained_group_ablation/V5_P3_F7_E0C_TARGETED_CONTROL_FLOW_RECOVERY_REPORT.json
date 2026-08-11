@@ -1,0 +1,612 @@
+{
+  "artifacts": {
+    "call_graph_and_bindings": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0C_LOCAL_CALL_GRAPH_AND_PARAMETER_BINDINGS.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0C_TRAINER_GENERATION_DECISION.json",
+    "early_stop_recovery": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0C_EARLY_STOP_THRESHOLD_AND_STALENESS_RECOVERY.json",
+    "final_recipe_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0C_FINAL_EXECUTION_RECIPE_LOCK.json",
+    "gradient_clip_recovery": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0C_INTERPROCEDURAL_GRADIENT_CLIP_THRESHOLD_RECOVERY.json",
+    "optimizer_step_recovery": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0C_INTERPROCEDURAL_OPTIMIZER_STEP_CADENCE_RECOVERY.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-06T00:02:58.021905+00:00",
+  "decision": {
+    "E0B_complete": true,
+    "E1_trainer_generation_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "actual_scientific_training_started": false,
+    "compact_interface_equivalence_authorized": false,
+    "early_stopping_semantics_resolved": false,
+    "exact_epoch_semantics_resolved": true,
+    "feature_removal_authorized": false,
+    "gradient_clipping_semantics_resolved": true,
+    "hardware_reduction_claim_authorized": false,
+    "interprocedural_parameter_binding_complete": true,
+    "loss_semantics_resolved": true,
+    "next_stage": "V5_P3_F7_E0D_MANUAL_SOURCE_EXCERPT_PIN",
+    "optimizer_step_cadence_resolved": true,
+    "scheduler_semantics_resolved": true,
+    "sealed_test_access": false,
+    "unresolved_fields": [
+      {
+        "field": "early_stopping_policy",
+        "reason": "EARLY_STOP_THRESHOLD_OR_STALENESS_EXPRESSION_UNRESOLVED"
+      }
+    ]
+  },
+  "finding": {
+    "early_stopping": {
+      "active": true,
+      "candidate": {
+        "comparison_rows": [
+          {
+            "left_expression": "epoch",
+            "left_resolution": {
+              "assignments": [],
+              "expression": "epoch",
+              "reason": "symbol_not_found",
+              "resolved": false,
+              "resolved_values": [],
+              "symbol": "epoch"
+            },
+            "normalized_operator": ">=",
+            "numeric_threshold": 15.0,
+            "numeric_threshold_side": "right",
+            "operator": ">=",
+            "record": {
+              "excerpt": "            epoch >= 15",
+              "excerpt_sha256": "275cd79cb30f3d870a074c86bb687f084315b25592207ee06db70c0a3c43e178",
+              "line_end": 1631,
+              "line_start": 1631,
+              "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+              "source": "epoch >= 15"
+            },
+            "right_expression": "15",
+            "right_resolution": {
+              "expression": "15",
+              "resolved": true,
+              "route": "literal",
+              "value": 15
+            },
+            "staleness": {
+              "classification": "DIRECT_STALE_COUNTER",
+              "counter": "epoch",
+              "expression": "epoch",
+              "names": [
+                "epoch"
+              ]
+            }
+          },
+          {
+            "left_expression": "early_stop_patience_counter",
+            "left_resolution": {
+              "assignments": [
+                {
+                  "record": {
+                    "excerpt": "    early_stop_patience_counter = 0",
+                    "excerpt_sha256": "7b6aeecea9cc0808bc9b74fba03e28b4bf4fc2a18ba33bbb061d498b0fa2fec9",
+                    "line_end": 1430,
+                    "line_start": 1430,
+                    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                    "source": "early_stop_patience_counter = 0"
+                  },
+                  "resolution": {
+                    "expression": "0",
+                    "resolved": true,
+                    "route": "literal",
+                    "value": 0
+                  },
+                  "scope": "main"
+                },
+                {
+                  "record": {
+                    "excerpt": "            early_stop_patience_counter = 0",
+                    "excerpt_sha256": "87961632e23377d8cdd4c49a6f9ef2e743ff3da8c2263f37db1b3d2aa0813368",
+                    "line_end": 1562,
+                    "line_start": 1562,
+                    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                    "source": "early_stop_patience_counter = 0"
+                  },
+                  "resolution": {
+                    "expression": "0",
+                    "resolved": true,
+                    "route": "literal",
+                    "value": 0
+                  },
+                  "scope": "main"
+                }
+              ],
+              "expression": "early_stop_patience_counter",
+              "resolved": true,
+              "route": "unique_prior_assignment_value",
+              "symbol": "early_stop_patience_counter",
+              "value": 0
+            },
+            "normalized_operator": ">=",
+            "numeric_threshold": 12.0,
+            "numeric_threshold_side": "right",
+            "operator": ">=",
+            "record": {
+              "excerpt": "            and early_stop_patience_counter >= 12",
+              "excerpt_sha256": "326e602f3824b2924200d9178938ef7921a6f6e424c51afb04042478c75ff26c",
+              "line_end": 1632,
+              "line_start": 1632,
+              "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+              "source": "early_stop_patience_counter >= 12"
+            },
+            "right_expression": "12",
+            "right_resolution": {
+              "expression": "12",
+              "resolved": true,
+              "route": "literal",
+              "value": 12
+            },
+            "staleness": {
+              "classification": "DIRECT_STALE_COUNTER",
+              "counter": "early_stop_patience_counter",
+              "expression": "early_stop_patience_counter",
+              "names": [
+                "early_stop_patience_counter"
+              ]
+            }
+          }
+        ],
+        "context": {
+          "all_paths_batch": false,
+          "all_paths_epoch": true,
+          "any_path_batch": false,
+          "any_path_epoch": true,
+          "direct_context": {
+            "batch": false,
+            "epoch": true,
+            "loops": [
+              {
+                "iterator": "range(1, 101)",
+                "line_start": 1462,
+                "target": "epoch",
+                "type": "for"
+              }
+            ]
+          },
+          "execution_paths": [
+            {
+              "batch": false,
+              "callsites": [
+                {
+                  "callee": "main",
+                  "caller": null,
+                  "direct_loop_context": {
+                    "batch": false,
+                    "epoch": false,
+                    "loops": []
+                  },
+                  "record": {
+                    "excerpt": "    raise SystemExit(main())",
+                    "excerpt_sha256": "cc79ea1de8f5cf7c4f02e7b43c494b1ae782416b138c209cd6f7b5ff347fc48c",
+                    "line_end": 1908,
+                    "line_start": 1908,
+                    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                    "source": "main()"
+                  }
+                }
+              ],
+              "direct_node_context": {
+                "batch": false,
+                "epoch": true,
+                "loops": [
+                  {
+                    "iterator": "range(1, 101)",
+                    "line_start": 1462,
+                    "target": "epoch",
+                    "type": "for"
+                  }
+                ]
+              },
+              "epoch": true,
+              "path": [
+                "<module>",
+                "main"
+              ]
+            }
+          ],
+          "function": "main"
+        },
+        "record": {
+          "excerpt": "        if (\n            epoch >= 15\n            and early_stop_patience_counter >= 12\n        ):\n            stopped_early = True\n            print(\n                f\"early stopping at epoch {epoch}; \"\n                \"patience reached 12\"\n            )\n            break",
+          "excerpt_sha256": "1ef6c534962a04a5f6ed7717c319bdc34553eec7c83c4c99dd2a9c9fecc8ea60",
+          "line_end": 1639,
+          "line_start": 1630,
+          "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+          "source": "if epoch >= 15 and early_stop_patience_counter >= 12:\n    stopped_early = True\n    print(f'early stopping at epoch {epoch}; patience reached 12')\n    break"
+        },
+        "viable_comparisons": [
+          {
+            "left_expression": "epoch",
+            "left_resolution": {
+              "assignments": [],
+              "expression": "epoch",
+              "reason": "symbol_not_found",
+              "resolved": false,
+              "resolved_values": [],
+              "symbol": "epoch"
+            },
+            "normalized_operator": ">=",
+            "numeric_threshold": 15.0,
+            "numeric_threshold_side": "right",
+            "operator": ">=",
+            "record": {
+              "excerpt": "            epoch >= 15",
+              "excerpt_sha256": "275cd79cb30f3d870a074c86bb687f084315b25592207ee06db70c0a3c43e178",
+              "line_end": 1631,
+              "line_start": 1631,
+              "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+              "source": "epoch >= 15"
+            },
+            "right_expression": "15",
+            "right_resolution": {
+              "expression": "15",
+              "resolved": true,
+              "route": "literal",
+              "value": 15
+            },
+            "staleness": {
+              "classification": "DIRECT_STALE_COUNTER",
+              "counter": "epoch",
+              "expression": "epoch",
+              "names": [
+                "epoch"
+              ]
+            }
+          },
+          {
+            "left_expression": "early_stop_patience_counter",
+            "left_resolution": {
+              "assignments": [
+                {
+                  "record": {
+                    "excerpt": "    early_stop_patience_counter = 0",
+                    "excerpt_sha256": "7b6aeecea9cc0808bc9b74fba03e28b4bf4fc2a18ba33bbb061d498b0fa2fec9",
+                    "line_end": 1430,
+                    "line_start": 1430,
+                    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                    "source": "early_stop_patience_counter = 0"
+                  },
+                  "resolution": {
+                    "expression": "0",
+                    "resolved": true,
+                    "route": "literal",
+                    "value": 0
+                  },
+                  "scope": "main"
+                },
+                {
+                  "record": {
+                    "excerpt": "            early_stop_patience_counter = 0",
+                    "excerpt_sha256": "87961632e23377d8cdd4c49a6f9ef2e743ff3da8c2263f37db1b3d2aa0813368",
+                    "line_end": 1562,
+                    "line_start": 1562,
+                    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                    "source": "early_stop_patience_counter = 0"
+                  },
+                  "resolution": {
+                    "expression": "0",
+                    "resolved": true,
+                    "route": "literal",
+                    "value": 0
+                  },
+                  "scope": "main"
+                }
+              ],
+              "expression": "early_stop_patience_counter",
+              "resolved": true,
+              "route": "unique_prior_assignment_value",
+              "symbol": "early_stop_patience_counter",
+              "value": 0
+            },
+            "normalized_operator": ">=",
+            "numeric_threshold": 12.0,
+            "numeric_threshold_side": "right",
+            "operator": ">=",
+            "record": {
+              "excerpt": "            and early_stop_patience_counter >= 12",
+              "excerpt_sha256": "326e602f3824b2924200d9178938ef7921a6f6e424c51afb04042478c75ff26c",
+              "line_end": 1632,
+              "line_start": 1632,
+              "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+              "source": "early_stop_patience_counter >= 12"
+            },
+            "right_expression": "12",
+            "right_resolution": {
+              "expression": "12",
+              "resolved": true,
+              "route": "literal",
+              "value": 12
+            },
+            "staleness": {
+              "classification": "DIRECT_STALE_COUNTER",
+              "counter": "early_stop_patience_counter",
+              "expression": "early_stop_patience_counter",
+              "names": [
+                "early_stop_patience_counter"
+              ]
+            }
+          }
+        ]
+      },
+      "classification": "EARLY_STOP_THRESHOLD_OR_STALENESS_EXPRESSION_UNRESOLVED",
+      "semantics_resolved": false
+    },
+    "gradient_clip": {
+      "context": {
+        "all_paths_batch": true,
+        "all_paths_epoch": true,
+        "any_path_batch": true,
+        "any_path_epoch": true,
+        "direct_context": {
+          "batch": true,
+          "epoch": false,
+          "loops": [
+            {
+              "iterator": "loader",
+              "line_start": 527,
+              "target": "batch",
+              "type": "for"
+            }
+          ]
+        },
+        "execution_paths": [
+          {
+            "batch": true,
+            "callsites": [
+              {
+                "callee": "main",
+                "caller": null,
+                "direct_loop_context": {
+                  "batch": false,
+                  "epoch": false,
+                  "loops": []
+                },
+                "record": {
+                  "excerpt": "    raise SystemExit(main())",
+                  "excerpt_sha256": "cc79ea1de8f5cf7c4f02e7b43c494b1ae782416b138c209cd6f7b5ff347fc48c",
+                  "line_end": 1908,
+                  "line_start": 1908,
+                  "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                  "source": "main()"
+                }
+              },
+              {
+                "callee": "train_one_epoch",
+                "caller": "main",
+                "direct_loop_context": {
+                  "batch": false,
+                  "epoch": true,
+                  "loops": [
+                    {
+                      "iterator": "range(1, 101)",
+                      "line_start": 1462,
+                      "target": "epoch",
+                      "type": "for"
+                    }
+                  ]
+                },
+                "record": {
+                  "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+                  "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+                  "line_end": 1474,
+                  "line_start": 1466,
+                  "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                  "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+                }
+              }
+            ],
+            "direct_node_context": {
+              "batch": true,
+              "epoch": false,
+              "loops": [
+                {
+                  "iterator": "loader",
+                  "line_start": 527,
+                  "target": "batch",
+                  "type": "for"
+                }
+              ]
+            },
+            "epoch": true,
+            "path": [
+              "<module>",
+              "main",
+              "train_one_epoch"
+            ]
+          }
+        ],
+        "function": "train_one_epoch"
+      },
+      "function": "train_one_epoch",
+      "implementation": "torch.nn.utils.clip_grad_norm_",
+      "record": {
+        "excerpt": "        gradient_norm = torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            max_norm=gradient_clip,\n        )",
+        "excerpt_sha256": "69f6ccf151f9b58ac2fedbe9c88ecfc97450d089abf19407b431b024fe2de080",
+        "line_end": 551,
+        "line_start": 548,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_clip)"
+      },
+      "threshold": {
+        "argument_route": "keyword",
+        "callsites": [
+          {
+            "caller": "main",
+            "callsite": {
+              "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+              "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+              "line_end": 1474,
+              "line_start": 1466,
+              "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+              "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+            },
+            "resolution": {
+              "expression": "1.0",
+              "resolved": true,
+              "route": "literal",
+              "value": 1.0
+            }
+          }
+        ],
+        "expression": "gradient_clip",
+        "function": "train_one_epoch",
+        "keyword": "max_norm",
+        "parameter": "gradient_clip",
+        "resolved": true,
+        "route": "unique_interprocedural_parameter_binding",
+        "value": 1.0
+      }
+    },
+    "gradient_clip_order": {
+      "after_backward": true,
+      "before_optimizer_step": true
+    },
+    "gradient_clip_semantics_resolved": true,
+    "optimizer_step": {
+      "base": "optimizer",
+      "context": {
+        "all_paths_batch": true,
+        "all_paths_epoch": true,
+        "any_path_batch": true,
+        "any_path_epoch": true,
+        "direct_context": {
+          "batch": true,
+          "epoch": false,
+          "loops": [
+            {
+              "iterator": "loader",
+              "line_start": 527,
+              "target": "batch",
+              "type": "for"
+            }
+          ]
+        },
+        "execution_paths": [
+          {
+            "batch": true,
+            "callsites": [
+              {
+                "callee": "main",
+                "caller": null,
+                "direct_loop_context": {
+                  "batch": false,
+                  "epoch": false,
+                  "loops": []
+                },
+                "record": {
+                  "excerpt": "    raise SystemExit(main())",
+                  "excerpt_sha256": "cc79ea1de8f5cf7c4f02e7b43c494b1ae782416b138c209cd6f7b5ff347fc48c",
+                  "line_end": 1908,
+                  "line_start": 1908,
+                  "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                  "source": "main()"
+                }
+              },
+              {
+                "callee": "train_one_epoch",
+                "caller": "main",
+                "direct_loop_context": {
+                  "batch": false,
+                  "epoch": true,
+                  "loops": [
+                    {
+                      "iterator": "range(1, 101)",
+                      "line_start": 1462,
+                      "target": "epoch",
+                      "type": "for"
+                    }
+                  ]
+                },
+                "record": {
+                  "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+                  "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+                  "line_end": 1474,
+                  "line_start": 1466,
+                  "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                  "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+                }
+              }
+            ],
+            "direct_node_context": {
+              "batch": true,
+              "epoch": false,
+              "loops": [
+                {
+                  "iterator": "loader",
+                  "line_start": 527,
+                  "target": "batch",
+                  "type": "for"
+                }
+              ]
+            },
+            "epoch": true,
+            "path": [
+              "<module>",
+              "main",
+              "train_one_epoch"
+            ]
+          }
+        ],
+        "function": "train_one_epoch"
+      },
+      "function": "train_one_epoch",
+      "record": {
+        "excerpt": "        optimizer.step()",
+        "excerpt_sha256": "cdf624930347aab933f7ecb21fd067333b0ec7d2869498c65605e80a96fd9c7f",
+        "line_end": 557,
+        "line_start": 557,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "optimizer.step()"
+      }
+    },
+    "optimizer_step_cadence_resolved": true,
+    "skeleton": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "unresolved_fields": [
+      {
+        "field": "early_stopping_policy",
+        "reason": "EARLY_STOP_THRESHOLD_OR_STALENESS_EXPRESSION_UNRESOLVED"
+      }
+    ]
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "historical_A4_recipe_claimed": false,
+    "model_loaded": false,
+    "optimizer_step_performed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": false,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_constructed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "E0A_pin_sha256": "5d4f348f39abd6d49da161c99cea4ba8f1b61e708b87c4ed354a092a7805b4ab",
+    "E0B_lock_sha256": "4f663595b5a6ce5a5bf328544ae334fe5a253846d8049a88c2087f28e84b026b",
+    "E0B_recipe_sha256": "526a360eda5d3e74308dbfa952e009c3f189f555f44429cb32338fb9f1962283",
+    "E0B_report_sha256": "7ba56b2150423a0a9c35b513f982a3cf32959177cb18f71163ce13396de1dbf0",
+    "F7_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "P2_lock_sha256": "8989f4babc7a9f7c64e0dae5d3d03c0b69d19682363a73e4dc2fde4b7e0f64e3",
+    "P2_report_sha256": "d4b725878b5cac2cf4efc3ad3d54d7285cd3d7afbe0f7498d8477532ef1b8e67",
+    "call_graph_sha256": "0d801ff4fbc72a042121846660073e7a487a6bf2d0a70f7525a51d36b6beafe9",
+    "clip_recovery_sha256": "0f58a6f7fc62bb2d50155de87f5f42929ef96f39e32e0afdf7a51bdd746b0c51",
+    "decision_sha256": "b86c720777073e10029f6b1c007bf9d96068fae1cf80ef45f68e2cc32fa894ec",
+    "early_stop_recovery_sha256": "759d9747c3544835427f20289d1781dbb6639e1352bf6d798efd3805410ad1a5",
+    "final_recipe_sha256": "e2f410cb1351e3f2a169011d983752276bced385db97b55ca50f09c9be5167ce",
+    "installed_script_sha256": "24f6237dfe126b4ff8aed8fa846b76457c5a0a73b4ad94e9bc143e265c8ab42f",
+    "optimizer_recovery_sha256": "baebde4ae4aa04b301840b62b5c2a81bcfa80b90d2c4f46ee19a58418e632bbb",
+    "reconstructed_route_sha256": "b24276c374258990a33850a1aaf516d92a5636f09350d98bc5e353821293ec02",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+  },
+  "scope": "Recover E0B's three false-negative or unresolved control-flow fields without executing training: build a local function-call graph; propagate loop context through helper calls; resolve function parameters from unique call-site bindings; certify that optimizer.step executes once per training batch inside the epoch loop; resolve the gradient-clip threshold and ordering; and parse the break-bearing early-stop condition as either a stale counter or current-epoch minus best-epoch expression.",
+  "stage": "V5_P3_F7_E0C_TARGETED_CONTROL_FLOW_RECOVERY",
+  "status": "PASS"
+}

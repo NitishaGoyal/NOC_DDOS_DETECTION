@@ -1,0 +1,61 @@
+{
+  "stage": "C1.3",
+  "status": "TRAINING_LAUNCHED",
+  "created_utc": "2026-07-21T11:42:45.713904+00:00",
+  "command": [
+    "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+    "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3_c1_meanmax.py",
+    "--data",
+    "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "--out-dir",
+    "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7",
+    "--split-mode",
+    "v3",
+    "--epochs",
+    "100",
+    "--patience",
+    "15",
+    "--min-delta",
+    "0.0001",
+    "--batch-size",
+    "256",
+    "--lr",
+    "0.001",
+    "--weight-decay",
+    "0.0001",
+    "--temporal-dim",
+    "8",
+    "--gcn-hidden",
+    "16",
+    "--gcn-out",
+    "8",
+    "--node-loss-weight",
+    "1.0",
+    "--graph-threshold",
+    "0.5",
+    "--node-threshold",
+    "0.5",
+    "--seed",
+    "7"
+  ],
+  "working_directory": "/home/zira/research/projects/GNN-2d",
+  "source": {
+    "path": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3_c1_meanmax.py",
+    "sha256": "6fe3bbbe20bcc508148da27e62e705a1c092ccd50945a089c6726aaf10ee8696"
+  },
+  "preflight": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_2_dry_preflight/c1_dry_preflight.json",
+    "sha256": "dd02491f23cd0b66c075811164a7e864cfe93d23857844544f7d0f4a9d5c596b"
+  },
+  "training_plan": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_2_dry_preflight/c1_frozen_training_arguments.json",
+    "sha256": "051ee5f573b8b483a94fe825d1703c5b6445b1b7aef92f1417c5ad916a17d17e"
+  },
+  "a1_splits": {
+    "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/splits.npz",
+    "sha256": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2"
+  },
+  "c1_model_dir": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7",
+  "log": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_3_seed7_training/c1_seed7_training.log",
+  "selection_protocol_note": "Any default-threshold test diagnostics emitted by the historical trainer are not permitted for C1 model advancement. Advancement is determined later from validation-only analysis."
+}

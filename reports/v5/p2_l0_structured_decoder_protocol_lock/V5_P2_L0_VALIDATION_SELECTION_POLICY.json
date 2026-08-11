@@ -1,0 +1,31 @@
+{
+  "beam_margin_threshold_candidates": {
+    "candidate_generation": "same as A1",
+    "prediction_rule": "attack iff margin >= tau_A2",
+    "source": "unique A2 validation margins for each frozen grid configuration"
+  },
+  "exact_margin_threshold_candidates": {
+    "candidates": [
+      "np.nextafter(minimum_margin, -infinity)",
+      "0.0",
+      "midpoint between each adjacent pair of unique margins",
+      "np.nextafter(maximum_margin, +infinity)"
+    ],
+    "prediction_rule": "attack iff margin >= tau",
+    "source": "unique A1 validation margins from immutable E1 archive"
+  },
+  "macro_role_F1_definition": "arithmetic mean of flattened source, transit, victim, and path F1",
+  "per_attack_kind_selection_allowed": false,
+  "per_router_selection_allowed": false,
+  "per_scenario_selection_allowed": false,
+  "primary_objective": "maximize graph balanced accuracy",
+  "strict_all_task_exactness_definition": "graph decision correct, decoded count correct, and source, transit, victim, and path masks all exactly match their targets",
+  "test_based_selection_allowed": false,
+  "tie_break_order": [
+    "lower graph false-positive rate",
+    "higher strict all-task exactness",
+    "higher macro role F1",
+    "threshold closest to zero",
+    "lower numeric threshold"
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "artifacts": {
+    "best_checkpoint": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p0_c1_b3_multi_seed_validation_training/seed_127/best_checkpoint.pt",
+      "7f0cb3dfdb6ffd416ff48451f1f126662effc345389010b4b3caf9a17caf22ff"
+    ],
+    "final_checkpoint": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p0_c1_b3_multi_seed_validation_training/seed_127/final_epoch_checkpoint.pt",
+      "98d45bc0e2bda904a1e45e324c94e5e2ab685b17e6fe3383aa83d87bcb010c43"
+    ],
+    "history": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_c1_b3_multi_seed_validation_training/seed_127/history.csv",
+      "4ef2a78eef7ca2af25ce2dec2a6e7a7a3cb386198d2b30e22fc62e4a5fa3b223"
+    ],
+    "validation_predictions": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p0_c1_b3_multi_seed_validation_training/seed_127/best_validation_predictions_and_targets.pt",
+      "bba93b376ca85c72d578df4fb6f43319eaa68a757c847f69ffbb078e84c55fe5"
+    ]
+  },
+  "best_epoch": 61,
+  "best_selection_score": 0.8229314254356539,
+  "best_train_loss": 0.048301970154751614,
+  "best_validation_metrics": {
+    "all_tasks_exact": 0.5657894611358643,
+    "count": {
+      "accuracy": 0.8859649300575256,
+      "confusion_matrix": [
+        [
+          341,
+          37,
+          10
+        ],
+        [
+          31,
+          190,
+          0
+        ],
+        [
+          0,
+          0,
+          75
+        ]
+      ],
+      "macro_f1": 0.8943609022556392,
+      "per_class": {
+        "0": {
+          "f1": 0.8973684210526316,
+          "precision": 0.9166666666666666,
+          "recall": 0.8788659793814433,
+          "support": 388
+        },
+        "1": {
+          "f1": 0.8482142857142858,
+          "precision": 0.8370044052863436,
+          "recall": 0.8597285067873304,
+          "support": 221
+        },
+        "2": {
+          "f1": 0.9375,
+          "precision": 0.8823529411764706,
+          "recall": 1.0,
+          "support": 75
+        }
+      }
+    },
+    "graph": {
+      "accuracy": 0.8669590643274854,
+      "balanced_accuracy": 0.8659097241571468,
+      "f1": 0.8480801335559266,
+      "fn": 42,
+      "fp": 49,
+      "fpr": 0.12628865979381443,
+      "precision": 0.8382838283828383,
+      "recall": 0.8581081081081081,
+      "support_negative": 388,
+      "support_positive": 296,
+      "tn": 339,
+      "tnr": 0.8737113402061856,
+      "tp": 254
+    },
+    "roles": {
+      "path": {
+        "all_windows": {
+          "exact_set": 0.6695906519889832,
+          "fn": 143,
+          "fp": 314,
+          "node_accuracy": 0.9582419590643275,
+          "node_f1": 0.846179737462134,
+          "node_precision": 0.8001273074474857,
+          "node_recall": 0.8978571428571429,
+          "positive_entries": 1400,
+          "tn": 9230,
+          "tp": 1257,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.662162184715271,
+          "fn": 143,
+          "fp": 32,
+          "node_accuracy": 0.9630489864864865,
+          "node_f1": 0.9349200446262552,
+          "node_precision": 0.9751745539177658,
+          "node_recall": 0.8978571428571429,
+          "positive_entries": 1400,
+          "tn": 3304,
+          "tp": 1257,
+          "window_count": 296
+        }
+      },
+      "source": {
+        "all_windows": {
+          "exact_set": 0.7061403393745422,
+          "fn": 80,
+          "fp": 125,
+          "node_accuracy": 0.9812682748538012,
+          "node_f1": 0.7395171537484118,
+          "node_precision": 0.6995192307692307,
+          "node_recall": 0.784366576819407,
+          "positive_entries": 371,
+          "tn": 10448,
+          "tp": 291,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.6486486196517944,
+          "fn": 80,
+          "fp": 24,
+          "node_accuracy": 0.9780405405405406,
+          "node_f1": 0.8483965014577259,
+          "node_precision": 0.9238095238095239,
+          "node_recall": 0.784366576819407,
+          "positive_entries": 371,
+          "tn": 4341,
+          "tp": 291,
+          "window_count": 296
+        }
+      },
+      "transit": {
+        "all_windows": {
+          "exact_set": 0.7456140518188477,
+          "fn": 78,
+          "fp": 199,
+          "node_accuracy": 0.9746893274853801,
+          "node_f1": 0.8427030096536059,
+          "node_precision": 0.7885228480340064,
+          "node_recall": 0.9048780487804878,
+          "positive_entries": 820,
+          "tn": 9925,
+          "tp": 742,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7060810923576355,
+          "fn": 78,
+          "fp": 41,
+          "node_accuracy": 0.9748733108108109,
+          "node_f1": 0.925764192139738,
+          "node_precision": 0.9476372924648787,
+          "node_recall": 0.9048780487804878,
+          "positive_entries": 820,
+          "tn": 3875,
+          "tp": 742,
+          "window_count": 296
+        }
+      },
+      "victim": {
+        "all_windows": {
+          "exact_set": 0.8391813039779663,
+          "fn": 2,
+          "fp": 112,
+          "node_accuracy": 0.9895833333333334,
+          "node_f1": 0.8376068376068375,
+          "node_precision": 0.7241379310344828,
+          "node_recall": 0.9932432432432432,
+          "positive_entries": 296,
+          "tn": 10536,
+          "tp": 294,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.8513513803482056,
+          "fn": 2,
+          "fp": 42,
+          "node_accuracy": 0.9907094594594594,
+          "node_f1": 0.930379746835443,
+          "node_precision": 0.875,
+          "node_recall": 0.9932432432432432,
+          "positive_entries": 296,
+          "tn": 4398,
+          "tp": 294,
+          "window_count": 296
+        }
+      }
+    },
+    "window_count": 684
+  },
+  "parameter_count": 43208,
+  "positive_weights": {
+    "attack": 1.0569908814589666,
+    "path": 4.563519588953115,
+    "source": 20.0,
+    "transit": 8.154935531600085,
+    "victim": 20.0
+  },
+  "seed": 127,
+  "stage": "V5_P0_C1_B3_MULTI_SEED_VALIDATION_TRAINING",
+  "status": "COMPLETE",
+  "stop_epoch": 81,
+  "stopped_early": true,
+  "test_split_accessed": false,
+  "test_split_constructed": false
+}

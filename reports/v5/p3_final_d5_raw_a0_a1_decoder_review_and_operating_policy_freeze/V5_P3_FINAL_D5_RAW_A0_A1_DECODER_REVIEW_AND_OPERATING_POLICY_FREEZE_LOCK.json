@@ -1,0 +1,38 @@
+{
+  "A0_role": "HISTORICAL_COMPARISON_ONLY",
+  "A1_decoder_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+  "A1_margin_threshold": 8.720532088239842,
+  "A1_role": "OFFLINE_CERTIFIED_STRUCTURAL_REFERENCE",
+  "EPLR_V2_full_combined_AB_validation_authorized": true,
+  "EPLR_V2_handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+  "base_graph_alarm_policy": "RAW_NEURAL_THRESHOLD_0P5",
+  "base_graph_threshold": 0.5,
+  "native_test_dataset_constructed": false,
+  "next_stage": "V5_P3_FINAL_D6_EPLR_V2_FULL_COMBINED_AB_VALIDATION_EVALUATION",
+  "persistence_candidate_selection_performed": false,
+  "persistence_candidates_frozen": {
+    "P0": {
+      "name": "instantaneous_raw",
+      "rule": "alarm_t = raw_graph_prediction_t"
+    },
+    "P1": {
+      "name": "two_consecutive",
+      "rule": "alarm_t = raw_t AND raw_t_minus_1"
+    },
+    "P2": {
+      "name": "two_of_three",
+      "rule": "alarm_t = at_least_2_positive_raw_predictions_in_t_minus_2_to_t"
+    },
+    "P3": {
+      "name": "three_consecutive",
+      "rule": "alarm_t = raw_t AND raw_t_minus_1 AND raw_t_minus_2"
+    }
+  },
+  "report_sha256": "27a55ffd5efa81d40772b850e4835358ec77a69ac0302f613044d9c441b4219c",
+  "sealed_test_access": false,
+  "sealed_test_evaluation_authorized": false,
+  "stage": "V5_P3_FINAL_D5_RAW_A0_A1_DECODER_REVIEW_AND_OPERATING_POLICY_FREEZE",
+  "status": "PASS",
+  "test_tensor_deserialization": false,
+  "threshold_tuning_authorized": false
+}

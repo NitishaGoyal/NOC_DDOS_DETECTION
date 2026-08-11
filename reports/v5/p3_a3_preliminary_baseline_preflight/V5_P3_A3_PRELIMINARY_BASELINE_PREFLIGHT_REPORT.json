@@ -1,0 +1,91 @@
+{
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "certified_dataset_modified": false,
+  "created_utc": "2026-08-04T21:24:32.949078+00:00",
+  "data": {
+    "canonical_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+    "test_dataset_instantiated": false,
+    "test_tensor_loaded": false,
+    "train_items": 110855,
+    "train_pairs": 600,
+    "train_validation_pair_overlap": 0,
+    "validation_items": 13863,
+    "validation_pairs": 75
+  },
+  "decision": {
+    "next_stage": "V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107",
+    "preliminary_baseline_preflight_passed": true,
+    "preliminary_baseline_training_authorized": true,
+    "sealed_test_evaluation_authorized": false,
+    "validation_monitoring_authorized": true
+  },
+  "dry_run": {
+    "device": "cuda",
+    "nonzero_gradient_parameters": 48,
+    "optimizer_step_performed": false,
+    "train_batch_size": 16,
+    "train_losses": {
+      "count": 1.268811821937561,
+      "graph": 0.8177537322044373,
+      "path": 0.7014381885528564,
+      "source": 0.7560379505157471,
+      "total": 4.904492378234863,
+      "transit": 0.5753364562988281,
+      "victim": 0.7851141691207886
+    },
+    "validation_batch_size": 16,
+    "validation_losses": {
+      "count": 1.2913569211959839,
+      "graph": 0.8193389773368835,
+      "path": 0.6996979117393494,
+      "source": 0.7561635971069336,
+      "total": 4.926564693450928,
+      "transit": 0.5764696002006531,
+      "victim": 0.7835373878479004
+    }
+  },
+  "generalization_claim_authorized": false,
+  "label_statistics": {
+    "train": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_A3_TRAIN_LABEL_AND_PAIR_STATISTICS.json",
+    "validation": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_A3_VALIDATION_LABEL_AND_PAIR_STATISTICS.json"
+  },
+  "model": {
+    "all_parameters_trainable": true,
+    "class": "V6P0Dynamic70GraphConvCount4",
+    "fresh_seed": 107,
+    "input_features": 70,
+    "parameter_count": 60553
+  },
+  "model_trained": false,
+  "normalization": {
+    "final_union_normalization": "deferred until A_train+B_train",
+    "normalization_sha256": "03b0627bd77b0d7ccff2268292fd41aa9fd9977c6d4dae4a3d797db3e160adaa",
+    "provisional": true,
+    "scope": "A_train only",
+    "sufficient_statistics_sha256": "36c6e144d2e97d881c66f6c159bcb7b107bc3321f7517aac70bfe9417fdf4eb3"
+  },
+  "protocol": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a3_preliminary_baseline_preflight/V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL.json",
+    "sha256": "20c7cfebd06888f1cde9a29d388839f283240463127a44a2a2eb7484ad0869c4"
+  },
+  "provenance": {
+    "a2_lock_sha256": "301dc2c45bd546ef0bee015c02c17db161f0d6d28ade30a81bfc9ea34c1972c8",
+    "a2_report_sha256": "a548d80f1dbad68c574010e67a41a646e3fdfa23c036afa9dcbc56829b0f596e",
+    "b3_source_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "canonical_model_sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "dynamic70_model_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "guarded_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "installed_script_sha256": "8c8b270b5070ce5c13290fa9cb0a091ef890c4378700a1fad2702bfe9b463379"
+  },
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "negative_guard_check": true,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_tensor_loaded": false
+  },
+  "source_modified": true,
+  "stage": "V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT",
+  "status": "PASS"
+}

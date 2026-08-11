@@ -1,0 +1,32 @@
+{
+  "comparison": "Raw versus EPLR-V2 on identical neural logits",
+  "effect_criteria": {
+    "path_exact_noninferiority": "pair-clustered 95% confidence interval lower bound >= -0.01",
+    "strict_exact_gain": "pair-clustered 95% confidence interval lower bound > 0",
+    "transit_exact_gain": "pair-clustered 95% confidence interval lower bound > 0"
+  },
+  "eligible_confirmation_boundaries": [
+    "frozen Tranche-B validation",
+    "future fresh A+B validation under the final protocol"
+  ],
+  "hard_invariants": [
+    "graph predictions bit-identical to Raw",
+    "count candidates bit-identical to Raw",
+    "source masks bit-identical to Raw",
+    "victim masks bit-identical to Raw"
+  ],
+  "ineligible_confirmation_boundaries": [
+    "Tranche-A validation reused after D9/D10",
+    "A-test",
+    "closed V5-P2 test"
+  ],
+  "no_post_result_retuning": true,
+  "operational_criteria": {
+    "all_rows_explicitly_classified": true,
+    "deterministic_outputs": true,
+    "unresolved_rows_never_claim_route_certificate": true
+  },
+  "selection_rule": "Carry forward only if every hard invariant and every effect/operational criterion passes on the independent boundary.",
+  "stage": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE",
+  "status": "PREFROZEN_FOR_FUTURE_INDEPENDENT_BOUNDARY"
+}

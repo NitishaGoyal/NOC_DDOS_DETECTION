@@ -1,0 +1,484 @@
+{
+  "M8B_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8b_seed107_full_multitask_baseline/V6_P0_M8B_SEED107_FULL_MULTITASK_BASELINE_REPORT.json",
+  "M8B_report_sha256": "3a54d4a939d07dd2c0dba29aa354d865cec25c432fab9aeb5a587fe7c04114c3",
+  "M8D_context": {
+    "low_support_validation_value_count": 9,
+    "metadata_conflict_count": 63,
+    "primary_diagnosis": "UNSEEN_VALIDATION_COMBINATION_SHIFT",
+    "status": "PASS_WITH_METADATA_GAPS",
+    "unseen_validation_value_count": 2
+  },
+  "M8D_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8d_failure_cluster_coverage/V6_P0_M8D_FAILURE_CLUSTER_COVERAGE_REPORT.json",
+  "M8D_report_sha256": "f8e3399e0aae1a020cb450e406b66a8b219ae69efc35db35a9f10d74c9f32eab",
+  "P2_test_used": false,
+  "artifacts": {
+    "any_window_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_ANY_WINDOW_BEST.pt",
+    "any_window_checkpoint_sha256": "9298e75a39d40f510d40f21024038c736f00a84824eed6a13a75ccd823759c61",
+    "comparison_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_POLICY_COMPARISON.csv",
+    "comparison_csv_sha256": "109210e906ab97e8b2cfa01ff9a5f0820f07ed29e19327ddd6a6942a22cd94bc",
+    "epoch_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_TRAINING_EPOCHS.csv",
+    "epoch_csv_sha256": "33baec81df2930e04f184ea7a39615a5bd95b2558c792636a83dd21445069b89",
+    "history_downweighted_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_FINAL_HISTORY_DOWNWEIGHTED_BEST.pt",
+    "history_downweighted_checkpoint_sha256": "9543c5e1462459c51c8f174739c80592027f50c65b2ad1604113718c69c0c508",
+    "phase_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_PHASE_PREDICTIONS.csv",
+    "phase_csv_sha256": "44fd196e3a38be0773cd9140f42f44a6baeb400efd058a073448528d93eae340"
+  },
+  "created_utc": "2026-08-03T05:21:25.215334+00:00",
+  "data_copied": false,
+  "decision": {
+    "P1_generation_authorized": false,
+    "automatic_label_contract_change_authorized": false,
+    "multi_seed_confirmation_authorized": false,
+    "next_stage": "M8F_RAW81_MAPPING_RECOVERY_AND_RAW81_VS_DYNAMIC70_COMPARISON",
+    "reason": "Any-window labels change the deployment semantics, while history-downweighting preserves final-state semantics. Neither may be adopted from visible pilot validation alone. RAW81 comparison remains required before revising the generation contract."
+  },
+  "device": "cuda",
+  "inventories": {
+    "train_any_window": {
+      "count_histogram_0_to_4": [
+        14965,
+        1108,
+        910,
+        507,
+        210
+      ],
+      "history_conflict_windows": 321,
+      "items": 17700,
+      "negatives": 14965,
+      "positives": 2735,
+      "roles": {
+        "path": {
+          "positives": 15569,
+          "total": 283200
+        },
+        "source": {
+          "positives": 5289,
+          "total": 283200
+        },
+        "transit": {
+          "positives": 7877,
+          "total": 283200
+        },
+        "victim": {
+          "positives": 3631,
+          "total": 283200
+        }
+      }
+    },
+    "train_final": {
+      "count_histogram_0_to_4": [
+        15286,
+        1009,
+        800,
+        427,
+        178
+      ],
+      "history_conflict_windows": 321,
+      "items": 17700,
+      "negatives": 15286,
+      "positives": 2414,
+      "roles": {
+        "path": {
+          "positives": 13644,
+          "total": 283200
+        },
+        "source": {
+          "positives": 4602,
+          "total": 283200
+        },
+        "transit": {
+          "positives": 6892,
+          "total": 283200
+        },
+        "victim": {
+          "positives": 3211,
+          "total": 283200
+        }
+      }
+    },
+    "validation_any_window": {
+      "count_histogram_0_to_4": [
+        5034,
+        328,
+        323,
+        137,
+        78
+      ],
+      "history_conflict_windows": 114,
+      "items": 5900,
+      "negatives": 5034,
+      "positives": 866,
+      "roles": {
+        "path": {
+          "positives": 4306,
+          "total": 94400
+        },
+        "source": {
+          "positives": 1697,
+          "total": 94400
+        },
+        "transit": {
+          "positives": 1889,
+          "total": 94400
+        },
+        "victim": {
+          "positives": 1174,
+          "total": 94400
+        }
+      }
+    },
+    "validation_final": {
+      "count_histogram_0_to_4": [
+        5148,
+        286,
+        282,
+        114,
+        70
+      ],
+      "history_conflict_windows": 114,
+      "items": 5900,
+      "negatives": 5148,
+      "positives": 752,
+      "roles": {
+        "path": {
+          "positives": 3747,
+          "total": 94400
+        },
+        "source": {
+          "positives": 1472,
+          "total": 94400
+        },
+        "transit": {
+          "positives": 1644,
+          "total": 94400
+        },
+        "victim": {
+          "positives": 1025,
+          "total": 94400
+        }
+      }
+    }
+  },
+  "pilot_assessment_only": true,
+  "policies": {
+    "A_FINAL_EPOCH": {
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8b_seed107_full_multitask_baseline/V6_P0_M8B_SEED107_BEST.pt",
+      "checkpoint_sha256": "2d3cdd512ca2babe72c83ea6b21537f976e562d21d8c31c863bb132aa62bd49d",
+      "description": "Locked M8B final-epoch graph/count/role labels.",
+      "model_retrained": false
+    },
+    "B_ANY_ACTIVITY_IN_WINDOW": {
+      "best_epoch": 10,
+      "best_selection_score": 0.6557665586426044,
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_ANY_WINDOW_BEST.pt",
+      "checkpoint_sha256": "9298e75a39d40f510d40f21024038c736f00a84824eed6a13a75ccd823759c61",
+      "description": "Graph label is any attack activity in the 32-epoch window; source/transit/victim/path labels are per-router unions; count is the union-source count.",
+      "epochs_run": 28,
+      "model_retrained": true,
+      "policy": "B_ANY_ACTIVITY_IN_WINDOW",
+      "runtime_seconds": 190.8277883529663
+    },
+    "C_FINAL_EPOCH_HISTORY_DOWNWEIGHTED": {
+      "best_epoch": 9,
+      "best_selection_score": 0.6510075532657323,
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8e_label_policy_comparison/V6_P0_M8E_FINAL_HISTORY_DOWNWEIGHTED_BEST.pt",
+      "checkpoint_sha256": "9543c5e1462459c51c8f174739c80592027f50c65b2ad1604113718c69c0c508",
+      "description": "Final-epoch labels are preserved. Windows with attack activity in history but an inactive final epoch receive sample weight 0.25 for graph and role losses.",
+      "epochs_run": 27,
+      "model_retrained": true,
+      "policy": "C_FINAL_EPOCH_HISTORY_DOWNWEIGHTED",
+      "runtime_seconds": 191.45764303207397
+    }
+  },
+  "primary_interpretation": "LABEL_POLICY_DOES_NOT_RESOLVE_COVERAGE_GENERALIZATION_FAILURE",
+  "results": {
+    "A_FINAL_EPOCH": {
+      "A_FINAL_EPOCH": {
+        "count_accuracy": 0.5851063829787234,
+        "graph": {
+          "accuracy_0_5": 0.7116949152542373,
+          "auroc": 0.7504108443270678,
+          "average_precision": 0.4125554081877333,
+          "confusion_matrix_0_5": {
+            "fn": 315,
+            "fp": 1386,
+            "tn": 3762,
+            "tp": 437
+          },
+          "f1_0_5": 0.33941747572815534,
+          "fpr_0_5": 0.2692307692307692,
+          "precision_0_5": 0.2397147558968733,
+          "recall_0_5": 0.5811170212765957,
+          "selection_score": 0.6377923656139562
+        },
+        "roles": {
+          "path": {
+            "exact_match": 0.2411864406779661,
+            "f1": 0.128781512605042,
+            "precision": 0.07141816910843794,
+            "recall": 0.6543901788097144
+          },
+          "source": {
+            "exact_match": 0.20016949152542374,
+            "f1": 0.07070511079203694,
+            "precision": 0.03749434086512738,
+            "recall": 0.6188858695652174
+          },
+          "transit": {
+            "exact_match": 0.27016949152542374,
+            "f1": 0.06566845591235836,
+            "precision": 0.03462085857081389,
+            "recall": 0.6362530413625304
+          },
+          "victim": {
+            "exact_match": 0.376271186440678,
+            "f1": 0.12119241192411924,
+            "precision": 0.06817073170731708,
+            "recall": 0.5453658536585366
+          }
+        }
+      },
+      "B_ANY_ACTIVITY_IN_WINDOW": {
+        "count_accuracy": 0.5877598152424942,
+        "graph": {
+          "accuracy_0_5": 0.7113559322033899,
+          "auroc": 0.7458594490490071,
+          "average_precision": 0.42367113125884925,
+          "confusion_matrix_0_5": {
+            "fn": 373,
+            "fp": 1330,
+            "tn": 3704,
+            "tp": 493
+          },
+          "f1_0_5": 0.3666790628486426,
+          "fpr_0_5": 0.26420341676599124,
+          "precision_0_5": 0.27043335161821175,
+          "recall_0_5": 0.569284064665127,
+          "selection_score": 0.6384633431189545
+        },
+        "roles": {
+          "path": {
+            "exact_match": 0.24033898305084747,
+            "f1": 0.14280907890990968,
+            "precision": 0.08036000349517956,
+            "recall": 0.6407338597306085
+          },
+          "source": {
+            "exact_match": 0.2,
+            "f1": 0.07932599830730168,
+            "precision": 0.04243322220850311,
+            "recall": 0.6075427224513847
+          },
+          "transit": {
+            "exact_match": 0.2684745762711864,
+            "f1": 0.07395177870537661,
+            "precision": 0.039287723827491475,
+            "recall": 0.6283748014822658
+          },
+          "victim": {
+            "exact_match": 0.3715254237288136,
+            "f1": 0.1265201621506294,
+            "precision": 0.0723170731707317,
+            "recall": 0.5051107325383305
+          }
+        }
+      }
+    },
+    "B_ANY_ACTIVITY_IN_WINDOW": {
+      "A_FINAL_EPOCH": {
+        "count_accuracy": 0.47074468085106386,
+        "graph": {
+          "accuracy_0_5": 0.6352542372881356,
+          "auroc": 0.7639476547388782,
+          "average_precision": 0.4237360476635726,
+          "confusion_matrix_0_5": {
+            "fn": 208,
+            "fp": 1944,
+            "tn": 3204,
+            "tp": 544
+          },
+          "f1_0_5": 0.3358024691358025,
+          "fpr_0_5": 0.3776223776223776,
+          "precision_0_5": 0.21864951768488747,
+          "recall_0_5": 0.723404255319149,
+          "selection_score": 0.6505437857137762
+        },
+        "roles": {
+          "path": {
+            "exact_match": 0.2733898305084746,
+            "f1": 0.14566954298497922,
+            "precision": 0.08274334676687362,
+            "recall": 0.6082199092607419
+          },
+          "source": {
+            "exact_match": 0.24067796610169492,
+            "f1": 0.08091191287975166,
+            "precision": 0.043731778425655975,
+            "recall": 0.5400815217391305
+          },
+          "transit": {
+            "exact_match": 0.27576271186440676,
+            "f1": 0.06848491280200927,
+            "precision": 0.03635680751173709,
+            "recall": 0.5888077858880778
+          },
+          "victim": {
+            "exact_match": 0.4574576271186441,
+            "f1": 0.13225152129817444,
+            "precision": 0.07676609105180533,
+            "recall": 0.4770731707317073
+          }
+        }
+      },
+      "B_ANY_ACTIVITY_IN_WINDOW": {
+        "count_accuracy": 0.4607390300230947,
+        "graph": {
+          "accuracy_0_5": 0.6420338983050847,
+          "auroc": 0.7629981025103202,
+          "average_precision": 0.44130347090717265,
+          "confusion_matrix_0_5": {
+            "fn": 245,
+            "fp": 1867,
+            "tn": 3167,
+            "tp": 621
+          },
+          "f1_0_5": 0.370304114490161,
+          "fpr_0_5": 0.37087802940007947,
+          "precision_0_5": 0.24959807073954984,
+          "recall_0_5": 0.7170900692840647,
+          "selection_score": 0.6557665586426044
+        },
+        "roles": {
+          "path": {
+            "exact_match": 0.2723728813559322,
+            "f1": 0.16157493170900186,
+            "precision": 0.09341756526159097,
+            "recall": 0.5975383186251741
+          },
+          "source": {
+            "exact_match": 0.2405084745762712,
+            "f1": 0.09076272891929965,
+            "precision": 0.04961769074206502,
+            "recall": 0.5315262227460223
+          },
+          "transit": {
+            "exact_match": 0.2742372881355932,
+            "f1": 0.07652381286385636,
+            "precision": 0.04097652582159624,
+            "recall": 0.5775542615140286
+          },
+          "victim": {
+            "exact_match": 0.45254237288135596,
+            "f1": 0.13944856839872746,
+            "precision": 0.082574568288854,
+            "recall": 0.44804088586030666
+          }
+        }
+      }
+    },
+    "C_FINAL_EPOCH_HISTORY_DOWNWEIGHTED": {
+      "A_FINAL_EPOCH": {
+        "count_accuracy": 0.5013297872340425,
+        "graph": {
+          "accuracy_0_5": 0.6908474576271186,
+          "auroc": 0.7603548010795351,
+          "average_precision": 0.43231305763812666,
+          "confusion_matrix_0_5": {
+            "fn": 275,
+            "fp": 1549,
+            "tn": 3599,
+            "tp": 477
+          },
+          "f1_0_5": 0.3434125269978402,
+          "fpr_0_5": 0.3008935508935509,
+          "precision_0_5": 0.23543928923988153,
+          "recall_0_5": 0.6343085106382979,
+          "selection_score": 0.6510075532657323
+        },
+        "roles": {
+          "path": {
+            "exact_match": 0.2845762711864407,
+            "f1": 0.15831030398736676,
+            "precision": 0.09289718760135292,
+            "recall": 0.5350947424606352
+          },
+          "source": {
+            "exact_match": 0.2642372881355932,
+            "f1": 0.071724810929495,
+            "precision": 0.039399624765478425,
+            "recall": 0.39945652173913043
+          },
+          "transit": {
+            "exact_match": 0.2776271186440678,
+            "f1": 0.08312306593668174,
+            "precision": 0.04509064614431073,
+            "recall": 0.531021897810219
+          },
+          "victim": {
+            "exact_match": 0.44593220338983053,
+            "f1": 0.1297757735187273,
+            "precision": 0.0744466800804829,
+            "recall": 0.5053658536585366
+          }
+        }
+      },
+      "B_ANY_ACTIVITY_IN_WINDOW": {
+        "count_accuracy": 0.49191685912240185,
+        "graph": {
+          "accuracy_0_5": 0.6915254237288135,
+          "auroc": 0.7525995287472439,
+          "average_precision": 0.4394898385082624,
+          "confusion_matrix_0_5": {
+            "fn": 330,
+            "fp": 1490,
+            "tn": 3544,
+            "tp": 536
+          },
+          "f1_0_5": 0.3706777316735823,
+          "fpr_0_5": 0.2959872864521255,
+          "precision_0_5": 0.26456071076011844,
+          "recall_0_5": 0.6189376443418014,
+          "selection_score": 0.6482296320009168
+        },
+        "roles": {
+          "path": {
+            "exact_match": 0.28220338983050847,
+            "f1": 0.1694155819073738,
+            "precision": 0.101607746837789,
+            "recall": 0.509289363678588
+          },
+          "source": {
+            "exact_match": 0.2633898305084746,
+            "f1": 0.08013958245592924,
+            "precision": 0.04462610560171536,
+            "recall": 0.3924572775486152
+          },
+          "transit": {
+            "exact_match": 0.27559322033898304,
+            "f1": 0.08978823529411764,
+            "precision": 0.04927431434326739,
+            "recall": 0.5050291159343568
+          },
+          "victim": {
+            "exact_match": 0.44033898305084745,
+            "f1": 0.1367437284800787,
+            "precision": 0.0799080195458465,
+            "recall": 0.4735945485519591
+          }
+        }
+      }
+    }
+  },
+  "score_deltas": {
+    "B_any_minus_A_any": 0.017303215523649884,
+    "B_final_minus_A_final": 0.012751420099819999,
+    "C_any_minus_A_any": 0.009766288881962293,
+    "C_final_minus_A_final": 0.013215187651776095
+  },
+  "seed": 107,
+  "source_modified": false,
+  "stage": "V6_P0_M8E_LABEL_POLICY_COMPARISON",
+  "status": "PASS",
+  "test_split_used": false,
+  "visible_validation_split": true
+}

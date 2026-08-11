@@ -1,0 +1,270 @@
+{
+  "architecture": {
+    "activation": "ReLU",
+    "clean_attack_head_sha256": "a2117c9997088f55c97bd26197b7ec839a35173df0d85817078e3d0b92e06ebb",
+    "clean_equivalence_max_abs_error": 0.0,
+    "clean_graph_projection_sha256": "5ece5dbee617b73022bec4b85207126c8750ad1d32b521c311090af77e416cde",
+    "dropout": 0.0,
+    "expected_parameter_count": 43137,
+    "graph_layers": 2,
+    "graph_width": 64,
+    "hook_based_extraction_used": false,
+    "initial_state_sha256": "8aeebf2dcd95aef774745a470a3b696fed2e45867eae41e4058cb08e1d7fa336",
+    "name": "CLEAN_B3_DIRECT_GRAPH_GATCONV",
+    "operator_configuration": {
+      "attention_dropout": 0.0,
+      "bias": true,
+      "concat": false,
+      "graph_layers": 2,
+      "heads": 1,
+      "message_passing": true,
+      "negative_slope": 0.2,
+      "operator": "GATConv",
+      "screening_only": true,
+      "self_loops": true
+    },
+    "parameter_count": 43137,
+    "readout": "concatenate node mean and node max, Linear(128,64), ReLU, Linear(64,1)",
+    "readout_identical_across_operators": true,
+    "reference_attack_head_sha256": "a2117c9997088f55c97bd26197b7ec839a35173df0d85817078e3d0b92e06ebb",
+    "reference_b3_initial_state_sha256": "8b61044b46b4a4834c4efdbb18f600c3856c75f9b0b49d7b2688a511767825a7",
+    "reference_graph_projection_sha256": "5ece5dbee617b73022bec4b85207126c8750ad1d32b521c311090af77e416cde",
+    "residual": false,
+    "unused_multitask_heads_present": false
+  },
+  "artifacts": {
+    "checkpoint": [
+      "/home/zira/research/projects/GNN-2d/models/v5/p2_g2_direct_graph/gatconv/seed_127/best_validation_checkpoint.pt",
+      "802dcce5b7876ccf3a3a23853f92c8492dfbb070cde77778562d7ea103160a37"
+    ],
+    "history_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/gatconv/seed_127/training_history.csv",
+      "d1a76bf3f8ed2ccac0c723f76ca0a12a91d31f14086318cf652812619ff3d132"
+    ],
+    "progress_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/gatconv/seed_127/progress.json",
+      "0ea0a0f12f01c22cb2ec9e33a704680513ebf1e40b0dda299c4b6f8b89970930"
+    ],
+    "threshold_sweep_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/gatconv/seed_127/validation_graph_threshold_sweep.csv",
+      "9c692ec1396bc85f737ecd6e7b616bbf60740d221ff3dd6ddde5cce895de1c0a"
+    ],
+    "validation_predictions": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_training/gatconv/seed_127/validation_predictions.npz",
+      "46d72d8e9e1144359fc6791bea228ce17bc877ddcc46a0c083b78630676b75df"
+    ]
+  },
+  "best_checkpoint": {
+    "checkpoint_selection_weights": {
+      "graph_auroc": 0.5,
+      "graph_average_precision": 0.5
+    },
+    "epoch": 11,
+    "path": "/home/zira/research/projects/GNN-2d/models/v5/p2_g2_direct_graph/gatconv/seed_127/best_validation_checkpoint.pt",
+    "ranking_tuple": [
+      0.7670578253580207,
+      0.6594435060020399,
+      0.8746721447140013,
+      -0.3642157087076365,
+      -11
+    ],
+    "sha256": "802dcce5b7876ccf3a3a23853f92c8492dfbb070cde77778562d7ea103160a37",
+    "validation_metrics_at_selection": {
+      "graph": {
+        "auroc": 0.8746721447140013,
+        "average_precision": 0.6594435060020399,
+        "negative_items": 8854,
+        "positive_items": 3674,
+        "thresholded": {
+          "accuracy": 0.7986909323116219,
+          "balanced_accuracy": 0.8266860123316626,
+          "f1": 0.7226742907411481,
+          "fn": 388,
+          "fp": 2134,
+          "fpr": 0.24102100745425797,
+          "precision": 0.6062730627306273,
+          "recall": 0.894393032117583,
+          "threshold": 0.5,
+          "tn": 6720,
+          "tnr": 0.7589789925457421,
+          "tp": 3286
+        }
+      },
+      "loss": 0.3642157087076365,
+      "selection_score": 0.7670578253580207
+    }
+  },
+  "contracts": {
+    "b3_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g1_decision_sha256": "aede27f98706c0252536f7f79d1e397df2d8a65e3dc7d36e2e6dd9dcd6e7f50d",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "topology_contract_sha256": "74112ce145cd3347148d4c784be125add7945943e80e98948368f4c076d047af"
+  },
+  "cost": {
+    "inference_latency_proxy": {
+      "batch_items": 256,
+      "microseconds_per_item": 67.31646546882075,
+      "milliseconds_per_batch": 17.233015160018113,
+      "timed_iterations": 50,
+      "warmup_iterations": 10
+    },
+    "operation_count": {
+      "base_temporal_node_graph_head_macs": 10766400,
+      "graph_linear_macs": 131072,
+      "graph_message_scalar_ops": 20736,
+      "method": "analytic_per_sample_proxy",
+      "pooling_scalar_ops": 1984,
+      "total_linear_macs": 10897472
+    },
+    "peak_cuda_memory_allocated_bytes": 667653632
+  },
+  "data": {
+    "input_shape": [
+      "items",
+      16,
+      58,
+      32
+    ],
+    "item_batch_size": 256,
+    "num_workers": 0,
+    "pair_block_batch_size": 128,
+    "pair_manifest": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+    "stride": 8,
+    "train_batches": 275,
+    "train_graph_negative": 49848,
+    "train_graph_positive": 20318,
+    "train_items": 70166,
+    "validation_batches": 49,
+    "validation_graph_negative": 8854,
+    "validation_graph_positive": 3674,
+    "validation_items": 12528,
+    "window": 32
+  },
+  "loss": {
+    "class_weighted": false,
+    "name": "graph_bce_with_logits",
+    "positive_weight": null
+  },
+  "next_stage": "V5_P2_G2_DIRECT_GRAPH_MATRIX_AGGREGATION",
+  "operator": "gatconv",
+  "post_checkpoint_validation": {
+    "threshold_selection": {
+      "grid": {
+        "candidate_count": 1001,
+        "kind": "uniform_closed_interval",
+        "start": 0.0,
+        "step": 0.001,
+        "stop": 1.0
+      },
+      "primary_objective": "maximize_validation_balanced_accuracy",
+      "selected": {
+        "metrics": {
+          "auroc": 0.8746721447140013,
+          "average_precision": 0.6594435060020399,
+          "negative_items": 8854,
+          "positive_items": 3674,
+          "thresholded": {
+            "accuracy": 0.7813697318007663,
+            "balanced_accuracy": 0.8336996561531228,
+            "f1": 0.7203675344563553,
+            "fn": 146,
+            "fp": 2593,
+            "fpr": 0.2928619832843912,
+            "precision": 0.5763764090834831,
+            "recall": 0.9602612955906369,
+            "threshold": 0.198,
+            "tn": 6261,
+            "tnr": 0.7071380167156087,
+            "tp": 3528
+          }
+        },
+        "objective": 0.8336996561531228,
+        "ranking_tuple": [
+          0.8336996561531228,
+          0.7203675344563553,
+          0.7813697318007663,
+          -0.2928619832843912,
+          -0.302,
+          -0.198
+        ],
+        "threshold": 0.198
+      },
+      "tie_break": [
+        "graph_f1",
+        "accuracy",
+        "lower_fpr",
+        "closer_to_0.5",
+        "lower_threshold"
+      ]
+    },
+    "untuned_metrics": {
+      "graph": {
+        "auroc": 0.8746721447140013,
+        "average_precision": 0.6594435060020399,
+        "negative_items": 8854,
+        "positive_items": 3674,
+        "thresholded": {
+          "accuracy": 0.7986909323116219,
+          "balanced_accuracy": 0.8266860123316626,
+          "f1": 0.7226742907411481,
+          "fn": 388,
+          "fp": 2134,
+          "fpr": 0.24102100745425797,
+          "precision": 0.6062730627306273,
+          "recall": 0.894393032117583,
+          "threshold": 0.5,
+          "tn": 6720,
+          "tnr": 0.7589789925457421,
+          "tp": 3286
+        }
+      },
+      "loss": 0.3642157087076365,
+      "selection_score": 0.7670578253580207
+    }
+  },
+  "run_contract_sha256": "f0abe4ae1bc5ff82831da949642ad6c65ebe9bfac8805db1eab0b45bd79ed6c9",
+  "security_boundary": {
+    "architecture_selected": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_directory_existence_checked": false,
+    "p2_test_evaluation_performed": false,
+    "p2_test_tensor_files_opened": false,
+    "p2_test_tensors_deserialized": false,
+    "p2_train_used": true,
+    "p2_validation_used": true,
+    "post_checkpoint_validation_threshold_tuning": true,
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "threshold_tuning_during_training": false
+  },
+  "seed": 127,
+  "stage": "V5_P2_G2_DIRECT_GRAPH_SINGLE_RUN",
+  "status": "COMPLETE",
+  "training": {
+    "automatic_mixed_precision": false,
+    "completed_epoch": 23,
+    "deterministic_algorithms": "enabled_warn_only",
+    "device": "cuda",
+    "early_stopping_minimum_delta": 0.0001,
+    "early_stopping_patience": 12,
+    "gradient_clip_global_norm": 1.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "minimum_epochs": 15,
+    "optimizer": "AdamW",
+    "scheduler": {
+      "factor": 0.5,
+      "minimum_learning_rate": 1e-05,
+      "mode": "max",
+      "name": "ReduceLROnPlateau",
+      "patience": 4,
+      "threshold": 0.0001,
+      "threshold_mode": "abs"
+    },
+    "stopped_early": true,
+    "total_elapsed_seconds": 547.8453850746155,
+    "weight_decay": 0.0001
+  }
+}

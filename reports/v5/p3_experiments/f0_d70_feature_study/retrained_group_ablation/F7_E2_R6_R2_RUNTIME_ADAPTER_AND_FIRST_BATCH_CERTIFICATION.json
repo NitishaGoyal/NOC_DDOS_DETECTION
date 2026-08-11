@@ -1,0 +1,382 @@
+{
+  "R2_recovery_classification": "E2_R1_precreated_model_and_report_directories_before_trainer",
+  "R3A_recovery_classification": "prior_AST_numeric_literal_cardinality_recovery",
+  "all_odd_training_items_retained": true,
+  "canonical_state_hash_algorithm": "sorted_state_dict_key_dtype_shape_and_contiguous_cpu_bytes",
+  "certified_dynamic70_parameter_count": 60553,
+  "console": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/console.log",
+  "console_sha256": "bf9be89ec305640155d4f74256183a1d736d57c2932e95d0d4bdad8a75c5b274",
+  "corrected_trainer_train_items": 110855,
+  "corrected_trainer_validation_items": 13863,
+  "deterministic_epoch_specific_shuffle": true,
+  "deterministic_fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+  "dynamic70_parameter_count_guard_recovered": true,
+  "effective_item_batch_size": 256,
+  "epoch_shuffle_controller_active": true,
+  "instrumentation": {
+    "instrumented_trainer": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/run_v5_p3_f7_instrumented_first_batch_preflight.py",
+    "instrumented_trainer_sha256": "f1caf5950ec10714fa1a9f45972f9e054d814c3dde116f46abb45d8e735da86d",
+    "optimizer_assignment_line": 1398,
+    "optimizer_step_line": 591
+  },
+  "instrumented_command": [
+    "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+    "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/run_v5_p3_f7_instrumented_first_batch_preflight.py",
+    "--root",
+    "/home/zira/research/projects/GNN-2d",
+    "--b1-dir",
+    "/home/zira/research/projects/GNN-2d/reports/v5/p2_b1_training_protocol_lock",
+    "--b0-r3-dir",
+    "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r3_corrected_nontest_label_shortcut_audit",
+    "--loader-path",
+    "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+    "--model-path",
+    "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py",
+    "--model-dir",
+    "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/model",
+    "--report-dir",
+    "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/report",
+    "--seed",
+    "107"
+  ],
+  "instrumented_model_dir_absent_at_launch": true,
+  "instrumented_report_dir_absent_at_launch": true,
+  "instrumented_return_code": 86,
+  "intercept": {
+    "all_gradients_finite": true,
+    "gradient_l2": 0.7595749294979706,
+    "gradient_tensor_count": 48,
+    "initial_parameter_hash": "c0663f00ea75621ce902809028a7497cff7ba095f0653eca05a828525114d822",
+    "intercept_parameter_hash": "c0663f00ea75621ce902809028a7497cff7ba095f0653eca05a828525114d822",
+    "optimizer_step_performed": false,
+    "parameters_unchanged_before_step": true,
+    "sentinel": "F7_E2_OPTIMIZER_STEP_INTERCEPTED"
+  },
+  "legacy_parameter_count_guard_value": 43273,
+  "legacy_set_epoch_use_preserved": true,
+  "masking_results": [
+    {
+      "all_other_array_leaves_exact": true,
+      "channel_range": [
+        0,
+        10
+      ],
+      "feature_path": "root['x']",
+      "label": "ablate_directional_traffic_volume",
+      "nonzero_values_zeroed": 5120,
+      "outside_group_exact": true,
+      "physical_mask_exact": true,
+      "physical_mask_path": "root['physical_port_mask']",
+      "sample_index": 0
+    },
+    {
+      "all_other_array_leaves_exact": true,
+      "channel_range": [
+        10,
+        30
+      ],
+      "feature_path": "root['x']",
+      "label": "ablate_inter_flit_timing",
+      "nonzero_values_zeroed": 10240,
+      "outside_group_exact": true,
+      "physical_mask_exact": true,
+      "physical_mask_path": "root['physical_port_mask']",
+      "sample_index": 0
+    },
+    {
+      "all_other_array_leaves_exact": true,
+      "channel_range": [
+        30,
+        40
+      ],
+      "feature_path": "root['x']",
+      "label": "ablate_queue_activity",
+      "nonzero_values_zeroed": 5120,
+      "outside_group_exact": true,
+      "physical_mask_exact": true,
+      "physical_mask_path": "root['physical_port_mask']",
+      "sample_index": 0
+    },
+    {
+      "all_other_array_leaves_exact": true,
+      "channel_range": [
+        40,
+        55
+      ],
+      "feature_path": "root['x']",
+      "label": "ablate_buffer_pressure",
+      "nonzero_values_zeroed": 7680,
+      "outside_group_exact": true,
+      "physical_mask_exact": true,
+      "physical_mask_path": "root['physical_port_mask']",
+      "sample_index": 0
+    },
+    {
+      "all_other_array_leaves_exact": true,
+      "channel_range": [
+        55,
+        70
+      ],
+      "feature_path": "root['x']",
+      "label": "ablate_flow_control_stalls",
+      "nonzero_values_zeroed": 4608,
+      "outside_group_exact": true,
+      "physical_mask_exact": true,
+      "physical_mask_path": "root['physical_port_mask']",
+      "sample_index": 0
+    }
+  ],
+  "model_certificates": [
+    {
+      "fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/model_determinism_1/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+      "sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1"
+    },
+    {
+      "fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/model_determinism_2/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+      "sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1"
+    }
+  ],
+  "model_class": "V6P0Dynamic70GraphConvCount4",
+  "optimizer_step_performed": false,
+  "pair_block_sampler_active": false,
+  "parameter_count": 60553,
+  "preview_batch_schema": {
+    "case_id": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "edge_index": {
+      "dtype": "torch.int64",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        2,
+        48
+      ]
+    },
+    "epoch_id": {
+      "dtype": "torch.int64",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ]
+    },
+    "epoch_tick": {
+      "dtype": "torch.int64",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ]
+    },
+    "family": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "normalization_scope": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "pair_id": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "pair_member": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "physical_port_mask": {
+      "dtype": "torch.uint8",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16,
+        10
+      ]
+    },
+    "role_mask": {
+      "dtype": "torch.uint8",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16
+      ]
+    },
+    "run_id": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "source_target_router": {
+      "dtype": "torch.int8",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16
+      ]
+    },
+    "strength_profile": {
+      "child_types": [
+        "str"
+      ],
+      "kind": "list",
+      "length": 2,
+      "python_type": "list"
+    },
+    "window_start": {
+      "dtype": "torch.int64",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ]
+    },
+    "window_target": {
+      "dtype": "torch.int64",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ]
+    },
+    "x": {
+      "dtype": "torch.float32",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16,
+        70,
+        32
+      ]
+    },
+    "y_attack": {
+      "dtype": "torch.float32",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ]
+    },
+    "y_attack_path": {
+      "dtype": "torch.float32",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16
+      ]
+    },
+    "y_attacker_count": {
+      "dtype": "torch.int64",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2
+      ]
+    },
+    "y_source": {
+      "dtype": "torch.float32",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16
+      ]
+    },
+    "y_transit": {
+      "dtype": "torch.float32",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16
+      ]
+    },
+    "y_victim": {
+      "dtype": "torch.float32",
+      "kind": "tensor",
+      "python_type": "Tensor",
+      "shape": [
+        2,
+        16
+      ]
+    }
+  },
+  "preview_list_keys": [
+    "case_id",
+    "family",
+    "normalization_scope",
+    "pair_id",
+    "pair_member",
+    "run_id",
+    "strength_profile"
+  ],
+  "preview_non_tensor_keys": [
+    "case_id",
+    "family",
+    "normalization_scope",
+    "pair_id",
+    "pair_member",
+    "run_id",
+    "strength_profile"
+  ],
+  "recovery_classification": "instrumented_trainer_retained_legacy_P2_parameter_count_legacy_move_batch_called_to_on_list_metadata",
+  "recursive_batch_device_transfer_recovered": true,
+  "runtime_model_certificate": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+  "runtime_model_certificate_sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1",
+  "scientific_checkpoint_saved": false,
+  "seed": 107,
+  "train_batch_arithmetic": {
+    "ceil_batches": 434,
+    "full_batches": 433,
+    "proof": "433_full_batches_plus_one_partial_batch_of_7_items",
+    "remainder_items": 7
+  },
+  "train_batches": 434,
+  "train_items": 110855,
+  "two_model_initializations_exact_match": true,
+  "validation_batches": 55,
+  "validation_items": 13863,
+  "validation_sample_feature_path": "root['x']",
+  "validation_sample_feature_shape": [
+    16,
+    70,
+    32
+  ],
+  "validation_sample_mask_path": "root['physical_port_mask']",
+  "validation_sample_mask_shape": [
+    16,
+    10
+  ]
+}

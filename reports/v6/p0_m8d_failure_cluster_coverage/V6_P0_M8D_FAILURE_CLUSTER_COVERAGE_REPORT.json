@@ -1,0 +1,833 @@
+{
+  "M8C_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8c_seed107_subgroup_generalization/V6_P0_M8C_SEED107_SUBGROUP_GENERALIZATION_REPORT.json",
+  "M8C_report_sha256": "986ed87299d32ac3bbe66c877e4c119feb5c1288f9367515a866fb2c65f3e95f",
+  "P2_test_used": false,
+  "artifacts": {
+    "coverage_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8d_failure_cluster_coverage/V6_P0_M8D_TRAIN_VALIDATION_COVERAGE.csv",
+    "coverage_csv_sha256": "dcfdfaccc36c45a65565867c319088bd5d63fec9847686cadbe5dc86cf628fd9",
+    "metadata_source_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8d_failure_cluster_coverage/V6_P0_M8D_METADATA_SOURCE_INVENTORY.csv",
+    "metadata_source_csv_sha256": "8339656d449ba8dad470b4d7d9002d700657ee198b4069f281e7c8eb1fd43bff",
+    "pair_metadata_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8d_failure_cluster_coverage/V6_P0_M8D_PAIR_METADATA.csv",
+    "pair_metadata_csv_sha256": "5a2ebdca8a689a59773b9df0d61674a1de7962e0b21df738c80c4ca809f5cfd3",
+    "validation_subgroup_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8d_failure_cluster_coverage/V6_P0_M8D_VALIDATION_SUBGROUP_METRICS.csv",
+    "validation_subgroup_csv_sha256": "d3c5bdf6ace1f75e6c30797fd24e6007ebb2485ecb6859c80367f4703048018b"
+  },
+  "contract_reproduction": {
+    "attacker_count_contract_match": true,
+    "attacker_count_counts": {
+      "1": 37,
+      "2": 33,
+      "3": 20,
+      "4": 10
+    },
+    "expected_attacker_count_counts": {
+      "1": 37,
+      "2": 33,
+      "3": 20,
+      "4": 10
+    },
+    "expected_family_counts": {
+      "hard_benign": 29,
+      "multi_victim": 4,
+      "route_overlap": 16,
+      "standard": 24,
+      "temporal": 19,
+      "weak_stealth": 8
+    },
+    "expected_split_counts": {
+      "train": 75,
+      "validation": 25
+    },
+    "expected_strength_counts": {
+      "p2_base": 92,
+      "v6_stealth": 4,
+      "v6_weak": 4
+    },
+    "family_contract_match": true,
+    "family_counts": {
+      "hard_benign": 29,
+      "multi_victim": 4,
+      "route_overlap": 16,
+      "standard": 24,
+      "temporal": 19,
+      "weak_stealth": 8
+    },
+    "split_contract_match": true,
+    "split_counts": {
+      "train": 75,
+      "validation": 25
+    },
+    "strength_contract_match": true,
+    "strength_counts": {
+      "p2_base": 92,
+      "v6_stealth": 4,
+      "v6_weak": 4
+    }
+  },
+  "coverage": {
+    "low_support_validation_value_count": 9,
+    "low_train_support_validation_values": [
+      {
+        "dimension": "familyxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "hard_benign|4"
+      },
+      {
+        "dimension": "familyxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "multi_victim|3"
+      },
+      {
+        "dimension": "familyxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 2,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "route_overlap|4"
+      },
+      {
+        "dimension": "familyxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "weak_stealth|2"
+      },
+      {
+        "dimension": "strengthxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "v6_stealth|1"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "hard_benign|p2_base|4"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "multi_victim|p2_base|3"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 2,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "route_overlap|p2_base|4"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "low_train_support_lt_3_pairs": true,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": true,
+        "value": "weak_stealth|v6_stealth|1"
+      }
+    ],
+    "unseen_validation_value_count": 2,
+    "unseen_validation_values": [
+      {
+        "dimension": "strengthxattacker_count",
+        "low_train_support_lt_3_pairs": false,
+        "train_pairs": 0,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": false,
+        "value": "v6_weak|2"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "low_train_support_lt_3_pairs": false,
+        "train_pairs": 0,
+        "validation_pairs": 1,
+        "validation_value_seen_in_train": false,
+        "value": "weak_stealth|v6_weak|2"
+      }
+    ]
+  },
+  "created_utc": "2026-08-03T05:09:27.814596+00:00",
+  "data_copied": false,
+  "decision": {
+    "P1_generation_authorized": false,
+    "multi_seed_confirmation_authorized": false,
+    "next_stage": "M8E_LABEL_POLICY_COMPARISON_USING_CURRENT_DYNAMIC70_PILOT",
+    "raw81_comparison_after_label_policy": true,
+    "reason": "M8D determines whether M8C failure is concentrated in known families/strengths/K classes or caused by train-validation coverage holes. Label-policy experiments should follow before additional full seeds."
+  },
+  "diagnostic_only": true,
+  "metadata_resolution": {
+    "metadata_conflicts": [
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0013"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0014"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0015"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0016"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0017"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0018"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0019"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0020"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0021"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0022"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0023"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0024"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0039"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0040"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0041"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0042"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0043"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0044"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0045"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0046"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0047"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0048"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0049"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0050"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0051"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0052"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0053"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0061"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0062"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0063"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0064"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0065"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0066"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0067"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0068"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0069"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0070"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0071"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0072"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0073"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0074"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0075"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0076"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0077"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0078"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0079"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0080"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0081"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0082"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0083"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0084"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0085"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0086"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0087"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0088"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0093"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0094"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0095"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0096"
+      },
+      {
+        "candidate_values": [
+          1,
+          2
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0097"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0098"
+      },
+      {
+        "candidate_values": [
+          1,
+          3
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0099"
+      },
+      {
+        "candidate_values": [
+          1,
+          4
+        ],
+        "field": "attacker_count",
+        "pair_id": "V6-P0-0100"
+      }
+    ],
+    "pairs": 100,
+    "resolved_family_pairs": 100,
+    "resolved_strength_pairs": 100,
+    "source_inventory_entries": 9
+  },
+  "model_retrained": false,
+  "primary_diagnosis": "UNSEEN_VALIDATION_COMBINATION_SHIFT",
+  "source_modified": false,
+  "stage": "V6_P0_M8D_FAILURE_CLUSTER_AND_COVERAGE_AUDIT",
+  "status": "PASS_WITH_METADATA_GAPS",
+  "test_split_used": false,
+  "worst_supported_validation_subgroups": [
+    {
+      "active_recall_mean": 0.45652173913043476,
+      "active_recall_min": 0.0,
+      "attack_member_inactive_fpr_mean": 0.22631578947368422,
+      "control_fpr_max": 0.5423728813559322,
+      "control_fpr_mean": 0.2711864406779661,
+      "count_accuracy_mean": 0.27294685990338163,
+      "dimension": "family",
+      "selection_score_mean": 0.5933182917883146,
+      "selection_score_min": 0.5259213025369772,
+      "selection_score_std": 0.06739698925133741,
+      "validation_pairs": 2,
+      "value": "weak_stealth"
+    },
+    {
+      "active_recall_mean": 0.5571386558575999,
+      "active_recall_min": 0.08695652173913043,
+      "attack_member_inactive_fpr_mean": 0.3328811494292899,
+      "control_fpr_max": 0.6864406779661016,
+      "control_fpr_mean": 0.3789346246973366,
+      "count_accuracy_mean": 0.3950487012987013,
+      "dimension": "family",
+      "selection_score_mean": 0.5973564698576681,
+      "selection_score_min": 0.37616759700482466,
+      "selection_score_std": 0.17776464140073506,
+      "validation_pairs": 7,
+      "value": "hard_benign"
+    },
+    {
+      "active_recall_mean": 0.5571386558575999,
+      "active_recall_min": 0.08695652173913043,
+      "attack_member_inactive_fpr_mean": 0.3328811494292899,
+      "control_fpr_max": 0.6864406779661016,
+      "control_fpr_mean": 0.3789346246973366,
+      "count_accuracy_mean": 0.3950487012987013,
+      "dimension": "familyxstrength",
+      "selection_score_mean": 0.5973564698576681,
+      "selection_score_min": 0.37616759700482466,
+      "selection_score_std": 0.17776464140073506,
+      "validation_pairs": 7,
+      "value": "hard_benign|p2_base"
+    },
+    {
+      "active_recall_mean": 0.7373737373737373,
+      "active_recall_min": 0.21212121212121213,
+      "attack_member_inactive_fpr_mean": 0.36556372549019606,
+      "control_fpr_max": 0.6864406779661016,
+      "control_fpr_mean": 0.4745762711864407,
+      "count_accuracy_mean": 0.39826839826839827,
+      "dimension": "familyxattacker_count",
+      "selection_score_mean": 0.6157177115773287,
+      "selection_score_min": 0.43825141321727473,
+      "selection_score_std": 0.13076173772488262,
+      "validation_pairs": 3,
+      "value": "hard_benign|1"
+    },
+    {
+      "active_recall_mean": 0.5921052631578947,
+      "active_recall_min": 0.18421052631578946,
+      "attack_member_inactive_fpr_mean": 0.5051282051282051,
+      "control_fpr_max": 0.7457627118644068,
+      "control_fpr_mean": 0.6694915254237288,
+      "count_accuracy_mean": 0.6605263157894736,
+      "dimension": "familyxattacker_count",
+      "selection_score_mean": 0.6210013009000613,
+      "selection_score_min": 0.2602392160630527,
+      "selection_score_std": 0.3607620848370086,
+      "validation_pairs": 2,
+      "value": "standard|2"
+    },
+    {
+      "active_recall_mean": 0.12857142857142856,
+      "active_recall_min": 0.0,
+      "attack_member_inactive_fpr_mean": 0.09036144578313253,
+      "control_fpr_max": 0.1440677966101695,
+      "control_fpr_mean": 0.07203389830508475,
+      "count_accuracy_mean": 0.8857142857142857,
+      "dimension": "attacker_count",
+      "selection_score_mean": 0.6337082605930159,
+      "selection_score_min": 0.5458242093964326,
+      "selection_score_std": 0.08788405119658327,
+      "validation_pairs": 2,
+      "value": "4"
+    },
+    {
+      "active_recall_mean": 0.12857142857142856,
+      "active_recall_min": 0.0,
+      "attack_member_inactive_fpr_mean": 0.09036144578313253,
+      "control_fpr_max": 0.1440677966101695,
+      "control_fpr_mean": 0.07203389830508475,
+      "count_accuracy_mean": 0.8857142857142857,
+      "dimension": "strengthxattacker_count",
+      "selection_score_mean": 0.6337082605930159,
+      "selection_score_min": 0.5458242093964326,
+      "selection_score_std": 0.08788405119658327,
+      "validation_pairs": 2,
+      "value": "p2_base|4"
+    },
+    {
+      "active_recall_mean": 0.6592847731978166,
+      "active_recall_min": 0.0,
+      "attack_member_inactive_fpr_mean": 0.32701309747269725,
+      "control_fpr_max": 0.7288135593220338,
+      "control_fpr_mean": 0.37099811676082856,
+      "count_accuracy_mean": 0.7292134596482422,
+      "dimension": "attacker_count",
+      "selection_score_mean": 0.6798404679027436,
+      "selection_score_min": 0.43825141321727473,
+      "selection_score_std": 0.1250497228847525,
+      "validation_pairs": 9,
+      "value": "1"
+    },
+    {
+      "active_recall_mean": 0.627564935064935,
+      "active_recall_min": 0.0,
+      "attack_member_inactive_fpr_mean": 0.31131078728836337,
+      "control_fpr_max": 0.7288135593220338,
+      "control_fpr_mean": 0.34957627118644063,
+      "count_accuracy_mean": 0.766017316017316,
+      "dimension": "strengthxattacker_count",
+      "selection_score_mean": 0.6990803635734644,
+      "selection_score_min": 0.43825141321727473,
+      "selection_score_std": 0.11941754508431993,
+      "validation_pairs": 8,
+      "value": "p2_base|1"
+    },
+    {
+      "active_recall_mean": 0.8518181818181818,
+      "active_recall_min": 0.84,
+      "attack_member_inactive_fpr_mean": 0.6202956989247312,
+      "control_fpr_max": 0.7288135593220338,
+      "control_fpr_mean": 0.6059322033898304,
+      "count_accuracy_mean": 1.0,
+      "dimension": "familyxattacker_count",
+      "selection_score_mean": 0.7009255836437964,
+      "selection_score_min": 0.6481194803918234,
+      "selection_score_std": 0.052806103251972936,
+      "validation_pairs": 2,
+      "value": "temporal|1"
+    }
+  ]
+}

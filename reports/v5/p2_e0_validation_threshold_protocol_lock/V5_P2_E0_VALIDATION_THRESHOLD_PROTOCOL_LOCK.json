@@ -1,0 +1,163 @@
+{
+  "architecture": {
+    "architecture_selected": true,
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/selected_graphconv_checkpoint.pt",
+    "checkpoint_selected": true,
+    "checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+    "internal_protocol_reference": "B3",
+    "paper_short_name": "Temporal Conv1D-GraphConv",
+    "parameter_count": 59785,
+    "selected_architecture": "graphconv",
+    "selected_epoch": 25,
+    "selected_seed": 107,
+    "technical_name": "Causal Depthwise-Separable Conv1D Temporal Encoder + Two-Layer GraphConv"
+  },
+  "attacker_count_rule": {
+    "classes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "normal_count_zero": "deferred to deterministic decoder; graph-negative items will decode to attacker count zero",
+    "selection": "argmax_over_four_frozen_count_logits",
+    "threshold_required": false
+  },
+  "created_utc": "2026-07-27T19:34:37.584802+00:00",
+  "decoder_boundary": {
+    "decoder_frozen": false,
+    "decoder_metrics_must_be_reported_separately": true,
+    "mitigation_logic_deferred": true,
+    "raw_neural_metrics_must_be_reported": true,
+    "route_consistency_logic_deferred": true,
+    "source_count_reconciliation_deferred": true
+  },
+  "evidence_hashes": {
+    "architecture_selection_freeze_json_sha256": "a722f47aacdcf598b1e09e0423b45dcf5586869ef0833a927291c629cce1bb25",
+    "b1_protocol_sha256": "0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60",
+    "checkpoint_selection_freeze_json_sha256": "b5483ef18342e6ee21e35fbb2241e5ab40eef5bf1725999314c6685d8e4848b2",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "selected_checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+    "task_d_model_sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+  },
+  "graph_threshold_rule": {
+    "balanced_accuracy_definition": "(true_positive_rate + true_negative_rate) / 2",
+    "head": "graph_attack",
+    "label_unit": "one binary label per validation item",
+    "primary_objective": "maximize_balanced_accuracy",
+    "reported_metrics": [
+      "threshold",
+      "balanced_accuracy",
+      "accuracy",
+      "precision",
+      "recall",
+      "f1",
+      "false_positive_rate",
+      "true_negative_rate",
+      "tp",
+      "fp",
+      "tn",
+      "fn"
+    ],
+    "tie_break_order": [
+      "lower_false_positive_rate",
+      "threshold_closest_to_0.5",
+      "lower_numeric_threshold"
+    ]
+  },
+  "optimization_constraints": {
+    "architecture_change_allowed": false,
+    "checkpoint_change_allowed": false,
+    "joint_five_threshold_optimization_allowed": false,
+    "per_attack_kind_thresholds_allowed": false,
+    "per_router_thresholds_allowed": false,
+    "per_scenario_thresholds_allowed": false,
+    "per_seed_thresholds_allowed": false,
+    "retraining_allowed": false,
+    "threshold_reselection_after_test_allowed": false
+  },
+  "prediction_source": {
+    "automatic_mixed_precision": false,
+    "batch_order_may_change_metrics": false,
+    "checkpoint": "frozen_seed_107_epoch_25_checkpoint",
+    "gradient_computation": false,
+    "model_mode": "evaluation",
+    "probability_transform": "sigmoid_from_frozen_logits",
+    "required_outputs": [
+      "graph_attack_logit",
+      "attacker_count_logits_k1_to_k4",
+      "source_logits_16",
+      "transit_logits_16",
+      "victim_logits_16",
+      "path_logits_16"
+    ],
+    "split": "validation_only"
+  },
+  "purpose": "Prospectively lock validation-only operating-point selection rules before validation predictions are exported or threshold candidates are evaluated.",
+  "required_next_artifacts": [
+    "immutable_validation_prediction_archive",
+    "validation_prediction_archive_sha256",
+    "threshold_candidate_results_csv",
+    "selected_thresholds_json",
+    "selected_thresholds_markdown",
+    "selected_thresholds_sha256s"
+  ],
+  "role_threshold_rules": {
+    "heads": [
+      "source",
+      "transit",
+      "victim",
+      "path"
+    ],
+    "metric_unit": "flatten all validation item-router entries for the selected role head",
+    "primary_objective": "maximize_positive_class_f1",
+    "reported_metrics": [
+      "threshold",
+      "precision",
+      "recall",
+      "f1",
+      "false_positive_rate",
+      "true_negative_rate",
+      "accuracy",
+      "tp",
+      "fp",
+      "tn",
+      "fn"
+    ],
+    "thresholds_selected_independently": true,
+    "tie_break_order": [
+      "lower_false_positive_rate",
+      "threshold_closest_to_0.5",
+      "lower_numeric_threshold"
+    ]
+  },
+  "security_boundary": {
+    "selection_basis": "validation_only",
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false
+  },
+  "stage": "V5_P2_E0_VALIDATION_THRESHOLD_PROTOCOL_LOCK",
+  "state_after_e0": {
+    "architecture_selected": true,
+    "checkpoint_selected": true,
+    "decoder_frozen": false,
+    "ready_for_one_shot_test": false,
+    "threshold_protocol_locked": true,
+    "thresholds_frozen": false,
+    "validation_predictions_exported": false,
+    "validation_threshold_selection_performed": false
+  },
+  "status": "COMPLETE",
+  "threshold_candidate_generation": {
+    "candidate_generation": "For each head independently, sort its unique validation probabilities. Candidate thresholds are 0.0, 0.5, 1.0, and the midpoint between every adjacent pair of unique probabilities. Remove duplicates and evaluate candidates in ascending numeric order.",
+    "comparison_rule": "predicted_positive iff probability >= threshold",
+    "manual_threshold_insertion_allowed": false,
+    "manual_visual_selection_allowed": false,
+    "nonfinite_probability_policy": "fail",
+    "probability_dtype_for_selection": "float64",
+    "test_predictions_allowed": false
+  }
+}

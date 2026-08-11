@@ -1,0 +1,169 @@
+{
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "certified_dataset_modified": false,
+  "chunk_protocol": {
+    "atomic_json_chunks": true,
+    "chunk_count": 4,
+    "chunk_size": 16,
+    "first_pass_decoded_chunks": 4,
+    "first_pass_reused_chunks": 0,
+    "per_chunk_hash_manifests": true,
+    "resume_validation_pass": true,
+    "second_pass_reused_chunks": 4,
+    "working_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING"
+  },
+  "created_utc": "2026-08-05T00:09:25.912733+00:00",
+  "decision": {
+    "A1_exact_full_validation_evaluation_authorized": true,
+    "A1_margin_retuning_authorized": false,
+    "beam_decoder_selected": false,
+    "next_stage": "V5_P3_D4_RESUMABLE_A1_EXACT_TRANCHE_A_VALIDATION_EVALUATION",
+    "resumable_A1_chunk_protocol_certified": true,
+    "sealed_test_evaluation_authorized": false
+  },
+  "decoder": {
+    "A1_margin_threshold": 8.720532088239842,
+    "certification_policy": {
+      "high_precision_decimal_digits": 80,
+      "independent_certificate_gates_mandatory": true,
+      "integrality_abs_tolerance": 1e-09,
+      "linear_constraint_abs_tolerance": 1e-09,
+      "mip_gap_reporting_ceiling": 1e-12,
+      "objective_abs_tolerance": 1e-10,
+      "objective_rel_tolerance": 1e-12,
+      "policy_id": "V5P2-D1-6ce8cc7c76b8d2cff367631077d65f20",
+      "semantic_face_abs_tolerance": 1e-12,
+      "variable_bound_abs_tolerance": 1e-09
+    },
+    "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder_certified.py",
+    "sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+    "solver_identity": {
+      "backend": "scipy.optimize.milp_with_embedded_HiGHS",
+      "highs_version": "1.12.0",
+      "numpy_version": "2.5.1",
+      "python_version": "3.12.3",
+      "scipy_version": "1.18.0"
+    },
+    "working_matches_canonical_preservation": true
+  },
+  "generalization_claim_authorized": false,
+  "model_replayed": false,
+  "model_trained": false,
+  "numerical_and_determinism": {
+    "all_margins_finite": true,
+    "all_selected_items_decoded": true,
+    "certification_exceptions": 0,
+    "merged_results_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/V5_P3_D3_A1_EXACT_PREFLIGHT_MERGED_RESULTS.json",
+    "merged_results_sha256": "f6b14fd654cc8a898b70c5073d3d16ddff2146bb8fcca6d25aa3708051bd9d87",
+    "repeat_items": 8,
+    "repeat_semantic_outputs_exact": true
+  },
+  "provenance": {
+    "D0_lock_sha256": "b4a9b98c8855fe2c50a0a3abe34c65cb12347e02db99fae25e40e6f04a6aa687",
+    "D1_export_sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f",
+    "D2_lock_sha256": "a3237b557728f972078fffaf92513fb1fc3dc01ecae17654880eabef6569ccf5",
+    "D2_report_sha256": "63b9acbac5d1ad4d5fc81e478594a7433ddb0aca81bfb6d9b9a23766b27086c4",
+    "installed_script_sha256": "2d5443fb022d2a20dc4811dbd575c4ab6ddccc4f3e6aa6f32e4e0b6feaa1f0ad",
+    "numpy_version": "2.5.1",
+    "python_version": "3.12.3"
+  },
+  "scope": "Resumable atomic-chunk preflight of the frozen certified P2 A1 exact decoder on a balanced 64-item subset of the immutable V5-P3 A-validation export.",
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_tensor_loaded": false
+  },
+  "selection": {
+    "groups": {
+      "K1": [
+        93,
+        291,
+        508,
+        846,
+        1466,
+        1652,
+        1848,
+        2211,
+        2763,
+        3114,
+        3313,
+        3531
+      ],
+      "K2": [
+        3674,
+        4030,
+        4548,
+        4630,
+        4815,
+        5158,
+        5517,
+        6037,
+        6224,
+        6427,
+        6649,
+        7009
+      ],
+      "K3": [
+        7188,
+        7530,
+        7721,
+        7930,
+        8258,
+        8695,
+        9039,
+        9227,
+        9434,
+        9934,
+        10457,
+        10543
+      ],
+      "K4": [
+        10647,
+        10855,
+        11080,
+        11620,
+        11963,
+        12151,
+        12357,
+        12687,
+        13286,
+        13464,
+        13653,
+        13862
+      ],
+      "inactive": [
+        0,
+        981,
+        1911,
+        2750,
+        3754,
+        4542,
+        5555,
+        6516,
+        7322,
+        8328,
+        9258,
+        10095,
+        11101,
+        11888,
+        12868,
+        13799
+      ]
+    },
+    "items": 64,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/V5_P3_D3_A1_EXACT_PREFLIGHT_SELECTION.json",
+    "sha256": "b3adb386eebc887c0c9c7367d342525bf014b3f43c254f090a47be517773767b"
+  },
+  "stage": "V5_P3_D3_RESUMABLE_A1_EXACT_DECODER_CHUNK_PREFLIGHT",
+  "status": "PASS",
+  "threshold_tuning_performed": false,
+  "timing": {
+    "estimated_full_13863_hours": 2.007606550178473,
+    "estimated_full_13863_seconds": 7227.383580642503,
+    "maximum_seconds": 1.2761503210058436,
+    "mean_seconds": 0.5213434019074157,
+    "median_seconds": 0.4733475164975971,
+    "p95_seconds": 0.6500887174581291
+  }
+}

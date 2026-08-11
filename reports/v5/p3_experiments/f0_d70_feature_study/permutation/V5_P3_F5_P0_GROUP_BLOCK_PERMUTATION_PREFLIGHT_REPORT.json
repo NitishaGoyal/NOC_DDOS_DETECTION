@@ -1,0 +1,211 @@
+{
+  "artifacts": {
+    "authorization_boundary": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_P0_F5_VS_F6_AUTHORIZATION_BOUNDARY.json",
+    "checkpoint_structure": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_P0_CHECKPOINT_STRUCTURE.json",
+    "execution_route_inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_P0_EXECUTION_ROUTE_SOURCE_INVENTORY.json",
+    "permutation_protocol": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_P0_GROUP_BLOCK_PERMUTATION_PROTOCOL.json"
+  },
+  "authorization": {
+    "F5_authorized_by_F4M": true,
+    "F6_authorized": false,
+    "actual_F5_execution_authorized": true,
+    "canonical_F4M_complete": true,
+    "canonical_F4_complete": true
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "checkpoint": {
+    "buffer_like_elements": 96,
+    "parameter_like_elements": 60553,
+    "state_dict_tensor_count": 49
+  },
+  "classification": "VALIDATION-EXPLORATORY preflight",
+  "created_utc": "2026-08-05T21:25:12.657857+00:00",
+  "decision": {
+    "F5_P0_complete": true,
+    "F6_integrated_gradients_authorized": false,
+    "actual_F5_execution_authorized": true,
+    "next_stage": "V5_P3_F5_DYNAMIC70_GROUP_BLOCK_PERMUTATION",
+    "sealed_test_access_authorized": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_deserialized_for_structure_only": true,
+    "feature_groups_changed": false,
+    "metric_formulas_changed": false,
+    "model_instantiated": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "training_tensors_loaded": false,
+    "validation_dataset_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": false
+  },
+  "protocol": {
+    "coverage": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69
+    ],
+    "coverage_exact": true,
+    "edge_index_permuted": false,
+    "groups": {
+      "buffer_pressure": {
+        "count": 15,
+        "end_exclusive": 55,
+        "start": 40
+      },
+      "directional_traffic_volume": {
+        "count": 10,
+        "end_exclusive": 10,
+        "start": 0
+      },
+      "flow_control_stalls": {
+        "count": 15,
+        "end_exclusive": 70,
+        "start": 55
+      },
+      "inter_flit_timing": {
+        "count": 20,
+        "end_exclusive": 30,
+        "start": 10
+      },
+      "queue_activity": {
+        "count": 10,
+        "end_exclusive": 40,
+        "start": 30
+      }
+    },
+    "importance_direction": {
+      "graph_fpr": "permuted - baseline",
+      "higher_is_better_metrics": "baseline - permuted"
+    },
+    "input_shape": [
+      16,
+      70,
+      32
+    ],
+    "labels_and_metadata_permuted": false,
+    "mask_shape": [
+      16,
+      10
+    ],
+    "other_feature_groups_unchanged": true,
+    "permutation_axis": "validation-sample axis only",
+    "permutation_unit": "entire [16, C_group, 32] block from one validation item",
+    "physical_port_mask_permuted": false,
+    "primary_effect": "permuted metric minus same-runtime unpermuted baseline metric",
+    "repeats": 10,
+    "seeds": [
+      5101,
+      5102,
+      5103,
+      5104,
+      5105,
+      5106,
+      5107,
+      5108,
+      5109,
+      5110
+    ],
+    "self_mapping_policy": "unrestricted random permutation; fixed points are allowed and reported per repeat",
+    "within_block_channel_order_preserved": true,
+    "within_block_router_order_preserved": true,
+    "within_block_temporal_order_preserved": true
+  },
+  "provenance": {
+    "F4M_R3A_lock_sha256": "81eaa6192919cb533f0b5da8ccdd350e25b236a6e1d14241c30f25733f5d7967",
+    "F4M_R3A_report_sha256": "fbe930f6c5c1fda95fdd6abaae16c25a32c6418fa97f4da439449468d9e40cc3",
+    "adapter_sha256": "9e2a9f36339550b86dee6d19e3b0403a9f70c06c8ad9afcf20c0c4797eba4384",
+    "authorization_boundary_sha256": "118d4244be72a7a655d9deb7943c2efb59f28fbd5d2457bac9dd9405b82daa37",
+    "canonical_F4M_lock_sha256": "1a0e5268d7d4f3d13238762e0a0382275a47e4011960cd4816de325f1af1f59a",
+    "canonical_F4M_report_sha256": "e7dc2dbafee80d96f156fb08f65abfd8781fe9cb04288cec8539ede9a0adf348",
+    "canonical_F4_lock_sha256": "8e406761413ca0f68351ec3d55ebb997f1a511a839c749cdfabdc007993e682b",
+    "canonical_F4_report_sha256": "8ab88718e1dfdd5b27f77d4eebf5581df414ff767672cb054646e0c35a7cef76",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "checkpoint_structure_sha256": "f4d201dcfb96e352765c97b8c2af68b21836919777f8e037389b5c64cd01408d",
+    "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+    "installed_script_sha256": "de2516e9c5e1450f13e7b499cea475b74a02779ea50f4f46ce5bec02631e0e93",
+    "loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "model_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "protocol_sha256": "73417ea791bf93e7c6af86b76e160c1924c10ecc2d39d294b732df7391a96531",
+    "route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca"
+  },
+  "route_evidence": {
+    "adapter_function_count": 8,
+    "exporter_cli_argument_count": 4,
+    "exporter_relevant_call_count": 69,
+    "exporter_relevant_function_count": 5,
+    "loader_relevant_function_count": 2,
+    "model_forward_candidates": 1,
+    "output_head_width": 69
+  },
+  "scope": "Freeze the five-group Dynamic70 permutation protocol, verify F4/F4M authorization and source hashes, inspect the official model/loader/exporter/adapter route, and decide whether actual validation permutation execution may begin.",
+  "stage": "V5_P3_F5_P0_GROUP_BLOCK_PERMUTATION_PREFLIGHT",
+  "status": "PASS"
+}

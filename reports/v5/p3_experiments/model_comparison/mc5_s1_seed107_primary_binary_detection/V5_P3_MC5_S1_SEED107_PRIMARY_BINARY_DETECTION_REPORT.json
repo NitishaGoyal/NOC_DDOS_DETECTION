@@ -1,0 +1,48 @@
+{
+  "governance": {
+    "decoder_applied": false,
+    "persistence_applied": false,
+    "sealed_test_access": false,
+    "test_evaluation": false,
+    "threshold_tuning_performed": false
+  },
+  "next_stage": "MC5_S2_D2_XGBOOST_700_FEATURE_CPU_BASELINE",
+  "seed": 107,
+  "selection_rule": "mean(graph_AUROC, graph_AP)",
+  "stage": "V5_P3_MC5_S1_SEED107_PRIMARY_BINARY_DETECTION",
+  "status": "PASS",
+  "summary": [
+    {
+      "best_epoch": 5,
+      "checkpoint_sha256": "04884be22b0570bde85927bab748c5b625365a782b96fb36c7a5e7e70727607c",
+      "graph_accuracy_0p5": 0.8179424283962196,
+      "graph_ap": 0.6562429395093303,
+      "graph_auroc": 0.8920314353082578,
+      "graph_f1_0p5": 0.7281150676076065,
+      "graph_fpr_0p5": 0.21195167838399842,
+      "graph_precision_0p5": 0.6121931334359997,
+      "graph_recall_0p5": 0.8981924508240298,
+      "model_id": "binary_conv1d",
+      "params": 35329,
+      "seed": 107,
+      "selection_score": 0.7741371874087941,
+      "status": "PASS"
+    },
+    {
+      "best_epoch": 4,
+      "checkpoint_sha256": "99cf2d7e3e0d011b8cac3bbb71fb040f5d9b248639a0426e6d20fe4f0cae5c9d",
+      "graph_accuracy_0p5": 0.7991486905706658,
+      "graph_ap": 0.6703118351280661,
+      "graph_auroc": 0.8913023922023641,
+      "graph_f1_0p5": 0.723836920940383,
+      "graph_fpr_0p5": 0.26443212199227645,
+      "graph_precision_0p5": 0.5773856622883368,
+      "graph_recall_0p5": 0.9698298777246146,
+      "model_id": "binary_conv1d_graphconv",
+      "params": 51841,
+      "seed": 107,
+      "selection_score": 0.780807113665215,
+      "status": "PASS"
+    }
+  ]
+}

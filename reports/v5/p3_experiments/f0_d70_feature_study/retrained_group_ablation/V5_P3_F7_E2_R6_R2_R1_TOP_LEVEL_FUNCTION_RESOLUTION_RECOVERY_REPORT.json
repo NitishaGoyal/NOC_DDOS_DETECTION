@@ -1,0 +1,982 @@
+{
+  "artifacts": {
+    "batch_device_transfer_patch": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RECURSIVE_BATCH_DEVICE_TRANSFER_PATCH.json",
+    "corrected_matrix_launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix_e2_r6_r2.sh",
+    "corrected_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py",
+    "execution_decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_PRIMARY_MATRIX_EXECUTION_DECISION.json",
+    "item_batch_patch": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_PAIRBLOCK_TO_ITEMBATCH_ROUTE_PATCH.json",
+    "launcher_patch": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_CORRECTED_MATRIX_LAUNCHER_PATCH.json",
+    "legacy_guard_patch": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_LEGACY_CARDINALITY_AND_PARAMETER_COUNT_GUARD_PATCH.json",
+    "runtime_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_ADAPTER_AND_FIRST_BATCH_CERTIFICATION.json",
+    "scratch": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH",
+    "static_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_GENERATED_TRAINER_STATIC_CERTIFICATION.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-06T07:55:27.388577+00:00",
+  "decision": {
+    "AST_numeric_literal_patch_verified": true,
+    "E2_R1_complete": true,
+    "E2_R3A_R1_complete": true,
+    "E2_complete": true,
+    "F8_multi_seed_authorized": false,
+    "R2_nonexistent_output_directory_contract_verified": true,
+    "R3A_dataset_cardinality_guard_recovered": true,
+    "R5_dynamic70_parameter_count_guard_recovered": true,
+    "actual_F7_primary_matrix_execution_started": false,
+    "actual_scientific_training_started": false,
+    "all_five_group_masks_verified": true,
+    "canonical_state_hash_match_verified": true,
+    "compact_interface_equivalence_authorized": false,
+    "complete_module_level_function_inventory_verified": true,
+    "corrected_matrix_launcher_generated": true,
+    "corrected_trainer_bound_in_matrix_launcher": true,
+    "corrected_trainer_generated": true,
+    "deterministic_epoch_specific_shuffle_verified": true,
+    "effective_item_batch_size_preserved": true,
+    "epoch_shuffle_controller_verified": true,
+    "feature_removal_authorized": false,
+    "finite_nonzero_gradients_verified": true,
+    "first_batch_forward_loss_backward_reached": true,
+    "frozen_batch_geometry_uniquely_resolves_256": true,
+    "generated_trainer_static_preflight_passed": true,
+    "hardware_reduction_claim_authorized": false,
+    "item_level_batch_route_verified": true,
+    "legacy_set_epoch_use_preserved": true,
+    "missing_shlex_import_recovered": true,
+    "model_determinism_verified": true,
+    "next_stage": "V5_P3_F7_PRIMARY_SEED107_SAME_WIDTH_RETRAINED_GROUP_ABLATION_MATRIX_EXECUTION",
+    "non_tensor_batch_metadata_preserved": true,
+    "nonexistent_evaluate_requirement_removed": true,
+    "odd_training_cardinality_supported": true,
+    "optimizer_step_intercepted_before_execution": true,
+    "pair_block_sampler_removed": true,
+    "partial_run_overwrite_guard_verified": true,
+    "physical_port_mask_preserved": true,
+    "primary_matrix_execution_authorized": true,
+    "prior_AST_numeric_literal_recovery_preserved": true,
+    "recovery_classification": "E2_compared_parameter_only_hash_against_complete_state_dict_hash",
+    "recursive_batch_device_transfer_verified": true,
+    "runtime_adapter_preflight_passed": true,
+    "sampler_parameter_name_not_used_for_authorization": true,
+    "scientific_checkpoint_saved": false,
+    "sealed_test_access": false,
+    "train_batch_arithmetic_corrected": true,
+    "train_full_batches": 433,
+    "train_remainder_items": 7,
+    "train_total_batches": 434,
+    "train_validation_split_lengths_verified": true
+  },
+  "finding": {
+    "runtime": {
+      "R2_recovery_classification": "E2_R1_precreated_model_and_report_directories_before_trainer",
+      "R3A_recovery_classification": "prior_AST_numeric_literal_cardinality_recovery",
+      "all_odd_training_items_retained": true,
+      "canonical_state_hash_algorithm": "sorted_state_dict_key_dtype_shape_and_contiguous_cpu_bytes",
+      "certified_dynamic70_parameter_count": 60553,
+      "console": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/console.log",
+      "console_sha256": "bf9be89ec305640155d4f74256183a1d736d57c2932e95d0d4bdad8a75c5b274",
+      "corrected_trainer_train_items": 110855,
+      "corrected_trainer_validation_items": 13863,
+      "deterministic_epoch_specific_shuffle": true,
+      "deterministic_fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+      "dynamic70_parameter_count_guard_recovered": true,
+      "effective_item_batch_size": 256,
+      "epoch_shuffle_controller_active": true,
+      "instrumentation": {
+        "instrumented_trainer": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/run_v5_p3_f7_instrumented_first_batch_preflight.py",
+        "instrumented_trainer_sha256": "f1caf5950ec10714fa1a9f45972f9e054d814c3dde116f46abb45d8e735da86d",
+        "optimizer_assignment_line": 1398,
+        "optimizer_step_line": 591
+      },
+      "instrumented_command": [
+        "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/run_v5_p3_f7_instrumented_first_batch_preflight.py",
+        "--root",
+        "/home/zira/research/projects/GNN-2d",
+        "--b1-dir",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_b1_training_protocol_lock",
+        "--b0-r3-dir",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r3_corrected_nontest_label_shortcut_audit",
+        "--loader-path",
+        "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+        "--model-path",
+        "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py",
+        "--model-dir",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/model",
+        "--report-dir",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/report",
+        "--seed",
+        "107"
+      ],
+      "instrumented_model_dir_absent_at_launch": true,
+      "instrumented_report_dir_absent_at_launch": true,
+      "instrumented_return_code": 86,
+      "intercept": {
+        "all_gradients_finite": true,
+        "gradient_l2": 0.7595749294979706,
+        "gradient_tensor_count": 48,
+        "initial_parameter_hash": "c0663f00ea75621ce902809028a7497cff7ba095f0653eca05a828525114d822",
+        "intercept_parameter_hash": "c0663f00ea75621ce902809028a7497cff7ba095f0653eca05a828525114d822",
+        "optimizer_step_performed": false,
+        "parameters_unchanged_before_step": true,
+        "sentinel": "F7_E2_OPTIMIZER_STEP_INTERCEPTED"
+      },
+      "legacy_parameter_count_guard_value": 43273,
+      "legacy_set_epoch_use_preserved": true,
+      "masking_results": [
+        {
+          "all_other_array_leaves_exact": true,
+          "channel_range": [
+            0,
+            10
+          ],
+          "feature_path": "root['x']",
+          "label": "ablate_directional_traffic_volume",
+          "nonzero_values_zeroed": 5120,
+          "outside_group_exact": true,
+          "physical_mask_exact": true,
+          "physical_mask_path": "root['physical_port_mask']",
+          "sample_index": 0
+        },
+        {
+          "all_other_array_leaves_exact": true,
+          "channel_range": [
+            10,
+            30
+          ],
+          "feature_path": "root['x']",
+          "label": "ablate_inter_flit_timing",
+          "nonzero_values_zeroed": 10240,
+          "outside_group_exact": true,
+          "physical_mask_exact": true,
+          "physical_mask_path": "root['physical_port_mask']",
+          "sample_index": 0
+        },
+        {
+          "all_other_array_leaves_exact": true,
+          "channel_range": [
+            30,
+            40
+          ],
+          "feature_path": "root['x']",
+          "label": "ablate_queue_activity",
+          "nonzero_values_zeroed": 5120,
+          "outside_group_exact": true,
+          "physical_mask_exact": true,
+          "physical_mask_path": "root['physical_port_mask']",
+          "sample_index": 0
+        },
+        {
+          "all_other_array_leaves_exact": true,
+          "channel_range": [
+            40,
+            55
+          ],
+          "feature_path": "root['x']",
+          "label": "ablate_buffer_pressure",
+          "nonzero_values_zeroed": 7680,
+          "outside_group_exact": true,
+          "physical_mask_exact": true,
+          "physical_mask_path": "root['physical_port_mask']",
+          "sample_index": 0
+        },
+        {
+          "all_other_array_leaves_exact": true,
+          "channel_range": [
+            55,
+            70
+          ],
+          "feature_path": "root['x']",
+          "label": "ablate_flow_control_stalls",
+          "nonzero_values_zeroed": 4608,
+          "outside_group_exact": true,
+          "physical_mask_exact": true,
+          "physical_mask_path": "root['physical_port_mask']",
+          "sample_index": 0
+        }
+      ],
+      "model_certificates": [
+        {
+          "fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/model_determinism_1/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+          "sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1"
+        },
+        {
+          "fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/model_determinism_2/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+          "sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1"
+        }
+      ],
+      "model_class": "V6P0Dynamic70GraphConvCount4",
+      "optimizer_step_performed": false,
+      "pair_block_sampler_active": false,
+      "parameter_count": 60553,
+      "preview_batch_schema": {
+        "case_id": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "edge_index": {
+          "dtype": "torch.int64",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            2,
+            48
+          ]
+        },
+        "epoch_id": {
+          "dtype": "torch.int64",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2
+          ]
+        },
+        "epoch_tick": {
+          "dtype": "torch.int64",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2
+          ]
+        },
+        "family": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "normalization_scope": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "pair_id": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "pair_member": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "physical_port_mask": {
+          "dtype": "torch.uint8",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16,
+            10
+          ]
+        },
+        "role_mask": {
+          "dtype": "torch.uint8",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16
+          ]
+        },
+        "run_id": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "source_target_router": {
+          "dtype": "torch.int8",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16
+          ]
+        },
+        "strength_profile": {
+          "child_types": [
+            "str"
+          ],
+          "kind": "list",
+          "length": 2,
+          "python_type": "list"
+        },
+        "window_start": {
+          "dtype": "torch.int64",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2
+          ]
+        },
+        "window_target": {
+          "dtype": "torch.int64",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2
+          ]
+        },
+        "x": {
+          "dtype": "torch.float32",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16,
+            70,
+            32
+          ]
+        },
+        "y_attack": {
+          "dtype": "torch.float32",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2
+          ]
+        },
+        "y_attack_path": {
+          "dtype": "torch.float32",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16
+          ]
+        },
+        "y_attacker_count": {
+          "dtype": "torch.int64",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2
+          ]
+        },
+        "y_source": {
+          "dtype": "torch.float32",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16
+          ]
+        },
+        "y_transit": {
+          "dtype": "torch.float32",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16
+          ]
+        },
+        "y_victim": {
+          "dtype": "torch.float32",
+          "kind": "tensor",
+          "python_type": "Tensor",
+          "shape": [
+            2,
+            16
+          ]
+        }
+      },
+      "preview_list_keys": [
+        "case_id",
+        "family",
+        "normalization_scope",
+        "pair_id",
+        "pair_member",
+        "run_id",
+        "strength_profile"
+      ],
+      "preview_non_tensor_keys": [
+        "case_id",
+        "family",
+        "normalization_scope",
+        "pair_id",
+        "pair_member",
+        "run_id",
+        "strength_profile"
+      ],
+      "recovery_classification": "instrumented_trainer_retained_legacy_P2_parameter_count_legacy_move_batch_called_to_on_list_metadata",
+      "recursive_batch_device_transfer_recovered": true,
+      "runtime_model_certificate": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E2_R6_R2_RUNTIME_PREFLIGHT_SCRATCH/instrumented_trainer_runtime/F7_MODEL_INITIALIZATION_CERTIFICATION.json",
+      "runtime_model_certificate_sha256": "14739eff1eb3ba6294e835f8fe7d21e87ade179bcfe3ff777a03ebb33213c6d1",
+      "scientific_checkpoint_saved": false,
+      "seed": 107,
+      "train_batch_arithmetic": {
+        "ceil_batches": 434,
+        "full_batches": 433,
+        "proof": "433_full_batches_plus_one_partial_batch_of_7_items",
+        "remainder_items": 7
+      },
+      "train_batches": 434,
+      "train_items": 110855,
+      "two_model_initializations_exact_match": true,
+      "validation_batches": 55,
+      "validation_items": 13863,
+      "validation_sample_feature_path": "root['x']",
+      "validation_sample_feature_shape": [
+        16,
+        70,
+        32
+      ],
+      "validation_sample_mask_path": "root['physical_port_mask']",
+      "validation_sample_mask_shape": [
+        16,
+        10
+      ]
+    },
+    "static": {
+      "adapter_call_counts": {
+        "F7Dynamic70ModelFactory": 1,
+        "F7TrainDatasetAdapter": 1,
+        "F7ValidationDatasetAdapter": 1
+      },
+      "batch_device_transfer_patch": {
+        "all_non_move_batch_functions_unchanged": true,
+        "changed_module_level_functions": [
+          "move_batch"
+        ],
+        "compute_loss_unchanged": true,
+        "corrected_move_batch_sha256": "3002a7d07f4d4b96998b8ae7bdef494653990c30188df0e87f58c5fb55698807",
+        "corrected_move_batch_source": "def move_batch(batch, device):\n    # P3 batches contain tensors plus provenance/metadata lists.\n    def _f7_move_value(_value):\n        if isinstance(_value, torch.Tensor):\n            return _value.to(device, non_blocking=device.type == 'cuda')\n        if isinstance(_value, dict):\n            return {\n                _key: _f7_move_value(_child)\n                for _key, _child in _value.items()\n            }\n        if isinstance(_value, list):\n            return [_f7_move_value(_child) for _child in _value]\n        if isinstance(_value, tuple):\n            return tuple(\n                _f7_move_value(_child) for _child in _value\n            )\n        return _value\n\n    return _f7_move_value(batch)",
+        "default_collate_preserved": true,
+        "dict_structure_preserved": true,
+        "early_stop_not_targeted": true,
+        "failure_classification": "P3_default_collate_preserved_non_tensor_metadata_as_list_but_legacy_P2_move_batch_called_to_on_every_top_level_value",
+        "feature_masking_not_targeted": true,
+        "final_recursive_transfer_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py",
+        "final_recursive_transfer_trainer_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf",
+        "function_source_resolution": "complete_module_level_function_inventory",
+        "hard_coded_evaluate_requirement_removed": true,
+        "input_item_batch_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_item_batch.py",
+        "input_item_batch_trainer_sha256": "9eab988c3733d76a2ebcf7490555c3db8acf8d1d9e9e37b1619d7aba2cae5fa9",
+        "list_structure_preserved": true,
+        "model_architecture_not_targeted": true,
+        "module_level_function_names_after": [
+          "atomic_torch_save",
+          "atomic_write",
+          "average_precision",
+          "binary_auroc",
+          "checkpoint_rank",
+          "compute_loss",
+          "fixed_binary_metrics",
+          "flatten_epoch_row",
+          "import_module",
+          "load_json",
+          "main",
+          "move_batch",
+          "multiclass_macro_f1",
+          "parse_distribution",
+          "role_positive_count",
+          "set_seed",
+          "sha256_file",
+          "sha256_state_dict",
+          "train_one_epoch",
+          "validate",
+          "write_csv",
+          "write_json"
+        ],
+        "module_level_function_names_before": [
+          "atomic_torch_save",
+          "atomic_write",
+          "average_precision",
+          "binary_auroc",
+          "checkpoint_rank",
+          "compute_loss",
+          "fixed_binary_metrics",
+          "flatten_epoch_row",
+          "import_module",
+          "load_json",
+          "main",
+          "move_batch",
+          "multiclass_macro_f1",
+          "parse_distribution",
+          "role_positive_count",
+          "set_seed",
+          "sha256_file",
+          "sha256_state_dict",
+          "train_one_epoch",
+          "validate",
+          "write_csv",
+          "write_json"
+        ],
+        "non_tensor_leaves_preserved": true,
+        "optimizer_scheduler_clipping_not_targeted": true,
+        "original_move_batch_sha256": "4fb58c6002ee8110152a362cf3d6ea06075fe313787ba4c7482240af93c44f6f",
+        "original_move_batch_source": "def move_batch(\n    batch: dict[str, torch.Tensor],\n    device: torch.device,\n) -> dict[str, torch.Tensor]:\n    return {\n        key: value.to(\n            device,\n            non_blocking=(device.type == \"cuda\"),\n        )\n        for key, value in batch.items()\n    }",
+        "original_to_receiver": "value",
+        "preserved_tensor_transfer_expression": "_value.to(device, non_blocking=device.type == 'cuda')",
+        "tensor_leaves_moved": true,
+        "tensor_transfer_expression_preserved": true,
+        "train_one_epoch_unchanged": true,
+        "tuple_structure_preserved": true,
+        "unchanged_module_level_functions": [
+          "atomic_torch_save",
+          "atomic_write",
+          "average_precision",
+          "binary_auroc",
+          "checkpoint_rank",
+          "compute_loss",
+          "fixed_binary_metrics",
+          "flatten_epoch_row",
+          "import_module",
+          "load_json",
+          "main",
+          "multiclass_macro_f1",
+          "parse_distribution",
+          "role_positive_count",
+          "set_seed",
+          "sha256_file",
+          "sha256_state_dict",
+          "train_one_epoch",
+          "validate",
+          "write_csv",
+          "write_json"
+        ]
+      },
+      "compute_loss_sha256": "d9629317801a72a1905dbcd49eace1418f15014df3a2f55d097c25ae4997155f",
+      "early_stop_condition": "epoch >= 15 and early_stop_patience_counter >= 12",
+      "generated_trainer_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf",
+      "gradient_clip_before_optimizer_step": true,
+      "gradient_clip_call_count": 1,
+      "item_batch_patch": {
+        "active_pair_block_sampler_call_count": 0,
+        "active_validation_sampler_load_count": 0,
+        "all_odd_training_items_retained": true,
+        "compute_loss_not_targeted": true,
+        "corrected_loader_routes": {
+          "train_loader": {
+            "batch_size": 256,
+            "default_collate": true,
+            "drop_last": false,
+            "generator_present": true,
+            "generator_source": "train_sampler.generator",
+            "shuffle": true,
+            "source": "DataLoader(train_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=True, drop_last=False, generator=train_sampler.generator)"
+          },
+          "validation_loader": {
+            "batch_size": 256,
+            "default_collate": true,
+            "drop_last": false,
+            "generator_present": false,
+            "generator_source": null,
+            "shuffle": false,
+            "source": "DataLoader(validation_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=False, drop_last=False)"
+          }
+        },
+        "default_collate": true,
+        "deterministic_epoch_specific_train_shuffle": true,
+        "deterministic_train_shuffle_generator": true,
+        "drop_last": false,
+        "early_stop_not_targeted": true,
+        "effective_item_batch_size": 256,
+        "effective_item_batch_size_resolution": "unique_frozen_batch_geometry",
+        "epoch_shuffle_controller": {
+          "class": "F7EpochShuffleController",
+          "generator_use_count": 1,
+          "seed_formula": "base_seed_plus_epoch",
+          "set_epoch_use_count": 1,
+          "unexpected_use_count": 0
+        },
+        "failure_classification": "R4_assumed_semantic_pair_count_parameter_name_but_sampler_signature_uses_a_neutral_parameter_name",
+        "feature_masking_not_targeted": true,
+        "final_item_batch_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_item_batch.py",
+        "final_item_batch_trainer_sha256": "9eab988c3733d76a2ebcf7490555c3db8acf8d1d9e9e37b1619d7aba2cae5fa9",
+        "frozen_batch_geometry": {
+          "intersection": [
+            256
+          ],
+          "legacy_train_admissible_item_batch_sizes": [
+            256
+          ],
+          "legacy_train_batches": 275,
+          "legacy_train_items": 70166,
+          "legacy_validation_admissible_item_batch_sizes": [
+            256,
+            257,
+            258,
+            259,
+            260
+          ],
+          "legacy_validation_batches": 49,
+          "legacy_validation_items": 12528,
+          "unique_effective_item_batch_size": 256
+        },
+        "input_cardinality_corrected_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_legacy_guards.py",
+        "input_cardinality_corrected_trainer_sha256": "ffef481257a0a62830a2382851d08248da8084418039edb92c971580f23bba79",
+        "legacy_set_epoch_use_preserved": true,
+        "loader_routes": {
+          "train_loader": {
+            "assignment_line": 1369,
+            "batch_size": 256,
+            "corrected_call": "DataLoader(train_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=True, drop_last=False, generator=train_sampler.generator)",
+            "default_collate": true,
+            "drop_last": false,
+            "generator_seeded": true,
+            "original_call": "DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+            "shuffle": true
+          },
+          "validation_loader": {
+            "assignment_line": 1375,
+            "batch_size": 256,
+            "corrected_call": "DataLoader(validation_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=False, drop_last=False)",
+            "default_collate": true,
+            "drop_last": false,
+            "generator_seeded": false,
+            "original_call": "DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+            "shuffle": false
+          }
+        },
+        "model_architecture_not_targeted": true,
+        "optimizer_scheduler_clipping_not_targeted": true,
+        "recovery_method": "derive_effective_item_batch_size_from_frozen_cardinality_and_batch_count_geometry_not_parameter_naming",
+        "remaining_pair_text_inventory": [
+          {
+            "line": 15,
+            "text": "The pair-block sampler preserves ATTACK/CONTROL adjacency and shuffles"
+          },
+          {
+            "line": 16,
+            "text": "pair-aligned two-item blocks deterministically. Blocks remain grouped by run"
+          },
+          {
+            "line": 17,
+            "text": "pair while loading to avoid pathological repeated .pt deserialization; pair"
+          },
+          {
+            "line": 341,
+            "text": "class PairBlockBatchSampler(Sampler[list[int]]):"
+          },
+          {
+            "line": 345,
+            "text": "    Pair groups are shuffled each epoch, and starts are shuffled inside each"
+          },
+          {
+            "line": 346,
+            "text": "    pair group. The flattened block stream is then batched into 128 blocks"
+          },
+          {
+            "line": 378,
+            "text": "                or attack.pair_key != control.pair_key"
+          },
+          {
+            "line": 383,
+            "text": "                    f\"pair-block contract failed at base {base}\""
+          },
+          {
+            "line": 387,
+            "text": "                attack.pair_key,"
+          },
+          {
+            "line": 398,
+            "text": "            raise RuntimeError(\"pair-block count does not cover dataset\")"
+          },
+          {
+            "line": 413,
+            "text": "        pair_keys = list(self.groups)"
+          },
+          {
+            "line": 415,
+            "text": "            rng.shuffle(pair_keys)"
+          },
+          {
+            "line": 418,
+            "text": "        for pair_key in pair_keys:"
+          },
+          {
+            "line": 419,
+            "text": "            blocks = list(self.groups[pair_key])"
+          },
+          {
+            "line": 1238,
+            "text": "        pair_manifest=("
+          },
+          {
+            "line": 1246,
+            "text": "                        \"pair_manifest_path\""
+          },
+          {
+            "line": 1250,
+            "text": "                    \"pair_manifest_path\""
+          },
+          {
+            "line": 1255,
+            "text": "                    / \"p2_a1_r2_pair_aligned_window_contract\""
+          },
+          {
+            "line": 1256,
+            "text": "                    / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\""
+          },
+          {
+            "line": 1264,
+            "text": "        pair_manifest=train_dataset.pair_manifest,"
+          },
+          {
+            "line": 1683,
+            "text": "            \"pair_block_batch_size\": 128,"
+          },
+          {
+            "line": 1690,
+            "text": "            \"pair_keys_used_for_loading_only\": True,"
+          },
+          {
+            "line": 1691,
+            "text": "            \"pair_keys_returned_to_model\": False,"
+          }
+        ],
+        "restart_at_epoch_boundary_reproducible": true,
+        "sampler_routes": {
+          "train_sampler": {
+            "assignment_line": 1356,
+            "bound_arguments": {
+              "block_batch_size": {
+                "resolved_type": "int",
+                "resolved_value": 128,
+                "source": "128"
+              },
+              "dataset": {
+                "resolved_type": null,
+                "resolved_value": null,
+                "source": "train_dataset"
+              },
+              "seed": {
+                "resolved_type": null,
+                "resolved_value": null,
+                "source": "seed"
+              },
+              "shuffle": {
+                "resolved_type": "bool",
+                "resolved_value": true,
+                "source": "True"
+              }
+            },
+            "diagnostic_128_candidates": [
+              {
+                "parameter": "block_batch_size",
+                "resolved_value": 128,
+                "source": "128"
+              }
+            ],
+            "effective_item_batch_size": 256,
+            "effective_item_batch_size_resolution": "unique_frozen_batch_geometry",
+            "original_call": "PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+            "pair_count_name_required_for_patch": false,
+            "replacement_value": "F7EpochShuffleController(seed)",
+            "seed_resolution": "bound_parameter:seed",
+            "seed_source": "seed",
+            "shuffle": true,
+            "shuffle_resolution": "signature_or_call_binding",
+            "shuffle_source": "shuffle=True",
+            "signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int"
+          },
+          "validation_sampler": {
+            "assignment_line": 1362,
+            "bound_arguments": {
+              "block_batch_size": {
+                "resolved_type": "int",
+                "resolved_value": 128,
+                "source": "128"
+              },
+              "dataset": {
+                "resolved_type": null,
+                "resolved_value": null,
+                "source": "validation_dataset"
+              },
+              "seed": {
+                "resolved_type": null,
+                "resolved_value": null,
+                "source": "seed"
+              },
+              "shuffle": {
+                "resolved_type": "bool",
+                "resolved_value": false,
+                "source": "False"
+              }
+            },
+            "diagnostic_128_candidates": [
+              {
+                "parameter": "block_batch_size",
+                "resolved_value": 128,
+                "source": "128"
+              }
+            ],
+            "effective_item_batch_size": 256,
+            "effective_item_batch_size_resolution": "unique_frozen_batch_geometry",
+            "original_call": "PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+            "pair_count_name_required_for_patch": false,
+            "replacement_value": "None",
+            "seed_resolution": "bound_parameter:seed",
+            "seed_source": "seed",
+            "shuffle": false,
+            "shuffle_resolution": "signature_or_call_binding",
+            "shuffle_source": "shuffle=False",
+            "signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int"
+          }
+        },
+        "sampler_signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int",
+        "train_batches": 434,
+        "train_items": 110855,
+        "train_shuffle": true,
+        "validation_batches": 55,
+        "validation_items": 13863,
+        "validation_shuffle": false
+      },
+      "launcher_execution_guard_present": true,
+      "launcher_patch": {
+        "completed_run_skip_preserved": true,
+        "corrected_launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix_e2_r6_r2.sh",
+        "corrected_launcher_sha256": "fa6e9690f55081ea3364a4a91c391ef08be52e38cfaddd43176051314e202f2a",
+        "corrected_trainer_binding_verified": true,
+        "original_launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix.sh",
+        "original_launcher_sha256": "fb9410c20ef355b282ce61ec65aa2fa44227b2b423be11c12a9218bdfa6231bf",
+        "partial_run_overwrite_guard_added": true,
+        "premature_model_report_mkdir_removed": true,
+        "run_directory_only_precreated": true,
+        "shlex_import_verified": true,
+        "trainer_binding": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2.py",
+        "trainer_binding_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf"
+      },
+      "launcher_sealed_test_guard_present": true,
+      "legacy_dynamic_import_call_count": 0,
+      "legacy_guard_patch": {
+        "AST_integer_replacement_counts": {
+          "12528": 1,
+          "43273": 1,
+          "70166": 1
+        },
+        "certified_Dynamic70_parameter_count": 60553,
+        "certified_F7_train_items": 110855,
+        "certified_F7_validation_items": 13863,
+        "compute_loss_not_targeted": true,
+        "corrected_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_legacy_guards.py",
+        "corrected_trainer_sha256": "ffef481257a0a62830a2382851d08248da8084418039edb92c971580f23bba79",
+        "early_stop_not_targeted": true,
+        "exact_source_contexts": [
+          {
+            "context": "00056: \n00057: EXPECTED_SEEDS = [107, 117, 127]\n00058: EXPECTED_PARAMETER_COUNT = 43_273\n00059: EXPECTED_TRAIN_ITEMS = 70_166\n00060: EXPECTED_VALIDATION_ITEMS = 12_528\n00061: EXPECTED_PROTOCOL_SHA = (\n00062:     \"0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60\"",
+            "context_end": 62,
+            "context_start": 56,
+            "line_end": 59,
+            "line_start": 59,
+            "new_evaluated_value": 110855,
+            "old_evaluated_value": 70166,
+            "original_source_token": "70_166"
+          },
+          {
+            "context": "00057: EXPECTED_SEEDS = [107, 117, 127]\n00058: EXPECTED_PARAMETER_COUNT = 43_273\n00059: EXPECTED_TRAIN_ITEMS = 70_166\n00060: EXPECTED_VALIDATION_ITEMS = 12_528\n00061: EXPECTED_PROTOCOL_SHA = (\n00062:     \"0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60\"\n00063: )",
+            "context_end": 63,
+            "context_start": 57,
+            "line_end": 60,
+            "line_start": 60,
+            "new_evaluated_value": 13863,
+            "old_evaluated_value": 12528,
+            "original_source_token": "12_528"
+          },
+          {
+            "context": "00055: COMPLETE = f\"{STAGE}_COMPLETE\"\n00056: \n00057: EXPECTED_SEEDS = [107, 117, 127]\n00058: EXPECTED_PARAMETER_COUNT = 43_273\n00059: EXPECTED_TRAIN_ITEMS = 70_166\n00060: EXPECTED_VALIDATION_ITEMS = 12_528\n00061: EXPECTED_PROTOCOL_SHA = (",
+            "context_end": 61,
+            "context_start": 55,
+            "line_end": 58,
+            "line_start": 58,
+            "new_evaluated_value": 60553,
+            "old_evaluated_value": 43273,
+            "original_source_token": "43_273"
+          }
+        ],
+        "failure_classification": "instrumented_trainer_retained_legacy_P2_parameter_count_legacy_move_batch_called_to_on_list_metadata",
+        "feature_masking_not_targeted": true,
+        "legacy_P2_parameter_count": 43273,
+        "legacy_train_items": 70166,
+        "legacy_validation_items": 12528,
+        "model_architecture_not_targeted": true,
+        "optimizer_scheduler_clipping_not_targeted": true,
+        "original_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer.py",
+        "original_trainer_sha256": "a2662a0d6a0e06bce012b692c6be1e6e124a2a105348842672d493b112c5f08c",
+        "parameter_count_assignments": [
+          {
+            "line": 58,
+            "source": "EXPECTED_PARAMETER_COUNT = 60553",
+            "target": "EXPECTED_PARAMETER_COUNT",
+            "value": 60553
+          }
+        ],
+        "parameter_count_comparisons": [
+          {
+            "line": 1387,
+            "source": "parameter_count != EXPECTED_PARAMETER_COUNT"
+          }
+        ],
+        "patch_scope": "ast.Constant integer nodes only; evaluated_value 70166_to_110855, 12528_to_13863, and 43273_to_60553",
+        "textual_spelling_independent": true
+      },
+      "matrix_launcher_sha256": "fa6e9690f55081ea3364a4a91c391ef08be52e38cfaddd43176051314e202f2a",
+      "optimizer_step_call_count": 1,
+      "prior_AST_numeric_literal_recovery_preserved": true,
+      "prior_output_directory_recovery_preserved": true,
+      "recovery_classification": "R6_R1_assumed_a_module_level_evaluate_function_but_the_generated_trainer_has_no_such_function",
+      "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059"
+    }
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded_for_architecture_capture": true,
+    "checkpoint_weights_retained_for_training": false,
+    "legacy_loader_module_executed": false,
+    "legacy_model_module_executed": false,
+    "model_loaded": true,
+    "optimizer_step_performed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": true,
+    "training_feature_tensors_accessed": true,
+    "validation_dataset_constructed": true,
+    "validation_feature_tensors_accessed": true
+  },
+  "provenance": {
+    "R5_lock_sha256": "4ba595ea527cd775b43c7f56c962f5f194b6e2ab3d1596cdecaff9b06f566854",
+    "R5_report_sha256": "9cd20c826faff456a8f6f5db8e388522f9837ebc2347896fc76ca31e3cd1dd0e",
+    "batch_device_transfer_patch_sha256": "8d9d0533886a43d9722579432a76c31b27046b07c530472a07f27c896713d711",
+    "execution_decision_sha256": "bba14db1387da36f083faae7c7550d1d24aa1dd649a98b2fb861720a5664b767",
+    "generated_trainer_sha256": "8baeed5a7469c0a751ab0a614837d08d8d4058e1cd331a3128b9f5e3754e3faf",
+    "installed_script_sha256": "439d7bf5ae6755ca01cd3448bc455f12224952f92b6b4be5083225dd9e3ffb99",
+    "item_batch_patch_sha256": "3c422c57d1015b3ad2ee92dcdfb2723c3677f35318e13b6855d4ab166c8d7ef6",
+    "launcher_patch_sha256": "b2dde0698fc1dc8122a4916a53410a75e2bfe69f3c603f9bb0cb44f315d6f8f9",
+    "legacy_guard_patch_sha256": "e7fe663c4a9d7835895e7f7b4771b0f5ebc198d10846d187a8ed3dfe015748d3",
+    "matrix_launcher_sha256": "fa6e9690f55081ea3364a4a91c391ef08be52e38cfaddd43176051314e202f2a",
+    "matrix_manifest_sha256": "a8d587de8e2f0ebe394369bfe8c1ee9936b1dc046b36b900a576556750aef144",
+    "original_R5_generated_trainer_sha256": "a2662a0d6a0e06bce012b692c6be1e6e124a2a105348842672d493b112c5f08c",
+    "original_R5_matrix_launcher_sha256": "fb9410c20ef355b282ce61ec65aa2fa44227b2b423be11c12a9218bdfa6231bf",
+    "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059",
+    "runtime_certification_sha256": "395dd21900ecb78bb7a67b50172510310ef9d90b5834e89ce263309e647239a1",
+    "static_certification_sha256": "131cc1db8c67043558a524b66b4da995a68f84aef409d8090c80343dfa4f703d"
+  },
+  "scope": "Verify the generated trainer, runtime adapter and guarded matrix launcher statically; instantiate the certified Dynamic70 model twice to prove deterministic fresh seed-107 initialization; construct guarded train and validation datasets; verify all five same-width group masks on real training samples while preserving the physical mask and every non-feature array leaf; and execute an instrumented copy of the generated trainer through the first forward, exact compute_loss, backward and gradient-clipping path. The unique optimizer.step call is replaced by a sentinel that hashes parameters, records finite gradients and exits before any parameter update. No scientific checkpoint or sealed-test data is created or accessed.",
+  "stage": "V5_P3_F7_E2_R6_R2_R1_TOP_LEVEL_FUNCTION_RESOLUTION_RECOVERY",
+  "status": "PASS"
+}

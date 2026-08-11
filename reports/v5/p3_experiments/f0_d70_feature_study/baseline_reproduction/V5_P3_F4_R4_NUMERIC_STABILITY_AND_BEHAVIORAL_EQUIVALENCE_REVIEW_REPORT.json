@@ -1,0 +1,165 @@
+{
+  "artifacts": {
+    "baseline_acceptance_amendment": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R4_BASELINE_REPRODUCTION_ACCEPTANCE_AMENDMENT.json",
+    "behavioral_equivalence_certificate": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R4_METRIC_BEHAVIORAL_EQUIVALENCE_CERTIFICATE.json",
+    "numeric_stability_audit": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R4_HEADWISE_NUMERIC_STABILITY_AUDIT.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "METRIC_RELEVANT_DECISION_OR_RANKING_DIFFERENCE",
+  "created_utc": "2026-08-05T20:43:54.822924+00:00",
+  "decision": {
+    "F4M_metric_adapter_certification_authorized": false,
+    "F4_complete": false,
+    "F5_permutation_authorized": false,
+    "behavioral_equivalence_acceptance_authorized": false,
+    "generic_tolerance_relaxation_authorized": false,
+    "immutable_reference_replacement_authorized": false,
+    "next_stage": "V5_P3_F4_R5_TARGETED_METRIC_DELTA_RECONSTRUCTION",
+    "sealed_test_access_authorized": false
+  },
+  "findings": {
+    "all_metric_relevant_behavior_invariant": false,
+    "binary_score_total_preorders_invariant": false,
+    "binary_threshold_decisions_invariant": true,
+    "count_argmax_decisions_invariant": true,
+    "maximum_observed_logit_difference": 1.52587890625e-05,
+    "nonlogit_arrays_exact": true,
+    "strict_logit_gate_passed": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "fresh_output_modified": false,
+    "immutable_reference_modified": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "training_tensors_loaded": false,
+    "validation_dataset_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": true
+  },
+  "input": {
+    "fresh_npz": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "immutable_npz": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+    "immutable_npz_sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f",
+    "reference_runtime_provenance_complete": false,
+    "run_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z"
+  },
+  "metric_reproduction": {
+    "count_active_macro_f1": {
+      "absolute_difference": null,
+      "frozen_value": 0.9973039624464042,
+      "invariance_basis": "count-logit argmax decisions",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "graph_ap": {
+      "absolute_difference": null,
+      "frozen_value": 0.68912114,
+      "invariance_basis": "graph score total preorder and tie partition",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "graph_auroc": {
+      "absolute_difference": null,
+      "frozen_value": 0.89083908,
+      "invariance_basis": "graph score total preorder and tie partition",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "graph_f1_at_0_5": {
+      "absolute_difference": null,
+      "frozen_value": 0.7011657,
+      "invariance_basis": "graph zero-logit threshold decisions",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "graph_fpr_at_0_5": {
+      "absolute_difference": null,
+      "frozen_value": 0.21302659,
+      "invariance_basis": "graph zero-logit threshold decisions",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "path_ap": {
+      "absolute_difference": null,
+      "frozen_value": 0.6246353166442606,
+      "invariance_basis": "path score total preorder and tie partition",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "path_exact_active": {
+      "absolute_difference": null,
+      "frozen_value": 0.8178963893249608,
+      "invariance_basis": "path zero-logit threshold decisions",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "selection_score": {
+      "absolute_difference": null,
+      "frozen_value": 0.72977369,
+      "invariance_basis": "all frozen component metrics remain invariant",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "source_ap": {
+      "absolute_difference": null,
+      "frozen_value": 0.6446929824219041,
+      "invariance_basis": "source score total preorder and tie partition",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "source_exact_active": {
+      "absolute_difference": null,
+      "frozen_value": 0.9209837781266352,
+      "invariance_basis": "source zero-logit threshold decisions",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "transit_ap": {
+      "absolute_difference": null,
+      "frozen_value": 0.6369271265766875,
+      "invariance_basis": "transit score total preorder and tie partition",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "transit_exact_active": {
+      "absolute_difference": null,
+      "frozen_value": 0.6802721088435374,
+      "invariance_basis": "transit zero-logit threshold decisions",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "victim_ap": {
+      "absolute_difference": null,
+      "frozen_value": 0.624896193057987,
+      "invariance_basis": "victim score total preorder and tie partition",
+      "pass": false,
+      "reproduced_value": null
+    },
+    "victim_exact_active": {
+      "absolute_difference": null,
+      "frozen_value": 0.9481946624803768,
+      "invariance_basis": "victim zero-logit threshold decisions",
+      "pass": false,
+      "reproduced_value": null
+    }
+  },
+  "provenance": {
+    "F4_P1R3_contract_sha256": "a05afa329d77398bd4bec66a168ffdb7e2b1f3240af413da3b6fe4b8dd70dfdd",
+    "F4_R2_lock_sha256": "f88a1117b75d5014bd4b85f41f5e0c7618986d6c558607b6ccad6cfea64a4744",
+    "F4_R2_report_sha256": "0ecfdd7d0552c7e77654f30bf6aa8feee7b86423e2789ad8a1a68a777676d194",
+    "F4_R3_lock_sha256": "e694679d3bb417dd2017b9ca03f551fdd493448280fb56fede5dc38f3a5f95a9",
+    "F4_R3_report_sha256": "eff8a8f139ffd7609cf5033f243df10f35f88634f981f90afe6ed4d2bf789953",
+    "baseline_acceptance_amendment_sha256": "1b29e4ca7119c2b2c26c3c281fae751ac16dccd955561d9dc2ae137fdd377528",
+    "behavioral_equivalence_certificate_sha256": "54a3bfc88535bda6f7b422b1c165a6ae314966be1c09d11b20c9fb0a763e63de",
+    "final_F4_contract_sha256": "d70a139798b3983f3087e5915df46b0713790f2c8aafa52311d0e9b92df285f3",
+    "installed_script_sha256": "087aa50a37044d05cb72695ee629df4872243b051438b2b2a99c770c5a27947b",
+    "numeric_stability_audit_sha256": "e05c0e629992d4a3138fa29b220a901ae3ecf754eb9ae66ec67406d1d0764088"
+  },
+  "scope": "Determine whether the observed logit-only floating-point drift changes any threshold decision, count argmax, score ranking or tie partition relevant to the 14 frozen A4/A5 metrics.",
+  "stage": "V5_P3_F4_R4_NUMERIC_STABILITY_AND_BEHAVIORAL_EQUIVALENCE_REVIEW",
+  "status": "PASS"
+}

@@ -1,0 +1,94 @@
+{
+  "candidate_comparisons": [
+    {
+      "left": "epoch",
+      "left_numeric": null,
+      "operator": ">=",
+      "right": "15",
+      "right_numeric": 15,
+      "source": "epoch >= 15"
+    },
+    {
+      "left": "early_stop_patience_counter",
+      "left_numeric": null,
+      "operator": ">=",
+      "right": "12",
+      "right_numeric": 12,
+      "source": "early_stop_patience_counter >= 12"
+    }
+  ],
+  "candidate_condition": "epoch >= 15 and early_stop_patience_counter >= 12",
+  "candidate_source_sha256": "44b7bea9a7cc6ebcb0d7dc7060389dd4d23d4e7ac7275855860039e293292223",
+  "improvement_branch": {
+    "checkpoint_saved_in_improvement_body": false,
+    "condition": "current_score > best_early_stop_score + 0.0001",
+    "record": {
+      "context_end": 1572,
+      "context_start": 1549,
+      "line_end": 1564,
+      "line_start": 1557,
+      "numbered_excerpt": "01549:             )\n01550:             best_checkpoint_sha256 = (\n01551:                 sha256_file(checkpoint_path)\n01552:             )\n01553: \n01554:         current_score = float(\n01555:             validation_metrics[\"selection_score\"]\n01556:         )\n01557:         if (\n01558:             current_score\n01559:             > best_early_stop_score + 1e-4\n01560:         ):\n01561:             best_early_stop_score = current_score\n01562:             early_stop_patience_counter = 0\n01563:         else:\n01564:             early_stop_patience_counter += 1\n01565: \n01566:         scheduler.step(current_score)\n01567: \n01568:         completed_epoch = epoch\n01569:         elapsed_seconds = time.time() - epoch_start\n01570:         history_row = flatten_epoch_row(\n01571:             epoch=epoch,\n01572:             learning_rate=current_learning_rate,",
+      "numbered_excerpt_sha256": "b619852ea973bae0d66af7dbcff138f27c794132a4a301b35ab66625638fa95d",
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "raw_excerpt": "            )\n            best_checkpoint_sha256 = (\n                sha256_file(checkpoint_path)\n            )\n\n        current_score = float(\n            validation_metrics[\"selection_score\"]\n        )\n        if (\n            current_score\n            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1\n\n        scheduler.step(current_score)\n\n        completed_epoch = epoch\n        elapsed_seconds = time.time() - epoch_start\n        history_row = flatten_epoch_row(\n            epoch=epoch,\n            learning_rate=current_learning_rate,",
+      "raw_excerpt_sha256": "a6318d12bb16757dca3331396e0987000ecdd77daa1ae4c979557521c38e4b19",
+      "source": "if current_score > best_early_stop_score + 0.0001:\n    best_early_stop_score = current_score\n    early_stop_patience_counter = 0\nelse:\n    early_stop_patience_counter += 1",
+      "source_sha256": "906af352d01157bd51f415c1b9f716d012fc7cbe844194ef104cecf3501e983e"
+    }
+  },
+  "increment_line": 1564,
+  "increment_record": {
+    "kind": "increment",
+    "record": {
+      "context_end": 1570,
+      "context_start": 1558,
+      "line_end": 1564,
+      "line_start": 1564,
+      "numbered_excerpt": "01558:             current_score\n01559:             > best_early_stop_score + 1e-4\n01560:         ):\n01561:             best_early_stop_score = current_score\n01562:             early_stop_patience_counter = 0\n01563:         else:\n01564:             early_stop_patience_counter += 1\n01565: \n01566:         scheduler.step(current_score)\n01567: \n01568:         completed_epoch = epoch\n01569:         elapsed_seconds = time.time() - epoch_start\n01570:         history_row = flatten_epoch_row(",
+      "numbered_excerpt_sha256": "4b0cbd0eb384dbb8de1cd815638493ebcb0bb217b65def523334d92b750c8a43",
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "raw_excerpt": "            current_score\n            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1\n\n        scheduler.step(current_score)\n\n        completed_epoch = epoch\n        elapsed_seconds = time.time() - epoch_start\n        history_row = flatten_epoch_row(",
+      "raw_excerpt_sha256": "e6330d3ac2f82bb6e44a9af06efc2f15b75dfabc53a4aea8a0a804d9fea98928",
+      "source": "early_stop_patience_counter += 1",
+      "source_sha256": "f5bfcec4701ad02f3c602edef8118a9682e46e3c874977121f1dc987b6277774"
+    },
+    "value": 1
+  },
+  "reset_records": [
+    {
+      "kind": "assign",
+      "record": {
+        "context_end": 1436,
+        "context_start": 1424,
+        "line_end": 1430,
+        "line_start": 1430,
+        "numbered_excerpt": "01424:     best_rank = None\n01425:     best_epoch = None\n01426:     best_validation_metrics = None\n01427:     best_checkpoint_sha256 = None\n01428: \n01429:     best_early_stop_score = -float(\"inf\")\n01430:     early_stop_patience_counter = 0\n01431: \n01432:     history_rows: list[dict[str, Any]] = []\n01433:     history_path = (\n01434:         report_dir\n01435:         / f\"V5_P2_B2_SEED_{seed}_HISTORY.csv\"\n01436:     )",
+        "numbered_excerpt_sha256": "c4c0d200183dd5c70b327c25673c038242389803c96ee4fc781c93ae993d8aef",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw_excerpt": "    best_rank = None\n    best_epoch = None\n    best_validation_metrics = None\n    best_checkpoint_sha256 = None\n\n    best_early_stop_score = -float(\"inf\")\n    early_stop_patience_counter = 0\n\n    history_rows: list[dict[str, Any]] = []\n    history_path = (\n        report_dir\n        / f\"V5_P2_B2_SEED_{seed}_HISTORY.csv\"\n    )",
+        "raw_excerpt_sha256": "159d2571f1e4b76dac48d966599b9d8e1eda7f82b9a63a06dddbfc41337e4a07",
+        "source": "early_stop_patience_counter = 0",
+        "source_sha256": "d82040c2f0f5f56bd184a4653f3edaedf3ce7d856a54f624dfc55be5aa80ce6a"
+      },
+      "value": 0
+    },
+    {
+      "kind": "assign",
+      "record": {
+        "context_end": 1568,
+        "context_start": 1556,
+        "line_end": 1562,
+        "line_start": 1562,
+        "numbered_excerpt": "01556:         )\n01557:         if (\n01558:             current_score\n01559:             > best_early_stop_score + 1e-4\n01560:         ):\n01561:             best_early_stop_score = current_score\n01562:             early_stop_patience_counter = 0\n01563:         else:\n01564:             early_stop_patience_counter += 1\n01565: \n01566:         scheduler.step(current_score)\n01567: \n01568:         completed_epoch = epoch",
+        "numbered_excerpt_sha256": "0382f01a71fa7384fb9fed5476493f043e823f15e27147ebb44733836ec2a686",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw_excerpt": "        )\n        if (\n            current_score\n            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1\n\n        scheduler.step(current_score)\n\n        completed_epoch = epoch",
+        "raw_excerpt_sha256": "d371fbf838b39a2bfe357599208be4e7af8d97a107d1ced4bd7490605f03b022",
+        "source": "early_stop_patience_counter = 0",
+        "source_sha256": "d82040c2f0f5f56bd184a4653f3edaedf3ce7d856a54f624dfc55be5aa80ce6a"
+      },
+      "value": 0
+    }
+  ],
+  "stop_check_line": 1630
+}

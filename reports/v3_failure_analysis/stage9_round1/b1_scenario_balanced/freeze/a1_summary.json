@@ -1,0 +1,87 @@
+{
+  "model": "Conv1D-TemporalGCN",
+  "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+  "split_mode": "v3",
+  "splits_file": null,
+  "best_epoch": 92,
+  "best_val_score": 1.8273760228644256,
+  "parameters": 882,
+  "input_feature_dim": 24,
+  "num_nodes": 16,
+  "training": {
+    "maximum_epochs": 100,
+    "epochs_completed": 100,
+    "patience": 15,
+    "min_delta": 0.0001,
+    "stopped_early": false,
+    "stopped_epoch": null,
+    "seed": 7
+  },
+  "split_sizes": {
+    "train": 148185,
+    "val": 42809,
+    "test": 42809
+  },
+  "class_weights": {
+    "graph_pos_weight": 0.45161290322580644,
+    "node_pos_weight": 13.4
+  },
+  "thresholds": {
+    "graph": 0.5,
+    "node": 0.5
+  },
+  "train": {
+    "loss": 0.18910967797967437,
+    "acc": 0.9487667442723623,
+    "precision": 0.9647906029572352,
+    "recall": 0.960688851228902,
+    "f1": 0.9627353582156951,
+    "fpr": 0.07763220684568999,
+    "tnr": 0.9223677931543101,
+    "tn": 42523,
+    "fp": 3579,
+    "fn": 4013,
+    "tp": 98070,
+    "node_acc": 0.9724790802037993,
+    "node_precision": 0.7192679816995425,
+    "node_recall": 0.9901609474643183,
+    "node_f1": 0.8332502791896982,
+    "exact_localization": 0.6839491176569829
+  },
+  "val": {
+    "loss": 0.28121850101437995,
+    "acc": 0.9403863673526595,
+    "precision": 0.9493049334793139,
+    "recall": 0.9654485946620778,
+    "f1": 0.957308708889558,
+    "fpr": 0.11600364409353174,
+    "tnr": 0.8839963559064683,
+    "tn": 11644,
+    "fp": 1528,
+    "fn": 1024,
+    "tp": 28613,
+    "node_acc": 0.9750315354247938,
+    "node_precision": 0.7914524243932106,
+    "node_recall": 0.9660222019772582,
+    "node_f1": 0.8700673139748675,
+    "exact_localization": 0.7255016468499614
+  },
+  "test": {
+    "loss": 0.9916755356292318,
+    "acc": 0.8446821929967997,
+    "precision": 0.8224423999370921,
+    "recall": 0.9074660535334693,
+    "f1": 0.862864803547489,
+    "fpr": 0.22856564429598136,
+    "tnr": 0.7714343557040186,
+    "tn": 15242,
+    "fp": 4516,
+    "fn": 2133,
+    "tp": 20918,
+    "node_acc": 0.956335116447476,
+    "node_precision": 0.601131963062258,
+    "node_recall": 0.8956527832932327,
+    "node_f1": 0.7194160912638847,
+    "exact_localization": 0.5155224368707515
+  }
+}

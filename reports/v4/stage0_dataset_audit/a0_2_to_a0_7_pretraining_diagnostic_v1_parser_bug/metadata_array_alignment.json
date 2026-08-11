@@ -1,0 +1,222 @@
+{
+  "source": "metadata.json[\"runs\"]",
+  "manual_reconstruction": false,
+  "inference_from_x_npy": false,
+  "original_external_csv_recovered": false,
+  "run_count": 908,
+  "completed_run_count": 908,
+  "duplicate_embedded_run_ids": [],
+  "duplicate_completed_run_ids": [],
+  "checks": {
+    "embedded_run_count_matches_expected": true,
+    "completed_run_count_matches_expected": true,
+    "embedded_run_ids_unique": true,
+    "completed_run_ids_unique": true,
+    "embedded_and_completed_run_sets_identical": true,
+    "embedded_and_completed_run_order_identical": true,
+    "run_index_sequence_valid": true,
+    "split_code_alignment": true,
+    "profile_code_alignment": true,
+    "attack_kind_code_alignment": true,
+    "all_metadata_array_checks_match": false
+  },
+  "category_alignment": {
+    "split": {
+      "metadata_code_map": {
+        "test": 0,
+        "train": 1,
+        "val": 2
+      },
+      "derived_mapping": {
+        "one_to_one": true,
+        "derived_name_to_code": {
+          "train": 1,
+          "val": 2,
+          "test": 0
+        },
+        "name_to_codes": {
+          "train": [
+            1
+          ],
+          "val": [
+            2
+          ],
+          "test": [
+            0
+          ]
+        },
+        "code_to_names": {
+          "1": [
+            "train"
+          ],
+          "2": [
+            "val"
+          ],
+          "0": [
+            "test"
+          ]
+        }
+      },
+      "mapping_source": "metadata.code_maps",
+      "mismatch_count": 0,
+      "mismatch_positions": [],
+      "pass": true
+    },
+    "profile": {
+      "metadata_code_map": {
+        "bursty": 0,
+        "compute": 1,
+        "idle": 2,
+        "mixed": 3,
+        "stream": 4
+      },
+      "derived_mapping": {
+        "one_to_one": true,
+        "derived_name_to_code": {
+          "idle": 2,
+          "compute": 1,
+          "stream": 4,
+          "bursty": 0,
+          "mixed": 3
+        },
+        "name_to_codes": {
+          "idle": [
+            2
+          ],
+          "compute": [
+            1
+          ],
+          "stream": [
+            4
+          ],
+          "bursty": [
+            0
+          ],
+          "mixed": [
+            3
+          ]
+        },
+        "code_to_names": {
+          "2": [
+            "idle"
+          ],
+          "1": [
+            "compute"
+          ],
+          "4": [
+            "stream"
+          ],
+          "0": [
+            "bursty"
+          ],
+          "3": [
+            "mixed"
+          ]
+        }
+      },
+      "mapping_source": "metadata.code_maps",
+      "mismatch_count": 0,
+      "mismatch_positions": [],
+      "pass": true
+    },
+    "attack_kind": {
+      "metadata_code_map": {
+        "none": 0,
+        "flood": 1,
+        "intermittent": 2,
+        "low_slow": 3,
+        "pulsed": 4
+      },
+      "derived_mapping": {
+        "one_to_one": true,
+        "derived_name_to_code": {
+          "none": 0,
+          "flood": 1,
+          "pulsed": 4,
+          "low_slow": 3,
+          "intermittent": 2
+        },
+        "name_to_codes": {
+          "none": [
+            0
+          ],
+          "flood": [
+            1
+          ],
+          "pulsed": [
+            4
+          ],
+          "low_slow": [
+            3
+          ],
+          "intermittent": [
+            2
+          ]
+        },
+        "code_to_names": {
+          "0": [
+            "none"
+          ],
+          "1": [
+            "flood"
+          ],
+          "4": [
+            "pulsed"
+          ],
+          "3": [
+            "low_slow"
+          ],
+          "2": [
+            "intermittent"
+          ]
+        }
+      },
+      "mapping_source": "metadata.code_maps",
+      "mismatch_count": 0,
+      "mismatch_positions": [],
+      "pass": true
+    }
+  },
+  "mismatch_count": 1277,
+  "hard_pass": false,
+  "embedded_manifest_export": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v4/stage0_dataset_audit/a0_2_to_a0_7_pretraining_diagnostic/v4_embedded_metadata_manifest.csv",
+    "field_count": 28,
+    "fields": [
+      "run_id",
+      "split",
+      "background_id",
+      "matched_normal_run_id",
+      "pair_id",
+      "scenario_family",
+      "placement_family",
+      "profile",
+      "active_cores",
+      "active_count",
+      "seed",
+      "attackers",
+      "attacker_count",
+      "strength",
+      "attack_kind",
+      "burst_ops",
+      "pause_iters",
+      "timing_family",
+      "victims",
+      "victim_count",
+      "route_family",
+      "duration_epochs",
+      "duty_cycle",
+      "group_id",
+      "label",
+      "notes",
+      "onset_epoch",
+      "version"
+    ],
+    "sha256": "aa64e6f8f9d830f41d65817b1b2c1073d8cf6599a6446cab6d53202831f9c153",
+    "source": "metadata.json[\"runs\"]",
+    "transformation": "direct field-preserving tabular export",
+    "manual_reconstruction": false,
+    "inference_from_model_inputs": false,
+    "original_external_csv_recovered": false
+  }
+}

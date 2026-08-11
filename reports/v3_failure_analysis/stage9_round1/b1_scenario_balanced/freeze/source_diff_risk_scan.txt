@@ -1,0 +1,13 @@
++A1_CHECKPOINT_SHA256 = "f82ab1d03050820215f407b3ca5b53ccb9117b1f01d8bb253d1f9254cf0c5cde"
++    checkpoint_path = (
++    if not checkpoint_path.is_file():
++        raise RuntimeError(f"A1 checkpoint not found: {checkpoint_path}")
++    if b1_sha256_file(checkpoint_path) != A1_CHECKPOINT_SHA256:
++        raise RuntimeError("A1 checkpoint SHA-256 mismatch.")
++    checkpoint = torch.load(
++        checkpoint_path,
++    reference_state = checkpoint["model_state_dict"]
++        "a1_checkpoint_sha256": A1_CHECKPOINT_SHA256,
++            "checkpoint_created": False,
++        + "checkpoint created: False\n",
++    print("checkpoint created: False")

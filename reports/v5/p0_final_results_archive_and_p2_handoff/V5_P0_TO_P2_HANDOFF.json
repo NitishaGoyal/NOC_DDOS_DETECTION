@@ -1,0 +1,46 @@
+{
+  "P0_test_status": {
+    "consumed": true,
+    "evaluation_count": 1,
+    "must_not_be_reused_for_model_or_threshold_selection": true
+  },
+  "P2_entry_requirements": [
+    "independent P2 file and run inventory",
+    "P2 split and leakage audit",
+    "tensor shape and label-contract audit",
+    "PRIMARY58 compatibility audit",
+    "normalization provenance audit",
+    "physical-mask recoverability audit",
+    "window-32 and stride-8 compatibility audit",
+    "metadata/provenance quarantine",
+    "locked P2 test manifest before training"
+  ],
+  "P2_test_boundary": {
+    "do_not_access_before_checkpoint_and_threshold_freeze": true,
+    "final_locked_evaluation_count": 1
+  },
+  "frozen_B3_status_for_P2": {
+    "P0_checkpoint_zero_shot_use": "optional only after P2 audit and only on P2 validation or a separately locked transfer split",
+    "P2_final_training": "train the frozen B3 architecture from scratch on P2 train unless the explicitly named P2 study defines a different pre-registered objective",
+    "architecture_contract_sha256": "86624dd842a57fe289f7d747151ad2aabf0fb5203d8fbc618f48ce3c91ef71b2",
+    "architecture_may_not_be_silently_changed": true,
+    "role": "mandatory transferred baseline if P2 interface is compatible"
+  },
+  "handoff_name": "V5_P0_TO_P2_HANDOFF",
+  "handoff_sha256": "8c5bf457408ac91b9be43e2dbf366a641fa3af1665b8347bf4722cd7da97e276",
+  "handoff_version": 1,
+  "known_P0_limitation": {
+    "primary_issue": "false positives on control traffic",
+    "test_false_negatives": 12,
+    "test_false_positives": 56,
+    "test_graph_accuracy": 0.8997050147492626,
+    "test_graph_fpr": 0.14285714285714285,
+    "test_graph_recall": 0.958041958041958
+  },
+  "next_stage": "V5_P2_INDEPENDENT_DATASET_AUDIT",
+  "project_route": {
+    "P0": "complete",
+    "P1": "skipped_not_executed_by_project_decision",
+    "P2": "next"
+  }
+}

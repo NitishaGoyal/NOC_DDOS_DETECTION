@@ -1,0 +1,3000 @@
+{
+  "a0_provenance": {
+    "lock_sha256": "3f302d6dcf47df735837f1b419ab83fab229f477e7292f4637c6998e7a7b4af6",
+    "report_sha256": "584b9f5d2ef79bb2884bdf37a6f4ff09cca36a7247eef8765a7de56ace33397e"
+  },
+  "dataset": {
+    "feature_count": 81,
+    "link_path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "num_nodes": 16,
+    "recommended_stride": 8,
+    "recommended_window": 32,
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph"
+  },
+  "decision": "BLOCK_P2_A2",
+  "failures": [
+    "train/P2TR-K2-216 ATTACK/CONTROL x shapes differ",
+    "train/P2TR-K2-216 ATTACK/CONTROL lengths differ",
+    "validation/P2VA-K2-040 ATTACK/CONTROL x shapes differ",
+    "validation/P2VA-K2-040 ATTACK/CONTROL lengths differ"
+  ],
+  "matched_pair_checks": [
+    {
+      "attack_present": true,
+      "control_present": true,
+      "pair_key": "P2TR-K1-001",
+      "resolved_key_map_match": true,
+      "split": "train",
+      "time_length_match": true,
+      "x_shape_match": true
+    },
+    {
+      "attack_present": true,
+      "control_present": true,
+      "pair_key": "P2TR-K2-216",
+      "resolved_key_map_match": true,
+      "split": "train",
+      "time_length_match": false,
+      "x_shape_match": false
+    },
+    {
+      "attack_present": true,
+      "control_present": true,
+      "pair_key": "P2TR-K4-480",
+      "resolved_key_map_match": true,
+      "split": "train",
+      "time_length_match": true,
+      "x_shape_match": true
+    },
+    {
+      "attack_present": true,
+      "control_present": true,
+      "pair_key": "P2VA-K1-001",
+      "resolved_key_map_match": true,
+      "split": "validation",
+      "time_length_match": true,
+      "x_shape_match": true
+    },
+    {
+      "attack_present": true,
+      "control_present": true,
+      "pair_key": "P2VA-K2-040",
+      "resolved_key_map_match": true,
+      "split": "validation",
+      "time_length_match": false,
+      "x_shape_match": false
+    },
+    {
+      "attack_present": true,
+      "control_present": true,
+      "pair_key": "P2VA-K4-080",
+      "resolved_key_map_match": true,
+      "split": "validation",
+      "time_length_match": true,
+      "x_shape_match": true
+    }
+  ],
+  "next_stage": null,
+  "sample_policy": {
+    "members_per_pair": [
+      "ATTACK",
+      "CONTROL"
+    ],
+    "pair_positions_per_split": [
+      "lexicographically_first",
+      "lexicographically_middle",
+      "lexicographically_last"
+    ],
+    "splits": [
+      "train",
+      "validation"
+    ]
+  },
+  "schema_consistency": {
+    "unique_top_level_key_set_count": 1,
+    "unique_top_level_key_sets": [
+      [
+        "case_id",
+        "category",
+        "epoch_id",
+        "feature_count",
+        "mode",
+        "num_nodes",
+        "observation_schema",
+        "pair_id",
+        "role_mask",
+        "run_id",
+        "split",
+        "truth_schema_version",
+        "x",
+        "y_attack",
+        "y_attack_path",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim"
+      ]
+    ],
+    "unique_x_axis_signature_count": 1,
+    "x_axis_signatures": [
+      {
+        "feature_axis": 2,
+        "node_axis": 1,
+        "time_axis": 0
+      }
+    ]
+  },
+  "security_boundary": {
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": true,
+    "test_labels_read": false,
+    "test_tensor_bytes_read": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "train_tensor_contents_accessed": true,
+    "validation_tensor_contents_accessed": true
+  },
+  "split_samples": {
+    "train": {
+      "records": [
+        {
+          "class": "attack",
+          "file": "P2TR-K1-001_ATTACK.pt",
+          "graph_positive_count": 722,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2TR-K1-001",
+          "path_positive_count": 722,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2TR-K1-001"
+              },
+              "category": {
+                "type": "str",
+                "value": "k1_local"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 278,
+                "numel": 722,
+                "requires_grad": false,
+                "shape": [
+                  722
+                ],
+                "type": "Tensor",
+                "unique_count": 722
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "attack"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K1-001-S5T5-SEED620001"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 5,
+                "minimum": 0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 2,
+                "unique_values": [
+                  0,
+                  5
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K1-001-S5T5-SEED620001-ATTACK"
+              },
+              "split": {
+                "type": "str",
+                "value": "train"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 13.278524398803711,
+                "mean": -0.3303090035915375,
+                "minimum": -1.7320507764816284,
+                "numel": 935712,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 1.0,
+                "minimum": 1.0,
+                "numel": 722,
+                "requires_grad": false,
+                "shape": [
+                  722
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.0625,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 1,
+                "minimum": 1,
+                "numel": 722,
+                "requires_grad": false,
+                "shape": [
+                  722
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  1
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.0625,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.0625,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3957870,
+          "source_positive_count": 722,
+          "time_length": 722,
+          "transit_positive_count": 0,
+          "victim_positive_count": 722,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 722
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "control",
+          "file": "P2TR-K1-001_CONTROL.pt",
+          "graph_positive_count": 0,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2TR-K1-001",
+          "path_positive_count": 0,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2TR-K1-001"
+              },
+              "category": {
+                "type": "str",
+                "value": "k1_local"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 278,
+                "numel": 722,
+                "requires_grad": false,
+                "shape": [
+                  722
+                ],
+                "type": "Tensor",
+                "unique_count": 722
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "control"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K1-001-S5T5-SEED620001"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K1-001-S5T5-SEED620001-CONTROL"
+              },
+              "split": {
+                "type": "str",
+                "value": "train"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 13.278524398803711,
+                "mean": -0.2302943617105484,
+                "minimum": -1.7320507764816284,
+                "numel": 935712,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 722,
+                "requires_grad": false,
+                "shape": [
+                  722
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 722,
+                "requires_grad": false,
+                "shape": [
+                  722
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11552,
+                "requires_grad": false,
+                "shape": [
+                  722,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3957885,
+          "source_positive_count": 0,
+          "time_length": 722,
+          "transit_positive_count": 0,
+          "victim_positive_count": 0,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 722
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "attack",
+          "file": "P2TR-K2-216_ATTACK.pt",
+          "graph_positive_count": 650,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2TR-K2-216",
+          "path_positive_count": 6500,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2TR-K2-216"
+              },
+              "category": {
+                "type": "str",
+                "value": "k2_distinct_victims"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 297,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor",
+                "unique_count": 703
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "attack"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K2-216-S3T14-S13T0-SEED620216"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 4,
+                "minimum": 0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 4,
+                "unique_values": [
+                  0,
+                  1,
+                  2,
+                  4
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K2-216-S3T14-S13T0-SEED620216-ATTACK"
+              },
+              "split": {
+                "type": "str",
+                "value": "train"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 148.4070587158203,
+                "mean": -0.01951606199145317,
+                "minimum": -1.7320507764816284,
+                "numel": 911088,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.9246088266372681,
+                "minimum": 0.0,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.5778805017471313,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 2,
+                "minimum": 0,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor",
+                "unique_count": 2,
+                "unique_values": [
+                  0,
+                  2
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.11557610332965851,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.34672829508781433,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.11557610332965851,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3853870,
+          "source_positive_count": 1300,
+          "time_length": 703,
+          "transit_positive_count": 3900,
+          "victim_positive_count": 1300,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 703
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "control",
+          "file": "P2TR-K2-216_CONTROL.pt",
+          "graph_positive_count": 0,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2TR-K2-216",
+          "path_positive_count": 0,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2TR-K2-216"
+              },
+              "category": {
+                "type": "str",
+                "value": "k2_distinct_victims"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 296,
+                "numel": 704,
+                "requires_grad": false,
+                "shape": [
+                  704
+                ],
+                "type": "Tensor",
+                "unique_count": 704
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "control"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K2-216-S3T14-S13T0-SEED620216"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 11264,
+                "requires_grad": false,
+                "shape": [
+                  704,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K2-216-S3T14-S13T0-SEED620216-CONTROL"
+              },
+              "split": {
+                "type": "str",
+                "value": "train"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 66.71795654296875,
+                "mean": -0.004733185283839703,
+                "minimum": -1.7320507764816284,
+                "numel": 912384,
+                "requires_grad": false,
+                "shape": [
+                  704,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 704,
+                "requires_grad": false,
+                "shape": [
+                  704
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11264,
+                "requires_grad": false,
+                "shape": [
+                  704,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 704,
+                "requires_grad": false,
+                "shape": [
+                  704
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11264,
+                "requires_grad": false,
+                "shape": [
+                  704,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11264,
+                "requires_grad": false,
+                "shape": [
+                  704,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11264,
+                "requires_grad": false,
+                "shape": [
+                  704,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3859389,
+          "source_positive_count": 0,
+          "time_length": 704,
+          "transit_positive_count": 0,
+          "victim_positive_count": 0,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 704
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "attack",
+          "file": "P2TR-K4-480_ATTACK.pt",
+          "graph_positive_count": 250,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2TR-K4-480",
+          "path_positive_count": 2250,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2TR-K4-480"
+              },
+              "category": {
+                "type": "str",
+                "value": "k4_opposing_pair"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 304,
+                "numel": 696,
+                "requires_grad": false,
+                "shape": [
+                  696
+                ],
+                "type": "Tensor",
+                "unique_count": 696
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "attack"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K4-480-S13T11-S11T13-S8T15-S5T14-SEED620480"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 7,
+                "minimum": 0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 6,
+                "unique_values": [
+                  0,
+                  1,
+                  2,
+                  5,
+                  6,
+                  7
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K4-480-S13T11-S11T13-S8T15-S5T14-SEED620480-ATTACK"
+              },
+              "split": {
+                "type": "str",
+                "value": "train"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 105.75091552734375,
+                "mean": 0.24436764419078827,
+                "minimum": -1.7320507764816284,
+                "numel": 902016,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.35919541120529175,
+                "minimum": 0.0,
+                "numel": 696,
+                "requires_grad": false,
+                "shape": [
+                  696
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.2020474076271057,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 4,
+                "minimum": 0,
+                "numel": 696,
+                "requires_grad": false,
+                "shape": [
+                  696
+                ],
+                "type": "Tensor",
+                "unique_count": 2,
+                "unique_values": [
+                  0,
+                  4
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.08979885280132294,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.1346982717514038,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.08979885280132294,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3815534,
+          "source_positive_count": 1000,
+          "time_length": 696,
+          "transit_positive_count": 1500,
+          "victim_positive_count": 1000,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 696
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "control",
+          "file": "P2TR-K4-480_CONTROL.pt",
+          "graph_positive_count": 0,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2TR-K4-480",
+          "path_positive_count": 0,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2TR-K4-480"
+              },
+              "category": {
+                "type": "str",
+                "value": "k4_opposing_pair"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 304,
+                "numel": 696,
+                "requires_grad": false,
+                "shape": [
+                  696
+                ],
+                "type": "Tensor",
+                "unique_count": 696
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "control"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K4-480-S13T11-S11T13-S8T15-S5T14-SEED620480"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2TR-K4-480-S13T11-S11T13-S8T15-S5T14-SEED620480-CONTROL"
+              },
+              "split": {
+                "type": "str",
+                "value": "train"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 110.41056060791016,
+                "mean": 0.2811783254146576,
+                "minimum": -1.7320507764816284,
+                "numel": 902016,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 696,
+                "requires_grad": false,
+                "shape": [
+                  696
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 696,
+                "requires_grad": false,
+                "shape": [
+                  696
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11136,
+                "requires_grad": false,
+                "shape": [
+                  696,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3815549,
+          "source_positive_count": 0,
+          "time_length": 696,
+          "transit_positive_count": 0,
+          "victim_positive_count": 0,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 696
+          },
+          "x_fallback_candidates": []
+        }
+      ],
+      "sample_file_count": 6,
+      "selected_pair_keys": [
+        "P2TR-K1-001",
+        "P2TR-K2-216",
+        "P2TR-K4-480"
+      ]
+    },
+    "validation": {
+      "records": [
+        {
+          "class": "attack",
+          "file": "P2VA-K1-001_ATTACK.pt",
+          "graph_positive_count": 350,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2VA-K1-001",
+          "path_positive_count": 350,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2VA-K1-001"
+              },
+              "category": {
+                "type": "str",
+                "value": "k1_local"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 297,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor",
+                "unique_count": 703
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "attack"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K1-001-S14T14-SEED620481"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 5,
+                "minimum": 0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 2,
+                "unique_values": [
+                  0,
+                  5
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K1-001-S14T14-SEED620481-ATTACK"
+              },
+              "split": {
+                "type": "str",
+                "value": "validation"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 13.278524398803711,
+                "mean": -0.3189718425273895,
+                "minimum": -1.7320507764816284,
+                "numel": 911088,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.49786627292633057,
+                "minimum": 0.0,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.03111664205789566,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 1,
+                "minimum": 0,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor",
+                "unique_count": 2,
+                "unique_values": [
+                  0,
+                  1
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.03111664205789566,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.03111664205789566,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3853870,
+          "source_positive_count": 350,
+          "time_length": 703,
+          "transit_positive_count": 0,
+          "victim_positive_count": 350,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 703
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "control",
+          "file": "P2VA-K1-001_CONTROL.pt",
+          "graph_positive_count": 0,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2VA-K1-001",
+          "path_positive_count": 0,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2VA-K1-001"
+              },
+              "category": {
+                "type": "str",
+                "value": "k1_local"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 297,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor",
+                "unique_count": 703
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "control"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K1-001-S14T14-SEED620481"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K1-001-S14T14-SEED620481-CONTROL"
+              },
+              "split": {
+                "type": "str",
+                "value": "validation"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 13.278524398803711,
+                "mean": -0.21459808945655823,
+                "minimum": -1.7320507764816284,
+                "numel": 911088,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 703,
+                "requires_grad": false,
+                "shape": [
+                  703
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11248,
+                "requires_grad": false,
+                "shape": [
+                  703,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3853885,
+          "source_positive_count": 0,
+          "time_length": 703,
+          "transit_positive_count": 0,
+          "victim_positive_count": 0,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 703
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "attack",
+          "file": "P2VA-K2-040_ATTACK.pt",
+          "graph_positive_count": 709,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2VA-K2-040",
+          "path_positive_count": 5672,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2VA-K2-040"
+              },
+              "category": {
+                "type": "str",
+                "value": "k2_opposing_pair"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 291,
+                "numel": 709,
+                "requires_grad": false,
+                "shape": [
+                  709
+                ],
+                "type": "Tensor",
+                "unique_count": 709
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "attack"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K2-040-S7T0-S0T7-SEED620520"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 5,
+                "minimum": 0,
+                "numel": 11344,
+                "requires_grad": false,
+                "shape": [
+                  709,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 3,
+                "unique_values": [
+                  0,
+                  2,
+                  5
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K2-040-S7T0-S0T7-SEED620520-ATTACK"
+              },
+              "split": {
+                "type": "str",
+                "value": "validation"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 15.797425270080566,
+                "mean": -0.09401387721300125,
+                "minimum": -1.7320507764816284,
+                "numel": 918864,
+                "requires_grad": false,
+                "shape": [
+                  709,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 1.0,
+                "minimum": 1.0,
+                "numel": 709,
+                "requires_grad": false,
+                "shape": [
+                  709
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.5,
+                "minimum": 0.0,
+                "numel": 11344,
+                "requires_grad": false,
+                "shape": [
+                  709,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 2,
+                "minimum": 2,
+                "numel": 709,
+                "requires_grad": false,
+                "shape": [
+                  709
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  2
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.125,
+                "minimum": 0.0,
+                "numel": 11344,
+                "requires_grad": false,
+                "shape": [
+                  709,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.375,
+                "minimum": 0.0,
+                "numel": 11344,
+                "requires_grad": false,
+                "shape": [
+                  709,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.125,
+                "minimum": 0.0,
+                "numel": 11344,
+                "requires_grad": false,
+                "shape": [
+                  709,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3886638,
+          "source_positive_count": 1418,
+          "time_length": 709,
+          "transit_positive_count": 4254,
+          "victim_positive_count": 1418,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 709
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "control",
+          "file": "P2VA-K2-040_CONTROL.pt",
+          "graph_positive_count": 0,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2VA-K2-040",
+          "path_positive_count": 0,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2VA-K2-040"
+              },
+              "category": {
+                "type": "str",
+                "value": "k2_opposing_pair"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 292,
+                "numel": 708,
+                "requires_grad": false,
+                "shape": [
+                  708
+                ],
+                "type": "Tensor",
+                "unique_count": 708
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "control"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K2-040-S7T0-S0T7-SEED620520"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 11328,
+                "requires_grad": false,
+                "shape": [
+                  708,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K2-040-S7T0-S0T7-SEED620520-CONTROL"
+              },
+              "split": {
+                "type": "str",
+                "value": "validation"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 15.797425270080566,
+                "mean": 0.0005306748789735138,
+                "minimum": -1.7320507764816284,
+                "numel": 917568,
+                "requires_grad": false,
+                "shape": [
+                  708,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 708,
+                "requires_grad": false,
+                "shape": [
+                  708
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11328,
+                "requires_grad": false,
+                "shape": [
+                  708,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 708,
+                "requires_grad": false,
+                "shape": [
+                  708
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11328,
+                "requires_grad": false,
+                "shape": [
+                  708,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11328,
+                "requires_grad": false,
+                "shape": [
+                  708,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11328,
+                "requires_grad": false,
+                "shape": [
+                  708,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3881213,
+          "source_positive_count": 0,
+          "time_length": 708,
+          "transit_positive_count": 0,
+          "victim_positive_count": 0,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 708
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "attack",
+          "file": "P2VA-K4-080_ATTACK.pt",
+          "graph_positive_count": 250,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2VA-K4-080",
+          "path_positive_count": 3000,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2VA-K4-080"
+              },
+              "category": {
+                "type": "str",
+                "value": "k4_opposing_pair"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 298,
+                "numel": 702,
+                "requires_grad": false,
+                "shape": [
+                  702
+                ],
+                "type": "Tensor",
+                "unique_count": 702
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "attack"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K4-080-S3T14-S14T3-S5T6-S2T4-SEED620560"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 6,
+                "minimum": 0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 7,
+                "unique_values": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4,
+                  5,
+                  6
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K4-080-S3T14-S14T3-S5T6-S2T4-SEED620560-ATTACK"
+              },
+              "split": {
+                "type": "str",
+                "value": "validation"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 148.4070587158203,
+                "mean": 0.21255356073379517,
+                "minimum": -1.7320507764816284,
+                "numel": 909792,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.3561253547668457,
+                "minimum": 0.0,
+                "numel": 702,
+                "requires_grad": false,
+                "shape": [
+                  702
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.2670940160751343,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 4,
+                "minimum": 0,
+                "numel": 702,
+                "requires_grad": false,
+                "shape": [
+                  702
+                ],
+                "type": "Tensor",
+                "unique_count": 2,
+                "unique_values": [
+                  0,
+                  4
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.08903133869171143,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.17806267738342285,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 1.0,
+                "mean": 0.08903133869171143,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3848302,
+          "source_positive_count": 1000,
+          "time_length": 702,
+          "transit_positive_count": 2000,
+          "victim_positive_count": 1000,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 702
+          },
+          "x_fallback_candidates": []
+        },
+        {
+          "class": "control",
+          "file": "P2VA-K4-080_CONTROL.pt",
+          "graph_positive_count": 0,
+          "keys": [
+            "case_id",
+            "category",
+            "epoch_id",
+            "feature_count",
+            "mode",
+            "num_nodes",
+            "observation_schema",
+            "pair_id",
+            "role_mask",
+            "run_id",
+            "split",
+            "truth_schema_version",
+            "x",
+            "y_attack",
+            "y_attack_path",
+            "y_attacker_count",
+            "y_source",
+            "y_transit",
+            "y_victim"
+          ],
+          "pair_key": "P2VA-K4-080",
+          "path_positive_count": 0,
+          "payload_summary": {
+            "items": {
+              "case_id": {
+                "type": "str",
+                "value": "P2VA-K4-080"
+              },
+              "category": {
+                "type": "str",
+                "value": "k4_opposing_pair"
+              },
+              "epoch_id": {
+                "dtype": "torch.int64",
+                "maximum": 999,
+                "minimum": 298,
+                "numel": 702,
+                "requires_grad": false,
+                "shape": [
+                  702
+                ],
+                "type": "Tensor",
+                "unique_count": 702
+              },
+              "feature_count": {
+                "type": "int",
+                "value": 81
+              },
+              "mode": {
+                "type": "str",
+                "value": "control"
+              },
+              "num_nodes": {
+                "type": "int",
+                "value": 16
+              },
+              "observation_schema": {
+                "type": "str",
+                "value": "V5RouterEpoch"
+              },
+              "pair_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K4-080-S3T14-S14T3-S5T6-S2T4-SEED620560"
+              },
+              "role_mask": {
+                "dtype": "torch.uint8",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "run_id": {
+                "type": "str",
+                "value": "V5-P2-FINAL640-P2VA-K4-080-S3T14-S14T3-S5T6-S2T4-SEED620560-CONTROL"
+              },
+              "split": {
+                "type": "str",
+                "value": "validation"
+              },
+              "truth_schema_version": {
+                "type": "int",
+                "value": 3
+              },
+              "x": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 141.5253143310547,
+                "mean": 0.26274561882019043,
+                "minimum": -1.7320507764816284,
+                "numel": 909792,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16,
+                  81
+                ],
+                "type": "Tensor"
+              },
+              "y_attack": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 702,
+                "requires_grad": false,
+                "shape": [
+                  702
+                ],
+                "type": "Tensor"
+              },
+              "y_attack_path": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_attacker_count": {
+                "dtype": "torch.int64",
+                "maximum": 0,
+                "minimum": 0,
+                "numel": 702,
+                "requires_grad": false,
+                "shape": [
+                  702
+                ],
+                "type": "Tensor",
+                "unique_count": 1,
+                "unique_values": [
+                  0
+                ]
+              },
+              "y_source": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_transit": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              },
+              "y_victim": {
+                "dtype": "torch.float32",
+                "finite": true,
+                "maximum": 0.0,
+                "mean": 0.0,
+                "minimum": 0.0,
+                "numel": 11232,
+                "requires_grad": false,
+                "shape": [
+                  702,
+                  16
+                ],
+                "type": "Tensor"
+              }
+            },
+            "type": "dict"
+          },
+          "payload_type": "dict",
+          "resolved_keys": {
+            "count": "y_attacker_count",
+            "edge_index": null,
+            "graph": "y_attack",
+            "path": "y_attack_path",
+            "source": "y_source",
+            "transit": "y_transit",
+            "victim": "y_victim",
+            "x": "x"
+          },
+          "size_bytes": 3848317,
+          "source_positive_count": 0,
+          "time_length": 702,
+          "transit_positive_count": 0,
+          "victim_positive_count": 0,
+          "x_axes": {
+            "feature_axis": 2,
+            "node_axis": 1,
+            "time_axis": 0,
+            "time_length": 702
+          },
+          "x_fallback_candidates": []
+        }
+      ],
+      "sample_file_count": 6,
+      "selected_pair_keys": [
+        "P2VA-K1-001",
+        "P2VA-K2-040",
+        "P2VA-K4-080"
+      ]
+    }
+  },
+  "stage": "V5_P2_A1_TENSOR_SCHEMA_AND_NONTEST_SAMPLE_AUDIT",
+  "status": "HOLD",
+  "support_tensor_summary": {
+    "normalization": {
+      "items": {
+        "dynamic_transform": {
+          "type": "str",
+          "value": "log1p_then_standardize"
+        },
+        "feature_names": {
+          "length": 81,
+          "type": "list"
+        },
+        "fit_router_epoch_rows": {
+          "type": "int",
+          "value": 9355936
+        },
+        "fit_split": {
+          "type": "str",
+          "value": "train"
+        },
+        "mask_features": {
+          "dtype": "torch.bool",
+          "numel": 81,
+          "requires_grad": false,
+          "shape": [
+            81
+          ],
+          "true_count": 0,
+          "type": "Tensor"
+        },
+        "mask_transform": {
+          "type": "str",
+          "value": "identity"
+        },
+        "mean": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "maximum": 4.1006903648376465,
+          "mean": 1.1269735097885132,
+          "minimum": 0.0,
+          "numel": 81,
+          "requires_grad": false,
+          "shape": [
+            81
+          ],
+          "type": "Tensor"
+        },
+        "std": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "maximum": 3.5682082176208496,
+          "mean": 1.2191967964172363,
+          "minimum": 0.001367058139294386,
+          "numel": 81,
+          "requires_grad": false,
+          "shape": [
+            81
+          ],
+          "type": "Tensor"
+        }
+      },
+      "type": "dict"
+    },
+    "topology": {
+      "items": {
+        "directed_edge_count": {
+          "type": "int",
+          "value": 48
+        },
+        "edge_index": {
+          "dtype": "torch.int64",
+          "maximum": 15,
+          "minimum": 0,
+          "numel": 96,
+          "requires_grad": false,
+          "shape": [
+            2,
+            48
+          ],
+          "type": "Tensor",
+          "unique_count": 16,
+          "unique_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        },
+        "mesh_cols": {
+          "type": "int",
+          "value": 4
+        },
+        "mesh_rows": {
+          "type": "int",
+          "value": 4
+        },
+        "num_nodes": {
+          "type": "int",
+          "value": 16
+        },
+        "router_coordinates": {
+          "dtype": "torch.int64",
+          "maximum": 3,
+          "minimum": 0,
+          "numel": 32,
+          "requires_grad": false,
+          "shape": [
+            16,
+            2
+          ],
+          "type": "Tensor",
+          "unique_count": 4,
+          "unique_values": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "undirected_edge_count": {
+          "type": "int",
+          "value": 24
+        }
+      },
+      "type": "dict"
+    }
+  },
+  "warnings": []
+}

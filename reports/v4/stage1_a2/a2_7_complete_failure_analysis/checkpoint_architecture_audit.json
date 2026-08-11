@@ -1,0 +1,74 @@
+{
+  "a1_checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a1_conv1d_gcn_seed7/best_model.pt",
+  "a1_parameter_count": 882,
+  "a1_sha256": "5687cca9a03340348ecea6aa27f9ce9c0663fb8ae63eddfa42a0d3cce5f707cd",
+  "a2_checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a2_capacitylift_conv1d_gcn_seed7/best_model.pt",
+  "a2_parameter_count": 2274,
+  "a2_sha256": "267eb8c9ac627cdae82633403fb0b6c1899e63922081ce89f5911eeda68ea6e1",
+  "declared_width_only_shape_checks": {
+    "gcn1.linear.weight": {
+      "a1_shape": [
+        16,
+        8
+      ],
+      "a2_shape": [
+        32,
+        16
+      ],
+      "pass": true,
+      "present": true
+    },
+    "gcn2.linear.weight": {
+      "a1_shape": [
+        8,
+        16
+      ],
+      "a2_shape": [
+        16,
+        32
+      ],
+      "pass": true,
+      "present": true
+    },
+    "graph_head.weight": {
+      "a1_shape": [
+        1,
+        8
+      ],
+      "a2_shape": [
+        1,
+        16
+      ],
+      "pass": true,
+      "present": true
+    },
+    "node_head.weight": {
+      "a1_shape": [
+        1,
+        8
+      ],
+      "a2_shape": [
+        1,
+        16
+      ],
+      "pass": true,
+      "present": true
+    },
+    "temporal.conv.weight": {
+      "a1_shape": [
+        8,
+        24,
+        3
+      ],
+      "a2_shape": [
+        16,
+        24,
+        3
+      ],
+      "pass": true,
+      "present": true
+    }
+  },
+  "pass": true,
+  "state_dict_key_set_equal": true
+}

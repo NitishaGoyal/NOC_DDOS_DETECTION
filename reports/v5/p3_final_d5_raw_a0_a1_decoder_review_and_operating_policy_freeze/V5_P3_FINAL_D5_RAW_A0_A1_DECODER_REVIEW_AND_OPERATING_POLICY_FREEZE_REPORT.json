@@ -1,0 +1,125 @@
+{
+  "decision_basis": {
+    "A1_structural_reference_superiority": true,
+    "Raw_graph_Pareto_dominates_A0": true,
+    "Raw_graph_Pareto_dominates_A1": true,
+    "graph_alarm_selection_rule": "Choose a graph alarm base policy only when it Pareto-dominates alternatives on validation graph accuracy (higher), graph F1 (higher), and graph FPR (lower).",
+    "weighted_posthoc_score_used": false
+  },
+  "decoder_executed": false,
+  "frozen_policy_roles": {
+    "A0": {
+      "policy": "FROZEN_P2_A0_THRESHOLD_TRANSFER",
+      "selected_for_runtime": false,
+      "status": "HISTORICAL_COMPARISON_ONLY"
+    },
+    "A1_exact": {
+      "decoder_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+      "margin_threshold": 8.720532088239842,
+      "policy": "FROZEN_CERTIFIED_P2_EXACT_A1",
+      "reason": "perfect structural legality and improved strict exactness, but worse graph accuracy/F1/FPR and high software latency",
+      "selected_as_graph_alarm": false,
+      "selected_as_runtime_decoder": false,
+      "status": "OFFLINE_CERTIFIED_STRUCTURAL_REFERENCE"
+    },
+    "EPLR_V2": {
+      "handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+      "next_validation_stage_authorized": true,
+      "selected_as_final_runtime_decoder": false,
+      "status": "FROZEN_RUNTIME_DECODER_CANDIDATE_AWAITING_FULL_VALIDATION"
+    },
+    "base_graph_alarm_policy": {
+      "graph_threshold": 0.5,
+      "policy": "RAW_NEURAL_THRESHOLD_0P5",
+      "reason": "strict graph-metric Pareto dominance over A0 and A1",
+      "status": "FROZEN_BASE_GRAPH_ALARM"
+    }
+  },
+  "margin_retuning_performed": false,
+  "metrics": {
+    "A0": {
+      "count_active_macro_f1": 1.0,
+      "graph_accuracy": 0.8113411730755357,
+      "graph_f1": 0.7317398440705786,
+      "graph_fpr": 0.23957817605703535,
+      "path_exact_active": 0.5677830940988836,
+      "source_exact_active": 0.42145135566188197,
+      "strict_all_task_exactness": 0.592706153957146,
+      "transit_exact_active": 0.7780435938330675,
+      "victim_exact_active": 0.9576023391812866
+    },
+    "A1": {
+      "count_active_macro_f1": 0.916359143778321,
+      "graph_accuracy": 0.7817617776495203,
+      "graph_f1": 0.6827810402684563,
+      "graph_fpr": 0.249381126844242,
+      "path_exact_active": 0.8047581073896863,
+      "source_exact_active": 0.8615098351940457,
+      "strict_all_task_exactness": 0.7476372556092634,
+      "structural_legality_rate": 1.0,
+      "transit_exact_active": 0.8801169590643275,
+      "victim_exact_active": 0.8098086124401914
+    },
+    "Raw": {
+      "count_active_macro_f1": 1.0,
+      "graph_accuracy": 0.8138301709833345,
+      "graph_f1": 0.7318543149581752,
+      "graph_fpr": 0.23170610951579365,
+      "path_exact_active": 0.8648325358851675,
+      "source_exact_active": 0.9565390749601276,
+      "strict_all_task_exactness": 0.6611716326383378,
+      "transit_exact_active": 0.7181020733652312,
+      "victim_exact_active": 0.9742158426368953
+    }
+  },
+  "model_inference_performed": false,
+  "model_loaded": false,
+  "native_test_dataset_constructed": false,
+  "next_stage_authorization": {
+    "EPLR_V2_full_combined_AB_validation_authorized": true,
+    "next_stage": "V5_P3_FINAL_D6_EPLR_V2_FULL_COMBINED_AB_VALIDATION_EVALUATION",
+    "sealed_test_evaluation_authorized": false,
+    "temporal_persistence_result_selection_authorized": false
+  },
+  "provenance": {
+    "D1_export_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+    "D2_R1_lock_sha256": "0f65535becdb3d6cb599f4d1e71cd4881d1d9787aaa2c26a8848581370b93c78",
+    "D2_R1_report_sha256": "2da340737a3d9d042d700293776b1ca020397cc35a2e29a9946c17466be1e100",
+    "D4_lock_sha256": "c61a47633b61417584718e8747ba5f5ad93df271e7bb213348f7351b5a856447",
+    "D4_report_sha256": "6fecfd38b781c28a5af28c1957bc7e6b53b8e7a0cac85cc1e8c31f5720895506",
+    "EPLR_V2_D0_lock_sha256": "dd74f7214eb3188dbcb3ce4b4dde79e351bfae067899d1b80e299ce685bbe50f",
+    "EPLR_V2_D0_report_sha256": "3e6af971e971c1cbcde8d28667938bc0758199010f76e42e1e98da9feb53b417",
+    "EPLR_V2_handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc"
+  },
+  "scope": "validation-only review and role freeze for Raw, transferred A0, and exact A1",
+  "sealed_test_access": false,
+  "stage": "V5_P3_FINAL_D5_RAW_A0_A1_DECODER_REVIEW_AND_OPERATING_POLICY_FREEZE",
+  "status": "PASS",
+  "temporal_alarm_confirmation_predeclaration": {
+    "base_signal": "RAW_NEURAL_THRESHOLD_0P5",
+    "candidate_selection_performed": false,
+    "candidates": {
+      "P0": {
+        "name": "instantaneous_raw",
+        "rule": "alarm_t = raw_graph_prediction_t"
+      },
+      "P1": {
+        "name": "two_consecutive",
+        "rule": "alarm_t = raw_t AND raw_t_minus_1"
+      },
+      "P2": {
+        "name": "two_of_three",
+        "rule": "alarm_t = at_least_2_positive_raw_predictions_in_t_minus_2_to_t"
+      },
+      "P3": {
+        "name": "three_consecutive",
+        "rule": "alarm_t = raw_t AND raw_t_minus_1 AND raw_t_minus_2"
+      }
+    },
+    "results_seen": false,
+    "run_boundary_recovery_required_before_evaluation": true,
+    "sealed_test_forbidden": true
+  },
+  "test_tensor_deserialization": false,
+  "threshold_tuning_performed": false
+}

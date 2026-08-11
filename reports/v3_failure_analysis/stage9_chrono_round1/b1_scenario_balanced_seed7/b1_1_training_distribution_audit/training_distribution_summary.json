@@ -1,0 +1,96 @@
+{
+  "data_dir": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+  "total_dataset_samples": 233803,
+  "metadata_lengths": {
+    "y_graph": 233803,
+    "run_id": 233803,
+    "split": 233803,
+    "profile": 233803,
+    "active_cores": 233803,
+    "strength": 233803,
+    "attackers": 233803,
+    "end_epoch": 233803,
+    "seed": 233803
+  },
+  "split_distribution": {
+    "test": 42809,
+    "train": 148185,
+    "val": 42809
+  },
+  "detected_train_label": "train",
+  "training_sample_count": 148185,
+  "training_run_count": 45,
+  "training_class_samples": {
+    "normal": 46102,
+    "attack": 102083,
+    "normal_fraction": 0.3111111111111111,
+    "attack_fraction": 0.6888888888888889,
+    "attack_to_normal_sample_ratio": 2.2142857142857144
+  },
+  "training_class_runs": {
+    "normal": 14,
+    "attack": 31,
+    "attack_to_normal_run_ratio": 2.2142857142857144
+  },
+  "samples_per_run": {
+    "minimum": 3293.0,
+    "q25": 3293.0,
+    "median": 3293.0,
+    "mean": 3293.0,
+    "q75": 3293.0,
+    "maximum": 3293.0,
+    "std": 0.0,
+    "coefficient_of_variation": 0.0
+  },
+  "windows_per_run_approximately_equal": true,
+  "unique_group_counts": {
+    "profiles": 5,
+    "strengths": 4,
+    "attacker_counts": 4,
+    "active_core_configurations": 11,
+    "run_ids": 45
+  },
+  "observed_distributions": {
+    "graph_class": {
+      "attack": 102083,
+      "normal": 46102
+    },
+    "profile": {
+      "bursty": 52688,
+      "compute": 6586,
+      "idle": 3293,
+      "mixed": 39516,
+      "stream": 46102
+    },
+    "strength": {
+      "20": 52688,
+      "63": 36223,
+      "77": 13172,
+      "NA": 46102
+    },
+    "attacker_count": {
+      "0": 46102,
+      "1": 52688,
+      "2": 36223,
+      "3": 13172
+    },
+    "active_cores": {
+      "0": 3293,
+      "0-15": 32930,
+      "0-3-6-9-12-15": 3293,
+      "0-6": 32930,
+      "0-6-9-15": 13172,
+      "1-4-11-14": 6586,
+      "1-4-7-10-13-15": 3293,
+      "15": 3293,
+      "2-5-10-13": 19758,
+      "3-12": 26344,
+      "idle": 3293
+    }
+  },
+  "b1_interpretation": {
+    "class_balance_needed": true,
+    "run_uniform_sampling_matters": false,
+    "note": "Final B1 hierarchy must be frozen after reviewing the generated CSV tables. This script does not modify the sampler or dataset."
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "artifacts": {
+    "deep_array_diagnostic": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R2_DEEP_ARRAY_DIAGNOSTIC.json",
+    "failure_classification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R2_FAILURE_CLASSIFICATION_AND_NEXT_STAGE.json",
+    "runtime_and_reference_provenance": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_R2_RUNTIME_AND_REFERENCE_PROVENANCE.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "LOGIT_NUMERIC_DRIFT_ONLY",
+  "created_utc": "2026-08-05T20:35:41.348608+00:00",
+  "decision": {
+    "F4M_metric_adapter_certification_authorized": false,
+    "F4_R2_complete": true,
+    "F4_complete": false,
+    "F5_permutation_authorized": false,
+    "next_stage": "V5_P3_F4_R3_RUNTIME_DETERMINISM_AND_DEVICE_MATCH_REVIEW",
+    "repair_authorized": false,
+    "sealed_test_access_authorized": false
+  },
+  "deep_comparison": {
+    "direct_logit_pass": false,
+    "direct_nonlogit_pass": true,
+    "key_match": true,
+    "reordered_logit_pass": false,
+    "reordered_nonlogit_pass": true,
+    "reordering_diagnostic": {
+      "available": true,
+      "candidate_keys": [
+        "dataset_index",
+        "window_start"
+      ],
+      "fresh_unique": true,
+      "identity_order_already_equal": true,
+      "permutation_constructed": true,
+      "reference_unique": true,
+      "same_identifier_set": true
+    }
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "fresh_output_modified": false,
+    "immutable_reference_modified": false,
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": false,
+    "validation_dataset_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": true
+  },
+  "provenance": {
+    "F4_P1R3_contract_sha256": "a05afa329d77398bd4bec66a168ffdb7e2b1f3240af413da3b6fe4b8dd70dfdd",
+    "exporter_log_sha256": "aeae29555b3b44682a4a9eadcd48405d8d7d1de676e272ef7a8b785a89e9b8fc",
+    "final_F4_contract_sha256": "d70a139798b3983f3087e5915df46b0713790f2c8aafa52311d0e9b92df285f3",
+    "installed_script_sha256": "89be23fe8fd66df92a4a171f0fc8e2914c9165c56f33955619f81a23876128cb",
+    "invocation_contract_sha256": "8c63b0b958b9086f134cf8a7657422b4004e6e777883ecf85c1dc9cba7a4bff4",
+    "original_comparison_sha256": "934784d2c8effc4dc7299f145b8b1490d1204c98db0a2c246b9278ecfb480019",
+    "reference_manifest_sha256": "b68b8baf9a9f37b8e424608533b23bf37be7128a205dd9d653d94e26bc62434b"
+  },
+  "run": {
+    "directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z",
+    "fresh_npz": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "immutable_npz": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+    "immutable_npz_sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f"
+  },
+  "scope": "Diagnose the completed D1 fresh-versus-immutable validation output mismatch without rerunning the model or validation split.",
+  "stage": "V5_P3_F4_R2_FRESH_VS_IMMUTABLE_MISMATCH_DIAGNOSTIC",
+  "status": "PASS"
+}

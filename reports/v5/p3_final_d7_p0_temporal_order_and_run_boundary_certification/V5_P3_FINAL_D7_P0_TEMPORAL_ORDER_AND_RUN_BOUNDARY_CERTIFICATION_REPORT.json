@@ -1,0 +1,97 @@
+{
+  "certified_index_semantics": {
+    "getitem_source": "def __getitem__(self, index):\n    file_index, start, target = self.index[index]\n    record = self.records[file_index]\n    run = self._load(str(self.root / record[\"relative_path\"]))\n    stop = start + self.window\n    normalized = (run[\"x_log1p\"][start:stop] - self.mean) / self.std\n    x = normalized.permute(1, 2, 0).contiguous()\n    return {\n        \"x\": x,\n        \"physical_port_mask\": run[\"physical_port_mask\"],\n        \"edge_index\": self.topology[\"edge_index\"],\n        \"y_attack\": run[\"y_attack\"][target],\n        \"y_attacker_count\": run[\"y_attacker_count\"][target],\n        \"y_source\": run[\"y_source\"][target],\n        \"y_transit\": run[\"y_transit\"][target],\n        \"y_victim\": run[\"y_victim\"][target],\n        \"y_attack_path\": run[\"y_attack_path\"][target],\n        \"role_mask\": run[\"role_mask\"][target],\n        \"source_target_router\": run[\"source_target_router\"][target],\n        \"epoch_id\": run[\"epoch_id\"][target],\n        \"epoch_tick\": run.get(\"epoch_tick\", torch.full_like(run[\"epoch_id\"], -1))[target],\n        # Run identity belongs to tensor_manifest.json.  The stored\n        # tensor contract intentionally contains model inputs/labels and\n        # does not require duplicating mode metadata inside every .pt.\n        \"case_id\": record[\"case_id\"],\n        \"pair_id\": record[\"pair_id\"],\n        \"run_id\": record[\"run_id\"],\n        \"mode\": record[\"mode\"],\n        \"window_start\": start,\n        \"window_target\": target,\n    }\n",
+    "proofs": [
+      {
+        "assignment_names": [
+          "file_index",
+          "start",
+          "target"
+        ],
+        "slice_uses": [
+          {
+            "expr": "run['x_log1p'][start:stop]",
+            "lineno": 6
+          }
+        ],
+        "temporal_position": 1,
+        "temporal_variable": "start"
+      }
+    ],
+    "record_position": 0,
+    "temporal_position": 1,
+    "temporal_variables": [
+      "start"
+    ]
+  },
+  "certified_loader": {
+    "constructor": {
+      "kwargs": {
+        "root": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70",
+        "split": "validation"
+      },
+      "signature": "(root, split, window=32, stride=8, active_only=False)"
+    },
+    "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+  },
+  "decision": {
+    "D7_R1_temporal_persistence_validation_authorized": true,
+    "next_stage": "V5_P3_FINAL_D7_R1_TEMPORAL_ALARM_CONFIRMATION_VALIDATION",
+    "persistence_candidate_selection_authorized_only_after_predeclared_evaluation_rule": true,
+    "sealed_test_evaluation_authorized": false
+  },
+  "persistence_boundary": {
+    "candidate_selection_performed": false,
+    "candidates": {
+      "P0": {
+        "name": "instantaneous_raw",
+        "rule": "alarm_t = raw_graph_prediction_t"
+      },
+      "P1": {
+        "name": "two_consecutive",
+        "rule": "alarm_t = raw_t AND raw_t_minus_1"
+      },
+      "P2": {
+        "name": "two_of_three",
+        "rule": "alarm_t = at_least_2_positive_raw_predictions_in_t_minus_2_to_t"
+      },
+      "P3": {
+        "name": "three_consecutive",
+        "rule": "alarm_t = raw_t AND raw_t_minus_1 AND raw_t_minus_2"
+      }
+    },
+    "candidates_already_frozen_before_temporal_results": true,
+    "cross_run_history_forbidden": true,
+    "evaluation_order_per_run": "ordered_row_indices from frozen temporal map",
+    "persistence_evaluated_in_this_stage": false,
+    "persistence_must_reset_at_each_run_boundary": true
+  },
+  "scientific_boundary": {
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "persistence_candidate_selection_performed": false,
+    "persistence_evaluated": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "validation-only temporal ordering and no-cross-run boundary certification",
+  "stage": "V5_P3_FINAL_D7_P0_TEMPORAL_ORDER_AND_RUN_BOUNDARY_CERTIFICATION",
+  "status": "PASS",
+  "temporal_map": {
+    "A_runs": 150,
+    "B_runs": 150,
+    "attack_runs": 150,
+    "control_runs": 150,
+    "native_D1_order_temporally_monotonic_runs": 300,
+    "native_D1_rows_contiguous_runs": 300,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d7_p0_temporal_order_and_run_boundary_certification/V5_P3_FINAL_D7_P0_VALIDATION_TEMPORAL_RUN_MAP.json",
+    "sha256": "05d120ea2613a9d3e618cab0da13df3e1de75ce7532e005178b28cf452190c86",
+    "validation_items": 27722,
+    "validation_runs": 300
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "stage": "B1.13",
+  "threshold_protocol": "Model-specific graph thresholds selected on validation in B1.11 and transferred unchanged to test.",
+  "hard_normal_run": "N-3-7-8-12-Pmixed-R18-V3",
+  "validation": {
+    "split": "val",
+    "thresholds": {
+      "a1": 0.41,
+      "b1": 0.08
+    },
+    "a1": {
+      "normal_run_count": 4,
+      "attack_run_count": 9,
+      "normal_run_macro_fpr": 0.1387792286668691,
+      "worst_normal_run_fpr": 0.43273610689341024,
+      "worst_normal_run_id": "N-2-6-10-14-Pmixed-R13-V3",
+      "attack_run_macro_recall": 0.9774943482808651,
+      "worst_attack_run_recall": 0.9426055268751898,
+      "worst_attack_run_id": "N-0-9-Pstream-R40-A-11-S20-V3",
+      "strength20_attack_run_count": 3,
+      "strength20_macro_recall": 0.9596112966899484,
+      "hard_normal_run_present": false,
+      "hard_normal_run_fpr": null,
+      "hard_normal_run_sample_count": 0
+    },
+    "b1": {
+      "normal_run_count": 4,
+      "attack_run_count": 9,
+      "normal_run_macro_fpr": 0.23489219556635285,
+      "worst_normal_run_fpr": 0.5575463103552991,
+      "worst_normal_run_id": "N-2-6-10-14-Pmixed-R13-V3",
+      "attack_run_macro_recall": 0.9405472888618956,
+      "worst_attack_run_recall": 0.5539022168235651,
+      "worst_attack_run_id": "N-4-15-Pbursty-R41-A-1-12-S63-V3",
+      "strength20_attack_run_count": 3,
+      "strength20_macro_recall": 0.9754023686607957,
+      "hard_normal_run_present": false,
+      "hard_normal_run_fpr": null,
+      "hard_normal_run_sample_count": 0
+    },
+    "deltas_b1_minus_a1": {
+      "normal_run_macro_fpr": 0.09611296689948376,
+      "worst_normal_run_fpr": 0.12481020346188887,
+      "attack_run_macro_recall": -0.036947059418969475,
+      "worst_attack_run_recall": -0.38870331005162473,
+      "strength20_macro_recall": 0.01579107197084728,
+      "hard_normal_run_fpr": null
+    },
+    "run_verdict_counts": {
+      "normal_runs": {
+        "B1_wins": 0,
+        "ties": 0,
+        "B1_losses": 4
+      },
+      "attack_runs": {
+        "B1_wins": 7,
+        "ties": 0,
+        "B1_losses": 2
+      }
+    }
+  },
+  "test": {
+    "split": "test",
+    "thresholds": {
+      "a1": 0.41,
+      "b1": 0.08
+    },
+    "a1": {
+      "normal_run_count": 6,
+      "attack_run_count": 7,
+      "normal_run_macro_fpr": 0.2462799878530216,
+      "worst_normal_run_fpr": 0.9902824172487094,
+      "worst_normal_run_id": "N-3-7-8-12-Pmixed-R18-V3",
+      "attack_run_macro_recall": 0.9360548349312394,
+      "worst_attack_run_recall": 0.8074703917400546,
+      "worst_attack_run_id": "N-5-10-Pbursty-R51-A-12-S20-V3",
+      "strength20_attack_run_count": 3,
+      "strength20_macro_recall": 0.8748861220771333,
+      "hard_normal_run_present": true,
+      "hard_normal_run_fpr": 0.9902824172487094,
+      "hard_normal_run_sample_count": 3293
+    },
+    "b1": {
+      "normal_run_count": 6,
+      "attack_run_count": 7,
+      "normal_run_macro_fpr": 0.3614738333839458,
+      "worst_normal_run_fpr": 0.9966595809292439,
+      "worst_normal_run_id": "N-3-7-8-12-Pmixed-R18-V3",
+      "attack_run_macro_recall": 0.9528870764825823,
+      "worst_attack_run_recall": 0.7351958700273307,
+      "worst_attack_run_id": "N-5-10-Pbursty-R51-A-12-S20-V3",
+      "strength20_attack_run_count": 3,
+      "strength20_macro_recall": 0.8978641562911225,
+      "hard_normal_run_present": true,
+      "hard_normal_run_fpr": 0.9966595809292439,
+      "hard_normal_run_sample_count": 3293
+    },
+    "deltas_b1_minus_a1": {
+      "normal_run_macro_fpr": 0.11519384553092418,
+      "worst_normal_run_fpr": 0.006377163680534537,
+      "attack_run_macro_recall": 0.016832241551342886,
+      "worst_attack_run_recall": -0.07227452171272397,
+      "strength20_macro_recall": 0.02297803421398914,
+      "hard_normal_run_fpr": 0.006377163680534537
+    },
+    "run_verdict_counts": {
+      "normal_runs": {
+        "B1_wins": 0,
+        "ties": 0,
+        "B1_losses": 6
+      },
+      "attack_runs": {
+        "B1_wins": 6,
+        "ties": 0,
+        "B1_losses": 1
+      }
+    }
+  }
+}

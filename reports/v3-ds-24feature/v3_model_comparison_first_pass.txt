@@ -1,0 +1,21 @@
+V3 First-Pass Model Comparison
+
+Dataset:
+/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3
+
+TCN-GCN:
+best epoch          = 26
+test graph F1       = 0.8578
+test graph FPR      = 0.2468
+test node F1        = 0.6901
+test exact loc      = 0.4070
+
+Conv1D-GCN:
+best epoch          = 96
+test graph F1       = 0.8384
+test graph FPR      = 0.2036
+test node F1        = 0.7262
+test exact loc      = 0.5310
+
+Initial interpretation:
+On V3, TCN-GCN has slightly better graph F1, but worse false positive rate and worse localization than Conv1D-GCN. The likely issue is that the stronger temporal encoder is over-sensitive to unseen benign temporal patterns.

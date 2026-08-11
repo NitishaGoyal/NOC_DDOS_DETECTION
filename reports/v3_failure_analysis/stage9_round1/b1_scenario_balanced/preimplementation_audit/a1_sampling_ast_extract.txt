@@ -1,0 +1,444 @@
+====================================================================================================
+LINES 32-56
+   32:     return {k: d[k] for k in d.files}
+   33: 
+   34: 
+   35: def make_v3_splits(data_path):
+   36:     d = load_graph_arrays(data_path)
+   37: 
+   38:     if d.get("split") is None:
+   39:         raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+   40: 
+   41:     split = d["split"].astype(str)
+   42: 
+   43:     train_idx = np.where(split == "train")[0].astype(np.int64)
+   44:     val_idx = np.where(split == "val")[0].astype(np.int64)
+   45:     test_idx = np.where(split == "test")[0].astype(np.int64)
+   46: 
+   47:     print()
+   48:     print("using internal V3 split")
+   49:     print("train:", len(train_idx))
+   50:     print("val:  ", len(val_idx))
+   51:     print("test: ", len(test_idx))
+   52: 
+   53:     return train_idx, val_idx, test_idx
+   54: 
+   55: 
+   56: import torch
+====================================================================================================
+LINES 98-179
+   98:         }
+   99: 
+  100: 
+  101: def make_splits(npz_path: str, split_mode: str):
+  102:     d = load_graph_arrays(npz_path)
+  103:     run_ids = d["run_id"].astype(str)
+  104:     y_graph = d["y_graph"].astype(np.int64)
+  105:     unique_runs = sorted(set(run_ids.tolist()))
+  106: 
+  107:     print("Runs in dataset:")
+  108:     for run_id in unique_runs:
+  109:         count = int((run_ids == run_id).sum())
+  110:         first_index = np.where(run_ids == run_id)[0][0]
+  111:         label = int(y_graph[first_index])
+  112:         print(f"  {run_id:38s} samples={count} label={label}")
+  113: 
+  114:     if split_mode == "prototype":
+  115:         train_idx, val_idx, test_idx = [], [], []
+  116:         for run_id in unique_runs:
+  117:             idx = np.sort(np.where(run_ids == run_id)[0])
+  118:             n = len(idx)
+  119:             n_train = int(0.70 * n)
+  120:             n_val = int(0.15 * n)
+  121:             train_idx.extend(idx[:n_train])
+  122:             val_idx.extend(idx[n_train:n_train + n_val])
+  123:             test_idx.extend(idx[n_train + n_val:])
+  124: 
+  125:         return (
+  126:             np.asarray(train_idx, dtype=np.int64),
+  127:             np.asarray(val_idx, dtype=np.int64),
+  128:             np.asarray(test_idx, dtype=np.int64),
+  129:         )
+  130: 
+  131:     if split_mode == "placement":
+  132:         train_attack_runs = {
+  133:             "N-0-15-A-1-S20-V2",
+  134:             "N-0-15-A-7-S20-V2",
+  135:             "N-0-15-A-11-S20-V2",
+  136:             "N-0-15-A-1-7-S63-V2",
+  137:             "N-0-15-A-1-11-S63-V2",
+  138:             "N-0-15-A-7-12-S63-V2",
+  139:             "N-0-15-A-1-7-11-S77-V2",
+  140:             "N-0-15-A-1-7-12-S77-V2",
+  141:         }
+  142:         val_attack_runs = {
+  143:             "N-0-15-A-12-S20-V2",
+  144:             "N-0-15-A-11-12-S63-V2",
+  145:         }
+  146:         test_attack_runs = {
+  147:             "N-0-15-A-1-11-12-S77-V2",
+  148:             "N-0-15-A-7-11-12-S77-V2",
+  149:         }
+  150: 
+  151:         train_idx, val_idx, test_idx = [], [], []
+  152:         for run_id in unique_runs:
+  153:             idx = np.sort(np.where(run_ids == run_id)[0])
+  154:             if "-A-" not in run_id:
+  155:                 n = len(idx)
+  156:                 n_train = int(0.70 * n)
+  157:                 n_val = int(0.15 * n)
+  158:                 train_idx.extend(idx[:n_train])
+  159:                 val_idx.extend(idx[n_train:n_train + n_val])
+  160:                 test_idx.extend(idx[n_train + n_val:])
+  161:             elif run_id in train_attack_runs:
+  162:                 train_idx.extend(idx)
+  163:             elif run_id in val_attack_runs:
+  164:                 val_idx.extend(idx)
+  165:             elif run_id in test_attack_runs:
+  166:                 test_idx.extend(idx)
+  167:             else:
+  168:                 raise RuntimeError(f"Run {run_id!r} was not assigned to any split.")
+  169: 
+  170:         return (
+  171:             np.asarray(train_idx, dtype=np.int64),
+  172:             np.asarray(val_idx, dtype=np.int64),
+  173:             np.asarray(test_idx, dtype=np.int64),
+  174:         )
+  175: 
+  176:     raise ValueError(f"Unknown split mode: {split_mode}")
+  177: 
+  178: 
+  179: def build_normalized_adjacency(edge_index: np.ndarray, num_nodes: int) -> torch.Tensor:
+====================================================================================================
+LINES 245-296
+  245: 
+  246: 
+  247: @torch.no_grad()
+  248: def evaluate(
+  249:     model: nn.Module,
+  250:     loader: DataLoader,
+  251:     a_hat: torch.Tensor,
+  252:     device: torch.device,
+  253:     graph_loss_fn: nn.Module,
+  254:     node_loss_fn: nn.Module,
+  255:     node_loss_weight: float,
+  256:     graph_threshold: float = 0.5,
+  257:     node_threshold: float = 0.5,
+  258: ):
+  259:     model.eval()
+  260:     graph_probs, graph_true = [], []
+  261:     node_probs, node_true = [], []
+  262:     total_loss = 0.0
+  263:     batches = 0
+  264: 
+  265:     for batch in loader:
+  266:         x = batch["x"].to(device)
+  267:         y_graph = batch["y_graph"].to(device)
+  268:         y_node = batch["y_node"].to(device)
+  269:         graph_logits, node_logits = model(x, a_hat)
+  270: 
+  271:         graph_loss = graph_loss_fn(graph_logits, y_graph)
+  272:         node_loss = node_loss_fn(node_logits, y_node)
+  273:         loss = graph_loss + node_loss_weight * node_loss
+  274: 
+  275:         total_loss += float(loss.item())
+  276:         batches += 1
+  277:         graph_probs.append(torch.sigmoid(graph_logits).cpu().numpy())
+  278:         graph_true.append(y_graph.cpu().numpy())
+  279:         node_probs.append(torch.sigmoid(node_logits).cpu().numpy())
+  280:         node_true.append(y_node.cpu().numpy())
+  281: 
+  282:     graph_probs = np.concatenate(graph_probs)
+  283:     graph_true = np.concatenate(graph_true)
+  284:     node_probs = np.concatenate(node_probs)
+  285:     node_true = np.concatenate(node_true)
+  286: 
+  287:     graph_results = binary_metrics(graph_true, graph_probs, graph_threshold)
+  288:     node_results = node_metrics(node_true, node_probs, node_threshold)
+  289:     return {
+  290:         "loss": float(total_loss / max(1, batches)),
+  291:         **graph_results,
+  292:         **node_results,
+  293:     }
+  294: 
+  295: 
+  296: def print_metrics(prefix: str, metrics: dict) -> None:
+====================================================================================================
+LINES 348-624
+  348:         return graph_logits, node_logits
+  349: 
+  350: 
+  351: def main():
+  352:     parser = argparse.ArgumentParser()
+  353:     parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+  354:     parser.add_argument("--out-dir", default="models/temporal_gcn_conv1d_early_stop")
+  355:     parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+  356:     parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+  357:     parser.add_argument("--epochs", type=int, default=25)
+  358:     parser.add_argument("--patience", type=int, default=5)
+  359:     parser.add_argument("--min-delta", type=float, default=1e-4)
+  360:     parser.add_argument("--batch-size", type=int, default=256)
+  361:     parser.add_argument("--lr", type=float, default=1e-3)
+  362:     parser.add_argument("--weight-decay", type=float, default=1e-4)
+  363:     parser.add_argument("--temporal-dim", type=int, default=8)
+  364:     parser.add_argument("--gcn-hidden", type=int, default=16)
+  365:     parser.add_argument("--gcn-out", type=int, default=8)
+  366:     parser.add_argument("--node-loss-weight", type=float, default=1.0)
+  367:     parser.add_argument("--graph-threshold", type=float, default=0.5)
+  368:     parser.add_argument("--node-threshold", type=float, default=0.5)
+  369:     parser.add_argument("--seed", type=int, default=7)
+  370:     
+  371:     args = parser.parse_args()
+  372: 
+  373:     if args.epochs <= 0:
+  374:         raise ValueError("--epochs must be positive.")
+  375:     if args.patience <= 0:
+  376:         raise ValueError("--patience must be positive.")
+  377:     if args.min_delta < 0:
+  378:         raise ValueError("--min-delta cannot be negative.")
+  379: 
+  380:     set_seed(args.seed)
+  381:     out_dir = Path(args.out_dir)
+  382:     out_dir.mkdir(parents=True, exist_ok=True)
+  383: 
+  384:     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+  385:     print("device:", device)
+  386: 
+  387:     data = load_graph_arrays(args.data)
+  388:     x_shape = data["x"].shape
+  389:     if len(x_shape) != 4:
+  390:         raise ValueError(f"Expected x shape [samples, nodes, time, features], received {x_shape}.")
+  391: 
+  392:     num_nodes = int(x_shape[1])
+  393:     input_feature_dim = int(x_shape[-1])
+  394:     edge_index = data["edge_index"].astype(np.int64)
+  395:     a_hat = build_normalized_adjacency(edge_index, num_nodes).to(device)
+  396: 
+  397:     if args.split_mode == "v3":
+  398:         train_idx, val_idx, test_idx = make_v3_splits(args.data)
+  399:     elif args.splits_file is not None:
+  400:         split_data = np.load(args.splits_file)
+  401:         train_idx = split_data["train_idx"].astype(np.int64)
+  402:         val_idx = split_data["val_idx"].astype(np.int64)
+  403:         test_idx = split_data["test_idx"].astype(np.int64)
+  404:         print("\nloaded external splits:", args.splits_file)
+  405:     else:
+  406:         train_idx, val_idx, test_idx = make_splits(args.data, args.split_mode)
+  407: 
+  408:     print("\nsplit sizes:")
+  409:     print("  train:", len(train_idx))
+  410:     print("  val:  ", len(val_idx))
+  411:     print("  test: ", len(test_idx))
+  412: 
+  413:     y_graph_train = data["y_graph"][train_idx].astype(np.float32)
+  414:     y_node_train = data["y_node"][train_idx].astype(np.float32)
+  415:     graph_pos = float(y_graph_train.sum())
+  416:     graph_neg = float(len(y_graph_train) - graph_pos)
+  417:     graph_pos_weight = graph_neg / max(graph_pos, 1.0)
+  418:     node_pos = float(y_node_train.sum())
+  419:     node_neg = float(y_node_train.size - node_pos)
+  420:     node_pos_weight = node_neg / max(node_pos, 1.0)
+  421: 
+  422:     print("\nclass weights:")
+  423:     print("  graph pos weight:", graph_pos_weight)
+  424:     print("  node pos weight: ", node_pos_weight)
+  425: 
+  426:     train_dataset = NoCTemporalGraphDataset(args.data, train_idx)
+  427:     val_dataset = NoCTemporalGraphDataset(args.data, val_idx)
+  428:     test_dataset = NoCTemporalGraphDataset(args.data, test_idx)
+  429: 
+  430:     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+  431:     val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+  432:     test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+  433: 
+  434:     print("input feature dim:", input_feature_dim)
+  435:     print("number of nodes:", num_nodes)
+  436: 
+  437:     model = TemporalGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out).to(device)
+  438:     total_params = sum(parameter.numel() for parameter in model.parameters())
+  439:     print("\nmodel:")
+  440:     print(model)
+  441:     print("parameters:", total_params)
+  442: 
+  443:     graph_loss_fn = nn.BCEWithLogitsLoss(
+  444:         pos_weight=torch.tensor(graph_pos_weight, dtype=torch.float32, device=device)
+  445:     )
+  446:     node_loss_fn = nn.BCEWithLogitsLoss(
+  447:         pos_weight=torch.tensor(node_pos_weight, dtype=torch.float32, device=device)
+  448:     )
+  449:     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+  450: 
+  451:     best_val_score = -float("inf")
+  452:     best_epoch = -1
+  453:     epochs_without_improvement = 0
+  454:     stopped_early = False
+  455:     stopped_epoch = None
+  456:     history = []
+  457: 
+  458:     for epoch in range(1, args.epochs + 1):
+  459:         model.train()
+  460:         total_loss = 0.0
+  461:         batches = 0
+  462:         progress = tqdm(train_loader, desc=f"epoch {epoch:03d}", leave=False)
+  463: 
+  464:         for batch in progress:
+  465:             x = batch["x"].to(device)
+  466:             y_graph = batch["y_graph"].to(device)
+  467:             y_node = batch["y_node"].to(device)
+  468:             graph_logits, node_logits = model(x, a_hat)
+  469:             graph_loss = graph_loss_fn(graph_logits, y_graph)
+  470:             node_loss = node_loss_fn(node_logits, y_node)
+  471:             loss = graph_loss + args.node_loss_weight * node_loss
+  472: 
+  473:             optimizer.zero_grad(set_to_none=True)
+  474:             loss.backward()
+  475:             optimizer.step()
+  476: 
+  477:             total_loss += float(loss.item())
+  478:             batches += 1
+  479:             progress.set_postfix(loss=f"{loss.item():.4f}")
+  480: 
+  481:         train_step_loss = total_loss / max(1, batches)
+  482:         eval_kwargs = {
+  483:             "a_hat": a_hat,
+  484:             "device": device,
+  485:             "graph_loss_fn": graph_loss_fn,
+  486:             "node_loss_fn": node_loss_fn,
+  487:             "node_loss_weight": args.node_loss_weight,
+  488:             "graph_threshold": args.graph_threshold,
+  489:             "node_threshold": args.node_threshold,
+  490:         }
+  491:         train_metrics = evaluate(model, train_loader, **eval_kwargs)
+  492:         val_metrics = evaluate(model, val_loader, **eval_kwargs)
+  493: 
+  494:         print(f"\nepoch {epoch:03d} train_step_loss={train_step_loss:.4f}")
+  495:         print_metrics("  train", train_metrics)
+  496:         print_metrics("  val  ", val_metrics)
+  497: 
+  498:         val_score = val_metrics["f1"] + val_metrics["node_f1"]
+  499:         previous_best = None if best_val_score == -float("inf") else float(best_val_score)
+  500:         improvement = val_score - best_val_score
+  501: 
+  502:         if improvement > args.min_delta:
+  503:             best_val_score = float(val_score)
+  504:             best_epoch = int(epoch)
+  505:             epochs_without_improvement = 0
+  506:             checkpoint = {
+  507:                 "model_state_dict": model.state_dict(),
+  508:                 "optimizer_state_dict": optimizer.state_dict(),
+  509:                 "args": vars(args),
+  510:                 "A_hat": a_hat.detach().cpu(),
+  511:                 "best_epoch": best_epoch,
+  512:                 "best_val_score": best_val_score,
+  513:                 "val_metrics": val_metrics,
+  514:                 "model_name": "Conv1D-TemporalGCN",
+  515:             }
+  516:             torch.save(checkpoint, out_dir / "best_model.pt")
+  517:             print(f"  validation score improved to {best_val_score:.6f}; saved best_model.pt")
+  518:         else:
+  519:             epochs_without_improvement += 1
+  520:             print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+  521: 
+  522:         history.append({
+  523:             "epoch": int(epoch),
+  524:             "train_loss_step": float(train_step_loss),
+  525:             "train": train_metrics,
+  526:             "val": val_metrics,
+  527:             "val_score": float(val_score),
+  528:             "best_val_score_before_epoch": previous_best,
+  529:             "best_val_score_after_epoch": float(best_val_score),
+  530:             "epochs_without_improvement": int(epochs_without_improvement),
+  531:         })
+  532: 
+  533:         with (out_dir / "history.json").open("w") as file:
+  534:             json.dump(history, file, indent=2)
+  535: 
+  536:         if epochs_without_improvement >= args.patience:
+  537:             stopped_early = True
+  538:             stopped_epoch = int(epoch)
+  539:             print(
+  540:                 f"\nearly stopping triggered at epoch {stopped_epoch}. "
+  541:                 f"Best epoch was {best_epoch} with validation score {best_val_score:.6f}."
+  542:             )
+  543:             break
+  544: 
+  545:     print("\nloading best checkpoint...")
+  546:     checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+  547:     model.load_state_dict(checkpoint["model_state_dict"])
+  548: 
+  549:     eval_kwargs = {
+  550:         "a_hat": a_hat,
+  551:         "device": device,
+  552:         "graph_loss_fn": graph_loss_fn,
+  553:         "node_loss_fn": node_loss_fn,
+  554:         "node_loss_weight": args.node_loss_weight,
+  555:         "graph_threshold": args.graph_threshold,
+  556:         "node_threshold": args.node_threshold,
+  557:     }
+  558:     train_metrics = evaluate(model, train_loader, **eval_kwargs)
+  559:     val_metrics = evaluate(model, val_loader, **eval_kwargs)
+  560:     test_metrics = evaluate(model, test_loader, **eval_kwargs)
+  561: 
+  562:     print("\nFINAL")
+  563:     print("model:", "Conv1D-TemporalGCN")
+  564:     print("best epoch:", checkpoint["best_epoch"])
+  565:     print("best validation score:", checkpoint["best_val_score"])
+  566:     print_metrics("train", train_metrics)
+  567:     print_metrics("val  ", val_metrics)
+  568:     print_metrics("test ", test_metrics)
+  569: 
+  570:     summary = {
+  571:         "model": "Conv1D-TemporalGCN",
+  572:         "data": args.data,
+  573:         "split_mode": args.split_mode,
+  574:         "splits_file": args.splits_file,
+  575:         "best_epoch": int(checkpoint["best_epoch"]),
+  576:         "best_val_score": float(checkpoint["best_val_score"]),
+  577:         "parameters": int(total_params),
+  578:         "input_feature_dim": int(input_feature_dim),
+  579:         "num_nodes": int(num_nodes),
+  580:         "training": {
+  581:             "maximum_epochs": int(args.epochs),
+  582:             "epochs_completed": int(len(history)),
+  583:             "patience": int(args.patience),
+  584:             "min_delta": float(args.min_delta),
+  585:             "stopped_early": bool(stopped_early),
+  586:             "stopped_epoch": stopped_epoch,
+  587:             "seed": int(args.seed),
+  588:         },
+  589:         "split_sizes": {
+  590:             "train": int(len(train_idx)),
+  591:             "val": int(len(val_idx)),
+  592:             "test": int(len(test_idx)),
+  593:         },
+  594:         "class_weights": {
+  595:             "graph_pos_weight": float(graph_pos_weight),
+  596:             "node_pos_weight": float(node_pos_weight),
+  597:         },
+  598:         "thresholds": {
+  599:             "graph": float(args.graph_threshold),
+  600:             "node": float(args.node_threshold),
+  601:         },
+  602:         "train": train_metrics,
+  603:         "val": val_metrics,
+  604:         "test": test_metrics,
+  605:     }
+  606: 
+  607:     with (out_dir / "summary.json").open("w") as file:
+  608:         json.dump(summary, file, indent=2)
+  609: 
+  610:     np.savez_compressed(
+  611:         out_dir / "splits.npz",
+  612:         train_idx=train_idx,
+  613:         val_idx=val_idx,
+  614:         test_idx=test_idx,
+  615:     )
+  616: 
+  617:     print("\nwrote:")
+  618:     print(" ", out_dir / "best_model.pt")
+  619:     print(" ", out_dir / "history.json")
+  620:     print(" ", out_dir / "summary.json")
+  621:     print(" ", out_dir / "splits.npz")
+  622: 
+  623: 
+  624: if __name__ == "__main__":

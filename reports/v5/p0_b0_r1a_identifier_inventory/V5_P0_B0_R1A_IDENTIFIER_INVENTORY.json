@@ -1,0 +1,2744 @@
+{
+  "splits": {
+    "train": {
+      "field_examples": {
+        "case_id": [
+          "D01",
+          "D02",
+          "D03",
+          "D04",
+          "D05",
+          "D06",
+          "L01",
+          "L02",
+          "S01",
+          "S02",
+          "S03",
+          "S04"
+        ],
+        "file_stem": [
+          "D01_ATTACK",
+          "D01_CONTROL",
+          "D02_ATTACK",
+          "D02_CONTROL",
+          "D03_ATTACK",
+          "D03_CONTROL",
+          "D04_ATTACK",
+          "D04_CONTROL",
+          "D05_ATTACK",
+          "D05_CONTROL",
+          "D06_ATTACK",
+          "D06_CONTROL"
+        ],
+        "mode": [
+          "attack",
+          "control"
+        ],
+        "pair_id": [
+          "V5-INITIAL24-D01-S0T10-S15T5-SEED510007",
+          "V5-INITIAL24-D02-S0T5-S15T10-SEED510008",
+          "V5-INITIAL24-D03-S0T10-S4T10-SEED510009",
+          "V5-INITIAL24-D04-S3T12-S12T3-SEED510010",
+          "V5-INITIAL24-D05-S1T14-S13T2-SEED510011",
+          "V5-INITIAL24-D06-S5T15-S10T0-SEED510012",
+          "V5-INITIAL24-L01-S0T0-SEED510013",
+          "V5-INITIAL24-L02-S5T5-SEED510014",
+          "V5-INITIAL24-S01-S0T15-SEED510001",
+          "V5-INITIAL24-S02-S15T0-SEED510002",
+          "V5-INITIAL24-S03-S4T7-SEED510003",
+          "V5-INITIAL24-S04-S7T4-SEED510004"
+        ],
+        "run_id": [
+          "V5-INITIAL24-D01-S0T10-S15T5-SEED510007-ATTACK",
+          "V5-INITIAL24-D01-S0T10-S15T5-SEED510007-CONTROL",
+          "V5-INITIAL24-D02-S0T5-S15T10-SEED510008-ATTACK",
+          "V5-INITIAL24-D02-S0T5-S15T10-SEED510008-CONTROL",
+          "V5-INITIAL24-D03-S0T10-S4T10-SEED510009-ATTACK",
+          "V5-INITIAL24-D03-S0T10-S4T10-SEED510009-CONTROL",
+          "V5-INITIAL24-D04-S3T12-S12T3-SEED510010-ATTACK",
+          "V5-INITIAL24-D04-S3T12-S12T3-SEED510010-CONTROL",
+          "V5-INITIAL24-D05-S1T14-S13T2-SEED510011-ATTACK",
+          "V5-INITIAL24-D05-S1T14-S13T2-SEED510011-CONTROL",
+          "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-ATTACK",
+          "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-CONTROL"
+        ]
+      },
+      "field_parse_summary": {
+        "case_id": {
+          "active_parsed_run_count": 0,
+          "parsed_count_matches_run_count": 0.0,
+          "parsed_run_count": 0,
+          "source_exact_active_mean": 0.0,
+          "victim_exact_active_mean": 0.0
+        },
+        "file_stem": {
+          "active_parsed_run_count": 0,
+          "parsed_count_matches_run_count": 0.0,
+          "parsed_run_count": 0,
+          "source_exact_active_mean": 0.0,
+          "victim_exact_active_mean": 0.0
+        },
+        "pair_id": {
+          "active_parsed_run_count": 16,
+          "parsed_count_matches_run_count": 1.0,
+          "parsed_run_count": 32,
+          "source_exact_active_mean": 1.0,
+          "victim_exact_active_mean": 1.0
+        },
+        "run_id": {
+          "active_parsed_run_count": 16,
+          "parsed_count_matches_run_count": 1.0,
+          "parsed_run_count": 32,
+          "source_exact_active_mean": 1.0,
+          "victim_exact_active_mean": 1.0
+        }
+      },
+      "max_attacker_count_counts": {
+        "0": 16,
+        "1": 10,
+        "2": 6
+      },
+      "mode_counts": {
+        "attack": 16,
+        "control": 16
+      },
+      "records": [
+        {
+          "active_epoch_count": 696,
+          "case_id": "D01",
+          "file_stem": "D01_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D01-S0T10-S15T5-SEED510007",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  15,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510007"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  15,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510007"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D01-S0T10-S15T5-SEED510007-ATTACK",
+          "run_length": 696
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D01",
+          "file_stem": "D01_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D01-S0T10-S15T5-SEED510007",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  15,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510007"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  15,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510007"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D01-S0T10-S15T5-SEED510007-CONTROL",
+          "run_length": 696
+        },
+        {
+          "active_epoch_count": 696,
+          "case_id": "D02",
+          "file_stem": "D02_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D02-S0T5-S15T10-SEED510008",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  15,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510008"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  15,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510008"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D02-S0T5-S15T10-SEED510008-ATTACK",
+          "run_length": 696
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D02",
+          "file_stem": "D02_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D02-S0T5-S15T10-SEED510008",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  15,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510008"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  5
+                ],
+                [
+                  15,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510008"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D02-S0T5-S15T10-SEED510008-CONTROL",
+          "run_length": 696
+        },
+        {
+          "active_epoch_count": 706,
+          "case_id": "D03",
+          "file_stem": "D03_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D03-S0T10-S4T10-SEED510009",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510009"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510009"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D03-S0T10-S4T10-SEED510009-ATTACK",
+          "run_length": 706
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D03",
+          "file_stem": "D03_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D03-S0T10-S4T10-SEED510009",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510009"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510009"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D03-S0T10-S4T10-SEED510009-CONTROL",
+          "run_length": 706
+        },
+        {
+          "active_epoch_count": 699,
+          "case_id": "D04",
+          "file_stem": "D04_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D04-S3T12-S12T3-SEED510010",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ],
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510010"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ],
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510010"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D04-S3T12-S12T3-SEED510010-ATTACK",
+          "run_length": 699
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D04",
+          "file_stem": "D04_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D04-S3T12-S12T3-SEED510010",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ],
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510010"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ],
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510010"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D04-S3T12-S12T3-SEED510010-CONTROL",
+          "run_length": 699
+        },
+        {
+          "active_epoch_count": 718,
+          "case_id": "D05",
+          "file_stem": "D05_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D05-S1T14-S13T2-SEED510011",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  1,
+                  14
+                ],
+                [
+                  13,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510011"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  1,
+                  14
+                ],
+                [
+                  13,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510011"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D05-S1T14-S13T2-SEED510011-ATTACK",
+          "run_length": 718
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D05",
+          "file_stem": "D05_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D05-S1T14-S13T2-SEED510011",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  1,
+                  14
+                ],
+                [
+                  13,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510011"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  1,
+                  14
+                ],
+                [
+                  13,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510011"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D05-S1T14-S13T2-SEED510011-CONTROL",
+          "run_length": 719
+        },
+        {
+          "active_epoch_count": 719,
+          "case_id": "D06",
+          "file_stem": "D06_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D06-S5T15-S10T0-SEED510012",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  5,
+                  15
+                ],
+                [
+                  10,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510012"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  5,
+                  15
+                ],
+                [
+                  10,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510012"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-ATTACK",
+          "run_length": 719
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D06",
+          "file_stem": "D06_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D06-S5T15-S10T0-SEED510012",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  5,
+                  15
+                ],
+                [
+                  10,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510012"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  5,
+                  15
+                ],
+                [
+                  10,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510012"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-CONTROL",
+          "run_length": 719
+        },
+        {
+          "active_epoch_count": 700,
+          "case_id": "L01",
+          "file_stem": "L01_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-L01-S0T0-SEED510013",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510013"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510013"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-L01-S0T0-SEED510013-ATTACK",
+          "run_length": 700
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "L01",
+          "file_stem": "L01_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-L01-S0T0-SEED510013",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510013"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510013"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-L01-S0T0-SEED510013-CONTROL",
+          "run_length": 699
+        },
+        {
+          "active_epoch_count": 722,
+          "case_id": "L02",
+          "file_stem": "L02_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-L02-S5T5-SEED510014",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  5,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510014"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  5,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510014"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-L02-S5T5-SEED510014-ATTACK",
+          "run_length": 722
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "L02",
+          "file_stem": "L02_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-L02-S5T5-SEED510014",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  5,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510014"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  5,
+                  5
+                ]
+              ],
+              "seed_matches": [
+                "510014"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-L02-S5T5-SEED510014-CONTROL",
+          "run_length": 722
+        },
+        {
+          "active_epoch_count": 699,
+          "case_id": "S01",
+          "file_stem": "S01_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S01-S0T15-SEED510001",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510001"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510001"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S01-S0T15-SEED510001-ATTACK",
+          "run_length": 699
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S01",
+          "file_stem": "S01_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S01-S0T15-SEED510001",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510001"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  0,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510001"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S01-S0T15-SEED510001-CONTROL",
+          "run_length": 699
+        },
+        {
+          "active_epoch_count": 701,
+          "case_id": "S02",
+          "file_stem": "S02_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S02-S15T0-SEED510002",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  15,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510002"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  15,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510002"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S02-S15T0-SEED510002-ATTACK",
+          "run_length": 701
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S02",
+          "file_stem": "S02_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S02-S15T0-SEED510002",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  15,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510002"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  15,
+                  0
+                ]
+              ],
+              "seed_matches": [
+                "510002"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S02-S15T0-SEED510002-CONTROL",
+          "run_length": 701
+        },
+        {
+          "active_epoch_count": 701,
+          "case_id": "S03",
+          "file_stem": "S03_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S03-S4T7-SEED510003",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  4,
+                  7
+                ]
+              ],
+              "seed_matches": [
+                "510003"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  4,
+                  7
+                ]
+              ],
+              "seed_matches": [
+                "510003"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S03-S4T7-SEED510003-ATTACK",
+          "run_length": 701
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S03",
+          "file_stem": "S03_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S03-S4T7-SEED510003",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  4,
+                  7
+                ]
+              ],
+              "seed_matches": [
+                "510003"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  4,
+                  7
+                ]
+              ],
+              "seed_matches": [
+                "510003"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S03-S4T7-SEED510003-CONTROL",
+          "run_length": 701
+        },
+        {
+          "active_epoch_count": 703,
+          "case_id": "S04",
+          "file_stem": "S04_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S04-S7T4-SEED510004",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  7,
+                  4
+                ]
+              ],
+              "seed_matches": [
+                "510004"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  7,
+                  4
+                ]
+              ],
+              "seed_matches": [
+                "510004"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S04-S7T4-SEED510004-ATTACK",
+          "run_length": 703
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S04",
+          "file_stem": "S04_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S04-S7T4-SEED510004",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  7,
+                  4
+                ]
+              ],
+              "seed_matches": [
+                "510004"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  7,
+                  4
+                ]
+              ],
+              "seed_matches": [
+                "510004"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S04-S7T4-SEED510004-CONTROL",
+          "run_length": 703
+        },
+        {
+          "active_epoch_count": 705,
+          "case_id": "S05",
+          "file_stem": "S05_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S05-S2T14-SEED510005",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  2,
+                  14
+                ]
+              ],
+              "seed_matches": [
+                "510005"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  2,
+                  14
+                ]
+              ],
+              "seed_matches": [
+                "510005"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S05-S2T14-SEED510005-ATTACK",
+          "run_length": 705
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S05",
+          "file_stem": "S05_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S05-S2T14-SEED510005",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  2,
+                  14
+                ]
+              ],
+              "seed_matches": [
+                "510005"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  2,
+                  14
+                ]
+              ],
+              "seed_matches": [
+                "510005"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S05-S2T14-SEED510005-CONTROL",
+          "run_length": 705
+        },
+        {
+          "active_epoch_count": 703,
+          "case_id": "S06",
+          "file_stem": "S06_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S06-S14T2-SEED510006",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  14,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510006"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  14,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510006"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S06-S14T2-SEED510006-ATTACK",
+          "run_length": 703
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S06",
+          "file_stem": "S06_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S06-S14T2-SEED510006",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  14,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510006"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  14,
+                  2
+                ]
+              ],
+              "seed_matches": [
+                "510006"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S06-S14T2-SEED510006-CONTROL",
+          "run_length": 704
+        },
+        {
+          "active_epoch_count": 600,
+          "case_id": "T01",
+          "file_stem": "T01_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-T01-S1T11-SEED510015",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  1,
+                  11
+                ]
+              ],
+              "seed_matches": [
+                "510015"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  1,
+                  11
+                ]
+              ],
+              "seed_matches": [
+                "510015"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-T01-S1T11-SEED510015-ATTACK",
+          "run_length": 706
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "T01",
+          "file_stem": "T01_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-T01-S1T11-SEED510015",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  1,
+                  11
+                ]
+              ],
+              "seed_matches": [
+                "510015"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  1,
+                  11
+                ]
+              ],
+              "seed_matches": [
+                "510015"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-T01-S1T11-SEED510015-CONTROL",
+          "run_length": 707
+        },
+        {
+          "active_epoch_count": 450,
+          "case_id": "T02",
+          "file_stem": "T02_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-T02-S12T3-SEED510016",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510016"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510016"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-T02-S12T3-SEED510016-ATTACK",
+          "run_length": 695
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "T02",
+          "file_stem": "T02_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-T02-S12T3-SEED510016",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510016"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  12,
+                  3
+                ]
+              ],
+              "seed_matches": [
+                "510016"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-T02-S12T3-SEED510016-CONTROL",
+          "run_length": 695
+        }
+      ],
+      "run_count": 32,
+      "run_length_by_mode_and_count": {
+        "attack_count_1": {
+          "maximum": 722,
+          "minimum": 695,
+          "unique_count": 8,
+          "values": [
+            695,
+            699,
+            700,
+            701,
+            703,
+            705,
+            706,
+            722
+          ]
+        },
+        "attack_count_2": {
+          "maximum": 719,
+          "minimum": 696,
+          "unique_count": 5,
+          "values": [
+            696,
+            699,
+            706,
+            718,
+            719
+          ]
+        },
+        "control_count_0": {
+          "maximum": 722,
+          "minimum": 695,
+          "unique_count": 11,
+          "values": [
+            695,
+            696,
+            699,
+            701,
+            703,
+            704,
+            705,
+            706,
+            707,
+            719,
+            722
+          ]
+        }
+      }
+    },
+    "validation": {
+      "field_examples": {
+        "case_id": [
+          "D07",
+          "L03",
+          "S07",
+          "T03"
+        ],
+        "file_stem": [
+          "D07_ATTACK",
+          "D07_CONTROL",
+          "L03_ATTACK",
+          "L03_CONTROL",
+          "S07_ATTACK",
+          "S07_CONTROL",
+          "T03_ATTACK",
+          "T03_CONTROL"
+        ],
+        "mode": [
+          "attack",
+          "control"
+        ],
+        "pair_id": [
+          "V5-INITIAL24-D07-S0T10-S4T10-SEED510018",
+          "V5-INITIAL24-L03-S10T10-SEED510019",
+          "V5-INITIAL24-S07-S3T12-SEED510017",
+          "V5-INITIAL24-T03-S6T15-SEED510020"
+        ],
+        "run_id": [
+          "V5-INITIAL24-D07-S0T10-S4T10-SEED510018-ATTACK",
+          "V5-INITIAL24-D07-S0T10-S4T10-SEED510018-CONTROL",
+          "V5-INITIAL24-L03-S10T10-SEED510019-ATTACK",
+          "V5-INITIAL24-L03-S10T10-SEED510019-CONTROL",
+          "V5-INITIAL24-S07-S3T12-SEED510017-ATTACK",
+          "V5-INITIAL24-S07-S3T12-SEED510017-CONTROL",
+          "V5-INITIAL24-T03-S6T15-SEED510020-ATTACK",
+          "V5-INITIAL24-T03-S6T15-SEED510020-CONTROL"
+        ]
+      },
+      "field_parse_summary": {
+        "case_id": {
+          "active_parsed_run_count": 0,
+          "parsed_count_matches_run_count": 0.0,
+          "parsed_run_count": 0,
+          "source_exact_active_mean": 0.0,
+          "victim_exact_active_mean": 0.0
+        },
+        "file_stem": {
+          "active_parsed_run_count": 0,
+          "parsed_count_matches_run_count": 0.0,
+          "parsed_run_count": 0,
+          "source_exact_active_mean": 0.0,
+          "victim_exact_active_mean": 0.0
+        },
+        "pair_id": {
+          "active_parsed_run_count": 4,
+          "parsed_count_matches_run_count": 1.0,
+          "parsed_run_count": 8,
+          "source_exact_active_mean": 1.0,
+          "victim_exact_active_mean": 1.0
+        },
+        "run_id": {
+          "active_parsed_run_count": 4,
+          "parsed_count_matches_run_count": 1.0,
+          "parsed_run_count": 8,
+          "source_exact_active_mean": 1.0,
+          "victim_exact_active_mean": 1.0
+        }
+      },
+      "max_attacker_count_counts": {
+        "0": 4,
+        "1": 3,
+        "2": 1
+      },
+      "mode_counts": {
+        "attack": 4,
+        "control": 4
+      },
+      "records": [
+        {
+          "active_epoch_count": 600,
+          "case_id": "D07",
+          "file_stem": "D07_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 2,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-D07-S0T10-S4T10-SEED510018",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510018"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510018"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D07-S0T10-S4T10-SEED510018-ATTACK",
+          "run_length": 706
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "D07",
+          "file_stem": "D07_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-D07-S0T10-S4T10-SEED510018",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510018"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 2,
+              "route_match_count": 2,
+              "route_matches": [
+                [
+                  0,
+                  10
+                ],
+                [
+                  4,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510018"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-D07-S0T10-S4T10-SEED510018-CONTROL",
+          "run_length": 706
+        },
+        {
+          "active_epoch_count": 725,
+          "case_id": "L03",
+          "file_stem": "L03_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-L03-S10T10-SEED510019",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  10,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510019"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  10,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510019"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-L03-S10T10-SEED510019-ATTACK",
+          "run_length": 725
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "L03",
+          "file_stem": "L03_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-L03-S10T10-SEED510019",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  10,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510019"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  10,
+                  10
+                ]
+              ],
+              "seed_matches": [
+                "510019"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-L03-S10T10-SEED510019-CONTROL",
+          "run_length": 725
+        },
+        {
+          "active_epoch_count": 700,
+          "case_id": "S07",
+          "file_stem": "S07_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-S07-S3T12-SEED510017",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ]
+              ],
+              "seed_matches": [
+                "510017"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ]
+              ],
+              "seed_matches": [
+                "510017"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S07-S3T12-SEED510017-ATTACK",
+          "run_length": 700
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "S07",
+          "file_stem": "S07_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-S07-S3T12-SEED510017",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ]
+              ],
+              "seed_matches": [
+                "510017"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  3,
+                  12
+                ]
+              ],
+              "seed_matches": [
+                "510017"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-S07-S3T12-SEED510017-CONTROL",
+          "run_length": 700
+        },
+        {
+          "active_epoch_count": 400,
+          "case_id": "T03",
+          "file_stem": "T03_ATTACK",
+          "has_any_attack": true,
+          "max_attacker_count": 1,
+          "mode": "attack",
+          "pair_id": "V5-INITIAL24-T03-S6T15-SEED510020",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  6,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510020"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  6,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510020"
+              ],
+              "source_exact_active_rate": 1.0,
+              "victim_exact_active_rate": 1.0
+            }
+          },
+          "run_id": "V5-INITIAL24-T03-S6T15-SEED510020-ATTACK",
+          "run_length": 716
+        },
+        {
+          "active_epoch_count": 0,
+          "case_id": "T03",
+          "file_stem": "T03_CONTROL",
+          "has_any_attack": false,
+          "max_attacker_count": 0,
+          "mode": "control",
+          "pair_id": "V5-INITIAL24-T03-S6T15-SEED510020",
+          "parsers": {
+            "case_id": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "file_stem": {
+              "parsed_attacker_count": 0,
+              "route_match_count": 0,
+              "route_matches": [],
+              "seed_matches": [],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "pair_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  6,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510020"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            },
+            "run_id": {
+              "parsed_attacker_count": 1,
+              "route_match_count": 1,
+              "route_matches": [
+                [
+                  6,
+                  15
+                ]
+              ],
+              "seed_matches": [
+                "510020"
+              ],
+              "source_exact_active_rate": 0.0,
+              "victim_exact_active_rate": 0.0
+            }
+          },
+          "run_id": "V5-INITIAL24-T03-S6T15-SEED510020-CONTROL",
+          "run_length": 716
+        }
+      ],
+      "run_count": 8,
+      "run_length_by_mode_and_count": {
+        "attack_count_1": {
+          "maximum": 725,
+          "minimum": 700,
+          "unique_count": 3,
+          "values": [
+            700,
+            716,
+            725
+          ]
+        },
+        "attack_count_2": {
+          "maximum": 706,
+          "minimum": 706,
+          "unique_count": 1,
+          "values": [
+            706
+          ]
+        },
+        "control_count_0": {
+          "maximum": 725,
+          "minimum": 700,
+          "unique_count": 4,
+          "values": [
+            700,
+            706,
+            716,
+            725
+          ]
+        }
+      }
+    }
+  },
+  "stage": "V5_P0_B0_R1A_IDENTIFIER_INVENTORY",
+  "test_split_accessed": false
+}

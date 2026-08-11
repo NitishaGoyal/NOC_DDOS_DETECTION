@@ -1,0 +1,101 @@
+{
+  "artifacts": {
+    "dataloader_resolution": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0A_DATALOADER_ARGUMENT_RESOLUTION.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0A_TRAINER_GENERATION_DECISION.json",
+    "exact_hyperparameter_pin": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0A_EXACT_HYPERPARAMETER_PIN.json",
+    "loss_and_control_flow_map": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0A_LOSS_SELECTION_AND_TRAINING_CONTROL_FLOW_MAP.json",
+    "optimizer_resolution": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0A_OPTIMIZER_ARGUMENT_AND_RUNTIME_DEFAULT_RESOLUTION.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:51:39.526235+00:00",
+  "decision": {
+    "E0_complete": true,
+    "E1_trainer_generation_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "actual_scientific_training_started": false,
+    "compact_interface_equivalence_authorized": false,
+    "early_stopping_present": true,
+    "exact_skeleton_reparse_complete": true,
+    "feature_removal_authorized": false,
+    "gradient_clipping_present": true,
+    "hardware_reduction_claim_authorized": false,
+    "learning_rate_resolved": true,
+    "loss_route_mapped": true,
+    "max_epochs_resolved": true,
+    "next_stage": "V5_P3_F7_E0B_REMAINING_RECIPE_SEMANTIC_PIN",
+    "scheduler_present": true,
+    "sealed_test_access": false,
+    "train_batch_size_resolved": true,
+    "unresolved_fields": [
+      {
+        "candidate_values": [],
+        "field": "early_stopping_policy",
+        "reason": "early-stopping-related source exists and requires a dedicated semantic pin before trainer generation"
+      }
+    ],
+    "validation_batch_size_resolved": true,
+    "weight_decay_resolved": true
+  },
+  "finding": {
+    "early_stopping_present": true,
+    "gradient_clipping_present": true,
+    "learning_rate": 0.001,
+    "loss_call_count": 11,
+    "loss_call_names": [
+      "F.binary_cross_entropy_with_logits",
+      "F.cross_entropy",
+      "compute_loss",
+      "loss.backward",
+      "loss.item"
+    ],
+    "max_epochs": 101,
+    "optimizer": "torch.optim.adamw.AdamW",
+    "scheduler_present": true,
+    "skeleton": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "train_batch_size": 1,
+    "unresolved_fields": [
+      {
+        "candidate_values": [],
+        "field": "early_stopping_policy",
+        "reason": "early-stopping-related source exists and requires a dedicated semantic pin before trainer generation"
+      }
+    ],
+    "validation_batch_size": 1,
+    "weight_decay": 0.0001,
+    "weight_decay_resolution_route": "literal"
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "historical_A4_recipe_claimed": false,
+    "model_loaded": false,
+    "optimizer_step_performed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": false,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_constructed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "E0_lock_sha256": "6bacd5b16538231f4c6ecef8ca097f2dda43f2a9278ae0f76df3fc42b811c695",
+    "E0_report_sha256": "30817f03b16350c62fa7aee43d631a36cc29c622d03e47ef57e7c350e30d2e62",
+    "F7_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "P2_lock_sha256": "8989f4babc7a9f7c64e0dae5d3d03c0b69d19682363a73e4dc2fde4b7e0f64e3",
+    "P2_report_sha256": "d4b725878b5cac2cf4efc3ad3d54d7285cd3d7afbe0f7498d8477532ef1b8e67",
+    "dataloader_resolution_sha256": "4ebc9a7c70f03ae4a22c5c3e65cc53fa14e05d8acf68a93035b535fd70b07218",
+    "decision_sha256": "de54cfedecd258d88cd1b16c0e7b1402135de60d8a52b4ff2ca59c1f8a2d75c4",
+    "exact_pin_sha256": "5d4f348f39abd6d49da161c99cea4ba8f1b61e708b87c4ed354a092a7805b4ab",
+    "installed_script_sha256": "cb45082ff014b2af0f32d6dd3482128973dd7b260cd6149eb639f4611a751ff1",
+    "loss_map_sha256": "8b92f3485ce23f7b54deeed62bcb5b0f7be9bbc07511ef1177ba15d2c7fc1963",
+    "optimizer_resolution_sha256": "0113514b0d8fd1a5ca624ae22fad7a2afe682c3ff69d1e8edd9beaf4b547694a",
+    "reconstructed_route_sha256": "b24276c374258990a33850a1aaf516d92a5636f09350d98bc5e353821293ec02",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+  },
+  "scope": "Resolve E0's missing batch-size and weight-decay fields by re-parsing the exact frozen V5-P2 training skeleton; symbolically resolve argparse defaults, assignments, function defaults, DataLoader positional/keyword arguments and optimizer arguments; pin omitted runtime defaults directly from the installed PyTorch signatures; map loss, epoch, early-stopping, clipping, scheduler and selection source lines; and authorize E1 only when the full reconstructed execution recipe is unambiguous.",
+  "stage": "V5_P3_F7_E0A_EXACT_HYPERPARAMETER_AND_LOSS_ROUTE_PIN",
+  "status": "PASS"
+}

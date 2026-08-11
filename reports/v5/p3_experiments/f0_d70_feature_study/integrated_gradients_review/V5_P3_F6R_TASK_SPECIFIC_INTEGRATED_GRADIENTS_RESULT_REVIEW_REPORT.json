@@ -1,0 +1,311 @@
+{
+  "artifacts": {
+    "F5_F6_rank_concordance_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_F5_F6_RANK_CONCORDANCE.csv",
+    "artifact_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_ARTIFACT_AND_COMPLETENESS_CERTIFICATION.json",
+    "cross_method_group_triangulation_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_CROSS_METHOD_GROUP_TRIANGULATION.csv",
+    "figures": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_TASK_BY_GROUP_ATTRIBUTION_FRACTION.png",
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_TASK_COMPLETENESS_REVIEW.png"
+    ],
+    "interpretation_and_F7_decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_FEATURE_INTERPRETATION_AND_F7_DECISION.json",
+    "task_completeness_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_TASK_COMPLETENESS_REVIEW.csv",
+    "task_group_attribution_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_TASK_GROUP_ATTRIBUTION_REVIEW.csv",
+    "task_top_channel_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients_review/F6R_TASK_TOP_CHANNEL_REVIEW.csv"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T23:16:54.483435+00:00",
+  "decision": {
+    "F6R_complete": true,
+    "F7_primary_experiments": [
+      "same-width normalized-neutral masking of directional traffic volume",
+      "same-width normalized-neutral masking of inter-flit timing",
+      "same-width normalized-neutral masking of queue activity",
+      "same-width normalized-neutral masking of buffer pressure",
+      "same-width normalized-neutral masking of flow-control stalls"
+    ],
+    "F7_priority_hypothesis": "flow_control_stalls_first",
+    "F7_protocol_preflight_authorized": true,
+    "F7_seed_policy": "seed 107 for all five primary ablations; seeds 117 and 127 only for the two most decision-relevant groups after the primary matrix is reviewed",
+    "actual_F7_retraining_authorized": false,
+    "feature_removal_authorized": false,
+    "next_stage": "V5_P3_F7_P0_SAME_WIDTH_RETRAINED_GROUP_ABLATION_PREFLIGHT",
+    "sealed_test_access_authorized": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "IG_targets_changed": false,
+    "checkpoint_loaded": false,
+    "completeness_gates_changed": false,
+    "feature_removal_authorized": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "saved_F6_output_artifacts_loaded": true,
+    "sealed_test_tensors_loaded": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "F2R_constant_channel_csv_sha256": "a7e2a6bb86a84481eb7a14f0204ee5d8dd190ec0e499db35124b83d362fe7ed3",
+    "F5R_lock_sha256": "fbe9b9b38619d2d6f3b91c40b24fa03c34bab5cb5ba3589044cf3fd0c9f9f365",
+    "F5R_report_sha256": "d19a17b411472d58c5c467f59563b0cf034f2932a84c8418674ae755842876d6",
+    "F5_F6_rank_concordance_csv_sha256": "3476a4a5f7d30f2f30331b8772ab41c542d1095220ee3e8fa18c9bab64a0f2fd",
+    "F5_task_rankings_sha256": "0a15432ba33189b663abc3a0d4af204cb7c4aeb3de1a8504a4b049de2f250381",
+    "F6_P3_mapping_sha256": "2359457c044875b2373b8ded26cf0466e3db11dd052ef7af2d0f4eb6f7aaf7f3",
+    "F6_selection_sha256": "5b9b441bebde509475cfd1e15706206c51fee04a0c7e535aa71380425dbcb4f6",
+    "artifact_certification_sha256": "089fd0087ae109a14fe9c847d75184b36bd5ccf60111faeb1ccba21b347d1f31",
+    "canonical_F6_lock_sha256": "defebf4a04095d3162da3b6b7c8612faef4be1528a07c4bd7607bf7bc1c014e0",
+    "canonical_F6_report_sha256": "44d20a20208d0e3d94f35de61a3402064fa67550609cbac5337418673a319795",
+    "count_R1_lock_sha256": "ae91d7c1d9d1ec18b5fadd7393266329df32194be31c1f14a7a82be93479a7bd",
+    "count_R1_report_sha256": "5f6bad290aaf6fb3826b9de8c3506e5017f2bee8c03593a70487df1aa6a33d99",
+    "count_R2_lock_sha256": "543fe3f9675abd1638105f5fafdf6a993b2a2d86a04bbb294f51fcae0c8170fc",
+    "count_R2_report_sha256": "3a1a58d7a41412c3c775fd5c1ae747e1ef25aa3a63744d5e8432a9fb469b038d",
+    "cross_method_group_triangulation_csv_sha256": "62a65c7e68ac009ff205c3c43edc5e88570f46f7252289136be0b10358927b11",
+    "installed_script_sha256": "55d2a2383f481a53439579610f77862dbb7ba0d8bb08d8d68d826560d1c1a375",
+    "interpretation_and_F7_decision_sha256": "c9add291e797fda169ef8123ff3bd1b5e7d6e9dfda16120b1bc7aa2085b56316",
+    "run_F6_lock_sha256": "63d7b138b84dc591e411253e8014412e003ceaf377268eaa11c9a66d09bdc302",
+    "run_F6_report_sha256": "af0864127fb7f7def3983ff6e7bdc7324043b0365036c3272c0acee16ab625a0",
+    "task_completeness_csv_sha256": "a37daa4767d8cf25e458b7f56e3b59b4c29d321e52d0da46a8ceb6576281d59c",
+    "task_group_attribution_csv_sha256": "1946fda5fff08e1169d4a1d783acbcc0ff3a7a3b36697f464b07b02124653665",
+    "task_top_channel_csv_sha256": "6345943eb5ad0813c89e75fa3b9fbe6e83216e9c0f0c90930b29924a1186f36e"
+  },
+  "recovery": {
+    "failure_classification": "F2R_constant_channel_index_schema_alias_not_recognized",
+    "observed_canonical_index_field": "dynamic70_index",
+    "parser_change": "recognize dynamic70_index and validate constant_zero rows, integer indices, range and uniqueness",
+    "saved_F6_outputs_recomputed": false,
+    "scientific_protocol_changed": false,
+    "stage": "V5_P3_F6R_R1_CONSTANT_CHANNEL_SCHEMA_ALIAS_RECOVERY"
+  },
+  "results": {
+    "cross_method_group_triangulation": [
+      {
+        "F2R_constant_channel_count": 0,
+        "F5_overall_selection_rank": 1,
+        "F6_cross_task_mean_fraction_rank": 1,
+        "F6_max_fraction": 0.34724530577659607,
+        "F6_mean_fraction_of_total_absolute": 0.3323959708213806,
+        "F6_mean_rank": 1.3333333333333333,
+        "F6_min_fraction": 0.31383728981018066,
+        "F6_task_last_count": 0,
+        "F6_task_leader_count": 4,
+        "group": "inter_flit_timing"
+      },
+      {
+        "F2R_constant_channel_count": 0,
+        "F5_overall_selection_rank": 2,
+        "F6_cross_task_mean_fraction_rank": 2,
+        "F6_max_fraction": 0.34373554587364197,
+        "F6_mean_fraction_of_total_absolute": 0.3190653671820958,
+        "F6_mean_rank": 1.6666666666666667,
+        "F6_min_fraction": 0.28914788365364075,
+        "F6_task_last_count": 0,
+        "F6_task_leader_count": 2,
+        "group": "buffer_pressure"
+      },
+      {
+        "F2R_constant_channel_count": 0,
+        "F5_overall_selection_rank": 4,
+        "F6_cross_task_mean_fraction_rank": 3,
+        "F6_max_fraction": 0.18868327140808105,
+        "F6_mean_fraction_of_total_absolute": 0.1776365339756012,
+        "F6_mean_rank": 3.1666666666666665,
+        "F6_min_fraction": 0.1672632247209549,
+        "F6_task_last_count": 0,
+        "F6_task_leader_count": 0,
+        "group": "directional_traffic_volume"
+      },
+      {
+        "F2R_constant_channel_count": 0,
+        "F5_overall_selection_rank": 3,
+        "F6_cross_task_mean_fraction_rank": 4,
+        "F6_max_fraction": 0.17548620700836182,
+        "F6_mean_fraction_of_total_absolute": 0.16937286158402762,
+        "F6_mean_rank": 3.8333333333333335,
+        "F6_min_fraction": 0.15701599419116974,
+        "F6_task_last_count": 0,
+        "F6_task_leader_count": 0,
+        "group": "queue_activity"
+      },
+      {
+        "F2R_constant_channel_count": 6,
+        "F5_overall_selection_rank": 5,
+        "F6_cross_task_mean_fraction_rank": 5,
+        "F6_max_fraction": 0.001757460180670023,
+        "F6_mean_fraction_of_total_absolute": 0.001529225012442718,
+        "F6_mean_rank": 5.0,
+        "F6_min_fraction": 0.0011911229230463505,
+        "F6_task_last_count": 6,
+        "F6_task_leader_count": 0,
+        "group": "flow_control_stalls"
+      }
+    ],
+    "flow_control_reduction_hypothesis_supported": true,
+    "paper_safe_claim": "Task-specific integrated gradients along frozen matched control-to-attack paths indicate that the checkpoint draws most strongly on inter-flit timing for graph detection, attacker-count prediction, source localization and victim localization, while buffer-pressure evidence is strongest for transit and path localization. These attribution results describe the frozen model's local pathwise dependence and do not establish causal necessity or authorize feature deletion.",
+    "task_completeness": [
+      {
+        "completeness_pass": true,
+        "leader_group": "inter_flit_timing",
+        "leader_group_fraction": 0.33187562227249146,
+        "maximum_relative_error": 0.03905748575925827,
+        "mean_absolute_error": 0.13498325366526842,
+        "median_relative_error": 0.005801602499559522,
+        "p95_relative_error": 0.018300223443657157,
+        "sample_count": 512,
+        "selected_integration_points": 64,
+        "task": "graph"
+      },
+      {
+        "completeness_pass": true,
+        "leader_group": "inter_flit_timing",
+        "leader_group_fraction": 0.3464263081550598,
+        "maximum_relative_error": 9.560688018798828,
+        "mean_absolute_error": 0.033374668448232114,
+        "median_relative_error": 0.005212811287492514,
+        "p95_relative_error": 0.04283500313758848,
+        "sample_count": 512,
+        "selected_integration_points": 256,
+        "task": "count"
+      },
+      {
+        "completeness_pass": true,
+        "leader_group": "inter_flit_timing",
+        "leader_group_fraction": 0.3309590816497803,
+        "maximum_relative_error": 1.149583101272583,
+        "mean_absolute_error": 0.10970100620761514,
+        "median_relative_error": 0.009007319808006287,
+        "p95_relative_error": 0.04214379452168941,
+        "sample_count": 512,
+        "selected_integration_points": 64,
+        "task": "source"
+      },
+      {
+        "completeness_pass": true,
+        "leader_group": "buffer_pressure",
+        "leader_group_fraction": 0.3425656855106354,
+        "maximum_relative_error": 0.7659075856208801,
+        "mean_absolute_error": 0.10579284077650895,
+        "median_relative_error": 0.0067957802675664425,
+        "p95_relative_error": 0.02583138234913349,
+        "sample_count": 437,
+        "selected_integration_points": 64,
+        "task": "transit"
+      },
+      {
+        "completeness_pass": true,
+        "leader_group": "inter_flit_timing",
+        "leader_group_fraction": 0.34724530577659607,
+        "maximum_relative_error": 0.3651776909828186,
+        "mean_absolute_error": 0.308636330999434,
+        "median_relative_error": 0.008349503856152296,
+        "p95_relative_error": 0.0309389011003077,
+        "sample_count": 512,
+        "selected_integration_points": 64,
+        "task": "victim"
+      },
+      {
+        "completeness_pass": true,
+        "leader_group": "buffer_pressure",
+        "leader_group_fraction": 0.34373554587364197,
+        "maximum_relative_error": 0.546556293964386,
+        "mean_absolute_error": 0.08670104714110494,
+        "median_relative_error": 0.006500492105260491,
+        "p95_relative_error": 0.022650329302996396,
+        "sample_count": 512,
+        "selected_integration_points": 64,
+        "task": "path"
+      }
+    ],
+    "task_interpretations": [
+      {
+        "F5_permutation_leading_group": "buffer_pressure",
+        "F6_leading_group": "inter_flit_timing",
+        "F6_leading_group_fraction": 0.33187562227249146,
+        "integration_points": 64,
+        "sample_count": 512,
+        "spearman_rank_correlation": 0.8,
+        "task": "graph",
+        "top1_concordance": false,
+        "top2_overlap": 2
+      },
+      {
+        "F5_permutation_leading_group": "directional_traffic_volume",
+        "F6_leading_group": "inter_flit_timing",
+        "F6_leading_group_fraction": 0.3464263081550598,
+        "integration_points": 256,
+        "sample_count": 512,
+        "spearman_rank_correlation": 0.5,
+        "task": "count",
+        "top1_concordance": false,
+        "top2_overlap": 1
+      },
+      {
+        "F5_permutation_leading_group": "buffer_pressure",
+        "F6_leading_group": "inter_flit_timing",
+        "F6_leading_group_fraction": 0.3309590816497803,
+        "integration_points": 64,
+        "sample_count": 512,
+        "spearman_rank_correlation": 0.9,
+        "task": "source",
+        "top1_concordance": false,
+        "top2_overlap": 2
+      },
+      {
+        "F5_permutation_leading_group": "inter_flit_timing",
+        "F6_leading_group": "buffer_pressure",
+        "F6_leading_group_fraction": 0.3425656855106354,
+        "integration_points": 64,
+        "sample_count": 437,
+        "spearman_rank_correlation": 0.7,
+        "task": "transit",
+        "top1_concordance": false,
+        "top2_overlap": 1
+      },
+      {
+        "F5_permutation_leading_group": "buffer_pressure",
+        "F6_leading_group": "inter_flit_timing",
+        "F6_leading_group_fraction": 0.34724530577659607,
+        "integration_points": 64,
+        "sample_count": 512,
+        "spearman_rank_correlation": 0.8,
+        "task": "victim",
+        "top1_concordance": false,
+        "top2_overlap": 2
+      },
+      {
+        "F5_permutation_leading_group": "inter_flit_timing",
+        "F6_leading_group": "buffer_pressure",
+        "F6_leading_group_fraction": 0.34373554587364197,
+        "integration_points": 64,
+        "sample_count": 512,
+        "spearman_rank_correlation": 0.8,
+        "task": "path",
+        "top1_concordance": false,
+        "top2_overlap": 2
+      }
+    ]
+  },
+  "scope": "Verify canonical and run-level F6 report-lock chains; certify the frozen 512-pair mapping and count recovery lineage; verify all six task completion markers, selected attempt artifacts and batch hashes; reconstruct selected aggregate outputs exactly; recompute completeness; review task/group/channel attribution; compare F5 permutation ranks with F6 matched-control IG ranks; and authorize only the F7 protocol preflight.",
+  "stage": "V5_P3_F6R_TASK_SPECIFIC_INTEGRATED_GRADIENTS_RESULT_REVIEW",
+  "status": "PASS",
+  "verification": {
+    "F2R_constant_channels_verified": [
+      60,
+      65,
+      66,
+      67,
+      68,
+      69
+    ],
+    "F6R_authorized_by_F6": true,
+    "F6_complete": true,
+    "all_selected_aggregates_exactly_reconstructed": true,
+    "all_selected_batch_hashes_verified": true,
+    "all_selected_completeness_gates_pass": true,
+    "all_task_markers_verified": true,
+    "count_256_point_recovery_verified": true,
+    "mapping_fingerprint": "8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8",
+    "model_parameter_count": 60553,
+    "selected_pair_count": 512,
+    "task_count": 6
+  }
+}

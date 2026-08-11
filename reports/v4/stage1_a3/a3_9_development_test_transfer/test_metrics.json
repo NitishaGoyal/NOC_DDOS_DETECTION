@@ -1,0 +1,113 @@
+{
+  "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+  "count_conditioned_topk": {
+    "attack": {
+      "exact_localization": 0.47379694301042613,
+      "node_accuracy": 0.9396783581334143,
+      "node_f1": 0.7105528065328921,
+      "node_fn": 168441,
+      "node_fp": 69926,
+      "node_precision": 0.8071033502986166,
+      "node_recall": 0.6346340722745217,
+      "node_tn": 3420654,
+      "node_tp": 292579
+    },
+    "attack_count_accuracy": 0.5532827209231703,
+    "attack_count_mae": 0.6622897054357728,
+    "attack_empty_prediction_fraction": 0.12144549043425448,
+    "decoder": "argmax count head; count=0 empty, otherwise top-k node probability; no graph gate",
+    "mean_predicted_attack_count": 1.4677801396902521,
+    "mean_true_attack_count": 1.8666666666666667,
+    "normal": {
+      "exact_localization": 0.8455916590748052,
+      "node_accuracy": 0.988355771501839,
+      "node_f1": 0.0,
+      "node_fn": 0,
+      "node_fp": 27608,
+      "node_precision": 0.0,
+      "node_recall": 0.0,
+      "node_tn": 2343352,
+      "node_tp": 0
+    },
+    "overall": {
+      "exact_localization": 0.6132199615345683,
+      "node_accuracy": 0.9579323881465736,
+      "node_f1": 0.6875047730495705,
+      "node_fn": 168441,
+      "node_fp": 97534,
+      "node_precision": 0.7499852606808797,
+      "node_recall": 0.6346340722745217,
+      "node_tn": 5764006,
+      "node_tp": 292579
+    },
+    "overall_count_accuracy": 0.6628985727300334,
+    "predicted_count_histogram": [
+      155298,
+      164063,
+      19771,
+      37604,
+      18424
+    ],
+    "true_count_histogram": [
+      148185,
+      131720,
+      42809,
+      46102,
+      26344
+    ]
+  },
+  "designation": "development comparison test; reused after A1/A2 analysis",
+  "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+  "graph": {
+    "accuracy": 0.8711888855147282,
+    "f1": 0.8932255120984236,
+    "fn": 34068,
+    "fp": 16833,
+    "fpr": 0.11359449336977427,
+    "precision": 0.9267302167667798,
+    "recall": 0.8620589128454297,
+    "threshold": 0.4599999999999999,
+    "tn": 131352,
+    "tp": 212907
+  },
+  "graph_gating": false,
+  "independent_publication_holdout": false,
+  "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+  "node_threshold": {
+    "attack_exact_localization": 0.5295880149812734,
+    "attack_node_f1": 0.7709939968023168,
+    "attack_node_precision": 0.8688241933071348,
+    "attack_node_recall": 0.6929655980217778,
+    "exact_localization": 0.664492863650167,
+    "node_accuracy": 0.9666840646826602,
+    "node_f1": 0.7520645398218422,
+    "node_fn": 141549,
+    "node_fp": 69093,
+    "node_precision": 0.8221837329243059,
+    "node_recall": 0.6929655980217778,
+    "node_tn": 5792447,
+    "node_tp": 319471,
+    "threshold": 0.7799999999999999
+  },
+  "parameter_count": 2983,
+  "sample_count": 395160,
+  "thresholds": {
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a3_sourcepreserve_countaware_rank_mask_seed7/best_model.pt",
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "count_decoder_selected_on_test": false,
+    "expected_parameter_count": 2983,
+    "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+    "graph_fpr_cap": 0.1,
+    "graph_gating": false,
+    "graph_selection_rule": "max graph F1 among validation thresholds with FPR<=0.10; tie recall, lower FPR, closest 0.5",
+    "graph_threshold": 0.4599999999999999,
+    "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+    "node_selection_rule": "max validation attack-only node F1; tie attack exact, precision, closest 0.5",
+    "node_threshold": 0.7799999999999999,
+    "primary_count_decoder": "argmax count logits and top-k node scores",
+    "selection_split": "validation",
+    "test_accessed": false,
+    "unconstrained_graph_threshold": 0.22999999999999998
+  },
+  "thresholds_selected_on_test": false
+}

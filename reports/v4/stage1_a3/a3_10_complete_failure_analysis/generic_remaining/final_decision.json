@@ -1,0 +1,107 @@
+{
+  "analysis_pass": true,
+  "decision": {
+    "count_head_decision": "yes_in_next_structural_model",
+    "decoder_selection": {
+      "fraction_of_oracle_gap_recovered": 0.028226256671356264,
+      "frozen_validation_attack_exact": 0.5513759037545793,
+      "gap_recovered": 0.00408345232634022,
+      "oracle_gap": 0.14466857486221574,
+      "oracle_validation_attack_exact": 0.6960444786167951,
+      "selected_validation_attack_exact": 0.5554593560809196,
+      "selected_validation_method": "topology_calibrated_learned_count_topk",
+      "selection_rule": "max validation attack-only exact; tie attack node F1; tie overall exact",
+      "test_used_for_selection": false
+    },
+    "frozen_test": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 0.5675999595100719,
+      "attack_count_mae": 0.6272983095455006,
+      "attack_empty_prediction_fraction": 0.15078449235752606,
+      "attack_exact_localization": 0.5295880149812734,
+      "attack_fn": 141549,
+      "attack_fp": 48234,
+      "attack_mean_predicted_count": 1.4888349023180485,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.7709939968023168,
+      "attack_node_precision": 0.8688241933071348,
+      "attack_node_recall": 0.6929655980217778,
+      "attack_tp": 319471,
+      "method": "frozen_threshold",
+      "overall_exact_localization": 0.664492863650167,
+      "sample_count": 395160
+    },
+    "graph_readout_decision": "test_mean_plus_max_ablation_for_single_attacker_detection",
+    "interpretation_gates": {
+      "decoder_gap_recovery_ge_0_20": false,
+      "decoder_gap_recovery_ge_0_50": false,
+      "oracle_test_attack_exact_below_0_50": false,
+      "ranking_representation_problem_remains": false,
+      "topology_calibration_gain_ge_0_03": false
+    },
+    "message_passing_decision": "use_one_graph_layer_plus_local_skip_or_gated_propagation",
+    "more_gcn_layers_decision": "do_not_add_more_gcn_layers; neighbour spreading is already a dominant failure",
+    "oracle_test": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 1.0,
+      "attack_count_mae": 0.0,
+      "attack_empty_prediction_fraction": 0.0,
+      "attack_exact_localization": 0.6910213584370888,
+      "attack_fn": 102271,
+      "attack_fp": 102271,
+      "attack_mean_predicted_count": 1.8666666666666667,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.7781636371524012,
+      "attack_node_precision": 0.7781636371524012,
+      "attack_node_recall": 0.7781636371524012,
+      "attack_tp": 358749,
+      "method": "oracle_true_count_topk",
+      "overall_exact_localization": 0.8068883490231805,
+      "sample_count": 395160
+    },
+    "plain_a2_decision": "plain_a2_low_priority",
+    "recommended_next_model_action": "representation_ranking_dominates_build_source_preserving_model",
+    "selected_method_test_transfer": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 0.5661261261261261,
+      "attack_count_mae": 0.6283267537200121,
+      "attack_empty_prediction_fraction": 0.09339811721834193,
+      "attack_exact_localization": 0.4898876404494382,
+      "attack_fn": 122647,
+      "attack_fp": 113336,
+      "attack_mean_predicted_count": 1.8289664945844721,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.7414533777276716,
+      "attack_node_precision": 0.7490951032633841,
+      "attack_node_recall": 0.7339659884603705,
+      "attack_tp": 338373,
+      "method": "topology_calibrated_learned_count_topk",
+      "overall_exact_localization": 0.6297246684887134,
+      "sample_count": 395160
+    },
+    "temporal_encoder_decision": "test_mean_plus_max_temporal pooling or a shallow dilated TCN; do not jump to RNN",
+    "topology_calibration_validation_attack_exact_gain": 0.0002972133022336454,
+    "topology_gate": "small_posthoc_gain_but_masks_still_required_for_dataset_validity",
+    "wider_model_decision": "width_only_is_secondary; use width inside a source_preserving architecture"
+  },
+  "hard_checks": {
+    "all_predeclared_decoders_evaluated": true,
+    "dataset_modified": false,
+    "model_inference_performed": false,
+    "neural_model_training_performed": false,
+    "required_inputs_present": true,
+    "test_used_for_fit_or_selection": false,
+    "validation_only_fitting": true
+  },
+  "limitations": [
+    "Current V4 active-core matched-control shortcut remains a publication blocker",
+    "No explicit valid/idle/clipped port masks",
+    "Mean-readout causality requires an embedding/readout ablation",
+    "Temporal-max causality requires an encoder ablation",
+    "Test is a development-comparison set, not an independent publication holdout"
+  ],
+  "thresholds": {
+    "graph": 0.4599999999999999,
+    "node": 0.7799999999999999
+  }
+}

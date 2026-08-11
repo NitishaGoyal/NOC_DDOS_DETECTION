@@ -1,0 +1,560 @@
+{
+  "architecture": {
+    "clean_conv1d_equivalence_max_abs_error": {
+      "path": 0.0,
+      "source": 0.0,
+      "transit": 0.0,
+      "victim": 0.0
+    },
+    "graph_layers": 0,
+    "graph_width": 64,
+    "input_shape": [
+      "items",
+      16,
+      58,
+      32
+    ],
+    "operator_configuration": {
+      "graph_layers": 0,
+      "message_passing": false
+    },
+    "parameter_count": 34692,
+    "role_heads": {
+      "path": "Linear(64,32)+ReLU+Linear(32,1)",
+      "source": "Linear(64,32)+ReLU+Linear(32,1)",
+      "transit": "Linear(64,32)+ReLU+Linear(32,1)",
+      "victim": "Linear(64,32)+ReLU+Linear(32,1)"
+    },
+    "roles_mutually_exclusive": false
+  },
+  "best_checkpoint": {
+    "epoch": 72,
+    "path": "/home/zira/research/projects/GNN-2d/models/v5/p2_g3_role_aware_multilabel/conv1d/seed_127/v5_p2_g3_conv1d_seed_127_best.pt",
+    "selection_score": 0.6454718933659155,
+    "selection_weights": {
+      "path": 0.2,
+      "source": 0.3,
+      "transit": 0.25,
+      "victim": 0.25
+    },
+    "sha256": "b855b1bf3af1c1bb581876903c3035c03c13cfe371147c22f83733f5c2506261",
+    "validation_metrics_at_selection": {
+      "loss": 1.0270743645622964,
+      "path_loss": 0.366983639478379,
+      "roles": {
+        "path": {
+          "auroc": 0.9584624623692789,
+          "average_precision": 0.652896483229776,
+          "exact_set": {
+            "attack": 0.741154055525313,
+            "control": 0.634289586627513,
+            "overall": 0.6656289910600255,
+            "role_active": 0.741154055525313
+          },
+          "negative_entries": 175603,
+          "positive_entries": 24845,
+          "thresholded": {
+            "accuracy": 0.9113685344827587,
+            "balanced_accuracy": 0.9350394722525526,
+            "f1": 0.7299671692607005,
+            "fn": 832,
+            "fp": 16934,
+            "fpr": 0.09643343223065665,
+            "precision": 0.5864410091093365,
+            "recall": 0.9665123767357617,
+            "threshold": 0.5,
+            "tn": 158669,
+            "tnr": 0.9035665677693433,
+            "tp": 24013
+          }
+        },
+        "source": {
+          "auroc": 0.9862944924006785,
+          "average_precision": 0.6655702459045032,
+          "exact_set": {
+            "attack": 0.907185628742515,
+            "control": 0.6297718545290264,
+            "overall": 0.7111270753512133,
+            "role_active": 0.907185628742515
+          },
+          "negative_entries": 191178,
+          "positive_entries": 9270,
+          "thresholded": {
+            "accuracy": 0.965746727330779,
+            "balanced_accuracy": 0.9641828329152307,
+            "f1": 0.7221367867260219,
+            "fn": 348,
+            "fp": 6518,
+            "fpr": 0.03409388109510508,
+            "precision": 0.5778497409326425,
+            "recall": 0.9624595469255663,
+            "threshold": 0.5,
+            "tn": 184660,
+            "tnr": 0.9659061189048949,
+            "tp": 8922
+          }
+        },
+        "transit": {
+          "auroc": 0.9751893175618133,
+          "average_precision": 0.5930603319700947,
+          "exact_set": {
+            "attack": 0.6793685356559608,
+            "control": 0.685227016037949,
+            "overall": 0.6835089399744572,
+            "role_active": 0.6410725167580743
+          },
+          "negative_entries": 187206,
+          "positive_entries": 13242,
+          "thresholded": {
+            "accuracy": 0.9413214399744572,
+            "balanced_accuracy": 0.9543046771767977,
+            "f1": 0.6857768754007268,
+            "fn": 407,
+            "fp": 11355,
+            "fpr": 0.060655107208102306,
+            "precision": 0.5305911533691609,
+            "recall": 0.9692644615616977,
+            "threshold": 0.5,
+            "tn": 175851,
+            "tnr": 0.9393448927918977,
+            "tp": 12835
+          }
+        },
+        "victim": {
+          "auroc": 0.9888468935775583,
+          "average_precision": 0.6678257598243427,
+          "exact_set": {
+            "attack": 0.9814915623298857,
+            "control": 0.7064603569008358,
+            "overall": 0.7871168582375478,
+            "role_active": 0.9814915623298857
+          },
+          "negative_entries": 192426,
+          "positive_entries": 8022,
+          "thresholded": {
+            "accuracy": 0.9749560983397191,
+            "balanced_accuracy": 0.9835514035445274,
+            "f1": 0.760381861575179,
+            "fn": 57,
+            "fp": 4963,
+            "fpr": 0.025791732925903983,
+            "precision": 0.6161045792079208,
+            "recall": 0.9928945400149589,
+            "threshold": 0.5,
+            "tn": 187463,
+            "tnr": 0.974208267074096,
+            "tp": 7965
+          }
+        }
+      },
+      "selection_score": 0.6454718933659155,
+      "source_loss": 0.2390604930362482,
+      "transit_loss": 0.2907616250046873,
+      "victim_loss": 0.13026860426745043
+    }
+  },
+  "cost": {
+    "inference_latency_proxy": {
+      "batch_items": 256,
+      "microseconds_per_item": 49.88919304693695,
+      "milliseconds_per_batch": 12.77163342001586,
+      "timed_iterations": 50,
+      "warmup_iterations": 10
+    },
+    "operation_count": {
+      "base_temporal_node_role_head_macs": 10891264,
+      "graph_linear_macs": 0,
+      "graph_message_scalar_ops": 0,
+      "method": "analytic_per_sample_proxy",
+      "pooling_scalar_ops": 0,
+      "total_linear_macs": 10891264
+    },
+    "peak_cuda_memory_allocated_bytes": 667597312
+  },
+  "operator": "conv1d",
+  "post_checkpoint_validation": {
+    "joint_exact_all_four_roles": {
+      "attack": 0.623298856831791,
+      "control": 0.555793991416309,
+      "overall": 0.5755906768837803
+    },
+    "predictions_npz": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/conv1d/seed_127/V5_P2_G3_CONV1D_SEED_127_VALIDATION_PREDICTIONS.npz",
+    "selected_metrics": {
+      "path": {
+        "auroc": 0.9584624623692789,
+        "average_precision": 0.652896483229776,
+        "exact_set": {
+          "attack": 0.7716385410996189,
+          "control": 0.5659588886379038,
+          "overall": 0.6262771392081737,
+          "role_active": 0.7716385410996189
+        },
+        "negative_entries": 175603,
+        "positive_entries": 24845,
+        "thresholded": {
+          "accuracy": 0.9054717432950191,
+          "balanced_accuracy": 0.9379801923741231,
+          "f1": 0.7201347040056718,
+          "fn": 467,
+          "fp": 18481,
+          "fpr": 0.10524307671281243,
+          "precision": 0.5687953522014046,
+          "recall": 0.9812034614610585,
+          "threshold": 0.223,
+          "tn": 157122,
+          "tnr": 0.8947569232871876,
+          "tp": 24378
+        }
+      },
+      "source": {
+        "auroc": 0.9862944924006785,
+        "average_precision": 0.6655702459045032,
+        "exact_set": {
+          "attack": 0.9205225911812738,
+          "control": 0.6081996837587531,
+          "overall": 0.6997924648786717,
+          "role_active": 0.9205225911812738
+        },
+        "negative_entries": 191178,
+        "positive_entries": 9270,
+        "thresholded": {
+          "accuracy": 0.9643299010217113,
+          "balanced_accuracy": 0.9668273261730262,
+          "f1": 0.7154342115736687,
+          "fn": 282,
+          "fp": 6868,
+          "fpr": 0.03592463567983764,
+          "precision": 0.5668516649848637,
+          "recall": 0.96957928802589,
+          "threshold": 0.374,
+          "tn": 184310,
+          "tnr": 0.9640753643201624,
+          "tp": 8988
+        }
+      },
+      "transit": {
+        "auroc": 0.9751893175618133,
+        "average_precision": 0.5930603319700947,
+        "exact_set": {
+          "attack": 0.6853565596080566,
+          "control": 0.707250960018071,
+          "overall": 0.7008301404853129,
+          "role_active": 0.647775746496039
+        },
+        "negative_entries": 187206,
+        "positive_entries": 13242,
+        "thresholded": {
+          "accuracy": 0.944828583971903,
+          "balanced_accuracy": 0.9487085882063165,
+          "f1": 0.6953695286890891,
+          "fn": 620,
+          "fp": 10439,
+          "fpr": 0.05576210164204139,
+          "precision": 0.5473309917176185,
+          "recall": 0.9531792780546745,
+          "threshold": 0.687,
+          "tn": 176767,
+          "tnr": 0.9442378983579586,
+          "tp": 12622
+        }
+      },
+      "victim": {
+        "auroc": 0.9888468935775583,
+        "average_precision": 0.6678257598243427,
+        "exact_set": {
+          "attack": 0.9858464888405009,
+          "control": 0.7051050372712898,
+          "overall": 0.7874361430395913,
+          "role_active": 0.9858464888405009
+        },
+        "negative_entries": 192426,
+        "positive_entries": 8022,
+        "thresholded": {
+          "accuracy": 0.9748263888888888,
+          "balanced_accuracy": 0.9850965603686865,
+          "f1": 0.7600570613409415,
+          "fn": 30,
+          "fp": 5016,
+          "fpr": 0.026067163481026473,
+          "precision": 0.6143911439114391,
+          "recall": 0.9962602842183994,
+          "threshold": 0.231,
+          "tn": 187410,
+          "tnr": 0.9739328365189736,
+          "tp": 7992
+        }
+      }
+    },
+    "selected_thresholds": {
+      "path": 0.223,
+      "source": 0.374,
+      "transit": 0.687,
+      "victim": 0.231
+    },
+    "threshold_policy": "separate role thresholds; each maximizes 0.60 node F1 + 0.40 exact role-set accuracy on attack items",
+    "threshold_selection": {
+      "path": {
+        "grid": {
+          "candidate_count": 1001,
+          "kind": "uniform_closed_interval",
+          "start": 0.0,
+          "step": 0.001,
+          "stop": 1.0
+        },
+        "objective_weights": {
+          "exact_set_attack": 0.4,
+          "node_f1": 0.6
+        },
+        "selected": {
+          "exact_set_attack": 0.7716385410996189,
+          "metrics": {
+            "auroc": 0.9584624623692789,
+            "average_precision": 0.652896483229776,
+            "exact_set": {
+              "attack": 0.7716385410996189,
+              "control": 0.5659588886379038,
+              "overall": 0.6262771392081737,
+              "role_active": 0.7716385410996189
+            },
+            "negative_entries": 175603,
+            "positive_entries": 24845,
+            "thresholded": {
+              "accuracy": 0.9054717432950191,
+              "balanced_accuracy": 0.9379801923741231,
+              "f1": 0.7201347040056718,
+              "fn": 467,
+              "fp": 18481,
+              "fpr": 0.10524307671281243,
+              "precision": 0.5687953522014046,
+              "recall": 0.9812034614610585,
+              "threshold": 0.223,
+              "tn": 157122,
+              "tnr": 0.8947569232871876,
+              "tp": 24378
+            }
+          },
+          "node_balanced_accuracy": 0.9379801923741231,
+          "node_f1": 0.7201347040056718,
+          "objective": 0.7407362388432507,
+          "ranking_tuple": [
+            0.7407362388432507,
+            0.7201347040056718,
+            0.7716385410996189,
+            0.9379801923741231,
+            -0.277,
+            -0.223
+          ],
+          "threshold": 0.223
+        }
+      },
+      "source": {
+        "grid": {
+          "candidate_count": 1001,
+          "kind": "uniform_closed_interval",
+          "start": 0.0,
+          "step": 0.001,
+          "stop": 1.0
+        },
+        "objective_weights": {
+          "exact_set_attack": 0.4,
+          "node_f1": 0.6
+        },
+        "selected": {
+          "exact_set_attack": 0.9205225911812738,
+          "metrics": {
+            "auroc": 0.9862944924006785,
+            "average_precision": 0.6655702459045032,
+            "exact_set": {
+              "attack": 0.9205225911812738,
+              "control": 0.6081996837587531,
+              "overall": 0.6997924648786717,
+              "role_active": 0.9205225911812738
+            },
+            "negative_entries": 191178,
+            "positive_entries": 9270,
+            "thresholded": {
+              "accuracy": 0.9643299010217113,
+              "balanced_accuracy": 0.9668273261730262,
+              "f1": 0.7154342115736687,
+              "fn": 282,
+              "fp": 6868,
+              "fpr": 0.03592463567983764,
+              "precision": 0.5668516649848637,
+              "recall": 0.96957928802589,
+              "threshold": 0.374,
+              "tn": 184310,
+              "tnr": 0.9640753643201624,
+              "tp": 8988
+            }
+          },
+          "node_balanced_accuracy": 0.9668273261730262,
+          "node_f1": 0.7154342115736687,
+          "objective": 0.7974695634167107,
+          "ranking_tuple": [
+            0.7974695634167107,
+            0.7154342115736687,
+            0.9205225911812738,
+            0.9668273261730262,
+            -0.126,
+            -0.374
+          ],
+          "threshold": 0.374
+        }
+      },
+      "transit": {
+        "grid": {
+          "candidate_count": 1001,
+          "kind": "uniform_closed_interval",
+          "start": 0.0,
+          "step": 0.001,
+          "stop": 1.0
+        },
+        "objective_weights": {
+          "exact_set_attack": 0.4,
+          "node_f1": 0.6
+        },
+        "selected": {
+          "exact_set_attack": 0.6853565596080566,
+          "metrics": {
+            "auroc": 0.9751893175618133,
+            "average_precision": 0.5930603319700947,
+            "exact_set": {
+              "attack": 0.6853565596080566,
+              "control": 0.707250960018071,
+              "overall": 0.7008301404853129,
+              "role_active": 0.647775746496039
+            },
+            "negative_entries": 187206,
+            "positive_entries": 13242,
+            "thresholded": {
+              "accuracy": 0.944828583971903,
+              "balanced_accuracy": 0.9487085882063165,
+              "f1": 0.6953695286890891,
+              "fn": 620,
+              "fp": 10439,
+              "fpr": 0.05576210164204139,
+              "precision": 0.5473309917176185,
+              "recall": 0.9531792780546745,
+              "threshold": 0.687,
+              "tn": 176767,
+              "tnr": 0.9442378983579586,
+              "tp": 12622
+            }
+          },
+          "node_balanced_accuracy": 0.9487085882063165,
+          "node_f1": 0.6953695286890891,
+          "objective": 0.6913643410566761,
+          "ranking_tuple": [
+            0.6913643410566761,
+            0.6953695286890891,
+            0.6853565596080566,
+            0.9487085882063165,
+            -0.18700000000000006,
+            -0.687
+          ],
+          "threshold": 0.687
+        }
+      },
+      "victim": {
+        "grid": {
+          "candidate_count": 1001,
+          "kind": "uniform_closed_interval",
+          "start": 0.0,
+          "step": 0.001,
+          "stop": 1.0
+        },
+        "objective_weights": {
+          "exact_set_attack": 0.4,
+          "node_f1": 0.6
+        },
+        "selected": {
+          "exact_set_attack": 0.9858464888405009,
+          "metrics": {
+            "auroc": 0.9888468935775583,
+            "average_precision": 0.6678257598243427,
+            "exact_set": {
+              "attack": 0.9858464888405009,
+              "control": 0.7051050372712898,
+              "overall": 0.7874361430395913,
+              "role_active": 0.9858464888405009
+            },
+            "negative_entries": 192426,
+            "positive_entries": 8022,
+            "thresholded": {
+              "accuracy": 0.9748263888888888,
+              "balanced_accuracy": 0.9850965603686865,
+              "f1": 0.7600570613409415,
+              "fn": 30,
+              "fp": 5016,
+              "fpr": 0.026067163481026473,
+              "precision": 0.6143911439114391,
+              "recall": 0.9962602842183994,
+              "threshold": 0.231,
+              "tn": 187410,
+              "tnr": 0.9739328365189736,
+              "tp": 7992
+            }
+          },
+          "node_balanced_accuracy": 0.9850965603686865,
+          "node_f1": 0.7600570613409415,
+          "objective": 0.8503728323407653,
+          "ranking_tuple": [
+            0.8503728323407653,
+            0.7600570613409415,
+            0.9858464888405009,
+            0.9850965603686865,
+            -0.269,
+            -0.231
+          ],
+          "threshold": 0.231
+        }
+      }
+    },
+    "threshold_sweep_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/conv1d/seed_127/V5_P2_G3_CONV1D_SEED_127_THRESHOLD_SWEEP.csv"
+  },
+  "provenance": {
+    "b3_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g2_aggregation_report_sha256": "66748c90e128e2e869e30b55b461a49383a5253ccc4b49f3fb72111221b95a74",
+    "initial_state_sha256": "e9ad338085df3c29b68b1fb7a803a789897303c707dcd3d74f2ece62f161dda1",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "reference_b3_initial_state_sha256": "8b61044b46b4a4834c4efdbb18f600c3856c75f9b0b49d7b2688a511767825a7",
+    "trainer_sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d"
+  },
+  "security_boundary": {
+    "architecture_selected": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_tensors_deserialized": false,
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "test_evaluation_performed": false
+  },
+  "seed": 127,
+  "stage": "V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN",
+  "status": "COMPLETE",
+  "task": "C_ROLE_AWARE_MULTILABEL_LOCALIZATION",
+  "training": {
+    "amp": false,
+    "early_stopping_min_delta": 0.0001,
+    "early_stopping_patience": 12,
+    "epochs_completed": 84,
+    "gradient_clip": 1.0,
+    "item_batch_size": 256,
+    "learning_rate": 0.001,
+    "loss": "sum of four independently class-weighted BCEWithLogits losses",
+    "maximum_epochs": 100,
+    "minimum_epochs": 15,
+    "optimizer": "AdamW",
+    "role_positive_weights": {
+      "path": 7.375342240922689,
+      "source": 20.0,
+      "transit": 15.7433147902343,
+      "victim": 20.0
+    },
+    "scheduler": "ReduceLROnPlateau(mode=max,factor=0.5,patience=4,min_lr=1e-5)",
+    "stopped_early": true,
+    "total_elapsed_seconds": 2027.3244869709015,
+    "weight_decay": 0.0001
+  }
+}

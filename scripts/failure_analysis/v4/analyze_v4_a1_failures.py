@@ -1,0 +1,1640 @@
+#!/usr/bin/env python3
+"""
+Comprehensive, read-only V4-A1 failure analysis.
+
+The script reuses saved validation/test predictions. It does not train a model,
+run inference, retune thresholds on test, or modify the dataset.
+
+Major outputs:
+- scenario and run-level metrics
+- predicted attacker-count diagnostics
+- exact-set error decomposition
+- frozen-threshold, oracle top-k, and validation-fitted count top-k comparison
+- spatial and topology failure analysis
+- router exposure and co-attacker audits
+- score distribution, calibration, and validation-only FPR frontier analysis
+- sampled temporal observability, matched-control shortcut, and feature semantics audits
+- provenance, hard checks, a final verdict JSON, and a Markdown report
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import math
+import os
+import re
+import sys
+from collections import Counter, defaultdict
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Iterable, Mapping, Sequence
+
+import numpy as np
+
+SCRIPT_VERSION = "1.0.0"
+NUM_ROUTERS = 16
+MESH_SIDE = 4
+FEATURE_NAMES = (
+    "ifd_in_norm", "ifd_out_norm", "input_flit_count_norm", "output_flit_count_norm",
+    "in_count_norm_local", "in_count_norm_north", "in_count_norm_east",
+    "in_count_norm_south", "in_count_norm_west", "out_count_norm_local",
+    "out_count_norm_north", "out_count_norm_east", "out_count_norm_south",
+    "out_count_norm_west", "ifd_in_norm_local", "ifd_in_norm_north",
+    "ifd_in_norm_east", "ifd_in_norm_south", "ifd_in_norm_west",
+    "ifd_out_norm_local", "ifd_out_norm_north", "ifd_out_norm_east",
+    "ifd_out_norm_south", "ifd_out_norm_west",
+)
+COUNT_CHANNELS = tuple(range(2, 14))
+DIRECTIONAL_CHANNELS = {
+    5: ("input", "count", "north", None),
+    6: ("input", "count", "east", None),
+    7: ("input", "count", "south", None),
+    8: ("input", "count", "west", None),
+    10: ("output", "count", "north", None),
+    11: ("output", "count", "east", None),
+    12: ("output", "count", "south", None),
+    13: ("output", "count", "west", None),
+    15: ("input", "ifd", "north", 5),
+    16: ("input", "ifd", "east", 6),
+    17: ("input", "ifd", "south", 7),
+    18: ("input", "ifd", "west", 8),
+    20: ("output", "ifd", "north", 10),
+    21: ("output", "ifd", "east", 11),
+    22: ("output", "ifd", "south", 12),
+    23: ("output", "ifd", "west", 13),
+}
+
+
+def json_dump(path: Path, value: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
+
+def write_csv(path: Path, rows: Sequence[Mapping[str, Any]], fields: Sequence[str] | None = None) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    if fields is None:
+        all_fields: list[str] = []
+        seen: set[str] = set()
+        for row in rows:
+            for key in row:
+                if key not in seen:
+                    seen.add(key)
+                    all_fields.append(key)
+        fields = all_fields or ["empty"]
+    with path.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=list(fields), extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+
+
+def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(chunk_size), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def sampled_file_fingerprint(path: Path, sample_bytes: int = 4 * 1024 * 1024) -> dict[str, Any]:
+    size = path.stat().st_size
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        head = handle.read(min(sample_bytes, size))
+        digest.update(head)
+        if size > sample_bytes:
+            handle.seek(max(size - sample_bytes, 0))
+            digest.update(handle.read(sample_bytes))
+    return {
+        "path": str(path.resolve()),
+        "bytes": size,
+        "mtime_ns": path.stat().st_mtime_ns,
+        "sha256_first_last_sample": digest.hexdigest(),
+        "sample_bytes_per_end": sample_bytes,
+        "full_sha256_computed": False,
+    }
+
+
+def ensure_empty_output(path: Path) -> None:
+    path.mkdir(parents=True, exist_ok=True)
+    entries = list(path.iterdir())
+    if entries:
+        raise RuntimeError(f"Output directory must be empty: {path}; entries={[p.name for p in entries[:20]]}")
+
+
+def require_files(paths: Iterable[Path]) -> None:
+    missing = [str(path) for path in paths if not path.is_file()]
+    if missing:
+        raise FileNotFoundError(f"Required files missing: {missing}")
+
+
+def safe_div(numerator: float, denominator: float) -> float:
+    return float(numerator / denominator) if denominator else 0.0
+
+
+def canonical_text(value: Any) -> str:
+    return "" if value is None else str(value).strip()
+
+
+def safe_int(value: Any) -> int | None:
+    if value is None or value == "":
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        match = re.search(r"-?\d+", str(value))
+        return int(match.group(0)) if match else None
+
+
+def parse_int_set(value: Any) -> tuple[int, ...]:
+    if value is None or value == "":
+        return ()
+    if isinstance(value, (list, tuple, set, np.ndarray)):
+        values = value
+    else:
+        text = str(value).strip().strip("[](){}")
+        if not text:
+            return ()
+        values = re.split(r"[\s,;|\-]+", text)
+    output: list[int] = []
+    for item in values:
+        if item in (None, ""):
+            continue
+        try:
+            output.append(int(item))
+        except (TypeError, ValueError):
+            pass
+    return tuple(sorted(set(output)))
+
+
+def set_text(values: Sequence[int]) -> str:
+    return "-".join(str(int(v)) for v in values)
+
+
+def router_coord(router: int) -> tuple[int, int]:
+    return int(router) // MESH_SIDE, int(router) % MESH_SIDE
+
+
+def manhattan(a: int, b: int) -> int:
+    ar, ac = router_coord(a)
+    br, bc = router_coord(b)
+    return abs(ar - br) + abs(ac - bc)
+
+
+def router_topology(router: int) -> str:
+    row, col = router_coord(router)
+    borders = int(row in (0, MESH_SIDE - 1)) + int(col in (0, MESH_SIDE - 1))
+    if borders == 2:
+        return "corner"
+    if borders == 1:
+        return "edge"
+    return "interior"
+
+
+def direction_valid(router: int, direction: str) -> bool:
+    row, col = router_coord(router)
+    return {
+        "north": row > 0,
+        "east": col < MESH_SIDE - 1,
+        "south": row < MESH_SIDE - 1,
+        "west": col > 0,
+    }[direction]
+
+
+def on_any_shortest_path(router: int, sources: Sequence[int], victims: Sequence[int]) -> bool:
+    for source in sources:
+        for victim in victims:
+            if manhattan(source, router) + manhattan(router, victim) == manhattan(source, victim):
+                return True
+    return False
+
+
+def load_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+@dataclass(frozen=True)
+class RunRecord:
+    index: int
+    run_id: str
+    split: str
+    profile: str
+    attack_kind: str
+    strength: int | None
+    attacker_count: int
+    attackers: tuple[int, ...]
+    active_cores: tuple[int, ...]
+    victims: tuple[int, ...]
+    seed: str
+    timing_family: str
+    route_family: str
+    placement_family: str
+    scenario_family: str
+    background_id: str
+    matched_normal_run_id: str
+
+
+def build_run_records(metadata: Mapping[str, Any]) -> list[RunRecord]:
+    raw_runs = metadata.get("runs")
+    if not isinstance(raw_runs, list) or not raw_runs:
+        raise RuntimeError("metadata.json does not contain a non-empty runs list")
+    records: list[RunRecord] = []
+    for index, raw in enumerate(raw_runs):
+        if not isinstance(raw, Mapping):
+            raise RuntimeError(f"Run record {index} is not an object")
+        attackers = parse_int_set(raw.get("attackers"))
+        count = safe_int(raw.get("attacker_count"))
+        if count is None:
+            count = len(attackers)
+        records.append(
+            RunRecord(
+                index=index,
+                run_id=canonical_text(raw.get("run_id")) or f"run-{index}",
+                split=canonical_text(raw.get("split")),
+                profile=canonical_text(raw.get("profile")),
+                attack_kind=canonical_text(raw.get("attack_kind")),
+                strength=safe_int(raw.get("strength")),
+                attacker_count=int(count),
+                attackers=attackers,
+                active_cores=parse_int_set(raw.get("active_cores")),
+                victims=parse_int_set(raw.get("victims")),
+                seed=canonical_text(raw.get("seed")),
+                timing_family=canonical_text(raw.get("timing_family")),
+                route_family=canonical_text(raw.get("route_family")),
+                placement_family=canonical_text(raw.get("placement_family")),
+                scenario_family=canonical_text(raw.get("scenario_family")),
+                background_id=canonical_text(raw.get("background_id")),
+                matched_normal_run_id=canonical_text(
+                    raw.get("matched_normal_run_id", raw.get("matched_benign_run_id", ""))
+                ),
+            )
+        )
+    return records
+
+
+def binary_metrics_bool(truth: np.ndarray, pred: np.ndarray) -> dict[str, Any]:
+    truth = np.asarray(truth, dtype=bool).reshape(-1)
+    pred = np.asarray(pred, dtype=bool).reshape(-1)
+    tp = int(np.sum(truth & pred))
+    tn = int(np.sum(~truth & ~pred))
+    fp = int(np.sum(~truth & pred))
+    fn = int(np.sum(truth & ~pred))
+    precision = safe_div(tp, tp + fp)
+    recall = safe_div(tp, tp + fn)
+    f1 = safe_div(2 * precision * recall, precision + recall)
+    return {
+        "accuracy": safe_div(tp + tn, tp + tn + fp + fn),
+        "precision": precision,
+        "recall": recall,
+        "f1": f1,
+        "fpr": safe_div(fp, fp + tn),
+        "tn": tn,
+        "fp": fp,
+        "fn": fn,
+        "tp": tp,
+    }
+
+
+def metric_bundle(
+    y_graph: np.ndarray,
+    graph_prob: np.ndarray,
+    y_node: np.ndarray,
+    node_prob: np.ndarray,
+    graph_threshold: float,
+    node_threshold: float,
+    node_pred_override: np.ndarray | None = None,
+) -> dict[str, Any]:
+    graph_truth = np.asarray(y_graph) >= 0.5
+    graph_pred = np.asarray(graph_prob) >= graph_threshold
+    node_truth = np.asarray(y_node) >= 0.5
+    node_pred = (
+        np.asarray(node_pred_override, dtype=bool)
+        if node_pred_override is not None
+        else np.asarray(node_prob) >= node_threshold
+    )
+    graph = binary_metrics_bool(graph_truth, graph_pred)
+    node = binary_metrics_bool(node_truth.reshape(-1), node_pred.reshape(-1))
+    return {
+        "sample_count": int(graph_truth.size),
+        **{f"graph_{key}": value for key, value in graph.items()},
+        "node_accuracy": node["accuracy"],
+        "node_precision": node["precision"],
+        "node_recall": node["recall"],
+        "node_f1": node["f1"],
+        "node_fpr": node["fpr"],
+        "node_tn": node["tn"],
+        "node_fp": node["fp"],
+        "node_fn": node["fn"],
+        "node_tp": node["tp"],
+        "exact_localization": float(np.mean(np.all(node_truth == node_pred, axis=1))),
+    }
+
+
+def load_predictions(path: Path) -> dict[str, np.ndarray]:
+    required = {
+        "graph_prob", "node_prob", "y_graph", "y_node", "global_index",
+        "run_index", "attack_kind_id", "attacker_count",
+    }
+    with np.load(path, allow_pickle=False) as handle:
+        missing = sorted(required - set(handle.files))
+        if missing:
+            raise RuntimeError(f"Prediction archive {path} missing arrays: {missing}")
+        result = {name: np.asarray(handle[name]) for name in handle.files}
+    n = result["y_graph"].shape[0]
+    checks = {
+        "graph_prob": (n,), "y_graph": (n,), "global_index": (n,),
+        "run_index": (n,), "attack_kind_id": (n,), "attacker_count": (n,),
+        "node_prob": (n, NUM_ROUTERS), "y_node": (n, NUM_ROUTERS),
+    }
+    for name, shape in checks.items():
+        if result[name].shape != shape:
+            raise RuntimeError(f"{path}:{name} shape {result[name].shape}, expected {shape}")
+    if not np.isfinite(result["graph_prob"]).all() or not np.isfinite(result["node_prob"]).all():
+        raise FloatingPointError(f"Non-finite probabilities in {path}")
+    return result
+
+
+def run_field_vectors(pred: Mapping[str, np.ndarray], records: Sequence[RunRecord]) -> dict[str, np.ndarray]:
+    run_indices = np.asarray(pred["run_index"], dtype=np.int64)
+    if run_indices.min(initial=0) < 0 or run_indices.max(initial=0) >= len(records):
+        raise RuntimeError("Prediction run_index is outside metadata runs range")
+    output: dict[str, list[Any]] = defaultdict(list)
+    for run_index in run_indices.tolist():
+        record = records[int(run_index)]
+        output["run_id"].append(record.run_id)
+        output["profile"].append(record.profile or "<empty>")
+        output["attack_kind"].append(record.attack_kind or ("normal" if record.attacker_count == 0 else "<empty>"))
+        output["strength"].append(record.strength if record.strength is not None else -1)
+        output["attacker_count"].append(record.attacker_count)
+        output["attacker_placement"].append(set_text(record.attackers) or "none")
+        output["active_core_pattern"].append(set_text(record.active_cores) or "none")
+        output["victims"].append(set_text(record.victims) or "none")
+        output["seed"].append(record.seed or "<empty>")
+        output["timing_family"].append(record.timing_family or "<empty>")
+        output["route_family"].append(record.route_family or "<empty>")
+        output["placement_family"].append(record.placement_family or "<empty>")
+        output["scenario_family"].append(record.scenario_family or "<empty>")
+        output["background_id"].append(record.background_id or "<empty>")
+    return {key: np.asarray(values, dtype=object) for key, values in output.items()}
+
+
+def group_metrics_rows(
+    pred: Mapping[str, np.ndarray],
+    values: np.ndarray,
+    field: str,
+    graph_threshold: float,
+    node_threshold: float,
+) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for value in sorted(np.unique(values).tolist(), key=lambda item: str(item)):
+        mask = values == value
+        metrics = metric_bundle(
+            pred["y_graph"][mask], pred["graph_prob"][mask],
+            pred["y_node"][mask], pred["node_prob"][mask],
+            graph_threshold, node_threshold,
+        )
+        rows.append({field: value, **metrics})
+    return rows
+
+
+def scenario_analysis(
+    split_name: str,
+    pred: Mapping[str, np.ndarray],
+    records: Sequence[RunRecord],
+    graph_threshold: float,
+    node_threshold: float,
+    out: Path,
+) -> dict[str, Any]:
+    fields = run_field_vectors(pred, records)
+    split_dir = out / split_name
+    split_dir.mkdir(parents=True, exist_ok=True)
+    overall = metric_bundle(
+        pred["y_graph"], pred["graph_prob"], pred["y_node"], pred["node_prob"],
+        graph_threshold, node_threshold,
+    )
+    json_dump(split_dir / "overall_metrics.json", overall)
+    scenario_fields = [
+        "profile", "attack_kind", "strength", "attacker_count", "attacker_placement",
+        "active_core_pattern", "victims", "seed", "timing_family", "route_family",
+        "placement_family", "scenario_family", "background_id",
+    ]
+    for field in scenario_fields:
+        write_csv(
+            split_dir / f"per_{field}.csv",
+            group_metrics_rows(pred, fields[field], field, graph_threshold, node_threshold),
+        )
+    combinations = {
+        "profile_attack_kind": np.asarray(
+            [f"{a}|{b}" for a, b in zip(fields["profile"], fields["attack_kind"])], dtype=object
+        ),
+        "attacker_count_strength": np.asarray(
+            [f"{a}|{b}" for a, b in zip(fields["attacker_count"], fields["strength"])], dtype=object
+        ),
+        "profile_attacker_count": np.asarray(
+            [f"{a}|{b}" for a, b in zip(fields["profile"], fields["attacker_count"])], dtype=object
+        ),
+        "attack_kind_strength": np.asarray(
+            [f"{a}|{b}" for a, b in zip(fields["attack_kind"], fields["strength"])], dtype=object
+        ),
+    }
+    for field, values in combinations.items():
+        write_csv(
+            split_dir / f"per_{field}.csv",
+            group_metrics_rows(pred, values, field, graph_threshold, node_threshold),
+        )
+
+    run_rows = group_metrics_rows(pred, np.asarray(pred["run_index"]), "run_index", graph_threshold, node_threshold)
+    for row in run_rows:
+        record = records[int(row["run_index"])]
+        row.update({
+            "run_id": record.run_id,
+            "split": record.split,
+            "profile": record.profile,
+            "attack_kind": record.attack_kind,
+            "strength": record.strength,
+            "attacker_count": record.attacker_count,
+            "attackers": set_text(record.attackers),
+            "victims": set_text(record.victims),
+        })
+    write_csv(split_dir / "per_run_metrics.csv", run_rows)
+    normal_rows = [row for row in run_rows if int(row["attacker_count"]) == 0]
+    attack_rows = [row for row in run_rows if int(row["attacker_count"]) > 0]
+    write_csv(
+        split_dir / "worst_normal_runs_by_graph_fpr.csv",
+        sorted(normal_rows, key=lambda row: (-float(row["graph_fpr"]), str(row["run_id"])))[:50],
+    )
+    write_csv(
+        split_dir / "worst_attack_runs_by_graph_recall.csv",
+        sorted(attack_rows, key=lambda row: (float(row["graph_recall"]), str(row["run_id"])))[:50],
+    )
+    write_csv(
+        split_dir / "worst_attack_runs_by_exact_localization.csv",
+        sorted(attack_rows, key=lambda row: (float(row["exact_localization"]), str(row["run_id"])))[:50],
+    )
+    return {"overall": overall, "run_rows": run_rows, "fields": fields}
+
+
+def topk_prediction(scores: np.ndarray, counts: np.ndarray) -> np.ndarray:
+    scores = np.asarray(scores)
+    counts = np.asarray(counts, dtype=np.int64)
+    output = np.zeros_like(scores, dtype=bool)
+    order = np.argsort(-scores, axis=1, kind="stable")
+    for k in range(1, NUM_ROUTERS + 1):
+        mask = counts == k
+        if np.any(mask):
+            rows = np.flatnonzero(mask)
+            output[rows[:, None], order[mask, :k]] = True
+    return output
+
+
+def count_analysis(
+    split_name: str,
+    pred: Mapping[str, np.ndarray],
+    graph_threshold: float,
+    node_threshold: float,
+    out: Path,
+    count_centroids: Mapping[int, float] | None = None,
+) -> dict[str, Any]:
+    split_dir = out / split_name
+    truth = (np.asarray(pred["y_node"]) >= 0.5)
+    frozen_pred = np.asarray(pred["node_prob"]) >= node_threshold
+    true_count = truth.sum(axis=1).astype(np.int64)
+    predicted_count = frozen_pred.sum(axis=1).astype(np.int64)
+    max_count = int(max(true_count.max(initial=0), predicted_count.max(initial=0), 4))
+    matrix = np.zeros((max_count + 1, max_count + 1), dtype=np.int64)
+    np.add.at(matrix, (true_count, predicted_count), 1)
+    rows = [
+        {"true_count": i, "predicted_count": j, "sample_count": int(matrix[i, j])}
+        for i in range(matrix.shape[0])
+        for j in range(matrix.shape[1])
+        if matrix[i, j] or i <= 4
+    ]
+    write_csv(split_dir / "predicted_count_confusion.csv", rows)
+    summary = {
+        "count_accuracy": float(np.mean(true_count == predicted_count)),
+        "count_mae": float(np.mean(np.abs(true_count - predicted_count))),
+        "underprediction_rate": float(np.mean(predicted_count < true_count)),
+        "overprediction_rate": float(np.mean(predicted_count > true_count)),
+        "exact_rate_attack_only": float(np.mean(predicted_count[true_count > 0] == true_count[true_count > 0])),
+        "sample_count": int(true_count.size),
+    }
+    json_dump(split_dir / "predicted_count_summary.json", summary)
+
+    hist_rows: list[dict[str, Any]] = []
+    for true_value in sorted(np.unique(true_count).tolist()):
+        mask = true_count == true_value
+        counts = Counter(predicted_count[mask].tolist())
+        for predicted_value, count in sorted(counts.items()):
+            hist_rows.append({
+                "true_count": int(true_value),
+                "predicted_count": int(predicted_value),
+                "sample_count": int(count),
+                "fraction_within_true_count": safe_div(count, int(mask.sum())),
+            })
+    write_csv(split_dir / "predicted_count_histogram.csv", hist_rows)
+
+    oracle_pred = topk_prediction(np.asarray(pred["node_prob"]), true_count)
+    frozen_metrics = metric_bundle(
+        pred["y_graph"], pred["graph_prob"], pred["y_node"], pred["node_prob"],
+        graph_threshold, node_threshold, node_pred_override=frozen_pred,
+    )
+    oracle_metrics = metric_bundle(
+        pred["y_graph"], pred["graph_prob"], pred["y_node"], pred["node_prob"],
+        graph_threshold, node_threshold, node_pred_override=oracle_pred,
+    )
+
+    estimated_metrics: dict[str, Any] | None = None
+    estimated_counts: np.ndarray | None = None
+    if count_centroids:
+        labels = np.asarray(sorted(count_centroids), dtype=np.int64)
+        centroid_values = np.asarray([count_centroids[int(label)] for label in labels], dtype=np.float64)
+        score_sum = np.asarray(pred["node_prob"], dtype=np.float64).sum(axis=1)
+        estimated_counts = labels[np.argmin(np.abs(score_sum[:, None] - centroid_values[None, :]), axis=1)]
+        estimated_pred = topk_prediction(np.asarray(pred["node_prob"]), estimated_counts)
+        estimated_metrics = metric_bundle(
+            pred["y_graph"], pred["graph_prob"], pred["y_node"], pred["node_prob"],
+            graph_threshold, node_threshold, node_pred_override=estimated_pred,
+        )
+        estimated_metrics.update({
+            "count_accuracy": float(np.mean(estimated_counts == true_count)),
+            "count_mae": float(np.mean(np.abs(estimated_counts - true_count))),
+            "count_estimator": "nearest validation median of sum(node probabilities)",
+        })
+
+    method_rows = [
+        {"method": "frozen_threshold", **frozen_metrics},
+        {"method": "oracle_true_count_topk", **oracle_metrics},
+    ]
+    if estimated_metrics is not None:
+        method_rows.append({"method": "validation_fitted_count_topk", **estimated_metrics})
+    write_csv(split_dir / "localization_method_comparison.csv", method_rows)
+
+    ranking_rows: list[dict[str, Any]] = []
+    sorted_scores = np.sort(np.asarray(pred["node_prob"]), axis=1)[:, ::-1]
+    for count in sorted(np.unique(true_count).tolist()):
+        mask = true_count == count
+        if not np.any(mask):
+            continue
+        if count == 0:
+            margin = -sorted_scores[mask, 0]
+        elif count < NUM_ROUTERS:
+            margin = sorted_scores[mask, count - 1] - sorted_scores[mask, count]
+        else:
+            margin = sorted_scores[mask, -1]
+        ranking_rows.append({
+            "true_count": int(count),
+            "sample_count": int(mask.sum()),
+            "mean_boundary_margin": float(np.mean(margin)),
+            "median_boundary_margin": float(np.median(margin)),
+            "p10_boundary_margin": float(np.quantile(margin, 0.10)),
+            "p90_boundary_margin": float(np.quantile(margin, 0.90)),
+            "oracle_topk_exact": float(np.mean(np.all(oracle_pred[mask] == truth[mask], axis=1))),
+        })
+    write_csv(split_dir / "ranking_margin_by_true_count.csv", ranking_rows)
+    return {
+        "summary": summary,
+        "frozen": frozen_metrics,
+        "oracle": oracle_metrics,
+        "estimated": estimated_metrics,
+        "true_count": true_count,
+        "predicted_count": predicted_count,
+        "frozen_pred": frozen_pred,
+        "oracle_pred": oracle_pred,
+        "estimated_counts": estimated_counts,
+    }
+
+
+def fit_count_centroids(validation_pred: Mapping[str, np.ndarray]) -> dict[int, float]:
+    true_count = (np.asarray(validation_pred["y_node"]) >= 0.5).sum(axis=1).astype(np.int64)
+    score_sum = np.asarray(validation_pred["node_prob"], dtype=np.float64).sum(axis=1)
+    return {
+        int(count): float(np.median(score_sum[true_count == count]))
+        for count in sorted(np.unique(true_count).tolist())
+    }
+
+
+def exact_error_type(truth: np.ndarray, pred: np.ndarray) -> str:
+    true_set = set(np.flatnonzero(truth).tolist())
+    pred_set = set(np.flatnonzero(pred).tolist())
+    if true_set == pred_set:
+        return "exact"
+    if not pred_set:
+        return "empty_prediction"
+    intersection = true_set & pred_set
+    if not intersection and true_set:
+        return "no_true_attacker_found"
+    if true_set and true_set.issubset(pred_set):
+        return "all_true_plus_extras"
+    if pred_set and pred_set.issubset(true_set):
+        return "strict_subset_only"
+    return "mixed_misses_and_extras"
+
+
+def exact_set_analysis(
+    split_name: str,
+    pred: Mapping[str, np.ndarray],
+    records: Sequence[RunRecord],
+    node_threshold: float,
+    out: Path,
+) -> dict[str, Any]:
+    truth = np.asarray(pred["y_node"]) >= 0.5
+    prediction = np.asarray(pred["node_prob"]) >= node_threshold
+    fields = run_field_vectors(pred, records)
+    error_types = np.asarray([exact_error_type(t, p) for t, p in zip(truth, prediction)], dtype=object)
+    split_dir = out / split_name
+    overall_rows = []
+    for kind, count in sorted(Counter(error_types.tolist()).items()):
+        overall_rows.append({
+            "error_type": kind,
+            "sample_count": int(count),
+            "fraction": safe_div(count, len(error_types)),
+        })
+    write_csv(split_dir / "exact_set_error_decomposition.csv", overall_rows)
+    for field in ("attacker_count", "profile", "attack_kind", "strength", "timing_family"):
+        rows: list[dict[str, Any]] = []
+        values = fields[field]
+        for value in sorted(np.unique(values).tolist(), key=lambda item: str(item)):
+            mask = values == value
+            counts = Counter(error_types[mask].tolist())
+            for kind, count in sorted(counts.items()):
+                rows.append({
+                    field: value,
+                    "error_type": kind,
+                    "sample_count": int(count),
+                    "fraction_within_group": safe_div(count, int(mask.sum())),
+                })
+        write_csv(split_dir / f"exact_set_errors_by_{field}.csv", rows)
+    examples: list[dict[str, Any]] = []
+    per_type_seen: Counter[str] = Counter()
+    for pos, kind in enumerate(error_types.tolist()):
+        if kind == "exact" or per_type_seen[kind] >= 100:
+            continue
+        per_type_seen[kind] += 1
+        record = records[int(pred["run_index"][pos])]
+        examples.append({
+            "error_type": kind,
+            "global_index": int(pred["global_index"][pos]),
+            "run_id": record.run_id,
+            "attacker_count": record.attacker_count,
+            "true_attackers": set_text(np.flatnonzero(truth[pos]).tolist()),
+            "predicted_attackers": set_text(np.flatnonzero(prediction[pos]).tolist()),
+            "profile": record.profile,
+            "attack_kind": record.attack_kind,
+            "strength": record.strength,
+        })
+    write_csv(split_dir / "exact_set_error_examples.csv", examples)
+    return {
+        "overall": {row["error_type"]: row["fraction"] for row in overall_rows},
+        "error_types": error_types,
+    }
+
+
+def spatial_analysis(
+    split_name: str,
+    pred: Mapping[str, np.ndarray],
+    records: Sequence[RunRecord],
+    node_threshold: float,
+    out: Path,
+) -> dict[str, Any]:
+    truth = np.asarray(pred["y_node"]) >= 0.5
+    prediction = np.asarray(pred["node_prob"]) >= node_threshold
+    fp_distance_attacker: Counter[int] = Counter()
+    fp_distance_victim: Counter[int] = Counter()
+    fp_path = Counter()
+    pair_confusion = np.zeros((NUM_ROUTERS, NUM_ROUTERS), dtype=np.int64)
+    for pos in range(truth.shape[0]):
+        true_nodes = np.flatnonzero(truth[pos]).tolist()
+        false_positive_nodes = np.flatnonzero(prediction[pos] & ~truth[pos]).tolist()
+        if not false_positive_nodes:
+            continue
+        record = records[int(pred["run_index"][pos])]
+        true_nodes = true_nodes or list(record.attackers)
+        for fp in false_positive_nodes:
+            if true_nodes:
+                distance = min(manhattan(fp, attacker) for attacker in true_nodes)
+                fp_distance_attacker[distance] += 1
+                for attacker in true_nodes:
+                    pair_confusion[int(attacker), int(fp)] += 1
+            if record.victims:
+                fp_distance_victim[min(manhattan(fp, victim) for victim in record.victims)] += 1
+                fp_path["on_any_shortest_attacker_victim_path" if on_any_shortest_path(fp, true_nodes, record.victims) else "off_shortest_paths"] += 1
+            else:
+                fp_path["victim_metadata_unavailable"] += 1
+    def counter_rows(counter: Counter[Any], field: str) -> list[dict[str, Any]]:
+        total = sum(counter.values())
+        return [{field: key, "count": int(value), "fraction": safe_div(value, total)} for key, value in sorted(counter.items(), key=lambda item: str(item[0]))]
+    split_dir = out / split_name
+    write_csv(split_dir / "fp_distance_to_nearest_attacker.csv", counter_rows(fp_distance_attacker, "distance"))
+    write_csv(split_dir / "fp_distance_to_nearest_victim.csv", counter_rows(fp_distance_victim, "distance"))
+    write_csv(split_dir / "fp_shortest_path_membership.csv", counter_rows(fp_path, "category"))
+    pair_rows = [
+        {"true_attacker_router": i, "false_positive_router": j, "count": int(pair_confusion[i, j])}
+        for i in range(NUM_ROUTERS)
+        for j in range(NUM_ROUTERS)
+        if pair_confusion[i, j]
+    ]
+    write_csv(split_dir / "router_pair_confusion.csv", pair_rows)
+
+    router_rows: list[dict[str, Any]] = []
+    for router in range(NUM_ROUTERS):
+        metrics = binary_metrics_bool(truth[:, router], prediction[:, router])
+        router_rows.append({"router": router, "topology": router_topology(router), **metrics})
+    write_csv(split_dir / "router_metrics.csv", router_rows)
+    topology_rows: list[dict[str, Any]] = []
+    for topology in ("corner", "edge", "interior"):
+        routers = [router for router in range(NUM_ROUTERS) if router_topology(router) == topology]
+        metrics = binary_metrics_bool(truth[:, routers].reshape(-1), prediction[:, routers].reshape(-1))
+        topology_rows.append({"topology": topology, "router_count": len(routers), **metrics})
+    write_csv(split_dir / "corner_edge_interior_metrics.csv", topology_rows)
+    return {
+        "fp_distance_to_attacker": dict(fp_distance_attacker),
+        "topology_rows": topology_rows,
+        "router_rows": router_rows,
+    }
+
+
+def find_run_slices(run_index: np.ndarray, expected_runs: int) -> dict[int, tuple[int, int]]:
+    values = np.asarray(run_index, dtype=np.int64)
+    if values.ndim != 1:
+        raise RuntimeError("run_index.npy must be rank 1")
+    boundaries = np.r_[0, np.flatnonzero(np.diff(values) != 0) + 1, values.size]
+    result: dict[int, tuple[int, int]] = {}
+    for start, end in zip(boundaries[:-1], boundaries[1:]):
+        run = int(values[start])
+        if not np.all(values[start:end] == run):
+            raise RuntimeError("run_index.npy is not contiguous by run")
+        result[run] = (int(start), int(end))
+    if len(result) != expected_runs:
+        raise RuntimeError(f"Expected {expected_runs} contiguous runs, found {len(result)}")
+    return result
+
+
+def router_exposure_analysis(
+    records: Sequence[RunRecord],
+    run_slices: Mapping[int, tuple[int, int]],
+    out: Path,
+) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    scenario_rows: list[dict[str, Any]] = []
+    for split in sorted(set(record.split for record in records)):
+        split_records = [record for record in records if record.split == split]
+        for router in range(NUM_ROUTERS):
+            attacker_records = [record for record in split_records if router in record.attackers]
+            active_records = [record for record in split_records if router in record.active_cores]
+            normal_active_records = [record for record in split_records if record.attacker_count == 0 and router in record.active_cores]
+            rows.append({
+                "split": split,
+                "router": router,
+                "topology": router_topology(router),
+                "attacker_run_count": len(attacker_records),
+                "attacker_sample_count": sum(run_slices[r.index][1] - run_slices[r.index][0] for r in attacker_records),
+                "single_attacker_run_count": sum(r.attacker_count == 1 for r in attacker_records),
+                "multi_attacker_run_count": sum(r.attacker_count > 1 for r in attacker_records),
+                "legitimate_active_run_count": len(active_records),
+                "normal_legitimate_active_run_count": len(normal_active_records),
+                "all_split_run_count": len(split_records),
+            })
+            for field in ("profile", "attack_kind", "strength", "attacker_count", "timing_family"):
+                counts = Counter(getattr(record, field) for record in attacker_records)
+                for value, count in sorted(counts.items(), key=lambda item: str(item[0])):
+                    scenario_rows.append({
+                        "split": split,
+                        "router": router,
+                        "field": field,
+                        "value": value,
+                        "run_count": int(count),
+                    })
+    write_csv(out / "router_exposure.csv", rows)
+    write_csv(out / "router_scenario_exposure.csv", scenario_rows)
+    matrix = np.zeros((NUM_ROUTERS, NUM_ROUTERS), dtype=np.int64)
+    for record in records:
+        for i in record.attackers:
+            for j in record.attackers:
+                matrix[i, j] += 1
+    write_csv(
+        out / "coattacker_matrix.csv",
+        [{"router_i": i, "router_j": j, "coattacker_run_count": int(matrix[i, j])} for i in range(NUM_ROUTERS) for j in range(NUM_ROUTERS)],
+    )
+    exposure_counts = [row["attacker_run_count"] for row in rows if row["split"] == "train"]
+    return {
+        "train_attacker_exposure_min": int(min(exposure_counts)) if exposure_counts else 0,
+        "train_attacker_exposure_max": int(max(exposure_counts)) if exposure_counts else 0,
+        "train_attacker_exposure_ratio_max_to_min": safe_div(max(exposure_counts), min(exposure_counts)) if exposure_counts and min(exposure_counts) else math.inf,
+    }
+
+
+def ece_score(truth: np.ndarray, prob: np.ndarray, bins: int = 15) -> float:
+    truth = np.asarray(truth, dtype=np.float64).reshape(-1)
+    prob = np.asarray(prob, dtype=np.float64).reshape(-1)
+    edges = np.linspace(0.0, 1.0, bins + 1)
+    ece = 0.0
+    for lower, upper in zip(edges[:-1], edges[1:]):
+        mask = (prob >= lower) & (prob < upper if upper < 1.0 else prob <= upper)
+        if np.any(mask):
+            ece += float(mask.mean()) * abs(float(prob[mask].mean()) - float(truth[mask].mean()))
+    return ece
+
+
+def auc_metrics(truth: np.ndarray, prob: np.ndarray) -> dict[str, float | None]:
+    try:
+        from sklearn.metrics import average_precision_score, roc_auc_score
+        return {
+            "auroc": float(roc_auc_score(truth, prob)) if len(np.unique(truth)) > 1 else None,
+            "average_precision": float(average_precision_score(truth, prob)) if np.any(truth) else None,
+        }
+    except Exception:
+        return {"auroc": None, "average_precision": None}
+
+
+def distribution_rows(label: str, values: np.ndarray, group: str) -> dict[str, Any]:
+    values = np.asarray(values, dtype=np.float64)
+    return {
+        "group": group,
+        "label": label,
+        "count": int(values.size),
+        "mean": float(values.mean()) if values.size else None,
+        "std": float(values.std()) if values.size else None,
+        "p01": float(np.quantile(values, 0.01)) if values.size else None,
+        "p10": float(np.quantile(values, 0.10)) if values.size else None,
+        "p25": float(np.quantile(values, 0.25)) if values.size else None,
+        "p50": float(np.quantile(values, 0.50)) if values.size else None,
+        "p75": float(np.quantile(values, 0.75)) if values.size else None,
+        "p90": float(np.quantile(values, 0.90)) if values.size else None,
+        "p99": float(np.quantile(values, 0.99)) if values.size else None,
+        "min": float(values.min()) if values.size else None,
+        "max": float(values.max()) if values.size else None,
+    }
+
+
+def score_analysis(
+    validation_pred: Mapping[str, np.ndarray],
+    test_pred: Mapping[str, np.ndarray],
+    records: Sequence[RunRecord],
+    graph_threshold: float,
+    node_threshold: float,
+    out: Path,
+) -> dict[str, Any]:
+    summary: dict[str, Any] = {}
+    for split_name, pred in (("validation", validation_pred), ("test", test_pred)):
+        split_dir = out / split_name
+        graph_truth = np.asarray(pred["y_graph"]) >= 0.5
+        node_truth = np.asarray(pred["y_node"]) >= 0.5
+        graph_prob = np.asarray(pred["graph_prob"], dtype=np.float64)
+        node_prob = np.asarray(pred["node_prob"], dtype=np.float64)
+        graph_rows = [
+            distribution_rows("normal", graph_prob[~graph_truth], "graph_truth"),
+            distribution_rows("attack", graph_prob[graph_truth], "graph_truth"),
+        ]
+        fields = run_field_vectors(pred, records)
+        for field in ("attacker_count", "profile", "attack_kind", "strength"):
+            for value in sorted(np.unique(fields[field]).tolist(), key=lambda item: str(item)):
+                mask = fields[field] == value
+                graph_rows.append(distribution_rows(str(value), graph_prob[mask], field))
+        write_csv(split_dir / "graph_score_distributions.csv", graph_rows)
+        node_rows = [
+            distribution_rows("true_attacker", node_prob[node_truth], "node_truth"),
+            distribution_rows("non_attacker", node_prob[~node_truth], "node_truth"),
+        ]
+        for topology in ("corner", "edge", "interior"):
+            routers = [r for r in range(NUM_ROUTERS) if router_topology(r) == topology]
+            node_rows.append(distribution_rows(topology, node_prob[:, routers].reshape(-1), "router_topology"))
+        write_csv(split_dir / "node_score_distributions.csv", node_rows)
+        calibration = {
+            "graph_brier": float(np.mean((graph_prob - graph_truth.astype(float)) ** 2)),
+            "graph_ece_15bin": ece_score(graph_truth, graph_prob),
+            "node_brier": float(np.mean((node_prob - node_truth.astype(float)) ** 2)),
+            "node_ece_15bin": ece_score(node_truth.reshape(-1), node_prob.reshape(-1)),
+            "graph_auc": auc_metrics(graph_truth, graph_prob),
+            "node_auc": auc_metrics(node_truth.reshape(-1), node_prob.reshape(-1)),
+            "frozen_graph_threshold": graph_threshold,
+            "frozen_node_threshold": node_threshold,
+        }
+        json_dump(split_dir / "calibration_summary.json", calibration)
+        summary[split_name] = calibration
+
+    frontier_rows: list[dict[str, Any]] = []
+    thresholds = np.linspace(0.01, 0.99, 99)
+    validation_truth = np.asarray(validation_pred["y_graph"]) >= 0.5
+    test_truth = np.asarray(test_pred["y_graph"]) >= 0.5
+    validation_prob = np.asarray(validation_pred["graph_prob"])
+    test_prob = np.asarray(test_pred["graph_prob"])
+    val_metrics_by_t = [(float(t), binary_metrics_bool(validation_truth, validation_prob >= t)) for t in thresholds]
+    for cap in (0.01, 0.05, 0.10, 0.15, 0.20):
+        eligible = [(t, metrics) for t, metrics in val_metrics_by_t if metrics["fpr"] <= cap]
+        if not eligible:
+            frontier_rows.append({"fpr_cap": cap, "status": "no_eligible_threshold"})
+            continue
+        threshold, validation_metrics = max(
+            eligible,
+            key=lambda item: (item[1]["f1"], item[1]["recall"], item[1]["precision"], -abs(item[0] - 0.5)),
+        )
+        test_metrics = binary_metrics_bool(test_truth, test_prob >= threshold)
+        frontier_rows.append({
+            "fpr_cap": cap,
+            "status": "selected_on_validation",
+            "threshold": threshold,
+            **{f"validation_{key}": value for key, value in validation_metrics.items()},
+            **{f"test_{key}": value for key, value in test_metrics.items()},
+        })
+    write_csv(out / "validation_selected_fpr_frontier_transfer.csv", frontier_rows)
+    return summary
+
+
+def evenly_spaced_indices(start: int, end: int, count: int) -> np.ndarray:
+    length = end - start
+    if length <= 0 or count <= 0:
+        return np.empty(0, dtype=np.int64)
+    if length <= count:
+        return np.arange(start, end, dtype=np.int64)
+    return np.unique(np.linspace(start, end - 1, count, dtype=np.int64))
+
+
+class RunningStats:
+    def __init__(self, size: int):
+        self.count = np.zeros(size, dtype=np.int64)
+        self.total = np.zeros(size, dtype=np.float64)
+        self.total_sq = np.zeros(size, dtype=np.float64)
+        self.zero = np.zeros(size, dtype=np.int64)
+        self.one = np.zeros(size, dtype=np.int64)
+        self.minimum = np.full(size, np.inf, dtype=np.float64)
+        self.maximum = np.full(size, -np.inf, dtype=np.float64)
+
+    def update(self, values: np.ndarray) -> None:
+        flat = np.asarray(values, dtype=np.float64).reshape(-1, values.shape[-1])
+        self.count += flat.shape[0]
+        self.total += flat.sum(axis=0)
+        self.total_sq += np.square(flat).sum(axis=0)
+        self.zero += np.sum(flat == 0.0, axis=0)
+        self.one += np.sum(flat == 1.0, axis=0)
+        self.minimum = np.minimum(self.minimum, flat.min(axis=0))
+        self.maximum = np.maximum(self.maximum, flat.max(axis=0))
+
+    def rows(self, names: Sequence[str], prefix: Mapping[str, Any] | None = None) -> list[dict[str, Any]]:
+        prefix = dict(prefix or {})
+        rows = []
+        for i, name in enumerate(names):
+            count = int(self.count[i])
+            mean = safe_div(self.total[i], count)
+            variance = max(safe_div(self.total_sq[i], count) - mean * mean, 0.0)
+            rows.append({
+                **prefix,
+                "feature_index": i,
+                "feature": name,
+                "count": count,
+                "mean": mean,
+                "std": math.sqrt(variance),
+                "min": float(self.minimum[i]) if count else None,
+                "max": float(self.maximum[i]) if count else None,
+                "zero_fraction": safe_div(self.zero[i], count),
+                "one_fraction": safe_div(self.one[i], count),
+            })
+        return rows
+
+
+def feature_semantics_analysis(
+    data_dir: Path,
+    records: Sequence[RunRecord],
+    run_slices: Mapping[int, tuple[int, int]],
+    windows_per_run: int,
+    chunk_size: int,
+    out: Path,
+) -> dict[str, Any]:
+    x = np.load(data_dir / "x.npy", mmap_mode="r")
+    selected = np.concatenate([
+        evenly_spaced_indices(*run_slices[record.index], windows_per_run)
+        for record in records
+    ])
+    selected.sort()
+    global_stats = RunningStats(len(FEATURE_NAMES))
+    topology_stats = {name: RunningStats(len(FEATURE_NAMES)) for name in ("corner", "edge", "interior")}
+    boundary: dict[tuple[int, str], dict[str, float]] = defaultdict(lambda: defaultdict(float))
+    for start in range(0, selected.size, chunk_size):
+        indices = selected[start:start + chunk_size]
+        batch = np.asarray(x[indices], dtype=np.float32)
+        global_stats.update(batch)
+        for topology in topology_stats:
+            routers = [r for r in range(NUM_ROUTERS) if router_topology(r) == topology]
+            topology_stats[topology].update(batch[:, routers, :, :])
+        for channel, (_, kind, direction, count_channel) in DIRECTIONAL_CHANNELS.items():
+            for router in range(NUM_ROUTERS):
+                values = batch[:, router, :, channel].reshape(-1)
+                valid = direction_valid(router, direction)
+                key = (channel, "valid" if valid else "invalid")
+                boundary[key]["count"] += values.size
+                boundary[key]["sum"] += float(values.sum())
+                boundary[key]["zero"] += int(np.sum(values == 0.0))
+                boundary[key]["one"] += int(np.sum(values == 1.0))
+                if valid and kind == "ifd" and count_channel is not None:
+                    count_values = batch[:, router, :, count_channel].reshape(-1)
+                    idle_values = values[count_values == 0.0]
+                    idle_key = (channel, "valid_idle_count_zero")
+                    boundary[idle_key]["count"] += idle_values.size
+                    boundary[idle_key]["sum"] += float(idle_values.sum())
+                    boundary[idle_key]["zero"] += int(np.sum(idle_values == 0.0))
+                    boundary[idle_key]["one"] += int(np.sum(idle_values == 1.0))
+    write_csv(out / "feature_value_stats.csv", global_stats.rows(FEATURE_NAMES))
+    topology_rows = []
+    for topology, stats in topology_stats.items():
+        topology_rows.extend(stats.rows(FEATURE_NAMES, {"topology": topology}))
+    write_csv(out / "feature_topology_stats.csv", topology_rows)
+    boundary_rows = []
+    for (channel, category), values in sorted(boundary.items()):
+        count = int(values["count"])
+        boundary_rows.append({
+            "feature_index": channel,
+            "feature": FEATURE_NAMES[channel],
+            "category": category,
+            "count": count,
+            "mean": safe_div(values["sum"], count),
+            "zero_fraction": safe_div(values["zero"], count),
+            "one_fraction": safe_div(values["one"], count),
+        })
+    write_csv(out / "boundary_port_semantics.csv", boundary_rows)
+    return {
+        "feature_windows_sampled": int(selected.size),
+        "windows_per_run": windows_per_run,
+        "all_runs_sampled": len(records),
+        "full_x_scan": False,
+        "note": "Invalid-port versus valid-idle statistics are observational; saved tensors do not include explicit validity/clipping masks.",
+    }
+
+
+def cross_version_feature_analysis(
+    v3_data_dir: Path,
+    v4_stats_path: Path,
+    sample_windows: int,
+    chunk_size: int,
+    out: Path,
+) -> dict[str, Any]:
+    v3_x_path = v3_data_dir / "x.npy"
+    if not v3_x_path.is_file():
+        raise FileNotFoundError(v3_x_path)
+    v3_x = np.load(v3_x_path, mmap_mode="r")
+    if v3_x.ndim != 4 or tuple(v3_x.shape[1:]) != (16, 8, 24):
+        raise RuntimeError(
+            f"V3 x.npy must have shape [N,16,8,24] for direct comparison; got {v3_x.shape}"
+        )
+    selected = evenly_spaced_indices(0, int(v3_x.shape[0]), min(sample_windows, int(v3_x.shape[0])))
+    stats = RunningStats(len(FEATURE_NAMES))
+    for start in range(0, selected.size, chunk_size):
+        stats.update(np.asarray(v3_x[selected[start:start + chunk_size]], dtype=np.float32))
+    v3_rows = stats.rows(FEATURE_NAMES)
+    write_csv(out / "v3_feature_value_stats.csv", v3_rows)
+    with v4_stats_path.open(newline="", encoding="utf-8") as handle:
+        v4_rows = {int(row["feature_index"]): row for row in csv.DictReader(handle)}
+    comparison = []
+    for row in v3_rows:
+        index = int(row["feature_index"]); v4 = v4_rows[index]
+        v3_std = float(row["std"]); v4_std = float(v4["std"])
+        comparison.append({
+            "feature_index": index,
+            "feature": row["feature"],
+            "v3_mean": row["mean"],
+            "v4_mean": float(v4["mean"]),
+            "v4_minus_v3_mean": float(v4["mean"]) - float(row["mean"]),
+            "v3_std": v3_std,
+            "v4_std": v4_std,
+            "v4_to_v3_std_ratio": safe_div(v4_std, v3_std),
+            "v3_zero_fraction": row["zero_fraction"],
+            "v4_zero_fraction": float(v4["zero_fraction"]),
+            "v4_minus_v3_zero_fraction": float(v4["zero_fraction"]) - float(row["zero_fraction"]),
+            "v3_one_fraction": row["one_fraction"],
+            "v4_one_fraction": float(v4["one_fraction"]),
+            "v4_minus_v3_one_fraction": float(v4["one_fraction"]) - float(row["one_fraction"]),
+        })
+    write_csv(out / "v3_v4_feature_distribution_comparison.csv", comparison)
+    return {
+        "status": "completed",
+        "v3_data_dir": str(v3_data_dir),
+        "v3_x_shape": list(v3_x.shape),
+        "v3_windows_sampled": int(selected.size),
+        "comparison_file": "v3_v4_feature_distribution_comparison.csv",
+        "limitation": "This compares tensor marginals only; scenario-conditioned equivalence requires aligned V3 run metadata.",
+    }
+
+
+def sample_prediction_positions_by_run(pred: Mapping[str, np.ndarray], max_per_run: int) -> np.ndarray:
+    run_index = np.asarray(pred["run_index"], dtype=np.int64)
+    selected: list[np.ndarray] = []
+    for run in np.unique(run_index):
+        positions = np.flatnonzero(run_index == run)
+        if positions.size <= max_per_run:
+            selected.append(positions)
+        else:
+            selected.append(np.unique(np.linspace(positions[0], positions[-1], max_per_run, dtype=np.int64)))
+    return np.sort(np.concatenate(selected)) if selected else np.empty(0, dtype=np.int64)
+
+
+def temporal_observability_analysis(
+    split_name: str,
+    pred: Mapping[str, np.ndarray],
+    data_dir: Path,
+    graph_threshold: float,
+    node_threshold: float,
+    max_windows_per_run: int,
+    chunk_size: int,
+    out: Path,
+) -> dict[str, Any]:
+    positions = sample_prediction_positions_by_run(pred, max_windows_per_run)
+    attack_positions = positions[np.asarray(pred["y_graph"])[positions] >= 0.5]
+    x = np.load(data_dir / "x.npy", mmap_mode="r")
+    categories: list[str] = []
+    retained_positions: list[int] = []
+    for start in range(0, attack_positions.size, chunk_size):
+        local_positions = attack_positions[start:start + chunk_size]
+        global_indices = np.asarray(pred["global_index"])[local_positions].astype(np.int64)
+        batch = np.asarray(x[global_indices], dtype=np.float32)
+        truth = np.asarray(pred["y_node"])[local_positions] >= 0.5
+        activity = batch[:, :, :, COUNT_CHANNELS].sum(axis=(2, 3))
+        for row, pos in enumerate(local_positions.tolist()):
+            attacker_activity = activity[row][truth[row]]
+            if attacker_activity.size == 0:
+                category = "positive_graph_without_attacker_label"
+            elif np.all(attacker_activity <= 1e-12):
+                category = "zero_observed_count_activity_at_all_labeled_attackers"
+            elif np.any(attacker_activity <= 1e-12):
+                category = "mixed_zero_and_nonzero_labeled_attacker_activity"
+            else:
+                category = "nonzero_observed_count_activity_at_all_labeled_attackers"
+            categories.append(category)
+            retained_positions.append(pos)
+    retained = np.asarray(retained_positions, dtype=np.int64)
+    category_array = np.asarray(categories, dtype=object)
+    rows: list[dict[str, Any]] = []
+    for category in sorted(np.unique(category_array).tolist() if category_array.size else []):
+        mask = category_array == category
+        selected_pos = retained[mask]
+        metrics = metric_bundle(
+            pred["y_graph"][selected_pos], pred["graph_prob"][selected_pos],
+            pred["y_node"][selected_pos], pred["node_prob"][selected_pos],
+            graph_threshold, node_threshold,
+        )
+        rows.append({"observability_category": category, **metrics})
+    write_csv(out / split_name / "temporal_observability_sample.csv", rows)
+    zero_count = sum(category.startswith("zero_observed") for category in categories)
+    summary = {
+        "sampled_attack_windows": len(categories),
+        "max_windows_per_run": max_windows_per_run,
+        "zero_observed_activity_fraction": safe_div(zero_count, len(categories)),
+        "status": "heuristic_only",
+        "hard_limitation": (
+            "The saved feature tensors do not separate legitimate traffic from malicious injection. "
+            "Zero/nonzero count activity at a labeled attacker is not proof of attack inactivity. "
+            "A true active/paused audit requires injection-state or per-epoch attack schedule metadata."
+        ),
+    }
+    json_dump(out / split_name / "temporal_observability_summary.json", summary)
+    return summary
+
+
+def matched_control_analysis(
+    data_dir: Path,
+    records: Sequence[RunRecord],
+    run_slices: Mapping[int, tuple[int, int]],
+    samples_per_pair: int,
+    out: Path,
+) -> dict[str, Any]:
+    by_id = {record.run_id: record for record in records}
+    x = np.load(data_dir / "x.npy", mmap_mode="r")
+    rows: list[dict[str, Any]] = []
+    metadata_shortcut_count = 0
+    matched_count = 0
+    delta_topk_exact = 0
+    activity_topk_exact = 0
+    newly_active_exact = 0
+    single_delta_top1 = 0
+    single_count = 0
+    for attack in records:
+        if attack.attacker_count <= 0 or not attack.matched_normal_run_id:
+            continue
+        normal = by_id.get(attack.matched_normal_run_id)
+        if normal is None:
+            rows.append({"attack_run_id": attack.run_id, "matched_normal_run_id": attack.matched_normal_run_id, "matched": False})
+            continue
+        matched_count += 1
+        shortcut = not set(attack.attackers).issubset(set(normal.active_cores))
+        metadata_shortcut_count += int(shortcut)
+        a_start, a_end = run_slices[attack.index]
+        n_start, n_end = run_slices[normal.index]
+        length = min(a_end - a_start, n_end - n_start)
+        offsets = np.unique(np.linspace(0, length - 1, min(samples_per_pair, length), dtype=np.int64))
+        attack_x = np.asarray(x[a_start + offsets], dtype=np.float32)
+        normal_x = np.asarray(x[n_start + offsets], dtype=np.float32)
+        attack_activity = attack_x[:, :, :, COUNT_CHANNELS].sum(axis=(0, 2, 3)) / max(len(offsets), 1)
+        normal_activity = normal_x[:, :, :, COUNT_CHANNELS].sum(axis=(0, 2, 3)) / max(len(offsets), 1)
+        delta = attack_activity - normal_activity
+        k = attack.attacker_count
+        true_set = set(attack.attackers)
+        delta_topk = set(np.argsort(-delta, kind="stable")[:k].tolist())
+        activity_topk = set(np.argsort(-attack_activity, kind="stable")[:k].tolist())
+        newly_active_scores = np.where(normal_activity <= 1e-12, attack_activity, -np.inf)
+        newly_active_topk = set(np.argsort(-newly_active_scores, kind="stable")[:k].tolist())
+        delta_ok = delta_topk == true_set
+        activity_ok = activity_topk == true_set
+        newly_active_ok = newly_active_topk == true_set
+        delta_topk_exact += int(delta_ok)
+        activity_topk_exact += int(activity_ok)
+        newly_active_exact += int(newly_active_ok)
+        if k == 1:
+            single_count += 1
+            single_delta_top1 += int(delta_ok)
+        rows.append({
+            "attack_run_id": attack.run_id,
+            "matched_normal_run_id": normal.run_id,
+            "matched": True,
+            "split": attack.split,
+            "profile": attack.profile,
+            "attack_kind": attack.attack_kind,
+            "strength": attack.strength,
+            "attacker_count": k,
+            "attackers": set_text(attack.attackers),
+            "normal_active_cores": set_text(normal.active_cores),
+            "attackers_subset_of_normal_active_cores": not shortcut,
+            "active_core_shortcut_risk": shortcut,
+            "aligned_windows_sampled": len(offsets),
+            "delta_topk": set_text(sorted(delta_topk)),
+            "delta_topk_exact": delta_ok,
+            "attack_activity_topk": set_text(sorted(activity_topk)),
+            "attack_activity_topk_exact": activity_ok,
+            "newly_active_topk": set_text(sorted(newly_active_topk)),
+            "newly_active_topk_exact": newly_active_ok,
+        })
+    write_csv(out / "matched_control_heuristics.csv", rows)
+    summary = {
+        "matched_attack_runs": matched_count,
+        "active_core_shortcut_run_count": metadata_shortcut_count,
+        "active_core_shortcut_fraction": safe_div(metadata_shortcut_count, matched_count),
+        "mean_activity_delta_topk_exact_run_fraction": safe_div(delta_topk_exact, matched_count),
+        "attack_activity_topk_exact_run_fraction": safe_div(activity_topk_exact, matched_count),
+        "newly_active_topk_exact_run_fraction": safe_div(newly_active_exact, matched_count),
+        "single_attacker_delta_top1_run_fraction": safe_div(single_delta_top1, single_count),
+        "samples_per_pair": samples_per_pair,
+        "heuristic_status": "diagnostic_only",
+    }
+    json_dump(out / "matched_control_summary.json", summary)
+    return summary
+
+
+def label_alignment_check(
+    data_dir: Path,
+    predictions: Mapping[str, Mapping[str, np.ndarray]],
+    metadata: Mapping[str, Any],
+    chunk_size: int,
+) -> dict[str, Any]:
+    y_graph = np.load(data_dir / "y_graph.npy", mmap_mode="r")
+    y_node = np.load(data_dir / "y_node.npy", mmap_mode="r")
+    split_id = np.load(data_dir / "split_id.npy", mmap_mode="r")
+    split_map = metadata.get("code_maps", {}).get("split", {})
+    mismatches = {"graph": 0, "node": 0, "split": 0}
+    checked = 0
+    for split_name, pred in predictions.items():
+        expected_split_code = int(split_map["val" if split_name == "validation" else "test"])
+        indices = np.asarray(pred["global_index"], dtype=np.int64)
+        for start in range(0, len(indices), chunk_size):
+            idx = indices[start:start + chunk_size]
+            local = slice(start, start + len(idx))
+            mismatches["graph"] += int(np.sum(np.asarray(y_graph[idx]) != np.asarray(pred["y_graph"])[local]))
+            mismatches["node"] += int(np.sum(np.asarray(y_node[idx]) != np.asarray(pred["y_node"])[local]))
+            mismatches["split"] += int(np.sum(np.asarray(split_id[idx]) != expected_split_code))
+            checked += len(idx)
+    return {
+        "samples_checked": checked,
+        "graph_label_mismatch_count": mismatches["graph"],
+        "node_label_element_mismatch_count": mismatches["node"],
+        "split_mismatch_count": mismatches["split"],
+        "pass": all(value == 0 for value in mismatches.values()),
+    }
+
+
+def compare_validation_test(validation: Mapping[str, Any], test: Mapping[str, Any]) -> dict[str, Any]:
+    keys = ("graph_f1", "graph_fpr", "graph_recall", "node_f1", "exact_localization")
+    return {
+        key: {
+            "validation": float(validation[key]),
+            "test": float(test[key]),
+            "test_minus_validation": float(test[key] - validation[key]),
+        }
+        for key in keys
+    }
+
+
+def artifact_manifest(out: Path) -> None:
+    rows = []
+    for path in sorted(out.rglob("*")):
+        if path.is_file() and path.name != "artifact_manifest.csv":
+            rows.append({
+                "relative_path": str(path.relative_to(out)),
+                "bytes": path.stat().st_size,
+                "sha256": sha256_file(path),
+            })
+    write_csv(out / "artifact_manifest.csv", rows)
+
+
+def render_report(verdict: Mapping[str, Any]) -> str:
+    overall = verdict["overall_metrics"]
+    count = verdict["count_diagnostics"]
+    spatial = verdict["spatial_diagnostics"]
+    matched = verdict["matched_control"]
+    lines = [
+        "# V4-A1 Comprehensive Failure Analysis",
+        "",
+        f"Script version: `{SCRIPT_VERSION}`",
+        "",
+        "## Integrity",
+        "",
+        f"- Analysis pass: **{verdict['analysis_pass']}**",
+        f"- Saved predictions reused: **{verdict['saved_predictions_reused']}**",
+        f"- Model inference performed: **{verdict['model_inference_performed']}**",
+        f"- Test thresholds retuned: **{verdict['test_thresholds_retuned']}**",
+        f"- Dataset modified: **{verdict['dataset_modified']}**",
+        "",
+        "## Frozen operating point",
+        "",
+        f"- Graph threshold: `{verdict['thresholds']['graph_threshold']}`",
+        f"- Node threshold: `{verdict['thresholds']['node_threshold']}`",
+        "",
+        "## Validation and test",
+        "",
+        f"- Validation graph F1/FPR: `{overall['validation']['graph_f1']:.4f}` / `{overall['validation']['graph_fpr']:.4f}`",
+        f"- Test graph F1/FPR: `{overall['test']['graph_f1']:.4f}` / `{overall['test']['graph_fpr']:.4f}`",
+        f"- Validation node F1/exact: `{overall['validation']['node_f1']:.4f}` / `{overall['validation']['exact_localization']:.4f}`",
+        f"- Test node F1/exact: `{overall['test']['node_f1']:.4f}` / `{overall['test']['exact_localization']:.4f}`",
+        "",
+        "## Cardinality and ranking",
+        "",
+        f"- Frozen test count accuracy: `{count['test_count_accuracy']:.4f}`",
+        f"- Frozen test exact localization: `{count['test_frozen_exact']:.4f}`",
+        f"- Oracle true-count top-k exact localization: `{count['test_oracle_topk_exact']:.4f}`",
+        f"- Oracle gain: `{count['oracle_gain']:.4f}`",
+        "",
+        "## Spatial structure",
+        "",
+        f"- Corner node F1: `{spatial.get('corner_node_f1', 0.0):.4f}`",
+        f"- Edge node F1: `{spatial.get('edge_node_f1', 0.0):.4f}`",
+        f"- Interior node F1: `{spatial.get('interior_node_f1', 0.0):.4f}`",
+        "",
+        "## Matched controls",
+        "",
+        f"- Matched attack runs: `{matched['matched_attack_runs']}`",
+        f"- Active-core shortcut fraction: `{matched['active_core_shortcut_fraction']:.4f}`",
+        f"- Mean activity-delta top-k exact run fraction: `{matched['mean_activity_delta_topk_exact_run_fraction']:.4f}`",
+        "",
+        "## Decision",
+        "",
+        f"- Publication-ready dataset: **{verdict['publication_ready']}**",
+        f"- A2 capacity lift status: **{verdict['a2_capacity_lift_decision']}**",
+        f"- Recommended next action: {verdict['recommended_next_action']}",
+        "",
+        "The temporal observability audit is heuristic because saved traffic features do not identify malicious injection state separately from legitimate traffic.",
+    ]
+    return "\n".join(lines) + "\n"
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--data-dir", required=True)
+    parser.add_argument("--validation-predictions", required=True)
+    parser.add_argument("--test-predictions", required=True)
+    parser.add_argument("--selected-thresholds", required=True)
+    parser.add_argument("--out-dir", required=True)
+    parser.add_argument("--diagnostic-decision")
+    parser.add_argument("--model-summary")
+    parser.add_argument("--v3-data-dir")
+    parser.add_argument("--v3-feature-sample-windows", type=int, default=32768)
+    parser.add_argument("--chunk-size", type=int, default=1024)
+    parser.add_argument("--feature-windows-per-run", type=int, default=32)
+    parser.add_argument("--observability-windows-per-run", type=int, default=64)
+    parser.add_argument("--matched-control-samples-per-pair", type=int, default=32)
+    parser.add_argument("--hash-large-x", action="store_true")
+    return parser
+
+
+def main() -> int:
+    args = build_parser().parse_args()
+    if args.chunk_size <= 0:
+        raise ValueError("--chunk-size must be positive")
+    data_dir = Path(args.data_dir).resolve()
+    validation_path = Path(args.validation_predictions).resolve()
+    test_path = Path(args.test_predictions).resolve()
+    thresholds_path = Path(args.selected_thresholds).resolve()
+    out = Path(args.out_dir).resolve()
+    required = [
+        data_dir / "metadata.json", data_dir / "x.npy", data_dir / "y_graph.npy",
+        data_dir / "y_node.npy", data_dir / "run_index.npy", data_dir / "split_id.npy",
+        validation_path, test_path, thresholds_path,
+    ]
+    if args.diagnostic_decision:
+        required.append(Path(args.diagnostic_decision).resolve())
+    if args.model_summary:
+        required.append(Path(args.model_summary).resolve())
+    if args.v3_data_dir:
+        required.append(Path(args.v3_data_dir).resolve() / "x.npy")
+    require_files(required)
+    ensure_empty_output(out)
+
+    dataset_files = [data_dir / name for name in (
+        "metadata.json", "x.npy", "y_graph.npy", "y_node.npy", "run_index.npy", "split_id.npy"
+    )]
+    before_state = {str(path): (path.stat().st_size, path.stat().st_mtime_ns) for path in dataset_files}
+
+    metadata = load_json(data_dir / "metadata.json")
+    records = build_run_records(metadata)
+    thresholds = load_json(thresholds_path)
+    graph_threshold = float(thresholds["graph_threshold"])
+    node_threshold = float(thresholds["node_threshold"])
+    validation_pred = load_predictions(validation_path)
+    test_pred = load_predictions(test_path)
+    predictions = {"validation": validation_pred, "test": test_pred}
+
+    provenance_inputs = {
+        "script": str(Path(__file__).resolve()),
+        "script_sha256": sha256_file(Path(__file__).resolve()),
+        "script_version": SCRIPT_VERSION,
+        "data_dir": str(data_dir),
+        "metadata_sha256": sha256_file(data_dir / "metadata.json"),
+        "validation_predictions": str(validation_path),
+        "validation_predictions_sha256": sha256_file(validation_path),
+        "test_predictions": str(test_path),
+        "test_predictions_sha256": sha256_file(test_path),
+        "selected_thresholds": str(thresholds_path),
+        "selected_thresholds_sha256": sha256_file(thresholds_path),
+        "diagnostic_decision": str(Path(args.diagnostic_decision).resolve()) if args.diagnostic_decision else None,
+        "diagnostic_decision_sha256": sha256_file(Path(args.diagnostic_decision).resolve()) if args.diagnostic_decision else None,
+        "model_summary": str(Path(args.model_summary).resolve()) if args.model_summary else None,
+        "model_summary_sha256": sha256_file(Path(args.model_summary).resolve()) if args.model_summary else None,
+        "v3_data_dir": str(Path(args.v3_data_dir).resolve()) if args.v3_data_dir else None,
+        "v3_x_file": sampled_file_fingerprint(Path(args.v3_data_dir).resolve() / "x.npy") if args.v3_data_dir else None,
+        "x_file": sha256_file(data_dir / "x.npy") if args.hash_large_x else sampled_file_fingerprint(data_dir / "x.npy"),
+        "test_predictions_reused": True,
+        "model_inference_performed": False,
+        "threshold_selection_performed_on_test": False,
+    }
+    json_dump(out / "provenance.json", provenance_inputs)
+
+    label_check = label_alignment_check(data_dir, predictions, metadata, args.chunk_size)
+    json_dump(out / "prediction_dataset_alignment.json", label_check)
+
+    run_index = np.load(data_dir / "run_index.npy", mmap_mode="r")
+    run_slices = find_run_slices(run_index, len(records))
+
+    validation_scenario = scenario_analysis(
+        "validation", validation_pred, records, graph_threshold, node_threshold, out
+    )
+    test_scenario = scenario_analysis(
+        "test", test_pred, records, graph_threshold, node_threshold, out
+    )
+
+    centroids = fit_count_centroids(validation_pred)
+    json_dump(out / "validation_count_centroids.json", centroids)
+    validation_count = count_analysis(
+        "validation", validation_pred, graph_threshold, node_threshold, out, centroids
+    )
+    test_count = count_analysis(
+        "test", test_pred, graph_threshold, node_threshold, out, centroids
+    )
+
+    validation_exact = exact_set_analysis("validation", validation_pred, records, node_threshold, out)
+    test_exact = exact_set_analysis("test", test_pred, records, node_threshold, out)
+    validation_spatial = spatial_analysis("validation", validation_pred, records, node_threshold, out)
+    test_spatial = spatial_analysis("test", test_pred, records, node_threshold, out)
+    exposure = router_exposure_analysis(records, run_slices, out)
+    calibration = score_analysis(
+        validation_pred, test_pred, records, graph_threshold, node_threshold, out
+    )
+    feature_summary = feature_semantics_analysis(
+        data_dir, records, run_slices, args.feature_windows_per_run, args.chunk_size, out
+    )
+    cross_version_features = (
+        cross_version_feature_analysis(
+            Path(args.v3_data_dir).resolve(), out / "feature_value_stats.csv",
+            args.v3_feature_sample_windows, args.chunk_size, out
+        )
+        if args.v3_data_dir else {"status": "not_requested"}
+    )
+    validation_observability = temporal_observability_analysis(
+        "validation", validation_pred, data_dir, graph_threshold, node_threshold,
+        args.observability_windows_per_run, args.chunk_size, out,
+    )
+    test_observability = temporal_observability_analysis(
+        "test", test_pred, data_dir, graph_threshold, node_threshold,
+        args.observability_windows_per_run, args.chunk_size, out,
+    )
+    matched = matched_control_analysis(
+        data_dir, records, run_slices, args.matched_control_samples_per_pair, out
+    )
+
+    after_state = {str(path): (path.stat().st_size, path.stat().st_mtime_ns) for path in dataset_files}
+    dataset_modified = before_state != after_state
+    test_topology = {row["topology"]: row for row in test_spatial["topology_rows"]}
+    oracle_gain = float(test_count["oracle"]["exact_localization"] - test_count["frozen"]["exact_localization"])
+    if oracle_gain >= 0.15:
+        a2_decision = "secondary_only_cardinality_or_set_decoding_is_the_larger_issue"
+        next_action = "Review count and exact-set reports; test count-conditioned decoding before full A2 training."
+    elif oracle_gain <= 0.05:
+        a2_decision = "useful_as_controlled_representation_capacity_probe"
+        next_action = "A2 is scientifically useful as a diagnostic capacity probe after reviewing label/topology findings."
+    else:
+        a2_decision = "useful_but_must_be_paired_with_cardinality_diagnostics"
+        next_action = "Proceed with A2 only as a controlled diagnostic, while retaining count-conditioned analyses."
+
+    overall_validation = validation_scenario["overall"]
+    overall_test = test_scenario["overall"]
+    hard_checks = {
+        "required_inputs_present": True,
+        "prediction_dataset_alignment_pass": label_check["pass"],
+        "validation_sample_count_nonzero": int(validation_pred["y_graph"].size) > 0,
+        "test_sample_count_nonzero": int(test_pred["y_graph"].size) > 0,
+        "thresholds_from_validation_package": thresholds.get("split", thresholds.get("selection_split")) == "validation",
+        "threshold_package_says_test_not_accessed": thresholds.get("test_accessed") is False,
+        "no_test_threshold_selection_in_this_script": True,
+        "no_model_inference_in_this_script": True,
+        "dataset_unmodified": not dataset_modified,
+        "active_core_shortcut_audited": matched["matched_attack_runs"] > 0,
+        "feature_semantics_audited": feature_summary["feature_windows_sampled"] > 0,
+        "v3_v4_feature_comparison_completed_or_not_requested": cross_version_features.get("status") in {"completed", "not_requested"},
+    }
+    analysis_pass = all(hard_checks.values())
+    verdict = {
+        "analysis_pass": analysis_pass,
+        "hard_checks": hard_checks,
+        "saved_predictions_reused": True,
+        "model_inference_performed": False,
+        "test_thresholds_retuned": False,
+        "dataset_modified": dataset_modified,
+        "thresholds": {
+            "graph_threshold": graph_threshold,
+            "node_threshold": node_threshold,
+            "source": str(thresholds_path),
+        },
+        "overall_metrics": {
+            "validation": overall_validation,
+            "test": overall_test,
+            "generalization_gap": compare_validation_test(overall_validation, overall_test),
+        },
+        "count_diagnostics": {
+            "validation_count_accuracy": validation_count["summary"]["count_accuracy"],
+            "test_count_accuracy": test_count["summary"]["count_accuracy"],
+            "test_frozen_exact": test_count["frozen"]["exact_localization"],
+            "test_oracle_topk_exact": test_count["oracle"]["exact_localization"],
+            "oracle_gain": oracle_gain,
+            "validation_fitted_count_topk": test_count["estimated"],
+        },
+        "exact_set_decomposition": {
+            "validation": validation_exact["overall"],
+            "test": test_exact["overall"],
+        },
+        "spatial_diagnostics": {
+            "corner_node_f1": test_topology.get("corner", {}).get("f1", 0.0),
+            "edge_node_f1": test_topology.get("edge", {}).get("f1", 0.0),
+            "interior_node_f1": test_topology.get("interior", {}).get("f1", 0.0),
+            "fp_distance_to_attacker": test_spatial["fp_distance_to_attacker"],
+        },
+        "router_exposure": exposure,
+        "calibration": calibration,
+        "feature_semantics": feature_summary,
+        "v3_v4_feature_comparison": cross_version_features,
+        "temporal_observability": {
+            "validation": validation_observability,
+            "test": test_observability,
+            "status": "not_provable_from_saved_features",
+        },
+        "matched_control": matched,
+        "publication_ready": False,
+        "publication_blockers": [
+            "Confirmed active-core matched-control shortcut risk",
+            "No explicit valid/idle/clipped port masks in saved tensor semantics",
+            "Development test is not an independent publication holdout",
+        ],
+        "a2_capacity_lift_decision": a2_decision,
+        "recommended_next_action": next_action,
+        "confirmed_facts": [
+            "Validation and test predictions align with dataset labels and split IDs" if label_check["pass"] else "Prediction/dataset alignment failed",
+            "Thresholds were frozen from validation and reused on test",
+            "Multi-attacker exact-set performance must be interpreted separately from micro node F1",
+            "The active-core matched-control condition is audited at run level",
+        ],
+        "strong_inferences": [
+            "A large oracle top-k gain indicates cardinality/set-decoding error; a small gain indicates ranking/representation error",
+            "A corner-edge-interior gap is consistent with topology or boundary-feature effects",
+        ],
+        "open_hypotheses": [
+            "False positives may concentrate near true attackers or attacker-victim paths",
+            "Pulsed/intermittent labels may include windows with insufficient observable attack evidence",
+            "Capacity may limit node-score ranking after dataset semantic issues are controlled",
+        ],
+    }
+    json_dump(out / "final_verdict.json", verdict)
+    (out / "failure_analysis_report.md").write_text(render_report(verdict), encoding="utf-8")
+    artifact_manifest(out)
+    print("V4_A1_COMPREHENSIVE_FAILURE_ANALYSIS_PASS" if analysis_pass else "V4_A1_COMPREHENSIVE_FAILURE_ANALYSIS_FAIL")
+    print(json.dumps(verdict, indent=2))
+    return 0 if analysis_pass else 2
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except Exception as exc:
+        print(f"ERROR: {type(exc).__name__}: {exc}", file=sys.stderr)
+        raise

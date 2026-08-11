@@ -1,0 +1,71 @@
+{
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "cross_head_confusion": [
+    "true_victim_router_transit_head_positive_rate",
+    "true_victim_router_source_head_positive_rate",
+    "true_transit_router_victim_head_positive_rate",
+    "true_source_router_victim_head_positive_rate",
+    "mean_transit_probability_on_true_victim_routers",
+    "mean_victim_probability_on_true_transit_routers"
+  ],
+  "pairing_boundary": {
+    "explicit_source_victim_pair_accuracy": "deferred to frozen legal-route decoder/pairing stage when predicted pairing is defined",
+    "raw_model_has_explicit_pair_head": false,
+    "raw_neural_pairing_metric": "joint exact source-set AND victim-set accuracy",
+    "reason": "independent source/victim masks do not uniquely encode a source-to-victim pairing for multi-endpoint cases"
+  },
+  "primary_analysis_population": {
+    "all_window_ap_auroc": "all validation windows, reported separately for continuity with model-selection metrics",
+    "control_false_alarms": "validation windows with graph_truth == 0",
+    "role_localization": "validation windows with graph_truth == 1",
+    "victim_ranking": "validation windows with at least one true victim"
+  },
+  "role_metrics": [
+    "source_ap_active_windows",
+    "transit_ap_active_windows",
+    "victim_ap_active_windows",
+    "path_ap_active_windows",
+    "exact_source_set_accuracy",
+    "exact_transit_set_accuracy",
+    "exact_victim_set_accuracy",
+    "exact_path_set_accuracy",
+    "joint_source_victim_exact_accuracy",
+    "complete_source_path_victim_exact_accuracy",
+    "all_four_role_sets_exact_accuracy"
+  ],
+  "scope": "validation_prediction_archive_postprocessing_only",
+  "sealed_test_policy": {
+    "reject_split_tokens": [
+      "test",
+      "sealed"
+    ],
+    "sealed_test_access": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false,
+    "validation_only": true
+  },
+  "stage": "V5_P3_POSTTRAIN_P3_VICTIM_ROLE_PATH_EVALUATOR_IMPLEMENTATION",
+  "threshold_policy": {
+    "selftest_threshold": 0.5,
+    "threshold_tuning_performed_by_evaluator": false,
+    "thresholds_must_be_external_frozen_values": true
+  },
+  "victim_metrics": [
+    "average_precision_all_windows",
+    "auroc_all_windows",
+    "average_precision_active_windows",
+    "auroc_active_windows",
+    "precision_active_windows",
+    "recall_active_windows",
+    "f1_active_windows",
+    "exact_victim_set_accuracy_active_windows",
+    "top1_accuracy",
+    "recall_at_1",
+    "recall_at_2",
+    "recall_at_3",
+    "mean_reciprocal_rank",
+    "control_any_victim_alarm_rate",
+    "control_victim_router_false_positive_rate"
+  ]
+}

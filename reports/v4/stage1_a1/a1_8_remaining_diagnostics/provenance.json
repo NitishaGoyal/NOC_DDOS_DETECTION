@@ -1,0 +1,151 @@
+{
+  "base_analysis_script": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/analyze_v4_a1_failures.py",
+  "base_analysis_script_sha256": "ce59f87052215719cf9d767bd1fe85c86c99543c7696a89b34ad35dc056bc8fc",
+  "count_decoder": {
+    "class_counts_used": {
+      "0": 80935,
+      "1": 84532,
+      "2": 28777,
+      "3": 30576,
+      "4": 25180
+    },
+    "class_weight": "balanced",
+    "classes": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "feature_names": [
+      "graph_prob",
+      "graph_logit",
+      "node_sum",
+      "node_mean",
+      "node_max",
+      "node_min",
+      "node_std",
+      "node_binary_entropy",
+      "score_rank_1",
+      "score_rank_2",
+      "score_rank_3",
+      "score_rank_4",
+      "score_rank_5",
+      "score_rank_6",
+      "score_rank_7",
+      "score_rank_8",
+      "gap_rank_1_2",
+      "gap_rank_2_3",
+      "gap_rank_3_4",
+      "gap_rank_4_5",
+      "gap_rank_5_6",
+      "gap_rank_6_7",
+      "gap_rank_7_8",
+      "count_ge_0.20",
+      "count_ge_0.30",
+      "count_ge_0.40",
+      "count_ge_0.50",
+      "count_ge_0.60",
+      "count_ge_0.70",
+      "count_ge_0.80",
+      "corner_sum",
+      "corner_mean",
+      "corner_max",
+      "corner_std",
+      "edge_sum",
+      "edge_mean",
+      "edge_max",
+      "edge_std",
+      "interior_sum",
+      "interior_mean",
+      "interior_max",
+      "interior_std"
+    ],
+    "iterations": [
+      183
+    ],
+    "solver": "lbfgs",
+    "test_used_for_fit": false,
+    "validation_samples_total": 457727,
+    "validation_samples_used": 250000
+  },
+  "graph_threshold": 0.6,
+  "metadata": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v4_all16_chrono_memmap/metadata.json",
+  "metadata_sha256": "97ca343f292d67c1e4150e18df764156fab4472d16ba9c4ea1085957e6863b2e",
+  "model_inference_performed": false,
+  "neural_model_training_performed": false,
+  "node_threshold": 0.71,
+  "predicted_count_specific_thresholds": {
+    "0": 0.9500000000000002,
+    "1": 0.7600000000000002,
+    "2": 0.8500000000000002,
+    "3": 0.8800000000000002,
+    "4": 0.9100000000000003
+  },
+  "script": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/analyze_v4_a1_remaining_diagnostics.py",
+  "script_sha256": "dcf206e9167e6937262dc109c1c33e753a3dc7f5ca74ccda0279013aad06ab82",
+  "script_version": "1.0.0",
+  "selected_thresholds": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_5b_fpr10_frozen_thresholds/selected_thresholds.json",
+  "selected_thresholds_sha256": "44e556a048e52eacfde5a1d222f7489988a6fa3c75b5dbfeb8b7282f2805b68b",
+  "test_predictions": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_6_development_test_transfer/test_predictions.npz",
+  "test_predictions_sha256": "93a21dee1f3c64ea86e4efabca66ca3e01ed4af11fabd00e9771d8689b109346",
+  "test_used_for_fit_or_selection": false,
+  "topology_calibrators": {
+    "corner": {
+      "coefficient": 0.9814600472735538,
+      "intercept": 0.12594892940782018,
+      "positive_fraction_used": 0.302956,
+      "routers": [
+        0,
+        3,
+        12,
+        15
+      ],
+      "samples_total": 1830908,
+      "samples_used": 500000,
+      "status": "fitted",
+      "test_used_for_fit": false
+    },
+    "edge": {
+      "coefficient": 1.1112279048906148,
+      "intercept": 0.1883012864298871,
+      "positive_fraction_used": 0.5,
+      "routers": [
+        1,
+        2,
+        4,
+        7,
+        8,
+        11,
+        13,
+        14
+      ],
+      "samples_total": 3661816,
+      "samples_used": 500000,
+      "status": "fitted",
+      "test_used_for_fit": false
+    },
+    "interior": {
+      "coefficient": 1.1093810129238821,
+      "intercept": 0.2576448094577183,
+      "positive_fraction_used": 0.342472,
+      "routers": [
+        5,
+        6,
+        9,
+        10
+      ],
+      "samples_total": 1830908,
+      "samples_used": 500000,
+      "status": "fitted",
+      "test_used_for_fit": false
+    }
+  },
+  "validation_only_fitted_components": [
+    "multinomial count decoder",
+    "topology Platt calibrators",
+    "predicted-count-specific thresholds"
+  ],
+  "validation_predictions": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_5_validation_thresholds/validation_predictions.npz",
+  "validation_predictions_sha256": "414d3ba65d7c5691339ec50bc700a21a97993dbbfc0d4c651a502d8c766db9b2"
+}

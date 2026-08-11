@@ -1,0 +1,115 @@
+{
+  "protocol_id": "V5_P3_POSTTRAIN_P0",
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "scope": "post_training_evaluation_preparation_only",
+  "mainline_dependency": {
+    "current_required_gate": "V5_P3_FINAL_A2_R1_FRESH_MODEL_TRAINING_PROTOCOL_FREEZE",
+    "a_plus_b_training_authorized_by_this_package": false
+  },
+  "sealed_test_policy": {
+    "sealed_test_access": false,
+    "test_directory_enumeration": false,
+    "test_tensor_construction": false,
+    "test_tensor_deserialization": false,
+    "test_evaluation": false,
+    "one_shot_final_test_only_after_p8_freeze": true
+  },
+  "prediction_archive": {
+    "split_allowed_during_development": ["train", "validation"],
+    "required_fields": [
+      "sample_key", "pair_key", "window_start_epoch", "window_end_epoch",
+      "graph_truth", "graph_probability",
+      "count_truth", "count_logits",
+      "source_truth_16", "source_probability_16",
+      "transit_truth_16", "transit_probability_16",
+      "victim_truth_16", "victim_probability_16",
+      "path_truth_16", "path_probability_16",
+      "observed_attack_onset_epoch", "observed_attack_end_epoch",
+      "attacker_count", "attack_strength", "traffic_or_workload_class",
+      "source_routers", "victim_routers", "route_metadata",
+      "model_sha256", "checkpoint_sha256", "dataset_protocol_sha256"
+    ]
+  },
+  "threshold_policy": {
+    "post_training_threshold_tuning_performed": false,
+    "consume_mainline_frozen_thresholds_only": true
+  },
+  "onset_latency": {
+    "onset_definition": "first epoch containing verified active malicious behaviour from authoritative runtime/packet truth",
+    "first_graph_detection": "first post-onset decision satisfying frozen graph decision rule",
+    "stable_detection_consecutive_decisions_q": 2,
+    "latencies": [
+      "graph_first", "graph_stable", "source_first_correct_set",
+      "victim_first_correct_set", "path_first_correct_set",
+      "complete_source_path_victim_first_correct"
+    ],
+    "must_report": [
+      "pre_onset_false_alarm_rate", "false_alarm_windows_per_run",
+      "detected_before_attack_termination", "undetected_during_attack",
+      "median", "p95", "cdf"
+    ]
+  },
+  "victim_analysis": {
+    "metrics": [
+      "average_precision", "auroc", "precision", "recall", "f1",
+      "exact_victim_set_accuracy", "top1_accuracy", "recall_at_1",
+      "recall_at_2", "recall_at_3", "mean_reciprocal_rank",
+      "victim_localization_latency_first", "victim_localization_latency_stable"
+    ],
+    "cross_role_checks": [
+      "true_victim_as_transit", "true_transit_as_victim",
+      "true_source_as_transit", "transit_false_positive_rate"
+    ],
+    "endpoint_route_checks": [
+      "exact_source_set", "exact_victim_set", "exact_path_set",
+      "source_victim_pair_accuracy", "legal_xy_route_consistency",
+      "complete_source_path_victim_accuracy"
+    ]
+  },
+  "subgroups": {
+    "attacker_count": [1, 2, 3, 4],
+    "source_victim_manhattan_distance_bins": {
+      "short": [1, 2],
+      "medium": [3, 4],
+      "long": [5, 6]
+    },
+    "other_declared_groups": [
+      "attack_strength_as_declared_in_manifest",
+      "traffic_or_workload_class_as_declared_in_manifest",
+      "victim_location_corner_edge_interior",
+      "source_location_corner_edge_interior",
+      "path_overlap_class_as_declared_or_train_derived_without_validation_tuning"
+    ]
+  },
+  "model_comparison": {
+    "tranche_a_screening_candidates": [
+      "logistic_regression", "random_forest", "xgboost", "mlp", "lstm",
+      "conv1d_or_tcn", "conv1d_gcnconv", "conv1d_graphconv", "optional_conv1d_gatconv"
+    ],
+    "a_plus_b_confirmation_candidates": [
+      "conv1d_only", "lstm_or_temporal_recurrent_finalist",
+      "conv1d_gcnconv", "conv1d_graphconv"
+    ],
+    "classical_models_graph_detection_only": true,
+    "confirmed_models_report_mean_and_std_across_frozen_seeds": true
+  },
+  "inference_latency": {
+    "batch_size": 1,
+    "warmup_iterations": 100,
+    "measured_iterations": 1000,
+    "cuda_synchronize_required": true,
+    "gpu_must_be_exclusive": true,
+    "report": ["median", "mean", "p95", "standard_deviation"],
+    "cost_metrics": [
+      "parameter_count", "serialized_weight_bytes", "peak_activation_memory_bytes",
+      "mac_or_operation_estimate", "cpu_batch1_latency", "gpu_batch1_latency"
+    ]
+  },
+  "feature_followup": {
+    "f7_status": "completed_before_this_protocol",
+    "f8_f10_gpu_training_deferred_until_mainline_a_plus_b_is_safe": true,
+    "f9_analysis_may_use_existing_f5_f6_f7_outputs": true,
+    "f11_analytical_monitoring_cost_may_be_prepared_cpu_only": true,
+    "no_permanent_feature_removal_from_single_seed_f7": true
+  }
+}

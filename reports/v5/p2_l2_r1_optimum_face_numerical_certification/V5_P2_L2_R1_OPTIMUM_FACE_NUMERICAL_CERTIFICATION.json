@@ -1,0 +1,89 @@
+{
+  "L4_cache_migration": {
+    "cached_outputs_recomputed": false,
+    "completed_prefix_preserved": 6822,
+    "new_exact_decoder_sha256": "50b054ee07e46deface513ce468bdd7958c9138475659904a426d7112644e1f5",
+    "old_exact_decoder_sha256": "b60f1f233f6d09986b62142eafb5152e1ffd15089aa34c14e12b0f9af0c1cfb4",
+    "reason_for_preservation": "The correction changes only post-solve certification. The MILP and decoded outputs are unchanged.",
+    "work_manifest_after_sha256": "9f509e74235b897f311d6915772f595252d34e0f4249873b145778c94d6e53d5",
+    "work_manifest_before_sha256": "0bab577014975213b67e207776967c554660d1f87bbeacebbe65e0a689c94e3d"
+  },
+  "append_only_correction": true,
+  "created_utc": "2026-07-28T21:42:01.882495+00:00",
+  "current_certified_rerun": {
+    "attacker_count": 2,
+    "certified": true,
+    "exact_historical_residual_reproduction_required": false,
+    "lexicographic_mip_gap": 0.0,
+    "primary_mip_gap": 0.0,
+    "route_ids": [
+      202,
+      220
+    ],
+    "semantic_face_certification_tolerance": 2e-12,
+    "semantic_face_numerical_allowance": 1e-12,
+    "semantic_face_score_difference": 1.7763568394002505e-15,
+    "validation_item_index": 6820
+  },
+  "current_rerun_certified": true,
+  "current_rerun_exact_residual_reproduction_required": false,
+  "evidence_hashes": {
+    "L2_R0_json_sha256": "526aad96b0f35b02c281b857b778db02a769930b9a54fe16314d18fc705b5ad3",
+    "L2_R0_marker_sha256": "0a7829046f28ab66a3519de538b36f19deeb1323e4d0e59470fcbeb13f8e0918",
+    "patched_exact_decoder_sha256": "50b054ee07e46deface513ce468bdd7958c9138475659904a426d7112644e1f5",
+    "test_log_sha256": "57e0da9033712aea8509073e1d72a199024ad10777586758242c595dfbfffda2"
+  },
+  "freezer_evidence_correction_revision": "R0",
+  "frozen_numerical_certification": {
+    "MILP_constraints_changed": false,
+    "MILP_objective_changed": false,
+    "certification_rule": "difference <= semantic_tie_tolerance + item-specific float64 allowance",
+    "face_score_accumulation_ulp_multiplier": 1024,
+    "face_score_forward_error_safety_factor": 2.0,
+    "face_score_numerical_allowance_cap": 1e-12,
+    "lexicographic_objective_changed": false,
+    "material_difference_policy": "hard error",
+    "route_search_space_changed": false,
+    "semantic_tie_rule_changed": false,
+    "semantic_tie_tolerance": 1e-12
+  },
+  "historical_trigger_evidence_bound": true,
+  "new_exact_decoder_sha256": "50b054ee07e46deface513ce468bdd7958c9138475659904a426d7112644e1f5",
+  "old_exact_decoder_sha256": "b60f1f233f6d09986b62142eafb5152e1ffd15089aa34c14e12b0f9af0c1cfb4",
+  "original_L2_and_L2_R0_reports_preserved_unchanged": true,
+  "reason": "The bound historical L4-R1 log records an optimal integer solution whose independently recomputed score exceeded the 1e-12 semantic-face boundary by a 1.44e-13 float64 evaluation residual. A fresh certified rerun is required, but exact last-bit reproduction of that residual is not required. The semantic tolerance remains unchanged; only the bounded post-solve numerical certification envelope is added.",
+  "security_boundary": {
+    "model_checkpoint_loaded": false,
+    "model_inference_performed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensors_deserialized": false,
+    "validation_archive_item_read": true,
+    "validation_tensor_dataset_reopened": false
+  },
+  "stage": "V5_P2_L2_R1_OPTIMUM_FACE_NUMERICAL_CERTIFICATION",
+  "state_after_L2_R1": {
+    "L4_cache_resume_authorized": true,
+    "exact_decoder_backend_frozen": true,
+    "next_action": "resume_V5_P2_L4_at_preserved_prefix",
+    "optimum_face_numerical_certification_frozen": true,
+    "semantic_tie_tolerance_unchanged": true
+  },
+  "status": "COMPLETE",
+  "tests": {
+    "combined_tests_run": 22,
+    "historical_failure_log_sha256": "dc79ee1ac3d92422d015a44e153429b30afae1f30dc1dff6a0089b8f086dfb7f",
+    "result": "PASS",
+    "test_log_sha256": "57e0da9033712aea8509073e1d72a199024ad10777586758242c595dfbfffda2"
+  },
+  "triggering_failure": {
+    "boundary_crossing_verified": true,
+    "evidence_source": "bound_historical_L4_R1_log",
+    "failure_log_path": "/home/zira/research/projects/GNN-2d/logs/v5/v5_p2_l4_decoder_validation_selection_r1.log",
+    "failure_log_sha256": "dc79ee1ac3d92422d015a44e153429b30afae1f30dc1dff6a0089b8f086dfb7f",
+    "reported_score_difference": 1.1439738045737613e-12,
+    "reported_semantic_tolerance": 1e-12,
+    "validation_item_index": 6820
+  }
+}

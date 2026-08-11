@@ -1,0 +1,136 @@
+{
+  "append_only_amendment": true,
+  "created_utc": "2026-07-29T19:31:45.425626+00:00",
+  "evidence": {
+    "beam_decoder": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_beam_decoder.py",
+      "sha256": "0f5ee67f7ddfd21fcecc9b432e6b184567918045868f075dc7d91f68c903a3b8"
+    },
+    "e2_thresholds": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_e2_raw_threshold_freeze/V5_P2_E2_FROZEN_RAW_THRESHOLDS.json",
+      "sha256": "b9acb9dac24cc1d0fe2cdae32525a4c0bdddc40e1607824599ad5bc3a446d957"
+    },
+    "exact_decoder": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+      "sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c"
+    },
+    "l4_artifact_json": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION.json",
+      "sha256": "09523edb4b362e3510f825a4f5888a8a7d01887d1e065893317166b93e60f34b"
+    },
+    "l4_lock_json": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION_LOCK.json",
+      "sha256": "8615a6271da6fdf437fedbb9b92da1fea3013c79a6cf48eb81a6207ac29cb586"
+    },
+    "l4_markdown": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION.md",
+      "sha256": "5d4a9f6b80cebefa72e357367c189d080e2e4f257b35fd1469caf830ddbb7422"
+    },
+    "l4_marker": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION_COMPLETE",
+      "sha256": "fa8bddc897d53c789e12b3dfe86c4897cdfaeeb19ec0c61753aeb83612cea214"
+    },
+    "l4_report_json": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION.json",
+      "sha256": "9059b2354d143cd911e32e532312c708b46cd265aa48e0a28daa9b0b4443c5e7"
+    },
+    "route_table": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/decoders/xy4x4_route_table.json",
+      "sha256": "19624d95a83114fba1e27e647aab59a0231c97d45053b598692ae62578b321b0"
+    }
+  },
+  "frozen_disposition": {
+    "A0": {
+      "count_rule": "argmax K1-K4 on graph-positive items",
+      "graph_negative_rule": "count zero and empty role masks",
+      "name": "independent-threshold lightweight decoder",
+      "official_blind_test_output_group": true,
+      "role": "lightweight deployment and hardware baseline",
+      "thresholds": {
+        "graph": 0.47174675035328983,
+        "path": 0.8339347466090468,
+        "source": 0.9496054929928593,
+        "transit": 0.8570333248835911,
+        "victim": 0.8260114802699812
+      }
+    },
+    "A1": {
+      "all_validation_items_certified": 12528,
+      "decimal_precision_digits": 80,
+      "margin_threshold": 8.720532088239842,
+      "name": "exact legal XY structured decoder",
+      "official_blind_test_output_group": true,
+      "role": "primary exact structured software reference",
+      "route_space": "240 ordered non-self deterministic X-then-Y routes",
+      "semantic_tie_tolerance": 1e-12
+    },
+    "A2": {
+      "configuration_selected": false,
+      "configurations_evaluated": 9,
+      "eligible_configurations": 0,
+      "equivalent_to_A1_claim_allowed": false,
+      "name": "hardware-oriented beam decoder",
+      "official_blind_test_output_group": false,
+      "status": "REJECTED_FOR_V5_OFFICIAL_DECODER",
+      "threshold_selected_for_official_test": false,
+      "validation_only_approximation_study": true
+    },
+    "raw_neural_outputs": {
+      "official_blind_test_output_group": true,
+      "purpose": "unmodified neural-output reference"
+    }
+  },
+  "future_work_boundary": {
+    "A3_is_outside_V5": true,
+    "A3_must_not_be_tuned_to_pass_the_already_observed_L4_grid": true,
+    "A3_requires_new_prospective_training_or_calibration_protocol": true,
+    "improved_hardware_decoder_name": "A3"
+  },
+  "protocol_constraints": {
+    "A0_thresholds_changed": false,
+    "A1_decoder_changed": false,
+    "A1_does_not_overwrite_raw_or_A0_metrics": true,
+    "A1_threshold_changed": false,
+    "A2_equivalence_requirements_relaxed": false,
+    "A2_official_test_execution": false,
+    "A2_posthoc_configuration_selection": false,
+    "additional_decoder_tuning_inside_V5": false,
+    "model_retraining_required": false,
+    "official_test_output_groups": [
+      "raw_neural",
+      "A0_lightweight",
+      "A1_exact_structured"
+    ],
+    "report_A0_and_A1_separately": true
+  },
+  "reason": "L4 completed with zero of nine A2 beam configurations satisfying the prospectively frozen exact-equivalence and metric-loss gates. This amendment records the disposition without relaxing any gate, retuning any decoder, or inspecting the P2 test split.",
+  "schema_resolution": {
+    "completion_marker": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_r1_r0_e2_threshold_schema_resolution/V5_P2_L4_R1_R0_E2_THRESHOLD_SCHEMA_RESOLUTION_COMPLETE",
+    "completion_marker_sha256": "1c65e896d2b678d5549186ab2b00fb58402487d8bb63c70316e184a6a67b49ca",
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_r1_r0_e2_threshold_schema_resolution",
+    "scientific_protocol_changed": false,
+    "stage": "V5_P2_L4_R1_R0_E2_THRESHOLD_SCHEMA_RESOLUTION",
+    "thresholds_changed": false
+  },
+  "stage": "V5_P2_L4_R1_DECODER_DISPOSITION_AMENDMENT",
+  "state_after_L4_R1": {
+    "A1_exact_decoder_frozen": true,
+    "A1_threshold_frozen": true,
+    "A2_configuration_selected": false,
+    "A2_rejected": true,
+    "architecture_selected": true,
+    "checkpoint_selected": true,
+    "decoder_disposition_frozen": true,
+    "next_stage": "V5_P2_L5_FINAL_PRETEST_FREEZE",
+    "official_test_decoders": [
+      "A0",
+      "A1"
+    ],
+    "raw_thresholds_frozen": true,
+    "ready_for_one_shot_test": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_tensors_deserialized": false
+  },
+  "status": "COMPLETE"
+}

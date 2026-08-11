@@ -1,0 +1,167 @@
+{
+  "audit_boundary": {
+    "test_performance_evaluated": false,
+    "test_tensors_read": false,
+    "threshold_search_performed": false,
+    "train_split_only": true,
+    "validation_performance_evaluated": false,
+    "validation_tensors_read": false
+  },
+  "device": "cuda",
+  "failures": [],
+  "next_stage": "V5_P0_B0_SHORTCUT_AND_TRIVIAL_BASELINES",
+  "overfit_gate": {
+    "all_tasks_exact_min": 0.9,
+    "attack_accuracy_min": 0.995,
+    "count_accuracy_min": 0.995,
+    "passed": true,
+    "path_exact_set_min": 0.95,
+    "source_exact_set_min": 0.98,
+    "transit_exact_set_min": 0.95,
+    "victim_exact_set_min": 0.98
+  },
+  "parameter_count": 1808648,
+  "positive_weights": {
+    "attack": 1.0,
+    "path": 3.56,
+    "source": 20.0,
+    "transit": 6.97667638483965,
+    "victim": 20.0
+  },
+  "provenance": {
+    "a3_lock_sha256": "829b8c96f5cab1d2463ef1dc7640400c57b89b71dbf737144da7d9547e8abc3a",
+    "a3_report_sha256": "18e1059aeceaf32d51900afa74e3676ff995cb56d26640e2e4f6a9f667d7bd3f",
+    "best_checkpoint_sha256": "d85b4815ba13a1275162dc15603e52cce8f3f62ed1efa1dad23828bb6d17f402",
+    "final_checkpoint_sha256": "fab2ed66548cded7395faace4a49af98baccaef67815ea04a3bf1af1d49533c5",
+    "history_sha256": "edc1319876c1a48c8573a81a671da439a4f4781a1e8c04ea6a60b86567097cda",
+    "script_sha256": "5bca622346487e5249ab69c87c143af297a02a9ce293ad92f1252d73de0f7d80",
+    "wrapper_sha256": "1dc9953682afdc5b743e9e6005a00bc9bdf41a73bd2a80bbebd9d8ebb7783d67"
+  },
+  "purpose": "train-only pipeline and optimization diagnostic; not a generalization result",
+  "run_window_counts": {
+    "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-ATTACK": 86,
+    "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-CONTROL": 86,
+    "V5-INITIAL24-S05-S2T14-SEED510005-ATTACK": 85,
+    "V5-INITIAL24-S05-S2T14-SEED510005-CONTROL": 85
+  },
+  "selected_pairs": {
+    "V5-INITIAL24-D06-S5T15-S10T0-SEED510012": {
+      "attack": {
+        "T": 719,
+        "active_epochs": 719,
+        "case_id": "D06",
+        "max_attacker_count": 2,
+        "path": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D06_ATTACK.pt",
+        "path_positive_entries": 7190,
+        "run_id": "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-ATTACK",
+        "source_positive_entries": 1438,
+        "source_victim_overlap_entries": 0,
+        "transit_positive_entries": 4314,
+        "victim_positive_entries": 1438
+      },
+      "control": {
+        "T": 719,
+        "active_epochs": 0,
+        "case_id": "D06",
+        "max_attacker_count": 0,
+        "path": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/D06_CONTROL.pt",
+        "path_positive_entries": 0,
+        "run_id": "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-CONTROL",
+        "source_positive_entries": 0,
+        "source_victim_overlap_entries": 0,
+        "transit_positive_entries": 0,
+        "victim_positive_entries": 0
+      }
+    },
+    "V5-INITIAL24-S05-S2T14-SEED510005": {
+      "attack": {
+        "T": 705,
+        "active_epochs": 705,
+        "case_id": "S05",
+        "max_attacker_count": 1,
+        "path": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S05_ATTACK.pt",
+        "path_positive_entries": 2820,
+        "run_id": "V5-INITIAL24-S05-S2T14-SEED510005-ATTACK",
+        "source_positive_entries": 705,
+        "source_victim_overlap_entries": 0,
+        "transit_positive_entries": 1410,
+        "victim_positive_entries": 705
+      },
+      "control": {
+        "T": 705,
+        "active_epochs": 0,
+        "case_id": "S05",
+        "max_attacker_count": 0,
+        "path": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/runs/train/S05_CONTROL.pt",
+        "path_positive_entries": 0,
+        "run_id": "V5-INITIAL24-S05-S2T14-SEED510005-CONTROL",
+        "source_positive_entries": 0,
+        "source_victim_overlap_entries": 0,
+        "transit_positive_entries": 0,
+        "victim_positive_entries": 0
+      }
+    }
+  },
+  "selected_run_ids": [
+    "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-ATTACK",
+    "V5-INITIAL24-D06-S5T15-S10T0-SEED510012-CONTROL",
+    "V5-INITIAL24-S05-S2T14-SEED510005-ATTACK",
+    "V5-INITIAL24-S05-S2T14-SEED510005-CONTROL"
+  ],
+  "stage": "V5_P0_A4_TINY_SUBSET_OVERFIT",
+  "status": "PASS",
+  "target_coverage": {
+    "attack_positive_samples": 171,
+    "count_values": [
+      0,
+      1,
+      2
+    ],
+    "path_positive_entries": 1200,
+    "samples": 342,
+    "source_positive_entries": 257,
+    "transit_positive_entries": 686,
+    "victim_positive_entries": 257
+  },
+  "tiny_window_count": 342,
+  "training": {
+    "batch_size": 64,
+    "best_epoch": 6,
+    "best_metrics": {
+      "all_tasks_exact": 0.9912280701754386,
+      "attack_accuracy": 1.0,
+      "count_accuracy": 1.0,
+      "loss": 0.026388217068729344,
+      "path_exact_set": 0.9941520467836257,
+      "path_node_f1": 0.9991659716430359,
+      "samples": 342,
+      "source_exact_set": 0.9970760233918129,
+      "source_node_f1": 0.9980506822612085,
+      "transit_exact_set": 0.9941520467836257,
+      "transit_node_f1": 0.9985401459854014,
+      "victim_exact_set": 1.0,
+      "victim_node_f1": 1.0
+    },
+    "binary_threshold": 0.5,
+    "epochs_completed": 6,
+    "final_metrics": {
+      "all_tasks_exact": 0.9912280701754386,
+      "attack_accuracy": 1.0,
+      "count_accuracy": 1.0,
+      "path_exact_set": 0.9941520467836257,
+      "path_node_f1": 0.9991659716430359,
+      "samples": 342,
+      "source_exact_set": 0.9970760233918129,
+      "source_node_f1": 0.9980506822612085,
+      "transit_exact_set": 0.9941520467836257,
+      "transit_node_f1": 0.9985401459854014,
+      "victim_exact_set": 1.0,
+      "victim_node_f1": 1.0
+    },
+    "learning_rate": 0.001,
+    "maximum_epochs": 300,
+    "seed": 7,
+    "weight_decay": 0.0
+  },
+  "warnings": []
+}

@@ -1,0 +1,34 @@
+TCN-GCN DS2 4x4 24-feature artifact index
+
+Project root:
+/home/zira/research/projects/GNN-2d
+
+Dataset:
+data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+
+Balanced split:
+splits/balanced_placement_ds2_4x4_seed7.npz
+
+Training scripts:
+scripts/train_temporal_gcn_early_stopping.py
+scripts/train_temporal_tcn_gcn_early_stopping.py
+
+Evaluation scripts:
+scripts/eval_temporal_gcn_thresholds.py
+scripts/eval_temporal_gcn_topk.py
+scripts/eval_temporal_tcn_gcn.py
+
+Pre-balanced Conv1D-GCN model:
+models/temporal_gcn_float_placement_ds2_4x4_portfeat_es
+
+Pre-balanced TCN-GCN model:
+models/temporal_tcn_gcn_placement_ds2_4x4_portfeat_ep75_pat10
+
+Balanced Conv1D-GCN model:
+models/temporal_gcn_float_balancedplacement_ds2_4x4_portfeat_es_seed7
+
+Balanced TCN-GCN model:
+models/temporal_tcn_gcn_balancedplacement_ds2_4x4_portfeat_es_seed7
+
+Main report folder:
+reports/tcn-gcn-ds-24feature

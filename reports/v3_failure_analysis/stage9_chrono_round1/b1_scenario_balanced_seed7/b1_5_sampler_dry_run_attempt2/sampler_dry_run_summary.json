@@ -1,0 +1,172 @@
+{
+  "overall_success": true,
+  "checks": {
+    "sample_count_exact": true,
+    "normal_fraction_in_range": true,
+    "normal_and_attack_present": true,
+    "all_training_runs_observed": true,
+    "all_normal_profiles_observed": true,
+    "all_attack_profiles_observed": true,
+    "all_attack_strengths_observed": true,
+    "all_attack_counts_observed": true,
+    "no_validation_indices": true,
+    "no_test_indices": true,
+    "all_indices_are_train": true,
+    "temporal_collision_rate_within_limit": true,
+    "all_batches_nonempty": true,
+    "batch_count_matches_sampler": true
+  },
+  "configuration": {
+    "data_dir": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "batch_size": 256,
+    "samples_per_epoch": 148185,
+    "seed": 7,
+    "epoch_index": 0,
+    "temporal_window_length": 8,
+    "max_temporal_retries": 32,
+    "max_collision_rate": 0.05
+  },
+  "split_sizes": {
+    "train": 148185,
+    "validation": 42809,
+    "test": 42809
+  },
+  "coverage": {
+    "expected_training_runs": 45,
+    "observed_training_runs": 45,
+    "missing_training_runs": [],
+    "expected_profiles": [
+      "bursty",
+      "compute",
+      "idle",
+      "mixed",
+      "stream"
+    ],
+    "observed_profiles": [
+      "bursty",
+      "compute",
+      "idle",
+      "mixed",
+      "stream"
+    ],
+    "expected_attack_strengths": [
+      "20",
+      "63",
+      "77"
+    ],
+    "observed_attack_strengths": [
+      "20",
+      "63",
+      "77"
+    ],
+    "expected_attack_counts": [
+      1,
+      2,
+      3
+    ],
+    "observed_attack_counts": [
+      1,
+      2,
+      3
+    ]
+  },
+  "split_isolation": {
+    "validation_overlap": 0,
+    "test_overlap": 0,
+    "non_train_sample_count": 0
+  },
+  "sampler_stats": {
+    "epoch_index": 0,
+    "seed_used": 7,
+    "samples_requested": 148185,
+    "samples_drawn": 148185,
+    "batches_drawn": 579,
+    "class_counts": {
+      "attack": 74092,
+      "normal": 74093
+    },
+    "normal_fraction": 0.5000033741606775,
+    "profile_counts": {
+      "bursty": 39737,
+      "compute": 14807,
+      "idle": 14743,
+      "mixed": 39530,
+      "stream": 39368
+    },
+    "strength_counts": {
+      "20": 24668,
+      "63": 24680,
+      "77": 24744,
+      "NA": 74093
+    },
+    "attacker_count_counts": {
+      "0": 74093,
+      "1": 24668,
+      "2": 24680,
+      "3": 24744
+    },
+    "unique_runs_sampled": 45,
+    "run_counts": {
+      "N-0-15-Pbursty-R23-A-1-11-S63-V3": 2023,
+      "N-0-15-Pbursty-R23-A-1-7-11-S77-V3": 4065,
+      "N-0-15-Pbursty-R23-A-1-S20-V3": 1362,
+      "N-0-15-Pbursty-R23-A-7-12-S63-V3": 2011,
+      "N-0-15-Pbursty-R23-A-7-S20-V3": 1420,
+      "N-0-15-Pbursty-R3-V3": 2477,
+      "N-0-15-Pstream-R0-V3": 2432,
+      "N-0-15-Pstream-R20-A-1-7-S63-V3": 2044,
+      "N-0-15-Pstream-R20-A-11-S20-V3": 1592,
+      "N-0-15-Pstream-R20-A-12-S20-V3": 1614,
+      "N-0-3-6-9-12-15-Pstream-R9-V3": 7367,
+      "N-0-6-9-15-Pmixed-R26-A-1-7-S63-V3": 2778,
+      "N-0-6-9-15-Pmixed-R26-A-11-S20-V3": 1651,
+      "N-0-6-9-15-Pmixed-R26-A-12-S20-V3": 1613,
+      "N-0-6-9-15-Pmixed-R6-V3": 4971,
+      "N-0-6-Pbursty-R24-A-1-7-S63-V3": 2048,
+      "N-0-6-Pbursty-R24-A-11-S20-V3": 1441,
+      "N-0-6-Pbursty-R24-A-12-S20-V3": 1372,
+      "N-0-6-Pbursty-R4-V3": 2452,
+      "N-0-6-Pstream-R1-V3": 2499,
+      "N-0-6-Pstream-R21-A-1-11-S63-V3": 2022,
+      "N-0-6-Pstream-R21-A-1-7-11-S77-V3": 8261,
+      "N-0-6-Pstream-R21-A-1-S20-V3": 1716,
+      "N-0-6-Pstream-R21-A-7-12-S63-V3": 2056,
+      "N-0-6-Pstream-R21-A-7-S20-V3": 1580,
+      "N-0-Pcompute-R0-V3": 7486,
+      "N-1-4-11-14-Pmixed-R28-A-12-S20-V3": 1641,
+      "N-1-4-11-14-Pmixed-R8-V3": 4915,
+      "N-1-4-7-10-13-15-Pbursty-R10-V3": 7502,
+      "N-15-Pcompute-R1-V3": 7321,
+      "N-2-5-10-13-Pmixed-R27-A-1-11-S63-V3": 2710,
+      "N-2-5-10-13-Pmixed-R27-A-1-7-11-S77-V3": 8217,
+      "N-2-5-10-13-Pmixed-R27-A-1-S20-V3": 1593,
+      "N-2-5-10-13-Pmixed-R27-A-7-12-S63-V3": 2784,
+      "N-2-5-10-13-Pmixed-R27-A-7-S20-V3": 1615,
+      "N-2-5-10-13-Pmixed-R7-V3": 5042,
+      "N-3-12-Pbursty-R25-A-1-11-S63-V3": 2138,
+      "N-3-12-Pbursty-R25-A-1-7-11-S77-V3": 4201,
+      "N-3-12-Pbursty-R25-A-1-S20-V3": 1413,
+      "N-3-12-Pbursty-R25-A-7-S20-V3": 1384,
+      "N-3-12-Pbursty-R5-V3": 2428,
+      "N-3-12-Pstream-R2-V3": 2458,
+      "N-3-12-Pstream-R22-A-1-7-S63-V3": 2066,
+      "N-3-12-Pstream-R22-A-11-S20-V3": 1661,
+      "N-idle-Pidle-R0-V3": 14743
+    },
+    "unique_indices_sampled": 81374,
+    "duplicate_index_draws": 66811,
+    "duplicate_index_fraction": 0.4508620980531093,
+    "repeated_run_draws_within_batches": 122133,
+    "temporal_collision_count": 0,
+    "temporal_collision_rate": 0.0,
+    "minimum_observed_within_run_gap": 8,
+    "median_observed_within_run_gap": 271.0,
+    "temporal_window_length": 8
+  },
+  "batch_statistics": {
+    "batch_count": 579,
+    "minimum_batch_size": 217,
+    "maximum_batch_size": 256,
+    "final_batch_size": 217
+  }
+}

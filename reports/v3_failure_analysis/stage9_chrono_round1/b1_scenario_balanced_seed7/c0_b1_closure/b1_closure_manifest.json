@@ -1,0 +1,118 @@
+{
+  "stage": "C0_B1_closure",
+  "created_utc": "2026-07-21T11:21:34.448345+00:00",
+  "status": "CLOSED_AND_REJECTED",
+  "scientific_decision": {
+    "b1_verdict": "reject",
+    "retained_architecture": "Chrono-A1 Conv1D-TemporalGCN",
+    "scenario_balanced_sampler_retained": false,
+    "next_experiment": "Return to Chrono-A1 unchanged. The next single-change experiment should test an alternative graph readout while freezing the Conv1D encoder, GCN layers, node head, losses, splits, and evaluation protocol."
+  },
+  "verdict_checks": {
+    "formal_verdict_is_reject": true,
+    "retained_architecture_is_chrono_a1": true,
+    "scenario_balanced_sampler_not_retained": true
+  },
+  "historically_frozen_hash_checks": {
+    "a1_source": true,
+    "b1_source": true,
+    "b1_sampler": true,
+    "a1_checkpoint": true
+  },
+  "key_hashes": {
+    "a1_source": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b",
+    "b1_source": "9a0d4ce709e7109388915a291f219cd653f38cb53aae5a1fffde2d01f892aafd",
+    "b1_sampler": "742d8c1ea8e1d8e54993cfa8df8447598fd10bb4c325c2760ed5a45ae2b42404",
+    "a1_checkpoint": "c29cdd2303669a61454ed118ef0be4b8809a635b12c0c42806f8b6992340e0ef",
+    "b1_checkpoint": "7605d9200f86964430de41c90842d2a04842450308d295eb9dc48bc3fca79834"
+  },
+  "required_reports": {
+    "validation_export_manifest": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_9_validation_predictions/validation_export_manifest.json",
+      "sha256": "1fee5ebd4598ff7776e53df0e43aaba783d66764a866eb5fadd1f7e1552e6396"
+    },
+    "validation_alignment_audit": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_10_validation_alignment/validation_alignment_audit.json",
+      "sha256": "ea48eb4e9642ab18b80fefe8b3c260f0911d6596206c46ee04f0aa21a03d2cc0"
+    },
+    "validation_threshold_selection": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_11_validation_threshold_selection/validation_threshold_selection.json",
+      "sha256": "de6e2e36086fd74b5cadc404aea2909eed563fdde5375f3db256f10fa398b1dd"
+    },
+    "test_threshold_transfer": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_12_test_threshold_transfer/test_threshold_transfer.json",
+      "sha256": "58a2db7ff53d1424a94a4d6cf56d4bea3305fa5fe1978cb3bd5edb36d9984c5a"
+    },
+    "graph_run_scenario_analysis": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_13_graph_run_scenario_analysis/graph_run_scenario_analysis.json",
+      "sha256": "95a9ddb0cbdf296b3168d18c6c1d0340b38c8d9a1aea6316297d28bf30988e58"
+    },
+    "final_b1_json": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_14_17_combined_final_analysis/final_b1_report.json",
+      "sha256": "60099707ba160b01df9e165a305af90bfd6fba08f9f890a4f8ea9878676855c1"
+    },
+    "final_b1_markdown": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_14_17_combined_final_analysis/final_b1_report.md",
+      "sha256": "7ae2fbf6cd9e7865eba0b33624a902d14b5c61cce99ff460bd235d3b64c0fdc2"
+    }
+  },
+  "artifact_inventory": {
+    "file_count": 61,
+    "total_bytes": 16426092,
+    "csv": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/c0_b1_closure/b1_artifact_inventory_sha256.csv",
+    "csv_sha256": "a1926345972b67fcc535ede57b43baea7f7d5ab315746a2b16ee0c9b85c580fd"
+  },
+  "repository": {
+    "root": "/home/zira/research/projects/GNN-2d",
+    "git_head": {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "0c4c2d85976e648fd93df792cc19023bc2a61f9c",
+      "stderr": ""
+    },
+    "git_branch": {
+      "command": [
+        "git",
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "siya/gcn_model",
+      "stderr": ""
+    },
+    "git_status_short": {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "stdout": "?? **Graph-level\n?? 10^{-4}\n?? Mean\n?? archive/\n?? references/GNN_UofF.pdf\n?? reports/balanced_placement_ds2_4x4_seed7_split_composition.txt\n?? reports/tcn-gcn-ds-24feature/\n?? reports/v3-ds-24feature/\n?? reports/v3_conv_vs_tcn_error_analysis.txt\n?? reports/v3_failure_analysis/\n?? reports/v3_tcn_gcn_builtin_split_result.txt\n?? scripts/compare_v3_conv_vs_meanpool_errors.py\n?? scripts/compare_v3_conv_vs_tcn_errors.py\n?? scripts/eval_temporal_tcn_gcn.py\n?? scripts/failure_analysis/\n?? scripts/make_balanced_placement_splits.py\n?? scripts/samplers/\n?? scripts/sweep_v3_graph_thresholds.py\n?? scripts/sweep_v3_graph_thresholds_maxpool.py\n?? scripts/sweep_v3_graph_thresholds_meanpool.py\n?? scripts/train_temporal_gcn_early_stopping.py\n?? scripts/train_temporal_gcn_v3.py\n?? scripts/train_temporal_gcn_v3.py.broken\n?? scripts/train_temporal_gcn_v3_chrono_b1.py\n?? scripts/train_temporal_gcn_v3_stage9_b1.py\n?? scripts/train_temporal_tcn_gcn_early_stopping.py\n?? scripts/train_temporal_tcn_gcn_v3.py\n?? scripts/train_temporal_tcn_gcn_v3.py.broken\n?? scripts/train_temporal_tcn_maxpool_gcn_v3.py\n?? scripts/train_temporal_tcn_meanpool_gcn_v3.py",
+      "stderr": ""
+    }
+  },
+  "environment": {
+    "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "executable": "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+    "working_directory": "/home/zira/research/projects/GNN-2d",
+    "torch": {
+      "torch_version": "2.12.1+cu130",
+      "cuda_available": true,
+      "cuda_version": "13.0",
+      "device_name": "NVIDIA GeForce RTX 4070 Laptop GPU"
+    }
+  },
+  "immutability_note": "This closure package hashes but does not copy or modify the original model, source, prediction, or report artifacts.",
+  "closure_outputs": {
+    "manifest": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/c0_b1_closure/b1_closure_manifest.json",
+    "manifest_sha256": "50db2fa0f4449699e2ae411a260d1a5d4587bee2f8130eda0608614b20be1dab",
+    "summary": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/c0_b1_closure/b1_closure_summary.md",
+    "summary_sha256": "e913ad563e5fc5a6f92e6c71d3332c4824abdd2fa1a0e688a3ce7ba4ce6f1da4"
+  }
+}

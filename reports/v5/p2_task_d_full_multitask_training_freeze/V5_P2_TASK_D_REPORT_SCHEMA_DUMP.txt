@@ -1,0 +1,358 @@
+====================================================================================================
+reports/v5/p2_task_d_full_multitask_training/conv1d/seed_107/V5_P2_TASK_D_CONV1D_SEED_107_REPORT.json
+====================================================================================================
+
+TOP-LEVEL KEYS
+architecture
+artifacts
+best
+candidate
+data
+deployment_proxies
+failures
+label_weights
+next_stage
+security_boundary
+seed
+stage
+status
+training
+warnings
+
+FLATTENED SCALAR FIELDS
+architecture.b1_protocol_sha256: 0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60
+architecture.b3_model_sha256: 56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def
+architecture.common_initial_state_sha256: 8ec0d46aee51318af938711fe8e2f479d0bffa46fb846c6fede70c0d76309f41
+architecture.full_initial_state_sha256: 8ec0d46aee51318af938711fe8e2f479d0bffa46fb846c6fede70c0d76309f41
+architecture.loader_sha256: 2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2
+architecture.name: B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY_P2_COUNT4
+architecture.parameter_count: 43273
+architecture.promotion_report_sha256: 130e47a3246f69f5de3f3cb5e212278e09f10368ef131cad9e9306141c4d8b6e
+architecture.task_d_model_sha256: ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9
+artifacts.best_checkpoint: <list length=2>
+artifacts.history_csv: <list length=2>
+artifacts.progress_json: <list length=2>
+best.checkpoint_path: /home/zira/research/projects/GNN-2d/models/v5/p2_task_d_full_multitask/conv1d/seed_107/best_checkpoint.pt
+best.checkpoint_sha256: 0787bc769091d719cf04d3d75536e26de5f120e486e334d1931c6030914343ab
+best.epoch: 58
+best.ranking_tuple: <list length=5>
+best.validation_metrics.attack_loss: 0.5138088819472116
+best.validation_metrics.count_active.accuracy: 0.994556341861731
+best.validation_metrics.count_active.confusion_matrix: <list length=4>
+best.validation_metrics.count_active.macro_f1: 0.9947423768231027
+best.validation_metrics.count_active.support: 3674
+best.validation_metrics.count_loss: 0.015008508421066288
+best.validation_metrics.graph.auroc: 0.8950481739767072
+best.validation_metrics.graph.average_precision: 0.717845999208222
+best.validation_metrics.graph.fixed_0_5.accuracy: 0.8089080459770115
+best.validation_metrics.graph.fixed_0_5.f1: 0.7432432432432432
+best.validation_metrics.graph.fixed_0_5.fn: 209
+best.validation_metrics.graph.fixed_0_5.fp: 2185
+best.validation_metrics.graph.fixed_0_5.fpr: 0.24678111587982832
+best.validation_metrics.graph.fixed_0_5.precision: 0.6132743362831858
+best.validation_metrics.graph.fixed_0_5.recall: 0.9431137724550899
+best.validation_metrics.graph.fixed_0_5.tn: 6669
+best.validation_metrics.graph.fixed_0_5.tp: 3465
+best.validation_metrics.graph.negative_items: 8854
+best.validation_metrics.graph.positive_items: 3674
+best.validation_metrics.loss: 1.153542779262343
+best.validation_metrics.path_loss: 0.35942415708478537
+best.validation_metrics.roles.path.auroc: 0.9551489736299569
+best.validation_metrics.roles.path.average_precision: 0.6283990751200018
+best.validation_metrics.roles.path.fixed_0_5.accuracy: 0.8964319923371648
+best.validation_metrics.roles.path.fixed_0_5.f1: 0.700648882480173
+best.validation_metrics.roles.path.fixed_0_5.fn: 550
+best.validation_metrics.roles.path.fixed_0_5.fp: 20210
+best.validation_metrics.roles.path.fixed_0_5.fpr: 0.11508914995757476
+best.validation_metrics.roles.path.fixed_0_5.precision: 0.5458937198067633
+best.validation_metrics.roles.path.fixed_0_5.recall: 0.9778627490440732
+best.validation_metrics.roles.path.fixed_0_5.tn: 155393
+best.validation_metrics.roles.path.fixed_0_5.tp: 24295
+best.validation_metrics.roles.path.negative_entries: 175603
+best.validation_metrics.roles.path.positive_entries: 24845
+best.validation_metrics.roles.source.auroc: 0.9846424399461995
+best.validation_metrics.roles.source.average_precision: 0.644622179940047
+best.validation_metrics.roles.source.fixed_0_5.accuracy: 0.9496527777777778
+best.validation_metrics.roles.source.fixed_0_5.f1: 0.6419753086419753
+best.validation_metrics.roles.source.fixed_0_5.fn: 222
+best.validation_metrics.roles.source.fixed_0_5.fp: 9870
+best.validation_metrics.roles.source.fixed_0_5.fpr: 0.05162727928945799
+best.validation_metrics.roles.source.fixed_0_5.precision: 0.4782746590548684
+best.validation_metrics.roles.source.fixed_0_5.recall: 0.976051779935275
+best.validation_metrics.roles.source.fixed_0_5.tn: 181308
+best.validation_metrics.roles.source.fixed_0_5.tp: 9048
+best.validation_metrics.roles.source.negative_entries: 191178
+best.validation_metrics.roles.source.positive_entries: 9270
+best.validation_metrics.roles.transit.auroc: 0.9739609804130184
+best.validation_metrics.roles.transit.average_precision: 0.5932900652652968
+best.validation_metrics.roles.transit.fixed_0_5.accuracy: 0.9272329980842912
+best.validation_metrics.roles.transit.fixed_0_5.f1: 0.6416392314873962
+best.validation_metrics.roles.transit.fixed_0_5.fn: 184
+best.validation_metrics.roles.transit.fixed_0_5.fp: 14402
+best.validation_metrics.roles.transit.fixed_0_5.fpr: 0.07693129493712808
+best.validation_metrics.roles.transit.fixed_0_5.precision: 0.4755280407865987
+best.validation_metrics.roles.transit.fixed_0_5.recall: 0.9861048180033227
+best.validation_metrics.roles.transit.fixed_0_5.tn: 172804
+best.validation_metrics.roles.transit.fixed_0_5.tp: 13058
+best.validation_metrics.roles.transit.negative_entries: 187206
+best.validation_metrics.roles.transit.positive_entries: 13242
+best.validation_metrics.roles.victim.auroc: 0.9869408767051366
+best.validation_metrics.roles.victim.average_precision: 0.5981377392722533
+best.validation_metrics.roles.victim.fixed_0_5.accuracy: 0.9734045737547893
+best.validation_metrics.roles.victim.fixed_0_5.f1: 0.7497065589933799
+best.validation_metrics.roles.victim.fixed_0_5.fn: 38
+best.validation_metrics.roles.victim.fixed_0_5.fp: 5293
+best.validation_metrics.roles.victim.fixed_0_5.fpr: 0.027506677891760988
+best.validation_metrics.roles.victim.fixed_0_5.precision: 0.6013406643066957
+best.validation_metrics.roles.victim.fixed_0_5.recall: 0.9952630266766392
+best.validation_metrics.roles.victim.fixed_0_5.tn: 187133
+best.validation_metrics.roles.victim.fixed_0_5.tp: 7984
+best.validation_metrics.roles.victim.negative_entries: 192426
+best.validation_metrics.roles.victim.positive_entries: 8022
+best.validation_metrics.selection_score: 0.7718476145574708
+best.validation_metrics.source_loss: 0.21400743871356337
+best.validation_metrics.transit_loss: 0.2843998437925774
+best.validation_metrics.victim_loss: 0.12841358659063415
+candidate: conv1d
+data.item_batch_size: 256
+data.pair_block_batch_size: 128
+data.pair_keys_returned_to_model: False
+data.train_batches: 275
+data.train_items: 70166
+data.validation_batches: 49
+data.validation_items: 12528
+deployment_proxies.graph_linear_macs: 0
+deployment_proxies.graph_message_scalar_ops: 0
+deployment_proxies.inference_microseconds_per_item: 50.06254462891491
+deployment_proxies.peak_cuda_memory_bytes: 667746816
+deployment_proxies.total_linear_macs: 10899776
+failures: <list length=0>
+label_weights.count_class_weights_applied: False
+label_weights.count_distribution.1: 5855
+label_weights.count_distribution.2: 5441
+label_weights.count_distribution.3: 4728
+label_weights.count_distribution.4: 4294
+label_weights.graph_positive_weight: 2.45339108179939
+label_weights.role_positive_weights.path.clamped_positive_weight: 7.375342240922689
+label_weights.role_positive_weights.path.negative_entries: 988613
+label_weights.role_positive_weights.path.positive_entries: 134043
+label_weights.role_positive_weights.path.raw_positive_weight: 7.375342240922689
+label_weights.role_positive_weights.source.clamped_positive_weight: 20.0
+label_weights.role_positive_weights.source.negative_entries: 1074559
+label_weights.role_positive_weights.source.positive_entries: 48097
+label_weights.role_positive_weights.source.raw_positive_weight: 22.341497390689646
+label_weights.role_positive_weights.transit.clamped_positive_weight: 15.7433147902343
+label_weights.role_positive_weights.transit.negative_entries: 1055605
+label_weights.role_positive_weights.transit.positive_entries: 67051
+label_weights.role_positive_weights.transit.raw_positive_weight: 15.7433147902343
+label_weights.role_positive_weights.victim.clamped_positive_weight: 20.0
+label_weights.role_positive_weights.victim.negative_entries: 1081671
+label_weights.role_positive_weights.victim.positive_entries: 40985
+label_weights.role_positive_weights.victim.raw_positive_weight: 26.39187507624741
+next_stage: V5_P2_TASK_D_FULL_MULTITASK_MATRIX_AGGREGATION
+security_boundary.test_dataset_constructed: False
+security_boundary.test_directory_enumerated: False
+security_boundary.test_directory_existence_checked: False
+security_boundary.test_evaluation_performed: False
+security_boundary.test_tensor_files_opened: False
+security_boundary.test_tensors_deserialized: False
+security_boundary.threshold_tuning_performed: False
+security_boundary.train_tensor_contents_accessed: True
+security_boundary.validation_tensor_contents_accessed: True
+seed: 107
+stage: V5_P2_TASK_D_FULL_MULTITASK_SINGLE_RUN
+status: COMPLETE
+training.automatic_mixed_precision: False
+training.completed_epoch: 70
+training.device: cuda
+training.early_stopping_patience: 12
+training.gradient_clip_global_norm: 1.0
+training.initial_learning_rate: 0.001
+training.maximum_epochs: 100
+training.minimum_epochs_before_stop: 15
+training.optimizer: AdamW
+training.scheduler: ReduceLROnPlateau
+training.stopped_early: True
+training.total_elapsed_seconds: 2194.3212196826935
+training.weight_decay: 0.0001
+warnings: <list length=0>
+
+====================================================================================================
+reports/v5/p2_task_d_full_multitask_training/graphconv/seed_107/V5_P2_TASK_D_GRAPHCONV_SEED_107_REPORT.json
+====================================================================================================
+
+TOP-LEVEL KEYS
+architecture
+artifacts
+best
+candidate
+data
+deployment_proxies
+failures
+label_weights
+next_stage
+security_boundary
+seed
+stage
+status
+training
+warnings
+
+FLATTENED SCALAR FIELDS
+architecture.b1_protocol_sha256: 0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60
+architecture.b3_model_sha256: 56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def
+architecture.common_initial_state_sha256: 8ec0d46aee51318af938711fe8e2f479d0bffa46fb846c6fede70c0d76309f41
+architecture.full_initial_state_sha256: bb71557681484c861bda67fc280da0c049b4ed6a437e70aeae824530c3dacb46
+architecture.loader_sha256: 2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2
+architecture.name: TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4
+architecture.parameter_count: 59785
+architecture.promotion_report_sha256: 130e47a3246f69f5de3f3cb5e212278e09f10368ef131cad9e9306141c4d8b6e
+architecture.task_d_model_sha256: ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9
+artifacts.best_checkpoint: <list length=2>
+artifacts.history_csv: <list length=2>
+artifacts.progress_json: <list length=2>
+best.checkpoint_path: /home/zira/research/projects/GNN-2d/models/v5/p2_task_d_full_multitask/graphconv/seed_107/best_checkpoint.pt
+best.checkpoint_sha256: 82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc
+best.epoch: 25
+best.ranking_tuple: <list length=5>
+best.validation_metrics.attack_loss: 0.527075875307865
+best.validation_metrics.count_active.accuracy: 0.9863908546543277
+best.validation_metrics.count_active.confusion_matrix: <list length=4>
+best.validation_metrics.count_active.macro_f1: 0.9867282059256288
+best.validation_metrics.count_active.support: 3674
+best.validation_metrics.count_loss: 0.0322823147159034
+best.validation_metrics.graph.auroc: 0.8971664603519822
+best.validation_metrics.graph.average_precision: 0.7360511740605318
+best.validation_metrics.graph.fixed_0_5.accuracy: 0.794220945083014
+best.validation_metrics.graph.fixed_0_5.f1: 0.7398587285570131
+best.validation_metrics.graph.fixed_0_5.fn: 8
+best.validation_metrics.graph.fixed_0_5.fp: 2570
+best.validation_metrics.graph.fixed_0_5.fpr: 0.29026428732776144
+best.validation_metrics.graph.fixed_0_5.precision: 0.5878768441308531
+best.validation_metrics.graph.fixed_0_5.recall: 0.9978225367446925
+best.validation_metrics.graph.fixed_0_5.tn: 6284
+best.validation_metrics.graph.fixed_0_5.tp: 3666
+best.validation_metrics.graph.negative_items: 8854
+best.validation_metrics.graph.positive_items: 3674
+best.validation_metrics.loss: 1.1396889911909822
+best.validation_metrics.path_loss: 0.33175740228302175
+best.validation_metrics.roles.path.auroc: 0.9585548659348708
+best.validation_metrics.roles.path.average_precision: 0.6509758051365477
+best.validation_metrics.roles.path.fixed_0_5.accuracy: 0.9006824712643678
+best.validation_metrics.roles.path.fixed_0_5.f1: 0.7123703297020834
+best.validation_metrics.roles.path.fixed_0_5.fn: 192
+best.validation_metrics.roles.path.fixed_0_5.fp: 19716
+best.validation_metrics.roles.path.fixed_0_5.fpr: 0.11227598617335695
+best.validation_metrics.roles.path.fixed_0_5.precision: 0.5556356915864681
+best.validation_metrics.roles.path.fixed_0_5.recall: 0.9922720869390219
+best.validation_metrics.roles.path.fixed_0_5.tn: 155887
+best.validation_metrics.roles.path.fixed_0_5.tp: 24653
+best.validation_metrics.roles.path.negative_entries: 175603
+best.validation_metrics.roles.path.positive_entries: 24845
+best.validation_metrics.roles.source.auroc: 0.9859805446508714
+best.validation_metrics.roles.source.average_precision: 0.6484946984744402
+best.validation_metrics.roles.source.fixed_0_5.accuracy: 0.9567069763729247
+best.validation_metrics.roles.source.fixed_0_5.f1: 0.6806976230774892
+best.validation_metrics.roles.source.fixed_0_5.fn: 20
+best.validation_metrics.roles.source.fixed_0_5.fp: 8658
+best.validation_metrics.roles.source.fixed_0_5.fpr: 0.04528763769889841
+best.validation_metrics.roles.source.fixed_0_5.precision: 0.5165289256198347
+best.validation_metrics.roles.source.fixed_0_5.recall: 0.9978425026968716
+best.validation_metrics.roles.source.fixed_0_5.tn: 182520
+best.validation_metrics.roles.source.fixed_0_5.tp: 9250
+best.validation_metrics.roles.source.negative_entries: 191178
+best.validation_metrics.roles.source.positive_entries: 9270
+best.validation_metrics.roles.transit.auroc: 0.9723524926393854
+best.validation_metrics.roles.transit.average_precision: 0.5924258930480705
+best.validation_metrics.roles.transit.fixed_0_5.accuracy: 0.9255367975734355
+best.validation_metrics.roles.transit.fixed_0_5.f1: 0.6327805934163264
+best.validation_metrics.roles.transit.fixed_0_5.fn: 382
+best.validation_metrics.roles.transit.fixed_0_5.fp: 14544
+best.validation_metrics.roles.transit.fixed_0_5.fpr: 0.0776898176340502
+best.validation_metrics.roles.transit.fixed_0_5.precision: 0.4692745584586192
+best.validation_metrics.roles.transit.fixed_0_5.recall: 0.9711523938982027
+best.validation_metrics.roles.transit.fixed_0_5.tn: 172662
+best.validation_metrics.roles.transit.fixed_0_5.tp: 12860
+best.validation_metrics.roles.transit.negative_entries: 187206
+best.validation_metrics.roles.transit.positive_entries: 13242
+best.validation_metrics.roles.victim.auroc: 0.9882832458185761
+best.validation_metrics.roles.victim.average_precision: 0.6399889650792403
+best.validation_metrics.roles.victim.fixed_0_5.accuracy: 0.9732399425287356
+best.validation_metrics.roles.victim.fixed_0_5.f1: 0.747457627118644
+best.validation_metrics.roles.victim.fixed_0_5.fn: 84
+best.validation_metrics.roles.victim.fixed_0_5.fp: 5280
+best.validation_metrics.roles.victim.fixed_0_5.fpr: 0.027439119453712076
+best.validation_metrics.roles.victim.fixed_0_5.precision: 0.6005447117566954
+best.validation_metrics.roles.victim.fixed_0_5.recall: 0.9895287958115183
+best.validation_metrics.roles.victim.fixed_0_5.tn: 187146
+best.validation_metrics.roles.victim.fixed_0_5.tp: 7938
+best.validation_metrics.roles.victim.negative_entries: 192426
+best.validation_metrics.roles.victim.positive_entries: 8022
+best.validation_metrics.selection_score: 0.7807553812773486
+best.validation_metrics.source_loss: 0.17211283189583557
+best.validation_metrics.transit_loss: 0.3085781973828282
+best.validation_metrics.victim_loss: 0.13892176256325967
+candidate: graphconv
+data.item_batch_size: 256
+data.pair_block_batch_size: 128
+data.pair_keys_returned_to_model: False
+data.train_batches: 275
+data.train_items: 70166
+data.validation_batches: 49
+data.validation_items: 12528
+deployment_proxies.graph_linear_macs: 262144
+deployment_proxies.graph_message_scalar_ops: 6144
+deployment_proxies.inference_microseconds_per_item: 54.51185117166801
+deployment_proxies.peak_cuda_memory_bytes: 668014080
+deployment_proxies.total_linear_macs: 11161920
+failures: <list length=0>
+label_weights.count_class_weights_applied: False
+label_weights.count_distribution.1: 5855
+label_weights.count_distribution.2: 5441
+label_weights.count_distribution.3: 4728
+label_weights.count_distribution.4: 4294
+label_weights.graph_positive_weight: 2.45339108179939
+label_weights.role_positive_weights.path.clamped_positive_weight: 7.375342240922689
+label_weights.role_positive_weights.path.negative_entries: 988613
+label_weights.role_positive_weights.path.positive_entries: 134043
+label_weights.role_positive_weights.path.raw_positive_weight: 7.375342240922689
+label_weights.role_positive_weights.source.clamped_positive_weight: 20.0
+label_weights.role_positive_weights.source.negative_entries: 1074559
+label_weights.role_positive_weights.source.positive_entries: 48097
+label_weights.role_positive_weights.source.raw_positive_weight: 22.341497390689646
+label_weights.role_positive_weights.transit.clamped_positive_weight: 15.7433147902343
+label_weights.role_positive_weights.transit.negative_entries: 1055605
+label_weights.role_positive_weights.transit.positive_entries: 67051
+label_weights.role_positive_weights.transit.raw_positive_weight: 15.7433147902343
+label_weights.role_positive_weights.victim.clamped_positive_weight: 20.0
+label_weights.role_positive_weights.victim.negative_entries: 1081671
+label_weights.role_positive_weights.victim.positive_entries: 40985
+label_weights.role_positive_weights.victim.raw_positive_weight: 26.39187507624741
+next_stage: V5_P2_TASK_D_FULL_MULTITASK_MATRIX_AGGREGATION
+security_boundary.test_dataset_constructed: False
+security_boundary.test_directory_enumerated: False
+security_boundary.test_directory_existence_checked: False
+security_boundary.test_evaluation_performed: False
+security_boundary.test_tensor_files_opened: False
+security_boundary.test_tensors_deserialized: False
+security_boundary.threshold_tuning_performed: False
+security_boundary.train_tensor_contents_accessed: True
+security_boundary.validation_tensor_contents_accessed: True
+seed: 107
+stage: V5_P2_TASK_D_FULL_MULTITASK_SINGLE_RUN
+status: COMPLETE
+training.automatic_mixed_precision: False
+training.completed_epoch: 37
+training.device: cuda
+training.early_stopping_patience: 12
+training.gradient_clip_global_norm: 1.0
+training.initial_learning_rate: 0.001
+training.maximum_epochs: 100
+training.minimum_epochs_before_stop: 15
+training.optimizer: AdamW
+training.scheduler: ReduceLROnPlateau
+training.stopped_early: True
+training.total_elapsed_seconds: 947.9065184593201
+training.weight_decay: 0.0001
+warnings: <list length=0>
+

@@ -1,0 +1,50 @@
+{
+  "a2_regional_model_status": "diagnostic_candidate_only",
+  "a3_still_necessary": true,
+  "hardware_contract": {
+    "embedding_dimension_must_remain_configurable": true,
+    "future_optional_outputs": [
+      "victim_scores[16]",
+      "victim_count_logits"
+    ],
+    "regional_input": "[16 routers, temporal_window, feature_count]",
+    "required_outputs": [
+      "regional_attack_score",
+      "attacker_scores[16]",
+      "attacker_count_logits[5]",
+      "regional_embedding[D]"
+    ],
+    "shared_weights_across_regions": true
+  },
+  "mandatory_components": {
+    "count_conditioned_topk": true,
+    "explicit_count_head": true,
+    "hard_negative_neighbour_ranking": true,
+    "one_gcn_instead_of_two": true,
+    "source_preserving_local_skip": true,
+    "valid_port_masks": true
+  },
+  "post_a3_or_later": {
+    "directional_gating": "Run only after A3-base if direction-specific or corner/path confusion remains.",
+    "global_transformer_or_gat": "Rejected for current evidence and RTL cost.",
+    "more_gcn_layers": "Rejected because neighbour spreading is already a dominant error.",
+    "rnn": "No evidence justifies replacing the lightweight temporal encoder yet.",
+    "tiny_port_attention": "Post-A3 controlled extension; do not place on the initial A3 critical path."
+  },
+  "questions": {
+    "did_width_improve_cardinality": true,
+    "did_width_improve_corners": true,
+    "did_width_improve_true_attacker_ranking": true,
+    "did_width_reduce_empty_predictions": true,
+    "did_width_reduce_graph_localization_tradeoff": false,
+    "did_width_reduce_neighbour_confusion": true,
+    "is_a2_viable_final_regional_model": false,
+    "is_a3_still_necessary": true
+  },
+  "recommended_components": {
+    "configurable_embedding_dimension_for_rtl": true,
+    "mean_plus_max_fused_graph_readout": true,
+    "regional_embedding_output": true,
+    "separate_localization_adapter": true
+  }
+}

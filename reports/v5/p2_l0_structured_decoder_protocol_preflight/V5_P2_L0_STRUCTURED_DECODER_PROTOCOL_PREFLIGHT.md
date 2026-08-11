@@ -1,0 +1,241 @@
+# V5 P2 L0 Structured-Decoder Protocol Preflight
+
+- Status: **COMPLETE**
+- L0 locked: **false**
+- Dataset directories scanned: **false**
+- Test directory enumerated: **false**
+- Test tensors deserialized: **false**
+
+## Router Mapping
+
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:15` — `"filename": "V5_P2_G1A_R2A_ROUTER_COORDINATES_ROW_MAJOR.npy",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:55` — `"edge_order": "lexicographic ascending by (source_router, destination_router)",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:66` — `"router_id_equation": "router_id = row * 4 + column",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:67` — `"router_ids": [`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:85` — `"router_numbering": "row_major",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:86` — `"source_kind": "canonical_generation_from_frozen_G0_4x4_mesh_contract",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:87` — `"topology": "4x4_2D_MESH"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:270` — `"text": "- audited edge_index, used only to verify the fixed 4x4 mesh and construct"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:275` — `"text": "def validate_mesh_edge_index(edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:305` — `"text": "\"edge_index is not the audited bidirectional 4x4 cardinal mesh; \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:390` — `"text": "validate_mesh_edge_index(sample[\"edge_index\"])"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:395` — `"text": "failures.append(f\"mesh topology validation failed: {exc}\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:505` — `"text": "module.validate_mesh_edge_index(sample[\"edge_index\"])"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:515` — `"text": "- audited edge_index, used only to verify the fixed 4x4 mesh and construct"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:520` — `"text": "def validate_mesh_edge_index(edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:550` — `"text": "\"edge_index is not the audited bidirectional 4x4 cardinal mesh; \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:635` — `"text": "validate_mesh_edge_index(sample[\"edge_index\"])"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:640` — `"text": "failures.append(f\"mesh topology validation failed: {exc}\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:800` — `"text": "\"snapshot_tick\", \"tick\", \"epoch\", \"epoch_id\", \"router\", \"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:865` — `"text": "\"incorrect 4x4 mesh degree multiset: \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1115` — `"text": "\"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1120` — `"text": "\"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1130` — `"text": "\"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1180` — `"text": "\"router coordinates do not cover a 4x4 grid\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1195` — `"text": "\"directed 4-neighbor mesh\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1220` — `"text": "B3 has no graph message passing. `edge_index` and router coordinates remain"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1260` — `"text": "- topology integrity for the 4x4, 16-router directed mesh;"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1275` — `"text": "\"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1280` — `"text": "\"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1290` — `"text": "\"router_id\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1355` — `"text": "\"router coordinates do not cover the 4x4 grid\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1380` — `"text": "\"4-neighbor directed mesh\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1455` — `"text": "\"primary\": \"4x4 2D mesh, 16 routers\","`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.md:9` — `- 4×4 2D physical mesh.`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.md:11` — `- Row-major numbering: `router_id = row * 4 + column`.`
+
+## Routing Order
+
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:51` — `"physical_routing_graph": {`
+
+## Path Semantics
+
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1004` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1009` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1014` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1019` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1024` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1029` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1034` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1039` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1044` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1049` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1054` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1059` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1064` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1069` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1074` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1079` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1084` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1089` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1094` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1099` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:1104` — `"path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",`
+
+## Port Topology
+
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:4` — `"adjacency": {`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:6` — `"filename": "V5_P2_G1A_R2A_CANONICAL_ADJACENCY_MATRIX.npy",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:22` — `"edge_index": {`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:24` — `"filename": "V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:46` — `"GraphConv": "consume the stored physical edge_index directly"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:94` — `"interpretation": "The P2 Conv1D dataset does not contain edge_index because the frozen B3 architecture did not require graph message passing. G1 therefore requires an explicit static topology contract rather than recovery of a nonexistent sample field.",`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:120` — `"text": "No identifiers, metadata, edge_index, coordinates, run lengths, or window"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:125` — `"text": "def normalized_adjacency(edge_index: torch.Tensor, node_count: int = 16) -> torch.Tensor:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:130` — `"text": "edge_index = edge_index.detach().cpu().long()"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:135` — `"text": "if edge_index.ndim != 2 or tuple(edge_index.shape)[0] != 2:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:140` — `"text": "raise ValueError(f\"edge_index must be [2,E], got {tuple(edge_index.shape)}\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:145` — `"text": "src, dst = edge_index[0], edge_index[1]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:150` — `"text": "raise ValueError(\"edge_index node index out of range\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:155` — `"text": "def __init__(self, edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:160` — `"text": "edge_index = edge_index.detach().cpu().long().contiguous()"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:165` — `"text": "self.register_buffer(\"expected_edge_index\", edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:170` — `"text": "self.register_buffer(\"adjacency\", normalized_adjacency(edge_index))"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:175` — `"text": "def _verify_edge_index(self, edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:180` — `"text": "if edge_index.ndim == 3:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:185` — `"text": "ref = edge_index[0]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:190` — `"text": "if not torch.equal(edge_index, ref.unsqueeze(0).expand_as(edge_index)):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:195` — `"text": "raise ValueError(\"non-identical edge_index tensors within batch\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:200` — `"text": "elif edge_index.ndim == 2:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:205` — `"text": "ref = edge_index"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:210` — `"text": "raise ValueError(f\"unexpected edge_index shape: {tuple(edge_index.shape)}\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:215` — `"text": "raise ValueError(\"runtime edge_index differs from audited topology\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:220` — `"text": "def forward(self, x: torch.Tensor, physical_port_mask: torch.Tensor, edge_index: torch.Tensor):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:225` — `"text": "self._verify_edge_index(edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:230` — `"text": "batch[\"edge_index\"].to(device=device, dtype=torch.long),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:235` — `"text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:240` — `"text": "failures.append(f\"unexpected edge_index shape: {tuple(sample['edge_index'].shape)}\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:245` — `"text": "model = GCNOnlyModel(sample[\"edge_index\"]).to(device)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:250` — `"text": "batch[\"edge_index\"].to(device=device, dtype=torch.long),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:255` — `"text": "- no edge_index and no graph message passing."`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:260` — `"text": "- edge_index and graph message passing;"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:265` — `"text": "\"do not use edge_index or message passing\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:270` — `"text": "- audited edge_index, used only to verify the fixed 4x4 mesh and construct"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:275` — `"text": "def validate_mesh_edge_index(edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:280` — `"text": "if edge_index.ndim != 2 or tuple(edge_index.shape) != (2, 48):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:285` — `"text": "f\"expected edge_index [2,48], got {tuple(edge_index.shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:290` — `"text": "edge_index = edge_index.detach().cpu().long()"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:295` — `"text": "edge_index[0].tolist(),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:300` — `"text": "edge_index[1].tolist(),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:305` — `"text": "\"edge_index is not the audited bidirectional 4x4 cardinal mesh; \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:310` — `"text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:315` — `"text": "if edge_index.ndim == 3:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:320` — `"text": "reference = edge_index[0]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:325` — `"text": "expanded = reference.unsqueeze(0).expand_as(edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:330` — `"text": "if not torch.equal(edge_index, expanded):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:335` — `"text": "\"batch contains non-identical edge_index tensors\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:340` — `"text": "elif edge_index.ndim == 2:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:345` — `"text": "reference = edge_index"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:350` — `"text": "f\"unexpected edge_index shape: {tuple(edge_index.shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:355` — `"text": "\"runtime edge_index differs from audited topology\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:360` — `"text": "edge_index: torch.Tensor,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:365` — `"text": "self.verify_edge_index(edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:370` — `"text": "edge_index=batch[\"edge_index\"].to("`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:375` — `"text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:380` — `"text": "\"edge_index shape unexpected: \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:385` — `"text": "f\"{tuple(sample['edge_index'].shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:390` — `"text": "validate_mesh_edge_index(sample[\"edge_index\"])"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:400` — `"text": "expected_edge_index=sample[\"edge_index\"],"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:405` — `"text": "edge_index=batch[\"edge_index\"].to("`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:410` — `"text": "sample[\"edge_index\"]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:415` — `"text": "- edge_index;"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:420` — `"text": "- edge_index;"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:425` — `"text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:430` — `"text": "if edge_index.ndim == 3:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:435` — `"text": "reference = edge_index[0]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:440` — `"text": "edge_index,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:445` — `"text": "reference.unsqueeze(0).expand_as(edge_index),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:450` — `"text": "raise ValueError(\"batch contains non-identical edge_index tensors\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:455` — `"text": "elif edge_index.ndim == 2:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:460` — `"text": "reference = edge_index"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:465` — `"text": "raise ValueError(f\"unexpected edge_index shape: {tuple(edge_index.shape)}\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:470` — `"text": "raise ValueError(\"runtime edge_index differs from audited topology\")"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:475` — `"text": "edge_index: torch.Tensor,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:480` — `"text": "self.verify_edge_index(edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:485` — `"text": "edge_index: torch.Tensor,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:490` — `"text": "model = B3Conv1DOnlyModel(module, edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:495` — `"text": "expected_edge_index=edge_index,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:500` — `"text": "edge_index=batch[\"edge_index\"].to(device=device, dtype=torch.long),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:505` — `"text": "module.validate_mesh_edge_index(sample[\"edge_index\"])"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:510` — `"text": "edge_index=sample[\"edge_index\"],"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:515` — `"text": "- audited edge_index, used only to verify the fixed 4x4 mesh and construct"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:520` — `"text": "def validate_mesh_edge_index(edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:525` — `"text": "if edge_index.ndim != 2 or tuple(edge_index.shape) != (2, 48):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:530` — `"text": "f\"expected edge_index [2,48], got {tuple(edge_index.shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:535` — `"text": "edge_index = edge_index.detach().cpu().long()"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:540` — `"text": "edge_index[0].tolist(),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:545` — `"text": "edge_index[1].tolist(),"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:550` — `"text": "\"edge_index is not the audited bidirectional 4x4 cardinal mesh; \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:555` — `"text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:560` — `"text": "if edge_index.ndim == 3:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:565` — `"text": "reference = edge_index[0]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:570` — `"text": "expanded = reference.unsqueeze(0).expand_as(edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:575` — `"text": "if not torch.equal(edge_index, expanded):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:580` — `"text": "\"batch contains non-identical edge_index tensors\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:585` — `"text": "elif edge_index.ndim == 2:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:590` — `"text": "reference = edge_index"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:595` — `"text": "f\"unexpected edge_index shape: {tuple(edge_index.shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:600` — `"text": "\"runtime edge_index differs from audited topology\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:605` — `"text": "edge_index: torch.Tensor,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:610` — `"text": "self.verify_edge_index(edge_index)"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:615` — `"text": "edge_index=batch[\"edge_index\"].to("`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:620` — `"text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:625` — `"text": "\"edge_index shape unexpected: \""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:630` — `"text": "f\"{tuple(sample['edge_index'].shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:635` — `"text": "validate_mesh_edge_index(sample[\"edge_index\"])"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:645` — `"text": "expected_edge_index=sample[\"edge_index\"],"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:650` — `"text": "edge_index=batch[\"edge_index\"].to("`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:655` — `"text": "sample[\"edge_index\"]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:660` — `"text": "- audited edge_index."`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:665` — `"text": "edge_index: torch.Tensor,"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:670` — `"text": "if edge_index.ndim != 2 or edge_index.shape[0] != 2:"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:675` — `"text": "f\"expected edge_index [2,E], got {tuple(edge_index.shape)}\""`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:680` — `"text": "edge_index = edge_index.detach().cpu().long()"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:685` — `"text": "source = edge_index[0]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:690` — `"text": "destination = edge_index[1]"`
+- `reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT.json:695` — `"text": "raise ValueError(\"edge_index contains negative node indices\")"`
+
+_Additional matches omitted: 212_
+
+## Loss Weights
+
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:55` — `LOSS_WEIGHTS = {`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:81` — `for chunk in iter(lambda: handle.read(chunk_size), b""):`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:488` — `LOSS_WEIGHTS[key] * value`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:523` — `for key in LOSS_WEIGHTS`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:597` — `for key in LOSS_WEIGHTS`
+- `scripts/v5/p2/train_v5_p2_task_d_full_multitask_single_run.py:50` — `for chunk in iter(lambda: f.read(1024 * 1024), b""):`
+
+## Count Semantics
+
+- `reports/v5/p2_b1_training_protocol_lock/V5_P2_B1_TRAINING_PROTOCOL.json:16` — `"count_logits": 4,`
+- `reports/v5/p2_b1_training_protocol_lock/V5_P2_B1_TRAINING_PROTOCOL.json:241` — `"formula": "0.30*graph_AUROC + 0.15*graph_average_precision + 0.15*count_active_macro_f1 + 0.10*source_average_precision + 0.10*transit_average_precision + 0.10*victim_average_precision + 0.10*path_average_precision",`
+- `reports/v5/p2_b1_training_protocol_lock/V5_P2_B1_TRAINING_PROTOCOL_LOCK.json:30` — `"count_logits": 4,`
+- `reports/v5/p2_b1_training_protocol_lock/V5_P2_B1_TRAINING_PROTOCOL_LOCK.json:255` — `"formula": "0.30*graph_AUROC + 0.15*graph_average_precision + 0.15*count_active_macro_f1 + 0.10*source_average_precision + 0.10*transit_average_precision + 0.10*victim_average_precision + 0.10*path_average_precision",`
+- `reports/v5/p2_b1_training_protocol_lock/V5_P2_B1_TRAINING_PROTOCOL_LOCK_LOCK.json:3` — `"count_logits": 4,`
+- `reports/v5/p2_e0_validation_threshold_protocol_lock/V5_P2_E0_VALIDATION_THRESHOLD_PROTOCOL_LOCK.json:15` — `"attacker_count_rule": {`
+- `reports/v5/p2_e0_validation_threshold_protocol_lock/V5_P2_E0_VALIDATION_THRESHOLD_PROTOCOL_LOCK.json:23` — `"selection": "argmax_over_four_frozen_count_logits",`
+- `reports/v5/p2_e0_validation_threshold_protocol_lock/V5_P2_E0_VALIDATION_THRESHOLD_PROTOCOL_LOCK.json:88` — `"attacker_count_logits_k1_to_k4",`
+- `reports/v5/p2_e0a_raw_head_structured_decoder_boundary/V5_P2_E0A_RAW_HEAD_STRUCTURED_DECODER_BOUNDARY.json:172` — `"count_decision": "Argmax over K1-K4; graph-negative maps to count zero only in explicit A0 output policy",`
+- `reports/v5/p2_e0a_raw_head_structured_decoder_boundary/V5_P2_E0A_RAW_HEAD_STRUCTURED_DECODER_BOUNDARY.json:182` — `"full_count_logits_used": true,`
+- `src/models/v5_p2_task_d_full_multitask_count4.py:145` — `"count_logits": self.count_head(graph_embedding),`
+- `src/models/v5_p2_task_d_full_multitask_count4.py:153` — `"count_logits": (batch_size, 4),`
+- `src/models/v5_p2_b3_conv1d_only_count4.py:74` — `count_logits:`
+- `src/models/v5_p2_b3_conv1d_only_count4.py:230` — `"count_logits": self.count_head(`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:423` — `batch["y_attacker_count"].shape,`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:426` — `device=batch["y_attacker_count"].device,`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:431` — `& (batch["y_attacker_count"] == raw_count)`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:450` — `outputs["count_logits"][active],`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:455` — `outputs["count_logits"].sum() * 0.0`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:667` — `batch["y_attacker_count"][active]`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:681` — `outputs["count_logits"][active]`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:855` — `"count_active": {`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:941` — `"count_active_macro_f1": (`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:942` — `validation_metrics["count_active"][`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:946` — `"count_active_accuracy": (`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:947` — `validation_metrics["count_active"][`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:1620` — `f"count_f1={validation_metrics['count_active']['macro_f1']:.6f} "`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:1860` — `"best_count_active_macro_f1:",`
+- `scripts/v5/p2/train_v5_p2_b2_single_seed.py:1861` — `best_validation_metrics["count_active"][`
+- `scripts/v5/p2/train_v5_p2_task_d_full_multitask_single_run.py:382` — `f"count_f1={validation_metrics['count_active']['macro_f1']:.6f} "`
+

@@ -1,0 +1,196 @@
+{
+  "integrity_pass": true,
+  "integrity_checks": {
+    "split_indices_identical": true,
+    "model_parameter_names_identical": true,
+    "model_parameter_shapes_identical": true,
+    "frozen_arguments_identical": true,
+    "sampler_summary_present": true,
+    "sampler_history_present_every_epoch": true,
+    "a1_history_nonempty": true,
+    "b1_history_nonempty": true
+  },
+  "artifact_hashes": {
+    "a1_checkpoint": "c29cdd2303669a61454ed118ef0be4b8809a635b12c0c42806f8b6992340e0ef",
+    "b1_checkpoint": "7605d9200f86964430de41c90842d2a04842450308d295eb9dc48bc3fca79834",
+    "a1_summary": "5e386cd78f45709c50e201cfa9f849dc0ebab108db76270ff13c9cb78c9f2b74",
+    "b1_summary": "ec615e131fe4cf5d7d6a5aa23d1466a442a13a97588bd54114277f592907b6aa",
+    "a1_splits": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2",
+    "b1_splits": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2"
+  },
+  "best_epochs": {
+    "a1": 92,
+    "b1": 68
+  },
+  "best_validation_scores": {
+    "a1": 1.8269244417945951,
+    "b1": 1.713065240800669
+  },
+  "split_checks": {
+    "train_idx": true,
+    "val_idx": true,
+    "test_idx": true
+  },
+  "model_parameter_shape_mismatches": {},
+  "frozen_argument_differences": {},
+  "b1_sampling_summary": {
+    "name": "Chrono-B1 hierarchical scenario-balanced",
+    "samples_per_epoch": 148185,
+    "replacement": true,
+    "normal_probability": 0.5,
+    "attack_probability": 0.5,
+    "temporal_window_length": 8,
+    "max_temporal_retries": 32,
+    "final_epoch_stats": {
+      "epoch_index": 82,
+      "seed_used": 89,
+      "samples_requested": 148185,
+      "samples_drawn": 148185,
+      "batches_drawn": 579,
+      "class_counts": {
+        "attack": 74092,
+        "normal": 74093
+      },
+      "normal_fraction": 0.5000033741606775,
+      "profile_counts": {
+        "bursty": 39851,
+        "compute": 15017,
+        "idle": 14648,
+        "mixed": 39273,
+        "stream": 39396
+      },
+      "strength_counts": {
+        "20": 24426,
+        "63": 24670,
+        "77": 24996,
+        "NA": 74093
+      },
+      "attacker_count_counts": {
+        "0": 74093,
+        "1": 24426,
+        "2": 24670,
+        "3": 24996
+      },
+      "unique_runs_sampled": 45,
+      "run_counts": {
+        "N-0-15-Pbursty-R23-A-1-11-S63-V3": 2107,
+        "N-0-15-Pbursty-R23-A-1-7-11-S77-V3": 4240,
+        "N-0-15-Pbursty-R23-A-1-S20-V3": 1403,
+        "N-0-15-Pbursty-R23-A-7-12-S63-V3": 2017,
+        "N-0-15-Pbursty-R23-A-7-S20-V3": 1397,
+        "N-0-15-Pbursty-R3-V3": 2431,
+        "N-0-15-Pstream-R0-V3": 2465,
+        "N-0-15-Pstream-R20-A-1-7-S63-V3": 2115,
+        "N-0-15-Pstream-R20-A-11-S20-V3": 1637,
+        "N-0-15-Pstream-R20-A-12-S20-V3": 1596,
+        "N-0-3-6-9-12-15-Pstream-R9-V3": 7258,
+        "N-0-6-9-15-Pmixed-R26-A-1-7-S63-V3": 2681,
+        "N-0-6-9-15-Pmixed-R26-A-11-S20-V3": 1590,
+        "N-0-6-9-15-Pmixed-R26-A-12-S20-V3": 1620,
+        "N-0-6-9-15-Pmixed-R6-V3": 4873,
+        "N-0-6-Pbursty-R24-A-1-7-S63-V3": 2126,
+        "N-0-6-Pbursty-R24-A-11-S20-V3": 1354,
+        "N-0-6-Pbursty-R24-A-12-S20-V3": 1371,
+        "N-0-6-Pbursty-R4-V3": 2441,
+        "N-0-6-Pstream-R1-V3": 2559,
+        "N-0-6-Pstream-R21-A-1-11-S63-V3": 2023,
+        "N-0-6-Pstream-R21-A-1-7-11-S77-V3": 8384,
+        "N-0-6-Pstream-R21-A-1-S20-V3": 1707,
+        "N-0-6-Pstream-R21-A-7-12-S63-V3": 2043,
+        "N-0-6-Pstream-R21-A-7-S20-V3": 1585,
+        "N-0-Pcompute-R0-V3": 7572,
+        "N-1-4-11-14-Pmixed-R28-A-12-S20-V3": 1659,
+        "N-1-4-11-14-Pmixed-R8-V3": 4955,
+        "N-1-4-7-10-13-15-Pbursty-R10-V3": 7563,
+        "N-15-Pcompute-R1-V3": 7445,
+        "N-2-5-10-13-Pmixed-R27-A-1-11-S63-V3": 2751,
+        "N-2-5-10-13-Pmixed-R27-A-1-7-11-S77-V3": 8248,
+        "N-2-5-10-13-Pmixed-R27-A-1-S20-V3": 1646,
+        "N-2-5-10-13-Pmixed-R27-A-7-12-S63-V3": 2739,
+        "N-2-5-10-13-Pmixed-R27-A-7-S20-V3": 1599,
+        "N-2-5-10-13-Pmixed-R7-V3": 4912,
+        "N-3-12-Pbursty-R25-A-1-11-S63-V3": 2085,
+        "N-3-12-Pbursty-R25-A-1-7-11-S77-V3": 4124,
+        "N-3-12-Pbursty-R25-A-1-S20-V3": 1339,
+        "N-3-12-Pbursty-R25-A-7-S20-V3": 1357,
+        "N-3-12-Pbursty-R5-V3": 2496,
+        "N-3-12-Pstream-R2-V3": 2475,
+        "N-3-12-Pstream-R22-A-1-7-S63-V3": 1983,
+        "N-3-12-Pstream-R22-A-11-S20-V3": 1566,
+        "N-idle-Pidle-R0-V3": 14648
+      },
+      "unique_indices_sampled": 81382,
+      "duplicate_index_draws": 66803,
+      "duplicate_index_fraction": 0.4508081114822688,
+      "repeated_run_draws_within_batches": 122132,
+      "temporal_collision_count": 0,
+      "temporal_collision_rate": 0.0,
+      "minimum_observed_within_run_gap": 8,
+      "median_observed_within_run_gap": 269.0,
+      "temporal_window_length": 8
+    }
+  },
+  "default_threshold_comparison": {
+    "val": {
+      "graph_f1": {
+        "a1": 0.9573084062139429,
+        "b1": 0.8753592020615881,
+        "delta_b1_minus_a1": -0.08194920415235474
+      },
+      "graph_recall": {
+        "a1": 0.9658197523366062,
+        "b1": 0.796571852751628,
+        "delta_b1_minus_a1": -0.1692478995849782
+      },
+      "graph_fpr": {
+        "a1": 0.11691466747646523,
+        "b1": 0.05268751897965381,
+        "delta_b1_minus_a1": -0.06422714849681141
+      },
+      "node_f1": {
+        "a1": 0.8696160355806523,
+        "b1": 0.8377060387390809,
+        "delta_b1_minus_a1": -0.031909996841571364
+      },
+      "exact_localization": {
+        "a1": 0.7243570277278143,
+        "b1": 0.6523628209021467,
+        "delta_b1_minus_a1": -0.0719942068256676
+      }
+    },
+    "test": {
+      "graph_f1": {
+        "a1": 0.8632381737606926,
+        "b1": 0.792176568693279,
+        "delta_b1_minus_a1": -0.07106160506741355
+      },
+      "graph_recall": {
+        "a1": 0.9084204589822568,
+        "b1": 0.7933278382716585,
+        "delta_b1_minus_a1": -0.11509262071059823
+      },
+      "graph_fpr": {
+        "a1": 0.22897054357728516,
+        "b1": 0.24450855349731754,
+        "delta_b1_minus_a1": 0.015538009920032375
+      },
+      "node_f1": {
+        "a1": 0.7188251701125973,
+        "b1": 0.6761992619926199,
+        "delta_b1_minus_a1": -0.04262590811997735
+      },
+      "exact_localization": {
+        "a1": 0.5138171879744914,
+        "b1": 0.4685696932887944,
+        "delta_b1_minus_a1": -0.045247494685697
+      }
+    }
+  },
+  "default_threshold_safeguards": {
+    "overall_graph_recall_drop_le_0_02": false,
+    "node_f1_drop_le_0_02": false,
+    "exact_localization_drop_le_0_03": false
+  },
+  "default_threshold_safeguards_pass": false,
+  "interpretation": "This is a preliminary threshold-0.5 check only. Do not issue the final B1 verdict until validation-selected threshold transfer and aligned run/scenario comparisons are complete."
+}

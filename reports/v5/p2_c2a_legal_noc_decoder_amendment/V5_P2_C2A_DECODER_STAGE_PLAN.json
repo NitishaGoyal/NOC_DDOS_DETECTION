@@ -1,0 +1,51 @@
+{
+  "ordering_constraints": [
+    "L0 must complete before decoder implementation.",
+    "L1 must complete before L2 or L3.",
+    "L2 must exist before L3 equivalence testing.",
+    "L4 uses P2 validation only.",
+    "L5 may run only after L4 decoder freeze.",
+    "V6 checkpoint, decoder, and thresholds freeze before blind-test authorization."
+  ],
+  "plan_name": "V5_P2_C2A_LEGAL_NOC_DECODER_STAGE_PLAN",
+  "plan_sha256": "fb991f0ed9e131cdeefa780d047bb938255bb72a33ae1f08de3150002621f211",
+  "plan_version": 1,
+  "stages": [
+    {
+      "data_access": "none",
+      "purpose": "freeze semantics, constraints, scoring, tie-breaking, and validation grid",
+      "stage": "V5_P2_L0_LEGAL_XY_DECODER_CONTRACT"
+    },
+    {
+      "data_access": "none",
+      "purpose": "generate and verify all 240 directed 4x4 XY routes",
+      "stage": "V5_P2_L1_XY_ROUTE_LIBRARY_AND_UNIT_TESTS"
+    },
+    {
+      "data_access": "hand-constructed tests only",
+      "purpose": "implement reduced exhaustive oracle and full exact 4x4 decoder",
+      "stage": "V5_P2_L2_EXACT_LEGAL_XY_DECODER"
+    },
+    {
+      "data_access": "synthetic tests first",
+      "purpose": "implement deterministic route-ROM candidate/beam decoder and equivalence tests",
+      "stage": "V5_P2_L3_HARDWARE_LEGAL_XY_DECODER"
+    },
+    {
+      "data_access": "P2 B4 validation cache only",
+      "purpose": "select and freeze decoder using B4 validation outputs only",
+      "stage": "V5_P2_L4_VALIDATION_DECODER_SELECTION"
+    },
+    {
+      "claim_status": "post-hoc exploratory",
+      "data_access": "B6 cache only",
+      "purpose": "apply the frozen decoder to the frozen B6 cache",
+      "stage": "V5_P2_L5_POSTHOC_B6_DECODER_ANALYSIS"
+    },
+    {
+      "data_access": "no V6 blind-test contents",
+      "purpose": "integrate route-pair labels and decoder requirements into V6",
+      "stage": "V6_D0_FRESH_HARD_LEGITIMATE_DATASET_GENERATION_PLAN"
+    }
+  ]
+}

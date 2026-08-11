@@ -1,0 +1,547 @@
+{
+  "checks": {
+    "all_aggregate_metrics_reproduced": true,
+    "all_determinism_checks_passed": true,
+    "all_output_shapes_valid": true,
+    "all_prediction_arrays_finite": true,
+    "all_sample_ids_aligned": true,
+    "all_sample_indices_aligned": true,
+    "all_split_labels_aligned": true,
+    "all_true_labels_aligned": true,
+    "metric_tolerance": 1e-05,
+    "overall_success": true
+  },
+  "dataset": {
+    "input_feature_dim": 24,
+    "num_nodes": 16,
+    "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+    "sample_count": 233803,
+    "temporal_length": 8,
+    "x_dtype": "float32",
+    "x_shape": [
+      233803,
+      16,
+      8,
+      24
+    ]
+  },
+  "environment": {
+    "cuda_available": true,
+    "device": "cuda",
+    "git_branch": "siya/gcn_model",
+    "git_commit": "0c4c2d85976e648fd93df792cc19023bc2a61f9c",
+    "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "numpy": "2.5.1",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "torch": "2.12.1+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "export": {
+    "alignment_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/25_prediction_alignment_check.txt",
+    "batch_size": 256,
+    "exported_splits": [
+      "val",
+      "test"
+    ],
+    "full_export": false,
+    "graph_threshold": 0.5,
+    "max_samples_per_split": 256,
+    "metadata_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/prediction_metadata.csv",
+    "metrics_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/exported_metric_reproduction.csv",
+    "node_threshold": 0.5,
+    "sample_id_format": "run_id:end_epoch",
+    "sample_id_sha256": "f663ff46f8a9df290a3bc17c1a6840aa834324c0b76fb0322968289945432b44",
+    "sample_order_sha256": "9edfe62aa09972e05c85d1e297b396abbcee5a78b0431eacf8dfbd6eeb66ac14",
+    "test_sample_count": 256,
+    "total_sample_count": 512,
+    "validation_sample_count": 256
+  },
+  "models": {
+    "conv1d_gcn": {
+      "checkpoint_args": {
+        "batch_size": 256,
+        "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+        "epochs": 100,
+        "gcn_hidden": 16,
+        "gcn_out": 8,
+        "graph_threshold": 0.5,
+        "lr": 0.001,
+        "min_delta": 0.0001,
+        "node_loss_weight": 1.0,
+        "node_threshold": 0.5,
+        "out_dir": "models/v3/temporal_gcn_ports_v3_builtin_split",
+        "patience": 15,
+        "seed": 7,
+        "split_mode": "v3",
+        "splits_file": null,
+        "temporal_dim": 8,
+        "weight_decay": 0.0001
+      },
+      "checkpoint_best_epoch": 96,
+      "checkpoint_model_name": "Conv1D-TemporalGCN",
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_gcn_ports_v3_builtin_split/best_model.pt",
+      "class": "TemporalGCN",
+      "construction": {
+        "class": "TemporalGCN",
+        "keyword_arguments": {
+          "gcn_hidden": 16,
+          "gcn_out": 8,
+          "input_features": 24,
+          "temporal_dim": 8
+        },
+        "positional_arguments": [],
+        "signature": "(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8)"
+      },
+      "determinism_check": {
+        "deterministic_within_1e_7": true,
+        "graph_max_abs_difference": 0.0,
+        "node_max_abs_difference": 0.0,
+        "sample_count": 128
+      },
+      "finite_outputs": true,
+      "graph_threshold": 0.5,
+      "labels_aligned": true,
+      "model_dir": "/home/zira/research/projects/GNN-2d/models/v3/temporal_gcn_ports_v3_builtin_split",
+      "module": "scripts.train_temporal_gcn_v3",
+      "name": "conv1d_gcn",
+      "node_threshold": 0.5,
+      "output_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/conv1d_gcn_predictions.npz",
+      "output_file_bytes": 31056,
+      "output_shapes": {
+        "graph_logits": [
+          512
+        ],
+        "node_logits": [
+          512,
+          16
+        ]
+      },
+      "sample_id_aligned": true,
+      "sample_index_aligned": true,
+      "shapes_valid": true,
+      "split_aligned": true,
+      "split_metrics": {
+        "test": {
+          "metrics": {
+            "accuracy": 0.65625,
+            "exact_localization": 0.36328125,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 88,
+            "fpr": 0.34375,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "conv1d_gcn",
+            "node_accuracy": 0.86474609375,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "test",
+            "tn": 168,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        },
+        "val": {
+          "metrics": {
+            "accuracy": 0.65625,
+            "exact_localization": 0.36328125,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 88,
+            "fpr": 0.34375,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "conv1d_gcn",
+            "node_accuracy": 0.86474609375,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "val",
+            "tn": 168,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        }
+      },
+      "stored_tensor_elements": 882,
+      "summary_best_epoch": 96,
+      "summary_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_gcn_ports_v3_builtin_split/summary.json",
+      "validation_selected_node_threshold": null
+    },
+    "tcn_attention_gcn": {
+      "checkpoint_args": {
+        "batch_size": 256,
+        "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+        "epochs": 75,
+        "gcn_hidden": 16,
+        "gcn_out": 8,
+        "graph_threshold": 0.5,
+        "lr": 0.001,
+        "min_delta": 0.0001,
+        "node_loss_weight": 1.0,
+        "node_threshold": 0.5,
+        "out_dir": "models/v3/temporal_tcn_gcn_ports_v3_builtin_split",
+        "patience": 10,
+        "seed": 7,
+        "split_mode": "v3",
+        "splits_file": null,
+        "tcn_dropout": 0.1,
+        "temporal_dim": 8,
+        "weight_decay": 0.0001
+      },
+      "checkpoint_best_epoch": 26,
+      "checkpoint_model_name": "TCN-TemporalGCN",
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_gcn_ports_v3_builtin_split/best_model.pt",
+      "class": "TemporalTCNGCN",
+      "construction": {
+        "class": "TemporalTCNGCN",
+        "keyword_arguments": {
+          "gcn_hidden": 16,
+          "gcn_out": 8,
+          "input_features": 24,
+          "tcn_dropout": 0.1,
+          "temporal_dim": 8
+        },
+        "positional_arguments": [],
+        "signature": "(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1)"
+      },
+      "determinism_check": {
+        "deterministic_within_1e_7": true,
+        "graph_max_abs_difference": 0.0,
+        "node_max_abs_difference": 0.0,
+        "sample_count": 128
+      },
+      "finite_outputs": true,
+      "graph_threshold": 0.5,
+      "labels_aligned": true,
+      "model_dir": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_gcn_ports_v3_builtin_split",
+      "module": "scripts.train_temporal_tcn_gcn_v3",
+      "name": "tcn_attention_gcn",
+      "node_threshold": 0.5,
+      "output_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_attention_gcn_predictions.npz",
+      "output_file_bytes": 30798,
+      "output_shapes": {
+        "graph_logits": [
+          512
+        ],
+        "node_logits": [
+          512,
+          16
+        ]
+      },
+      "sample_id_aligned": true,
+      "sample_index_aligned": true,
+      "shapes_valid": true,
+      "split_aligned": true,
+      "split_metrics": {
+        "test": {
+          "metrics": {
+            "accuracy": 0.7421875,
+            "exact_localization": 0.36328125,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 66,
+            "fpr": 0.2578125,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "tcn_attention_gcn",
+            "node_accuracy": 0.848388671875,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "test",
+            "tn": 190,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        },
+        "val": {
+          "metrics": {
+            "accuracy": 0.7421875,
+            "exact_localization": 0.36328125,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 66,
+            "fpr": 0.2578125,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "tcn_attention_gcn",
+            "node_accuracy": 0.848388671875,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "val",
+            "tn": 190,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        }
+      },
+      "stored_tensor_elements": 1439,
+      "summary_best_epoch": 26,
+      "summary_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_gcn_ports_v3_builtin_split/summary.json",
+      "validation_selected_node_threshold": null
+    },
+    "tcn_maxpool_gcn": {
+      "checkpoint_args": {
+        "batch_size": 256,
+        "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+        "epochs": 75,
+        "gcn_hidden": 16,
+        "gcn_out": 8,
+        "graph_threshold": 0.5,
+        "lr": 0.001,
+        "min_delta": 0.0001,
+        "node_loss_weight": 1.0,
+        "node_threshold": 0.5,
+        "out_dir": "models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split",
+        "patience": 10,
+        "seed": 7,
+        "split_mode": "v3",
+        "splits_file": null,
+        "tcn_dropout": 0.1,
+        "temporal_dim": 8,
+        "weight_decay": 0.0001
+      },
+      "checkpoint_best_epoch": 20,
+      "checkpoint_model_name": "TCN-MaxPool-TemporalGCN",
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split/best_model.pt",
+      "class": "TemporalTCNGCN",
+      "construction": {
+        "class": "TemporalTCNGCN",
+        "keyword_arguments": {
+          "gcn_hidden": 16,
+          "gcn_out": 8,
+          "input_features": 24,
+          "tcn_dropout": 0.1,
+          "temporal_dim": 8
+        },
+        "positional_arguments": [],
+        "signature": "(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1)"
+      },
+      "determinism_check": {
+        "deterministic_within_1e_7": true,
+        "graph_max_abs_difference": 0.0,
+        "node_max_abs_difference": 0.0,
+        "sample_count": 128
+      },
+      "finite_outputs": true,
+      "graph_threshold": 0.5,
+      "labels_aligned": true,
+      "model_dir": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split",
+      "module": "scripts.train_temporal_tcn_maxpool_gcn_v3",
+      "name": "tcn_maxpool_gcn",
+      "node_threshold": 0.5,
+      "output_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_maxpool_gcn_predictions.npz",
+      "output_file_bytes": 30918,
+      "output_shapes": {
+        "graph_logits": [
+          512
+        ],
+        "node_logits": [
+          512,
+          16
+        ]
+      },
+      "sample_id_aligned": true,
+      "sample_index_aligned": true,
+      "shapes_valid": true,
+      "split_aligned": true,
+      "split_metrics": {
+        "test": {
+          "metrics": {
+            "accuracy": 0.70703125,
+            "exact_localization": 0.35546875,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 75,
+            "fpr": 0.29296875,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "tcn_maxpool_gcn",
+            "node_accuracy": 0.8427734375,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "test",
+            "tn": 181,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        },
+        "val": {
+          "metrics": {
+            "accuracy": 0.70703125,
+            "exact_localization": 0.35546875,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 75,
+            "fpr": 0.29296875,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "tcn_maxpool_gcn",
+            "node_accuracy": 0.8427734375,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "val",
+            "tn": 181,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        }
+      },
+      "stored_tensor_elements": 1430,
+      "summary_best_epoch": 20,
+      "summary_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split/summary.json",
+      "validation_selected_node_threshold": null
+    },
+    "tcn_meanpool_gcn": {
+      "checkpoint_args": {
+        "batch_size": 256,
+        "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+        "epochs": 75,
+        "gcn_hidden": 16,
+        "gcn_out": 8,
+        "graph_threshold": 0.5,
+        "lr": 0.001,
+        "min_delta": 0.0001,
+        "node_loss_weight": 1.0,
+        "node_threshold": 0.5,
+        "out_dir": "models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split",
+        "patience": 10,
+        "seed": 7,
+        "split_mode": "v3",
+        "splits_file": null,
+        "tcn_dropout": 0.1,
+        "temporal_dim": 8,
+        "weight_decay": 0.0001
+      },
+      "checkpoint_best_epoch": 5,
+      "checkpoint_model_name": "TCN-MeanPool-TemporalGCN",
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split/best_model.pt",
+      "class": "TemporalTCNGCN",
+      "construction": {
+        "class": "TemporalTCNGCN",
+        "keyword_arguments": {
+          "gcn_hidden": 16,
+          "gcn_out": 8,
+          "input_features": 24,
+          "tcn_dropout": 0.1,
+          "temporal_dim": 8
+        },
+        "positional_arguments": [],
+        "signature": "(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1)"
+      },
+      "determinism_check": {
+        "deterministic_within_1e_7": true,
+        "graph_max_abs_difference": 0.0,
+        "node_max_abs_difference": 0.0,
+        "sample_count": 128
+      },
+      "finite_outputs": true,
+      "graph_threshold": 0.5,
+      "labels_aligned": true,
+      "model_dir": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split",
+      "module": "scripts.train_temporal_tcn_meanpool_gcn_v3",
+      "name": "tcn_meanpool_gcn",
+      "node_threshold": 0.5,
+      "output_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_meanpool_gcn_predictions.npz",
+      "output_file_bytes": 30995,
+      "output_shapes": {
+        "graph_logits": [
+          512
+        ],
+        "node_logits": [
+          512,
+          16
+        ]
+      },
+      "sample_id_aligned": true,
+      "sample_index_aligned": true,
+      "shapes_valid": true,
+      "split_aligned": true,
+      "split_metrics": {
+        "test": {
+          "metrics": {
+            "accuracy": 0.62109375,
+            "exact_localization": 0.375,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 97,
+            "fpr": 0.37890625,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "tcn_meanpool_gcn",
+            "node_accuracy": 0.87109375,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "test",
+            "tn": 159,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        },
+        "val": {
+          "metrics": {
+            "accuracy": 0.62109375,
+            "exact_localization": 0.375,
+            "f1": 0.0,
+            "fn": 0,
+            "fp": 97,
+            "fpr": 0.37890625,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "tcn_meanpool_gcn",
+            "node_accuracy": 0.87109375,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "saved_summary_max_abs_difference": NaN,
+            "split": "val",
+            "tn": 159,
+            "tp": 0
+          },
+          "per_field_saved_summary_differences": {}
+        }
+      },
+      "stored_tensor_elements": 1430,
+      "summary_best_epoch": 5,
+      "summary_path": "/home/zira/research/projects/GNN-2d/models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split/summary.json",
+      "validation_selected_node_threshold": null
+    }
+  },
+  "normalization_window_construction_provenance": "unresolved",
+  "runtime_seconds": 3.816065788269043,
+  "split_hashes": {
+    "test_idx": "b83b17f4b1b7f61a46dc93f59a7a7a9aa22d02e4df1c09dc05dde77a482c6d1b",
+    "train_idx": "674832c5c540601456f8a12a2042ee0a562d390ae34a653c078024dca45081df",
+    "val_idx": "6b995726c1a80fc539f499cfd90f63c40bbc014cf8ed4d61b4312e613fa92936"
+  },
+  "status": "complete"
+}

@@ -1,0 +1,217 @@
+{
+  "checks": {
+    "all_aggregate_metrics_reproduced": true,
+    "all_determinism_checks_passed": true,
+    "all_output_shapes_valid": true,
+    "all_prediction_arrays_finite": true,
+    "all_sample_ids_aligned": true,
+    "all_sample_indices_aligned": true,
+    "all_split_labels_aligned": true,
+    "all_true_labels_aligned": true,
+    "metric_tolerance": 1e-05,
+    "overall_success": true
+  },
+  "dataset": {
+    "input_feature_dim": 24,
+    "num_nodes": 16,
+    "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "sample_count": 233803,
+    "temporal_length": 8,
+    "x_dtype": "float32",
+    "x_shape": [
+      233803,
+      16,
+      8,
+      24
+    ]
+  },
+  "environment": {
+    "cuda_available": true,
+    "device": "cuda",
+    "git_branch": "siya/gcn_model",
+    "git_commit": "0c4c2d85976e648fd93df792cc19023bc2a61f9c",
+    "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "numpy": "2.5.1",
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "torch": "2.12.1+cu130",
+    "torch_cuda_version": "13.0"
+  },
+  "export": {
+    "alignment_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/a1_evaluation/logs/25_prediction_alignment_check.txt",
+    "batch_size": 256,
+    "exported_splits": [
+      "val",
+      "test"
+    ],
+    "full_export": true,
+    "graph_threshold": 0.5,
+    "max_samples_per_split": null,
+    "metadata_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/a1_evaluation/predictions/prediction_metadata.csv",
+    "metrics_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/a1_evaluation/tables/exported_metric_reproduction.csv",
+    "node_threshold": 0.5,
+    "sample_id_format": "run_id:end_epoch",
+    "sample_id_sha256": "e706694637109e1f3feaaeb46d8e1e9afee4816470d56c1fd0d6e68acf4aa9b8",
+    "sample_order_sha256": "e78b431f961c5486b4237e5cb3f9b7e8efe92d223a725eb92be413ee42612e34",
+    "test_sample_count": 42809,
+    "total_sample_count": 85618,
+    "validation_sample_count": 42809
+  },
+  "models": {
+    "conv1d_gcn": {
+      "checkpoint_args": {
+        "batch_size": 256,
+        "data": "/home/zira/research/projects/GNN-2d/data/processed/graph_dataset/paper1_temporal_graphs_ports_v3_chrono_dir",
+        "epochs": 100,
+        "gcn_hidden": 16,
+        "gcn_out": 8,
+        "graph_threshold": 0.5,
+        "lr": 0.001,
+        "min_delta": 0.0001,
+        "node_loss_weight": 1.0,
+        "node_threshold": 0.5,
+        "out_dir": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7",
+        "patience": 15,
+        "seed": 7,
+        "split_mode": "v3",
+        "splits_file": null,
+        "temporal_dim": 8,
+        "weight_decay": 0.0001
+      },
+      "checkpoint_best_epoch": 92,
+      "checkpoint_model_name": "Conv1D-TemporalGCN",
+      "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/best_model.pt",
+      "class": "TemporalGCN",
+      "construction": {
+        "class": "TemporalGCN",
+        "keyword_arguments": {
+          "gcn_hidden": 16,
+          "gcn_out": 8,
+          "input_features": 24,
+          "temporal_dim": 8
+        },
+        "positional_arguments": [],
+        "signature": "(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8)"
+      },
+      "determinism_check": {
+        "deterministic_within_1e_7": true,
+        "graph_max_abs_difference": 0.0,
+        "node_max_abs_difference": 0.0,
+        "sample_count": 128
+      },
+      "finite_outputs": true,
+      "graph_threshold": 0.5,
+      "labels_aligned": true,
+      "model_dir": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7",
+      "module": "scripts.train_temporal_gcn_v3",
+      "name": "conv1d_gcn",
+      "node_threshold": 0.5,
+      "output_file": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/a1_evaluation/predictions/conv1d_gcn_predictions.npz",
+      "output_file_bytes": 10613304,
+      "output_shapes": {
+        "graph_logits": [
+          85618
+        ],
+        "node_logits": [
+          85618,
+          16
+        ]
+      },
+      "sample_id_aligned": true,
+      "sample_index_aligned": true,
+      "shapes_valid": true,
+      "split_aligned": true,
+      "split_metrics": {
+        "test": {
+          "metrics": {
+            "accuracy": 0.8450092270316989,
+            "exact_localization": 0.5138171879744914,
+            "f1": 0.8632381737606926,
+            "fn": 2111,
+            "fp": 4524,
+            "fpr": 0.22897054357728516,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "conv1d_gcn",
+            "node_accuracy": 0.9561409399892546,
+            "node_f1": 0.7188251701125973,
+            "node_precision": 0.5997001499250375,
+            "node_recall": 0.8970076385806723,
+            "precision": 0.8223374175306315,
+            "recall": 0.9084204589822568,
+            "saved_summary_max_abs_difference": 0.0,
+            "split": "test",
+            "tn": 15234,
+            "tp": 20940
+          },
+          "per_field_saved_summary_differences": {
+            "acc": 0.0,
+            "exact_localization": 0.0,
+            "f1": 0.0,
+            "fn": 0.0,
+            "fp": 0.0,
+            "fpr": 0.0,
+            "node_acc": 0.0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tn": 0.0,
+            "tp": 0.0
+          }
+        },
+        "val": {
+          "metrics": {
+            "accuracy": 0.9403630077787382,
+            "exact_localization": 0.7243570277278143,
+            "f1": 0.9573084062139429,
+            "fn": 1013,
+            "fp": 1540,
+            "fpr": 0.11691466747646523,
+            "metric_source": "module",
+            "metrics_match_tolerance": true,
+            "model": "conv1d_gcn",
+            "node_accuracy": 0.9749191174752972,
+            "node_f1": 0.8696160355806523,
+            "node_precision": 0.7903784335637322,
+            "node_recall": 0.9665114552755002,
+            "precision": 0.9489457631613845,
+            "recall": 0.9658197523366062,
+            "saved_summary_max_abs_difference": 0.0,
+            "split": "val",
+            "tn": 11632,
+            "tp": 28624
+          },
+          "per_field_saved_summary_differences": {
+            "acc": 0.0,
+            "exact_localization": 0.0,
+            "f1": 0.0,
+            "fn": 0.0,
+            "fp": 0.0,
+            "fpr": 0.0,
+            "node_acc": 0.0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "tn": 0.0,
+            "tp": 0.0
+          }
+        }
+      },
+      "stored_tensor_elements": 882,
+      "summary_best_epoch": 92,
+      "summary_path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/summary.json",
+      "validation_selected_node_threshold": null
+    }
+  },
+  "normalization_window_construction_provenance": "unresolved",
+  "runtime_seconds": 4.343608140945435,
+  "split_hashes": {
+    "test_idx": "b83b17f4b1b7f61a46dc93f59a7a7a9aa22d02e4df1c09dc05dde77a482c6d1b",
+    "train_idx": "674832c5c540601456f8a12a2042ee0a562d390ae34a653c078024dca45081df",
+    "val_idx": "6b995726c1a80fc539f499cfd90f63c40bbc014cf8ed4d61b4312e613fa92936"
+  },
+  "status": "complete"
+}

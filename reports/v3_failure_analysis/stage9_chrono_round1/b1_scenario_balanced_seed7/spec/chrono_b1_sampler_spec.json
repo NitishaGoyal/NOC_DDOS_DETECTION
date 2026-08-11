@@ -1,0 +1,129 @@
+{
+  "stage": "B1.2",
+  "name": "Chrono-B1 hierarchical scenario-balanced sampler",
+  "parent": "Chrono-A1",
+  "single_changed_variable": "training sample order and probability",
+  "epoch_policy": {
+    "samples_per_epoch": 148185,
+    "rationale": "Keep the same number of optimizer exposures per epoch as the Chrono-A1 training split.",
+    "replacement": true,
+    "drop_last": false,
+    "batch_size": "inherit exactly from Chrono-A1"
+  },
+  "class_balance": {
+    "normal_probability": 0.5,
+    "attack_probability": 0.5,
+    "per_batch_target": "approximately half normal and half attack; the odd sample alternates by batch"
+  },
+  "normal_hierarchy": [
+    {
+      "level": 1,
+      "field": "profile",
+      "policy": "uniform over profiles available in normal training runs"
+    },
+    {
+      "level": 2,
+      "field": "active_core_count",
+      "policy": "uniform over active-core-count groups available inside the selected profile"
+    },
+    {
+      "level": 3,
+      "field": "run_id",
+      "policy": "uniform over runs available inside the selected profile and active-core-count group"
+    },
+    {
+      "level": 4,
+      "field": "sample_index",
+      "policy": "draw a temporally separated window from the selected run"
+    }
+  ],
+  "attack_hierarchy": [
+    {
+      "level": 1,
+      "field": "strength",
+      "policy": "uniform over non-null attack strengths"
+    },
+    {
+      "level": 2,
+      "field": "attacker_count",
+      "policy": "uniform over attacker counts available inside the selected strength"
+    },
+    {
+      "level": 3,
+      "field": "profile",
+      "policy": "uniform over profiles available inside the selected strength and attacker-count group"
+    },
+    {
+      "level": 4,
+      "field": "run_id",
+      "policy": "uniform over runs available inside the selected strength, attacker-count and profile group"
+    },
+    {
+      "level": 5,
+      "field": "sample_index",
+      "policy": "draw a temporally separated window from the selected run"
+    }
+  ],
+  "missing_cell_policy": {
+    "rule": "Only choose among values that actually exist below the already selected parent group.",
+    "no_synthetic_cells": true,
+    "no_cross_split_fallback": true
+  },
+  "placement_policy": {
+    "active_core_placement": "covered by run-uniform selection; not a separate balancing level",
+    "attacker_placement": "covered by run-uniform selection; not a separate balancing level",
+    "reason": "Avoid a sparse Cartesian product and excessive oversampling of rare exact placements."
+  },
+  "temporal_separation": {
+    "window_length_source": "infer from x.shape[2]",
+    "minimum_end_epoch_gap_within_batch": "x.shape[2]",
+    "preferred_run_diversity": "use every eligible run once within a branch before reusing a run when feasible",
+    "candidate_policy": "prefer indices whose end_epoch differs from previously selected windows of the same run in the current batch by at least the temporal window length",
+    "fallback": "if no valid candidate exists after bounded retries, choose the farthest available end_epoch and count a temporal-collision event",
+    "logging": [
+      "adjacent-window collision count",
+      "collision rate",
+      "minimum within-run end_epoch separation",
+      "median within-run end_epoch separation"
+    ]
+  },
+  "randomness": {
+    "seed": 7,
+    "epoch_seed": "seed + epoch_index",
+    "worker_seed": "derived deterministically from epoch seed and worker id",
+    "validation_and_test_sampling": "unchanged sequential evaluation loaders"
+  },
+  "frozen_non_sampling_components": [
+    "dataset",
+    "train/validation/test indices",
+    "feature normalization",
+    "Conv1D temporal encoder",
+    "GCN layers",
+    "graph head",
+    "node head",
+    "losses",
+    "graph pos_weight",
+    "node pos_weight",
+    "optimizer",
+    "learning rate",
+    "scheduler",
+    "checkpoint-selection rule",
+    "early stopping",
+    "validation loader",
+    "test loader",
+    "metric functions"
+  ],
+  "dry_run_pass_conditions": {
+    "train_only_indices": true,
+    "normal_fraction_range": [
+      0.49,
+      0.51
+    ],
+    "all_normal_profiles_observed": true,
+    "all_attack_strengths_observed": true,
+    "all_attack_counts_observed": true,
+    "all_training_runs_observed": true,
+    "validation_or_test_indices_observed": 0,
+    "temporal_collision_rate_max": 0.05
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "artifacts": {
+    "code_scan": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P0_EVALUATOR_AND_MODEL_CODE_SCAN.json",
+    "code_scan_sha256": "e32075ac121e387bba5b988f17170f86866697391105598b141307fd7300d96c",
+    "inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P0_A4_A5_ARTIFACT_INVENTORY.json",
+    "inventory_sha256": "78244a5f94880813a45839c7d53d208b7a8ba8d23338914eec7eedcfc61e7e6d",
+    "metric_extract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P0_FROZEN_METRIC_EXTRACT.json",
+    "metric_extract_sha256": "0971ebf464037159305268d77e4c0335a39dfcbd7446a9e81451d40464c06cde",
+    "strategy": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P0_REPRODUCTION_STRATEGY.json",
+    "strategy_sha256": "caf7528744cce1da4cfa2ab855850277f67951783a3ed697371f9a8889563eb0"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "created_utc": "2026-08-05T20:03:07.020265+00:00",
+  "decision": {
+    "F4_P0_complete": true,
+    "actual_F4_evaluation_authorized": true,
+    "next_stage": "V5_P3_F4_FROZEN_CHECKPOINT_VALIDATION_BASELINE_REPRODUCTION",
+    "recommended_strategy": "reuse_official_evaluator_with_frozen_checkpoint_and_guarded_validation_loader",
+    "sealed_test_access_authorized": false,
+    "validation_access_used_in_preflight": false
+  },
+  "discovery": {
+    "A4_A5_files": 11,
+    "A4_directories": 1,
+    "A5_directories": 1,
+    "evaluator_candidates": 24,
+    "loader_candidates": 1,
+    "metric_candidates": 54,
+    "model_sources": 7,
+    "prediction_artifacts": 215
+  },
+  "frozen_checkpoint": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+    "sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "size_bytes": 798875
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_deserialized": false,
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": false,
+    "validation_tensors_loaded": false
+  },
+  "provenance": {
+    "F0_lock_sha256": "632c494b4796e55d37c6c9d6211d858c7b96e6b739285d646ecd380c8687eba2",
+    "F3_R1_lock_sha256": "b8ffa23d1da92fe50a711b6fe275f695ac1cd0a6f0613206bf01d828071b7bff",
+    "F3_R1_report_sha256": "0de4fad3749dd2ad290f1fb03636c04afbb13d85f45e5fbf32a707e4bb2ce04b",
+    "F3_lock_sha256": "06bc1f22f6af7d2b3afe8f806b2db49dde29ec208a3c92e917ca55c24407be4e",
+    "F3_report_sha256": "1418b7497c80c4dad1a73bbb556138459b3d5c3dcd0d4d67fe69f7de02c2da0e",
+    "data_access_contract_sha256": "ba352d5cb194ae15df0eb28b925744353bb66e0e5721fc03816b4a0a705666f4",
+    "installed_script_sha256": "7f9853868dcf585cb05c95f73597b49d4d4febd753c4c94b57b4d1e4d61151f4",
+    "metric_contract_sha256": "281088d61dcf557e43fad6f09ab02f0d98508d0d6b34718435fb64a1b6447a28"
+  },
+  "scope": "Discover and hash the frozen A4/A5 checkpoint, metric records, official evaluator/model/loader code, and reusable validation prediction artifacts before executing F4.",
+  "stage": "V5_P3_F4_P0_FROZEN_BASELINE_REPRODUCTION_PREFLIGHT",
+  "status": "PASS"
+}

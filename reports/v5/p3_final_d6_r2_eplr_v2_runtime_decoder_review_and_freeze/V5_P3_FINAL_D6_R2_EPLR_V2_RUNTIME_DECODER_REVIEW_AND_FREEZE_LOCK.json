@@ -1,0 +1,39 @@
+{
+  "A0_role": "HISTORICAL_COMPARISON_ONLY",
+  "A1_role": "OFFLINE_CERTIFIED_STRUCTURAL_REFERENCE",
+  "B_only_is_decoder_selection_authority": true,
+  "D6_R1_R1_outputs_sha256": "7b8e560fff2795132dbb618c74fe2ed6d042e82802818fd446cf591970e79e0b",
+  "EPLR_V2_calibration_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+  "EPLR_V2_handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+  "EPLR_V2_selected_as_final_runtime_structured_decoder": true,
+  "EPLR_V2_source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+  "base_graph_alarm_policy": "RAW_NEURAL_THRESHOLD_0P5",
+  "base_graph_threshold": 0.5,
+  "next_stage": "V5_P3_FINAL_D7_P0_TEMPORAL_ORDER_AND_RUN_BOUNDARY_CERTIFICATION",
+  "persistence_candidate_selection_performed": false,
+  "persistence_candidates_frozen": {
+    "P0": {
+      "name": "instantaneous_raw",
+      "rule": "alarm_t = raw_graph_prediction_t"
+    },
+    "P1": {
+      "name": "two_consecutive",
+      "rule": "alarm_t = raw_t AND raw_t_minus_1"
+    },
+    "P2": {
+      "name": "two_of_three",
+      "rule": "alarm_t = at_least_2_positive_raw_predictions_in_t_minus_2_to_t"
+    },
+    "P3": {
+      "name": "three_consecutive",
+      "rule": "alarm_t = raw_t AND raw_t_minus_1 AND raw_t_minus_2"
+    }
+  },
+  "persistence_validation_authorized": true,
+  "predeclared_acceptance_all_criteria_met": true,
+  "report_sha256": "9bbd8a0aa5d1dd8d9d3ea81de76ecb711b88e9af6221c01440ea289436aabc93",
+  "runtime_structured_decoder": "EPLR_V2",
+  "sealed_test_evaluation_authorized": false,
+  "stage": "V5_P3_FINAL_D6_R2_EPLR_V2_RUNTIME_DECODER_REVIEW_AND_FREEZE",
+  "status": "PASS"
+}

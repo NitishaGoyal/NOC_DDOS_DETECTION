@@ -1,0 +1,53 @@
+--- V3/GCNLayer
++++ V4/GCNLayer
+@@ -4,5 +4,6 @@
+         self.linear = nn.Linear(in_dim, out_dim)
+ 
+     def forward(self, h: torch.Tensor, a_hat: torch.Tensor) -> torch.Tensor:
+-        aggregated = torch.einsum("ij,bjf->bif", a_hat, h)
+-        return self.linear(aggregated)
++        agg = torch.einsum("ij,bjf->bif", a_hat, h)
++        out = self.linear(agg)
++        return out
+--- V3/TemporalEncoder
++++ V4/TemporalEncoder
+@@ -1,5 +1,10 @@
+ class TemporalEncoder(nn.Module):
+-    def __init__(self, in_features: int = 2, embedding_dim: int = 8, kernel_size: int = 3):
++    def __init__(
++        self,
++        in_features: int = 2,
++        embedding_dim: int = 8,
++        kernel_size: int = 3,
++    ):
+         super().__init__()
+         padding = kernel_size // 2
+         self.conv = nn.Conv1d(
+--- V3/TemporalGCN
++++ V4/TemporalGCN
+@@ -1,5 +1,11 @@
+ class TemporalGCN(nn.Module):
+-    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8):
++    def __init__(
++        self,
++        input_features: int,
++        temporal_dim: int = 8,
++        gcn_hidden: int = 16,
++        gcn_out: int = 8,
++    ):
+         super().__init__()
+         self.temporal = TemporalEncoder(input_features, temporal_dim, kernel_size=3)
+         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+@@ -7,7 +13,11 @@
+         self.node_head = nn.Linear(gcn_out, 1)
+         self.graph_head = nn.Linear(gcn_out, 1)
+ 
+-    def forward(self, x: torch.Tensor, a_hat: torch.Tensor):
++    def forward(
++        self,
++        x: torch.Tensor,
++        a_hat: torch.Tensor,
++    ) -> tuple[torch.Tensor, torch.Tensor]:
+         h = self.temporal(x)
+         h = F.relu(self.gcn1(h, a_hat))
+         h = F.relu(self.gcn2(h, a_hat))

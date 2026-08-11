@@ -1,0 +1,100 @@
+{
+  "A_test_access": false,
+  "actual_F4_authorized": false,
+  "baseline_route": "official D1 checkpoint replay on guarded validation followed by numeric comparison with the immutable six-head NPZ reference",
+  "checkpoint": {
+    "path": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979"
+  },
+  "comparison": {
+    "all_six_heads_required": true,
+    "array_names_shapes_dtypes_exact": true,
+    "labels_exact": true,
+    "logit_max_absolute_difference_max": 1e-06,
+    "logit_mean_absolute_difference_max": 1e-08
+  },
+  "exporter": {
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+    "sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+  },
+  "frozen_A5_metrics": {
+    "selection_score": 0.7297736868344725
+  },
+  "immutable_reference": {
+    "composite_width": 69,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+    "selected_logits": {
+      "count": {
+        "dtype": "float32",
+        "member": "count_logits.npy",
+        "shape": [
+          13863,
+          4
+        ],
+        "width": 4
+      },
+      "graph": {
+        "dtype": "float32",
+        "member": "attack_logits.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      "path": {
+        "dtype": "float32",
+        "member": "path_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "source": {
+        "dtype": "float32",
+        "member": "source_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "transit": {
+        "dtype": "float32",
+        "member": "transit_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "victim": {
+        "dtype": "float32",
+        "member": "victim_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      }
+    },
+    "sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f"
+  },
+  "loader": {
+    "active_only": false,
+    "expected_items": 13863,
+    "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+    "sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "split": "validation"
+  },
+  "metric_inheritance_rule": "When freshly exported logits and labels reproduce the immutable reference within the frozen tolerances, the associated frozen A5 14-metric vector is reproduced. A separate certified metric adapter will be required before perturbation/permutation stages.",
+  "metric_tolerance": 1e-06,
+  "model": {
+    "path": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+    "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+  },
+  "sealed_test_access": false,
+  "stage": "V5_P3_F4_P1R3_COMPOSITE_LOGIT_AND_A5_METRIC_CONTRACT_FREEZE",
+  "status": "REVIEW_REQUIRED",
+  "validation_only": true
+}

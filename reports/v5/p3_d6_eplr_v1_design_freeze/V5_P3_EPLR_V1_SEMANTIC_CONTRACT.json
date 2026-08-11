@@ -1,0 +1,61 @@
+{
+  "decoder": {
+    "expansion": "Endpoint-Preserving Legal-XY Repair",
+    "name": "V5-P3 EPLR-V1"
+  },
+  "diagnostics": [
+    "route_consistency_score",
+    "selected_route_ids",
+    "source_repair_count",
+    "victim_repair_count",
+    "endpoint_preserved_but_low_route_support"
+  ],
+  "endpoint_policy": {
+    "count_remains_immutable": true,
+    "first": "preserve Raw source and victim masks exactly when K legal routes explain them",
+    "graph_remains_immutable": true,
+    "repair": "minimum confidence-sensitive source/victim edits",
+    "repair_only_if_preservation_infeasible": true
+  },
+  "failure_policy": {
+    "beam_selected": false,
+    "fail_closed": true,
+    "old_A1_fallback": false
+  },
+  "hardware_boundary": {
+    "H0_sha256": "431298f6870489b8b77a1ca0fae774aff1604ef2b6e11155d985a818a21689f0",
+    "input": "69 raw logits",
+    "inside_RTL": false
+  },
+  "raw_policy": {
+    "active_count": "1 + argmax(count_logits); immutable",
+    "graph": "sigmoid(graph_logit) >= 0.5; immutable",
+    "inactive_effective_count": 0,
+    "inactive_masks": "all zero",
+    "source_mask": "sigmoid(source_logits) >= 0.5",
+    "victim_mask": "sigmoid(victim_logits) >= 0.5"
+  },
+  "route_semantics": {
+    "active_route_count": "exactly K",
+    "endpoint_on_one_route_may_be_transit_on_another": true,
+    "global_endpoint_transit_disjointness": false,
+    "path_mask": "union router bitmap, not ordered route",
+    "route_library": "canonical V5 legal XY route library",
+    "shared_victims_allowed": true,
+    "source_mask": "union of route sources",
+    "topology": "fixed 4x4 row-major mesh",
+    "transit_mask": "union of internal transit routers",
+    "unique_attacker_sources": true,
+    "victim_mask": "union of route victims",
+    "victim_union_cardinality_may_be_less_than_K": true
+  },
+  "stage": "V5_P3_D6_EPLR_V1_SEMANTIC_AND_OBJECTIVE_SPECIFICATION_FREEZE",
+  "status": "FROZEN",
+  "statuses": [
+    "INACTIVE_RAW",
+    "RAW_ENDPOINTS_LEGAL",
+    "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+    "ENDPOINT_REPAIR_APPLIED",
+    "NO_CERTIFIED_LEGAL_EXPLANATION"
+  ]
+}

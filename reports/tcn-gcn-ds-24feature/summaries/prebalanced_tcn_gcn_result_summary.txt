@@ -1,0 +1,40 @@
+Final TCN-GCN Result Summary - Pre-Balanced Placement Split
+
+Dataset:
+data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+
+Input:
+[S, 16 routers, 8 epochs, 24 features]
+
+Model:
+TCN temporal encoder + 2-layer GCN
+
+Split:
+placement split v1
+
+Best checkpoint:
+models/temporal_tcn_gcn_placement_ds2_4x4_portfeat_ep75_pat10/best_model.pt
+
+Best epoch:
+14
+
+Fixed threshold test result:
+graph F1            = 0.9836
+graph FPR           = 0.0000
+node precision      = 0.9711
+node recall         = 0.9849
+node F1             = 0.9779
+exact localization  = 0.9059
+
+Validation-selected threshold:
+node threshold      = 0.30
+node precision      = 0.9643
+node recall         = 0.9952
+node F1             = 0.9796
+exact localization  = 0.8962
+
+Top-k test result:
+top1_any            = 0.9932
+topK_exact          = 0.9411
+top4_all            = 0.9941
+avg_worst_rank      = 3.08

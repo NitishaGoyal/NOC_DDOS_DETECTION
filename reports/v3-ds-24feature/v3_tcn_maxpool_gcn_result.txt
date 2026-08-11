@@ -1,0 +1,36 @@
+V3 TCN-MaxPool-GCN Builtin Split Result
+
+Dataset:
+/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3
+
+Model:
+TCN-MaxPool-TemporalGCN
+
+Model folder:
+models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split
+
+Best epoch:
+20
+
+Train:
+graph F1            = 0.9713
+graph FPR           = 0.0262
+node F1             = 0.8871
+exact localization  = 0.8180
+
+Validation:
+graph F1            = 0.9636
+graph FPR           = 0.0502
+node F1             = 0.8902
+exact localization  = 0.7793
+
+Test:
+graph F1            = 0.8576
+graph FPR           = 0.1678
+node precision      = 0.5827
+node recall         = 0.8738
+node F1             = 0.6992
+exact localization  = 0.4525
+
+Interpretation:
+MaxPool TCN reduces graph false positives compared to attention TCN and MeanPool TCN at the default threshold. It is the best TCN variant so far for default-threshold FPR, but Conv1D-GCN still gives stronger node-level localization.

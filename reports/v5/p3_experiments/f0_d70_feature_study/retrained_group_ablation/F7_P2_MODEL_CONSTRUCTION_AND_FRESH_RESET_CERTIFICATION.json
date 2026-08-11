@@ -1,0 +1,149 @@
+{
+  "captured_model_class": "V6P0Dynamic70GraphConvCount4",
+  "captured_parameter_count": 60553,
+  "certified_model_source": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+  "certified_model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+  "checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+  "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+  "checkpoint_state_exact_match": true,
+  "control_masked_initial_state_exact_match": true,
+  "exporter": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+  "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+  "fresh_parameter_count": 60553,
+  "fresh_reset": {
+    "changed_state_tensor_count": 48,
+    "checkpoint_state_hash": "c7ce69fc36104dabeca399a84d01d819d87127accdea7bc9f410f7ef771f578c",
+    "fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+    "nonfinite_state_tensor_count": 0,
+    "policy": "deterministic seed-107 reset_parameters on leaf modules only; topology/buffer objects from the certified model construction are retained",
+    "reset_leaf_module_count": 27,
+    "reset_leaf_modules": [
+      {
+        "module_name": "input_projection",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.0.depthwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.0.pointwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.1.depthwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.1.pointwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.2.depthwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.2.pointwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.3.depthwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "temporal_blocks.3.pointwise",
+        "module_type": "torch.nn.modules.conv.Conv1d"
+      },
+      {
+        "module_name": "node_projection",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "source_head.0",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "source_head.2",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "transit_head.0",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "transit_head.2",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "victim_head.0",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "victim_head.2",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "path_head.0",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "path_head.2",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "graph_projection.0",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "attack_head",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "count_head",
+        "module_type": "torch.nn.modules.linear.Linear"
+      },
+      {
+        "module_name": "graph1.aggr_module",
+        "module_type": "torch_geometric.nn.aggr.basic.SumAggregation"
+      },
+      {
+        "module_name": "graph1.lin_rel",
+        "module_type": "torch_geometric.nn.dense.linear.Linear"
+      },
+      {
+        "module_name": "graph1.lin_root",
+        "module_type": "torch_geometric.nn.dense.linear.Linear"
+      },
+      {
+        "module_name": "graph2.aggr_module",
+        "module_type": "torch_geometric.nn.aggr.basic.SumAggregation"
+      },
+      {
+        "module_name": "graph2.lin_rel",
+        "module_type": "torch_geometric.nn.dense.linear.Linear"
+      },
+      {
+        "module_name": "graph2.lin_root",
+        "module_type": "torch_geometric.nn.dense.linear.Linear"
+      }
+    ],
+    "seed": 107,
+    "unchanged_state_tensor_count": 1
+  },
+  "fresh_route_is_byte_identical_to_missing_A4_initialization": false,
+  "fresh_trainable_parameter_count": 60553,
+  "model_capture": {
+    "captured_function": "main",
+    "captured_line": 434,
+    "captured_local_name": "model",
+    "exporter": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+    "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+    "model_class": "V6P0Dynamic70GraphConvCount4",
+    "observation": "captured_exact_checkpoint_model",
+    "parameter_count": 60553,
+    "route": "official_D1_exporter_trace_capture",
+    "sealed_test_access": false,
+    "state_dict_exact_match": true,
+    "validation_inference_completed_by_probe": false
+  }
+}

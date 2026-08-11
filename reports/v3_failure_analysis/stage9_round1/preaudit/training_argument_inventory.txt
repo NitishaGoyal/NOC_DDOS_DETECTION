@@ -1,0 +1,667 @@
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_tcn_gcn_v3.py
+24:        for name in ["attackers", "split", "feature_cols", "profile", "active_cores", "strength", "seed"]:
+64:from torch.utils.data import Dataset, DataLoader
+68:def set_seed(seed: int) -> None:
+69:    random.seed(seed)
+70:    np.random.seed(seed)
+71:    torch.manual_seed(seed)
+72:    torch.cuda.manual_seed_all(seed)
+250:    loader: DataLoader,
+253:    graph_loss_fn: nn.Module,
+254:    node_loss_fn: nn.Module,
+255:    node_loss_weight: float,
+263:    batches = 0
+265:    for batch in loader:
+266:        x = batch["x"].to(device)
+267:        y_graph = batch["y_graph"].to(device)
+268:        y_node = batch["y_node"].to(device)
+271:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+272:        node_loss = node_loss_fn(node_logits, y_node)
+273:        loss = graph_loss + node_loss_weight * node_loss
+276:        batches += 1
+290:        "loss": float(total_loss / max(1, batches)),
+338:        batch_size, num_nodes, time_steps, feature_dim = x.shape
+339:        x = x.reshape(batch_size * num_nodes, time_steps, feature_dim)
+346:        return h.reshape(batch_size, num_nodes, -1)
+350:    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):
+352:        self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)
+353:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+354:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+355:        self.node_head = nn.Linear(gcn_out, 1)
+356:        self.graph_head = nn.Linear(gcn_out, 1)
+370:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+371:    parser.add_argument("--out-dir", default="models/temporal_tcn_gcn_early_stop")
+372:    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+373:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+374:    parser.add_argument("--epochs", type=int, default=25)
+375:    parser.add_argument("--patience", type=int, default=5)
+376:    parser.add_argument("--min-delta", type=float, default=1e-4)
+377:    parser.add_argument("--batch-size", type=int, default=256)
+378:    parser.add_argument("--lr", type=float, default=1e-3)
+379:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+380:    parser.add_argument("--temporal-dim", type=int, default=8)
+381:    parser.add_argument("--gcn-hidden", type=int, default=16)
+382:    parser.add_argument("--gcn-out", type=int, default=8)
+383:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+384:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+385:    parser.add_argument("--node-threshold", type=float, default=0.5)
+386:    parser.add_argument("--seed", type=int, default=7)
+387:    parser.add_argument("--tcn-dropout", type=float, default=0.1)
+390:    if args.epochs <= 0:
+391:        raise ValueError("--epochs must be positive.")
+392:    if args.patience <= 0:
+393:        raise ValueError("--patience must be positive.")
+397:    set_seed(args.seed)
+447:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+448:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+449:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+454:    model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)
+460:    graph_loss_fn = nn.BCEWithLogitsLoss(
+463:    node_loss_fn = nn.BCEWithLogitsLoss(
+466:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+470:    epochs_without_improvement = 0
+475:    for epoch in range(1, args.epochs + 1):
+478:        batches = 0
+481:        for batch in progress:
+482:            x = batch["x"].to(device)
+483:            y_graph = batch["y_graph"].to(device)
+484:            y_node = batch["y_node"].to(device)
+486:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+487:            node_loss = node_loss_fn(node_logits, y_node)
+488:            loss = graph_loss + args.node_loss_weight * node_loss
+495:            batches += 1
+498:        train_step_loss = total_loss / max(1, batches)
+502:            "graph_loss_fn": graph_loss_fn,
+503:            "node_loss_fn": node_loss_fn,
+504:            "node_loss_weight": args.node_loss_weight,
+522:            epochs_without_improvement = 0
+523:            checkpoint = {
+533:            torch.save(checkpoint, out_dir / "best_model.pt")
+536:            epochs_without_improvement += 1
+537:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+547:            "epochs_without_improvement": int(epochs_without_improvement),
+553:        if epochs_without_improvement >= args.patience:
+557:                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+562:    print("\nloading best checkpoint...")
+563:    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+564:    model.load_state_dict(checkpoint["model_state_dict"])
+569:        "graph_loss_fn": graph_loss_fn,
+570:        "node_loss_fn": node_loss_fn,
+571:        "node_loss_weight": args.node_loss_weight,
+581:    print("best epoch:", checkpoint["best_epoch"])
+582:    print("best validation score:", checkpoint["best_val_score"])
+592:        "best_epoch": int(checkpoint["best_epoch"]),
+593:        "best_val_score": float(checkpoint["best_val_score"]),
+598:            "maximum_epochs": int(args.epochs),
+599:            "epochs_completed": int(len(history)),
+600:            "patience": int(args.patience),
+604:            "seed": int(args.seed),
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_early_stopping.py
+17:from torch.utils.data import Dataset, DataLoader
+21:def set_seed(seed: int) -> None:
+22:    random.seed(seed)
+23:    np.random.seed(seed)
+24:    torch.manual_seed(seed)
+25:    torch.cuda.manual_seed_all(seed)
+203:    loader: DataLoader,
+206:    graph_loss_fn: nn.Module,
+207:    node_loss_fn: nn.Module,
+208:    node_loss_weight: float,
+216:    batches = 0
+218:    for batch in loader:
+219:        x = batch["x"].to(device)
+220:        y_graph = batch["y_graph"].to(device)
+221:        y_node = batch["y_node"].to(device)
+224:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+225:        node_loss = node_loss_fn(node_logits, y_node)
+226:        loss = graph_loss + node_loss_weight * node_loss
+229:        batches += 1
+243:        "loss": float(total_loss / max(1, batches)),
+277:        batch_size, num_nodes, time_steps, feature_dim = x.shape
+278:        x = x.reshape(batch_size * num_nodes, time_steps, feature_dim)
+282:        return h.reshape(batch_size, num_nodes, -1)
+286:    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8):
+288:        self.temporal = TemporalEncoder(input_features, temporal_dim, kernel_size=3)
+289:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+290:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+291:        self.node_head = nn.Linear(gcn_out, 1)
+292:        self.graph_head = nn.Linear(gcn_out, 1)
+306:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+307:    parser.add_argument("--out-dir", default="models/temporal_gcn_conv1d_early_stop")
+308:    parser.add_argument("--split-mode", choices=["prototype", "placement"], default="prototype")
+309:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+310:    parser.add_argument("--epochs", type=int, default=25)
+311:    parser.add_argument("--patience", type=int, default=5)
+312:    parser.add_argument("--min-delta", type=float, default=1e-4)
+313:    parser.add_argument("--batch-size", type=int, default=256)
+314:    parser.add_argument("--lr", type=float, default=1e-3)
+315:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+316:    parser.add_argument("--temporal-dim", type=int, default=8)
+317:    parser.add_argument("--gcn-hidden", type=int, default=16)
+318:    parser.add_argument("--gcn-out", type=int, default=8)
+319:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+320:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+321:    parser.add_argument("--node-threshold", type=float, default=0.5)
+322:    parser.add_argument("--seed", type=int, default=7)
+326:    if args.epochs <= 0:
+327:        raise ValueError("--epochs must be positive.")
+328:    if args.patience <= 0:
+329:        raise ValueError("--patience must be positive.")
+333:    set_seed(args.seed)
+380:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+381:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+382:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+387:    model = TemporalGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out).to(device)
+393:    graph_loss_fn = nn.BCEWithLogitsLoss(
+396:    node_loss_fn = nn.BCEWithLogitsLoss(
+399:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+403:    epochs_without_improvement = 0
+408:    for epoch in range(1, args.epochs + 1):
+411:        batches = 0
+414:        for batch in progress:
+415:            x = batch["x"].to(device)
+416:            y_graph = batch["y_graph"].to(device)
+417:            y_node = batch["y_node"].to(device)
+419:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+420:            node_loss = node_loss_fn(node_logits, y_node)
+421:            loss = graph_loss + args.node_loss_weight * node_loss
+428:            batches += 1
+431:        train_step_loss = total_loss / max(1, batches)
+435:            "graph_loss_fn": graph_loss_fn,
+436:            "node_loss_fn": node_loss_fn,
+437:            "node_loss_weight": args.node_loss_weight,
+455:            epochs_without_improvement = 0
+456:            checkpoint = {
+466:            torch.save(checkpoint, out_dir / "best_model.pt")
+469:            epochs_without_improvement += 1
+470:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+480:            "epochs_without_improvement": int(epochs_without_improvement),
+486:        if epochs_without_improvement >= args.patience:
+490:                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+495:    print("\nloading best checkpoint...")
+496:    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+497:    model.load_state_dict(checkpoint["model_state_dict"])
+502:        "graph_loss_fn": graph_loss_fn,
+503:        "node_loss_fn": node_loss_fn,
+504:        "node_loss_weight": args.node_loss_weight,
+514:    print("best epoch:", checkpoint["best_epoch"])
+515:    print("best validation score:", checkpoint["best_val_score"])
+525:        "best_epoch": int(checkpoint["best_epoch"]),
+526:        "best_val_score": float(checkpoint["best_val_score"]),
+531:            "maximum_epochs": int(args.epochs),
+532:            "epochs_completed": int(len(history)),
+533:            "patience": int(args.patience),
+537:            "seed": int(args.seed),
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_tcn_gcn_early_stopping.py
+17:from torch.utils.data import Dataset, DataLoader
+21:def set_seed(seed: int) -> None:
+22:    random.seed(seed)
+23:    np.random.seed(seed)
+24:    torch.manual_seed(seed)
+25:    torch.cuda.manual_seed_all(seed)
+203:    loader: DataLoader,
+206:    graph_loss_fn: nn.Module,
+207:    node_loss_fn: nn.Module,
+208:    node_loss_weight: float,
+216:    batches = 0
+218:    for batch in loader:
+219:        x = batch["x"].to(device)
+220:        y_graph = batch["y_graph"].to(device)
+221:        y_node = batch["y_node"].to(device)
+224:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+225:        node_loss = node_loss_fn(node_logits, y_node)
+226:        loss = graph_loss + node_loss_weight * node_loss
+229:        batches += 1
+243:        "loss": float(total_loss / max(1, batches)),
+291:        batch_size, num_nodes, time_steps, feature_dim = x.shape
+292:        x = x.reshape(batch_size * num_nodes, time_steps, feature_dim)
+299:        return h.reshape(batch_size, num_nodes, -1)
+303:    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):
+305:        self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)
+306:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+307:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+308:        self.node_head = nn.Linear(gcn_out, 1)
+309:        self.graph_head = nn.Linear(gcn_out, 1)
+323:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+324:    parser.add_argument("--out-dir", default="models/temporal_tcn_gcn_early_stop")
+325:    parser.add_argument("--split-mode", choices=["prototype", "placement"], default="prototype")
+326:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+327:    parser.add_argument("--epochs", type=int, default=25)
+328:    parser.add_argument("--patience", type=int, default=5)
+329:    parser.add_argument("--min-delta", type=float, default=1e-4)
+330:    parser.add_argument("--batch-size", type=int, default=256)
+331:    parser.add_argument("--lr", type=float, default=1e-3)
+332:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+333:    parser.add_argument("--temporal-dim", type=int, default=8)
+334:    parser.add_argument("--gcn-hidden", type=int, default=16)
+335:    parser.add_argument("--gcn-out", type=int, default=8)
+336:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+337:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+338:    parser.add_argument("--node-threshold", type=float, default=0.5)
+339:    parser.add_argument("--seed", type=int, default=7)
+340:    parser.add_argument("--tcn-dropout", type=float, default=0.1)
+343:    if args.epochs <= 0:
+344:        raise ValueError("--epochs must be positive.")
+345:    if args.patience <= 0:
+346:        raise ValueError("--patience must be positive.")
+350:    set_seed(args.seed)
+397:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+398:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+399:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+404:    model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)
+410:    graph_loss_fn = nn.BCEWithLogitsLoss(
+413:    node_loss_fn = nn.BCEWithLogitsLoss(
+416:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+420:    epochs_without_improvement = 0
+425:    for epoch in range(1, args.epochs + 1):
+428:        batches = 0
+431:        for batch in progress:
+432:            x = batch["x"].to(device)
+433:            y_graph = batch["y_graph"].to(device)
+434:            y_node = batch["y_node"].to(device)
+436:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+437:            node_loss = node_loss_fn(node_logits, y_node)
+438:            loss = graph_loss + args.node_loss_weight * node_loss
+445:            batches += 1
+448:        train_step_loss = total_loss / max(1, batches)
+452:            "graph_loss_fn": graph_loss_fn,
+453:            "node_loss_fn": node_loss_fn,
+454:            "node_loss_weight": args.node_loss_weight,
+472:            epochs_without_improvement = 0
+473:            checkpoint = {
+483:            torch.save(checkpoint, out_dir / "best_model.pt")
+486:            epochs_without_improvement += 1
+487:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+497:            "epochs_without_improvement": int(epochs_without_improvement),
+503:        if epochs_without_improvement >= args.patience:
+507:                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+512:    print("\nloading best checkpoint...")
+513:    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+514:    model.load_state_dict(checkpoint["model_state_dict"])
+519:        "graph_loss_fn": graph_loss_fn,
+520:        "node_loss_fn": node_loss_fn,
+521:        "node_loss_weight": args.node_loss_weight,
+531:    print("best epoch:", checkpoint["best_epoch"])
+532:    print("best validation score:", checkpoint["best_val_score"])
+542:        "best_epoch": int(checkpoint["best_epoch"]),
+543:        "best_val_score": float(checkpoint["best_val_score"]),
+548:            "maximum_epochs": int(args.epochs),
+549:            "epochs_completed": int(len(history)),
+550:            "patience": int(args.patience),
+554:            "seed": int(args.seed),
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn.py
+19:from torch.utils.data import Dataset, DataLoader
+27:def set_seed(seed):
+28:    random.seed(seed)
+29:    np.random.seed(seed)
+30:    torch.manual_seed(seed)
+31:    torch.cuda.manual_seed_all(seed)
+254:        temporal_dim=8,
+255:        gcn_hidden=16,
+256:        gcn_out=8,
+262:            embedding_dim=temporal_dim,
+266:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+267:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+269:        self.node_head = nn.Linear(gcn_out, 1)
+270:        self.graph_head = nn.Linear(gcn_out, 1)
+367:    batches = 0
+372:    for batch in loader:
+373:        x = batch["x"].to(device)
+374:        yg = batch["y_graph"].to(device)
+375:        yn = batch["y_node"].to(device)
+384:        batches += 1
+402:        "loss": total_loss / max(1, batches),
+430:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+431:    parser.add_argument("--out-dir", default="models/temporal_gcn_float")
+432:    parser.add_argument("--split-mode", choices=["prototype", "placement"], default="prototype")
+433:    parser.add_argument("--epochs", type=int, default=40)
+434:    parser.add_argument("--batch-size", type=int, default=256)
+435:    parser.add_argument("--lr", type=float, default=1e-3)
+436:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+437:    parser.add_argument("--temporal-dim", type=int, default=8)
+438:    parser.add_argument("--gcn-hidden", type=int, default=16)
+439:    parser.add_argument("--gcn-out", type=int, default=8)
+440:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+441:    parser.add_argument("--seed", type=int, default=7)
+444:    set_seed(args.seed)
+485:    train_loader = DataLoader(
+487:        batch_size=args.batch_size,
+488:        shuffle=True,
+493:    val_loader = DataLoader(
+495:        batch_size=args.batch_size,
+496:        shuffle=False,
+500:    test_loader = DataLoader(
+502:        batch_size=args.batch_size,
+503:        shuffle=False,
+513:        temporal_dim=args.temporal_dim,
+514:        gcn_hidden=args.gcn_hidden,
+515:        gcn_out=args.gcn_out,
+533:        lr=args.lr,
+542:    for epoch in range(1, args.epochs + 1):
+546:        batches = 0
+550:        for batch in pbar:
+551:            x = batch["x"].to(device)
+552:            yg = batch["y_graph"].to(device)
+553:            yn = batch["y_node"].to(device)
+559:            loss = loss_graph + args.node_loss_weight * loss_node
+566:            batches += 1
+570:        train_loss = total_loss / max(1, batches)
+595:            checkpoint = {
+604:            torch.save(checkpoint, out_dir / "best_model.pt")
+611:    print("loading best checkpoint...")
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_tcn_meanpool_gcn_v3.py
+24:        for name in ["attackers", "split", "feature_cols", "profile", "active_cores", "strength", "seed"]:
+64:from torch.utils.data import Dataset, DataLoader
+68:def set_seed(seed: int) -> None:
+69:    random.seed(seed)
+70:    np.random.seed(seed)
+71:    torch.manual_seed(seed)
+72:    torch.cuda.manual_seed_all(seed)
+250:    loader: DataLoader,
+253:    graph_loss_fn: nn.Module,
+254:    node_loss_fn: nn.Module,
+255:    node_loss_weight: float,
+263:    batches = 0
+265:    for batch in loader:
+266:        x = batch["x"].to(device)
+267:        y_graph = batch["y_graph"].to(device)
+268:        y_node = batch["y_node"].to(device)
+271:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+272:        node_loss = node_loss_fn(node_logits, y_node)
+273:        loss = graph_loss + node_loss_weight * node_loss
+276:        batches += 1
+290:        "loss": float(total_loss / max(1, batches)),
+341:    def __init__(self, input_features, temporal_dim, dropout=0.1, tcn_dropout=None, **kwargs):
+347:        self.input_proj = nn.Conv1d(input_features, temporal_dim, kernel_size=1)
+349:        self.conv1a = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=1, dilation=1)
+350:        self.bn1a = nn.BatchNorm1d(temporal_dim)
+352:        self.conv1b = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=1, dilation=1)
+353:        self.bn1b = nn.BatchNorm1d(temporal_dim)
+355:        self.conv2a = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=2, dilation=2)
+356:        self.bn2a = nn.BatchNorm1d(temporal_dim)
+358:        self.conv2b = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=2, dilation=2)
+359:        self.bn2b = nn.BatchNorm1d(temporal_dim)
+385:        h = h.mean(dim=-1)  # [B*N, temporal_dim]
+392:    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):
+394:        self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)
+395:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+396:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+397:        self.node_head = nn.Linear(gcn_out, 1)
+398:        self.graph_head = nn.Linear(gcn_out, 1)
+412:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+413:    parser.add_argument("--out-dir", default="models/temporal_tcn_gcn_early_stop")
+414:    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+415:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+416:    parser.add_argument("--epochs", type=int, default=25)
+417:    parser.add_argument("--patience", type=int, default=5)
+418:    parser.add_argument("--min-delta", type=float, default=1e-4)
+419:    parser.add_argument("--batch-size", type=int, default=256)
+420:    parser.add_argument("--lr", type=float, default=1e-3)
+421:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+422:    parser.add_argument("--temporal-dim", type=int, default=8)
+423:    parser.add_argument("--gcn-hidden", type=int, default=16)
+424:    parser.add_argument("--gcn-out", type=int, default=8)
+425:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+426:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+427:    parser.add_argument("--node-threshold", type=float, default=0.5)
+428:    parser.add_argument("--seed", type=int, default=7)
+429:    parser.add_argument("--tcn-dropout", type=float, default=0.1)
+432:    if args.epochs <= 0:
+433:        raise ValueError("--epochs must be positive.")
+434:    if args.patience <= 0:
+435:        raise ValueError("--patience must be positive.")
+439:    set_seed(args.seed)
+489:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+490:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+491:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+496:    model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)
+502:    graph_loss_fn = nn.BCEWithLogitsLoss(
+505:    node_loss_fn = nn.BCEWithLogitsLoss(
+508:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+512:    epochs_without_improvement = 0
+517:    for epoch in range(1, args.epochs + 1):
+520:        batches = 0
+523:        for batch in progress:
+524:            x = batch["x"].to(device)
+525:            y_graph = batch["y_graph"].to(device)
+526:            y_node = batch["y_node"].to(device)
+528:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+529:            node_loss = node_loss_fn(node_logits, y_node)
+530:            loss = graph_loss + args.node_loss_weight * node_loss
+537:            batches += 1
+540:        train_step_loss = total_loss / max(1, batches)
+544:            "graph_loss_fn": graph_loss_fn,
+545:            "node_loss_fn": node_loss_fn,
+546:            "node_loss_weight": args.node_loss_weight,
+564:            epochs_without_improvement = 0
+565:            checkpoint = {
+575:            torch.save(checkpoint, out_dir / "best_model.pt")
+578:            epochs_without_improvement += 1
+579:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+589:            "epochs_without_improvement": int(epochs_without_improvement),
+595:        if epochs_without_improvement >= args.patience:
+599:                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+604:    print("\nloading best checkpoint...")
+605:    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+606:    model.load_state_dict(checkpoint["model_state_dict"])
+611:        "graph_loss_fn": graph_loss_fn,
+612:        "node_loss_fn": node_loss_fn,
+613:        "node_loss_weight": args.node_loss_weight,
+623:    print("best epoch:", checkpoint["best_epoch"])
+624:    print("best validation score:", checkpoint["best_val_score"])
+634:        "best_epoch": int(checkpoint["best_epoch"]),
+635:        "best_val_score": float(checkpoint["best_val_score"]),
+640:            "maximum_epochs": int(args.epochs),
+641:            "epochs_completed": int(len(history)),
+642:            "patience": int(args.patience),
+646:            "seed": int(args.seed),
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py
+24:        for name in ["attackers", "split", "feature_cols", "profile", "active_cores", "strength", "seed"]:
+64:from torch.utils.data import Dataset, DataLoader
+68:def set_seed(seed: int) -> None:
+69:    random.seed(seed)
+70:    np.random.seed(seed)
+71:    torch.manual_seed(seed)
+72:    torch.cuda.manual_seed_all(seed)
+250:    loader: DataLoader,
+253:    graph_loss_fn: nn.Module,
+254:    node_loss_fn: nn.Module,
+255:    node_loss_weight: float,
+263:    batches = 0
+265:    for batch in loader:
+266:        x = batch["x"].to(device)
+267:        y_graph = batch["y_graph"].to(device)
+268:        y_node = batch["y_node"].to(device)
+271:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+272:        node_loss = node_loss_fn(node_logits, y_node)
+273:        loss = graph_loss + node_loss_weight * node_loss
+276:        batches += 1
+290:        "loss": float(total_loss / max(1, batches)),
+324:        batch_size, num_nodes, time_steps, feature_dim = x.shape
+325:        x = x.reshape(batch_size * num_nodes, time_steps, feature_dim)
+329:        return h.reshape(batch_size, num_nodes, -1)
+333:    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8):
+335:        self.temporal = TemporalEncoder(input_features, temporal_dim, kernel_size=3)
+336:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+337:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+338:        self.node_head = nn.Linear(gcn_out, 1)
+339:        self.graph_head = nn.Linear(gcn_out, 1)
+353:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+354:    parser.add_argument("--out-dir", default="models/temporal_gcn_conv1d_early_stop")
+355:    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+356:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+357:    parser.add_argument("--epochs", type=int, default=25)
+358:    parser.add_argument("--patience", type=int, default=5)
+359:    parser.add_argument("--min-delta", type=float, default=1e-4)
+360:    parser.add_argument("--batch-size", type=int, default=256)
+361:    parser.add_argument("--lr", type=float, default=1e-3)
+362:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+363:    parser.add_argument("--temporal-dim", type=int, default=8)
+364:    parser.add_argument("--gcn-hidden", type=int, default=16)
+365:    parser.add_argument("--gcn-out", type=int, default=8)
+366:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+367:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+368:    parser.add_argument("--node-threshold", type=float, default=0.5)
+369:    parser.add_argument("--seed", type=int, default=7)
+373:    if args.epochs <= 0:
+374:        raise ValueError("--epochs must be positive.")
+375:    if args.patience <= 0:
+376:        raise ValueError("--patience must be positive.")
+380:    set_seed(args.seed)
+430:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+431:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+432:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+437:    model = TemporalGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out).to(device)
+443:    graph_loss_fn = nn.BCEWithLogitsLoss(
+446:    node_loss_fn = nn.BCEWithLogitsLoss(
+449:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+453:    epochs_without_improvement = 0
+458:    for epoch in range(1, args.epochs + 1):
+461:        batches = 0
+464:        for batch in progress:
+465:            x = batch["x"].to(device)
+466:            y_graph = batch["y_graph"].to(device)
+467:            y_node = batch["y_node"].to(device)
+469:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+470:            node_loss = node_loss_fn(node_logits, y_node)
+471:            loss = graph_loss + args.node_loss_weight * node_loss
+478:            batches += 1
+481:        train_step_loss = total_loss / max(1, batches)
+485:            "graph_loss_fn": graph_loss_fn,
+486:            "node_loss_fn": node_loss_fn,
+487:            "node_loss_weight": args.node_loss_weight,
+505:            epochs_without_improvement = 0
+506:            checkpoint = {
+516:            torch.save(checkpoint, out_dir / "best_model.pt")
+519:            epochs_without_improvement += 1
+520:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+530:            "epochs_without_improvement": int(epochs_without_improvement),
+536:        if epochs_without_improvement >= args.patience:
+540:                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+545:    print("\nloading best checkpoint...")
+546:    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+547:    model.load_state_dict(checkpoint["model_state_dict"])
+552:        "graph_loss_fn": graph_loss_fn,
+553:        "node_loss_fn": node_loss_fn,
+554:        "node_loss_weight": args.node_loss_weight,
+564:    print("best epoch:", checkpoint["best_epoch"])
+565:    print("best validation score:", checkpoint["best_val_score"])
+575:        "best_epoch": int(checkpoint["best_epoch"]),
+576:        "best_val_score": float(checkpoint["best_val_score"]),
+581:            "maximum_epochs": int(args.epochs),
+582:            "epochs_completed": int(len(history)),
+583:            "patience": int(args.patience),
+587:            "seed": int(args.seed),
+================================================================================
+FILE: /home/zira/research/projects/GNN-2d/scripts/train_temporal_tcn_maxpool_gcn_v3.py
+24:        for name in ["attackers", "split", "feature_cols", "profile", "active_cores", "strength", "seed"]:
+64:from torch.utils.data import Dataset, DataLoader
+68:def set_seed(seed: int) -> None:
+69:    random.seed(seed)
+70:    np.random.seed(seed)
+71:    torch.manual_seed(seed)
+72:    torch.cuda.manual_seed_all(seed)
+250:    loader: DataLoader,
+253:    graph_loss_fn: nn.Module,
+254:    node_loss_fn: nn.Module,
+255:    node_loss_weight: float,
+263:    batches = 0
+265:    for batch in loader:
+266:        x = batch["x"].to(device)
+267:        y_graph = batch["y_graph"].to(device)
+268:        y_node = batch["y_node"].to(device)
+271:        graph_loss = graph_loss_fn(graph_logits, y_graph)
+272:        node_loss = node_loss_fn(node_logits, y_node)
+273:        loss = graph_loss + node_loss_weight * node_loss
+276:        batches += 1
+290:        "loss": float(total_loss / max(1, batches)),
+341:    def __init__(self, input_features, temporal_dim, dropout=0.1, tcn_dropout=None, **kwargs):
+347:        self.input_proj = nn.Conv1d(input_features, temporal_dim, kernel_size=1)
+349:        self.conv1a = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=1, dilation=1)
+350:        self.bn1a = nn.BatchNorm1d(temporal_dim)
+352:        self.conv1b = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=1, dilation=1)
+353:        self.bn1b = nn.BatchNorm1d(temporal_dim)
+355:        self.conv2a = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=2, dilation=2)
+356:        self.bn2a = nn.BatchNorm1d(temporal_dim)
+358:        self.conv2b = nn.Conv1d(temporal_dim, temporal_dim, kernel_size=3, padding=2, dilation=2)
+359:        self.bn2b = nn.BatchNorm1d(temporal_dim)
+385:        h = torch.max(h, dim=-1).values  # [B*N, temporal_dim]
+392:    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):
+394:        self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)
+395:        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+396:        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+397:        self.node_head = nn.Linear(gcn_out, 1)
+398:        self.graph_head = nn.Linear(gcn_out, 1)
+412:    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+413:    parser.add_argument("--out-dir", default="models/temporal_tcn_gcn_early_stop")
+414:    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+415:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+416:    parser.add_argument("--epochs", type=int, default=25)
+417:    parser.add_argument("--patience", type=int, default=5)
+418:    parser.add_argument("--min-delta", type=float, default=1e-4)
+419:    parser.add_argument("--batch-size", type=int, default=256)
+420:    parser.add_argument("--lr", type=float, default=1e-3)
+421:    parser.add_argument("--weight-decay", type=float, default=1e-4)
+422:    parser.add_argument("--temporal-dim", type=int, default=8)
+423:    parser.add_argument("--gcn-hidden", type=int, default=16)
+424:    parser.add_argument("--gcn-out", type=int, default=8)
+425:    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+426:    parser.add_argument("--graph-threshold", type=float, default=0.5)
+427:    parser.add_argument("--node-threshold", type=float, default=0.5)
+428:    parser.add_argument("--seed", type=int, default=7)
+429:    parser.add_argument("--tcn-dropout", type=float, default=0.1)
+432:    if args.epochs <= 0:
+433:        raise ValueError("--epochs must be positive.")
+434:    if args.patience <= 0:
+435:        raise ValueError("--patience must be positive.")
+439:    set_seed(args.seed)
+489:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+490:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+491:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+496:    model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)
+502:    graph_loss_fn = nn.BCEWithLogitsLoss(
+505:    node_loss_fn = nn.BCEWithLogitsLoss(
+508:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+512:    epochs_without_improvement = 0
+517:    for epoch in range(1, args.epochs + 1):
+520:        batches = 0
+523:        for batch in progress:
+524:            x = batch["x"].to(device)
+525:            y_graph = batch["y_graph"].to(device)
+526:            y_node = batch["y_node"].to(device)
+528:            graph_loss = graph_loss_fn(graph_logits, y_graph)
+529:            node_loss = node_loss_fn(node_logits, y_node)
+530:            loss = graph_loss + args.node_loss_weight * node_loss
+537:            batches += 1
+540:        train_step_loss = total_loss / max(1, batches)
+544:            "graph_loss_fn": graph_loss_fn,
+545:            "node_loss_fn": node_loss_fn,
+546:            "node_loss_weight": args.node_loss_weight,
+564:            epochs_without_improvement = 0
+565:            checkpoint = {
+575:            torch.save(checkpoint, out_dir / "best_model.pt")
+578:            epochs_without_improvement += 1
+579:            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+589:            "epochs_without_improvement": int(epochs_without_improvement),
+595:        if epochs_without_improvement >= args.patience:
+599:                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+604:    print("\nloading best checkpoint...")
+605:    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+606:    model.load_state_dict(checkpoint["model_state_dict"])
+611:        "graph_loss_fn": graph_loss_fn,
+612:        "node_loss_fn": node_loss_fn,
+613:        "node_loss_weight": args.node_loss_weight,
+623:    print("best epoch:", checkpoint["best_epoch"])
+624:    print("best validation score:", checkpoint["best_val_score"])
+634:        "best_epoch": int(checkpoint["best_epoch"]),
+635:        "best_val_score": float(checkpoint["best_val_score"]),
+640:            "maximum_epochs": int(args.epochs),
+641:            "epochs_completed": int(len(history)),
+642:            "patience": int(args.patience),
+646:            "seed": int(args.seed),

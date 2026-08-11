@@ -1,0 +1,79 @@
+{
+  "architecture_ok": true,
+  "dataset_headers": {
+    "directed_non_self_edges": 48,
+    "edge_index_dtype": "int64",
+    "edge_index_shape": [
+      2,
+      64
+    ],
+    "self_loops": 16,
+    "x_dtype": "float32",
+    "x_shape": [
+      2990044,
+      16,
+      8,
+      24
+    ],
+    "y_graph_dtype": "int64",
+    "y_graph_shape": [
+      2990044
+    ],
+    "y_node_dtype": "float32",
+    "y_node_shape": [
+      2990044,
+      16
+    ]
+  },
+  "full_source_diff_written": "architecture_class_diff.txt",
+  "missing_class_definitions": [],
+  "model_signature": {
+    "base_model_name": "Conv1D-TemporalGCN",
+    "expected_parameter_count": 2274,
+    "experiment_designation": "a2_capacity_lift",
+    "gcn1": {
+      "in_features": 16,
+      "out_features": 32
+    },
+    "gcn2": {
+      "in_features": 32,
+      "out_features": 16
+    },
+    "graph_head": {
+      "in_features": 16,
+      "out_features": 1
+    },
+    "graph_readout": "mean(dim=1)",
+    "model_name": "Conv1D-TemporalGCN-A2-CapacityLift",
+    "node_head": {
+      "in_features": 16,
+      "out_features": 1
+    },
+    "parameter_count": 2274,
+    "parameter_count_ok": true,
+    "stage_label": "V4-A2",
+    "temporal_conv": {
+      "in_channels": 24,
+      "kernel_size": [
+        3
+      ],
+      "out_channels": 16,
+      "padding": [
+        1
+      ],
+      "stride": [
+        1
+      ]
+    }
+  },
+  "note": "The full V4 trainer differs in loader, split, provenance and stage-control logic. The model is gated by the explicit experiment registry, semantic module signature, and exact expected parameter count; the class-level textual diff is retained for inspection.",
+  "pass": true,
+  "prohibited_tokens_found": [],
+  "stage": "V4-A2.0 source and architecture audit",
+  "v3_actual_sha256": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b",
+  "v3_expected_sha256": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b",
+  "v3_hash_ok": true,
+  "v3_source": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py",
+  "v4_source": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_conv1d_gcn_experiment.py",
+  "v4_source_sha256": "0091ccb1fefb15d7e621ca30b18af692f86fa40ede192a1bd9dc5eb425eceffe"
+}

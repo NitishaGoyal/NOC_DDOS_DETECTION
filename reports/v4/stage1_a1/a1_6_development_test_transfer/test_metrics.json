@@ -1,0 +1,45 @@
+{
+  "checkpoint_sha256": "5687cca9a03340348ecea6aa27f9ce9c0663fb8ae63eddfa42a0d3cce5f707cd",
+  "designation": "development blind test",
+  "graph": {
+    "accuracy": 0.7428611195465128,
+    "f1": 0.7570910499176446,
+    "fn": 88626,
+    "fp": 12985,
+    "fpr": 0.08762695279549212,
+    "precision": 0.9242123571503613,
+    "recall": 0.6411539629517158,
+    "threshold": 0.6,
+    "tn": 135200,
+    "tp": 158349
+  },
+  "independent_publication_holdout": false,
+  "node": {
+    "exact_localization": 0.40669602186456116,
+    "fn": 249017,
+    "fp": 292177,
+    "fpr": 0.04984645673321345,
+    "node_accuracy": 0.9144027102945642,
+    "node_f1": 0.4392934106920845,
+    "node_precision": 0.42049069776667064,
+    "node_recall": 0.4598564053620233,
+    "threshold": 0.71,
+    "tn": 5569363,
+    "tp": 212003
+  },
+  "sample_count": 395160,
+  "selected_thresholds": {
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a1_conv1d_gcn_seed7/best_model.pt",
+    "checkpoint_sha256": "5687cca9a03340348ecea6aa27f9ce9c0663fb8ae63eddfa42a0d3cce5f707cd",
+    "graph_fpr_constraint": 0.1,
+    "graph_selection_rule": "maximize validation graph F1 subject to validation FPR <= 0.10; tie maximize recall; tie maximize precision; tie closest to 0.50",
+    "graph_threshold": 0.6,
+    "node_selection_rule": "maximize validation node F1; tie maximize exact localization; tie maximize precision; tie closest to 0.50",
+    "node_threshold": 0.71,
+    "reason_for_supersession": "The unconstrained F1 optimum produced validation FPR of approximately 0.463, which is operationally unacceptable.",
+    "split": "validation",
+    "supersedes_unconstrained_graph_threshold": 0.23,
+    "test_accessed": false
+  },
+  "thresholds_selected_on_test": false
+}

@@ -1,0 +1,1958 @@
+{
+  "direct_route_count": 2,
+  "evaluated_route_count": 4,
+  "failure_distribution": {
+    "joined_run_role_does_not_match_fresh_labels": 2,
+    "mapping_acceptance_gate_failed": 1,
+    "usable": 1
+  },
+  "mapping_fingerprints": {
+    "8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8": [
+      {
+        "alignment": {
+          "index_field": "dataset_index",
+          "mode": "explicit_validation_index"
+        },
+        "all_active_items_mapped": true,
+        "attack_identity_groups": 3822,
+        "attacker_count_strata": {
+          "1": 1033,
+          "2": 904,
+          "3": 944,
+          "4": 941
+        },
+        "control_only_identity_groups": 3113,
+        "control_reuse_count": 0,
+        "invalid_attack_group_count": 0,
+        "invalid_attack_group_preview": {},
+        "mapped_attack_item_count": 3822,
+        "mapping_fingerprint_sha256": "8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8",
+        "pair_field": "pair_id",
+        "route_type": "direct_sample_pair_identity",
+        "sample_table": {
+          "column_count": 5,
+          "columns": {
+            "dataset_index": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 90,
+              "member_score": 0,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                13863
+              ],
+              "split_score": 30,
+              "window_score": 30
+            },
+            "epoch_id": {
+              "attack_run_score": 30,
+              "attack_score": 0,
+              "control_run_score": 30,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 30,
+              "run_score": 30,
+              "shape": [
+                13863
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "pair_id": {
+              "attack_run_score": 30,
+              "attack_score": 0,
+              "control_run_score": 30,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 100,
+              "run_score": 30,
+              "shape": [
+                13863
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "run_id": {
+              "attack_run_score": 40,
+              "attack_score": 0,
+              "control_run_score": 40,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 30,
+              "run_score": 100,
+              "shape": [
+                13863
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "window_start": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                13863
+              ],
+              "split_score": 0,
+              "window_score": 100
+            }
+          },
+          "details": {
+            "delimiter": ",",
+            "index_field": "dataset_index"
+          },
+          "origin": "text_table",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+          "row_count": 13863,
+          "table_id": "file:/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv:aligned:dataset_index",
+          "trust": "explicit_validation_index"
+        },
+        "total_identity_groups": 6935,
+        "unique_control_item_count": 3822,
+        "usable": true,
+        "window_field": "window_start"
+      }
+    ]
+  },
+  "routes": [
+    {
+      "alignment": {
+        "index_field": "dataset_index",
+        "mode": "explicit_validation_index"
+      },
+      "all_active_items_mapped": false,
+      "attack_identity_groups": 75,
+      "attacker_count_strata": {},
+      "control_only_identity_groups": 0,
+      "control_reuse_count": 0,
+      "failure": "mapping_acceptance_gate_failed",
+      "invalid_attack_group_count": 75,
+      "invalid_attack_group_preview": {
+        "('V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', '')": {
+          "attack_count": 93,
+          "attack_indices": [
+            93,
+            94,
+            95,
+            96,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112
+          ],
+          "control_count": 93,
+          "control_indices": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-002-S0T1-SEED740602', '')": {
+          "attack_count": 81,
+          "attack_indices": [
+            291,
+            292,
+            293,
+            294,
+            295,
+            296,
+            297,
+            298,
+            299,
+            300,
+            301,
+            302,
+            303,
+            304,
+            305,
+            306,
+            307,
+            308,
+            309,
+            310
+          ],
+          "control_count": 105,
+          "control_indices": [
+            186,
+            187,
+            188,
+            189,
+            190,
+            191,
+            192,
+            193,
+            194,
+            195,
+            196,
+            197,
+            198,
+            199,
+            200,
+            201,
+            202,
+            203,
+            204,
+            205
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-003-S1T9-SEED740603', '')": {
+          "attack_count": 63,
+          "attack_indices": [
+            495,
+            496,
+            497,
+            498,
+            499,
+            500,
+            501,
+            502,
+            503,
+            504,
+            505,
+            506,
+            507,
+            508,
+            509,
+            510,
+            511,
+            512,
+            513,
+            514
+          ],
+          "control_count": 123,
+          "control_indices": [
+            372,
+            373,
+            374,
+            375,
+            376,
+            377,
+            378,
+            379,
+            380,
+            381,
+            382,
+            383,
+            384,
+            385,
+            386,
+            387,
+            388,
+            389,
+            390,
+            391
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-004-S3T10-SEED740604', '')": {
+          "attack_count": 44,
+          "attack_indices": [
+            698,
+            699,
+            700,
+            701,
+            702,
+            703,
+            704,
+            705,
+            706,
+            707,
+            708,
+            709,
+            710,
+            711,
+            712,
+            713,
+            714,
+            715,
+            716,
+            717
+          ],
+          "control_count": 140,
+          "control_indices": [
+            558,
+            559,
+            560,
+            561,
+            562,
+            563,
+            564,
+            565,
+            566,
+            567,
+            568,
+            569,
+            570,
+            571,
+            572,
+            573,
+            574,
+            575,
+            576,
+            577
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-005-S4T14-SEED740605', '')": {
+          "attack_count": 31,
+          "attack_indices": [
+            846,
+            847,
+            848,
+            849,
+            850,
+            851,
+            852,
+            853,
+            854,
+            855,
+            856,
+            857,
+            858,
+            859,
+            860,
+            861,
+            862,
+            863,
+            864,
+            865
+          ],
+          "control_count": 154,
+          "control_indices": [
+            742,
+            743,
+            744,
+            745,
+            746,
+            747,
+            748,
+            749,
+            750,
+            751,
+            752,
+            753,
+            754,
+            755,
+            756,
+            757,
+            758,
+            759,
+            760,
+            761
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-006-S5T4-SEED740606', '')": {
+          "attack_count": 32,
+          "attack_indices": [
+            1054,
+            1055,
+            1056,
+            1057,
+            1058,
+            1059,
+            1060,
+            1061,
+            1062,
+            1063,
+            1064,
+            1065,
+            1066,
+            1067,
+            1068,
+            1069,
+            1070,
+            1071,
+            1072,
+            1073
+          ],
+          "control_count": 158,
+          "control_indices": [
+            927,
+            928,
+            929,
+            930,
+            931,
+            932,
+            933,
+            934,
+            935,
+            936,
+            937,
+            938,
+            939,
+            940,
+            941,
+            942,
+            943,
+            944,
+            945,
+            946
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-007-S6T11-SEED740607', '')": {
+          "attack_count": 31,
+          "attack_indices": [
+            1267,
+            1268,
+            1269,
+            1270,
+            1271,
+            1272,
+            1273,
+            1274,
+            1275,
+            1276,
+            1277,
+            1278,
+            1279,
+            1280,
+            1281,
+            1282,
+            1283,
+            1284,
+            1285,
+            1286
+          ],
+          "control_count": 157,
+          "control_indices": [
+            1117,
+            1118,
+            1119,
+            1120,
+            1121,
+            1122,
+            1123,
+            1124,
+            1125,
+            1126,
+            1127,
+            1128,
+            1129,
+            1130,
+            1131,
+            1132,
+            1133,
+            1134,
+            1135,
+            1136
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-008-S9T0-SEED740608', '')": {
+          "attack_count": 25,
+          "attack_indices": [
+            1466,
+            1467,
+            1468,
+            1469,
+            1470,
+            1471,
+            1472,
+            1473,
+            1474,
+            1475,
+            1476,
+            1477,
+            1478,
+            1479,
+            1480,
+            1481,
+            1482,
+            1483,
+            1484,
+            1485
+          ],
+          "control_count": 161,
+          "control_indices": [
+            1305,
+            1306,
+            1307,
+            1308,
+            1309,
+            1310,
+            1311,
+            1312,
+            1313,
+            1314,
+            1315,
+            1316,
+            1317,
+            1318,
+            1319,
+            1320,
+            1321,
+            1322,
+            1323,
+            1324
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-009-S8T7-SEED740609', '')": {
+          "attack_count": 92,
+          "attack_indices": [
+            1583,
+            1584,
+            1585,
+            1586,
+            1587,
+            1588,
+            1589,
+            1590,
+            1591,
+            1592,
+            1593,
+            1594,
+            1595,
+            1596,
+            1597,
+            1598,
+            1599,
+            1600,
+            1601,
+            1602
+          ],
+          "control_count": 92,
+          "control_indices": [
+            1491,
+            1492,
+            1493,
+            1494,
+            1495,
+            1496,
+            1497,
+            1498,
+            1499,
+            1500,
+            1501,
+            1502,
+            1503,
+            1504,
+            1505,
+            1506,
+            1507,
+            1508,
+            1509,
+            1510
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-010-S12T12-SEED740610', '')": {
+          "attack_count": 81,
+          "attack_indices": [
+            1778,
+            1779,
+            1780,
+            1781,
+            1782,
+            1783,
+            1784,
+            1785,
+            1786,
+            1787,
+            1788,
+            1789,
+            1790,
+            1791,
+            1792,
+            1793,
+            1794,
+            1795,
+            1796,
+            1797
+          ],
+          "control_count": 103,
+          "control_indices": [
+            1675,
+            1676,
+            1677,
+            1678,
+            1679,
+            1680,
+            1681,
+            1682,
+            1683,
+            1684,
+            1685,
+            1686,
+            1687,
+            1688,
+            1689,
+            1690,
+            1691,
+            1692,
+            1693,
+            1694
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-011-S10T5-SEED740611', '')": {
+          "attack_count": 63,
+          "attack_indices": [
+            1984,
+            1985,
+            1986,
+            1987,
+            1988,
+            1989,
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003
+          ],
+          "control_count": 125,
+          "control_indices": [
+            1859,
+            1860,
+            1861,
+            1862,
+            1863,
+            1864,
+            1865,
+            1866,
+            1867,
+            1868,
+            1869,
+            1870,
+            1871,
+            1872,
+            1873,
+            1874,
+            1875,
+            1876,
+            1877,
+            1878
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-012-S7T4-SEED740612', '')": {
+          "attack_count": 44,
+          "attack_indices": [
+            2191,
+            2192,
+            2193,
+            2194,
+            2195,
+            2196,
+            2197,
+            2198,
+            2199,
+            2200,
+            2201,
+            2202,
+            2203,
+            2204,
+            2205,
+            2206,
+            2207,
+            2208,
+            2209,
+            2210
+          ],
+          "control_count": 144,
+          "control_indices": [
+            2047,
+            2048,
+            2049,
+            2050,
+            2051,
+            2052,
+            2053,
+            2054,
+            2055,
+            2056,
+            2057,
+            2058,
+            2059,
+            2060,
+            2061,
+            2062,
+            2063,
+            2064,
+            2065,
+            2066
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-013-S13T2-SEED740613', '')": {
+          "attack_count": 31,
+          "attack_indices": [
+            2338,
+            2339,
+            2340,
+            2341,
+            2342,
+            2343,
+            2344,
+            2345,
+            2346,
+            2347,
+            2348,
+            2349,
+            2350,
+            2351,
+            2352,
+            2353,
+            2354,
+            2355,
+            2356,
+            2357
+          ],
+          "control_count": 153,
+          "control_indices": [
+            2235,
+            2236,
+            2237,
+            2238,
+            2239,
+            2240,
+            2241,
+            2242,
+            2243,
+            2244,
+            2245,
+            2246,
+            2247,
+            2248,
+            2249,
+            2250,
+            2251,
+            2252,
+            2253,
+            2254
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-014-S7T7-SEED740614', '')": {
+          "attack_count": 31,
+          "attack_indices": [
+            2544,
+            2545,
+            2546,
+            2547,
+            2548,
+            2549,
+            2550,
+            2551,
+            2552,
+            2553,
+            2554,
+            2555,
+            2556,
+            2557,
+            2558,
+            2559,
+            2560,
+            2561,
+            2562,
+            2563
+          ],
+          "control_count": 157,
+          "control_indices": [
+            2419,
+            2420,
+            2421,
+            2422,
+            2423,
+            2424,
+            2425,
+            2426,
+            2427,
+            2428,
+            2429,
+            2430,
+            2431,
+            2432,
+            2433,
+            2434,
+            2435,
+            2436,
+            2437,
+            2438
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-015-S14T13-SEED740615', '')": {
+          "attack_count": 31,
+          "attack_indices": [
+            2755,
+            2756,
+            2757,
+            2758,
+            2759,
+            2760,
+            2761,
+            2762,
+            2763,
+            2764,
+            2765,
+            2766,
+            2767,
+            2768,
+            2769,
+            2770,
+            2771,
+            2772,
+            2773,
+            2774
+          ],
+          "control_count": 154,
+          "control_indices": [
+            2607,
+            2608,
+            2609,
+            2610,
+            2611,
+            2612,
+            2613,
+            2614,
+            2615,
+            2616,
+            2617,
+            2618,
+            2619,
+            2620,
+            2621,
+            2622,
+            2623,
+            2624,
+            2625,
+            2626
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-016-S11T2-SEED740616', '')": {
+          "attack_count": 25,
+          "attack_indices": [
+            2951,
+            2952,
+            2953,
+            2954,
+            2955,
+            2956,
+            2957,
+            2958,
+            2959,
+            2960,
+            2961,
+            2962,
+            2963,
+            2964,
+            2965,
+            2966,
+            2967,
+            2968,
+            2969,
+            2970
+          ],
+          "control_count": 159,
+          "control_indices": [
+            2792,
+            2793,
+            2794,
+            2795,
+            2796,
+            2797,
+            2798,
+            2799,
+            2800,
+            2801,
+            2802,
+            2803,
+            2804,
+            2805,
+            2806,
+            2807,
+            2808,
+            2809,
+            2810,
+            2811
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-017-S15T0-SEED740617', '')": {
+          "attack_count": 92,
+          "attack_indices": [
+            3068,
+            3069,
+            3070,
+            3071,
+            3072,
+            3073,
+            3074,
+            3075,
+            3076,
+            3077,
+            3078,
+            3079,
+            3080,
+            3081,
+            3082,
+            3083,
+            3084,
+            3085,
+            3086,
+            3087
+          ],
+          "control_count": 92,
+          "control_indices": [
+            2976,
+            2977,
+            2978,
+            2979,
+            2980,
+            2981,
+            2982,
+            2983,
+            2984,
+            2985,
+            2986,
+            2987,
+            2988,
+            2989,
+            2990,
+            2991,
+            2992,
+            2993,
+            2994,
+            2995
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-018-S2T2-SEED740618', '')": {
+          "attack_count": 81,
+          "attack_indices": [
+            3265,
+            3266,
+            3267,
+            3268,
+            3269,
+            3270,
+            3271,
+            3272,
+            3273,
+            3274,
+            3275,
+            3276,
+            3277,
+            3278,
+            3279,
+            3280,
+            3281,
+            3282,
+            3283,
+            3284
+          ],
+          "control_count": 105,
+          "control_indices": [
+            3160,
+            3161,
+            3162,
+            3163,
+            3164,
+            3165,
+            3166,
+            3167,
+            3168,
+            3169,
+            3170,
+            3171,
+            3172,
+            3173,
+            3174,
+            3175,
+            3176,
+            3177,
+            3178,
+            3179
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K1-019-S9T8-SEED740619', '')": {
+          "attack_count": 62,
+          "attack_indices": [
+            3470,
+            3471,
+            3472,
+            3473,
+            3474,
+            3475,
+            3476,
+            3477,
+            3478,
+            3479,
+            3480,
+            3481,
+            3482,
+            3483,
+            3484,
+            3485,
+            3486,
+            3487,
+            3488,
+            3489
+          ],
+          "control_count": 124,
+          "control_indices": [
+            3346,
+            3347,
+            3348,
+            3349,
+            3350,
+            3351,
+            3352,
+            3353,
+            3354,
+            3355,
+            3356,
+            3357,
+            3358,
+            3359,
+            3360,
+            3361,
+            3362,
+            3363,
+            3364,
+            3365
+          ]
+        },
+        "('V5-P3-1500-D70-P3AVA-K2-001-S10T15-S0T15-SEED740620', '')": {
+          "attack_count": 44,
+          "attack_indices": [
+            3674,
+            3675,
+            3676,
+            3677,
+            3678,
+            3679,
+            3680,
+            3681,
+            3682,
+            3683,
+            3684,
+            3685,
+            3686,
+            3687,
+            3688,
+            3689,
+            3690,
+            3691,
+            3692,
+            3693
+          ],
+          "control_count": 142,
+          "control_indices": [
+            3532,
+            3533,
+            3534,
+            3535,
+            3536,
+            3537,
+            3538,
+            3539,
+            3540,
+            3541,
+            3542,
+            3543,
+            3544,
+            3545,
+            3546,
+            3547,
+            3548,
+            3549,
+            3550,
+            3551
+          ]
+        }
+      },
+      "mapped_attack_item_count": 0,
+      "pair_field": "pair_id",
+      "route_type": "direct_sample_pair_identity",
+      "sample_table": {
+        "column_count": 5,
+        "columns": {
+          "dataset_index": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 90,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 30,
+            "window_score": 30
+          },
+          "epoch_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "pair_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 100,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "run_id": {
+            "attack_run_score": 40,
+            "attack_score": 0,
+            "control_run_score": 40,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 30,
+            "run_score": 100,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "window_start": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 0,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 100
+          }
+        },
+        "details": {
+          "delimiter": ",",
+          "index_field": "dataset_index"
+        },
+        "origin": "text_table",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+        "row_count": 13863,
+        "table_id": "file:/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv:aligned:dataset_index",
+        "trust": "explicit_validation_index"
+      },
+      "total_identity_groups": 75,
+      "unique_control_item_count": 0,
+      "usable": false,
+      "window_field": null
+    },
+    {
+      "alignment": {
+        "index_field": "dataset_index",
+        "mode": "explicit_validation_index"
+      },
+      "all_active_items_mapped": true,
+      "attack_identity_groups": 3822,
+      "attacker_count_strata": {
+        "1": 1033,
+        "2": 904,
+        "3": 944,
+        "4": 941
+      },
+      "control_only_identity_groups": 3113,
+      "control_reuse_count": 0,
+      "invalid_attack_group_count": 0,
+      "invalid_attack_group_preview": {},
+      "mapped_attack_item_count": 3822,
+      "mapping_fingerprint_sha256": "8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8",
+      "pair_field": "pair_id",
+      "route_type": "direct_sample_pair_identity",
+      "sample_table": {
+        "column_count": 5,
+        "columns": {
+          "dataset_index": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 90,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 30,
+            "window_score": 30
+          },
+          "epoch_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "pair_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 100,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "run_id": {
+            "attack_run_score": 40,
+            "attack_score": 0,
+            "control_run_score": 40,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 30,
+            "run_score": 100,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "window_start": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 0,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 100
+          }
+        },
+        "details": {
+          "delimiter": ",",
+          "index_field": "dataset_index"
+        },
+        "origin": "text_table",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+        "row_count": 13863,
+        "table_id": "file:/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv:aligned:dataset_index",
+        "trust": "explicit_validation_index"
+      },
+      "total_identity_groups": 6935,
+      "unique_control_item_count": 3822,
+      "usable": true,
+      "window_field": "window_start"
+    },
+    {
+      "failure": "joined_run_role_does_not_match_fresh_labels",
+      "role_mismatch_count": 3106,
+      "route_type": "sample_run_to_run_metadata_join",
+      "run_metadata": {
+        "member_field": "pair_member",
+        "pair_field": "pair_id",
+        "run_field": "run_id",
+        "schema": "run_pair_member",
+        "table": {
+          "column_count": 12,
+          "columns": {
+            "active_attack_epochs": {
+              "attack_run_score": 30,
+              "attack_score": 75,
+              "control_run_score": 0,
+              "count_score": 30,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 75,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "case_id": {
+              "attack_run_score": 30,
+              "attack_score": 0,
+              "control_run_score": 30,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 30,
+              "run_score": 30,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "family": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "pair_id": {
+              "attack_run_score": 30,
+              "attack_score": 0,
+              "control_run_score": 30,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 100,
+              "run_score": 30,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "pair_member": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 100,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "relative_path": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "retained_epochs": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "run_id": {
+              "attack_run_score": 40,
+              "attack_score": 0,
+              "control_run_score": 40,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 30,
+              "run_score": 100,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "sha256": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "split": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 30,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 100,
+              "window_score": 0
+            },
+            "target_attack_flags": {
+              "attack_run_score": 30,
+              "attack_score": 30,
+              "control_run_score": 0,
+              "count_score": 30,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "valid_window_starts": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                150
+              ],
+              "split_score": 0,
+              "window_score": 75
+            }
+          },
+          "details": {
+            "object_path": "dataset.records"
+          },
+          "origin": "dataset_object_record_list",
+          "path": null,
+          "row_count": 150,
+          "table_id": "dataset:dataset.records",
+          "trust": "guarded_dataset_object_order"
+        }
+      },
+      "sample_run_field": "run_id",
+      "sample_table": {
+        "column_count": 5,
+        "columns": {
+          "dataset_index": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 90,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 30,
+            "window_score": 30
+          },
+          "epoch_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "pair_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 100,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "run_id": {
+            "attack_run_score": 40,
+            "attack_score": 0,
+            "control_run_score": 40,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 30,
+            "run_score": 100,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "window_start": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 0,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 100
+          }
+        },
+        "details": {
+          "delimiter": ",",
+          "index_field": "dataset_index"
+        },
+        "origin": "text_table",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+        "row_count": 13863,
+        "table_id": "file:/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv:aligned:dataset_index",
+        "trust": "explicit_validation_index"
+      },
+      "usable": false
+    },
+    {
+      "failure": "joined_run_role_does_not_match_fresh_labels",
+      "role_mismatch_count": 3106,
+      "route_type": "sample_run_to_run_metadata_join",
+      "run_metadata": {
+        "member_field": "pair_member",
+        "pair_field": "pair_id",
+        "run_field": "run_id",
+        "schema": "run_pair_member",
+        "table": {
+          "column_count": 12,
+          "columns": {
+            "active_attack_epochs": {
+              "attack_run_score": 30,
+              "attack_score": 75,
+              "control_run_score": 0,
+              "count_score": 30,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 75,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "case_id": {
+              "attack_run_score": 30,
+              "attack_score": 0,
+              "control_run_score": 30,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 30,
+              "run_score": 30,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "family": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "pair_id": {
+              "attack_run_score": 30,
+              "attack_score": 0,
+              "control_run_score": 30,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 100,
+              "run_score": 30,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "pair_member": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 100,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "relative_path": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "retained_epochs": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "run_id": {
+              "attack_run_score": 40,
+              "attack_score": 0,
+              "control_run_score": 40,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 30,
+              "run_score": 100,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 30
+            },
+            "sha256": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "split": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 30,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 100,
+              "window_score": 0
+            },
+            "target_attack_flags": {
+              "attack_run_score": 30,
+              "attack_score": 30,
+              "control_run_score": 0,
+              "count_score": 30,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 30,
+              "pair_score": 30,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 0
+            },
+            "valid_window_starts": {
+              "attack_run_score": 0,
+              "attack_score": 0,
+              "control_run_score": 0,
+              "count_score": 0,
+              "dtype": "object",
+              "index_score": 0,
+              "member_score": 0,
+              "pair_score": 0,
+              "run_score": 0,
+              "shape": [
+                1500
+              ],
+              "split_score": 0,
+              "window_score": 75
+            }
+          },
+          "details": {
+            "json_key": "runs"
+          },
+          "origin": "json_record_table",
+          "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/tensor_manifest.json",
+          "row_count": 1500,
+          "table_id": "file:/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/tensor_manifest.json:runs",
+          "trust": "file_order_unproven"
+        }
+      },
+      "sample_run_field": "run_id",
+      "sample_table": {
+        "column_count": 5,
+        "columns": {
+          "dataset_index": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 90,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 30,
+            "window_score": 30
+          },
+          "epoch_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 30,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "pair_id": {
+            "attack_run_score": 30,
+            "attack_score": 0,
+            "control_run_score": 30,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 100,
+            "run_score": 30,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "run_id": {
+            "attack_run_score": 40,
+            "attack_score": 0,
+            "control_run_score": 40,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 30,
+            "pair_score": 30,
+            "run_score": 100,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 30
+          },
+          "window_start": {
+            "attack_run_score": 0,
+            "attack_score": 0,
+            "control_run_score": 0,
+            "count_score": 0,
+            "dtype": "object",
+            "index_score": 0,
+            "member_score": 0,
+            "pair_score": 0,
+            "run_score": 0,
+            "shape": [
+              13863
+            ],
+            "split_score": 0,
+            "window_score": 100
+          }
+        },
+        "details": {
+          "delimiter": ",",
+          "index_field": "dataset_index"
+        },
+        "origin": "text_table",
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+        "row_count": 13863,
+        "table_id": "file:/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv:aligned:dataset_index",
+        "trust": "explicit_validation_index"
+      },
+      "usable": false
+    }
+  ],
+  "run_join_route_count": 2,
+  "unique_mapping_fingerprint_count": 1,
+  "usable_route_count": 1
+}

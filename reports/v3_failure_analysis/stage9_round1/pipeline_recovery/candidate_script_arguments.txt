@@ -1,0 +1,399 @@
+====================================================================================================
+FILE: scripts/add_count_features_to_graph_dataset.py
+====================================================================================================
+line 11: args=["'--in-data'"] kwargs={'required': 'True'}
+line 12: args=["'--out-data'"] kwargs={'required': 'True'}
+line 13: args=["'--count-clip'"] kwargs={'type': 'float', 'default': '256.0'}
+
+====================================================================================================
+FILE: scripts/compare_v3_conv_vs_meanpool_errors.py
+====================================================================================================
+line 367: args=["'--data'"] kwargs={'required': 'True'}
+line 368: args=["'--conv-dir'"] kwargs={'required': 'True'}
+line 369: args=["'--tcn-dir'"] kwargs={'required': 'True'}
+line 370: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+line 371: args=["'--out'"] kwargs={'required': 'True'}
+line 372: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/compare_v3_conv_vs_tcn_errors.py
+====================================================================================================
+line 367: args=["'--data'"] kwargs={'required': 'True'}
+line 368: args=["'--conv-dir'"] kwargs={'required': 'True'}
+line 369: args=["'--tcn-dir'"] kwargs={'required': 'True'}
+line 370: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+line 371: args=["'--out'"] kwargs={'required': 'True'}
+line 372: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/eval_temporal_gcn_thresholds.py
+====================================================================================================
+line 23: args=["'--data'"] kwargs={'required': 'True'}
+line 24: args=["'--model-dir'"] kwargs={'required': 'True'}
+line 25: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+
+====================================================================================================
+FILE: scripts/eval_temporal_gcn_topk.py
+====================================================================================================
+line 141: args=["'--data'"] kwargs={'required': 'True'}
+line 142: args=["'--model-dir'"] kwargs={'required': 'True'}
+line 143: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+
+====================================================================================================
+FILE: scripts/eval_temporal_tcn_gcn.py
+====================================================================================================
+line 310: args=["'--data'"] kwargs={'required': 'True'}
+line 311: args=["'--model-dir'"] kwargs={'required': 'True'}
+line 312: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+line 313: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 314: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement']", 'default': 'None'}
+line 315: args=["'--mode'"] kwargs={'choices': "['thresholds', 'topk', 'both']", 'default': "'both'"}
+line 316: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/align_v3_stage7a.py
+====================================================================================================
+line 1070: args=["'--dataset-root'"] kwargs={'type': 'Path', 'default': "Path('~/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3')"}
+line 1078: args=["'--failure-root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 1083: args=["'--expected-samples'"] kwargs={'type': 'int', 'default': '233803'}
+line 1084: args=["'--expected-routers'"] kwargs={'type': 'int', 'default': '16'}
+line 1085: args=["'--expected-window-length'"] kwargs={'type': 'int', 'default': '8'}
+line 1086: args=["'--expected-features'"] kwargs={'type': 'int', 'default': '24'}
+line 1087: args=["'--expected-runs'"] kwargs={'type': 'int', 'default': '71'}
+line 1088: args=["'--expected-windows-per-run'"] kwargs={'type': 'int', 'default': '3293'}
+line 1089: args=["'--expected-train-samples'"] kwargs={'type': 'int', 'default': '148185'}
+line 1090: args=["'--expected-val-samples'"] kwargs={'type': 'int', 'default': '42809'}
+line 1091: args=["'--expected-test-samples'"] kwargs={'type': 'int', 'default': '42809'}
+line 1092: args=["'--expected-train-runs'"] kwargs={'type': 'int', 'default': '45'}
+line 1093: args=["'--expected-val-runs'"] kwargs={'type': 'int', 'default': '13'}
+line 1094: args=["'--expected-test-runs'"] kwargs={'type': 'int', 'default': '13'}
+line 1095: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_stage7e_graph_node_interaction.py
+====================================================================================================
+line 1822: args=["'--predictions-dir'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis/predictions')"}
+line 1827: args=["'--metadata-csv'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis/predictions/prediction_metadata.csv')"}
+line 1832: args=["'--dataset-root'"] kwargs={'type': 'Path', 'default': "Path.home() / 'tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3'"}
+line 1838: args=["'--selected-thresholds'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis/tables/selected_graph_thresholds.csv')"}
+line 1843: args=["'--output-root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis/stage7e_graph_node_interaction')"}
+line 1850: args=["'--overwrite'"] kwargs={'action': "'store_true'", 'help': "'Allow replacement of existing Stage 7E report/table outputs.'"}
+line 1855: args=["'--smoke-test'"] kwargs={'action': "'store_true'", 'help': "'Generate small synthetic inputs and run the full analysis pipeline.'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_graph_failures.py
+====================================================================================================
+line 1125: args=["'--root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 1130: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_graph_failures.truncated.20260718_163642.py
+====================================================================================================
+line 3310: args=["'--root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 3318: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_graph_threshold_transfer.py
+====================================================================================================
+line 862: args=["'--root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 867: args=["'--threshold-min'"] kwargs={'type': 'float', 'default': '0.01'}
+line 868: args=["'--threshold-max'"] kwargs={'type': 'float', 'default': '0.99'}
+line 869: args=["'--threshold-step'"] kwargs={'type': 'float', 'default': '0.01'}
+line 870: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_matched_runs.py
+====================================================================================================
+line 2246: args=["'--root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 2251: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_stage7b_features.py
+====================================================================================================
+line 2123: args=["'--dataset-root'"] kwargs={'type': 'Path', 'default': "Path('~/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3')"}
+line 2131: args=["'--failure-root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 2136: args=["'--expected-samples'"] kwargs={'type': 'int', 'default': '233803'}
+line 2137: args=["'--expected-runs'"] kwargs={'type': 'int', 'default': '71'}
+line 2138: args=["'--expected-windows-per-run'"] kwargs={'type': 'int', 'default': '3293'}
+line 2139: args=["'--expected-routers'"] kwargs={'type': 'int', 'default': '16'}
+line 2140: args=["'--expected-temporal-positions'"] kwargs={'type': 'int', 'default': '8'}
+line 2141: args=["'--expected-features'"] kwargs={'type': 'int', 'default': '24'}
+line 2142: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_stage7c1_training_coverage_v2.py
+====================================================================================================
+line 2419: args=["'--dataset-root'"] kwargs={'type': 'Path', 'default': "Path('~/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3')"}
+line 2426: args=["'--failure-root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 2431: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+line 2432: args=["'--smoke-test-only'"] kwargs={'action': "'store_true'", 'help': "'Run the synthetic indexed-reference application test and exit without reading the dataset.'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/analyze_v3_stage7c2_nearest_runs.py
+====================================================================================================
+line 1879: args=["'--dataset-root'"] kwargs={'type': 'Path', 'default': "Path('~/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3')"}
+line 1887: args=["'--failure-root'"] kwargs={'type': 'Path', 'default': "Path('reports/v3_failure_analysis')"}
+line 1892: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+line 1893: args=["'--smoke-test-only'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/audit_v3_stage8d_final_consistency.py
+====================================================================================================
+line 1302: args=["'--dataset-root'"] kwargs={'type': 'Path', 'help': "'Directory containing unpacked .npy arrays.'"}
+line 1303: args=["'--output-root'"] kwargs={'type': 'Path', 'required': 'True', 'help': "'Directory for Stage 8D reports.'"}
+line 1304: args=["'--chunk-size'"] kwargs={'type': 'int', 'default': '512', 'help': "'Samples per x.npy chunk (default: 512).'"}
+line 1305: args=["'--overwrite'"] kwargs={'action': "'store_true'", 'help': "'Allow replacing existing Stage 8D outputs.'"}
+line 1306: args=["'--smoke-test'"] kwargs={'action': "'store_true'", 'help': "'Generate and audit a small synthetic dataset.'"}
+line 1307: args=["'--expected-samples'"] kwargs={'type': 'int', 'default': '233803'}
+line 1308: args=["'--expected-runs'"] kwargs={'type': 'int', 'default': '71'}
+line 1309: args=["'--expected-samples-per-run'"] kwargs={'type': 'int', 'default': '3293'}
+line 1310: args=["'--expected-end-start'"] kwargs={'type': 'int', 'default': '7'}
+line 1311: args=["'--expected-end-stop'"] kwargs={'type': 'int', 'default': '3299'}
+line 1312: args=["'--tolerance'"] kwargs={'type': 'float', 'default': '1e-06'}
+
+====================================================================================================
+FILE: scripts/failure_analysis/build_v3_metadata_tables.py
+====================================================================================================
+line 111: args=["'--data-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 116: args=["'--sample-out'"] kwargs={'required': 'True', 'type': 'Path'}
+line 121: args=["'--run-out'"] kwargs={'required': 'True', 'type': 'Path'}
+
+====================================================================================================
+FILE: scripts/failure_analysis/export_v3_predictions.py
+====================================================================================================
+line 1107: args=["'--data-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 1112: args=["'--output-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 1117: args=["'--tables-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 1122: args=["'--logs-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 1127: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 1132: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+line 1136: args=["'--overwrite'"] kwargs={'action': "'store_true'"}
+line 1140: args=["'--max-samples-per-split'"] kwargs={'type': 'int', 'default': 'None', 'help': "'Optional smoke-test limit. Omit for the final full export.'"}
+line 1148: args=["'--metric-tolerance'"] kwargs={'type': 'float', 'default': '1e-05'}
+
+====================================================================================================
+FILE: scripts/failure_analysis/inspect_existing_comparisons.py
+====================================================================================================
+line 73: args=["'--file'"] kwargs={'action': "'append'", 'type': 'Path', 'default': 'None'}
+
+====================================================================================================
+FILE: scripts/failure_analysis/inspect_v3_checkpoints.py
+====================================================================================================
+line 139: args=["'--data-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 144: args=["'--model-dir'"] kwargs={'action': "'append'", 'type': 'Path', 'default': 'None'}
+
+====================================================================================================
+FILE: scripts/failure_analysis/inspect_v3_dataset.py
+====================================================================================================
+line 498: args=["'--data-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 503: args=["'--chunk-size'"] kwargs={'type': 'int', 'default': '2048'}
+
+====================================================================================================
+FILE: scripts/failure_analysis/inventory_v3_stage8a_experiment_root.py
+====================================================================================================
+line 370: args=["'--experiment-root'"] kwargs={'type': 'Path', 'default': 'DEFAULT_EXPERIMENT_ROOT', 'help': "f'Experiment root to inventory (default: {DEFAULT_EXPERIMENT_ROOT})'"}
+line 376: args=["'--failure-root'"] kwargs={'type': 'Path', 'default': 'DEFAULT_FAILURE_ROOT', 'help': "f'Failure-analysis root (default: {DEFAULT_FAILURE_ROOT})'"}
+line 382: args=["'--text-prefix-bytes'"] kwargs={'type': 'int', 'default': '65536', 'help': "'Maximum bytes read from any text-like file (default: 65536)'"}
+line 388: args=["'--max-npy-header-bytes'"] kwargs={'type': 'int', 'default': '1048576', 'help': "'Maximum NumPy header bytes accepted (default: 1048576)'"}
+line 394: args=["'--max-npz-members'"] kwargs={'type': 'int', 'default': '200', 'help': "'Maximum NPZ member names retained in preview (default: 200)'"}
+line 400: args=["'--large-file-threshold-mib'"] kwargs={'type': 'float', 'default': '256.0', 'help': "'Threshold for unknown-large-file reporting (default: 256 MiB)'"}
+line 406: args=["'--overwrite'"] kwargs={'action': "'store_true'", 'help': "'Replace existing Stage 8A outputs transactionally'"}
+line 411: args=["'--smoke-test-only'"] kwargs={'action': "'store_true'", 'help': "'Run synthetic read-only tests without touching the real experiment root'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/run_stage9_a1_conv1d_reproduction.py
+====================================================================================================
+line 883: args=["'--repo-root'"] kwargs={'default': 'str(default_repo)', 'help': "f'Repository root (default: {default_repo})'"}
+line 888: args=["'--dataset-root'"] kwargs={'default': 'str(default_dataset)', 'help': "f'V3 dataset directory (default: {default_dataset})'"}
+line 893: args=["'--output-dir'"] kwargs={'default': 'str(default_output)', 'help': "f'New A1 model output directory (default: {default_output})'"}
+line 898: args=["'--log-file'"] kwargs={'default': 'str(default_log)', 'help': "f'Training log file (default: {default_log})'"}
+line 903: args=["'--dry-run'"] kwargs={'action': "'store_true'", 'help': "'Run all read-only preflight checks and print the exact training command without launching training or creating the A1 output.'"}
+
+====================================================================================================
+FILE: scripts/failure_analysis/verify_v3_split_identity.py
+====================================================================================================
+line 114: args=["'--data-dir'"] kwargs={'required': 'True', 'type': 'Path'}
+line 119: args=["'--model-dir'"] kwargs={'action': "'append'", 'type': 'Path', 'default': 'None'}
+
+====================================================================================================
+FILE: scripts/make_balanced_placement_splits.py
+====================================================================================================
+line 12: args=["'--data'"] kwargs={'required': 'True'}
+line 13: args=["'--out'"] kwargs={'required': 'True'}
+line 14: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+line 15: args=["'--report'"] kwargs={'default': 'None'}
+
+====================================================================================================
+FILE: scripts/sweep_v3_graph_thresholds.py
+====================================================================================================
+line 65: args=["'--data'"] kwargs={'required': 'True'}
+line 66: args=["'--conv-dir'"] kwargs={'required': 'True'}
+line 67: args=["'--tcn-dir'"] kwargs={'required': 'True'}
+line 68: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+line 69: args=["'--out'"] kwargs={'required': 'True'}
+line 70: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/sweep_v3_graph_thresholds_maxpool.py
+====================================================================================================
+line 99: args=["'--data'"] kwargs={'required': 'True'}
+line 100: args=["'--model-dir'"] kwargs={'required': 'True'}
+line 101: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+line 102: args=["'--out'"] kwargs={'required': 'True'}
+line 103: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/sweep_v3_graph_thresholds_meanpool.py
+====================================================================================================
+line 99: args=["'--data'"] kwargs={'required': 'True'}
+line 100: args=["'--model-dir'"] kwargs={'required': 'True'}
+line 101: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '512'}
+line 102: args=["'--out'"] kwargs={'required': 'True'}
+line 103: args=["'--cpu'"] kwargs={'action': "'store_true'"}
+
+====================================================================================================
+FILE: scripts/train_temporal_gcn.py
+====================================================================================================
+line 430: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 431: args=["'--out-dir'"] kwargs={'default': "'models/temporal_gcn_float'"}
+line 432: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement']", 'default': "'prototype'"}
+line 433: args=["'--epochs'"] kwargs={'type': 'int', 'default': '40'}
+line 434: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 435: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 436: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 437: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 438: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 439: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 440: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 441: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+
+====================================================================================================
+FILE: scripts/train_temporal_gcn_early_stopping.py
+====================================================================================================
+line 306: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 307: args=["'--out-dir'"] kwargs={'default': "'models/temporal_gcn_conv1d_early_stop'"}
+line 308: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement']", 'default': "'prototype'"}
+line 309: args=["'--splits-file'"] kwargs={'default': 'None', 'help': "'Optional .npz file containing train_idx, val_idx, test_idx.'"}
+line 310: args=["'--epochs'"] kwargs={'type': 'int', 'default': '25'}
+line 311: args=["'--patience'"] kwargs={'type': 'int', 'default': '5'}
+line 312: args=["'--min-delta'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 313: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 314: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 315: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 316: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 317: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 318: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 319: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 320: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 321: args=["'--node-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 322: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+
+====================================================================================================
+FILE: scripts/train_temporal_gcn_v3.py
+====================================================================================================
+line 353: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 354: args=["'--out-dir'"] kwargs={'default': "'models/temporal_gcn_conv1d_early_stop'"}
+line 355: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement', 'v3']", 'default': "'prototype'"}
+line 356: args=["'--splits-file'"] kwargs={'default': 'None', 'help': "'Optional .npz file containing train_idx, val_idx, test_idx.'"}
+line 357: args=["'--epochs'"] kwargs={'type': 'int', 'default': '25'}
+line 358: args=["'--patience'"] kwargs={'type': 'int', 'default': '5'}
+line 359: args=["'--min-delta'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 360: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 361: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 362: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 363: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 364: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 365: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 366: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 367: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 368: args=["'--node-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 369: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+
+====================================================================================================
+FILE: scripts/train_temporal_tcn_gcn_early_stopping.py
+====================================================================================================
+line 323: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 324: args=["'--out-dir'"] kwargs={'default': "'models/temporal_tcn_gcn_early_stop'"}
+line 325: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement']", 'default': "'prototype'"}
+line 326: args=["'--splits-file'"] kwargs={'default': 'None', 'help': "'Optional .npz file containing train_idx, val_idx, test_idx.'"}
+line 327: args=["'--epochs'"] kwargs={'type': 'int', 'default': '25'}
+line 328: args=["'--patience'"] kwargs={'type': 'int', 'default': '5'}
+line 329: args=["'--min-delta'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 330: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 331: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 332: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 333: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 334: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 335: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 336: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 337: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 338: args=["'--node-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 339: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+line 340: args=["'--tcn-dropout'"] kwargs={'type': 'float', 'default': '0.1'}
+
+====================================================================================================
+FILE: scripts/train_temporal_tcn_gcn_v3.py
+====================================================================================================
+line 370: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 371: args=["'--out-dir'"] kwargs={'default': "'models/temporal_tcn_gcn_early_stop'"}
+line 372: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement', 'v3']", 'default': "'prototype'"}
+line 373: args=["'--splits-file'"] kwargs={'default': 'None', 'help': "'Optional .npz file containing train_idx, val_idx, test_idx.'"}
+line 374: args=["'--epochs'"] kwargs={'type': 'int', 'default': '25'}
+line 375: args=["'--patience'"] kwargs={'type': 'int', 'default': '5'}
+line 376: args=["'--min-delta'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 377: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 378: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 379: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 380: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 381: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 382: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 383: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 384: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 385: args=["'--node-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 386: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+line 387: args=["'--tcn-dropout'"] kwargs={'type': 'float', 'default': '0.1'}
+
+====================================================================================================
+FILE: scripts/train_temporal_tcn_maxpool_gcn_v3.py
+====================================================================================================
+line 412: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 413: args=["'--out-dir'"] kwargs={'default': "'models/temporal_tcn_gcn_early_stop'"}
+line 414: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement', 'v3']", 'default': "'prototype'"}
+line 415: args=["'--splits-file'"] kwargs={'default': 'None', 'help': "'Optional .npz file containing train_idx, val_idx, test_idx.'"}
+line 416: args=["'--epochs'"] kwargs={'type': 'int', 'default': '25'}
+line 417: args=["'--patience'"] kwargs={'type': 'int', 'default': '5'}
+line 418: args=["'--min-delta'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 419: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 420: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 421: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 422: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 423: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 424: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 425: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 426: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 427: args=["'--node-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 428: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+line 429: args=["'--tcn-dropout'"] kwargs={'type': 'float', 'default': '0.1'}
+
+====================================================================================================
+FILE: scripts/train_temporal_tcn_meanpool_gcn_v3.py
+====================================================================================================
+line 412: args=["'--data'"] kwargs={'default': "'graph_dataset/paper1_temporal_graphs_full.npz'"}
+line 413: args=["'--out-dir'"] kwargs={'default': "'models/temporal_tcn_gcn_early_stop'"}
+line 414: args=["'--split-mode'"] kwargs={'choices': "['prototype', 'placement', 'v3']", 'default': "'prototype'"}
+line 415: args=["'--splits-file'"] kwargs={'default': 'None', 'help': "'Optional .npz file containing train_idx, val_idx, test_idx.'"}
+line 416: args=["'--epochs'"] kwargs={'type': 'int', 'default': '25'}
+line 417: args=["'--patience'"] kwargs={'type': 'int', 'default': '5'}
+line 418: args=["'--min-delta'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 419: args=["'--batch-size'"] kwargs={'type': 'int', 'default': '256'}
+line 420: args=["'--lr'"] kwargs={'type': 'float', 'default': '0.001'}
+line 421: args=["'--weight-decay'"] kwargs={'type': 'float', 'default': '0.0001'}
+line 422: args=["'--temporal-dim'"] kwargs={'type': 'int', 'default': '8'}
+line 423: args=["'--gcn-hidden'"] kwargs={'type': 'int', 'default': '16'}
+line 424: args=["'--gcn-out'"] kwargs={'type': 'int', 'default': '8'}
+line 425: args=["'--node-loss-weight'"] kwargs={'type': 'float', 'default': '1.0'}
+line 426: args=["'--graph-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 427: args=["'--node-threshold'"] kwargs={'type': 'float', 'default': '0.5'}
+line 428: args=["'--seed'"] kwargs={'type': 'int', 'default': '7'}
+line 429: args=["'--tcn-dropout'"] kwargs={'type': 'float', 'default': '0.1'}
+

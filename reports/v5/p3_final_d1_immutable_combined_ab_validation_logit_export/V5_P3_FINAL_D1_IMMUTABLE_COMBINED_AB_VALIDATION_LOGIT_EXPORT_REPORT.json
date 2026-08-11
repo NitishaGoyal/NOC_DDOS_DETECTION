@@ -1,0 +1,240 @@
+{
+  "A5_lock_sha256": "c341b553f5165c3abf977e1a084b50243dadf93c4edafdc9e15eed7dbf927505",
+  "D0_R1_R1_lock_sha256": "dd74f7214eb3188dbcb3ce4b4dde79e351bfae067899d1b80e299ce685bbe50f",
+  "D2_raw_a0_a1_validation_evaluation_authorized": true,
+  "arrays": {
+    "count_logits": {
+      "dtype": "float32",
+      "shape": [
+        27722,
+        4
+      ]
+    },
+    "graph_logits": {
+      "dtype": "float32",
+      "shape": [
+        27722
+      ]
+    },
+    "path_logits": {
+      "dtype": "float32",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "raw_logits_69": {
+      "dtype": "float32",
+      "shape": [
+        27722,
+        69
+      ]
+    },
+    "sample_index": {
+      "dtype": "int64",
+      "shape": [
+        27722
+      ]
+    },
+    "source_logits": {
+      "dtype": "float32",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "transit_logits": {
+      "dtype": "float32",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "victim_logits": {
+      "dtype": "float32",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "y_count": {
+      "dtype": "int64",
+      "shape": [
+        27722
+      ]
+    },
+    "y_graph": {
+      "dtype": "uint8",
+      "shape": [
+        27722
+      ]
+    },
+    "y_path": {
+      "dtype": "uint8",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "y_source": {
+      "dtype": "uint8",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "y_transit": {
+      "dtype": "uint8",
+      "shape": [
+        27722,
+        16
+      ]
+    },
+    "y_victim": {
+      "dtype": "uint8",
+      "shape": [
+        27722,
+        16
+      ]
+    }
+  },
+  "batch_size": 256,
+  "best_epoch": 5,
+  "canonical_edge": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+    "sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "shape": [
+      2,
+      48
+    ]
+  },
+  "decoder_executed": false,
+  "decoder_imported": false,
+  "forward_binding": {
+    "binding": [
+      {
+        "parameter": "x",
+        "source": "batch[x]"
+      },
+      {
+        "parameter": "physical_port_mask",
+        "source": "batch[physical_port_mask]"
+      }
+    ],
+    "signature": "(x: 'torch.Tensor', physical_port_mask: 'torch.Tensor') -> 'dict[str, torch.Tensor]'"
+  },
+  "frozen_checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+  "frozen_model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+  "frozen_model_state_sha256": "f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432",
+  "manifest_path": "/home/zira/research/projects/GNN-2d/artifacts/evaluation/v5_p3_final_d1_combined_ab_validation_logits/V5_P3_FINAL_D1_COMBINED_AB_VALIDATION_RAW_LOGITS_MANIFEST.json",
+  "manifest_sha256": "7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c",
+  "model_construction": {
+    "canonical_parameter_count": 59785,
+    "edge": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+      "sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+      "shape": [
+        2,
+        48
+      ]
+    },
+    "final_parameter_count": 60553,
+    "route": {
+      "b3": "P2B3Conv1DOnlyCount4()",
+      "canonical": "P2TaskDGraphConvCount4(b3, base_edge_index)",
+      "dynamic": "build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)"
+    }
+  },
+  "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+  "native_test_dataset_constructed": false,
+  "next_stage": "V5_P3_FINAL_D2_RAW_A0_A1_COMBINED_AB_VALIDATION_EVALUATION",
+  "normalization_sha256": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49",
+  "npz_path": "/home/zira/research/projects/GNN-2d/artifacts/evaluation/v5_p3_final_d1_combined_ab_validation_logits/V5_P3_FINAL_D1_COMBINED_AB_VALIDATION_RAW_LOGITS_AND_LABELS.npz",
+  "npz_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+  "optimizer_constructed": false,
+  "output_order_69": [
+    "graph_logit",
+    "count_logit_1",
+    "count_logit_2",
+    "count_logit_3",
+    "count_logit_4",
+    "source_logit_r0",
+    "source_logit_r1",
+    "source_logit_r2",
+    "source_logit_r3",
+    "source_logit_r4",
+    "source_logit_r5",
+    "source_logit_r6",
+    "source_logit_r7",
+    "source_logit_r8",
+    "source_logit_r9",
+    "source_logit_r10",
+    "source_logit_r11",
+    "source_logit_r12",
+    "source_logit_r13",
+    "source_logit_r14",
+    "source_logit_r15",
+    "transit_logit_r0",
+    "transit_logit_r1",
+    "transit_logit_r2",
+    "transit_logit_r3",
+    "transit_logit_r4",
+    "transit_logit_r5",
+    "transit_logit_r6",
+    "transit_logit_r7",
+    "transit_logit_r8",
+    "transit_logit_r9",
+    "transit_logit_r10",
+    "transit_logit_r11",
+    "transit_logit_r12",
+    "transit_logit_r13",
+    "transit_logit_r14",
+    "transit_logit_r15",
+    "victim_logit_r0",
+    "victim_logit_r1",
+    "victim_logit_r2",
+    "victim_logit_r3",
+    "victim_logit_r4",
+    "victim_logit_r5",
+    "victim_logit_r6",
+    "victim_logit_r7",
+    "victim_logit_r8",
+    "victim_logit_r9",
+    "victim_logit_r10",
+    "victim_logit_r11",
+    "victim_logit_r12",
+    "victim_logit_r13",
+    "victim_logit_r14",
+    "victim_logit_r15",
+    "path_logit_r0",
+    "path_logit_r1",
+    "path_logit_r2",
+    "path_logit_r3",
+    "path_logit_r4",
+    "path_logit_r5",
+    "path_logit_r6",
+    "path_logit_r7",
+    "path_logit_r8",
+    "path_logit_r9",
+    "path_logit_r10",
+    "path_logit_r11",
+    "path_logit_r12",
+    "path_logit_r13",
+    "path_logit_r14",
+    "path_logit_r15"
+  ],
+  "production_seed": 107,
+  "raw_neural_outputs_only": true,
+  "sample_order": "native validation dataset index order, shuffle=False",
+  "scope": "frozen_seed107_epoch5_raw_neural_validation_export_only",
+  "sealed_test_access": false,
+  "sealed_test_evaluation_authorized": false,
+  "stage": "V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT",
+  "status": "FROZEN",
+  "test_tensor_deserialization": false,
+  "thresholding_performed": false,
+  "training_performed": false,
+  "validation_batches": 109,
+  "validation_items": 27722,
+  "validation_split": "final combined A+B validation"
+}

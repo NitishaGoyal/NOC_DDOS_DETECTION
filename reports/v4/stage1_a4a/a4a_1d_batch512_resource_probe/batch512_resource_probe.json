@@ -1,0 +1,116 @@
+{
+  "batch_reports": [
+    {
+      "batch_number": 1,
+      "batch_size": 512,
+      "gpu_allocated_mib": 25.71435546875,
+      "gpu_free_mib_after_batch": 7568.3125,
+      "gpu_reserved_mib": 46.0,
+      "gradient_clip_norm": 5.0,
+      "gradient_norm_before_clip": 317.9209899902344,
+      "host_peak_rss_mib": 1760.8828125,
+      "losses": {
+        "cardinality": 9.564443588256836,
+        "duplicate": 0.1883699893951416,
+        "matching": 5.50124979019165,
+        "membership": 0.7715926766395569,
+        "total": 10.688104629516602
+      },
+      "slot_logit_max": 11.52785873413086,
+      "slot_logit_min": -41.109100341796875
+    },
+    {
+      "batch_number": 2,
+      "batch_size": 512,
+      "gpu_allocated_mib": 25.71435546875,
+      "gpu_free_mib_after_batch": 7566.3125,
+      "gpu_reserved_mib": 48.0,
+      "gradient_clip_norm": 5.0,
+      "gradient_norm_before_clip": 90.60065460205078,
+      "host_peak_rss_mib": 1761.3984375,
+      "losses": {
+        "cardinality": 9.04652214050293,
+        "duplicate": 0.16275301575660706,
+        "matching": 4.973049163818359,
+        "membership": 0.6875979900360107,
+        "total": 9.85638427734375
+      },
+      "slot_logit_max": 11.785326957702637,
+      "slot_logit_min": -41.5638313293457
+    }
+  ],
+  "configuration": {
+    "automatic_mixed_precision": false,
+    "batch_size": 512,
+    "gradient_clip_norm": 5.0,
+    "learning_rate": 0.001,
+    "null_target_weight": 0.514585764294049,
+    "num_workers": 2,
+    "optimizer": "AdamW",
+    "persistent_workers": true,
+    "pin_memory": true,
+    "prefetch_factor": 2,
+    "probe_batches": 2,
+    "seed": 7,
+    "weight_decay": 0.0001
+  },
+  "decision": "batch512_primary_authorized",
+  "designation": "V4-A4a-1D Primary Batch-512 Resource Probe",
+  "development_test_accessed": false,
+  "device": "cuda",
+  "fallback_batch256_authorized": false,
+  "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "integrity_checks": {
+    "all_gradients_finite": true,
+    "all_losses_finite": true,
+    "checkpoint_reload_graph_logit_max_abs_diff": 0.0,
+    "checkpoint_reload_slot_logit_max_abs_diff": 0.0,
+    "checkpoint_serialization_pass": true,
+    "every_batch_size_is_512": true,
+    "frozen_encoder_unchanged": {
+      "changed_tensors": {},
+      "maximum_absolute_difference": 0.0,
+      "unchanged": true
+    },
+    "gradient_clipping_exercised": true,
+    "parameter_count_pass": true,
+    "processed_exactly_two_batches": true,
+    "test_loader_constructed": false,
+    "validation_loader_constructed": false
+  },
+  "parameter_count": {
+    "frozen": 2113,
+    "total": 3189,
+    "trainable": 1076
+  },
+  "provenance": {
+    "base_checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "contract_freeze_script_sha256": "b5b05b2200a41484949a3a813323d80a08bce6c6957999679890ef4cd3dbbfab",
+    "full_training_contract_lock_sha256": "c825f5adbfbfa6634e11601355958f0dd85b6aab021a6a3d2a5e0e287dcafe23",
+    "full_training_contract_sha256": "59e9ef31814acbacb7601c11f83d92ed7926cb888a4862881ebc5b39c18dc853",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "resource_probe_script_sha256": "479b290ad97b0d1ceb4424c6e343f319bc31ff64e53981f98a5ce23f5e34dbb4",
+    "slot_module_sha256": "97b56aabb3239dfc7543c241665cacf998eb6b1a1f5f67f931cdeb70e75c111c",
+    "smoke_script_sha256": "a1c93ed64198c0bd946e64da116b3438012d742c0c5fafc092e8517b4761a35d",
+    "trainer_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "ready_for_a4a_2a_primary_training_implementation": true,
+  "resource_probe_checkpoint_is_not_a_model_candidate": true,
+  "resource_summary": {
+    "elapsed_seconds": 0.5350562159874244,
+    "gpu_free_mib_after": 7566.3125,
+    "gpu_free_mib_before": 7654.3125,
+    "gpu_peak_allocated_mib": 35.84130859375,
+    "gpu_peak_reserved_mib": 48.0,
+    "gpu_total_mib": 7805.5625,
+    "host_peak_rss_mib": 1771.3671875
+  },
+  "status": "PASS",
+  "test_evaluated": false,
+  "test_loader_constructed": false,
+  "threshold_search_performed": false,
+  "training_performed": true,
+  "training_scope": "two optimizer steps for resource probe only",
+  "validation_accessed": false,
+  "validation_selection_performed": false
+}

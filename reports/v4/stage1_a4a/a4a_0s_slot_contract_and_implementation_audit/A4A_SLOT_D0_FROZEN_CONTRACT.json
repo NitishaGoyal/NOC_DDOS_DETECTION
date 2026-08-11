@@ -1,0 +1,283 @@
+{
+  "a4a_slot_primary_architecture": {
+    "classes_per_slot": 17,
+    "directional_proxy_in_primary_model": false,
+    "global_context_projection": [
+      64,
+      8
+    ],
+    "new_decoder_parameter_budget_max": 1200,
+    "new_trainable_parameter_count": 1076,
+    "null_classes": 1,
+    "null_head": [
+      64,
+      4
+    ],
+    "router_classes": 16,
+    "router_key_projection": [
+      32,
+      8
+    ],
+    "router_logit_definition": "dot(global_context_8 + slot_embedding_s, router_key_projection(h_node_r)) / sqrt(8)",
+    "slot_count": 4,
+    "slot_identity_embeddings": [
+      4,
+      8
+    ],
+    "slot_latent_dim": 8,
+    "slot_probability_definition": "softmax over 16 router logits plus one slot-specific NULL logit",
+    "total_deployed_parameter_budget_max": 3500,
+    "total_deployed_parameter_count": 3189
+  },
+  "ablation_order": [
+    "A4a-TopK",
+    "A4a-Slot",
+    "A4a-Slot+Membership",
+    "A4a-Slot+Count",
+    "A4a-Slot-Full",
+    "A4a-Slot-Full+DirectionalProxy"
+  ],
+  "dataset_audit": {
+    "array_lengths": {
+      "attacker_count": 2990044,
+      "run_index": 2990044,
+      "split_id": 2990044,
+      "y_graph": 2990044,
+      "y_node": 2990044
+    },
+    "observed_attacker_counts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "split_inventory": [
+      {
+        "attack_sample_count": 246975,
+        "attacker_count_0_samples": 148185,
+        "attacker_count_1_samples": 131720,
+        "attacker_count_2_samples": 42809,
+        "attacker_count_3_samples": 46102,
+        "attacker_count_4_samples": 26344,
+        "normal_sample_count": 148185,
+        "run_count": 120,
+        "sample_count": 395160,
+        "split_id": 0,
+        "split_name": "test"
+      },
+      {
+        "attack_sample_count": 1445627,
+        "attacker_count_0_samples": 691530,
+        "attacker_count_1_samples": 661893,
+        "attacker_count_2_samples": 299663,
+        "attacker_count_3_samples": 293077,
+        "attacker_count_4_samples": 190994,
+        "normal_sample_count": 691530,
+        "run_count": 649,
+        "sample_count": 2137157,
+        "split_id": 1,
+        "split_name": "train"
+      },
+      {
+        "attack_sample_count": 309542,
+        "attacker_count_0_samples": 148185,
+        "attacker_count_1_samples": 154771,
+        "attacker_count_2_samples": 52688,
+        "attacker_count_3_samples": 55981,
+        "attacker_count_4_samples": 46102,
+        "normal_sample_count": 148185,
+        "run_count": 139,
+        "sample_count": 457727,
+        "split_id": 2,
+        "split_name": "val"
+      }
+    ],
+    "total_samples": 2990044
+  },
+  "designation": "V4-A4a-0S Null-Aware Slot-Set Decoder Frozen Contract",
+  "development_test_accessed": false,
+  "diagnostic_evidence": {
+    "a3_12_validation_oracle_count_exact": 0.905511811023622,
+    "a3_12_validation_oracle_gap": 0.1119115429720221,
+    "a3_12_validation_threshold_exact": 0.7936002680515999,
+    "a3_13_decision": "local_graph_fusion_is_complementary",
+    "a3_15_decision": "moderate_univariate_directional_proxy_only"
+  },
+  "directional_proxy_contract": {
+    "a3_15_decision": "moderate_univariate_directional_proxy_only",
+    "best_proxy": {
+      "active_direction": "higher_in_true_attacker",
+      "active_source_separability": 0.7175310798,
+      "direction_consistent": true,
+      "eligible_univariate_proxy": true,
+      "inactive_direction": "higher_in_true_attacker",
+      "inactive_router_separability": 0.7378107262,
+      "mean_role_separability": 0.7276709029999999,
+      "metric_index": 101,
+      "metric_name": "peak__proxy_directional_out_minus_in_count",
+      "minimum_role_separability": 0.7175310798,
+      "validation_rank": 1
+    },
+    "hard_gate_use": false,
+    "optional_ablation_use": true,
+    "primary_model_use": false,
+    "selection_source": "validation only"
+  },
+  "evaluation_contract": {
+    "bootstrap_unit": "run or matched/scenario group; never independent temporal samples",
+    "deoverlap_stride_epochs": 8,
+    "development_test_transfer_count": 1,
+    "development_test_used_for_selection": false,
+    "graph_threshold": 0.275,
+    "outer_graph_gate": "Frozen A3 graph head and validation-frozen graph threshold",
+    "primary_predicted_set_source": "null-aware slot decoder, not count-controlled top-k",
+    "run_level_paired_bootstrap_required": true,
+    "temporal_horizon": 32,
+    "temporal_mode": "deoverlap",
+    "validation_only_model_and_policy_selection": true
+  },
+  "experiment_family": "v4_a4a_null_aware_slot_set_decoder",
+  "explicit_prohibitions": [
+    "No model, loss, threshold, persistence, feature, or decoder selection on development test.",
+    "No count-plus-top-k decoder as the primary A4a architecture.",
+    "No naive duplicate removal as the reference set decoder.",
+    "No removal or weakening of graph context based on graph-only ablation.",
+    "No hard directional source/transit rule from A3.15 proxies.",
+    "No end-to-end encoder fine-tuning in the first A4a decoder-only stage.",
+    "No autonomous-isolation claim unless every safety gate passes.",
+    "No publication claim that the current development test is an independent holdout."
+  ],
+  "frozen_base": {
+    "canonical_original_trainer": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v4/v4_a3_sourcepreserve_countaware_rank_mask_seed7/best_model.pt",
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "frozen_modules": [
+      "temporal_conv",
+      "local_projection",
+      "gcn",
+      "graph_head"
+    ],
+    "model_source_path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "original_parameter_count": 2983,
+    "original_trainer_hash_matches": [
+      {
+        "canonical_score": 100,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+        "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+        "size_bytes": 50303
+      }
+    ],
+    "original_trainer_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+    "replaced_modules": [
+      "attacker_hidden",
+      "attacker_out",
+      "count_head"
+    ]
+  },
+  "frozen_transfer_promotion_criteria": {
+    "attacker_set_precision_min": 0.98,
+    "candidate_coverage_must_not_collapse": true,
+    "desirable_exact_improvement_percentage_points_min": 3.0,
+    "latency_budget_must_pass": true,
+    "no_post_transfer_retuning": true,
+    "parameter_budget_must_pass": true,
+    "persistent_normal_run_false_isolation_fraction": 0.0,
+    "strong_exact_improvement_percentage_points": "3 to 5"
+  },
+  "hard_normal_claim_boundary": "A4a is expected to recover part of the decoder/cardinality gap. It is not expected to fully solve the A3.15 router-3 hard-normal ambiguity because those cases are genuinely attacker-like under the saved V4 feature semantics. Remaining failures are a V4 representation/semantics limitation and must be carried into V5.",
+  "kill_criteria": [
+    "Reject further A4a development if the best validation-selected slot model improves attack exact localization by less than 2 percentage points over A3.11-H32.",
+    "Reject any A4a model that increases persistent normal-run false isolation.",
+    "Reject a gain achieved only through material candidate-coverage collapse below 0.90.",
+    "Reject the structured slot design if it does not outperform the retrained A4a-TopK ablation.",
+    "After a kill decision, close V4 architecture tuning and move to V5 rather than introducing development-test-specific fixes."
+  ],
+  "paper_claim_boundary": "The strongest defensible V4 claim is high-precision candidate localization with temporally stable attacker-set estimation. Fully autonomous isolation remains conditional on strict persistent-normal safety gates.",
+  "prediction_generation_performed": false,
+  "primary_experiment_name": "v4_a4a_slot_full_decoder_only_seed7",
+  "provenance": {
+    "a3_12_lock_sha256": "550218e7b606d043a0d7ef9bff2372da8a054f93611f429c5dcd98aac6de792e",
+    "a3_12_summary_sha256": "00183eaa782f2b784bba8a77dc67ea3bba2aff6117e6ea3ff71b8a589db5bd5e",
+    "a3_13_lock_sha256": "f21300b93b9515396726a23c922dee0ac99ce770aeb8b5306ab20058e3604a5b",
+    "a3_13_summary_sha256": "7385e5f896c85b0fe7c85c3932addc7bbf3dbfd0bb72162860b67ce8c88c8ca3",
+    "a3_15_lock_sha256": "18c0115ac815bf166c4c2a842f863ae118b2409f2d530b8ebb6edc539cfe8ee9",
+    "a3_15_summary_sha256": "5302abfdca0fad689e61a2100ff3157bbefd6c29b9a457bd6512aa577c5d10b8",
+    "metadata_sha256": "97ca343f292d67c1e4150e18df764156fab4472d16ba9c4ea1085957e6863b2e",
+    "operational_policy_sha256": "f989349fc47162898291a213bcb83d07cf4ebcfd75c62fac166f16784adf817f"
+  },
+  "scientific_hypothesis": "A four-slot null-aware permutation-invariant decoder can recover a meaningful fraction of the A3.12 cardinality/set gap without changing the strong frozen A3 local-plus-graph encoder.",
+  "set_training_and_inference": {
+    "derived_cardinality_distribution": "Poisson-binomial distribution of four non-NULL slot probabilities.",
+    "derived_membership_probability": "q_r = 1 - product_s(1 - p(slot_s = router_r))",
+    "duplicate_handling": "Duplicates are prohibited by constrained inference and discouraged during training by a differentiable duplicate loss.",
+    "hardware_candidate_inference": "Greedy unique assignment ordered by slot confidence; compare against exact constrained assignment before RTL freeze.",
+    "hardware_reference_inference": "Unique constrained assignment maximizing combined slot log-probability; each real router may appear at most once; NULL may be assigned to multiple slots.",
+    "training_matching": "Permutation-invariant exact/Hungarian matching between true routers and four slots; unmatched slots target NULL."
+  },
+  "statistical_reporting_contract": {
+    "paired_baseline": "A3.11-H32 frozen candidate policy",
+    "required_outputs": [
+      "paired exact-localization difference",
+      "95% run-level bootstrap confidence interval",
+      "number of runs improved",
+      "number of runs regressed",
+      "number of runs unchanged"
+    ]
+  },
+  "status": "PASS",
+  "threshold_search_performed": false,
+  "training_contract": {
+    "batch_size_fallback": 256,
+    "batch_size_primary": 512,
+    "development_test_access_during_training": false,
+    "early_stopping_patience": 10,
+    "encoder_frozen": true,
+    "epochs_max": 75,
+    "graph_head_frozen": true,
+    "initialization": {
+      "linear_biases": "zeros",
+      "linear_weights": "xavier_uniform",
+      "slot_identity_embeddings": "normal_std_0.02"
+    },
+    "learning_rate": 0.001,
+    "minimum_delta": 0.0001,
+    "null_class_weighting": "Freeze from training-split prevalence only; record the chosen value before validation selection.",
+    "null_target_definition": "Unmatched slots target NULL; a normal sample assigns all four slots to NULL.",
+    "optimizer": "AdamW",
+    "primary_full_loss_weights": {
+      "derived_cardinality_cross_entropy": 0.5,
+      "derived_union_membership_bce": 0.5,
+      "duplicate_slot_penalty": 0.1,
+      "permutation_invariant_slot_matching": 1.0
+    },
+    "seed": 7,
+    "trainable_modules": [
+      "router_key_projection",
+      "global_context_projection",
+      "slot_identity_embeddings",
+      "slot_null_head"
+    ],
+    "training_split_only": true,
+    "weight_decay": 0.0001
+  },
+  "training_performed": false,
+  "v5_requirements_preserved": [
+    "explicit legitimate-source and transit-router labels",
+    "explicit valid, idle, and clipped port semantics",
+    "local injection and ejection quantities",
+    "victim labels",
+    "matched benign/attack counterfactual runs",
+    "independent publication holdout"
+  ],
+  "validation_selection_contract": {
+    "a3_h32_oracle_count_ceiling": 0.905511811023622,
+    "a3_h32_reference_exact": 0.7936002680515999,
+    "hard_gate_attacker_set_precision_min": 0.98,
+    "hard_gate_candidate_coverage_min": 0.9,
+    "hard_gate_persistent_normal_run_false_isolation_fraction": 0.0,
+    "minimum_exact_improvement_over_a3_h32_percentage_points": 2.0,
+    "selection_after_hard_gates": "maximize stable exact localization, then attack exact localization, then minimize normal window false isolation"
+  }
+}

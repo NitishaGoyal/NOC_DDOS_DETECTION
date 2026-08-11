@@ -1,0 +1,119 @@
+{
+  "argparse": [],
+  "assignments": [
+    {
+      "excerpt": {
+        "context_end": 1435,
+        "context_start": 1425,
+        "numbered": "01425:     best_epoch = None\n01426:     best_validation_metrics = None\n01427:     best_checkpoint_sha256 = None\n01428: \n01429:     best_early_stop_score = -float(\"inf\")\n01430:     early_stop_patience_counter = 0\n01431: \n01432:     history_rows: list[dict[str, Any]] = []\n01433:     history_path = (\n01434:         report_dir\n01435:         / f\"V5_P2_B2_SEED_{seed}_HISTORY.csv\"",
+        "numbered_sha256": "b81bac59684deffc39914b51ab6fe745ed611b059bd32a88c565d6181b65c75a",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    best_epoch = None\n    best_validation_metrics = None\n    best_checkpoint_sha256 = None\n\n    best_early_stop_score = -float(\"inf\")\n    early_stop_patience_counter = 0\n\n    history_rows: list[dict[str, Any]] = []\n    history_path = (\n        report_dir\n        / f\"V5_P2_B2_SEED_{seed}_HISTORY.csv\"",
+        "raw_sha256": "48694fb571b27ea816fadd67b0e9cb171cc59834924ed4616afd6719ef37c228",
+        "source_end": 1430,
+        "source_start": 1430
+      },
+      "function": "main",
+      "kind": "assign",
+      "line_end": 1430,
+      "line_start": 1430,
+      "names": [
+        "early_stop_patience_counter"
+      ],
+      "source": "early_stop_patience_counter = 0",
+      "value": "0"
+    },
+    {
+      "excerpt": {
+        "context_end": 343,
+        "context_start": 333,
+        "numbered": "00333:     ) -> None:\n00334:         self.dataset = dataset\n00335:         self.block_batch_size = int(block_batch_size)\n00336:         self.shuffle = bool(shuffle)\n00337:         self.seed = int(seed)\n00338:         self.epoch = 0\n00339: \n00340:         if self.block_batch_size <= 0:\n00341:             raise ValueError(\"block_batch_size must be positive\")\n00342:         if len(dataset) % 2 != 0:\n00343:             raise ValueError(\"dataset item count must be even\")",
+        "numbered_sha256": "0a7ce6c3ded7420b9d6d745f02ff1efc1b9ba90514ae3ec30b26ad7c6abdec93",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    ) -> None:\n        self.dataset = dataset\n        self.block_batch_size = int(block_batch_size)\n        self.shuffle = bool(shuffle)\n        self.seed = int(seed)\n        self.epoch = 0\n\n        if self.block_batch_size <= 0:\n            raise ValueError(\"block_batch_size must be positive\")\n        if len(dataset) % 2 != 0:\n            raise ValueError(\"dataset item count must be even\")",
+        "raw_sha256": "59ac0f077c40ba5e478206c4929761ea2487d3f7ddafaf93372a2f2ef20fcbce",
+        "source_end": 338,
+        "source_start": 338
+      },
+      "function": "__init__",
+      "kind": "assign",
+      "line_end": 338,
+      "line_start": 338,
+      "names": [
+        "self.epoch"
+      ],
+      "source": "self.epoch = 0",
+      "value": "0"
+    },
+    {
+      "excerpt": {
+        "context_end": 381,
+        "context_start": 371,
+        "numbered": "00371: \n00372:         if self.block_count * 2 != len(dataset):\n00373:             raise RuntimeError(\"pair-block count does not cover dataset\")\n00374: \n00375:     def set_epoch(self, epoch: int) -> None:\n00376:         self.epoch = int(epoch)\n00377: \n00378:     def __len__(self) -> int:\n00379:         return math.ceil(\n00380:             self.block_count / self.block_batch_size\n00381:         )",
+        "numbered_sha256": "1fe21b3b35956fdae9b8ec5aef4f14f7cb457fa126b6f8c2fc2f3cbbeba6beb1",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "\n        if self.block_count * 2 != len(dataset):\n            raise RuntimeError(\"pair-block count does not cover dataset\")\n\n    def set_epoch(self, epoch: int) -> None:\n        self.epoch = int(epoch)\n\n    def __len__(self) -> int:\n        return math.ceil(\n            self.block_count / self.block_batch_size\n        )",
+        "raw_sha256": "34c4a2a33cb46721018a0fbb354f88aecb393ea5d16d8b7a11759be5976c4da5",
+        "source_end": 376,
+        "source_start": 376
+      },
+      "function": "set_epoch",
+      "kind": "assign",
+      "line_end": 376,
+      "line_start": 376,
+      "names": [
+        "self.epoch"
+      ],
+      "source": "self.epoch = int(epoch)",
+      "value": "int(epoch)"
+    },
+    {
+      "excerpt": {
+        "context_end": 1567,
+        "context_start": 1557,
+        "numbered": "01557:         if (\n01558:             current_score\n01559:             > best_early_stop_score + 1e-4\n01560:         ):\n01561:             best_early_stop_score = current_score\n01562:             early_stop_patience_counter = 0\n01563:         else:\n01564:             early_stop_patience_counter += 1\n01565: \n01566:         scheduler.step(current_score)\n01567: ",
+        "numbered_sha256": "232ceb6dfbe81b6bc430a55435e3041734a2ded3a0fbca44b8b4cfb3183f6640",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "        if (\n            current_score\n            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1\n\n        scheduler.step(current_score)\n",
+        "raw_sha256": "0e86deec26c792106ef2afc4026f6cbb9830b913f91a7271949950b6d16b0ca1",
+        "source_end": 1562,
+        "source_start": 1562
+      },
+      "function": "main",
+      "kind": "assign",
+      "line_end": 1562,
+      "line_start": 1562,
+      "names": [
+        "early_stop_patience_counter"
+      ],
+      "source": "early_stop_patience_counter = 0",
+      "value": "0"
+    },
+    {
+      "excerpt": {
+        "context_end": 1569,
+        "context_start": 1559,
+        "numbered": "01559:             > best_early_stop_score + 1e-4\n01560:         ):\n01561:             best_early_stop_score = current_score\n01562:             early_stop_patience_counter = 0\n01563:         else:\n01564:             early_stop_patience_counter += 1\n01565: \n01566:         scheduler.step(current_score)\n01567: \n01568:         completed_epoch = epoch\n01569:         elapsed_seconds = time.time() - epoch_start",
+        "numbered_sha256": "b46fd4855ce4c79bb8d445ea2592f4c8b880483a0c59b2f399951e7cdc45571f",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "            > best_early_stop_score + 1e-4\n        ):\n            best_early_stop_score = current_score\n            early_stop_patience_counter = 0\n        else:\n            early_stop_patience_counter += 1\n\n        scheduler.step(current_score)\n\n        completed_epoch = epoch\n        elapsed_seconds = time.time() - epoch_start",
+        "raw_sha256": "31af10c253f506db9ec5e3ad2c63784815898a582896545deb02bb33215472cc",
+        "source_end": 1564,
+        "source_start": 1564
+      },
+      "function": "main",
+      "kind": "augassign_Add",
+      "line_end": 1564,
+      "line_start": 1564,
+      "names": [
+        "early_stop_patience_counter"
+      ],
+      "source": "early_stop_patience_counter += 1",
+      "value": "1"
+    }
+  ],
+  "relevant_symbols": [
+    "early_stop_patience_counter",
+    "epoch"
+  ]
+}

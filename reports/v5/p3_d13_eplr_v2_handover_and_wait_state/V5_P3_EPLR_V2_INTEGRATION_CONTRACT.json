@@ -1,0 +1,70 @@
+{
+  "calibration": {
+    "recalibration_permitted_before_independent_validation": false,
+    "sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+    "source": "D8 A-train-only frozen calibration"
+  },
+  "decoder_identity": "V5-P3 EPLR-V2 Preserve-or-Passthrough",
+  "hardware_boundary": {
+    "RTL_team_implements_EPLR": false,
+    "decoder_inside_RTL": false,
+    "neural_accelerator_output_unchanged": true
+  },
+  "immutable_predictions": [
+    "graph equals Raw",
+    "count candidate equals Raw",
+    "source equals Raw on every active row",
+    "victim equals Raw on every active row"
+  ],
+  "input_contract": {
+    "layout": {
+      "count": [
+        1,
+        5
+      ],
+      "graph": [
+        0,
+        1
+      ],
+      "path": [
+        53,
+        69
+      ],
+      "source": [
+        5,
+        21
+      ],
+      "transit": [
+        21,
+        37
+      ],
+      "victim": [
+        37,
+        53
+      ]
+    },
+    "raw_logit_count": 69
+  },
+  "legal_endpoint_behavior": {
+    "path": "route-derived union",
+    "route_certificate": true,
+    "transit": "route-derived union"
+  },
+  "software_only": true,
+  "stage": "V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE",
+  "status": "FROZEN",
+  "unresolved_behavior": {
+    "all_role_masks": "Raw passthrough",
+    "route_certificate": false,
+    "route_ids": "empty",
+    "status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+  },
+  "validation_boundary": {
+    "A_test_permitted": false,
+    "Tranche_A_validation_replay_permitted": false,
+    "eligible_future_boundaries": [
+      "frozen Tranche-B validation",
+      "future fresh A+B validation"
+    ]
+  }
+}

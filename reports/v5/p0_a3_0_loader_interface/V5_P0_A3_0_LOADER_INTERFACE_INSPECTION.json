@@ -1,0 +1,171 @@
+{
+  "construction": {
+    "attempted": true,
+    "dataset_class": "V5P0WindowDataset",
+    "dataset_length": 2707,
+    "dataset_signature": "(root, split, window=32, stride=8, active_only=False)",
+    "instance_attribute_names": [
+      "active_only",
+      "files",
+      "index",
+      "root",
+      "split",
+      "stride",
+      "topology",
+      "window"
+    ],
+    "kwargs": {
+      "root": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph",
+      "split": "train",
+      "stride": "8",
+      "window": "32"
+    },
+    "sample0": {
+      "items": {
+        "case_id": {
+          "repr": "'D01'",
+          "type": "str"
+        },
+        "edge_index": {
+          "dtype": "torch.int64",
+          "finite": null,
+          "shape": [
+            2,
+            48
+          ],
+          "type": "tensor"
+        },
+        "epoch_id": {
+          "dtype": "torch.int64",
+          "finite": null,
+          "shape": [],
+          "type": "tensor"
+        },
+        "mode": {
+          "repr": "'attack'",
+          "type": "str"
+        },
+        "role_mask": {
+          "dtype": "torch.uint8",
+          "finite": null,
+          "shape": [
+            16
+          ],
+          "type": "tensor"
+        },
+        "run_id": {
+          "repr": "'V5-INITIAL24-D01-S0T10-S15T5-SEED510007-ATTACK'",
+          "type": "str"
+        },
+        "window_start": {
+          "repr": "0",
+          "type": "int"
+        },
+        "window_target": {
+          "repr": "31",
+          "type": "int"
+        },
+        "x": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [
+            16,
+            81,
+            32
+          ],
+          "type": "tensor"
+        },
+        "y_attack": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [],
+          "type": "tensor"
+        },
+        "y_attack_path": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [
+            16
+          ],
+          "type": "tensor"
+        },
+        "y_attacker_count": {
+          "dtype": "torch.int64",
+          "finite": null,
+          "shape": [],
+          "type": "tensor"
+        },
+        "y_source": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [
+            16
+          ],
+          "type": "tensor"
+        },
+        "y_transit": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [
+            16
+          ],
+          "type": "tensor"
+        },
+        "y_victim": {
+          "dtype": "torch.float32",
+          "finite": true,
+          "shape": [
+            16
+          ],
+          "type": "tensor"
+        }
+      },
+      "keys": [
+        "x",
+        "edge_index",
+        "y_attack",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim",
+        "y_attack_path",
+        "role_mask",
+        "epoch_id",
+        "case_id",
+        "run_id",
+        "mode",
+        "window_start",
+        "window_target"
+      ],
+      "type": "dict"
+    },
+    "sample0_repeat_exact": true,
+    "success": true,
+    "unresolved_required_parameters": []
+  },
+  "copied_source_sha256": "da9455b3b7ffea7a5de4ebbe378a16c97ab35d3aa47754bf1772a5588bc98783",
+  "dataset_candidates": [
+    "V5P0WindowDataset"
+  ],
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph",
+  "loader_path": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph/dataset_loader.py",
+  "loader_sha256": "da9455b3b7ffea7a5de4ebbe378a16c97ab35d3aa47754bf1772a5588bc98783",
+  "model_inference_performed": false,
+  "model_training_performed": false,
+  "module_classes": [
+    {
+      "bases": [
+        "torch.utils.data.dataset.Dataset"
+      ],
+      "dataset_subclass": true,
+      "name": "V5P0WindowDataset",
+      "signature": "(root, split, window=32, stride=8, active_only=False)"
+    }
+  ],
+  "module_functions": [],
+  "stage": "V5_P0_A3_0_LOADER_INTERFACE_INSPECTION",
+  "status": "PASS",
+  "test_performance_evaluated": false,
+  "test_tensors_read": false,
+  "validation_tensors_read": false
+}

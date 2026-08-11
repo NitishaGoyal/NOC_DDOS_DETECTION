@@ -1,0 +1,122 @@
+{
+  "aggregation": {
+    "absolute_channel_mean": true,
+    "bootstrap_resamples": 1000,
+    "bootstrap_seed": 6102,
+    "confidence_interval": 0.95,
+    "group_mean_absolute_attribution_per_channel": true,
+    "group_total_absolute_attribution": true,
+    "normalization": [
+      "fraction_of_total_absolute_attribution",
+      "per_channel_mean_to_control_for_group_width"
+    ],
+    "router_absolute_attribution": true,
+    "signed_channel_mean": true,
+    "time_step_absolute_attribution": true
+  },
+  "baseline": {
+    "attack_item_attributed": true,
+    "control_item_attributed": false,
+    "edge_index": "unchanged",
+    "matching_priority": [
+      "pair_id+window_start",
+      "pair_id"
+    ],
+    "physical_port_mask": "attack-item mask retained; baseline feature tensor only",
+    "type": "matched_control_feature_tensor"
+  },
+  "classification": "VALIDATION-EXPLORATORY",
+  "completeness_gate": {
+    "absolute_error_reported": true,
+    "fallback_if_failed": "repeat failed task with 128 steps",
+    "identity": "sum(IG) approximately equals target(attack)-target(control)",
+    "relative_error_denominator": "max(abs(target_difference),1e-6)",
+    "task_median_relative_error_max": 0.02,
+    "task_p95_relative_error_max": 0.05
+  },
+  "integrated_gradients": {
+    "gradient_microbatch_size": 16,
+    "input_requires_grad_only": true,
+    "integration_rule": "trapezoidal",
+    "model_parameters_require_grad": false,
+    "path": "straight_line_matched_control_to_attack",
+    "runtime": {
+      "cuda_matmul_allow_tf32": false,
+      "cudnn_allow_tf32": true,
+      "cudnn_benchmark": false,
+      "cudnn_deterministic": true,
+      "deterministic_algorithms_enabled": false,
+      "float32_matmul_precision": "highest"
+    },
+    "step_endpoints_included": true,
+    "steps": 64
+  },
+  "macro_groups": {
+    "buffer_pressure": {
+      "count": 15,
+      "end_exclusive": 55,
+      "start": 40
+    },
+    "directional_traffic_volume": {
+      "count": 10,
+      "end_exclusive": 10,
+      "start": 0
+    },
+    "flow_control_stalls": {
+      "count": 15,
+      "end_exclusive": 70,
+      "start": 55
+    },
+    "inter_flit_timing": {
+      "count": 20,
+      "end_exclusive": 30,
+      "start": 10
+    },
+    "queue_activity": {
+      "count": 10,
+      "end_exclusive": 40,
+      "start": 30
+    }
+  },
+  "paper_claim_boundary": {
+    "compact_interface_equivalence_authorized": false,
+    "feature_importance_wording_authorized_after_F6": true,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false
+  },
+  "sample_selection": {
+    "items_per_count": 128,
+    "same_sample_set_for_all_tasks_when_target_is_defined": true,
+    "scope": "active validation items only",
+    "selection_seed": 6101,
+    "stratification": "attacker_count in {1,2,3,4}",
+    "total_items": 512,
+    "without_replacement": true
+  },
+  "tasks": {
+    "count": {
+      "sample_scope": "active_attack_items",
+      "target": "true_count_class_logit_minus_mean_of_other_three_logits"
+    },
+    "graph": {
+      "sample_scope": "active_attack_items",
+      "target": "attack_logit"
+    },
+    "path": {
+      "sample_scope": "active_attack_items_with_nonempty_path_target",
+      "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+    },
+    "source": {
+      "sample_scope": "active_attack_items_with_nonempty_source_target",
+      "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+    },
+    "transit": {
+      "sample_scope": "active_attack_items_with_nonempty_transit_target",
+      "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+    },
+    "victim": {
+      "sample_scope": "active_attack_items_with_nonempty_victim_target",
+      "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+    }
+  }
+}

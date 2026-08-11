@@ -1,0 +1,79 @@
+{
+  "L4_cache_migration": {
+    "cached_outputs_recomputed": false,
+    "completed_prefix_preserved": 4589,
+    "new_exact_decoder_sha256": "b60f1f233f6d09986b62142eafb5152e1ffd15089aa34c14e12b0f9af0c1cfb4",
+    "old_exact_decoder_sha256": "0d6ae843a0503cf6aa347078dda50e570f69cbbffdaa7ee1e4b2dbfd3b7978bf",
+    "scientific_reason_for_preservation": "The correction changes only acceptance of machine-zero solver reporting residuals; it does not change the MILP, objective, constraints, route set, or decoded outputs.",
+    "work_manifest_after_sha256": "0bab577014975213b67e207776967c554660d1f87bbeacebbe65e0a689c94e3d",
+    "work_manifest_before_sha256": "ff34789ac30a6d6ad2a11d3e1bdf8600e8b6ae827943689b0768a3ade81753cb"
+  },
+  "append_only_correction": true,
+  "created_utc": "2026-07-28T21:06:46.081929+00:00",
+  "evidence_hashes": {
+    "original_L2_json_sha256": "3ff7077f360906ada21a3ae16155f73e327925b72a032c3bb8122905bd6094d0",
+    "original_L2_lock_sha256": "ed0aafecf5c7527e647bea3dd91f696eb416f889c0541d48b627957a9e887ee0",
+    "original_L2_marker_sha256": "c9dbc59dfcda867d1cff77a4ea61d8d9be919cfd887c57468d01d8fa3c39f3d3",
+    "patched_exact_decoder_sha256": "b60f1f233f6d09986b62142eafb5152e1ffd15089aa34c14e12b0f9af0c1cfb4",
+    "test_log_sha256": "bb1ef719c844d8c3f52e6f89f23de69d168fee218ff3fef88a30ed5134da0f95"
+  },
+  "frozen_numerical_certification": {
+    "material_gap_policy": "hard error",
+    "mip_gap_reporting_tolerance": 1.4210854715202004e-14,
+    "mip_gap_reporting_ulp_multiplier": 64,
+    "nonfinite_or_negative_gap_policy": "hard error",
+    "objective_face_score_recheck_unchanged": true,
+    "requested_mip_rel_gap": 0.0,
+    "route_search_space_unchanged": true,
+    "semantic_tie_tolerance_unchanged": 1e-12,
+    "solver_options_unchanged": true,
+    "solver_status_zero_required": true,
+    "solver_success_required": true,
+    "tie_break_unchanged": true
+  },
+  "mip_gap_reporting_tolerance": 1.4210854715202004e-14,
+  "new_exact_decoder_sha256": "b60f1f233f6d09986b62142eafb5152e1ffd15089aa34c14e12b0f9af0c1cfb4",
+  "old_exact_decoder_sha256": "0d6ae843a0503cf6aa347078dda50e570f69cbbffdaa7ee1e4b2dbfd3b7978bf",
+  "original_L2_reports_preserved_unchanged": true,
+  "reason": "HiGHS returned optimal status with a float64 roundoff residual in the reported relative MIP gap. The previous literal == 0.0 check incorrectly rejected that certified optimum.",
+  "regression_item": {
+    "attacker_count": 2,
+    "lexicographic_mip_gap": 0.0,
+    "lexicographic_tie_break_certified": true,
+    "margin": 24.441755176247042,
+    "optimality_proven": true,
+    "primary_mip_gap": 0.0,
+    "route_ids": [
+      37,
+      143
+    ],
+    "validation_item_index": 4580
+  },
+  "security_boundary": {
+    "model_checkpoint_loaded": false,
+    "model_inference_performed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensors_deserialized": false,
+    "validation_archive_item_read": true,
+    "validation_tensor_dataset_reopened": false
+  },
+  "stage": "V5_P2_L2_R0_SOLVER_GAP_NUMERICAL_CERTIFICATION",
+  "state_after_L2_R0": {
+    "L4_cache_resume_authorized": true,
+    "exact_decoder_backend_frozen": true,
+    "next_action": "resume_V5_P2_L4_at_preserved_prefix",
+    "numerical_gap_certification_frozen": true
+  },
+  "status": "COMPLETE",
+  "tests": {
+    "combined_tests_run": 16,
+    "result": "PASS",
+    "test_log_sha256": "bb1ef719c844d8c3f52e6f89f23de69d168fee218ff3fef88a30ed5134da0f95"
+  },
+  "triggering_failure": {
+    "reported_primary_mip_gap_from_log": 1.2458674689278237e-16,
+    "validation_item_index": 4580
+  }
+}

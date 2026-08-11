@@ -1,0 +1,2405 @@
+{
+  "candidate_count": 58,
+  "evaluated": [
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"validation_metrics() missing 2 required positional arguments: 'loss_totals' and 'item_count'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"validation_metrics() missing 2 required positional arguments: 'loss_totals' and 'item_count'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"validation_metrics() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "validation_metrics",
+        "line": 406,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "selection_score in function source",
+          "A4 lineage"
+        ],
+        "score": 42,
+        "signature": {
+          "args": [
+            "accum",
+            "loss_totals",
+            "item_count"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def validation_metrics(\n    accum: dict[str, list[np.ndarray]],\n    loss_totals: dict[str, float],\n    item_count: int,\n) -> dict[str, Any]:\n    graph_logits = np.concatenate(accum[\"attack_logits\"])\n    graph_scores = 1.0 / (1.0 + np.exp(-graph_logits))\n    graph_targets = np.concatenate(accum[\"graph_targets\"]).astype(\n        np.int64\n    )\n    active_mask = graph_targets == 1\n\n    graph = binary_metrics(graph_scores, graph_targets)\n    graph[\"auroc\"] = binary_auroc(\n        graph_scores,\n        graph_targets,\n    )\n    graph[\"average_precision\"] = binary_average_precision(\n        graph_scores,\n        graph_targets,\n    )\n\n    count_logits = np.concatenate(accum[\"count_logits\"])\n    count_targets = np.concatenate(accum[\"count_targets\"]).astype(\n        np.int64\n    )\n    active_count_logits = count_logits[active_mask]\n    active_count_targets = count_targets[active_mask]\n    count_predictions = (\n        np.argmax(active_count_logits, axis=1) + 1\n    )\n    count_accuracy = float(\n        np.mean(count_predictions == active_count_targets)\n    )\n    count_macro_f1 = multiclass_macro_f1(\n        count_predictions,\n        active_count_targets,\n        COUNT_CLASS_VALUES,\n    )\n\n    roles = {}\n    for role in (\"source\", \"transit\", \"victim\", \"path\"):\n        logits = np.concatenate(accum[f\"{role}_logits\"])\n        scores = 1.0 / (1.0 + np.exp(-logits))\n        targets = np.concatenate(\n            accum[f\"{role}_targets\"]\n        ).astype(np.int64)\n        flattened = binary_metrics(\n            scores.reshape(-1),\n            targets.reshape(-1),\n        )\n        flattened[\"auroc\"] = binary_auroc(\n            scores.reshape(-1),\n            targets.reshape(-1),\n        )\n        flattened[\"average_precision\"] = (\n            binary_average_precision(\n                scores.reshape(-1),\n                targets.reshape(-1),\n            )\n        )\n        flattened.update(\n            exact_multilabel(\n                scores,\n                targets,\n                active_mask,\n            )\n        )\n        roles[role] = flattened\n\n    components = [\n        graph[\"auroc\"],\n        graph[\"average_precision\"],\n        count_macro_f1,\n        roles[\"source\"][\"average_precision\"],\n        roles[\"transit\"][\"average_precision\"],\n        roles[\"victim\"][\"average_precision\"],\n        roles[\"path\"][\"average_precision\"],\n    ]\n    if not all(math.isfinite(value) for value in components):\n        raise RuntimeError(\n            f\"non-finite validation selection component: \"\n            f\"{components}\"\n        )\n    selection_score = float(np.mean(components))\n\n    return {\n        \"loss\": {\n            key: value / item_count\n            for key, value in loss_totals.items()\n        },\n        \"selection_score\": selection_score,\n        \"selection_components\": {\n            \"graph_auroc\": graph[\"auroc\"],\n            \"graph_average_precision\": (\n                graph[\"average_precision\"]\n            ),\n            \"count_active_macro_f1\": count_macro_f1,\n            \"source_average_precision\": (\n                roles[\"source\"][\"average_precision\"]\n            ),\n            \"transit_average_precision\": (\n                roles[\"transit\"][\"average_precision\"]\n            ),\n            \"victim_average_precision\": (\n                roles[\"victim\"][\"average_precision\"]\n            ),\n            \"path_average_precision\": (\n                roles[\"path\"][\"average_precision\"]\n            ),\n        },\n        \"graph\": graph,\n        \"count_active\": {\n            \"accuracy\": count_accuracy,\n            \"macro_f1\": count_macro_f1,\n            \"items\": int(active_mask.sum()),\n        },\n        \"roles\": roles,\n        \"threshold_policy\": {\n            \"reporting_threshold\": 0.5,\n            \"threshold_tuning_performed\": False,\n            \"selection_metrics_are_threshold_free_except_count_macro_f1\": True,\n        },\n    }",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"main() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "main",
+        "line": 730,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "selection_score in function source",
+          "A4 lineage"
+        ],
+        "score": 42,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def main() -> int:\n    args = parse_args()\n    set_seed(SEED)\n\n    repo = Path(args.repo).expanduser().resolve()\n    data_link = Path(args.data_link).expanduser()\n    data_root = data_link.resolve()\n    output_dir = Path(args.output_dir).expanduser().resolve()\n    installed_script = Path(\n        args.installed_script\n    ).expanduser().resolve()\n    output_dir.mkdir(parents=True, exist_ok=True)\n\n    report_path = output_dir / f\"{STAGE}_REPORT.json\"\n    lock_path = output_dir / f\"{STAGE}_LOCK.json\"\n    history_path = output_dir / f\"{STAGE}_EPOCHS.csv\"\n    progress_path = output_dir / f\"{STAGE}_PROGRESS.json\"\n    best_checkpoint_path = output_dir / f\"{STAGE}_BEST.pt\"\n    last_checkpoint_path = output_dir / f\"{STAGE}_LAST.pt\"\n    complete_path = output_dir / f\"{STAGE}_COMPLETE\"\n    hold_path = output_dir / f\"{STAGE}_HOLD\"\n\n    a3_dir = (\n        repo\n        / \"reports/v5/p3_a3_preliminary_baseline_preflight\"\n    )\n    a3_report_path = (\n        a3_dir\n        / \"V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT_REPORT.json\"\n    )\n    a3_lock_path = (\n        a3_dir\n        / \"V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT_LOCK.json\"\n    )\n    protocol_path = (\n        a3_dir\n        / \"V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL.json\"\n    )\n    wrapper_path = (\n        repo / \"src/data/v5_p3_tranche_a_guarded_loader.py\"\n    )\n    b3_path = (\n        repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"\n    )\n    canonical_path = (\n        repo / \"src/models/v5_p2_task_d_full_multitask_count4.py\"\n    )\n    dynamic_path = (\n        repo\n        / \"src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py\"\n    )\n    normalization_path = (\n        data_root / \"normalization_tranche_a_provisional.pt\"\n    )\n\n    required = [\n        a3_report_path,\n        a3_lock_path,\n        protocol_path,\n        wrapper_path,\n        b3_path,\n        canonical_path,\n        dynamic_path,\n        normalization_path,\n    ]\n    missing = [str(path) for path in required if not path.is_file()]\n    if missing:\n        raise RuntimeError(f\"required files missing: {missing}\")\n    if not data_link.is_symlink():\n        raise RuntimeError(\n            f\"dataset path is not canonical symlink: {data_link}\"\n        )\n\n    a3_report = json.loads(\n        a3_report_path.read_text(encoding=\"utf-8\")\n    )\n    a3_lock = json.loads(\n        a3_lock_path.read_text(encoding=\"utf-8\")\n    )\n    protocol = json.loads(\n        protocol_path.read_text(encoding=\"utf-8\")\n    )\n\n    if a3_report.get(\"status\") != \"PASS\":\n        raise RuntimeError(\"A3 report is not PASS\")\n    if not a3_report.get(\"decision\", {}).get(\n        \"preliminary_baseline_training_authorized\"\n    ):\n        raise RuntimeError(\n            \"A3 did not authorize preliminary training\"\n        )\n    if a3_report.get(\"sealed_test\", {}).get(\n        \"test_tensor_loaded\"\n    ):\n        raise RuntimeError(\n            \"A3 reports sealed-test tensor access\"\n        )\n    if a3_lock.get(\"report_sha256\") != sha256_file(\n        a3_report_path\n    ):\n        raise RuntimeError(\"A3 report/lock SHA mismatch\")\n    if a3_lock.get(\"protocol_sha256\") != sha256_file(\n        protocol_path\n    ):\n        raise RuntimeError(\"A3 protocol/lock SHA mismatch\")\n\n    # Process-wide guard against any test-run deserialization.\n    original_torch_load = torch.load\n    loaded_paths: list[str] = []\n\n    def guarded_torch_load(file, *load_args, **load_kwargs):\n        try:\n            candidate = Path(\n                os.fspath(file)\n            ).expanduser().resolve()\n        except TypeError:\n            candidate = None\n        if candidate is not None:\n            candidate_text = str(candidate)\n            loaded_paths.append(candidate_text)\n            if \"/runs/test/\" in candidate_text:\n                raise PermissionError(\n                    \"A4 sealed-test guard blocked \"\n                    f\"{candidate_text}\"\n                )\n        return original_torch_load(\n            file,\n            *load_args,\n            **load_kwargs,\n        )\n\n    torch.load = guarded_torch_load\n\n    wrapper_mod = import_module(\n        wrapper_path,\n        \"_v5_p3_a4_guarded_loader\",\n    )\n    b3_mod = import_module(b3_path, \"_v5_p3_a4_b3\")\n    canonical_mod = import_module(\n        canonical_path,\n        \"_v5_p3_a4_canonical\",\n    )\n    dynamic_mod = import_module(\n        dynamic_path,\n        \"_v5_p3_a4_dynamic70\",\n    )\n\n    GuardedDataset = (\n        wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset\n    )\n    SealedTestAccessError = (\n        wrapper_mod.SealedTestAccessError\n    )\n    try:\n        GuardedDataset(data_root, \"test\")\n    except SealedTestAccessError:\n        test_negative_check = True\n    else:\n        test_negative_check = False\n    if not test_negative_check:\n        raise RuntimeError(\"guard failed to reject A_test\")\n\n    train_dataset = GuardedDataset(\n        data_root,\n        \"train\",\n        active_only=False,\n    )\n    validation_dataset = GuardedDataset(\n        data_root,\n        \"validation\",\n        active_only=False,\n    )\n    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:\n        raise RuntimeError(\n            f\"train length={len(train_dataset)}\"\n        )\n    if len(validation_dataset) != EXPECTED_VALIDATION_ITEMS:\n        raise RuntimeError(\n            f\"validation length={len(validation_dataset)}\"\n        )\n\n    optimization = protocol[\"optimization\"]\n    batch_size = int(optimization[\"batch_size\"])\n    num_workers = int(optimization[\"num_workers\"])\n    maximum_epochs = int(optimization[\"maximum_epochs\"])\n    gradient_clip = float(\n        optimization[\"gradient_clip_norm\"]\n    )\n\n    sampler = EpochShuffleSampler(\n        len(train_dataset),\n        SEED,\n    )\n    device = torch.device(\n        \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    )\n    pin_memory = device.type == \"cuda\"\n\n    train_loader = DataLoader(\n        train_dataset,\n        batch_size=batch_size,\n        sampler=sampler,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )\n    validation_loader = DataLoader(\n        validation_dataset,\n        batch_size=batch_size,\n        shuffle=False,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )\n\n    first_train_sample = train_dataset[0]\n    edge = torch.as_tensor(\n        first_train_sample[\"edge_index\"]\n    ).long()\n    if tuple(edge.shape) != (2, 48):\n        raise RuntimeError(\n            f\"edge shape={tuple(edge.shape)}\"\n        )\n\n    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()\n    canonical_model = (\n        canonical_mod.P2TaskDGraphConvCount4(\n            reference_b3,\n            edge,\n        )\n    )\n    model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(\n        canonical_model,\n        seed=SEED,\n    )\n    parameter_count = sum(\n        parameter.numel()\n        for parameter in model.parameters()\n    )\n    if parameter_count != EXPECTED_PARAMETER_COUNT:\n        raise RuntimeError(\n            f\"parameter count={parameter_count}, \"\n            f\"expected={EXPECTED_PARAMETER_COUNT}\"\n        )\n    if not all(\n        parameter.requires_grad\n        for parameter in model.parameters()\n    ):\n        raise RuntimeError(\"some model parameters are frozen\")\n    model = model.to(device)\n\n    loss_protocol = protocol[\"loss\"]\n    graph_pos_weight = torch.tensor(\n        float(loss_protocol[\"graph_positive_weight\"]),\n        dtype=torch.float32,\n        device=device,\n    )\n    role_pos_weights = {\n        role: torch.tensor(\n            float(\n                loss_protocol[\"role_positive_weights\"][role]\n            ),\n            dtype=torch.float32,\n            device=device,\n        )\n        for role in (\n            \"source\",\n            \"transit\",\n            \"victim\",\n            \"path\",\n        )\n    }\n\n    optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=float(optimization[\"learning_rate\"]),\n        betas=tuple(optimization[\"betas\"]),\n        eps=float(optimization[\"epsilon\"]),\n        weight_decay=float(\n            optimization[\"weight_decay\"]\n        ),\n    )\n    scheduler_cfg = optimization[\"scheduler\"]\n    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=scheduler_cfg[\"mode\"],\n        factor=float(scheduler_cfg[\"factor\"]),\n        patience=int(scheduler_cfg[\"patience\"]),\n        threshold=float(scheduler_cfg[\"threshold\"]),\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=float(scheduler_cfg[\"minimum_lr\"]),\n    )\n\n    history: list[dict[str, Any]] = []\n    start_epoch = 1\n    best_rank = None\n    best_epoch = None\n    best_validation = None\n    best_checkpoint_sha256 = None\n    best_early_stop_score = float(\"-inf\")\n    patience_counter = 0\n    stopped_early = False\n    resumed = False\n\n    if last_checkpoint_path.is_file():\n        checkpoint = torch.load(\n            last_checkpoint_path,\n            map_location=device,\n            weights_only=False,\n        )\n        expected_provenance = {\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n        }\n        for key, expected in expected_provenance.items():\n            if checkpoint.get(key) != expected:\n                raise RuntimeError(\n                    f\"resume provenance mismatch for {key}\"\n                )\n        model.load_state_dict(\n            checkpoint[\"model_state_dict\"]\n        )\n        optimizer.load_state_dict(\n            checkpoint[\"optimizer_state_dict\"]\n        )\n        scheduler.load_state_dict(\n            checkpoint[\"scheduler_state_dict\"]\n        )\n        start_epoch = int(checkpoint[\"epoch\"]) + 1\n        best_rank = checkpoint[\"best_rank\"]\n        best_epoch = checkpoint[\"best_epoch\"]\n        best_validation = checkpoint[\"best_validation\"]\n        best_checkpoint_sha256 = checkpoint[\n            \"best_checkpoint_sha256\"\n        ]\n        best_early_stop_score = float(\n            checkpoint[\"best_early_stop_score\"]\n        )\n        patience_counter = int(\n            checkpoint[\"patience_counter\"]\n        )\n        history = checkpoint[\"history\"]\n        resumed = True\n        print(\n            f\"resume_from_epoch={start_epoch - 1}; \"\n            f\"next_epoch={start_epoch}\"\n        )\n\n    run_start = time.time()\n    if device.type == \"cuda\":\n        torch.cuda.reset_peak_memory_stats(device)\n\n    for epoch in range(start_epoch, maximum_epochs + 1):\n        epoch_start = time.time()\n        sampler.set_epoch(epoch)\n        current_lr = float(\n            optimizer.param_groups[0][\"lr\"]\n        )\n\n        train_metrics = train_one_epoch(\n            model,\n            train_loader,\n            optimizer,\n            device,\n            graph_pos_weight,\n            role_pos_weights,\n            gradient_clip,\n        )\n        validation = validate(\n            model,\n            validation_loader,\n            device,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n\n        score = float(validation[\"selection_score\"])\n        validation_loss = float(\n            validation[\"loss\"][\"total\"]\n        )\n        rank = (\n            score,\n            -validation_loss,\n            -epoch,\n        )\n        is_best = best_rank is None or rank > tuple(best_rank)\n\n        if is_best:\n            best_rank = list(rank)\n            best_epoch = epoch\n            best_validation = validation\n            best_payload = {\n                \"stage\": STAGE,\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"epoch\": epoch,\n                \"model_state_dict\": model.state_dict(),\n                \"optimizer_state_dict\": optimizer.state_dict(),\n                \"scheduler_state_dict\": scheduler.state_dict(),\n                \"v",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"flatten_history_row() missing 7 required positional arguments: 'learning_rate', 'train_metrics', 'validation', 'elapsed_seconds', 'best_epoch', 'patience_counter', and 'is_best'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"flatten_history_row() missing 7 required positional arguments: 'learning_rate', 'train_metrics', 'validation', 'elapsed_seconds', 'best_epoch', 'patience_counter', and 'is_best'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"flatten_history_row() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "flatten_history_row",
+        "line": 662,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "selection_score in function source",
+          "A4 lineage"
+        ],
+        "score": 42,
+        "signature": {
+          "args": [
+            "epoch",
+            "learning_rate",
+            "train_metrics",
+            "validation",
+            "elapsed_seconds",
+            "best_epoch",
+            "patience_counter",
+            "is_best"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def flatten_history_row(\n    epoch: int,\n    learning_rate: float,\n    train_metrics: dict[str, float],\n    validation: dict[str, Any],\n    elapsed_seconds: float,\n    best_epoch: int | None,\n    patience_counter: int,\n    is_best: bool,\n) -> dict[str, Any]:\n    return {\n        \"epoch\": epoch,\n        \"learning_rate\": learning_rate,\n        \"train_total_loss\": train_metrics[\"total\"],\n        \"train_graph_loss\": train_metrics[\"graph\"],\n        \"train_count_loss\": train_metrics[\"count\"],\n        \"train_source_loss\": train_metrics[\"source\"],\n        \"train_transit_loss\": train_metrics[\"transit\"],\n        \"train_victim_loss\": train_metrics[\"victim\"],\n        \"train_path_loss\": train_metrics[\"path\"],\n        \"validation_total_loss\": validation[\"loss\"][\"total\"],\n        \"selection_score\": validation[\"selection_score\"],\n        \"graph_auroc\": validation[\"graph\"][\"auroc\"],\n        \"graph_average_precision\": (\n            validation[\"graph\"][\"average_precision\"]\n        ),\n        \"graph_accuracy_at_0p5\": (\n            validation[\"graph\"][\"accuracy\"]\n        ),\n        \"graph_f1_at_0p5\": validation[\"graph\"][\"f1\"],\n        \"graph_fpr_at_0p5\": validation[\"graph\"][\"fpr\"],\n        \"count_active_accuracy\": (\n            validation[\"count_active\"][\"accuracy\"]\n        ),\n        \"count_active_macro_f1\": (\n            validation[\"count_active\"][\"macro_f1\"]\n        ),\n        \"source_average_precision\": (\n            validation[\"roles\"][\"source\"][\"average_precision\"]\n        ),\n        \"transit_average_precision\": (\n            validation[\"roles\"][\"transit\"][\"average_precision\"]\n        ),\n        \"victim_average_precision\": (\n            validation[\"roles\"][\"victim\"][\"average_precision\"]\n        ),\n        \"path_average_precision\": (\n            validation[\"roles\"][\"path\"][\"average_precision\"]\n        ),\n        \"source_exact_active_at_0p5\": (\n            validation[\"roles\"][\"source\"][\"exact_active\"]\n        ),\n        \"transit_exact_active_at_0p5\": (\n            validation[\"roles\"][\"transit\"][\"exact_active\"]\n        ),\n        \"victim_exact_active_at_0p5\": (\n            validation[\"roles\"][\"victim\"][\"exact_active\"]\n        ),\n        \"path_exact_active_at_0p5\": (\n            validation[\"roles\"][\"path\"][\"exact_active\"]\n        ),\n        \"is_best_checkpoint\": is_best,\n        \"best_epoch_after_epoch\": best_epoch,\n        \"early_stop_patience_counter\": patience_counter,\n        \"elapsed_seconds\": elapsed_seconds,\n    }",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"main() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "main",
+        "line": 122,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "selection_score in function source",
+          "A5 lineage",
+          "stable naming"
+        ],
+        "score": 37,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def main() -> int:\n    a = args(); seed_all(SEED)\n    repo = Path(a.repo).expanduser().resolve(); link = Path(a.data_link).expanduser(); root = link.resolve()\n    out = Path(a.output_dir).expanduser().resolve(); installed = Path(a.installed_script).expanduser().resolve(); out.mkdir(parents=True, exist_ok=True)\n    report_path = out/f'{STAGE}_REPORT.json'; lock_path = out/f'{STAGE}_LOCK.json'\n    stable_path = out/'V5_P3_A5_STABLE_BEST_CHECKPOINT_VALIDATION_METRICS.json'\n    complete = out/f'{STAGE}_COMPLETE'; hold = out/f'{STAGE}_HOLD'\n\n    a4 = repo/'reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107'\n    a4_report_path = a4/'V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_REPORT.json'\n    a4_lock_path = a4/'V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_LOCK.json'\n    checkpoint_path = a4/'V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt'\n    history_path = a4/'V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_EPOCHS.csv'\n    a3 = repo/'reports/v5/p3_a3_preliminary_baseline_preflight'\n    protocol_path = a3/'V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL.json'\n    wrapper_path = repo/'src/data/v5_p3_tranche_a_guarded_loader.py'\n    b3_path = repo/'src/models/v5_p2_b3_conv1d_only_count4.py'\n    canonical_path = repo/'src/models/v5_p2_task_d_full_multitask_count4.py'\n    dynamic_path = repo/'src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py'\n    required = [a4_report_path,a4_lock_path,checkpoint_path,history_path,protocol_path,wrapper_path,b3_path,canonical_path,dynamic_path]\n    missing = [str(p) for p in required if not p.is_file()]\n    if missing: raise RuntimeError(f'missing required files: {missing}')\n    if not link.is_symlink(): raise RuntimeError(f'canonical data path is not symlink: {link}')\n\n    a4_report = json.loads(a4_report_path.read_text()); a4_lock = json.loads(a4_lock_path.read_text()); protocol = json.loads(protocol_path.read_text())\n    if a4_report.get('status') != 'PASS': raise RuntimeError('A4 report not PASS')\n    if a4_lock.get('report_sha256') != sha(a4_report_path): raise RuntimeError('A4 report SHA mismatch')\n    if a4_lock.get('best_checkpoint_sha256') != sha(checkpoint_path): raise RuntimeError('A4 checkpoint SHA mismatch')\n    if a4_lock.get('history_csv_sha256') != sha(history_path): raise RuntimeError('A4 history SHA mismatch')\n    if a4_report.get('sealed_test',{}).get('test_tensor_loaded'): raise RuntimeError('A4 reports test access')\n\n    original_load = torch.load; loaded = []\n    def guarded_load(file,*aa,**kk):\n        try: candidate = Path(os.fspath(file)).expanduser().resolve()\n        except TypeError: candidate = None\n        if candidate is not None:\n            loaded.append(str(candidate))\n            if '/runs/test/' in str(candidate): raise PermissionError(f'A5 blocked test deserialization: {candidate}')\n        return original_load(file,*aa,**kk)\n    torch.load = guarded_load\n\n    wrapper = import_file(wrapper_path,'_a5_loader'); b3 = import_file(b3_path,'_a5_b3')\n    canonical = import_file(canonical_path,'_a5_canonical'); dynamic = import_file(dynamic_path,'_a5_dynamic')\n    Dataset = wrapper.GuardedV5P3TrancheAPreliminaryDataset\n    try: Dataset(root,'test')\n    except wrapper.SealedTestAccessError: test_guard = True\n    else: test_guard = False\n    if not test_guard: raise RuntimeError('test guard failed')\n\n    ds = Dataset(root,'validation',active_only=False)\n    if len(ds) != EXPECTED_VAL_ITEMS: raise RuntimeError(f'validation length={len(ds)}')\n    loader = DataLoader(ds,batch_size=int(protocol['optimization']['batch_size']),shuffle=False,num_workers=0,pin_memory=torch.cuda.is_available())\n    edge = torch.as_tensor(ds[0]['edge_index']).long()\n    ref = b3.P2B3Conv1DOnlyCount4(); canon_model = canonical.P2TaskDGraphConvCount4(ref,edge)\n    model = dynamic.build_v6_p0_dynamic70_from_canonical_structure(canon_model,seed=SEED)\n    params = sum(p.numel() for p in model.parameters())\n    if params != EXPECTED_PARAMS: raise RuntimeError(f'parameter count={params}')\n    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu'); model = model.to(device)\n    checkpoint = torch.load(checkpoint_path,map_location=device,weights_only=False)\n    if int(checkpoint['epoch']) != int(a4_report['training']['best_epoch']): raise RuntimeError('best epoch mismatch')\n    model.load_state_dict(checkpoint['model_state_dict']); model.eval()\n\n    acc = {k:[] for k in ['attack_logits','graph_targets','count_logits','count_targets','source_logits','source_targets','transit_logits','transit_targets','victim_logits','victim_targets','path_logits','path_targets']}\n    with torch.no_grad():\n        for i,batch in enumerate(loader,1):\n            b = move(batch,device); outp = model(b['x'],b['mask'])\n            acc['attack_logits'].append(outp['attack_logits'].cpu().numpy()); acc['graph_targets'].append(b['graph'].cpu().numpy())\n            acc['count_logits'].append(outp['count_logits'].cpu().numpy()); acc['count_targets'].append(b['count'].cpu().numpy())\n            for role in ('source','transit','victim','path'):\n                acc[f'{role}_logits'].append(outp[f'{role}_logits'].cpu().numpy()); acc[f'{role}_targets'].append(b[role].cpu().numpy())\n            if i % 20 == 0: print(f'validation_batches_replayed={i}/{len(loader)}')\n    acc = {k:np.concatenate(v) for k,v in acc.items()}\n    graph_y = acc['graph_targets'].astype(np.int64); active = graph_y == 1\n    graph_prob = torch.sigmoid(torch.from_numpy(acc['attack_logits'])).numpy()\n    graph = threshold_metrics(graph_prob,graph_y); graph['auroc_raw_logits'] = auroc(acc['attack_logits'],graph_y); graph['average_precision_raw_logits'] = ap(acc['attack_logits'],graph_y)\n    count_pred = np.argmax(acc['count_logits'][active],axis=1)+1; count_y = acc['count_targets'][active].astype(np.int64)\n    count = {'accuracy':float(np.mean(count_pred==count_y)),'macro_f1':macro_f1(count_pred,count_y),'active_items':int(active.sum())}\n    roles = {}\n    for role in ('source','transit','victim','path'):\n        lg = acc[f'{role}_logits']; yy = acc[f'{role}_targets'].astype(np.int64); prob = torch.sigmoid(torch.from_numpy(lg)).numpy()\n        m = threshold_metrics(prob.reshape(-1),yy.reshape(-1)); m['auroc_raw_logits'] = auroc(lg.reshape(-1),yy.reshape(-1)); m['average_precision_raw_logits'] = ap(lg.reshape(-1),yy.reshape(-1)); m['exact_active'] = exact_active(prob,yy,active)\n        m['logit_min'] = float(lg.min()); m['logit_max'] = float(lg.max()); m['abs_ge_100'] = int((np.abs(lg)>=100).sum()); roles[role] = m\n    components = [graph['auroc_raw_logits'],graph['average_precision_raw_logits'],count['macro_f1']] + [roles[r]['average_precision_raw_logits'] for r in ('source','transit','victim','path')]\n    stable_score = float(np.mean(components))\n\n    old = a4_report['selection']['best_validation_metrics']\n    pairs = {\n      'selection_score':(float(old['selection_score']),stable_score),\n      'graph_auroc':(float(old['graph']['auroc']),graph['auroc_raw_logits']),\n      'graph_ap':(float(old['graph']['average_precision']),graph['average_precision_raw_logits']),\n      'count_macro_f1':(float(old['count_active']['macro_f1']),count['macro_f1'])}\n    for role in ('source','transit','victim','path'):\n        pairs[f'{role}_ap']=(float(old['roles'][role]['average_precision']),roles[role]['average_precision_raw_logits'])\n        pairs[f'{role}_exact_active']=(float(old['roles'][role]['exact_active']),roles[role]['exact_active'])\n    comparison = {k:{'a4':a,'stable':b,'absolute_delta':abs(a-b)} for k,(a,b) in pairs.items()}\n    max_delta = max(v['absolute_delta'] for v in comparison.values()); consistency = max_delta <= TOLERANCE\n\n    stable = {'stage':STAGE,'campaign_label':LABEL,'best_epoch':int(checkpoint['epoch']),'validation_items':len(ds),'device':str(device),\n              'metric_policy':{'ranking':'raw_logits','threshold_probabilities':'torch_sigmoid','threshold':0.5,'threshold_tuning':False},\n              'selection_score':stable_score,'graph':graph,'count_active':count,'roles':roles,'comparison_to_a4':comparison,\n              'maximum_absolute_metric_delta':max_delta,'tolerance':TOLERANCE,'numerical_consistency_pass':consistency}\n    atomic_json(stable_path,stable)\n\n    with history_path.open(newline='',encoding='utf-8') as f: history = list(csv.DictReader(f))\n    best_epoch = int(a4_report['training']['best_epoch']); best_row = next(r for r in history if int(r['epoch'])==best_epoch); final_row = history[-1]\n    transitions=[]; previous=None\n    for row in history:\n        lr=float(row['learning_rate'])\n        if previous is None or lr != previous: transitions.append({'epoch':int(row['epoch']),'learning_rate':lr}); previous=lr\n    post_best=[float(r['selection_score']) for r in history if int(r['epoch'])>best_epoch]\n    strongest_post=max(post_best) if post_best else float('nan')\n    test_paths=[p for p in loaded if '/runs/test/' in p]\n    finite=all(math.isfinite(x) for x in components); passed=consistency and finite and not test_paths\n\n    report={'stage':STAGE,'status':'PASS' if passed else 'HOLD','created_utc':datetime.now(timezone.utc).isoformat(),'campaign_label':LABEL,\n            'interpretation':'Tranche-A seed-107 train/validation preliminary diagnostic review; no sealed-test or final 1500-pair claim.',\n            'stable_replay':{'metrics_path':str(stable_path),'metrics_sha256':sha(stable_path),'selection_score':stable_score,'maximum_absolute_delta_vs_a4':max_delta,'numerical_consistency_pass':consistency},\n            'history_review':{'epochs':len(history),'best_epoch':best_epoch,'best_row':best_row,'final_row':final_row,'strongest_post_best_score':strongest_post,'learning_rate_transitions':transitions,'later_epochs_exceeded_best':strongest_post>float(best_row['selection_score'])},\n            'scientific_review':{'count_task':'near-saturated on A_validation','graph_task':'moderate ranking performance; fixed-threshold FPR remains material','source_localization':'strongest role AP','transit_localization':'weakest exact-active role localization','victim_localization':'high exact-active bitmap accuracy but moderate AP','path_localization':'moderate AP and exact-active accuracy','architecture_change_supported_by_A_alone':False,'additional_A_seed_sweep_supported_before_B':False},\n            'sealed_test':{'negative_guard_check':test_guard,'test_dataset_instantiated':False,'test_length_computed':False,'test_tensor_loaded':False,'evaluation_authorized':False},\n            'decision':{'tranche_a_review_complete':passed,'tranche_a_preliminary_result_usable':passed,'architecture_change_authorized':False,'additional_tranche_a_seed_sweep_authorized':False,'tranche_b_handover_preflight_authorized':passed,'tranche_b_generation_authorized':False,'sealed_test_evaluation_authorized':False,'next_stage':'V5_P3_A6_TRANCHE_B_PRE_FROZEN_SPEC_DISCOVERY_AND_HANDOVER_PREFLIGHT' if passed else 'A5_HOLD_REVIEW'},\n            'provenance':{'a4_report_sha256':sha(a4_report_path),'a4_lock_sha256':sha(a4_lock_path),'best_checkpoint_sha256':sha(checkpoint_path),'history_csv_sha256':sha(history_path),'protocol_sha256':sha(protocol_path),'guarded_loader_sha256':sha(wrapper_path),'dynamic70_model_sha256':sha(dynamic_path),'installed_script_sha256':sha(installed)},\n            'source_modified':True,'certified_dataset_modified':False,'model_trained':False,'validation_replayed':True,'final_1500_pair_claim_authorized':False}\n    atomic_json(report_path,report)\n    lock={'stage':STAGE,'status':report['status'],'report_sha256':sha(report_path),'stable_metrics_sha256':sha(stable_path),'best_checkpoint_sha256':sha(checkpoint_path),'history_csv_sha256':sha(history_path),'stable_selection_score':stable_score,'maximum_absolute_metric_delta':max_delta,'best_epoch':best_epoch,'parameter_count':params,'input_features':70,'test_tensor_loaded':False}\n    atomic_json(lock_path,lock)\n    (complete if passed else hold).write_text(f'{STAGE}_{\"COMPLETE\" if passed else \"HOLD\"}\\n')\n    if passed and hold",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"main() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "main",
+        "line": 252,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [
+          "selection_score in function source",
+          "stable naming"
+        ],
+        "score": 27,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def main() -> int:\n    args = parse_args()\n    set_seed(SEED)\n\n    repo = Path(args.repo).expanduser().resolve()\n    data_link = Path(args.data_link).expanduser()\n    data_root = data_link.resolve()\n    output_dir = Path(args.output_dir).expanduser().resolve()\n    installed_script = Path(args.installed_script).expanduser().resolve()\n    output_dir.mkdir(parents=True, exist_ok=True)\n\n    export_path = output_dir / (\n        \"V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz\"\n    )\n    metadata_path = output_dir / (\n        \"V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv\"\n    )\n    manifest_path = output_dir / (\n        \"V5_P3_D1_TRANCHE_A_VALIDATION_EXPORT_MANIFEST.json\"\n    )\n    report_path = output_dir / f\"{STAGE}_REPORT.json\"\n    lock_path = output_dir / f\"{STAGE}_LOCK.json\"\n    complete_path = output_dir / f\"{STAGE}_COMPLETE\"\n    hold_path = output_dir / f\"{STAGE}_HOLD\"\n\n    d0_dir = repo / \"reports/v5/p3_d0_frozen_decoder_transfer_preflight\"\n    d0_report_path = d0_dir / (\n        \"V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_REPORT.json\"\n    )\n    d0_lock_path = d0_dir / (\n        \"V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_LOCK.json\"\n    )\n    a5_dir = repo / \"reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness\"\n    a5_metrics_path = a5_dir / (\n        \"V5_P3_A5_STABLE_BEST_CHECKPOINT_VALIDATION_METRICS.json\"\n    )\n    a4_dir = repo / \"reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107\"\n    checkpoint_path = a4_dir / (\n        \"V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt\"\n    )\n\n    wrapper_path = repo / \"src/data/v5_p3_tranche_a_guarded_loader.py\"\n    b3_path = repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"\n    canonical_path = repo / \"src/models/v5_p2_task_d_full_multitask_count4.py\"\n    dynamic_path = repo / \"src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py\"\n\n    required = [\n        d0_report_path,\n        d0_lock_path,\n        a5_metrics_path,\n        checkpoint_path,\n        wrapper_path,\n        b3_path,\n        canonical_path,\n        dynamic_path,\n    ]\n    missing = [str(path) for path in required if not path.is_file()]\n    if missing:\n        raise RuntimeError(f\"required artifacts missing: {missing}\")\n    if not data_link.is_symlink():\n        raise RuntimeError(\n            f\"dataset path is not the canonical symlink: {data_link}\"\n        )\n\n    d0_report = json.loads(d0_report_path.read_text(encoding=\"utf-8\"))\n    d0_lock = json.loads(d0_lock_path.read_text(encoding=\"utf-8\"))\n    a5_metrics = json.loads(a5_metrics_path.read_text(encoding=\"utf-8\"))\n\n    if d0_report.get(\"status\") != \"PASS\":\n        raise RuntimeError(\"D0 report is not PASS\")\n    if not d0_report.get(\"decision\", {}).get(\n        \"immutable_validation_logit_export_authorized\"\n    ):\n        raise RuntimeError(\"D0 did not authorize D1 export\")\n    if d0_lock.get(\"report_sha256\") != sha256_file(d0_report_path):\n        raise RuntimeError(\"D0 report/lock SHA mismatch\")\n    if d0_report.get(\"sealed_test\", {}).get(\"test_tensor_loaded\"):\n        raise RuntimeError(\"D0 reports sealed-test access\")\n\n    original_torch_load = torch.load\n    loaded_paths: list[str] = []\n\n    def guarded_torch_load(file, *load_args, **load_kwargs):\n        try:\n            candidate = Path(os.fspath(file)).expanduser().resolve()\n        except TypeError:\n            candidate = None\n        if candidate is not None:\n            text = str(candidate)\n            loaded_paths.append(text)\n            if \"/runs/test/\" in text:\n                raise PermissionError(\n                    f\"D1 sealed-test deserialization guard blocked {text}\"\n                )\n        return original_torch_load(file, *load_args, **load_kwargs)\n\n    torch.load = guarded_torch_load\n\n    wrapper_mod = import_source(wrapper_path, \"_v5_p3_d1_guarded_loader\")\n    b3_mod = import_source(b3_path, \"_v5_p3_d1_b3\")\n    canonical_mod = import_source(canonical_path, \"_v5_p3_d1_canonical\")\n    dynamic_mod = import_source(dynamic_path, \"_v5_p3_d1_dynamic70\")\n\n    GuardedDataset = wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset\n    SealedTestAccessError = wrapper_mod.SealedTestAccessError\n    try:\n        GuardedDataset(data_root, \"test\")\n    except SealedTestAccessError:\n        test_negative_check = True\n    else:\n        test_negative_check = False\n    if not test_negative_check:\n        raise RuntimeError(\"guarded loader failed to reject A_test\")\n\n    validation_dataset = GuardedDataset(\n        data_root,\n        \"validation\",\n        active_only=False,\n    )\n    if len(validation_dataset) != EXPECTED_ITEMS:\n        raise RuntimeError(\n            f\"validation length={len(validation_dataset)}, \"\n            f\"expected={EXPECTED_ITEMS}\"\n        )\n\n    loader = DataLoader(\n        validation_dataset,\n        batch_size=256,\n        shuffle=False,\n        num_workers=0,\n        pin_memory=torch.cuda.is_available(),\n        drop_last=False,\n    )\n\n    first_sample = validation_dataset[0]\n    edge_index = torch.as_tensor(\n        first_sample[\"edge_index\"],\n        dtype=torch.long,\n    )\n    physical_mask_template = torch.as_tensor(\n        first_sample[\"physical_port_mask\"],\n        dtype=torch.uint8,\n    )\n\n    reference = b3_mod.P2B3Conv1DOnlyCount4()\n    canonical_model = canonical_mod.P2TaskDGraphConvCount4(\n        reference,\n        edge_index,\n    )\n    model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(\n        canonical_model,\n        seed=SEED,\n    )\n    parameter_count = sum(\n        parameter.numel() for parameter in model.parameters()\n    )\n    if parameter_count != EXPECTED_PARAMETER_COUNT:\n        raise RuntimeError(\n            f\"parameter count={parameter_count}, \"\n            f\"expected={EXPECTED_PARAMETER_COUNT}\"\n        )\n\n    device = torch.device(\n        \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    )\n    model = model.to(device)\n    checkpoint = torch.load(\n        checkpoint_path,\n        map_location=device,\n        weights_only=False,\n    )\n    if int(checkpoint.get(\"epoch\", -1)) != 14:\n        raise RuntimeError(\n            f\"checkpoint epoch={checkpoint.get('epoch')}, expected=14\"\n        )\n    if int(checkpoint.get(\"parameter_count\", -1)) != EXPECTED_PARAMETER_COUNT:\n        raise RuntimeError(\"checkpoint parameter-count contract changed\")\n    if checkpoint.get(\"threshold_tuning_performed\") is not False:\n        raise RuntimeError(\"checkpoint unexpectedly reports threshold tuning\")\n    if checkpoint.get(\"test_tensor_loaded\") is not False:\n        raise RuntimeError(\"checkpoint reports sealed-test access\")\n    model.load_state_dict(checkpoint[\"model_state_dict\"])\n    model.eval()\n\n    arrays: dict[str, np.ndarray] = {\n        \"dataset_index\": np.arange(EXPECTED_ITEMS, dtype=np.int32),\n        \"attack_logits\": np.empty((EXPECTED_ITEMS,), dtype=np.float32),\n        \"count_logits\": np.empty((EXPECTED_ITEMS, 4), dtype=np.float32),\n        \"source_logits\": np.empty((EXPECTED_ITEMS, 16), dtype=np.float32),\n        \"transit_logits\": np.empty((EXPECTED_ITEMS, 16), dtype=np.float32),\n        \"victim_logits\": np.empty((EXPECTED_ITEMS, 16), dtype=np.float32),\n        \"path_logits\": np.empty((EXPECTED_ITEMS, 16), dtype=np.float32),\n        \"y_attack\": np.empty((EXPECTED_ITEMS,), dtype=np.uint8),\n        \"y_attacker_count\": np.empty((EXPECTED_ITEMS,), dtype=np.int8),\n        \"y_source\": np.empty((EXPECTED_ITEMS, 16), dtype=np.uint8),\n        \"y_transit\": np.empty((EXPECTED_ITEMS, 16), dtype=np.uint8),\n        \"y_victim\": np.empty((EXPECTED_ITEMS, 16), dtype=np.uint8),\n        \"y_attack_path\": np.empty((EXPECTED_ITEMS, 16), dtype=np.uint8),\n        \"edge_index\": edge_index.cpu().numpy().astype(np.int64),\n        \"physical_port_mask_template\": (\n            physical_mask_template.cpu().numpy().astype(np.uint8)\n        ),\n    }\n\n    optional_specs = {\n        \"epoch_id\": (np.int32, (EXPECTED_ITEMS,)),\n        \"epoch_tick\": (np.int64, (EXPECTED_ITEMS,)),\n        \"window_start\": (np.int32, (EXPECTED_ITEMS,)),\n        \"window_target\": (np.int32, (EXPECTED_ITEMS,)),\n        \"role_mask\": (np.uint8, (EXPECTED_ITEMS, 16)),\n        \"source_target_router\": (np.int8, (EXPECTED_ITEMS, 16)),\n    }\n    optional_present = {\n        key: key in first_sample for key in optional_specs\n    }\n    for key, present in optional_present.items():\n        if present:\n            dtype, shape = optional_specs[key]\n            arrays[key] = np.empty(shape, dtype=dtype)\n\n    metadata_rows: list[dict[str, Any]] = []\n    offset = 0\n    start_time = time.time()\n\n    with torch.no_grad():\n        for batch_number, batch in enumerate(loader, start=1):\n            x = batch[\"x\"].to(\n                device=device,\n                dtype=torch.float32,\n                non_blocking=(device.type == \"cuda\"),\n            )\n            mask = batch[\"physical_port_mask\"].to(\n                device=device,\n                dtype=torch.float32,\n                non_blocking=(device.type == \"cuda\"),\n            )\n            outputs = model(x, mask)\n            batch_size = int(x.shape[0])\n            stop = offset + batch_size\n\n            expected_shapes = {\n                \"attack_logits\": (batch_size,),\n                \"count_logits\": (batch_size, 4),\n                \"source_logits\": (batch_size, 16),\n                \"transit_logits\": (batch_size, 16),\n                \"victim_logits\": (batch_size, 16),\n                \"path_logits\": (batch_size, 16),\n            }\n            actual_shapes = {\n                key: tuple(value.shape)\n                for key, value in outputs.items()\n            }\n            if actual_shapes != expected_shapes:\n                raise RuntimeError(\n                    f\"output shapes={actual_shapes}, \"\n                    f\"expected={expected_shapes}\"\n                )\n\n            for key in (\n                \"attack_logits\",\n                \"count_logits\",\n                \"source_logits\",\n                \"transit_logits\",\n                \"victim_logits\",\n                \"path_logits\",\n            ):\n                arrays[key][offset:stop] = (\n                    outputs[key].detach().cpu().numpy().astype(np.float32)\n                )\n\n            arrays[\"y_attack\"][offset:stop] = (\n                batch[\"y_attack\"].detach().cpu().numpy()\n                .reshape(-1).astype(np.uint8)\n            )\n            arrays[\"y_attacker_count\"][offset:stop] = (\n                batch[\"y_attacker_count\"].detach().cpu().numpy()\n                .reshape(-1).astype(np.int8)\n            )\n            for destination, source in (\n                (\"y_source\", \"y_source\"),\n                (\"y_transit\", \"y_transit\"),\n                (\"y_victim\", \"y_victim\"),\n                (\"y_attack_path\", \"y_attack_path\"),\n            ):\n                arrays[destination][offset:stop] = (\n                    batch[source].detach().cpu().numpy().astype(np.uint8)\n                )\n\n            if \"edge_index\" in batch:\n                batched_edge = (\n                    batch[\"edge_index\"].detach().cpu().numpy()\n                )\n                expected_edge = arrays[\"edge_index\"]\n                if not np.all(\n                    batched_edge\n                    == expected_edge.reshape(1, 2, 48)\n                ):\n                    raise RuntimeError(\"edge_index varies within validation\")\n            if \"physical_port_mask\" in batch:\n                batched_mask = (\n                    batch[\"physical_port_mask\"].detach().cpu().numpy()\n                )\n                expected_mask = arrays[\"physical_port_mask_template\"]\n                if not np.all(\n                    batched_mask\n                    == expected_mask.reshape(1, 16, 10)\n                ):\n                    raise RuntimeError(\n                        \"physical_port_mask varies within validation\"\n                    )\n\n            for key, present in optional_present.items():\n                if not present:\n                    continue\n                value = batch[key].detach().cpu().numpy()\n                arrays[key][offset:stop] = value.",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"write_csv() missing 1 required positional argument: 'rows'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"write_csv() missing 1 required positional argument: 'rows'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"write_csv() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "write_csv",
+        "line": 76,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "path",
+            "rows"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:\n    if not rows:\n        return\n    temporary = path.with_suffix(path.suffix + \".tmp\")\n    with temporary.open(\"w\", encoding=\"utf-8\", newline=\"\") as handle:\n        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))\n        writer.writeheader()\n        writer.writerows(rows)\n    os.replace(temporary, path)",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"validate() missing 4 required positional arguments: 'loader', 'device', 'graph_pos_weight', and 'role_pos_weights'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"validate() missing 4 required positional arguments: 'loader', 'device', 'graph_pos_weight', and 'role_pos_weights'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"validate() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "validate",
+        "line": 580,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "model",
+            "loader",
+            "device",
+            "graph_pos_weight",
+            "role_pos_weights"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def validate(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, Any]:\n    model.eval()\n    loss_totals = Counter()\n    item_count = 0\n    accum = {\n        \"attack_logits\": [],\n        \"graph_targets\": [],\n        \"count_logits\": [],\n        \"count_targets\": [],\n        \"source_logits\": [],\n        \"source_targets\": [],\n        \"transit_logits\": [],\n        \"transit_targets\": [],\n        \"victim_logits\": [],\n        \"victim_targets\": [],\n        \"path_logits\": [],\n        \"path_targets\": [],\n    }\n\n    with torch.no_grad():\n        for batch in loader:\n            moved = move_batch(batch, device)\n            outputs = model(moved[\"x\"], moved[\"mask\"])\n            losses = compute_losses(\n                outputs,\n                moved,\n                graph_pos_weight,\n                role_pos_weights,\n            )\n            batch_size = int(moved[\"x\"].shape[0])\n            item_count += batch_size\n            for key, value in losses.items():\n                loss_totals[key] += (\n                    float(value.detach().item()) * batch_size\n                )\n\n            accum[\"attack_logits\"].append(\n                outputs[\"attack_logits\"].detach().cpu().numpy()\n            )\n            accum[\"graph_targets\"].append(\n                moved[\"graph\"].detach().cpu().numpy()\n            )\n            accum[\"count_logits\"].append(\n                outputs[\"count_logits\"].detach().cpu().numpy()\n            )\n            accum[\"count_targets\"].append(\n                moved[\"count\"].detach().cpu().numpy()\n            )\n            for role in (\n                \"source\",\n                \"transit\",\n                \"victim\",\n                \"path\",\n            ):\n                accum[f\"{role}_logits\"].append(\n                    outputs[f\"{role}_logits\"]\n                    .detach()\n                    .cpu()\n                    .numpy()\n                )\n                accum[f\"{role}_targets\"].append(\n                    moved[role].detach().cpu().numpy()\n                )\n\n    if item_count != EXPECTED_VALIDATION_ITEMS:\n        raise RuntimeError(\n            f\"validation saw {item_count} items, \"\n            f\"expected={EXPECTED_VALIDATION_ITEMS}\"\n        )\n    return validation_metrics(\n        accum,\n        dict(loss_totals),\n        item_count,\n    )",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"train_one_epoch() missing 6 required positional arguments: 'loader', 'optimizer', 'device', 'graph_pos_weight', 'role_pos_weights', and 'gradient_clip'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"train_one_epoch() missing 6 required positional arguments: 'loader', 'optimizer', 'device', 'graph_pos_weight', 'role_pos_weights', and 'gradient_clip'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"train_one_epoch() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "train_one_epoch",
+        "line": 532,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "model",
+            "loader",
+            "optimizer",
+            "device",
+            "graph_pos_weight",
+            "role_pos_weights",
+            "gradient_clip"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def train_one_epoch(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    optimizer: torch.optim.Optimizer,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n    gradient_clip: float,\n) -> dict[str, float]:\n    model.train()\n    loss_totals = Counter()\n    item_count = 0\n\n    for batch in loader:\n        moved = move_batch(batch, device)\n        optimizer.zero_grad(set_to_none=True)\n        outputs = model(moved[\"x\"], moved[\"mask\"])\n        losses = compute_losses(\n            outputs,\n            moved,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n        losses[\"total\"].backward()\n        torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            gradient_clip,\n        )\n        optimizer.step()\n\n        batch_size = int(moved[\"x\"].shape[0])\n        item_count += batch_size\n        for key, value in losses.items():\n            loss_totals[key] += (\n                float(value.detach().item()) * batch_size\n            )\n\n    if item_count != EXPECTED_TRAIN_ITEMS:\n        raise RuntimeError(\n            f\"train epoch saw {item_count} items, \"\n            f\"expected={EXPECTED_TRAIN_ITEMS}\"\n        )\n    return {\n        key: value / item_count\n        for key, value in loss_totals.items()\n    }",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"sha256_file() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "sha256_file",
+        "line": 53,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "path"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def sha256_file(path: Path) -> str:\n    digest = hashlib.sha256()\n    with path.open(\"rb\") as handle:\n        for block in iter(lambda: handle.read(1024 * 1024), b\"\"):\n            digest.update(block)\n    return digest.hexdigest()",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('parse_args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('parse_args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"parse_args() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "parse_args",
+        "line": 33,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def parse_args() -> argparse.Namespace:\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--repo\", required=True)\n    parser.add_argument(\"--data-link\", required=True)\n    parser.add_argument(\"--output-dir\", required=True)\n    parser.add_argument(\"--installed-script\", required=True)\n    return parser.parse_args()",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"multiclass_macro_f1() missing 2 required positional arguments: 'targets' and 'classes'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"multiclass_macro_f1() missing 2 required positional arguments: 'targets' and 'classes'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"multiclass_macro_f1() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "multiclass_macro_f1",
+        "line": 353,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "predictions",
+            "targets",
+            "classes"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def multiclass_macro_f1(\n    predictions: np.ndarray,\n    targets: np.ndarray,\n    classes: tuple[int, ...],\n) -> float:\n    values = []\n    for class_value in classes:\n        prediction_positive = predictions == class_value\n        target_positive = targets == class_value\n        tp = int(np.sum(prediction_positive & target_positive))\n        fp = int(np.sum(prediction_positive & ~target_positive))\n        fn = int(np.sum(~prediction_positive & target_positive))\n        precision = tp / (tp + fp) if tp + fp else 0.0\n        recall = tp / (tp + fn) if tp + fn else 0.0\n        value = (\n            2.0 * precision * recall / (precision + recall)\n            if precision + recall\n            else 0.0\n        )\n        values.append(value)\n    return float(np.mean(values))",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"move_batch() missing 1 required positional argument: 'device'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"move_batch() missing 1 required positional argument: 'device'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"move_batch() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "move_batch",
+        "line": 121,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "batch",
+            "device"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def move_batch(\n    batch: dict[str, Any],\n    device: torch.device,\n) -> dict[str, torch.Tensor]:\n    required = {\n        \"x\",\n        \"physical_port_mask\",\n        \"y_attack\",\n        \"y_attacker_count\",\n        \"y_source\",\n        \"y_transit\",\n        \"y_victim\",\n        \"y_attack_path\",\n    }\n    missing = sorted(required - set(batch))\n    if missing:\n        raise RuntimeError(\n            f\"batch missing certified keys: {missing}; \"\n            f\"keys={sorted(batch)}\"\n        )\n\n    result = {\n        \"x\": batch[\"x\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"mask\": batch[\"physical_port_mask\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"graph\": batch[\"y_attack\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ).reshape(-1),\n        \"count\": batch[\"y_attacker_count\"].to(\n            device=device,\n            dtype=torch.long,\n            non_blocking=(device.type == \"cuda\"),\n        ).reshape(-1),\n        \"source\": batch[\"y_source\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"transit\": batch[\"y_transit\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"victim\": batch[\"y_victim\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"path\": batch[\"y_attack_path\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n    }\n\n    batch_size = result[\"x\"].shape[0]\n    expected_shapes = {\n        \"x\": (batch_size, 16, 70, 32),\n        \"mask\": (batch_size, 16, 10),\n        \"graph\": (batch_size,),\n        \"count\": (batch_size,),\n        \"source\": (batch_size, 16),\n        \"transit\": (batch_size, 16),\n        \"victim\": (batch_size, 16),\n        \"path\": (batch_size, 16),\n    }\n    for key, expected in expected_shapes.items():\n        if tuple(result[key].shape) != expected:\n            raise RuntimeError(\n                f\"{key} shape={tuple(result[key].shape)}, \"\n                f\"expected={expected}\"\n            )\n    return result",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"import_module() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"import_module() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"import_module() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "import_module",
+        "line": 87,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "path",
+            "name"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def import_module(path: Path, name: str):\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None:\n        raise RuntimeError(f\"cannot import module from {path}\")\n    module = importlib.util.module_from_spec(spec)\n    sys.modules[name] = module\n    spec.loader.exec_module(module)\n    return module",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"exact_multilabel() missing 2 required positional arguments: 'targets' and 'active_mask'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"exact_multilabel() missing 2 required positional arguments: 'targets' and 'active_mask'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"exact_multilabel() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "exact_multilabel",
+        "line": 376,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "scores",
+            "targets",
+            "active_mask",
+            "threshold"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def exact_multilabel(\n    scores: np.ndarray,\n    targets: np.ndarray,\n    active_mask: np.ndarray,\n    threshold: float = 0.5,\n) -> dict[str, float]:\n    scores = np.asarray(scores, dtype=np.float64)\n    targets = np.asarray(targets, dtype=np.int64)\n    predictions = (scores >= threshold).astype(np.int64)\n    all_exact = float(\n        np.mean(np.all(predictions == targets, axis=1))\n    )\n    if np.any(active_mask):\n        active_exact = float(\n            np.mean(\n                np.all(\n                    predictions[active_mask]\n                    == targets[active_mask],\n                    axis=1,\n                )\n            )\n        )\n    else:\n        active_exact = float(\"nan\")\n    return {\n        \"exact_all\": all_exact,\n        \"exact_active\": active_exact,\n    }",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"compute_losses() missing 3 required positional arguments: 'batch', 'graph_pos_weight', and 'role_pos_weights'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"compute_losses() missing 3 required positional arguments: 'batch', 'graph_pos_weight', and 'role_pos_weights'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"compute_losses() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "compute_losses",
+        "line": 205,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "outputs",
+            "batch",
+            "graph_pos_weight",
+            "role_pos_weights"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def compute_losses(\n    outputs: dict[str, torch.Tensor],\n    batch: dict[str, torch.Tensor],\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, torch.Tensor]:\n    active = batch[\"graph\"] > 0.5\n    if not bool(active.any()):\n        count_loss = outputs[\"count_logits\"].sum() * 0.0\n    else:\n        active_targets = batch[\"count\"][active] - 1\n        if not bool(\n            ((active_targets >= 0) & (active_targets <= 3)).all()\n        ):\n            raise RuntimeError(\n                \"active Count4 targets are outside 0..3\"\n            )\n        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            active_targets,\n        )\n\n    losses = {\n        \"graph\": F.binary_cross_entropy_with_logits(\n            outputs[\"attack_logits\"],\n            batch[\"graph\"],\n            pos_weight=graph_pos_weight,\n        ),\n        \"count\": count_loss,\n        \"source\": F.binary_cross_entropy_with_logits(\n            outputs[\"source_logits\"],\n            batch[\"source\"],\n            pos_weight=role_pos_weights[\"source\"],\n        ),\n        \"transit\": F.binary_cross_entropy_with_logits(\n            outputs[\"transit_logits\"],\n            batch[\"transit\"],\n            pos_weight=role_pos_weights[\"transit\"],\n        ),\n        \"victim\": F.binary_cross_entropy_with_logits(\n            outputs[\"victim_logits\"],\n            batch[\"victim\"],\n            pos_weight=role_pos_weights[\"victim\"],\n        ),\n        \"path\": F.binary_cross_entropy_with_logits(\n            outputs[\"path_logits\"],\n            batch[\"path\"],\n            pos_weight=role_pos_weights[\"path\"],\n        ),\n    }\n    losses[\"total\"] = sum(losses.values())\n    if not all(torch.isfinite(value) for value in losses.values()):\n        raise RuntimeError(\"non-finite multitask loss\")\n    return losses",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_metrics() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_metrics() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_metrics() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_metrics",
+        "line": 261,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "scores",
+            "targets",
+            "threshold"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_metrics(\n    scores: np.ndarray,\n    targets: np.ndarray,\n    threshold: float = 0.5,\n) -> dict[str, float]:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    predictions = (scores >= threshold).astype(np.int64)\n    tp = int(np.sum((predictions == 1) & (targets == 1)))\n    fp = int(np.sum((predictions == 1) & (targets == 0)))\n    fn = int(np.sum((predictions == 0) & (targets == 1)))\n    tn = int(np.sum((predictions == 0) & (targets == 0)))\n    precision = tp / (tp + fp) if tp + fp else 0.0\n    recall = tp / (tp + fn) if tp + fn else 0.0\n    f1 = (\n        2.0 * precision * recall / (precision + recall)\n        if precision + recall\n        else 0.0\n    )\n    accuracy = (tp + tn) / max(1, tp + fp + fn + tn)\n    fpr = fp / (fp + tn) if fp + tn else 0.0\n    return {\n        \"accuracy\": accuracy,\n        \"precision\": precision,\n        \"recall\": recall,\n        \"f1\": f1,\n        \"fpr\": fpr,\n        \"tp\": tp,\n        \"fp\": fp,\n        \"fn\": fn,\n        \"tn\": tn,\n    }",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_average_precision() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_average_precision() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_average_precision() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_average_precision",
+        "line": 333,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_average_precision(\n    scores: np.ndarray,\n    targets: np.ndarray,\n) -> float:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    positive_count = int((targets == 1).sum())\n    if positive_count == 0:\n        return float(\"nan\")\n    order = np.argsort(-scores, kind=\"mergesort\")\n    ordered_targets = targets[order]\n    cumulative_positive = np.cumsum(ordered_targets == 1)\n    positions = np.arange(1, len(targets) + 1)\n    precision_at_k = cumulative_positive / positions\n    return float(\n        precision_at_k[ordered_targets == 1].sum()\n        / positive_count\n    )",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_auroc() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_auroc",
+        "line": 313,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_auroc(\n    scores: np.ndarray,\n    targets: np.ndarray,\n) -> float:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    positive = targets == 1\n    negative = targets == 0\n    n_positive = int(positive.sum())\n    n_negative = int(negative.sum())\n    if n_positive == 0 or n_negative == 0:\n        return float(\"nan\")\n    ranks = average_ranks(scores)\n    rank_sum_positive = float(ranks[positive].sum())\n    return (\n        rank_sum_positive\n        - n_positive * (n_positive + 1) / 2.0\n    ) / (n_positive * n_negative)",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"'types.SimpleNamespace' object is not subscriptable\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"average_ranks() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "parameter_mapping": {
+            "values": "__metrics_dict__"
+          },
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "positional_metric_order": [
+            "__metrics_dict__"
+          ],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "average_ranks",
+        "line": 295,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 22,
+        "signature": {
+          "args": [
+            "values"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def average_ranks(values: np.ndarray) -> np.ndarray:\n    order = np.argsort(values, kind=\"mergesort\")\n    sorted_values = values[order]\n    ranks = np.empty(len(values), dtype=np.float64)\n    start = 0\n    while start < len(values):\n        end = start + 1\n        while (\n            end < len(values)\n            and sorted_values[end] == sorted_values[start]\n        ):\n            end += 1\n        average_rank = (start + 1 + end) / 2.0\n        ranks[order[start:end]] = average_rank\n        start = end\n    return ranks",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "NameError(\"name 'random' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "NameError(\"name 'random' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"set_seed() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "set_seed",
+        "line": 42,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 20,
+        "signature": {
+          "args": [
+            "seed"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def set_seed(seed: int) -> None:\n    random.seed(seed)\n    np.random.seed(seed)\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n    if torch.cuda.is_available():\n        torch.backends.cudnn.deterministic = True\n        torch.backends.cudnn.benchmark = False\n    torch.use_deterministic_algorithms(True, warn_only=True)",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"atomic_torch_save() missing 1 required positional argument: 'path'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"atomic_torch_save() missing 1 required positional argument: 'path'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"atomic_torch_save() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "atomic_torch_save",
+        "line": 70,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 20,
+        "signature": {
+          "args": [
+            "value",
+            "path"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def atomic_torch_save(value: Any, path: Path) -> None:\n    temporary = path.with_suffix(path.suffix + \".tmp\")\n    torch.save(value, temporary)\n    os.replace(temporary, path)",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"atomic_json() missing 1 required positional argument: 'value'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"atomic_json() missing 1 required positional argument: 'value'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"atomic_json() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "atomic_json",
+        "line": 61,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+        "reasons": [
+          "A4 lineage"
+        ],
+        "score": 20,
+        "signature": {
+          "args": [
+            "path",
+            "value"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def atomic_json(path: Path, value: Any) -> None:\n    temporary = path.with_suffix(path.suffix + \".tmp\")\n    temporary.write_text(\n        json.dumps(value, indent=2, sort_keys=True) + \"\\n\",\n        encoding=\"utf-8\",\n    )\n    os.replace(temporary, path)",
+        "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"threshold_metrics() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"threshold_metrics() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"threshold_metrics() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "threshold_metrics",
+        "line": 83,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "probabilities",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def threshold_metrics(probabilities, targets) -> dict[str, float]:\n    p = np.asarray(probabilities, dtype=np.float64).reshape(-1); y = np.asarray(targets, dtype=np.int64).reshape(-1)\n    pred = (p >= 0.5).astype(np.int64)\n    tp = int(((pred == 1) & (y == 1)).sum()); fp = int(((pred == 1) & (y == 0)).sum())\n    fn = int(((pred == 0) & (y == 1)).sum()); tn = int(((pred == 0) & (y == 0)).sum())\n    precision = tp/(tp+fp) if tp+fp else 0.0; recall = tp/(tp+fn) if tp+fn else 0.0\n    f1 = 2*precision*recall/(precision+recall) if precision+recall else 0.0\n    return {'accuracy': (tp+tn)/max(1,tp+fp+fn+tn), 'precision': precision, 'recall': recall,\n            'f1': f1, 'fpr': fp/(fp+tn) if fp+tn else 0.0, 'tp': tp, 'fp': fp, 'fn': fn, 'tn': tn}",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"sha() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "sha",
+        "line": 36,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "path"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def sha(path: Path) -> str:\n    h = hashlib.sha256()\n    with path.open('rb') as f:\n        for block in iter(lambda: f.read(1024 * 1024), b''):\n            h.update(block)\n    return h.hexdigest()",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"'types.SimpleNamespace' object is not subscriptable\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"ranks() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "parameter_mapping": {
+            "values": "__metrics_dict__"
+          },
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "positional_metric_order": [
+            "__metrics_dict__"
+          ],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "ranks",
+        "line": 57,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "values"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def ranks(values: np.ndarray) -> np.ndarray:\n    order = np.argsort(values, kind='mergesort'); sorted_values = values[order]\n    out = np.empty(len(values), dtype=np.float64); start = 0\n    while start < len(values):\n        end = start + 1\n        while end < len(values) and sorted_values[end] == sorted_values[start]: end += 1\n        out[order[start:end]] = (start + 1 + end) / 2.0; start = end\n    return out",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"move() missing 1 required positional argument: 'device'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"move() missing 1 required positional argument: 'device'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"move() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "move",
+        "line": 109,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "batch",
+            "device"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def move(batch, device):\n    mapping = {'x':('x',torch.float32), 'mask':('physical_port_mask',torch.float32),\n               'graph':('y_attack',torch.float32), 'count':('y_attacker_count',torch.long),\n               'source':('y_source',torch.float32), 'transit':('y_transit',torch.float32),\n               'victim':('y_victim',torch.float32), 'path':('y_attack_path',torch.float32)}\n    out = {}\n    for dst,(src,dtype) in mapping.items():\n        if src not in batch: raise RuntimeError(f'missing {src}; keys={sorted(batch)}')\n        value = batch[src].to(device=device, dtype=dtype, non_blocking=device.type=='cuda')\n        out[dst] = value.reshape(-1) if dst in ('graph','count') else value\n    return out",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"macro_f1() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"macro_f1() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"macro_f1() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "macro_f1",
+        "line": 94,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "predictions",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def macro_f1(predictions, targets) -> float:\n    pred = np.asarray(predictions); y = np.asarray(targets); values = []\n    for c in (1,2,3,4):\n        pp, yy = pred == c, y == c\n        tp = int((pp & yy).sum()); fp = int((pp & ~yy).sum()); fn = int((~pp & yy).sum())\n        precision = tp/(tp+fp) if tp+fp else 0.0; recall = tp/(tp+fn) if tp+fn else 0.0\n        values.append(2*precision*recall/(precision+recall) if precision+recall else 0.0)\n    return float(np.mean(values))",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"import_file() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"import_file() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"import_file() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "import_file",
+        "line": 50,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "path",
+            "name"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def import_file(path: Path, name: str):\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None: raise RuntimeError(f'cannot import {path}')\n    mod = importlib.util.module_from_spec(spec); sys.modules[name] = mod; spec.loader.exec_module(mod)\n    return mod",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"exact_active() missing 2 required positional arguments: 'targets' and 'active'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"exact_active() missing 2 required positional arguments: 'targets' and 'active'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"exact_active() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "exact_active",
+        "line": 104,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "probabilities",
+            "targets",
+            "active"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def exact_active(probabilities, targets, active) -> float:\n    pred = (np.asarray(probabilities) >= 0.5).astype(np.int64); y = np.asarray(targets, dtype=np.int64)\n    return float(np.mean(np.all(pred[active] == y[active], axis=1)))",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"auroc() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "auroc",
+        "line": 67,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def auroc(scores, targets) -> float:\n    s = np.asarray(scores, dtype=np.float64).reshape(-1); y = np.asarray(targets, dtype=np.int64).reshape(-1)\n    pos = y == 1; neg = y == 0; np_, nn_ = int(pos.sum()), int(neg.sum())\n    if np_ == 0 or nn_ == 0: return float('nan')\n    return float((ranks(s)[pos].sum() - np_ * (np_ + 1) / 2.0) / (np_ * nn_))",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"args() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "args",
+        "line": 20,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def args():\n    p = argparse.ArgumentParser()\n    p.add_argument('--repo', required=True)\n    p.add_argument('--data-link', required=True)\n    p.add_argument('--output-dir', required=True)\n    p.add_argument('--installed-script', required=True)\n    return p.parse_args()",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"ap() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"ap() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"ap() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "ap",
+        "line": 74,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 12,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def ap(scores, targets) -> float:\n    s = np.asarray(scores, dtype=np.float64).reshape(-1); y = np.asarray(targets, dtype=np.int64).reshape(-1)\n    npos = int((y == 1).sum())\n    if npos == 0: return float('nan')\n    order = np.argsort(-s, kind='mergesort'); yy = y[order]\n    precision = np.cumsum(yy == 1) / np.arange(1, len(yy) + 1)\n    return float(precision[yy == 1].sum() / npos)",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "NameError(\"name 'random' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "NameError(\"name 'random' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"seed_all() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "seed_all",
+        "line": 29,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 10,
+        "signature": {
+          "args": [
+            "seed"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def seed_all(seed: int):\n    random.seed(seed); np.random.seed(seed); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)\n    if torch.cuda.is_available():\n        torch.backends.cudnn.deterministic = True\n        torch.backends.cudnn.benchmark = False",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"atomic_json() missing 1 required positional argument: 'value'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"atomic_json() missing 1 required positional argument: 'value'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"atomic_json() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "atomic_json",
+        "line": 44,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a5_review_and_b_handover_readiness.py",
+        "reasons": [
+          "A5 lineage"
+        ],
+        "score": 10,
+        "signature": {
+          "args": [
+            "path",
+            "value"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def atomic_json(path: Path, value: Any):\n    tmp = path.with_suffix(path.suffix + '.tmp')\n    tmp.write_text(json.dumps(value, indent=2, sort_keys=True) + '\\n', encoding='utf-8')\n    os.replace(tmp, path)",
+        "source_sha256": "cc518134e3419920183f56b32f40b9e9a94693a5baf28b3c652178689e12e439"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('must be real number, not dict')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('must be real number, not types.SimpleNamespace')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"stable_sigmoid() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "TypeError('must be real number, not dict')",
+          "parameter_mapping": {
+            "values": "__metrics_dict__"
+          },
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "TypeError('must be real number, not dict')",
+          "positional_metric_order": [
+            "__metrics_dict__"
+          ],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "stable_sigmoid",
+        "line": 72,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [
+          "stable naming"
+        ],
+        "score": 7,
+        "signature": {
+          "args": [
+            "values"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def stable_sigmoid(values: np.ndarray) -> np.ndarray:\n    return torch.sigmoid(\n        torch.as_tensor(values, dtype=torch.float64)\n    ).cpu().numpy()",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"evaluate_policy() missing 4 required positional arguments: 'graph_threshold', 'role_thresholds', 'arrays', and 'labels'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"evaluate_policy() missing 4 required positional arguments: 'graph_threshold', 'role_thresholds', 'arrays', and 'labels'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"evaluate_policy() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "evaluate_policy",
+        "line": 390,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [
+          "stable naming"
+        ],
+        "score": 7,
+        "signature": {
+          "args": [
+            "name",
+            "graph_threshold",
+            "role_thresholds",
+            "arrays",
+            "labels"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def evaluate_policy(\n    name: str,\n    graph_threshold: float,\n    role_thresholds: dict[str, float],\n    arrays: dict[str, np.ndarray],\n    labels: dict[str, np.ndarray],\n) -> tuple[dict[str, Any], dict[str, np.ndarray]]:\n    probabilities = {\n        \"graph\": stable_sigmoid(arrays[\"attack_logits\"]),\n        \"source\": stable_sigmoid(arrays[\"source_logits\"]),\n        \"transit\": stable_sigmoid(arrays[\"transit_logits\"]),\n        \"victim\": stable_sigmoid(arrays[\"victim_logits\"]),\n        \"path\": stable_sigmoid(arrays[\"path_logits\"]),\n    }\n    graph_prediction = (\n        probabilities[\"graph\"] >= graph_threshold\n    ).astype(np.uint8)\n    count_prediction = (\n        np.argmax(arrays[\"count_logits\"], axis=1) + 1\n    ).astype(np.int8)\n    role_predictions = {\n        role: (\n            probabilities[role] >= role_thresholds[role]\n        ).astype(np.uint8)\n        for role in (\"source\", \"transit\", \"victim\", \"path\")\n    }\n\n    active_truth = labels[\"graph\"] == 1\n    metrics = {\n        \"policy\": name,\n        \"thresholds\": {\n            \"graph\": graph_threshold,\n            **role_thresholds,\n        },\n        \"graph\": {\n            **binary_metrics(\n                graph_prediction,\n                labels[\"graph\"],\n            ),\n            \"auroc_raw_logits\": binary_auroc(\n                arrays[\"attack_logits\"],\n                labels[\"graph\"],\n            ),\n            \"average_precision_raw_logits\": (\n                binary_average_precision(\n                    arrays[\"attack_logits\"],\n                    labels[\"graph\"],\n                )\n            ),\n        },\n        \"count_active\": multiclass_metrics_active(\n            count_prediction[active_truth],\n            labels[\"count\"][active_truth],\n        ),\n        \"roles\": {\n            role: role_metrics(\n                role_predictions[role],\n                labels[role],\n                arrays[f\"{role}_logits\"],\n                active_truth,\n            )\n            for role in (\"source\", \"transit\", \"victim\", \"path\")\n        },\n        \"strict\": strict_exactness(\n            graph_prediction,\n            count_prediction,\n            role_predictions,\n            labels,\n        ),\n        \"cross_head_consistency\": consistency_audit(\n            graph_prediction,\n            count_prediction,\n            role_predictions,\n        ),\n        \"graph_gating_applied\": False,\n        \"route_legality_enforced\": False,\n        \"count_source_consistency_enforced\": False,\n    }\n    outputs = {\n        \"graph_prediction\": graph_prediction,\n        \"count_prediction\": count_prediction,\n        \"source_prediction\": role_predictions[\"source\"],\n        \"transit_prediction\": role_predictions[\"transit\"],\n        \"victim_prediction\": role_predictions[\"victim\"],\n        \"path_prediction\": role_predictions[\"path\"],\n    }\n    return metrics, outputs",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"strict_exactness() missing 3 required positional arguments: 'count_prediction', 'role_predictions', and 'labels'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"strict_exactness() missing 3 required positional arguments: 'count_prediction', 'role_predictions', and 'labels'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"strict_exactness() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "strict_exactness",
+        "line": 260,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "graph_prediction",
+            "count_prediction",
+            "role_predictions",
+            "labels"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def strict_exactness(\n    graph_prediction: np.ndarray,\n    count_prediction: np.ndarray,\n    role_predictions: dict[str, np.ndarray],\n    labels: dict[str, np.ndarray],\n) -> dict[str, Any]:\n    graph_truth = labels[\"graph\"].astype(np.uint8)\n    active_truth = graph_truth == 1\n    graph_correct = graph_prediction == graph_truth\n\n    roles_correct = np.ones(graph_truth.shape[0], dtype=bool)\n    roles_empty = np.ones(graph_truth.shape[0], dtype=bool)\n    for role in (\"source\", \"transit\", \"victim\", \"path\"):\n        roles_correct &= np.all(\n            role_predictions[role] == labels[role],\n            axis=1,\n        )\n        roles_empty &= np.all(\n            role_predictions[role] == 0,\n            axis=1,\n        )\n\n    active_strict = (\n        graph_correct\n        & active_truth\n        & (count_prediction == labels[\"count\"])\n        & roles_correct\n    )\n    inactive_strict = (\n        graph_correct\n        & (~active_truth)\n        & roles_empty\n    )\n    strict = active_strict | inactive_strict\n\n    graph_and_count_active = (\n        graph_correct[active_truth]\n        & (\n            count_prediction[active_truth]\n            == labels[\"count\"][active_truth]\n        )\n    )\n    return {\n        \"strict_all_task_exactness\": float(strict.mean()),\n        \"strict_active_exactness\": float(\n            active_strict[active_truth].mean()\n        ),\n        \"strict_inactive_exactness\": float(\n            inactive_strict[~active_truth].mean()\n        ),\n        \"graph_and_count_exact_active\": float(\n            graph_and_count_active.mean()\n        ),\n        \"strict_exact_items\": int(strict.sum()),\n        \"strict_active_exact_items\": int(active_strict.sum()),\n        \"strict_inactive_exact_items\": int(inactive_strict.sum()),\n    }",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"sha256_file() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "sha256_file",
+        "line": 38,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "path"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def sha256_file(path: Path) -> str:\n    digest = hashlib.sha256()\n    with path.open(\"rb\") as handle:\n        for block in iter(lambda: handle.read(1024 * 1024), b\"\"):\n            digest.update(block)\n    return digest.hexdigest()",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"role_metrics() missing 3 required positional arguments: 'target', 'scores', and 'active_truth'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"role_metrics() missing 3 required positional arguments: 'target', 'scores', and 'active_truth'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"role_metrics() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "role_metrics",
+        "line": 202,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "prediction",
+            "target",
+            "scores",
+            "active_truth"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def role_metrics(\n    prediction: np.ndarray,\n    target: np.ndarray,\n    scores: np.ndarray,\n    active_truth: np.ndarray,\n) -> dict[str, Any]:\n    prediction = np.asarray(prediction, dtype=np.uint8)\n    target = np.asarray(target, dtype=np.uint8)\n    flattened = binary_metrics(\n        prediction.reshape(-1),\n        target.reshape(-1),\n    )\n    exact_all = float(\n        np.mean(np.all(prediction == target, axis=1))\n    )\n    exact_active = float(\n        np.mean(\n            np.all(\n                prediction[active_truth] == target[active_truth],\n                axis=1,\n            )\n        )\n    )\n    exact_inactive = float(\n        np.mean(\n            np.all(\n                prediction[~active_truth] == target[~active_truth],\n                axis=1,\n            )\n        )\n    )\n    predicted_cardinality = prediction.sum(axis=1)\n    true_cardinality = target.sum(axis=1)\n    return {\n        \"flattened\": flattened,\n        \"average_precision_raw_logits\": binary_average_precision(\n            scores.reshape(-1),\n            target.reshape(-1),\n        ),\n        \"auroc_raw_logits\": binary_auroc(\n            scores.reshape(-1),\n            target.reshape(-1),\n        ),\n        \"exact_all\": exact_all,\n        \"exact_active\": exact_active,\n        \"exact_inactive\": exact_inactive,\n        \"mean_predicted_cardinality_all\": float(\n            predicted_cardinality.mean()\n        ),\n        \"mean_predicted_cardinality_active\": float(\n            predicted_cardinality[active_truth].mean()\n        ),\n        \"mean_true_cardinality_active\": float(\n            true_cardinality[active_truth].mean()\n        ),\n    }",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('parse_args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('parse_args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"parse_args() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "parse_args",
+        "line": 30,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def parse_args() -> argparse.Namespace:\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--repo\", required=True)\n    parser.add_argument(\"--output-dir\", required=True)\n    parser.add_argument(\"--installed-script\", required=True)\n    return parser.parse_args()",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"multiclass_metrics_active() missing 1 required positional argument: 'target'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"multiclass_metrics_active() missing 1 required positional argument: 'target'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"multiclass_metrics_active() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "multiclass_metrics_active",
+        "line": 166,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "prediction",
+            "target"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def multiclass_metrics_active(\n    prediction: np.ndarray,\n    target: np.ndarray,\n) -> dict[str, Any]:\n    prediction = np.asarray(prediction, dtype=np.int64).reshape(-1)\n    target = np.asarray(target, dtype=np.int64).reshape(-1)\n    per_class = {}\n    f1_values = []\n    for class_value in (1, 2, 3, 4):\n        pred_positive = prediction == class_value\n        true_positive = target == class_value\n        tp = int(np.sum(pred_positive & true_positive))\n        fp = int(np.sum(pred_positive & ~true_positive))\n        fn = int(np.sum(~pred_positive & true_positive))\n        precision = tp / (tp + fp) if tp + fp else 0.0\n        recall = tp / (tp + fn) if tp + fn else 0.0\n        f1 = (\n            2.0 * precision * recall / (precision + recall)\n            if precision + recall\n            else 0.0\n        )\n        per_class[str(class_value)] = {\n            \"precision\": precision,\n            \"recall\": recall,\n            \"f1\": f1,\n            \"support\": int(true_positive.sum()),\n        }\n        f1_values.append(f1)\n    return {\n        \"accuracy\": float(np.mean(prediction == target)),\n        \"macro_f1\": float(np.mean(f1_values)),\n        \"per_class\": per_class,\n        \"items\": int(target.size),\n    }",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('main() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"main() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "main",
+        "line": 479,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def main() -> int:\n    args = parse_args()\n\n    repo = Path(args.repo).expanduser().resolve()\n    output_dir = Path(args.output_dir).expanduser().resolve()\n    installed_script = Path(\n        args.installed_script\n    ).expanduser().resolve()\n    output_dir.mkdir(parents=True, exist_ok=True)\n\n    report_path = output_dir / f\"{STAGE}_REPORT.json\"\n    lock_path = output_dir / f\"{STAGE}_LOCK.json\"\n    raw_outputs_path = output_dir / (\n        \"V5_P3_D2_RAW_NEURAL_VALIDATION_OUTPUTS.npz\"\n    )\n    a0_outputs_path = output_dir / (\n        \"V5_P3_D2_FROZEN_P2_A0_VALIDATION_OUTPUTS.npz\"\n    )\n    comparison_path = output_dir / (\n        \"V5_P3_D2_RAW_VS_FROZEN_A0_COMPARISON.json\"\n    )\n    complete_path = output_dir / f\"{STAGE}_COMPLETE\"\n    hold_path = output_dir / f\"{STAGE}_HOLD\"\n\n    d1_dir = repo / \"reports/v5/p3_d1_immutable_validation_logit_export\"\n    d1_report_path = d1_dir / (\n        \"V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT_REPORT.json\"\n    )\n    d1_lock_path = d1_dir / (\n        \"V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT_LOCK.json\"\n    )\n    export_path = d1_dir / (\n        \"V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz\"\n    )\n    p2_evaluator_path = (\n        repo\n        / \"scripts/v5/p2/evaluate_v5_p2_final_raw_a0_a1_one_shot.py\"\n    )\n    l5_contract_path = (\n        repo\n        / \"reports/v5/p2_l5_final_pretest_freeze/\"\n        \"V5_P2_ONE_SHOT_BLIND_EVALUATION_CONTRACT.json\"\n    )\n\n    required = [\n        d1_report_path,\n        d1_lock_path,\n        export_path,\n        p2_evaluator_path,\n        l5_contract_path,\n    ]\n    missing = [str(path) for path in required if not path.is_file()]\n    if missing:\n        raise RuntimeError(f\"required artifacts missing: {missing}\")\n\n    d1_report = json.loads(\n        d1_report_path.read_text(encoding=\"utf-8\")\n    )\n    d1_lock = json.loads(\n        d1_lock_path.read_text(encoding=\"utf-8\")\n    )\n    if d1_report.get(\"status\") != \"PASS\":\n        raise RuntimeError(\"D1 report is not PASS\")\n    if not d1_report.get(\"decision\", {}).get(\n        \"raw_and_A0_evaluation_authorized\"\n    ):\n        raise RuntimeError(\"D1 did not authorize Raw/A0 evaluation\")\n    if d1_lock.get(\"report_sha256\") != sha256_file(\n        d1_report_path\n    ):\n        raise RuntimeError(\"D1 report/lock SHA mismatch\")\n    if d1_lock.get(\"export_sha256\") != sha256_file(export_path):\n        raise RuntimeError(\"D1 export SHA mismatch\")\n    if d1_report.get(\"sealed_test\", {}).get(\n        \"test_tensor_loaded\"\n    ):\n        raise RuntimeError(\"D1 reports sealed-test access\")\n\n    p2_module = import_source(\n        p2_evaluator_path,\n        \"_v5_p3_d2_p2_frozen_policy_source\",\n    )\n    module_thresholds = dict(p2_module.A0_THRESHOLDS)\n    for key, expected in EXPECTED_A0_THRESHOLDS.items():\n        actual = float(module_thresholds[key])\n        if actual != expected:\n            raise RuntimeError(\n                f\"P2 evaluator A0 threshold changed for {key}: \"\n                f\"{actual} != {expected}\"\n            )\n\n    with np.load(export_path, allow_pickle=False) as loaded:\n        arrays = {\n            key: loaded[key].copy()\n            for key in loaded.files\n        }\n\n    expected_shapes = {\n        \"attack_logits\": (EXPECTED_ITEMS,),\n        \"count_logits\": (EXPECTED_ITEMS, 4),\n        \"source_logits\": (EXPECTED_ITEMS, 16),\n        \"transit_logits\": (EXPECTED_ITEMS, 16),\n        \"victim_logits\": (EXPECTED_ITEMS, 16),\n        \"path_logits\": (EXPECTED_ITEMS, 16),\n        \"y_attack\": (EXPECTED_ITEMS,),\n        \"y_attacker_count\": (EXPECTED_ITEMS,),\n        \"y_source\": (EXPECTED_ITEMS, 16),\n        \"y_transit\": (EXPECTED_ITEMS, 16),\n        \"y_victim\": (EXPECTED_ITEMS, 16),\n        \"y_attack_path\": (EXPECTED_ITEMS, 16),\n    }\n    for key, shape in expected_shapes.items():\n        if key not in arrays:\n            raise RuntimeError(f\"D1 export missing {key}\")\n        if arrays[key].shape != shape:\n            raise RuntimeError(\n                f\"{key} shape={arrays[key].shape}, expected={shape}\"\n            )\n\n    for key in (\n        \"attack_logits\",\n        \"count_logits\",\n        \"source_logits\",\n        \"transit_logits\",\n        \"victim_logits\",\n        \"path_logits\",\n    ):\n        if not np.isfinite(arrays[key]).all():\n            raise RuntimeError(f\"non-finite values in {key}\")\n\n    labels = {\n        \"graph\": arrays[\"y_attack\"].astype(np.uint8),\n        \"count\": arrays[\"y_attacker_count\"].astype(np.int8),\n        \"source\": arrays[\"y_source\"].astype(np.uint8),\n        \"transit\": arrays[\"y_transit\"].astype(np.uint8),\n        \"victim\": arrays[\"y_victim\"].astype(np.uint8),\n        \"path\": arrays[\"y_attack_path\"].astype(np.uint8),\n    }\n\n    raw_metrics, raw_outputs = evaluate_policy(\n        \"Raw neural threshold-0.5 heads\",\n        graph_threshold=0.5,\n        role_thresholds={\n            \"source\": 0.5,\n            \"transit\": 0.5,\n            \"victim\": 0.5,\n            \"path\": 0.5,\n        },\n        arrays=arrays,\n        labels=labels,\n    )\n    a0_metrics, a0_outputs = evaluate_policy(\n        \"Frozen P2 A0 threshold transfer\",\n        graph_threshold=EXPECTED_A0_THRESHOLDS[\"graph\"],\n        role_thresholds={\n            role: EXPECTED_A0_THRESHOLDS[role]\n            for role in (\"source\", \"transit\", \"victim\", \"path\")\n        },\n        arrays=arrays,\n        labels=labels,\n    )\n\n    # Raw graph metrics must reproduce D1/A5 because Raw uses threshold 0.5.\n    d1_metric = d1_report[\"metric_certification\"]\n    raw_consistency = {\n        \"graph_f1_delta_vs_D1\": abs(\n            raw_metrics[\"graph\"][\"f1\"]\n            - float(\n                d1_metric[\"graph_threshold_0p5\"][\"f1\"]\n            )\n        ),\n        \"graph_fpr_delta_vs_D1\": abs(\n            raw_metrics[\"graph\"][\"fpr\"]\n            - float(\n                d1_metric[\"graph_threshold_0p5\"][\"fpr\"]\n            )\n        ),\n        \"graph_auroc_delta_vs_D1\": abs(\n            raw_metrics[\"graph\"][\"auroc_raw_logits\"]\n            - float(\n                d1_metric[\"selection_components\"][\n                    \"graph_auroc\"\n                ]\n            )\n        ),\n        \"graph_ap_delta_vs_D1\": abs(\n            raw_metrics[\"graph\"][\n                \"average_precision_raw_logits\"\n            ]\n            - float(\n                d1_metric[\"selection_components\"][\n                    \"graph_average_precision\"\n                ]\n            )\n        ),\n    }\n    raw_consistency[\"maximum_delta\"] = max(\n        raw_consistency.values()\n    )\n    raw_consistency[\"pass\"] = (\n        raw_consistency[\"maximum_delta\"] <= 1e-9\n    )\n    if not raw_consistency[\"pass\"]:\n        raise RuntimeError(\n            f\"Raw metric reproduction failed: {raw_consistency}\"\n        )\n\n    comparison = {\n        \"stage\": STAGE,\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"classification\": (\n            \"A-validation preliminary frozen-policy transfer\"\n        ),\n        \"raw\": raw_metrics,\n        \"A0_frozen_P2_transfer\": a0_metrics,\n        \"deltas_A0_minus_Raw\": {\n            \"graph_accuracy\": (\n                a0_metrics[\"graph\"][\"accuracy\"]\n                - raw_metrics[\"graph\"][\"accuracy\"]\n            ),\n            \"graph_f1\": (\n                a0_metrics[\"graph\"][\"f1\"]\n                - raw_metrics[\"graph\"][\"f1\"]\n            ),\n            \"graph_fpr\": (\n                a0_metrics[\"graph\"][\"fpr\"]\n                - raw_metrics[\"graph\"][\"fpr\"]\n            ),\n            \"strict_all_task_exactness\": (\n                a0_metrics[\"strict\"][\n                    \"strict_all_task_exactness\"\n                ]\n                - raw_metrics[\"strict\"][\n                    \"strict_all_task_exactness\"\n                ]\n            ),\n            \"strict_active_exactness\": (\n                a0_metrics[\"strict\"][\n                    \"strict_active_exactness\"\n                ]\n                - raw_metrics[\"strict\"][\n                    \"strict_active_exactness\"\n                ]\n            ),\n            \"strict_inactive_exactness\": (\n                a0_metrics[\"strict\"][\n                    \"strict_inactive_exactness\"\n                ]\n                - raw_metrics[\"strict\"][\n                    \"strict_inactive_exactness\"\n                ]\n            ),\n            \"source_exact_active\": (\n                a0_metrics[\"roles\"][\"source\"][\"exact_active\"]\n                - raw_metrics[\"roles\"][\"source\"][\"exact_active\"]\n            ),\n            \"transit_exact_active\": (\n                a0_metrics[\"roles\"][\"transit\"][\"exact_active\"]\n                - raw_metrics[\"roles\"][\"transit\"][\"exact_active\"]\n            ),\n            \"victim_exact_active\": (\n                a0_metrics[\"roles\"][\"victim\"][\"exact_active\"]\n                - raw_metrics[\"roles\"][\"victim\"][\"exact_active\"]\n            ),\n            \"path_exact_active\": (\n                a0_metrics[\"roles\"][\"path\"][\"exact_active\"]\n                - raw_metrics[\"roles\"][\"path\"][\"exact_active\"]\n            ),\n        },\n        \"interpretation_boundary\": {\n            \"thresholds_transferred_without_tuning\": True,\n            \"A0_is_not_route_legal_decoder\": True,\n            \"A0_does_not_enforce_cross_head_consistency\": True,\n            \"A1_exact_not_executed\": True,\n            \"sealed_test_not_accessed\": True,\n            \"generalization_claim_authorized\": False,\n        },\n    }\n    atomic_json(comparison_path, comparison)\n    atomic_npz(raw_outputs_path, raw_outputs)\n    atomic_npz(a0_outputs_path, a0_outputs)\n\n    report = {\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"created_utc\": datetime.now(\n            timezone.utc\n        ).isoformat(),\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"classification\": (\n            \"V5-P3-1500-D70 Tranche-A Preliminary Diagnostic\"\n        ),\n        \"scope\": (\n            \"Raw threshold-0.5 and frozen-P2-A0 threshold \"\n            \"evaluation on the immutable D1 A-validation export.\"\n        ),\n        \"policy_source\": {\n            \"P2_evaluator_path\": str(p2_evaluator_path),\n            \"P2_evaluator_sha256\": sha256_file(\n                p2_evaluator_path\n            ),\n            \"L5_contract_path\": str(l5_contract_path),\n            \"L5_contract_sha256\": sha256_file(\n                l5_contract_path\n            ),\n            \"A0_thresholds\": EXPECTED_A0_THRESHOLDS,\n            \"threshold_tuning_performed\": False,\n        },\n        \"raw\": raw_metrics,\n        \"A0_frozen_P2_transfer\": a0_metrics,\n        \"comparison_path\": str(comparison_path),\n        \"comparison_sha256\": sha256_file(comparison_path),\n        \"outputs\": {\n            \"raw_path\": str(raw_outputs_path),\n            \"raw_sha256\": sha256_file(raw_outputs_path),\n            \"A0_path\": str(a0_outputs_path),\n            \"A0_sha256\": sha256_file(a0_outputs_path),\n        },\n        \"raw_reproduction\": raw_consistency,\n        \"decision\": {\n            \"raw_and_A0_evaluation_complete\": True,\n            \"A0_improves_strict_all_task_exactness\": (\n                a0_metrics[\"strict\"][\n                    \"strict_all_task_exactness\"\n                ]\n                > raw_metrics[\"strict\"][\n                    \"strict_all_task_exactness\"\n                ]\n            ),\n            \"A0_is_route_legal\": False,\n            \"A1_exact_resumable_preflight_authorized\": True,\n            \"A1_exact_full_evaluation_authorized\": False,\n            \"beam_decoder_selected\": False,\n            \"sealed_test_evaluation_authorized\": False,\n            \"next_stage\": (\n                \"V5_P3_D3_RESUMABLE_A1_EXACT_DECODER_\"\n                \"CHUNK_PREFLIGHT\"\n            ),\n        },\n        \"sealed_test\": {\n            \"test_dataset_instantiated\": False,\n            \"test_length_computed\": False,\n            \"test_tensor_loaded\": False,\n            \"evaluation_authorized\": False,\n        },\n        \"provenance\": {\n            \"d1_report_sha256\": sha256_file(\n                d1_report_path\n            ),\n            \"d1_lock_sha256\": sha256_file(\n                d1_lock_path\n            ),\n            \"D1_export_sha256\": sha256_",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"import_source() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"import_source() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"import_source() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "import_source",
+        "line": 62,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "path",
+            "name"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def import_source(path: Path, name: str):\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None:\n        raise RuntimeError(f\"cannot import module from {path}\")\n    module = importlib.util.module_from_spec(spec)\n    sys.modules[name] = module\n    spec.loader.exec_module(module)\n    return module",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"consistency_audit() missing 2 required positional arguments: 'count_prediction' and 'role_predictions'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"consistency_audit() missing 2 required positional arguments: 'count_prediction' and 'role_predictions'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"consistency_audit() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "consistency_audit",
+        "line": 319,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "graph_prediction",
+            "count_prediction",
+            "role_predictions"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def consistency_audit(\n    graph_prediction: np.ndarray,\n    count_prediction: np.ndarray,\n    role_predictions: dict[str, np.ndarray],\n) -> dict[str, Any]:\n    predicted_active = graph_prediction == 1\n    source = role_predictions[\"source\"].astype(bool)\n    transit = role_predictions[\"transit\"].astype(bool)\n    victim = role_predictions[\"victim\"].astype(bool)\n    path = role_predictions[\"path\"].astype(bool)\n\n    source_count = source.sum(axis=1)\n    count_consistent = source_count == count_prediction\n    source_victim_disjoint = ~np.any(source & victim, axis=1)\n    transit_endpoint_disjoint = ~np.any(\n        transit & (source | victim),\n        axis=1,\n    )\n    endpoints_inside_path = np.all(\n        ~(source | victim) | path,\n        axis=1,\n    )\n    transit_inside_path = np.all(~transit | path, axis=1)\n    path_equals_union = np.all(\n        path == (source | transit | victim),\n        axis=1,\n    )\n\n    def rate(values: np.ndarray, mask: np.ndarray) -> float:\n        if not np.any(mask):\n            return float(\"nan\")\n        return float(values[mask].mean())\n\n    return {\n        \"predicted_active_items\": int(predicted_active.sum()),\n        \"source_count_equals_predicted_count_on_predicted_active\": rate(\n            count_consistent,\n            predicted_active,\n        ),\n        \"source_victim_disjoint_on_predicted_active\": rate(\n            source_victim_disjoint,\n            predicted_active,\n        ),\n        \"transit_endpoint_disjoint_on_predicted_active\": rate(\n            transit_endpoint_disjoint,\n            predicted_active,\n        ),\n        \"source_and_victim_inside_path_on_predicted_active\": rate(\n            endpoints_inside_path,\n            predicted_active,\n        ),\n        \"transit_inside_path_on_predicted_active\": rate(\n            transit_inside_path,\n            predicted_active,\n        ),\n        \"path_equals_source_union_transit_union_victim_on_predicted_active\": rate(\n            path_equals_union,\n            predicted_active,\n        ),\n        \"fully_consistent_on_predicted_active\": rate(\n            count_consistent\n            & source_victim_disjoint\n            & transit_endpoint_disjoint\n            & endpoints_inside_path\n            & transit_inside_path\n            & path_equals_union,\n            predicted_active,\n        ),\n    }",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_metrics() missing 1 required positional argument: 'target'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_metrics() missing 1 required positional argument: 'target'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_metrics() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_metrics",
+        "line": 136,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "prediction",
+            "target"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_metrics(\n    prediction: np.ndarray,\n    target: np.ndarray,\n) -> dict[str, Any]:\n    prediction = np.asarray(prediction, dtype=np.uint8).reshape(-1)\n    target = np.asarray(target, dtype=np.uint8).reshape(-1)\n    tp = int(np.sum((prediction == 1) & (target == 1)))\n    fp = int(np.sum((prediction == 1) & (target == 0)))\n    fn = int(np.sum((prediction == 0) & (target == 1)))\n    tn = int(np.sum((prediction == 0) & (target == 0)))\n    precision = tp / (tp + fp) if tp + fp else 0.0\n    recall = tp / (tp + fn) if tp + fn else 0.0\n    f1 = (\n        2.0 * precision * recall / (precision + recall)\n        if precision + recall\n        else 0.0\n    )\n    return {\n        \"accuracy\": (tp + tn) / max(1, tp + fp + fn + tn),\n        \"precision\": precision,\n        \"recall\": recall,\n        \"f1\": f1,\n        \"fpr\": fp / (fp + tn) if fp + tn else 0.0,\n        \"tp\": tp,\n        \"fp\": fp,\n        \"fn\": fn,\n        \"tn\": tn,\n    }",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_average_precision() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_average_precision() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_average_precision() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_average_precision",
+        "line": 117,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_average_precision(\n    scores: np.ndarray,\n    targets: np.ndarray,\n) -> float:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    positive_count = int((targets == 1).sum())\n    if positive_count == 0:\n        return float(\"nan\")\n    order = np.argsort(-scores, kind=\"mergesort\")\n    ordered_targets = targets[order]\n    cumulative_positive = np.cumsum(ordered_targets == 1)\n    positions = np.arange(1, len(targets) + 1)\n    precision = cumulative_positive / positions\n    return float(\n        precision[ordered_targets == 1].sum() / positive_count\n    )",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_auroc() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_auroc",
+        "line": 95,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_auroc(\n    scores: np.ndarray,\n    targets: np.ndarray,\n) -> float:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    positive = targets == 1\n    negative = targets == 0\n    n_positive = int(positive.sum())\n    n_negative = int(negative.sum())\n    if n_positive == 0 or n_negative == 0:\n        return float(\"nan\")\n    ranks = average_ranks(scores)\n    return float(\n        (\n            ranks[positive].sum()\n            - n_positive * (n_positive + 1) / 2.0\n        )\n        / (n_positive * n_negative)\n    )",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"'types.SimpleNamespace' object is not subscriptable\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"average_ranks() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "parameter_mapping": {
+            "values": "__metrics_dict__"
+          },
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "positional_metric_order": [
+            "__metrics_dict__"
+          ],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "average_ranks",
+        "line": 78,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "values"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def average_ranks(values: np.ndarray) -> np.ndarray:\n    order = np.argsort(values, kind=\"mergesort\")\n    sorted_values = values[order]\n    ranks = np.empty(len(values), dtype=np.float64)\n    start = 0\n    while start < len(values):\n        stop = start + 1\n        while (\n            stop < len(values)\n            and sorted_values[stop] == sorted_values[start]\n        ):\n            stop += 1\n        ranks[order[start:stop]] = (start + 1 + stop) / 2.0\n        start = stop\n    return ranks",
+        "source_sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "NameError(\"name 'hashlib' is not defined\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"sha256_file() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "sha256_file",
+        "line": 49,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "path"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def sha256_file(path: Path) -> str:\n    digest = hashlib.sha256()\n    with path.open(\"rb\") as handle:\n        for block in iter(lambda: handle.read(1024 * 1024), b\"\"):\n            digest.update(block)\n    return digest.hexdigest()",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"scalar_batch_values() missing 3 required positional arguments: 'key', 'batch_size', and 'fallback_start'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"scalar_batch_values() missing 3 required positional arguments: 'key', 'batch_size', and 'fallback_start'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"scalar_batch_values() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "scalar_batch_values",
+        "line": 224,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "batch",
+            "key",
+            "batch_size",
+            "fallback_start"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def scalar_batch_values(\n    batch: dict[str, Any],\n    key: str,\n    batch_size: int,\n    fallback_start: int,\n) -> list[Any]:\n    if key not in batch:\n        if key == \"dataset_index\":\n            return list(range(fallback_start, fallback_start + batch_size))\n        return [\"\"] * batch_size\n\n    value = batch[key]\n    if isinstance(value, torch.Tensor):\n        flattened = value.detach().cpu().reshape(batch_size, -1)\n        if flattened.shape[1] == 1:\n            return [item.item() for item in flattened[:, 0]]\n        return [json.dumps(row.tolist()) for row in flattened]\n    if isinstance(value, np.ndarray):\n        array = value.reshape(batch_size, -1)\n        if array.shape[1] == 1:\n            return [item.item() for item in array[:, 0]]\n        return [json.dumps(row.tolist()) for row in array]\n    if isinstance(value, (list, tuple)):\n        if len(value) == batch_size:\n            return [str(item) for item in value]\n    return [str(value)] * batch_size",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError('parse_args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError('parse_args() takes 0 positional arguments but 1 was given')",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"parse_args() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "parameter_mapping": {},
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "NameError(\"name 'argparse' is not defined\")",
+          "positional_metric_order": [],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "parse_args",
+        "line": 30,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def parse_args() -> argparse.Namespace:\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--repo\", required=True)\n    parser.add_argument(\"--data-link\", required=True)\n    parser.add_argument(\"--output-dir\", required=True)\n    parser.add_argument(\"--installed-script\", required=True)\n    return parser.parse_args()",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"multiclass_macro_f1() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"multiclass_macro_f1() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"multiclass_macro_f1() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "multiclass_macro_f1",
+        "line": 184,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "predictions",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def multiclass_macro_f1(\n    predictions: np.ndarray,\n    targets: np.ndarray,\n) -> float:\n    values = []\n    for class_value in (1, 2, 3, 4):\n        prediction_positive = predictions == class_value\n        target_positive = targets == class_value\n        tp = int(np.sum(prediction_positive & target_positive))\n        fp = int(np.sum(prediction_positive & ~target_positive))\n        fn = int(np.sum(~prediction_positive & target_positive))\n        precision = tp / (tp + fp) if tp + fp else 0.0\n        recall = tp / (tp + fn) if tp + fn else 0.0\n        values.append(\n            2.0 * precision * recall / (precision + recall)\n            if precision + recall\n            else 0.0\n        )\n    return float(np.mean(values))",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"import_source() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"import_source() missing 1 required positional argument: 'name'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"import_source() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "import_source",
+        "line": 83,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "path",
+            "name"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def import_source(path: Path, name: str):\n    spec = importlib.util.spec_from_file_location(name, path)\n    if spec is None or spec.loader is None:\n        raise RuntimeError(f\"cannot import module from {path}\")\n    module = importlib.util.module_from_spec(spec)\n    sys.modules[name] = module\n    spec.loader.exec_module(module)\n    return module",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"exact_active() missing 2 required positional arguments: 'targets' and 'active_mask'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"exact_active() missing 2 required positional arguments: 'targets' and 'active_mask'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"exact_active() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "exact_active",
+        "line": 205,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "probabilities",
+            "targets",
+            "active_mask"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def exact_active(\n    probabilities: np.ndarray,\n    targets: np.ndarray,\n    active_mask: np.ndarray,\n) -> float:\n    predictions = (\n        np.asarray(probabilities) >= 0.5\n    ).astype(np.int64)\n    targets = np.asarray(targets, dtype=np.int64)\n    return float(\n        np.mean(\n            np.all(\n                predictions[active_mask] == targets[active_mask],\n                axis=1,\n            )\n        )\n    )",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_threshold_metrics() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_threshold_metrics() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_threshold_metrics() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_threshold_metrics",
+        "line": 147,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "probabilities",
+            "targets",
+            "threshold"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_threshold_metrics(\n    probabilities: np.ndarray,\n    targets: np.ndarray,\n    threshold: float = 0.5,\n) -> dict[str, float]:\n    probabilities = np.asarray(\n        probabilities,\n        dtype=np.float64,\n    ).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    predictions = (probabilities >= threshold).astype(np.int64)\n    tp = int(np.sum((predictions == 1) & (targets == 1)))\n    fp = int(np.sum((predictions == 1) & (targets == 0)))\n    fn = int(np.sum((predictions == 0) & (targets == 1)))\n    tn = int(np.sum((predictions == 0) & (targets == 0)))\n    precision = tp / (tp + fp) if tp + fp else 0.0\n    recall = tp / (tp + fn) if tp + fn else 0.0\n    f1 = (\n        2.0 * precision * recall / (precision + recall)\n        if precision + recall\n        else 0.0\n    )\n    accuracy = (tp + tn) / max(1, tp + fp + fn + tn)\n    fpr = fp / (fp + tn) if fp + tn else 0.0\n    return {\n        \"accuracy\": accuracy,\n        \"precision\": precision,\n        \"recall\": recall,\n        \"f1\": f1,\n        \"fpr\": fpr,\n        \"tp\": tp,\n        \"fp\": fp,\n        \"fn\": fn,\n        \"tn\": tn,\n    }",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_average_precision() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_average_precision() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_average_precision() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_average_precision",
+        "line": 127,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_average_precision(\n    scores: np.ndarray,\n    targets: np.ndarray,\n) -> float:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    positive_count = int((targets == 1).sum())\n    if positive_count == 0:\n        return float(\"nan\")\n    order = np.argsort(-scores, kind=\"mergesort\")\n    ordered_targets = targets[order]\n    cumulative_positive = np.cumsum(ordered_targets == 1)\n    positions = np.arange(1, len(targets) + 1)\n    precision_at_k = cumulative_positive / positions\n    return float(\n        precision_at_k[ordered_targets == 1].sum()\n        / positive_count\n    )",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"binary_auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"binary_auroc() missing 1 required positional argument: 'targets'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"binary_auroc() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "binary_auroc",
+        "line": 110,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "scores",
+            "targets"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def binary_auroc(scores: np.ndarray, targets: np.ndarray) -> float:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    positive = targets == 1\n    negative = targets == 0\n    n_positive = int(positive.sum())\n    n_negative = int(negative.sum())\n    if n_positive == 0 or n_negative == 0:\n        return float(\"nan\")\n    ranks = average_ranks(scores)\n    rank_sum_positive = float(ranks[positive].sum())\n    return (\n        rank_sum_positive\n        - n_positive * (n_positive + 1) / 2.0\n    ) / (n_positive * n_negative)",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    },
+    {
+      "attempts": [
+        {
+          "call_style": "metrics_dict_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "namespace_positional",
+          "error": "TypeError(\"'types.SimpleNamespace' object is not subscriptable\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "expanded_kwargs",
+          "error": "TypeError(\"average_ranks() got an unexpected keyword argument 'graph_accuracy'\")",
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_kwargs",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "parameter_mapping": {
+            "values": "__metrics_dict__"
+          },
+          "status": "CALL_FAILED"
+        },
+        {
+          "call_style": "signature_mapped_positional",
+          "error": "TypeError(\"unhashable type: 'numpy.ndarray'\")",
+          "positional_metric_order": [
+            "__metrics_dict__"
+          ],
+          "status": "CALL_FAILED"
+        }
+      ],
+      "record": {
+        "function_name": "average_ranks",
+        "line": 93,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "reasons": [],
+        "score": 2,
+        "signature": {
+          "args": [
+            "values"
+          ],
+          "kwarg": null,
+          "kwonlyargs": [],
+          "vararg": null
+        },
+        "source": "def average_ranks(values: np.ndarray) -> np.ndarray:\n    order = np.argsort(values, kind=\"mergesort\")\n    sorted_values = values[order]\n    ranks = np.empty(len(values), dtype=np.float64)\n    start = 0\n    while start < len(values):\n        end = start + 1\n        while (\n            end < len(values)\n            and sorted_values[end] == sorted_values[start]\n        ):\n            end += 1\n        ranks[order[start:end]] = (start + 1 + end) / 2.0\n        start = end\n    return ranks",
+        "source_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+      }
+    }
+  ],
+  "status": "UNRESOLVED"
+}

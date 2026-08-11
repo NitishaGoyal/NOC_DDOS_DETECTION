@@ -1,0 +1,103 @@
+{
+  "P2_additional_delay_vs_Raw_windows": {
+    "max": 10.0,
+    "mean": 0.5066666666666667,
+    "median": 0.0,
+    "p95": 2.0,
+    "p99": 6.0
+  },
+  "P2_episode_detection_rate": 1.0,
+  "P2_first_detection_delay_windows": {
+    "max": 28.0,
+    "mean": 2.486666666666667,
+    "median": 0.0,
+    "p95": 13.549999999999983,
+    "p99": 18.50999999999999
+  },
+  "alignment_carry_rows_total": 147,
+  "artifacts": {
+    "F1_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_f1_one_shot_sealed_test_evaluation/V5_P3_FINAL_F1_ONE_SHOT_SEALED_TEST_EVALUATION_LOCK.json",
+    "F1_lock_sha256": "d270d2dcfef6845ef2d265573cc9ac50e3ab7efc070cf062347822fd02ba1e40",
+    "F1_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_f1_one_shot_sealed_test_evaluation/V5_P3_FINAL_F1_ONE_SHOT_SEALED_TEST_EVALUATION_REPORT.json",
+    "F1_report_sha256": "ab0be6b38c97769310a8ba7adf14551eb8b8d43c1704b071cd06ca20b7c1ae20",
+    "Final_system_test_outputs_sha256": "8b9b921e521fd8888ebbe55a9870b6425db9f7aca22a49fc1f4b390817ebf24b",
+    "Raw_test_export_sha256": "bebbaea8646e907decbcda3d2de5b84c518cb212f06b77d0c5bde25b3a17b7c5"
+  },
+  "derived_reporting_deltas": {
+    "Final_minus_Raw_strict_exactness": 0.11326884204447019,
+    "Final_minus_Raw_strict_exactness_percentage_points": 11.326884204447019,
+    "P2_minus_Raw_graph_accuracy": 0.002382327461738387,
+    "P2_minus_Raw_graph_accuracy_percentage_points": 0.23823274617383872,
+    "P2_minus_Raw_graph_f1": 0.0017403922387312365,
+    "P2_minus_Raw_graph_f1_percentage_points": 0.17403922387312365,
+    "P2_minus_Raw_graph_fpr": -0.00455806579468887,
+    "P2_minus_Raw_graph_fpr_percentage_points": -0.45580657946888703,
+    "P2_relative_fpr_reduction": 0.019279128248114032
+  },
+  "final_P2_graph": {
+    "accuracy": 0.8098108576378862,
+    "f1": 0.7245831373163975,
+    "fn": 589,
+    "fp": 4680,
+    "fpr": 0.2318668252080856,
+    "items": 27704,
+    "precision": 0.5969339419515977,
+    "recall": 0.9216755319148936,
+    "tn": 15504,
+    "tp": 6931
+  },
+  "final_false_alarm_payload_exposure": {
+    "alignment_carry_rate": 0.018803418803418803,
+    "items": 4680,
+    "nonempty_endpoint_payload_rate": 1.0,
+    "route_certified_payload_rate": 0.9143162393162393
+  },
+  "final_system_strict_all_task_exactness": 0.7522740398498412,
+  "final_true_alarm_structured_payload": {
+    "alignment_carry_rate": 0.008512480161592844,
+    "all_count_and_role_exact": 0.7700187563122205,
+    "count_exact": 1.0,
+    "items": 6931,
+    "path_exact": 0.8842879815322464,
+    "route_certified_rate": 0.9080940701197519,
+    "source_exact": 0.9803780118309047,
+    "transit_exact": 0.7824267782426778,
+    "victim_exact": 0.9629202135334006
+  },
+  "latency": {
+    "EPLR_V2_decode_seconds_per_window": {
+      "max": 0.0006995840085437521,
+      "mean": 6.98537680562122e-05,
+      "median": 3.2479998480994254e-05,
+      "p95": 0.00032546130896662353,
+      "p99": 0.00045536001489381316
+    },
+    "alignment_carry_horizon_windows": 1,
+    "model_inference_amortized_seconds_per_window": 6.76327245174641e-05,
+    "observation_window_epochs": 32,
+    "reporting_contract": "Keep acquisition, compute, and temporal-confirmation components separate unless a hardware clock/epoch-duration conversion is independently available. Conceptually: 32-epoch observation acquisition + neural inference + P2 confirmation delay + EPLR-V2 decode/alignment."
+  },
+  "raw_neural_graph": {
+    "accuracy": 0.8074285301761478,
+    "ap": 0.6215574316339425,
+    "auroc": 0.8825246627305385,
+    "f1": 0.7228427450776662,
+    "fn": 563,
+    "fp": 4772,
+    "fpr": 0.23642489100277447,
+    "items": 27704,
+    "precision": 0.5931451956688549,
+    "recall": 0.9251329787234043,
+    "tn": 15412,
+    "tp": 6957
+  },
+  "raw_strict_all_task_exactness": 0.639005197805371,
+  "scientific_finality": {
+    "future_work_must_use_new_predeclared_experiment_or_new_dataset": true,
+    "model_threshold_decoder_persistence_alignment_changes_authorized": false,
+    "sealed_test_already_accessed": true,
+    "test_re_evaluation_authorized": false
+  },
+  "status": "FINAL_ONE_SHOT_BLIND_TEST_RESULT_LOCKED",
+  "test_items": 27704
+}

@@ -1,0 +1,126 @@
+{
+  "artifacts": {
+    "contract_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_CONTRACT.json",
+      "6372e21109fbf26237d9274ba7e63eccb975c155862bee755089fb76f5ae4e0f"
+    ],
+    "contract_markdown": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_CONTRACT.md",
+      "c4c5a2802de871758a6db9b632f3c20a485f6242baf2d7163efd67e855a5efa9"
+    ],
+    "pair_aligned_manifest": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+      "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5"
+    ]
+  },
+  "contract": {
+    "audit_totals": {
+      "aligned_windows": 82694,
+      "native_windows": 82708,
+      "pair_count": 489,
+      "removed_fraction": 0.0001692702036078735,
+      "removed_windows": 14,
+      "train_pairs": 415,
+      "unequal_length_pairs": 77,
+      "unequal_native_window_pairs": 14,
+      "validation_pairs": 74
+    },
+    "bookkeeping_only_fields": [
+      "split",
+      "pair_key",
+      "pair_id",
+      "category",
+      "attack_length",
+      "control_length",
+      "common_length",
+      "window_count_per_member"
+    ],
+    "contract_name": "V5_P2_PAIR_ALIGNED_COMMON_PREFIX_WINDOWS",
+    "contract_sha256": "857b679c40c512181ec5b060d7bc1f66fb9d19edc65b6dbc593ad68554106420",
+    "contract_version": 1,
+    "label_semantics": {
+      "statement": "This remediation changes only eligible window indices. It does not redefine target extraction or aggregation.",
+      "status": "DEFERRED_TO_P2_LOADER_CONTRACT"
+    },
+    "learned_input_prohibitions": [
+      "case_id",
+      "pair_id",
+      "run_id",
+      "filename",
+      "split",
+      "mode",
+      "category",
+      "native_run_length",
+      "common_length",
+      "native_window_count",
+      "aligned_window_count",
+      "window_start",
+      "window_end",
+      "distance_to_terminal_epoch",
+      "serialization_size",
+      "manifest_position",
+      "any direct or derived provenance identifier"
+    ],
+    "pair_manifest_file": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+    "pair_manifest_file_sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5",
+    "reason": "Remove ATTACK/CONTROL shortcut leakage through unequal run lengths, unequal window counts, and terminal-window position while discarding only 14 of 82,708 native non-test windows.",
+    "sampling": {
+      "all_aligned_windows_included": true,
+      "attack_control_sample_balance_within_each_pair": true,
+      "equal_windows_per_pair_member": true,
+      "pair_members_may_not_be_sampled_asymmetrically": true
+    },
+    "scope": {
+      "matched_pair_unit": "ATTACK_CONTROL_PAIR",
+      "splits": [
+        "train",
+        "validation"
+      ],
+      "test_excluded": true
+    },
+    "test_tensor_contents_accessed": false,
+    "windowing": {
+      "common_length_rule": "min(T_attack,T_control)",
+      "identical_ordered_window_starts_for_pair_members": true,
+      "loader_slices_common_prefix_only": true,
+      "native_unaligned_windowing_forbidden": true,
+      "source_tensors_modified": false,
+      "source_tensors_truncated_on_disk": false,
+      "stride": 8,
+      "window": 32,
+      "window_interval": "[start_k,start_k+window)",
+      "window_start_rule": "start_k = k*stride for k=0..floor((common_length-window)/stride)"
+    }
+  },
+  "dataset": {
+    "link_path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph"
+  },
+  "decision": "FREEZE_PAIR_ALIGNED_WINDOW_CONTRACT_AND_AUTHORIZE_A2",
+  "failures": [],
+  "next_stage": "V5_P2_A2_FEATURE_NORMALIZATION_AND_MASK_CONTRACT",
+  "provenance": {
+    "a0_lock_sha256": "3f302d6dcf47df735837f1b419ab83fab229f477e7292f4637c6998e7a7b4af6",
+    "a0_report_sha256": "584b9f5d2ef79bb2884bdf37a6f4ff09cca36a7247eef8765a7de56ace33397e",
+    "a1_hold_marker_sha256": "5967ec052843114289c315ee87dced0d9ebe289c7e05e151c289d7ffa918151e",
+    "a1_hold_report_sha256": "f215ee17b8db21e18069d4911498534884efb2b0761fad8efbdc5798f4d43b15",
+    "a1_r1_lock_sha256": "efd2053cd31919d3284367caa3f40acf46f8dda4e609277d5c62a90c010936ce",
+    "a1_r1_pair_csv_sha256": "994243ee922e939a4cc672ce8c765fa6975ddc8059c63b19ecf6cdfc1680a777",
+    "a1_r1_report_sha256": "069117d7a5a6ab250f1bab85f0ed6c1a4a51e52fa4bf39d3cbaf975895fea6c9"
+  },
+  "security_boundary": {
+    "run_tensors_deserialized": false,
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_tensor_bytes_read": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "train_tensor_contents_accessed": false,
+    "validation_tensor_contents_accessed": false
+  },
+  "stage": "V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_CONTRACT",
+  "status": "COMPLETE",
+  "warnings": []
+}

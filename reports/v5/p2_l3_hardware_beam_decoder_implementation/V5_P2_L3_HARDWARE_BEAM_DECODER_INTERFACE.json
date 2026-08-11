@@ -1,0 +1,52 @@
+{
+  "beam_search": {
+    "K_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "beam_width_grid": [
+      4,
+      8,
+      16
+    ],
+    "complete_tie_break": [
+      "higher margin",
+      "lower K",
+      "lower route tuple"
+    ],
+    "distinct_sources": true,
+    "partial_state_order": [
+      "higher union role score",
+      "lower route tuple"
+    ],
+    "strictly_increasing_route_ids": true
+  },
+  "candidate_generation": {
+    "routes_per_source_before_pruning": 15,
+    "sources": 16,
+    "tie_break": [
+      "higher single-route role score",
+      "lower route_id"
+    ],
+    "top_B_grid": [
+      1,
+      2,
+      4
+    ]
+  },
+  "fixed_point_deferred": true,
+  "fixed_point_format": null,
+  "rtl_implemented": false,
+  "stage": "V5_P2_L3_HARDWARE_BEAM_DECODER_INTERFACE",
+  "state_fields": [
+    "route_ids",
+    "source_union_mask_16b",
+    "transit_union_mask_16b",
+    "victim_union_mask_16b",
+    "path_union_mask_16b",
+    "partial_role_score"
+  ],
+  "status": "FROZEN"
+}

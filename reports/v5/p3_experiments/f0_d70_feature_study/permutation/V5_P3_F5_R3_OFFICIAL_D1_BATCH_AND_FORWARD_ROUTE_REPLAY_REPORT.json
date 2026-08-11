@@ -1,0 +1,65 @@
+{
+  "artifacts": {
+    "capture_provenance": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3_OFFICIAL_D1_FIRST_BATCH_CAPTURE_PROVENANCE.json",
+    "classification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3_BATCH_FORWARD_ROUTE_CLASSIFICATION.json",
+    "input_comparison": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3_OFFICIAL_D1_INPUT_VS_CACHE_COMPARISON.json",
+    "logit_comparison": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/F5_R3_OFFICIAL_D1_AND_CONTROLLED_REPLAY_LOGIT_COMPARISON.json"
+  },
+  "batch_route": {
+    "F5_batch_size": 256,
+    "batch_size_match": true,
+    "official_D1_batch_size": 256
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "FORWARD_ROUTE_MATCHES_OFFICIAL_BATCH_BUT_BASELINE_PROCESS_DRIFT",
+  "created_utc": "2026-08-05T21:50:17.282212+00:00",
+  "decision": {
+    "F5_baseline_gate_complete": false,
+    "F5_permutation_units_authorized": false,
+    "F6_integrated_gradients_authorized": false,
+    "F7_retraining_ablation_authorized": false,
+    "next_stage": "V5_P3_F5_R3A_BASELINE_PROCESS_RUNTIME_REVIEW",
+    "repair_authorized": false,
+    "sealed_test_access_authorized": false
+  },
+  "findings": {
+    "F5_batch_cache_replay_matches_stored_baseline": false,
+    "F5_batch_effect_substantial": false,
+    "classification_reasons": [
+      "The exact official-size cache replay matches the official D1 batch, but changing to the F5 batch size does not explain the stored baseline discrepancy."
+    ],
+    "inputs_exact": true,
+    "official_batch_cache_replay_matches_official": true,
+    "official_matches_F4_fresh": true
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "cached_validation_features_loaded": true,
+    "checkpoint_loaded": true,
+    "metric_formulas_changed": false,
+    "model_loaded": true,
+    "model_weights_changed": false,
+    "official_D1_validation_first_batch_loaded": true,
+    "permutation_units_executed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false
+  },
+  "provenance": {
+    "F5_P0_route_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "F5_R2_lock_sha256": "c6dcb836bb3939873f72f5ae6e82e87441382e28f702bfb1002f283f8604f9ac",
+    "F5_R2_report_sha256": "523a05a5cfccfebb5f14fbba3012e12f430871b0c4bb3d592c2c7b035622ed87",
+    "capture_provenance_sha256": "ae5d92965cec1cef8f625f2d764cf5602ae671c0d1de594a54d0cb4494188903",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "classification_sha256": "760bedcfe1588908ce99be93c8c682404eec34c4dad6fdf3cd8e96dc6f793df0",
+    "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+    "fresh_certification_sha256": "35b216294366d45221d0af2d90c562aabb027b20c852f980575255ba2ce15993",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "input_comparison_sha256": "0ea8cee576b0da19c7de64bc785f7e02ec8e7501f7f833666d501e966d88d7cc",
+    "installed_script_sha256": "a92ca7e97a68af44e1bbf8edbcdd3ba2b6980e92476c4b56da2e463098e971c1",
+    "logit_comparison_sha256": "48713aeeaad21873a7c09d3436c4b7daecf7dcd11a220299cf7182979811d294",
+    "run_contract_sha256": "84382e2231aad8e38e0c8f6a3e1bbac280aeec758776146c3e1fc19d7231db4a"
+  },
+  "scope": "Capture the official D1 first model batch, compare its exact features/mask/output against the F5 cache, F4 fresh output, and stored F5 baseline, then replay the same checkpoint at both the official and F5 batch sizes to isolate batch-dependent drift.",
+  "stage": "V5_P3_F5_R3_OFFICIAL_D1_BATCH_AND_FORWARD_ROUTE_REPLAY",
+  "status": "PASS"
+}

@@ -1,0 +1,12 @@
+{
+  "authorization_consumed": true,
+  "authorization_id": "V5P2-RECOVERY-1066fc8903ea19ba256b0924caf0be7b",
+  "exception": "primary MILP has material or invalid MIP gap: 2.4064574342771067e-14; float64 numerical-zero tolerance=1.4210854715202004e-14",
+  "exception_type": "ExactDecoderError",
+  "stage": "V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION",
+  "status": "IRREVERSIBLE_FAILURE_AFTER_AUTHORIZATION_CONSUMPTION",
+  "successful_rerun_authorized": false,
+  "test_access_started": true,
+  "test_evaluation_may_be_partial": true,
+  "traceback": "Traceback (most recent call last):\n  File \"/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py\", line 1748, in authorized_evaluation\n    a1, a1_metrics = produce_a1(\n                     ^^^^^^^^^^^\n  File \"/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py\", line 1404, in produce_a1\n    hypothesis = exact_module.decode_best_attack_hypothesis(\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py\", line 978, in decode_best_attack_hypothesis\n    return _decode_with_routes(\n           ^^^^^^^^^^^^^^^^^^^^\n  File \"/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py\", line 787, in _decode_with_routes\n    _check_optimal_result(\"primary\", primary)\n  File \"/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py\", line 519, in _check_optimal_result\n    raise ExactDecoderError(\nsrc.decoders.v5_legal_xy_exact_decoder.ExactDecoderError: primary MILP has material or invalid MIP gap: 2.4064574342771067e-14; float64 numerical-zero tolerance=1.4210854715202004e-14\n"
+}

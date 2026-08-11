@@ -1,0 +1,29 @@
+{
+  "D8_train_only_calibration": {
+    "count_policy": false,
+    "endpoint_repair_cost": true,
+    "endpoint_thresholds": false,
+    "graph_threshold": false,
+    "low_route_support_threshold": true,
+    "role_weights": true,
+    "validation_guided_selection": false
+  },
+  "default_role_weights": {
+    "path": 1.0,
+    "transit": 1.0
+  },
+  "deterministic": true,
+  "fail_closed": true,
+  "priorities": [
+    "P0 freeze Raw graph and active count",
+    "P1 find exact endpoint-preserving K-route explanation",
+    "P2 only if infeasible, minimize confidence-sensitive endpoint repair cost",
+    "P3 minimize unweighted endpoint Hamming edits",
+    "P4 maximize transit/path Bernoulli log-likelihood over route-union masks",
+    "P5 deterministic lexicographically smallest route-ID tuple"
+  ],
+  "stage": "V5_P3_D6_EPLR_V1_SEMANTIC_AND_OBJECTIVE_SPECIFICATION_FREEZE",
+  "status": "FROZEN",
+  "style": "lexicographic",
+  "top_k_endpoint_pruning": false
+}

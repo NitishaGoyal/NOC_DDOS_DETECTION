@@ -1,0 +1,79 @@
+{
+  "artifacts": {
+    "current_source_inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_CURRENT_SOURCE_AND_IMPORT_GRAPH_INVENTORY.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_TRAINING_ROUTE_PIN_DECISION.json",
+    "entrypoint_reference_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_A4_AND_REPORT_ENTRYPOINT_REFERENCE_EVIDENCE.json",
+    "frozen_training_route": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_FROZEN_MANUALLY_VERIFIED_TRAINING_ROUTE.json",
+    "historical_git_inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_HISTORICAL_TRAINER_BLOB_INVENTORY.json",
+    "transitive_route_candidates": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_TRANSITIVE_TRAINING_ROUTE_CANDIDATES.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:32:50.947877+00:00",
+  "decision": {
+    "F7_P1_complete": true,
+    "F7_adapter_preflight_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "actual_F7_retraining_authorized": false,
+    "candidate_entrypoint_count": 298,
+    "compact_interface_equivalence_authorized": false,
+    "current_source_count": 300,
+    "eligible_complete_route_count": 0,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "manual_entrypoint_argument_supplied": false,
+    "next_stage": "V5_P3_F7_P1B_MANUAL_ENTRYPOINT_INPUT_REQUIRED",
+    "official_trainer_route_resolved": false,
+    "sealed_test_access": false,
+    "selection_classification": "training_route_still_unresolved",
+    "split_counts_certified": true,
+    "unique_route_fingerprint_count": 0
+  },
+  "finding": {
+    "P1_split_counts_certified": true,
+    "candidate_entrypoint_count": 298,
+    "current_source_count": 300,
+    "historical_git_record_count": 1,
+    "selected_route": null,
+    "selection": {
+      "classification": "training_route_still_unresolved",
+      "eligible_entrypoint_count": 0,
+      "route_groups": [],
+      "selection_rule": "An explicit entrypoint is accepted only if transitive repository imports prove all frozen training-loop evidence. Otherwise choose one uniquely referenced complete route fingerprint.",
+      "unique_route_fingerprint_count": 0
+    },
+    "text_evidence_file_count": 774
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "actual_F7_retraining_authorized": false,
+    "checkpoint_loaded": false,
+    "dataset_getitem_called": false,
+    "dataset_object_constructed": false,
+    "git_history_scanned": true,
+    "model_loaded": false,
+    "scientific_protocol_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "source_code_scanned": true,
+    "training_feature_tensors_loaded": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "F6R_lock_sha256": "ab3573c845beab2aaa8c7120f0f7b9206fe061f559c78ad3e3799623accf0012",
+    "F6R_report_sha256": "020b01b78f57d843a9914729d1a4b4c2d0b866a9bc96df5752133a41d0029065",
+    "F7_P1_lock_sha256": "2f54ae1cb6c7f0e5eed588c79c637d347709d394a194eebe2d4dcb100b6317e9",
+    "F7_P1_report_sha256": "d4406e9929b67a783d0df0bf079aad27f197226c3d9c95b7add1b871d3d89ed9",
+    "F7_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "candidate_review_sha256": "47da844e577106430562871447c59aa1dcb1d0600f3070096dad955fbee3fe90",
+    "decision_sha256": "55c70d751f967de3e1989758bf9584d23be9ff86cd59ab54db0e2e45ea011dfd",
+    "entrypoint_evidence_sha256": "9648b678e9a656e97c6d7930e5b608e0c308714dc0957946c2d6664a4751e8f6",
+    "frozen_route_sha256": "e7aacbe835b8604c16876c2b3e6e07c77d862cfc5e9c7435a0330f9683bf57d0",
+    "git_inventory_sha256": "cbdee89829a641fc0a11f5bd453bbc14e884d0389aa7e31edef4a12a96e346d4",
+    "installed_script_sha256": "5bc38c8702f1ecc9249f96b0935722d9110c16b83c46ad486038817a07bf83ec",
+    "source_inventory_sha256": "a753220e1a667d1d9ace80b0f71f2bb94b7895358ee8a2a7dda6deeb2b931d42",
+    "split_certification_sha256": "3501747fa16b4db289d5552937981ce1fd881295c8d30296b80cecf50c52ea7e"
+  },
+  "scope": "Recover the A4 trainer when no monolithic strict script exists by building a repository-local Python import graph, aggregating training-loop evidence transitively across entrypoint and helper modules, mining A4/report command references, inventorying historical Git blobs, optionally verifying an explicitly supplied entrypoint, freezing one unique complete route fingerprint, and authorizing only the P2 trainer-adapter dry-run preflight.",
+  "stage": "V5_P3_F7_P1A_MANUAL_TRAINING_ROUTE_PIN",
+  "status": "PASS"
+}

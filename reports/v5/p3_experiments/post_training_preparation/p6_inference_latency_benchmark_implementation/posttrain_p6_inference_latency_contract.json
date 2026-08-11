@@ -1,0 +1,77 @@
+{
+  "benchmark_case_contract": {
+    "callable_semantics": "one complete batch-size-1 model forward producing all deployed neural outputs; no decoder and no post-hoc thresholding inside timed region",
+    "module_function": "build_benchmark_case(device: str, precision: str) -> dict",
+    "required_dict_keys": [
+      "callable",
+      "parameter_count",
+      "weight_bytes",
+      "model_sha256",
+      "checkpoint_sha256",
+      "input_contract"
+    ],
+    "setup_excluded_from_timing": [
+      "checkpoint load",
+      "model construction",
+      "device transfer",
+      "input preparation",
+      "archive writing",
+      "metric computation",
+      "decoder",
+      "thresholding"
+    ]
+  },
+  "benchmark_protocol": {
+    "actual_cuda_execution_deferred_until_mainline_gpu_idle": true,
+    "batch_size": 1,
+    "cuda_execution_requires_explicit_gpu_idle_ack": true,
+    "cuda_synchronization": "torch.cuda.synchronize immediately before and after every measured call",
+    "execution_context": "torch.inference_mode",
+    "input_reuse": "same prepared batch/case across timed iterations unless future case module explicitly freezes another policy",
+    "measured_iterations": 1000,
+    "required_device_label": true,
+    "required_precision_label": true,
+    "timing_clock": "time.perf_counter_ns",
+    "warmup_iterations": 100
+  },
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "reported_metrics": [
+    "median_latency_ms",
+    "mean_latency_ms",
+    "p95_latency_ms",
+    "sample_standard_deviation_ms",
+    "minimum_latency_ms",
+    "maximum_latency_ms",
+    "parameter_count",
+    "serialized_or_in_memory_weight_bytes",
+    "peak_cuda_allocated_bytes_if_cuda",
+    "device",
+    "precision",
+    "torch_version",
+    "cuda_version_if_available"
+  ],
+  "scientific_boundary": {
+    "p6_measurement": "model execution latency only",
+    "scientific_model_inference_performed_by_installer": false,
+    "sealed_test_access": false,
+    "security_response_latency_is_separate": true,
+    "security_response_latency_source": "P2 attack-onset evaluator",
+    "training_performed": false
+  },
+  "scope": "benchmark_harness_implementation_only",
+  "sealed_test_policy": {
+    "sealed_test_access": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false
+  },
+  "selftest": {
+    "device": "cpu",
+    "measured_iterations": 20,
+    "uses_cuda": false,
+    "uses_dataset": false,
+    "uses_final_model": false,
+    "warmup_iterations": 5
+  },
+  "stage": "V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_IMPLEMENTATION"
+}

@@ -1,0 +1,89 @@
+{
+  "A_test_access": false,
+  "A_validation_replay": false,
+  "stage": "V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS",
+  "status": "PREFROZEN_TEST_MATRIX",
+  "tests": [
+    {
+      "id": "D12-T01",
+      "name": "inactive_raw",
+      "requirements": [
+        "effective count zero",
+        "all selected role masks zero",
+        "status INACTIVE_RAW"
+      ]
+    },
+    {
+      "id": "D12-T02",
+      "name": "K1_exact_endpoint_preservation",
+      "requirements": [
+        "source and victim exactly Raw",
+        "route certified",
+        "route-derived transit/path"
+      ]
+    },
+    {
+      "id": "D12-T03",
+      "name": "K2_K4_shared_victim_and_union_semantics",
+      "requirements": [
+        "exactly K routes",
+        "shared victims legal",
+        "union masks correct"
+      ]
+    },
+    {
+      "id": "D12-T04",
+      "name": "cross_route_role_overlap",
+      "requirements": [
+        "no global endpoint/transit disjointness",
+        "route union remains valid"
+      ]
+    },
+    {
+      "id": "D12-T05",
+      "name": "infeasible_endpoint_passthrough",
+      "requirements": [
+        "no repair solver invocation",
+        "all four selected role masks equal Raw",
+        "route IDs empty",
+        "route_certified false",
+        "status unresolved passthrough"
+      ]
+    },
+    {
+      "id": "D12-T06",
+      "name": "global_graph_count_source_victim_immutability",
+      "requirements": [
+        "randomized property tests",
+        "bit-identical Raw invariants"
+      ]
+    },
+    {
+      "id": "D12-T07",
+      "name": "D8_calibration_provenance",
+      "requirements": [
+        "transit weight 1.0",
+        "path weight 1.0",
+        "per-K thresholds SHA-locked",
+        "no recalibration"
+      ]
+    },
+    {
+      "id": "D12-T08",
+      "name": "deterministic_repeat",
+      "requirements": [
+        "same logits yield bit-identical outputs",
+        "same route-ID tuple"
+      ]
+    },
+    {
+      "id": "D12-T09",
+      "name": "no_validation_or_test_access",
+      "requirements": [
+        "implementation uses synthetic vectors only",
+        "no D1/D9 output loading",
+        "no A-test loading"
+      ]
+    }
+  ]
+}

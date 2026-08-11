@@ -1,0 +1,233 @@
+{
+  "architecture": {
+    "count_class_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "count_logits": 4,
+    "edge_index_model_input": false,
+    "graph_message_passing": false,
+    "name": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY_P2_COUNT4",
+    "only_change_from_p0_b3": "count_head Linear(64,3) -> Linear(64,4)",
+    "parameter_count": 43273,
+    "trainable_parameter_count": 43273
+  },
+  "artifacts": {
+    "architecture_contract_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r2_count_head_expansion_a4_repeat/V5_P2_B0_R2_P2_B3_COUNT4_ARCHITECTURE_CONTRACT.json",
+      "ce482318b69cb756540efc621a956b47de5de2174829d63ed7be62b3841e6792"
+    ],
+    "history_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r2_count_head_expansion_a4_repeat/V5_P2_B0_R2_A4_REPEAT_HISTORY.csv",
+      "ffdfd41d2e1541e8c2b3736e7ccb39c858178871a33029c97915c20b87bc3847"
+    ],
+    "selection_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r2_count_head_expansion_a4_repeat/V5_P2_B0_R2_A4_REPEAT_SELECTION.json",
+      "6e48a371f28b2495dcd2f8033f44ab8b0cb2d5fd6265325abb11b3c01b0dee75"
+    ]
+  },
+  "dataset": {
+    "link_path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph"
+  },
+  "decision": "FREEZE_P2_B3_COUNT4_AND_AUTHORIZE_CORRECTED_B0_R3_SHORTCUT_AUDIT",
+  "failures": [],
+  "next_stage": "V5_P2_B0_R3_CORRECTED_NONTEST_LABEL_AND_SHORTCUT_AUDIT",
+  "protocol": {
+    "audit_weights_authorized_for_reuse": false,
+    "audit_weights_saved": false,
+    "count_loss_scope": "active attack items only",
+    "device": "cuda",
+    "learning_rate": 0.01,
+    "loss_weights": {
+      "attack": 1.0,
+      "count": 0.5,
+      "path": 0.5,
+      "source": 1.0,
+      "transit": 0.5,
+      "victim": 0.75
+    },
+    "maximum_steps": 4000,
+    "optimizer": "Adam",
+    "required_stable_exact_steps": 20,
+    "role_mask_loss_applied": false,
+    "seed": 2405
+  },
+  "provenance": {
+    "a1_r2_lock_sha256": "9f3630da32b621a0b766113eb9797289b8321ad3778bb33b5f4d7ec17c1263a4",
+    "a1_r2_report_sha256": "3762529be85efba13eff00dc6953f7e4474abfb8373084bb7e15dca9f23e9dc0",
+    "a3_lock_sha256": "dd4546f4a68043f8dea8cc797ac3ec62962dfab5b55a1b2d43ea72f84e483786",
+    "a3_report_sha256": "5c94e1bd36eb91aff3644a2c96698137d9fa7d2b375b93c34ce30e44a09ebc02",
+    "b0_r1b_lock_sha256": "a979ea4fdc5a8d9b1e0aa79de543b1a90fe275cce33c66b27dc65fd3e93b08b0",
+    "b0_r1b_report_sha256": "23995d085b872a1689d1bcd8b713fdea5d10987632853b955fd2605f0bb44e97",
+    "historical_a4_lock_sha256": "63b91a1eff7d75f8af1c383cea40328fdc25742acaeb50cd7cf8fa7722a3af46",
+    "historical_a4_report_sha256": "16741461461f0c1f202823e40cc400423570483a311cca5578e3aa903e1e7476",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "pair_manifest_sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5"
+  },
+  "purpose": "minimal P2 count-head correction and train-only integration repeat; not final P2 training",
+  "results": {
+    "completed_step": 73,
+    "final_loss": 0.00044685223838314414,
+    "final_metrics": {
+      "all_tasks_all_exact": true,
+      "count_active_accuracy": 1.0,
+      "count_all_exact": true,
+      "graph": {
+        "all_exact": true,
+        "element_accuracy": 1.0,
+        "exact_item_accuracy": 1.0
+      },
+      "roles": {
+        "path": {
+          "all_exact": true,
+          "element_accuracy": 1.0,
+          "exact_item_accuracy": 1.0
+        },
+        "source": {
+          "all_exact": true,
+          "element_accuracy": 1.0,
+          "exact_item_accuracy": 1.0
+        },
+        "transit": {
+          "all_exact": true,
+          "element_accuracy": 1.0,
+          "exact_item_accuracy": 1.0
+        },
+        "victim": {
+          "all_exact": true,
+          "element_accuracy": 1.0,
+          "exact_item_accuracy": 1.0
+        }
+      }
+    },
+    "initial_loss": 4.835493564605713,
+    "loss_reduction_fraction": 0.9999075891152759,
+    "maximum_gradient_norm": 7.656839756153029,
+    "maximum_nonzero_gradient_parameter_tensors": 42,
+    "stable_exact_steps": 20
+  },
+  "security_boundary": {
+    "audit_weights_saved": false,
+    "final_experiment_training_performed": false,
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_labels_read": false,
+    "test_tensor_bytes_read": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "train_tensor_contents_accessed": true,
+    "training_performed": true,
+    "training_scope": "fixed 16-item train-only audit batch",
+    "validation_tensor_contents_accessed": false
+  },
+  "stage": "V5_P2_B0_R2_COUNT_HEAD_EXPANSION_AND_A4_REPEAT",
+  "status": "COMPLETE",
+  "tiny_subset": {
+    "active_attack_count": 8,
+    "active_raw_counts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "control_count": 8,
+    "count_class_mapping": {
+      "1": 0,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "item_count": 16,
+    "pair_count": 8,
+    "role_mask_bitfield_mismatch_count": 0,
+    "selected_pairs": [
+      {
+        "attack_index": 172,
+        "category": 1,
+        "common_length": 722,
+        "control_index": 173,
+        "pair_key": "P2TR-K1-001",
+        "raw_positive_attacker_count": 1,
+        "window_start": 688,
+        "window_target": 719
+      },
+      {
+        "attack_index": 342,
+        "category": 1,
+        "common_length": 707,
+        "control_index": 343,
+        "pair_key": "P2TR-K1-002",
+        "raw_positive_attacker_count": 1,
+        "window_start": 672,
+        "window_target": 703
+      },
+      {
+        "attack_index": 20454,
+        "category": 2,
+        "common_length": 707,
+        "control_index": 20455,
+        "pair_key": "P2TR-K2-123",
+        "raw_positive_attacker_count": 2,
+        "window_start": 272,
+        "window_target": 303
+      },
+      {
+        "attack_index": 20662,
+        "category": 2,
+        "common_length": 709,
+        "control_index": 20663,
+        "pair_key": "P2TR-K2-124",
+        "raw_positive_attacker_count": 2,
+        "window_start": 424,
+        "window_target": 455
+      },
+      {
+        "attack_index": 39312,
+        "category": 3,
+        "common_length": 698,
+        "control_index": 39313,
+        "pair_key": "P2TR-K3-241",
+        "raw_positive_attacker_count": 3,
+        "window_start": 264,
+        "window_target": 295
+      },
+      {
+        "attack_index": 39516,
+        "category": 3,
+        "common_length": 693,
+        "control_index": 39517,
+        "pair_key": "P2TR-K3-242",
+        "raw_positive_attacker_count": 3,
+        "window_start": 408,
+        "window_target": 439
+      },
+      {
+        "attack_index": 55686,
+        "category": 4,
+        "common_length": 697,
+        "control_index": 55687,
+        "pair_key": "P2TR-K4-361",
+        "raw_positive_attacker_count": 4,
+        "window_start": 608,
+        "window_target": 639
+      },
+      {
+        "attack_index": 55868,
+        "category": 4,
+        "common_length": 702,
+        "control_index": 55869,
+        "pair_key": "P2TR-K4-362",
+        "raw_positive_attacker_count": 4,
+        "window_start": 664,
+        "window_target": 695
+      }
+    ]
+  },
+  "warnings": []
+}

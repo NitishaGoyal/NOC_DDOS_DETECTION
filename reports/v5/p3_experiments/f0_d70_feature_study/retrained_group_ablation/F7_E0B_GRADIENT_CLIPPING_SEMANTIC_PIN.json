@@ -1,0 +1,37 @@
+{
+  "after_backward": true,
+  "before_optimizer_step": true,
+  "calls": [
+    {
+      "enclosing_function": "train_one_epoch",
+      "excerpt": "        gradient_norm = torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            max_norm=gradient_clip,\n        )",
+      "excerpt_sha256": "69f6ccf151f9b58ac2fedbe9c88ecfc97450d089abf19407b431b024fe2de080",
+      "implementation": "torch.nn.utils.clip_grad_norm_",
+      "line_end": 551,
+      "line_start": 548,
+      "loop_ancestors": [
+        {
+          "iterator": "loader",
+          "line_start": 527,
+          "target": "batch",
+          "type": "for"
+        }
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_clip)",
+      "threshold": {
+        "argument_route": "keyword",
+        "assignment_count": 0,
+        "expression": "gradient_clip",
+        "keyword": "max_norm",
+        "reason": "symbol_not_found",
+        "resolved": false,
+        "resolved_candidate_values": [],
+        "symbol": "gradient_clip"
+      }
+    }
+  ],
+  "clip_call_count": 1,
+  "policy": "ACTIVE_SINGLE_GRADIENT_CLIP",
+  "threshold_resolved": false
+}

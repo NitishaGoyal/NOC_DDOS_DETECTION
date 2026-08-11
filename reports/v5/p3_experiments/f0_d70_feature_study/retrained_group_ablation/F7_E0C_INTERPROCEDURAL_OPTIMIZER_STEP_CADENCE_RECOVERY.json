@@ -1,0 +1,116 @@
+{
+  "all_paths_batch": true,
+  "all_paths_epoch": true,
+  "cadence": "ONE_STEP_PER_TRAINING_BATCH_WITHIN_EPOCH",
+  "optimizer_constructor": {
+    "implementation": "torch.optim.adamw.AdamW",
+    "record": {
+      "excerpt": "    optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=1e-3,\n        betas=(0.9, 0.999),\n        eps=1e-8,\n        weight_decay=1e-4,\n    )",
+      "excerpt_sha256": "08ff5d5583f668ad11af319066ab8a77e2e351ce4a7df3416192b55d1cdbc745",
+      "line_end": 1398,
+      "line_start": 1392,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "torch.optim.AdamW(model.parameters(), lr=0.001, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.0001)"
+    },
+    "variable": "optimizer"
+  },
+  "optimizer_step": {
+    "base": "optimizer",
+    "context": {
+      "all_paths_batch": true,
+      "all_paths_epoch": true,
+      "any_path_batch": true,
+      "any_path_epoch": true,
+      "direct_context": {
+        "batch": true,
+        "epoch": false,
+        "loops": [
+          {
+            "iterator": "loader",
+            "line_start": 527,
+            "target": "batch",
+            "type": "for"
+          }
+        ]
+      },
+      "execution_paths": [
+        {
+          "batch": true,
+          "callsites": [
+            {
+              "callee": "main",
+              "caller": null,
+              "direct_loop_context": {
+                "batch": false,
+                "epoch": false,
+                "loops": []
+              },
+              "record": {
+                "excerpt": "    raise SystemExit(main())",
+                "excerpt_sha256": "cc79ea1de8f5cf7c4f02e7b43c494b1ae782416b138c209cd6f7b5ff347fc48c",
+                "line_end": 1908,
+                "line_start": 1908,
+                "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                "source": "main()"
+              }
+            },
+            {
+              "callee": "train_one_epoch",
+              "caller": "main",
+              "direct_loop_context": {
+                "batch": false,
+                "epoch": true,
+                "loops": [
+                  {
+                    "iterator": "range(1, 101)",
+                    "line_start": 1462,
+                    "target": "epoch",
+                    "type": "for"
+                  }
+                ]
+              },
+              "record": {
+                "excerpt": "        train_metrics = train_one_epoch(\n            model=model,\n            loader=train_loader,\n            optimizer=optimizer,\n            device=device,\n            graph_pos_weight=graph_pos_weight,\n            role_pos_weights=role_pos_weights,\n            gradient_clip=1.0,\n        )",
+                "excerpt_sha256": "046c6bf6a6862800acfa0e1c7bf7f051077807cd71ba666ad860ef7a02a8de20",
+                "line_end": 1474,
+                "line_start": 1466,
+                "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+                "source": "train_one_epoch(model=model, loader=train_loader, optimizer=optimizer, device=device, graph_pos_weight=graph_pos_weight, role_pos_weights=role_pos_weights, gradient_clip=1.0)"
+              }
+            }
+          ],
+          "direct_node_context": {
+            "batch": true,
+            "epoch": false,
+            "loops": [
+              {
+                "iterator": "loader",
+                "line_start": 527,
+                "target": "batch",
+                "type": "for"
+              }
+            ]
+          },
+          "epoch": true,
+          "path": [
+            "<module>",
+            "main",
+            "train_one_epoch"
+          ]
+        }
+      ],
+      "function": "train_one_epoch"
+    },
+    "function": "train_one_epoch",
+    "record": {
+      "excerpt": "        optimizer.step()",
+      "excerpt_sha256": "cdf624930347aab933f7ecb21fd067333b0ec7d2869498c65605e80a96fd9c7f",
+      "line_end": 557,
+      "line_start": 557,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "source": "optimizer.step()"
+    }
+  },
+  "optimizer_step_count": 1,
+  "semantics_resolved": true
+}

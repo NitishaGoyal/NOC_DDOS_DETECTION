@@ -1,0 +1,147 @@
+{
+  "allowed_next_action": "Construct an isolated F7 adapter around this composite route and perform no-mask plus one masked single-batch forward/backward dry runs. No scientific checkpoint or metric may be produced in P2.",
+  "components": {
+    "adapter": {
+      "path": "/home/zira/research/projects/GNN-2d/src/evaluation/v5_p3_f4m_canonical_metric_adapter.py",
+      "sha256": "9e2a9f36339550b86dee6d19e3b0403a9f70c06c8ad9afcf20c0c4797eba4384"
+    },
+    "checkpoint": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+      "sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979"
+    },
+    "loader": {
+      "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+      "sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de"
+    },
+    "model": {
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+      "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+    },
+    "training_loop_skeleton": {
+      "evidence": {
+        "backward": true,
+        "checkpoint_save": true,
+        "dataloader": true,
+        "epoch_loop": true,
+        "optimizer_step": true,
+        "train_split": true,
+        "validation_split": true,
+        "zero_grad": true
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+    }
+  },
+  "dataset": {
+    "sealed_test_access": false,
+    "symlink": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+    "target": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+    "train_items": 110855,
+    "validation_items": 13863
+  },
+  "masking_protocol": {
+    "control_run": "identical code path with no channel group masked",
+    "edge_index_operation": "unchanged",
+    "labels_operation": "unchanged",
+    "mask_insertion_point": "after the official guarded loader returns normalized model-input x and before the first model forward pass",
+    "model_parameter_count_preserved": 60553,
+    "no_compact_model_in_F7": true,
+    "no_parameter_pruning_in_F7": true,
+    "operation": "clone x and set x[:, :, start:end, :] = 0.0 for exactly one frozen macro-group",
+    "physical_port_mask_operation": "unchanged",
+    "tensor_shape_preserved": [
+      16,
+      70,
+      32
+    ],
+    "zero_semantics": "zero in the official post-loader model-input space; this is an information-suppression intervention, not a claim that zero is the physical mean of the raw counter"
+  },
+  "model": {
+    "class": "V6P0Dynamic70GraphConvCount4",
+    "parameter_count": 60553
+  },
+  "not_claimed": [
+    "byte-identical reproduction of the missing A4 trainer",
+    "independent validation",
+    "feature-removal authorization"
+  ],
+  "route_type": "artifact_anchored_reconstructed_F7_training_route",
+  "run_matrix": [
+    {
+      "channel_end_exclusive": null,
+      "channel_start": null,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": null,
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "control_dynamic70",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 10,
+      "channel_start": 0,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "directional_traffic_volume",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_directional_traffic_volume",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 30,
+      "channel_start": 10,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "inter_flit_timing",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_inter_flit_timing",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 40,
+      "channel_start": 30,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "queue_activity",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_queue_activity",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 55,
+      "channel_start": 40,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "buffer_pressure",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_buffer_pressure",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    },
+    {
+      "channel_end_exclusive": 70,
+      "channel_start": 55,
+      "checkpoint_selection_split": "Tranche-A validation only",
+      "group_masked": "flow_control_stalls",
+      "input_width": 70,
+      "parameter_count": 60553,
+      "run_id": "ablate_flow_control_stalls",
+      "sealed_test_access": false,
+      "seed": 107,
+      "training_split": "Tranche-A train only"
+    }
+  ],
+  "scientific_interpretation": "The exact monolithic A4 trainer source is unavailable. F7 will therefore use a separately declared reconstructed route composed of the verified V5-P2 optimization-loop skeleton plus the certified V6P0 Dynamic70 model, guarded Tranche-A loader, canonical metric adapter, A4/F4 checkpoint-selection lineage and the frozen F7 masking protocol.",
+  "seed": 107,
+  "selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+  "status": "FROZEN"
+}

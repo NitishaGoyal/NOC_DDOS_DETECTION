@@ -1,0 +1,8 @@
+class GCNLayer(nn.Module):
+    def __init__(self, in_dim: int, out_dim: int):
+        super().__init__()
+        self.linear = nn.Linear(in_dim, out_dim)
+
+    def forward(self, h: torch.Tensor, a_hat: torch.Tensor) -> torch.Tensor:
+        aggregate = torch.einsum("ij,bjf->bif", a_hat, h)
+        return self.linear(aggregate)

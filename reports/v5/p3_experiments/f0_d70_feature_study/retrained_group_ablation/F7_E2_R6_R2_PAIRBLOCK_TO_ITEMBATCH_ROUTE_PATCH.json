@@ -1,0 +1,282 @@
+{
+  "active_pair_block_sampler_call_count": 0,
+  "active_validation_sampler_load_count": 0,
+  "all_odd_training_items_retained": true,
+  "compute_loss_not_targeted": true,
+  "corrected_loader_routes": {
+    "train_loader": {
+      "batch_size": 256,
+      "default_collate": true,
+      "drop_last": false,
+      "generator_present": true,
+      "generator_source": "train_sampler.generator",
+      "shuffle": true,
+      "source": "DataLoader(train_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=True, drop_last=False, generator=train_sampler.generator)"
+    },
+    "validation_loader": {
+      "batch_size": 256,
+      "default_collate": true,
+      "drop_last": false,
+      "generator_present": false,
+      "generator_source": null,
+      "shuffle": false,
+      "source": "DataLoader(validation_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=False, drop_last=False)"
+    }
+  },
+  "default_collate": true,
+  "deterministic_epoch_specific_train_shuffle": true,
+  "deterministic_train_shuffle_generator": true,
+  "drop_last": false,
+  "early_stop_not_targeted": true,
+  "effective_item_batch_size": 256,
+  "effective_item_batch_size_resolution": "unique_frozen_batch_geometry",
+  "epoch_shuffle_controller": {
+    "class": "F7EpochShuffleController",
+    "generator_use_count": 1,
+    "seed_formula": "base_seed_plus_epoch",
+    "set_epoch_use_count": 1,
+    "unexpected_use_count": 0
+  },
+  "failure_classification": "R4_assumed_semantic_pair_count_parameter_name_but_sampler_signature_uses_a_neutral_parameter_name",
+  "feature_masking_not_targeted": true,
+  "final_item_batch_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_item_batch.py",
+  "final_item_batch_trainer_sha256": "9eab988c3733d76a2ebcf7490555c3db8acf8d1d9e9e37b1619d7aba2cae5fa9",
+  "frozen_batch_geometry": {
+    "intersection": [
+      256
+    ],
+    "legacy_train_admissible_item_batch_sizes": [
+      256
+    ],
+    "legacy_train_batches": 275,
+    "legacy_train_items": 70166,
+    "legacy_validation_admissible_item_batch_sizes": [
+      256,
+      257,
+      258,
+      259,
+      260
+    ],
+    "legacy_validation_batches": 49,
+    "legacy_validation_items": 12528,
+    "unique_effective_item_batch_size": 256
+  },
+  "input_cardinality_corrected_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer_e2_r6_r2_legacy_guards.py",
+  "input_cardinality_corrected_trainer_sha256": "ffef481257a0a62830a2382851d08248da8084418039edb92c971580f23bba79",
+  "legacy_set_epoch_use_preserved": true,
+  "loader_routes": {
+    "train_loader": {
+      "assignment_line": 1369,
+      "batch_size": 256,
+      "corrected_call": "DataLoader(train_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=True, drop_last=False, generator=train_sampler.generator)",
+      "default_collate": true,
+      "drop_last": false,
+      "generator_seeded": true,
+      "original_call": "DataLoader(train_dataset, batch_sampler=train_sampler, num_workers=0, pin_memory=pin_memory)",
+      "shuffle": true
+    },
+    "validation_loader": {
+      "assignment_line": 1375,
+      "batch_size": 256,
+      "corrected_call": "DataLoader(validation_dataset, num_workers=0, pin_memory=pin_memory, batch_size=256, shuffle=False, drop_last=False)",
+      "default_collate": true,
+      "drop_last": false,
+      "generator_seeded": false,
+      "original_call": "DataLoader(validation_dataset, batch_sampler=validation_sampler, num_workers=0, pin_memory=pin_memory)",
+      "shuffle": false
+    }
+  },
+  "model_architecture_not_targeted": true,
+  "optimizer_scheduler_clipping_not_targeted": true,
+  "recovery_method": "derive_effective_item_batch_size_from_frozen_cardinality_and_batch_count_geometry_not_parameter_naming",
+  "remaining_pair_text_inventory": [
+    {
+      "line": 15,
+      "text": "The pair-block sampler preserves ATTACK/CONTROL adjacency and shuffles"
+    },
+    {
+      "line": 16,
+      "text": "pair-aligned two-item blocks deterministically. Blocks remain grouped by run"
+    },
+    {
+      "line": 17,
+      "text": "pair while loading to avoid pathological repeated .pt deserialization; pair"
+    },
+    {
+      "line": 341,
+      "text": "class PairBlockBatchSampler(Sampler[list[int]]):"
+    },
+    {
+      "line": 345,
+      "text": "    Pair groups are shuffled each epoch, and starts are shuffled inside each"
+    },
+    {
+      "line": 346,
+      "text": "    pair group. The flattened block stream is then batched into 128 blocks"
+    },
+    {
+      "line": 378,
+      "text": "                or attack.pair_key != control.pair_key"
+    },
+    {
+      "line": 383,
+      "text": "                    f\"pair-block contract failed at base {base}\""
+    },
+    {
+      "line": 387,
+      "text": "                attack.pair_key,"
+    },
+    {
+      "line": 398,
+      "text": "            raise RuntimeError(\"pair-block count does not cover dataset\")"
+    },
+    {
+      "line": 413,
+      "text": "        pair_keys = list(self.groups)"
+    },
+    {
+      "line": 415,
+      "text": "            rng.shuffle(pair_keys)"
+    },
+    {
+      "line": 418,
+      "text": "        for pair_key in pair_keys:"
+    },
+    {
+      "line": 419,
+      "text": "            blocks = list(self.groups[pair_key])"
+    },
+    {
+      "line": 1238,
+      "text": "        pair_manifest=("
+    },
+    {
+      "line": 1246,
+      "text": "                        \"pair_manifest_path\""
+    },
+    {
+      "line": 1250,
+      "text": "                    \"pair_manifest_path\""
+    },
+    {
+      "line": 1255,
+      "text": "                    / \"p2_a1_r2_pair_aligned_window_contract\""
+    },
+    {
+      "line": 1256,
+      "text": "                    / \"V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv\""
+    },
+    {
+      "line": 1264,
+      "text": "        pair_manifest=train_dataset.pair_manifest,"
+    },
+    {
+      "line": 1683,
+      "text": "            \"pair_block_batch_size\": 128,"
+    },
+    {
+      "line": 1690,
+      "text": "            \"pair_keys_used_for_loading_only\": True,"
+    },
+    {
+      "line": 1691,
+      "text": "            \"pair_keys_returned_to_model\": False,"
+    }
+  ],
+  "restart_at_epoch_boundary_reproducible": true,
+  "sampler_routes": {
+    "train_sampler": {
+      "assignment_line": 1356,
+      "bound_arguments": {
+        "block_batch_size": {
+          "resolved_type": "int",
+          "resolved_value": 128,
+          "source": "128"
+        },
+        "dataset": {
+          "resolved_type": null,
+          "resolved_value": null,
+          "source": "train_dataset"
+        },
+        "seed": {
+          "resolved_type": null,
+          "resolved_value": null,
+          "source": "seed"
+        },
+        "shuffle": {
+          "resolved_type": "bool",
+          "resolved_value": true,
+          "source": "True"
+        }
+      },
+      "diagnostic_128_candidates": [
+        {
+          "parameter": "block_batch_size",
+          "resolved_value": 128,
+          "source": "128"
+        }
+      ],
+      "effective_item_batch_size": 256,
+      "effective_item_batch_size_resolution": "unique_frozen_batch_geometry",
+      "original_call": "PairBlockBatchSampler(train_dataset, block_batch_size=128, shuffle=True, seed=seed)",
+      "pair_count_name_required_for_patch": false,
+      "replacement_value": "F7EpochShuffleController(seed)",
+      "seed_resolution": "bound_parameter:seed",
+      "seed_source": "seed",
+      "shuffle": true,
+      "shuffle_resolution": "signature_or_call_binding",
+      "shuffle_source": "shuffle=True",
+      "signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int"
+    },
+    "validation_sampler": {
+      "assignment_line": 1362,
+      "bound_arguments": {
+        "block_batch_size": {
+          "resolved_type": "int",
+          "resolved_value": 128,
+          "source": "128"
+        },
+        "dataset": {
+          "resolved_type": null,
+          "resolved_value": null,
+          "source": "validation_dataset"
+        },
+        "seed": {
+          "resolved_type": null,
+          "resolved_value": null,
+          "source": "seed"
+        },
+        "shuffle": {
+          "resolved_type": "bool",
+          "resolved_value": false,
+          "source": "False"
+        }
+      },
+      "diagnostic_128_candidates": [
+        {
+          "parameter": "block_batch_size",
+          "resolved_value": 128,
+          "source": "128"
+        }
+      ],
+      "effective_item_batch_size": 256,
+      "effective_item_batch_size_resolution": "unique_frozen_batch_geometry",
+      "original_call": "PairBlockBatchSampler(validation_dataset, block_batch_size=128, shuffle=False, seed=seed)",
+      "pair_count_name_required_for_patch": false,
+      "replacement_value": "None",
+      "seed_resolution": "bound_parameter:seed",
+      "seed_source": "seed",
+      "shuffle": false,
+      "shuffle_resolution": "signature_or_call_binding",
+      "shuffle_source": "shuffle=False",
+      "signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int"
+    }
+  },
+  "sampler_signature": "self, dataset, *, block_batch_size: int, shuffle: bool, seed: int",
+  "train_batches": 434,
+  "train_items": 110855,
+  "train_shuffle": true,
+  "validation_batches": 55,
+  "validation_items": 13863,
+  "validation_shuffle": false
+}

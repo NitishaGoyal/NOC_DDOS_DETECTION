@@ -1,0 +1,33 @@
+{
+  "bootstrap": {
+    "deterministic_group_seed": "SHA256(base_seed|label|factor|level|metric)",
+    "reps": 2000,
+    "unit": "whole run"
+  },
+  "bug": "R3 returned None whenever max observed time < tau, even if all subjects had already experienced the event and KM survival was zero.",
+  "correction": "If risk set is empty and KM survival is zero before tau, remaining RMST area is zero; only positive-survival exhaustion remains non-estimable.",
+  "created_utc": "2026-08-08T00:46:32.547502+00:00",
+  "governance": {
+    "decoder": false,
+    "new_inference": false,
+    "sealed_test_access": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "scope": "RMST point estimates and RMST bootstrap CI only",
+  "source_R3_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r3_stratified_response_robustness/V5_P3_MC6_R3_STRATIFIED_RESPONSE_ROBUSTNESS_LOCK.json",
+  "source_R3_lock_sha256": "a3fd569bf54f3b2b2599bc92ac954de9e7850fdb4462498ac8e192f127f72afe",
+  "source_R3_perrun_sha256": "6c7b14964588519b69d1605875200760a0e2994f0cb0f54bf4ec52beff416b64",
+  "source_R3_summary_sha256": "7bfeedc67b34fc8a65d02da937a9c704e7b22d225d3f95547b5b7e5007c13437",
+  "stage": "V5_P3_MC6_R3_R1_RMST_NUMERICAL_CORRECTION",
+  "status": "NUMERICAL_CORRECTION_FREEZE",
+  "unchanged_outputs": [
+    "event fractions",
+    "Wilson CI",
+    "KM curves",
+    "KM medians",
+    "KM p95/NR",
+    "decision-opportunity metrics",
+    "q2 excess metrics"
+  ]
+}

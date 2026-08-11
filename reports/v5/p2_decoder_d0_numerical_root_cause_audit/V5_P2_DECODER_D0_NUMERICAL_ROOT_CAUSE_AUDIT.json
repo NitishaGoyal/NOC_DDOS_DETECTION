@@ -1,0 +1,146 @@
+{
+  "F1_bound": {
+    "artifact_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/V5_P2_FINAL_F1_POST_INFERENCE_NUMERICAL_FAILURE_DISPOSITION.json",
+    "artifact_sha256": "0265de528df00fc84186688ad64621a1ac688a7aae65b2381f93fb8757c372e8",
+    "classification": "POST_INFERENCE_MID_A1_NUMERICAL_CERTIFICATION_ABORT"
+  },
+  "artifact": {
+    "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_decoder_d0_numerical_root_cause_audit/V5_P2_DECODER_D0_NUMERICAL_ROOT_CAUSE_AUDIT.json",
+    "sha256": "671c6524810a765a0fc54116afd1fe3fd2e1599780310f3b379b6920c8708d81"
+  },
+  "control_flow_proof": {
+    "gate_order": [
+      "solver_success_and_status_zero",
+      "reported_mip_gap_numerical_zero",
+      "solution_and_objective_present"
+    ],
+    "observed_gap_exception_implication": {
+      "reason": "The gap exception can only execute after the success/status gate, but before the x/fun presence gate.",
+      "solution_presence_not_proven_by_this_exception": true,
+      "solver_status": 0,
+      "solver_success": true
+    },
+    "source_excerpt": "def _check_optimal_result(name: str, result: object) -> None:\n    success = bool(getattr(result, \"success\", False))\n    status = int(getattr(result, \"status\", -1))\n    mip_gap = float(getattr(result, \"mip_gap\", np.inf))\n\n    if not success or status != 0:\n        raise ExactDecoderError(\n            f\"{name} MILP did not terminate optimally: \"\n            f\"status={status}, message={getattr(result, 'message', None)!r}\"\n        )\n\n    if not mip_gap_is_numerical_zero(mip_gap):\n        raise ExactDecoderError(\n            f\"{name} MILP has material or invalid MIP gap: {mip_gap!r}; \"\n            f\"float64 numerical-zero tolerance=\"\n            f\"{MIP_GAP_REPORTING_TOLERANCE:.17g}\"\n        )\n\n    if getattr(result, \"x\", None) is None or getattr(result, \"fun\", None) is None:\n        raise ExactDecoderError(f\"{name} MILP returned no solution\")\n",
+    "verified": true
+  },
+  "created_utc": "2026-08-01T14:26:59.968652+00:00",
+  "frozen_sources": {
+    "decoder_source": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+      "sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c"
+    },
+    "recovery_evaluator": {
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py",
+      "sha256": "770ad8937427c32680c1cced7b3040bf6055662615c88edbf544e8805d9fe7c9"
+    },
+    "route_library": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_xy_route_library.py",
+      "sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+    }
+  },
+  "next_stage": "V5_P2_DECODER_D1_PROSPECTIVE_NUMERICAL_CERTIFICATION_POLICY_FREEZE",
+  "observed_failure": {
+    "float64_epsilon": 2.220446049250313e-16,
+    "gap_excess": 9.853719627569063e-15,
+    "gap_to_old_tolerance_ratio": 1.693393875670834,
+    "observed_gap_fraction_of_1e_12": 0.024064574342771067,
+    "observed_gap_in_eps": 108.37720804293338,
+    "old_tolerance": 1.4210854715202004e-14,
+    "old_tolerance_in_eps": 64.0,
+    "reported_mip_gap": 2.4064574342771067e-14
+  },
+  "prior_full_validation_evidence": {
+    "all_items_high_precision_semantic_face_certified": true,
+    "all_items_mip_gap_numerical_zero_certified": true,
+    "all_items_optimality_proven": true,
+    "maximum_lexicographic_reported_mip_gap": 0.0,
+    "maximum_primary_reported_mip_gap": 1.6734456776828493e-15,
+    "report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION.json",
+    "report_sha256": "9059b2354d143cd911e32e532312c708b46cd265aa48e0a28daa9b0b4443c5e7",
+    "validation_items": 12528
+  },
+  "root_cause": {
+    "D1_candidate_not_yet_frozen": {
+      "reported_gap_ceiling": 1e-12,
+      "required_additional_checks": [
+        "solver success and optimal status",
+        "solution and objective present",
+        "independent bounds and linear-constraint feasibility",
+        "independent integrality check",
+        "independent objective recomputation",
+        "legal route and union-mask reconstruction",
+        "raw gap logging"
+      ]
+    },
+    "classification": "OVERLY_BRITTLE_MIP_GAP_REPORTING_GATE_AT_MACHINE_EPSILON_SCALE",
+    "confidence": "HIGH_FOR_GATE_CAUSE_LIMITED_FOR_FAILED_ITEM_CERTIFICATE",
+    "decision": "PROCEED_TO_D1_PROSPECTIVE_NUMERICAL_CERTIFICATION_POLICY_DESIGN",
+    "established": {
+      "exception_originated_in_gap_reporting_gate": true,
+      "observed_gap_exceeds_old_gate": true,
+      "observed_gap_is_below_1e_12": true,
+      "observed_gap_is_finite_and_nonnegative": true,
+      "old_gate_is_64_float64_eps": true,
+      "solver_returned_success_and_status_zero": true,
+      "validation_sample_determinism_passed": true,
+      "validation_sample_route_legality_passed": true
+    },
+    "not_established": {
+      "failed_test_item_integrality_rechecked": false,
+      "failed_test_item_objective_recomputed": false,
+      "failed_test_item_primal_feasibility_rechecked": false,
+      "failed_test_item_route_legality_rechecked": false,
+      "failed_test_item_solver_vector_persisted": false,
+      "reason": "The frozen evaluator did not persist the failed MILP result or neural-output archive before the A1 exception."
+    }
+  },
+  "security_boundary": {
+    "authorization_created": false,
+    "decoder_source_modified": false,
+    "model_checkpoint_loaded": false,
+    "neural_inference_performed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_path_formed": false,
+    "test_tensors_deserialized": false,
+    "validation_archive_read": true
+  },
+  "stage": "V5_P2_DECODER_D0_NUMERICAL_ROOT_CAUSE_AUDIT",
+  "status": "COMPLETE",
+  "synthetic_gate_audit": {
+    "diagnostic_1e_12_candidate_accepts_observed_gap": true,
+    "infinite_gap_rejected": true,
+    "messages": {
+      "infinite": "synthetic MILP has material or invalid MIP gap: inf; float64 numerical-zero tolerance=1.4210854715202004e-14",
+      "negative": "synthetic MILP has material or invalid MIP gap: -2.220446049250313e-16; float64 numerical-zero tolerance=1.4210854715202004e-14",
+      "next_above_old": "synthetic MILP has material or invalid MIP gap: 1.4210854715202007e-14; float64 numerical-zero tolerance=1.4210854715202004e-14",
+      "observed_gap": "synthetic MILP has material or invalid MIP gap: 2.4064574342771067e-14; float64 numerical-zero tolerance=1.4210854715202004e-14"
+    },
+    "negative_gap_rejected": true,
+    "next_float_above_old_boundary": 1.4210854715202007e-14,
+    "next_float_above_old_boundary_rejected": true,
+    "observed_gap_rejected": true,
+    "old_boundary_accepted": true,
+    "zero_gap_accepted": true
+  },
+  "validation_sample_audit": {
+    "all_high_precision_certificates_verified": true,
+    "all_route_library_masks_verified": true,
+    "all_unique_source_constraints_verified": true,
+    "archive_manifest_path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_e1_immutable_validation_logit_archive/ARCHIVE_MANIFEST.json",
+    "archive_manifest_sha256": "ac7a38fd1f4b00b578254d9253418655aa78b6cc7a7a1d65f78ba15487b14604",
+    "audited_indices_sha256": "38c63e1ead01de647583cc497e8e9c16c1ad8b416e5e2200ebb7c6e8cba1ef5a",
+    "audited_items": 512,
+    "determinism_repeated_items": 16,
+    "determinism_verified": true,
+    "first_index": 0,
+    "last_index": 12527,
+    "maximum_high_precision_semantic_face_difference": 0.0,
+    "maximum_lexicographic_mip_gap": 0.0,
+    "maximum_primary_mip_gap": 0.0,
+    "selection": "deterministic_evenly_spaced",
+    "total_high_precision_candidate_rejections": 0,
+    "total_validation_items": 12528
+  }
+}

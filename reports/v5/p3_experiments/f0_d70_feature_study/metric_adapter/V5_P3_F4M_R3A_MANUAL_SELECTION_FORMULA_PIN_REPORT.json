@@ -1,0 +1,355 @@
+{
+  "artifacts": {
+    "adapter_contract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3A_CANONICAL_14_METRIC_ADAPTER_CONTRACT.json",
+    "component_alignment": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3A_CHECKPOINT_TO_ADAPTER_COMPONENT_ALIGNMENT.json",
+    "fresh_replay_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3A_FRESH_REPLAY_14_METRIC_CERTIFICATION.json",
+    "immutable_reference_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3A_IMMUTABLE_REFERENCE_14_METRIC_CERTIFICATION.json",
+    "selection_formula_spec": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3A_FROZEN_CHECKPOINT_NATIVE_SELECTION_FORMULA.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "certification": {
+    "all_14_metrics_certified": true,
+    "checkpoint_component_alignment": {
+      "count_active_macro_f1": {
+        "adapter_metric": "count_active_macro_f1",
+        "checkpoint_value": 0.9973039624464042,
+        "fresh_absolute_difference": 0.0,
+        "fresh_adapter_value": 0.9973039624464042,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 0.0,
+        "immutable_adapter_value": 0.9973039624464042,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      },
+      "graph_auroc": {
+        "adapter_metric": "graph_auroc",
+        "checkpoint_value": 0.8908390955533386,
+        "fresh_absolute_difference": 1.3028738199416523e-08,
+        "fresh_adapter_value": 0.8908390825246004,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 1.3028738199416523e-08,
+        "immutable_adapter_value": 0.8908390825246004,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      },
+      "graph_average_precision": {
+        "adapter_metric": "graph_ap",
+        "checkpoint_value": 0.6891215624201737,
+        "fresh_absolute_difference": 3.794705603077375e-07,
+        "fresh_adapter_value": 0.6891211829496134,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 3.794705603077375e-07,
+        "immutable_adapter_value": 0.6891211829496134,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      },
+      "path_average_precision": {
+        "adapter_metric": "path_ap",
+        "checkpoint_value": 0.6246351771235719,
+        "fresh_absolute_difference": 3.4671898796467815e-08,
+        "fresh_adapter_value": 0.6246352117954707,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 3.607514487136143e-08,
+        "immutable_adapter_value": 0.6246352131987167,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      },
+      "source_average_precision": {
+        "adapter_metric": "source_ap",
+        "checkpoint_value": 0.6446929029617371,
+        "fresh_absolute_difference": 8.521933769767287e-08,
+        "fresh_adapter_value": 0.6446929881810748,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 7.481227892736086e-08,
+        "immutable_adapter_value": 0.644692977774016,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      },
+      "transit_average_precision": {
+        "adapter_metric": "transit_ap",
+        "checkpoint_value": 0.6369269223988839,
+        "fresh_absolute_difference": 2.4490489858308706e-07,
+        "fresh_adapter_value": 0.6369271673037825,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 2.6954410436985654e-07,
+        "immutable_adapter_value": 0.6369271919429883,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      },
+      "victim_average_precision": {
+        "adapter_metric": "victim_ap",
+        "checkpoint_value": 0.6248964174211628,
+        "fresh_absolute_difference": 2.1499972568950199e-07,
+        "fresh_adapter_value": 0.6248962024214371,
+        "fresh_pass": true,
+        "immutable_absolute_difference": 2.1499972568950199e-07,
+        "immutable_adapter_value": 0.6248962024214371,
+        "immutable_pass": true,
+        "tolerance": 1e-06
+      }
+    },
+    "checkpoint_component_alignment_pass": true,
+    "fresh_replay": {
+      "all_pass": true,
+      "metrics": {
+        "count_active_macro_f1": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.9973039624464042,
+          "frozen_value": 0.9973039624464042,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_ap": {
+          "absolute_difference": 4.294961342132808e-08,
+          "adapter_value": 0.6891211829496134,
+          "frozen_value": 0.68912114,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_auroc": {
+          "absolute_difference": 2.5246004176082693e-09,
+          "adapter_value": 0.8908390825246004,
+          "frozen_value": 0.89083908,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_f1_at_0_5": {
+          "absolute_difference": 4.325089841827889e-09,
+          "adapter_value": 0.7011657043250898,
+          "frozen_value": 0.7011657,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_fpr_at_0_5": {
+          "absolute_difference": 9.769943465354203e-10,
+          "adapter_value": 0.21302659097699433,
+          "frozen_value": 0.21302659,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "path_ap": {
+          "absolute_difference": 1.0484878998351377e-07,
+          "adapter_value": 0.6246352117954707,
+          "frozen_value": 0.6246353166442606,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "path_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.8178963893249608,
+          "frozen_value": 0.8178963893249608,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "selection_score": {
+          "absolute_difference": 4.6253738616997e-09,
+          "adapter_value": 0.7297736853746262,
+          "frozen_value": 0.72977369,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "source_ap": {
+          "absolute_difference": 5.759170695895932e-09,
+          "adapter_value": 0.6446929881810748,
+          "frozen_value": 0.6446929824219041,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "source_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.9209837781266352,
+          "frozen_value": 0.9209837781266352,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "transit_ap": {
+          "absolute_difference": 4.072709502978e-08,
+          "adapter_value": 0.6369271673037825,
+          "frozen_value": 0.6369271265766875,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "transit_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.6802721088435374,
+          "frozen_value": 0.6802721088435374,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "victim_ap": {
+          "absolute_difference": 9.363450015342778e-09,
+          "adapter_value": 0.6248962024214371,
+          "frozen_value": 0.624896193057987,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "victim_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.9481946624803768,
+          "frozen_value": 0.9481946624803768,
+          "pass": true,
+          "tolerance": 1e-06
+        }
+      }
+    },
+    "immutable_reference": {
+      "all_pass": true,
+      "metrics": {
+        "count_active_macro_f1": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.9973039624464042,
+          "frozen_value": 0.9973039624464042,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_ap": {
+          "absolute_difference": 4.294961342132808e-08,
+          "adapter_value": 0.6891211829496134,
+          "frozen_value": 0.68912114,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_auroc": {
+          "absolute_difference": 2.5246004176082693e-09,
+          "adapter_value": 0.8908390825246004,
+          "frozen_value": 0.89083908,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_f1_at_0_5": {
+          "absolute_difference": 4.325089841827889e-09,
+          "adapter_value": 0.7011657043250898,
+          "frozen_value": 0.7011657,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "graph_fpr_at_0_5": {
+          "absolute_difference": 9.769943465354203e-10,
+          "adapter_value": 0.21302659097699433,
+          "frozen_value": 0.21302659,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "path_ap": {
+          "absolute_difference": 1.0344554390862015e-07,
+          "adapter_value": 0.6246352131987167,
+          "frozen_value": 0.6246353166442606,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "path_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.8178963893249608,
+          "frozen_value": 0.8178963893249608,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "selection_score": {
+          "absolute_difference": 2.391746356522617e-09,
+          "adapter_value": 0.7297736876082537,
+          "frozen_value": 0.72977369,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "source_ap": {
+          "absolute_difference": 4.647888074416073e-09,
+          "adapter_value": 0.644692977774016,
+          "frozen_value": 0.6446929824219041,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "source_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.9209837781266352,
+          "frozen_value": 0.9209837781266352,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "transit_ap": {
+          "absolute_difference": 6.536630081654948e-08,
+          "adapter_value": 0.6369271919429883,
+          "frozen_value": 0.6369271265766875,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "transit_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.6802721088435374,
+          "frozen_value": 0.6802721088435374,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "victim_ap": {
+          "absolute_difference": 9.363450015342778e-09,
+          "adapter_value": 0.6248962024214371,
+          "frozen_value": 0.624896193057987,
+          "pass": true,
+          "tolerance": 1e-06
+        },
+        "victim_exact_active": {
+          "absolute_difference": 0.0,
+          "adapter_value": 0.9481946624803768,
+          "frozen_value": 0.9481946624803768,
+          "pass": true,
+          "tolerance": 1e-06
+        }
+      }
+    },
+    "selection_checkpoint_alignment_pass": true
+  },
+  "classification": "VALIDATION-EXPLORATORY checkpoint-native selection-formula pin",
+  "created_utc": "2026-08-05T21:19:44.309797+00:00",
+  "decision": {
+    "F4M_R3A_complete": true,
+    "F5_group_block_permutation_authorized": true,
+    "F6_integrated_gradients_authorized": false,
+    "canonical_F4M_complete": true,
+    "next_stage": "V5_P3_F5_DYNAMIC70_GROUP_BLOCK_PERMUTATION",
+    "sealed_test_access_authorized": false
+  },
+  "finding": {
+    "V4_constrained_threshold_formula_selected": false,
+    "checkpoint_component_mean": 0.7297737200464675,
+    "checkpoint_identity_absolute_difference": 0.0,
+    "checkpoint_selection_score": 0.7297737200464675,
+    "selection_formula": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+    "threshold_policy": {
+      "reporting_threshold": 0.5,
+      "selection_metrics_are_threshold_free_except_count_macro_f1": true,
+      "threshold_tuning_performed": false
+    }
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_deserialized": false,
+    "checkpoint_metadata_artifact_loaded": true,
+    "metric_formulas_changed": false,
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "threshold_tuning_performed": false,
+    "training_tensors_loaded": false,
+    "validation_dataset_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": true
+  },
+  "provenance": {
+    "F4M_R2_lock_sha256": "d98e100439c133c822812f83d1e49a37d5cea1b2c6f5818c077abd41bc31986e",
+    "F4M_R2_report_sha256": "a46366a1f9aafacd8dfb6d3e4a4e9f232b92cc93f1b6bf14632fdae5e296e713",
+    "F4M_R3_checkpoint_metadata_sha256": "ca55ba05a28abbf7ef6beecbb1a439e648ea5ee7b5f03407b9a7de8be4966bda",
+    "F4M_R3_lock_sha256": "06b32f26e039646a96847c7501403027f9b37d7d502eb06fbd321194bebf5efc",
+    "F4M_R3_report_sha256": "6bd9958d42b6768f33605077fc2a923f38ed9df0601baf62e3369f72d654e6f2",
+    "F4_P1R3_contract_sha256": "a05afa329d77398bd4bec66a168ffdb7e2b1f3240af413da3b6fe4b8dd70dfdd",
+    "adapter_contract_sha256": "b851e9eac3266707b76e6cbad9c8144d1a1919f59f72f175b91e61aa2b64e287",
+    "adapter_sha256": "9e2a9f36339550b86dee6d19e3b0403a9f70c06c8ad9afcf20c0c4797eba4384",
+    "canonical_F4_lock_sha256": "8e406761413ca0f68351ec3d55ebb997f1a511a839c749cdfabdc007993e682b",
+    "canonical_F4_report_sha256": "8ab88718e1dfdd5b27f77d4eebf5581df414ff767672cb054646e0c35a7cef76",
+    "component_alignment_sha256": "fc21bd357dd5474f855ca9ea19d075ed240e4f7b292090a0d671f7c101cf56d1",
+    "final_F4_contract_sha256": "d70a139798b3983f3087e5915df46b0713790f2c8aafa52311d0e9b92df285f3",
+    "formula_spec_sha256": "7139f05bea1d95de96f62d6e0146f73c7c1d80c312cda7dd979610848392c562",
+    "fresh_replay_certification_sha256": "35b216294366d45221d0af2d90c562aabb027b20c852f980575255ba2ce15993",
+    "immutable_reference_certification_sha256": "cdbd3cf38943427ab56f5183952ee30d433defeeebbc0cfdfd9a74f30874d7b6",
+    "installed_script_sha256": "48e3274e7639e9e5e77ef354c28c73873c1b7bce89ef1770aebce9322fff1a3e"
+  },
+  "scope": "Pin the exact V5-P3 seed-107 checkpoint selection formula from its recorded seven-component vector, certify the final executable 14-metric adapter on immutable and fresh validation outputs, and separate the checkpoint-native formula from the ancestral V4 constrained-threshold helper.",
+  "stage": "V5_P3_F4M_R3A_MANUAL_SELECTION_FORMULA_PIN",
+  "status": "PASS"
+}

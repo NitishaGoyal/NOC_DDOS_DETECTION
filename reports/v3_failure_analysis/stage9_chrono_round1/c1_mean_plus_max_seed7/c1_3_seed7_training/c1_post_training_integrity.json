@@ -1,0 +1,216 @@
+{
+  "stage": "C1.3",
+  "status": "TRAINING_COMPLETED_AND_VERIFIED",
+  "created_utc": "2026-07-21T11:42:45.713904+00:00",
+  "command": [
+    "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+    "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3_c1_meanmax.py",
+    "--data",
+    "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "--out-dir",
+    "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7",
+    "--split-mode",
+    "v3",
+    "--epochs",
+    "100",
+    "--patience",
+    "15",
+    "--min-delta",
+    "0.0001",
+    "--batch-size",
+    "256",
+    "--lr",
+    "0.001",
+    "--weight-decay",
+    "0.0001",
+    "--temporal-dim",
+    "8",
+    "--gcn-hidden",
+    "16",
+    "--gcn-out",
+    "8",
+    "--node-loss-weight",
+    "1.0",
+    "--graph-threshold",
+    "0.5",
+    "--node-threshold",
+    "0.5",
+    "--seed",
+    "7"
+  ],
+  "working_directory": "/home/zira/research/projects/GNN-2d",
+  "source": {
+    "path": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3_c1_meanmax.py",
+    "sha256": "6fe3bbbe20bcc508148da27e62e705a1c092ccd50945a089c6726aaf10ee8696"
+  },
+  "preflight": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_2_dry_preflight/c1_dry_preflight.json",
+    "sha256": "dd02491f23cd0b66c075811164a7e864cfe93d23857844544f7d0f4a9d5c596b"
+  },
+  "training_plan": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_2_dry_preflight/c1_frozen_training_arguments.json",
+    "sha256": "051ee5f573b8b483a94fe825d1703c5b6445b1b7aef92f1417c5ad916a17d17e"
+  },
+  "a1_splits": {
+    "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/splits.npz",
+    "sha256": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2"
+  },
+  "c1_model_dir": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7",
+  "log": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/c1_mean_plus_max_seed7/c1_3_seed7_training/c1_seed7_training.log",
+  "selection_protocol_note": "Any default-threshold test diagnostics emitted by the historical trainer are not permitted for C1 model advancement. Advancement is determined later from validation-only analysis.",
+  "return_code": 0,
+  "completed_utc": "2026-07-21T11:52:35.197755+00:00",
+  "split_checks": {
+    "train_idx": true,
+    "val_idx": true,
+    "test_idx": true
+  },
+  "checkpoint_argument_checks": {
+    "split_mode": true,
+    "epochs": true,
+    "patience": true,
+    "min_delta": true,
+    "batch_size": true,
+    "lr": true,
+    "weight_decay": true,
+    "temporal_dim": true,
+    "gcn_hidden": true,
+    "gcn_out": true,
+    "node_loss_weight": true,
+    "graph_threshold": true,
+    "node_threshold": true,
+    "seed": true
+  },
+  "architecture_checks": {
+    "parameter_count_is_890": true,
+    "graph_head_weight_shape_is_1_by_16": true,
+    "graph_head_input_width_is_16": true,
+    "source_unchanged_after_training": true
+  },
+  "checkpoint": {
+    "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7/best_model.pt",
+    "sha256": "9c7890a7a2fd1c389564621f4036f8ef1ecdc5cd40aeb82443410e5e32ee0865",
+    "parameter_count": 890,
+    "graph_head_weight_shape": [
+      1,
+      16
+    ],
+    "saved_epoch": 87,
+    "saved_validation_score": 1.8484321359807871
+  },
+  "summary": {
+    "model": "Conv1D-MeanMax-TemporalGCN",
+    "data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "split_mode": "v3",
+    "splits_file": null,
+    "best_epoch": 87,
+    "best_val_score": 1.8484321359807871,
+    "parameters": 890,
+    "input_feature_dim": 24,
+    "num_nodes": 16,
+    "training": {
+      "maximum_epochs": 100,
+      "epochs_completed": 100,
+      "patience": 15,
+      "min_delta": 0.0001,
+      "stopped_early": false,
+      "stopped_epoch": null,
+      "seed": 7
+    },
+    "split_sizes": {
+      "train": 148185,
+      "val": 42809,
+      "test": 42809
+    },
+    "class_weights": {
+      "graph_pos_weight": 0.45161290322580644,
+      "node_pos_weight": 13.4
+    },
+    "thresholds": {
+      "graph": 0.5,
+      "node": 0.5
+    },
+    "train": {
+      "loss": 0.15229534537938386,
+      "acc": 0.9548942200627594,
+      "precision": 0.9828031215522739,
+      "recall": 0.9511671874846939,
+      "f1": 0.966726403823178,
+      "fpr": 0.03685306494295258,
+      "tnr": 0.9631469350570474,
+      "tn": 44403,
+      "fp": 1699,
+      "fn": 4985,
+      "tp": 97098,
+      "node_acc": 0.9794311165097682,
+      "node_precision": 0.7778838222034646,
+      "node_recall": 0.9850895839659884,
+      "node_f1": 0.8693100509703664,
+      "exact_localization": 0.7682289030603637
+    },
+    "val": {
+      "loss": 0.25256758570460425,
+      "acc": 0.949846994790815,
+      "precision": 0.9820439082555937,
+      "recall": 0.9448324729223606,
+      "f1": 0.9630788808446974,
+      "fpr": 0.03887033100516247,
+      "tnr": 0.9611296689948375,
+      "tn": 12660,
+      "fp": 512,
+      "fn": 1635,
+      "tp": 28002,
+      "node_acc": 0.9785807306874723,
+      "node_precision": 0.824654622741764,
+      "node_recall": 0.9556972703040119,
+      "node_f1": 0.8853532551360898,
+      "exact_localization": 0.7636244714896401
+    },
+    "test": {
+      "loss": 1.7985669375519224,
+      "acc": 0.7529491462075731,
+      "precision": 0.7389938311812713,
+      "recall": 0.8367099041256345,
+      "f1": 0.7848219735503561,
+      "fpr": 0.344771738030165,
+      "tnr": 0.655228261969835,
+      "tn": 12946,
+      "fp": 6812,
+      "fn": 3764,
+      "tp": 19287,
+      "node_acc": 0.956521993038847,
+      "node_precision": 0.6085695715214239,
+      "node_recall": 0.852998201312808,
+      "node_f1": 0.7103450959032019,
+      "exact_localization": 0.492303020392908
+    }
+  },
+  "produced_files": [
+    {
+      "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7/best_model.pt",
+      "relative_path": "best_model.pt",
+      "size_bytes": 25461,
+      "sha256": "9c7890a7a2fd1c389564621f4036f8ef1ecdc5cd40aeb82443410e5e32ee0865"
+    },
+    {
+      "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7/history.json",
+      "relative_path": "history.json",
+      "size_bytes": 133535,
+      "sha256": "db117f5469e4c944d99e4f2dfec000ca39e5c01f7b790a6fd7eb38b98e5bc159"
+    },
+    {
+      "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7/splits.npz",
+      "relative_path": "splits.npz",
+      "size_bytes": 354658,
+      "sha256": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2"
+    },
+    {
+      "path": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_c1_conv1d_meanmax_seed7/summary.json",
+      "relative_path": "summary.json",
+      "size_bytes": 2255,
+      "sha256": "dd6a9f4197a0feab6eb2bd6924bab11e19bf059c929ae34ad92210970c9f0c63"
+    }
+  ],
+  "formal_validation_gate_evaluated": false,
+  "formal_test_transfer_performed": false
+}

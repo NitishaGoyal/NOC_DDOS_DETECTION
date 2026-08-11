@@ -1,0 +1,1100 @@
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/tcn-gcn-ds-24feature/summaries/balancedplacement_seed7_conv1d_gcn_eval_summary.txt
+size_bytes: 1098
+suffix: .txt
+text_preview:
+Balanced Placement Seed7 Conv1D-GCN Evaluation Summary
+
+Dataset:
+data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+
+Split file:
+splits/balanced_placement_ds2_4x4_seed7.npz
+
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/tcn-gcn-ds-24feature/summaries/balancedplacement_seed7_tcn_gcn_eval_summary.txt
+size_bytes: 1050
+suffix: .txt
+text_preview:
+Balanced Placement Seed7 TCN-GCN Evaluation Summary
+
+Dataset:
+data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+
+Split file:
+splits/balanced_placement_ds2_4x4_seed7.npz
+
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3-ds-24feature/v3_graph_threshold_summary.txt
+size_bytes: 775
+suffix: .txt
+text_preview:
+V3 Graph Threshold Sweep Summary
+
+Dataset:
+paper1_temporal_graphs_ports_v3
+
+Conv1D-GCN test:
+Best F1 threshold = 0.15
+F1 = 0.8777
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3-ds-24feature/v3_graph_threshold_sweep_conv_vs_tcn.txt
+size_bytes: 7910
+suffix: .txt
+text_preview:
+V3 graph-threshold sweep
+====================================================================================================
+data: /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3
+conv_dir: models/v3/temporal_gcn_ports_v3_builtin_split
+tcn_dir: models/v3/temporal_tcn_gcn_ports_v3_builtin_split
+
+====================================================================================================
+VAL Conv1D-GCN
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3-ds-24feature/v3_graph_threshold_sweep_tcn_maxpool.txt
+size_bytes: 4111
+suffix: .txt
+text_preview:
+V3 MaxPool graph-threshold sweep
+====================================================================================================
+data: /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3
+model_dir: models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split
+
+====================================================================================================
+VAL TCN-MaxPool-GCN
+====================================================================================================
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3-ds-24feature/v3_graph_threshold_sweep_tcn_meanpool.txt
+size_bytes: 4152
+suffix: .txt
+text_preview:
+V3 MeanPool graph-threshold sweep
+====================================================================================================
+data: /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3
+model_dir: models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split
+
+====================================================================================================
+VAL TCN-MeanPool-GCN
+====================================================================================================
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3-ds-24feature/v3_tcn_maxpool_threshold_summary.txt
+size_bytes: 676
+suffix: .txt
+text_preview:
+V3 TCN-MaxPool-GCN Graph Threshold Summary
+
+Dataset:
+paper1_temporal_graphs_ports_v3
+
+Default threshold 0.50:
+F1     = 0.8576
+FPR    = 0.1678
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/GRAPH_THRESHOLD_TRANSFER.md
+size_bytes: 4016
+suffix: .md
+text_preview:
+# V3 Validation-Selected Graph-Threshold Transfer
+
+Thresholds were selected using validation data only and then frozen before test evaluation. No model inference was rerun.
+
+## Selection rule
+
+A threshold must first satisfy both validation guardrails when possible:
+
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/STAGE7A_ALIGNMENT_REPORT.md
+size_bytes: 3912
+suffix: .md
+text_preview:
+# Stage 7A — Dataset and Prediction Alignment
+
+Stage 7A establishes a leakage-free index map between the original V3 feature tensor, graph/node labels, all 71 runs, the train/validation/test split, Stage 3 prediction exports and Stage 6 diagnostic groups.
+
+No feature statistics, classifier fitting, inference or retraining were performed.
+
+## Paths
+
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/STAGE7B_FEATURE_AND_SATURATION_REPORT.md
+size_bytes: 6374
+suffix: .md
+text_preview:
+# Stage 7B — Feature and Saturation Analysis
+
+Stage 7B scanned the normalized V3 feature tensor one run at a time. It produced compact summaries for all 71 runs and detailed router, temporal, directional and spatial summaries for the selected matched runs.
+
+The analysis reports observed normalized behaviour only. It does not establish the provenance or cause of clipping until the dataset builder and normalization logic are recovered.
+
+## Scan
+
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/STAGE7C1_V2_TRAINING_COVERAGE_REPORT.md
+size_bytes: 15570
+suffix: .md
+text_preview:
+# Stage 7C1 V2 — Training Distribution Coverage
+
+All fitted references were constructed using the training split only.
+Validation and test targets were then compared against frozen full-training, same-class and opposite-class references.
+
+Nearest-run ranking, classifier fitting, inference and model training were not performed.
+
+## Training reference
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/STAGE7C2_NEAREST_TRAINING_RUN_REPORT.md
+size_bytes: 3822
+suffix: .md
+text_preview:
+# Stage 7C2 — Nearest Training-Run and Class-Margin Analysis
+
+Stage 7C2 used the frozen Stage 7C1 V2 all-training scaling reference.
+No validation/test value influenced scaling, feature selection, metric choice,
+representation weighting, neighbour count or class-margin definition.
+
+R6 raw-distribution coverage was excluded from the primary geometry because
+its exact-boundary histogram interpretation remains unresolved.
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/10_evaluation_script_candidates.txt
+size_bytes: 649
+suffix: .txt
+text_preview:
+scripts/compare_v3_conv_vs_meanpool_errors.py
+scripts/compare_v3_conv_vs_tcn_errors.py
+scripts/eval_temporal_gcn_thresholds.py
+scripts/eval_temporal_gcn_topk.py
+scripts/eval_temporal_tcn_gcn.py
+scripts/make_balanced_placement_splits.py
+scripts/sweep_v3_graph_thresholds_maxpool.py
+scripts/sweep_v3_graph_thresholds_meanpool.py
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/11_evaluation_relevant_lines.txt
+size_bytes: 81682
+suffix: .txt
+text_preview:
+
+============================================================
+FILE: scripts/compare_v3_conv_vs_meanpool_errors.py
+============================================================
+
+--- Classes and functions ---
+18:def load_graph_arrays(data_path):
+46:class ArrayDataset(Dataset):
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/25_prediction_alignment_check.txt
+size_bytes: 2056
+suffix: .txt
+text_preview:
+MODEL: conv1d_gcn
+  output_file: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/conv1d_gcn_predictions.npz
+  sample_index_aligned: True
+  sample_id_aligned: True
+  split_aligned: True
+  labels_aligned: True
+  finite_outputs: True
+  shapes_valid: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/30_graph_threshold_transfer_validation.txt
+size_bytes: 332
+suffix: .txt
+text_preview:
+input alignment verified: True
+reference 0.50 metrics matched Stage 3: True
+threshold selection used validation only: True
+all selected thresholds belong to validation grid: True
+all operating points present: True
+all samples accounted for: True
+all statistics finite: True
+dominant failure runs present: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/34_stage7a_alignment_validation.txt
+size_bytes: 1023
+suffix: .txt
+text_preview:
+required dataset arrays present: True
+feature tensor shape verified: True
+feature tensor memory mapped: True
+graph-label shape verified: True
+node-label shape verified: True
+run-id shape verified: True
+end-epoch shape verified: True
+feature-name count verified: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/36_stage7b_validation.txt
+size_bytes: 975
+suffix: .txt
+text_preview:
+feature tensor shape verified: True
+feature tensor memory mapped: True
+corrected feature taxonomy verified: True
+all 233803 samples accounted for: True
+all 71 runs summarized: True
+all 24 features summarized per run: True
+selected runs match Stage 7A: True
+selected runs contain 3293 windows: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/40_stage7c1_v2_validation.txt
+size_bytes: 1340
+suffix: .txt
+text_preview:
+reference application smoke test passed: True
+raw feature tensor memory mapped: True
+raw feature tensor shape verified: True
+feature taxonomy matches Stage 7B: True
+training reference uses only split=train: True
+all 45 training runs included: True
+all 148185 training samples represented: True
+no validation/test samples included in fitting: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/logs/42_stage7c2_validation.txt
+size_bytes: 989
+suffix: .txt
+text_preview:
+synthetic smoke test passed: True
+only training runs used as neighbours: True
+all 45 training runs represented: True
+all 10 selected targets evaluated: True
+no validation/test run appears as a neighbour: True
+training-derived all-training scaling reused unchanged: True
+no target-derived feature selection performed: True
+all expected R1-R5 dimensions aligned: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/conv1d_gcn_predictions.npz
+size_bytes: 10614127
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/prediction_manifest.json
+size_bytes: 22783
+suffix: .json
+top_level_type=dict
+keys=['checks', 'dataset', 'environment', 'export', 'models', 'normalization_window_construction_provenance', 'runtime_seconds', 'split_hashes', 'status']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/prediction_metadata.csv
+size_bytes: 9518335
+suffix: .csv
+column_count=13
+header=['sample_order_within_export', 'sample_index', 'sample_id', 'run_id', 'split', 'end_epoch', 'true_graph', 'true_attacker_count', 'profile', 'active_cores', 'attackers', 'strength', 'seed']
+first_row_field_count=13
+first_row=['0', '46102', 'N-idle-Pidle-R1-V3:7', 'N-idle-Pidle-R1-V3', 'val', '7', '0', '0', 'idle', 'idle', '', '', '1']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/tcn_attention_gcn_predictions.npz
+size_bytes: 10603224
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/tcn_maxpool_gcn_predictions.npz
+size_bytes: 10556141
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/tcn_meanpool_gcn_predictions.npz
+size_bytes: 10571276
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/25_prediction_alignment_check.txt
+size_bytes: 2075
+suffix: .txt
+text_preview:
+MODEL: conv1d_gcn
+  output_file: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/conv1d_gcn_predictions.npz
+  sample_index_aligned: True
+  sample_id_aligned: True
+  split_aligned: True
+  labels_aligned: True
+  finite_outputs: True
+  shapes_valid: True
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/conv1d_gcn_predictions.npz
+size_bytes: 31056
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/exported_metric_reproduction.csv
+size_bytes: 1117
+suffix: .csv
+column_count=19
+header=['model', 'split', 'accuracy', 'precision', 'recall', 'f1', 'fpr', 'tn', 'fp', 'fn', 'tp', 'node_accuracy', 'node_precision', 'node_recall', 'node_f1', 'exact_localization', 'metric_source', 'saved_summary_max_abs_difference', 'metrics_match_tolerance']
+first_row_field_count=19
+first_row=['conv1d_gcn', 'val', '0.65625', '0.0', '0.0', '0.0', '0.34375', '168', '88', '0', '0', '0.86474609375', '0.0', '0.0', '0.0', '0.36328125', 'module', 'nan', 'True']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/prediction_manifest.json
+size_bytes: 18594
+suffix: .json
+top_level_type=dict
+keys=['checks', 'dataset', 'environment', 'export', 'models', 'normalization_window_construction_provenance', 'runtime_seconds', 'split_hashes', 'status']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/prediction_metadata.csv
+size_bytes: 40360
+suffix: .csv
+column_count=13
+header=['sample_order_within_export', 'sample_index', 'sample_id', 'run_id', 'split', 'end_epoch', 'true_graph', 'true_attacker_count', 'profile', 'active_cores', 'attackers', 'strength', 'seed']
+first_row_field_count=13
+first_row=['0', '46102', 'N-idle-Pidle-R1-V3:7', 'N-idle-Pidle-R1-V3', 'val', '7', '0', '0', 'idle', 'idle', '', '', '1']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_attention_gcn_predictions.npz
+size_bytes: 30798
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_maxpool_gcn_predictions.npz
+size_bytes: 30918
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions_smoke/tcn_meanpool_gcn_predictions.npz
+size_bytes: 30995
+suffix: .npz
+npy_members=20
+member=model_name.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_order_within_export.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_index.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=sample_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run_id.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=split.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=end_epoch.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_graph.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_mask.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=true_attacker_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_logit.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_probability.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_graph_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=graph_threshold.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_logits.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_probabilities.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_mask_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=node_threshold_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=pred_attacker_count_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=exact_localization_at_0_50.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/dominant_run_threshold_transfer.csv
+size_bytes: 5367
+suffix: .csv
+column_count=33
+header=['model_name', 'split', 'run_id', 'threshold', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'true_graph', 'number_of_windows', 'TN', 'FP', 'FN', 'TP', 'accuracy', 'precision', 'recall', 'F1', 'FPR', 'FNR', 'balanced_accuracy', 'error_rate', 'normal_run_FPR', 'attack_run_FNR', 'mean_graph_probability', 'median_graph_probability', 'minimum_graph_probability', 'maximum_graph_probability', 'operating_point', 'threshold_source']
+first_row_field_count=33
+first_row=['conv1d_gcn', 'test', 'N-3-7-8-12-Pmixed-R18-V3', '0.5', 'mixed', '3-7-8-12', '4', '', '0', '', '18', '0', '3293', '68', '3225', '0', '0', '0.02064986334649256', '0.0', '']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/exported_metric_reproduction.csv
+size_bytes: 2182
+suffix: .csv
+column_count=19
+header=['model', 'split', 'accuracy', 'precision', 'recall', 'f1', 'fpr', 'tn', 'fp', 'fn', 'tp', 'node_accuracy', 'node_precision', 'node_recall', 'node_f1', 'exact_localization', 'metric_source', 'saved_summary_max_abs_difference', 'metrics_match_tolerance']
+first_row_field_count=19
+first_row=['conv1d_gcn', 'val', '0.933191618584877', '0.9643142014912433', '0.9382191179943989', '0.9510877000957724', '0.07812025508654723', '12143', '1029', '1831', '27806', '0.9765396879160924', '0.8086291877991285', '0.9548874717414043', '0.8756933216780513', '0.7375318274194679', 'module', '0.0', 'True']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/graph_threshold_sweep_validation.csv
+size_bytes: 140215
+suffix: .csv
+column_count=29
+header=['threshold', 'TN', 'FP', 'FN', 'TP', 'accuracy', 'precision', 'recall', 'F1', 'FPR', 'FNR', 'balanced_accuracy', 'number_of_runs', 'number_of_normal_runs', 'number_of_attack_runs', 'run_macro_error_rate', 'mean_normal_run_FPR', 'mean_attack_run_FNR', 'worst_normal_run_FPR', 'worst_attack_run_FNR', 'maximum_worst_run_error', 'catastrophic_normal_runs', 'catastrophic_attack_runs', 'validation_selection_score', 'passes_worst_run_guardrails', 'model_name', 'split', 'threshold_distance_from_0_50', 'is_selected_threshold']
+first_row_field_count=29
+first_row=['0.01', '8985', '4187', '26', '29611', '0.9015861150692611', '0.8761169299958578', '0.9991227182238418', '0.9335855600220698', '0.3178712420285454', '0.0008772817761581806', '0.8406257380976482', '13', '4', '9', '0.09841388493073885', '0.31787124202854544', '0.0008772817761581807', '0.9741876708168843', '0.0030367446097783178']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/graph_threshold_transfer_by_run.csv
+size_bytes: 66905
+suffix: .csv
+column_count=33
+header=['model_name', 'split', 'run_id', 'threshold', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'true_graph', 'number_of_windows', 'TN', 'FP', 'FN', 'TP', 'accuracy', 'precision', 'recall', 'F1', 'FPR', 'FNR', 'balanced_accuracy', 'error_rate', 'normal_run_FPR', 'attack_run_FNR', 'mean_graph_probability', 'median_graph_probability', 'minimum_graph_probability', 'maximum_graph_probability', 'operating_point', 'threshold_source']
+first_row_field_count=33
+first_row=['conv1d_gcn', 'val', 'N-0-9-Pstream-R11-V3', '0.5', 'stream', '0-9', '2', '', '0', '', '11', '0', '3293', '3206', '87', '0', '0', '0.9735803218949286', '0.0', '']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/graph_threshold_transfer_changes.csv
+size_bytes: 13005
+suffix: .csv
+column_count=9
+header=['model_name', 'split', 'metric', 'reference_threshold', 'selected_threshold', 'reference_value', 'selected_value', 'absolute_change', 'relative_change']
+first_row_field_count=9
+first_row=['conv1d_gcn', 'test', 'accuracy', '0.5', '0.47', '0.8240089700763858', '0.8282837721039968', '0.004274802027610991', '0.005187810063784519']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/graph_threshold_transfer_results.csv
+size_bytes: 6275
+suffix: .csv
+column_count=29
+header=['model_name', 'split', 'operating_point', 'threshold_source', 'threshold', 'TN', 'FP', 'FN', 'TP', 'accuracy', 'precision', 'recall', 'F1', 'FPR', 'FNR', 'balanced_accuracy', 'number_of_runs', 'number_of_normal_runs', 'number_of_attack_runs', 'run_macro_error_rate', 'mean_normal_run_FPR', 'mean_attack_run_FNR', 'worst_normal_run_FPR', 'worst_attack_run_FNR', 'maximum_worst_run_error', 'catastrophic_normal_runs', 'catastrophic_attack_runs', 'validation_selection_score', 'passes_worst_run_guardrails']
+first_row_field_count=29
+first_row=['conv1d_gcn', 'val', 'reference_0_50', 'fixed_reference', '0.5', '12143', '1029', '1831', '27806', '0.933191618584877', '0.9643142014912433', '0.9382191179943989', '0.9510877000957724', '0.07812025508654723', '0.061780882005601105', '0.9300494314539258', '13', '4', '9', '0.06680838141512299']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/graph_window_predictions.csv
+size_bytes: 85128079
+suffix: .csv
+column_count=27
+header=['sample_order', 'sample_index', 'sample_id', 'run_id', 'split', 'end_epoch', 'model_name', 'true_graph', 'graph_logit', 'graph_probability', 'pred_graph', 'error_type', 'is_correct', 'is_error', 'is_false_positive', 'is_false_negative', 'probability_margin', 'absolute_threshold_distance', 'confidence_category', 'high_confidence_error', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed']
+first_row_field_count=27
+first_row=['0', '46102', 'N-idle-Pidle-R1-V3:7', 'N-idle-Pidle-R1-V3', 'val', '7', 'conv1d_gcn', '0', '2.5432240962982178', '0.9271169304847717', '1', 'FP', 'False', 'True', 'True', 'False', '0.42711693048477173', '0.42711693048477173', 'high_confidence_error', 'True']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/matched_run_probability_quantiles.csv
+size_bytes: 22858
+suffix: .csv
+column_count=19
+header=['model_name', 'split', 'run_id', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'p01', 'p05', 'p25', 'p50', 'p75', 'p95', 'p99']
+first_row_field_count=19
+first_row=['conv1d_gcn', 'test', 'N-1-6-9-14-Pmixed-R17-V3', '0', 'mixed', '1-6-9-14', '4', '', '0', '', '17', '3293', '0.0018397473637014627', '0.007944373786449433', '0.046808529645204544', '0.13456431031227112', '0.3143671751022339', '0.679896318912506', '0.85311687707901']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/matched_run_probability_summary.csv
+size_bytes: 43221
+suffix: .csv
+column_count=29
+header=['model_name', 'split', 'run_id', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'mean_graph_probability', 'median_graph_probability', 'std_graph_probability', 'minimum_graph_probability', 'maximum_graph_probability', 'fraction_below_0_10', 'fraction_below_0_25', 'fraction_between_0_40_and_0_60', 'fraction_above_0_75', 'fraction_above_0_90', 'p01', 'p05', 'p25', 'p50', 'p75', 'p95', 'p99']
+first_row_field_count=29
+first_row=['conv1d_gcn', 'test', 'N-1-6-9-14-Pmixed-R17-V3', '0', 'mixed', '1-6-9-14', '4', '', '0', '', '17', '3293', '0.21397418172370097', '0.13456431031227112', '0.21459093728783105', '0.0002784474636428058', '0.9845836162567139', '0.4139082903127847', '0.6799271181293653', '0.11053750379593076']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/matched_run_threshold_crossings.csv
+size_bytes: 41905
+suffix: .csv
+column_count=25
+header=['model_name', 'split', 'run_id', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'operating_point', 'threshold', 'threshold_crossing_count', 'number_of_above_threshold_segments', 'number_of_below_threshold_segments', 'mean_duration_above_threshold', 'median_duration_above_threshold', 'maximum_duration_above_threshold', 'mean_duration_below_threshold', 'median_duration_below_threshold', 'maximum_duration_below_threshold', 'fraction_above_threshold', 'fraction_below_threshold']
+first_row_field_count=25
+first_row=['conv1d_gcn', 'test', 'N-1-6-9-14-Pmixed-R17-V3', '0', 'mixed', '1-6-9-14', '4', '', '0', '', '17', '3293', 'reference_0_50', '0.5', '365', '183', '183', '2.240437158469945', '1.0', '16']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/selected_graph_thresholds.csv
+size_bytes: 1285
+suffix: .csv
+column_count=17
+header=['model_name', 'selected_threshold', 'selection_mode', 'eligible_threshold_count', 'threshold_grid_min', 'threshold_grid_max', 'threshold_grid_step', 'selection_used_test_data', 'validation_selection_score', 'validation_F1', 'validation_FPR', 'validation_FNR', 'validation_run_macro_error_rate', 'validation_worst_normal_run_FPR', 'validation_worst_attack_run_FNR', 'validation_catastrophic_normal_runs', 'validation_catastrophic_attack_runs']
+first_row_field_count=17
+first_row=['conv1d_gcn', '0.47', 'guardrails_then_max_validation_score', '66', '0.01', '0.99', '0.01', 'False', '0.9065253784831904', '0.9528835024171036', '0.08510476768903735', '0.05557242635894321', '0.06465930061435679', '0.25356817491648953', '0.126328575766778', '0', '0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_dataset_manifest.csv
+size_bytes: 2481
+suffix: .csv
+column_count=12
+header=['role', 'required', 'filename', 'absolute_path', 'exists', 'size_bytes', 'array_loaded', 'mmap_requested', 'is_memmap', 'shape', 'ndim', 'dtype']
+first_row_field_count=12
+first_row=['x', 'True', 'x.npy', '/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3/x.npy', 'True', '2872971392', 'True', 'True', 'True', '233803x16x8x24', '4', 'float32']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_feature_map.csv
+size_bytes: 1298
+suffix: .csv
+column_count=7
+header=['feature_index', 'feature_name', 'feature_family_inferred', 'flow_side_inferred', 'direction_inferred', 'is_directional_inferred', 'inference_is_provisional']
+first_row_field_count=7
+first_row=['0', 'ifd_in_norm', 'ifd', 'input', '', 'False', 'True']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_node_export_status.csv
+size_bytes: 728
+suffix: .csv
+column_count=15
+header=['model_name', 'true_node_key', 'true_node_shape', 'node_probability_key', 'node_probability_shape', 'node_logit_key', 'node_logit_shape', 'node_prediction_key', 'node_prediction_shape', 'node_labels_exported', 'node_probabilities_exported', 'node_logits_exported', 'node_predictions_exported', 'all_present_node_shapes_aligned', 'stage7e_limited_node_grouping_possible']
+first_row_field_count=15
+first_row=['conv1d_gcn', '', '', 'node_probabilities', '85618x16', 'node_logits', '85618x16', '', '', 'False', 'True', 'True', 'False', 'True', 'True']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_prediction_array_manifest.csv
+size_bytes: 15837
+suffix: .csv
+column_count=9
+header=['model_name', 'prediction_file', 'absolute_path', 'array_key', 'shape', 'ndim', 'dtype', 'is_node_related', 'is_graph_related']
+first_row_field_count=9
+first_row=['conv1d_gcn', 'conv1d_gcn_predictions.npz', '/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/predictions/conv1d_gcn_predictions.npz', 'model_name', '1', '1', '<U10', 'False', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_run_inventory.csv
+size_bytes: 8498
+suffix: .csv
+column_count=22
+header=['run_id', 'true_graph_from_name', 'profile_from_name', 'seed_from_name', 'strength_from_name', 'active_cores_from_name', 'active_core_count_from_name', 'attackers_from_name', 'attacker_count_from_name', 'split', 'true_graph', 'number_of_windows', 'minimum_dataset_index', 'maximum_dataset_index', 'minimum_end_epoch', 'maximum_end_epoch', 'unique_end_epochs', 'minimum_true_attacker_count', 'maximum_true_attacker_count', 'split_constant_within_run', 'graph_label_constant_within_run', 'attacker_count_constant_within_run']
+first_row_field_count=22
+first_row=['N-1-6-9-14-Pmixed-R17-V3', '0', 'mixed', '17', '0', '1-6-9-14', '4', '', '0', 'test', '0', '3293', '72446', '75738', '7', '3299', '3293', '0', '0', 'True']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_sample_alignment.csv
+size_bytes: 32158696
+suffix: .csv
+column_count=14
+header=['dataset_index', 'sample_id', 'run_id', 'end_epoch', 'split', 'true_graph', 'true_attacker_count', 'is_stage3_exported', 'stage3_export_order', 'run_window_index', 'windows_in_run', 'run_window_fraction', 'run_phase', 'temporal_decile']
+first_row_field_count=14
+first_row=['0', 'N-idle-Pidle-R0-V3:7', 'N-idle-Pidle-R0-V3', '7', 'train', '0', '0', 'False', '-1', '0', '3293', '0.0', 'early_10pct', '0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_selected_run_inventory.csv
+size_bytes: 2610
+suffix: .csv
+column_count=24
+header=['group_name', 'group_role', 'run_id', 'true_graph_from_name', 'profile_from_name', 'seed_from_name', 'strength_from_name', 'active_cores_from_name', 'active_core_count_from_name', 'attackers_from_name', 'attacker_count_from_name', 'split', 'true_graph', 'number_of_windows', 'minimum_dataset_index', 'maximum_dataset_index', 'minimum_end_epoch', 'maximum_end_epoch', 'unique_end_epochs', 'minimum_true_attacker_count', 'maximum_true_attacker_count', 'split_constant_within_run', 'graph_label_constant_within_run', 'attacker_count_constant_within_run']
+first_row_field_count=24
+first_row=['A_hard_normal_exact_test', 'target', 'N-3-7-8-12-Pmixed-R18-V3', '0', 'mixed', '18', '0', '3-7-8-12', '4', '', '0', 'test', '0', '3293', '75739', '79031', '7', '3299', '3293', '0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_selected_sample_indices.npz
+size_bytes: 124110
+suffix: .npz
+npy_members=16
+member=run__N_3_7_8_12_Pmixed_R18_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_1_6_9_14_Pmixed_R17_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_2_6_10_14_Pmixed_R13_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_5_10_Pbursty_R51_A_12_S20_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_2_13_Pstream_R50_A_12_S20_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_1_6_9_14_Pmixed_R52_A_12_S20_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_4_15_Pbursty_R41_A_11_S20_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_5_10_Pbursty_R51_A_1_7_S63_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_5_10_Pbursty_R51_A_1_11_12_S77_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=run__N_5_10_Pbursty_R16_V3.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=group__A_hard_normal_exact_test.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=group__B_hard_normal_validation_analogue.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=group__C_hard_attack_exact_A12_S20.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=group__D_hard_attack_bursty_S20.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=group__E_same_bursty_background_severity.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=group__F_broad_bursty_background.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_split_summary.csv
+size_bytes: 150
+suffix: .csv
+column_count=5
+header=['split', 'sample_count', 'run_count', 'minimum_windows_per_run', 'maximum_windows_per_run']
+first_row_field_count=5
+first_row=['train', '148185', '45', '3293', '3293']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7_topology_manifest.csv
+size_bytes: 339
+suffix: .csv
+column_count=5
+header=['router_id', 'neighbor_count', 'neighbors', 'row_major_row_if_confirmed', 'row_major_column_if_confirmed']
+first_row_field_count=5
+first_row=['0', '2', '1-4', '0', '0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7a_alignment_summary.json
+size_bytes: 1247
+suffix: .json
+top_level_type=dict
+keys=['dataset_root', 'failure_root', 'feature_count', 'full_feature_tensor_scanned', 'inference_rerun', 'node_grouping_possible_by_model', 'overall_success', 'run_counts', 'sample_counts', 'split_crosscheck', 'split_source', 'stage3_exported_samples', 'stage6_agreement_rows', 'stage6_aligned', 'topology', 'total_runs', 'training_performed', 'windows_per_run', 'x_dtype', 'x_is_memmap', 'x_shape']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_corrected_feature_taxonomy.csv
+size_bytes: 2582
+suffix: .csv
+column_count=8
+header=['feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source']
+first_row_field_count=8
+first_row=['0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_hypothesis_status.csv
+size_bytes: 1746
+suffix: .csv
+column_count=10
+header=['hypothesis_id', 'hypothesis_name', 'preliminary_status', 'decision_rule', 'primary_metric', 'target_value', 'comparison_value_1', 'comparison_value_2', 'evidence_table', 'causal_claim_allowed']
+first_row_field_count=10
+first_row=['H1', 'directional_ifd_saturation', 'inconclusive', 'Supported when mean exact-1 directional IFD rate in the hard normal exceeds both matched normal controls by at least 0.05.', 'mean_directional_ifd_fraction_equal_1', '0.2981162693592469', '0.27667708965988463', '0.27803959155785', 'stage7b_saturation_by_run_feature.csv', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_matched_pair_distribution_distances.csv
+size_bytes: 61365
+suffix: .csv
+column_count=20
+header=['group_name', 'pair_name', 'target_run_id', 'control_run_id', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'distribution_sample_count_left', 'distribution_sample_count_right', 'distribution_sampled', 'histogram_overlap', 'ks_statistic', 'jensen_shannon_divergence', 'histogram_minimum', 'histogram_maximum']
+first_row_field_count=20
+first_row=['A_hard_normal_exact_test', 'hard_normal_minus_exact_normal', 'N-3-7-8-12-Pmixed-R18-V3', 'N-1-6-9-14-Pmixed-R17-V3', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy', '100000', '100000', 'True', '0.8986', '0.10006999999999999', '0.019666679852911824', '0.004000000189989805', '1.0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_matched_pair_feature_differences.csv
+size_bytes: 178542
+suffix: .csv
+column_count=54
+header=['group_name', 'pair_name', 'target_run_id', 'control_run_id', 'target_split', 'control_split', 'target_true_graph', 'control_true_graph', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'target_mean', 'control_mean', 'mean_difference_target_minus_control', 'target_median', 'control_median', 'median_difference_target_minus_control', 'target_std', 'control_std', 'std_difference_target_minus_control', 'standardized_mean_difference', 'target_fraction_equal_0', 'control_fraction_equal_0', 'fraction_equal_0_difference', 'target_fraction_equal_1', 'control_fraction_equal_1', 'fraction_equal_1_difference', 'target_fraction_above_0_95', 'control_fraction_above_0_95', 'fraction_above_0_95_difference', 'target_mean_temporal_variance', 'control_mean_temporal_variance', 'temporal_variance_difference', 'target_mean_absolute_adjacent_temporal_change', 'control_mean_absolute_adjacent_temporal_change', 'adjacent_temporal_change_difference', 'target_mean_spatial_variance', 'control_mean_spatial_variance', 'spatial_variance_difference', 'target_mean_temporal_range', 'control_mean_temporal_range', 'temporal_range_difference', 'target_sparse_single_position_fraction', 'control_sparse_single_position_fraction', 'sparse_single_position_fraction_difference', 'target_mean_top_router_share', 'control_mean_top_router_share', 'top_router_share_difference', 'target_mean_router_std', 'control_mean_router_std', 'router_std_difference']
+first_row_field_count=54
+first_row=['A_hard_normal_exact_test', 'hard_normal_minus_exact_normal', 'N-3-7-8-12-Pmixed-R18-V3', 'N-1-6-9-14-Pmixed-R17-V3', 'test', 'test', '0', '0', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '0.05200987881628727', '0.06231778554821882', '-0.010307906731931549', '0.04264406859874725', '0.04710526019334793', '-0.0044611915946006775']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_router_group_summary.csv
+size_bytes: 593510
+suffix: .csv
+column_count=46
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'router_group', 'router_ids', 'router_count', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'number_of_values', 'finite_value_count', 'mean', 'std', 'minimum', 'maximum', 'p01', 'p05', 'p25', 'median', 'p75', 'p95', 'p99', 'fraction_equal_0', 'fraction_equal_1', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_outside_unit_interval', 'unique_value_count', 'unique_count_is_sampled', 'unique_count_sample_size', 'mean_temporal_variance', 'mean_temporal_excursion']
+first_row_field_count=46
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', 'network_all', '0-1-2-3-4-5-6-7-8-9-10-11-12-13-14-15', '16', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_run_feature_summary.csv
+size_bytes: 851201
+suffix: .csv
+column_count=44
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'number_of_values', 'finite_value_count', 'mean', 'std', 'minimum', 'maximum', 'p01', 'p05', 'p25', 'median', 'p75', 'p95', 'p99', 'fraction_equal_0', 'fraction_equal_1', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_outside_unit_interval', 'unique_value_count', 'unique_count_is_sampled', 'unique_count_sample_size', 'mean_temporal_variance', 'mean_absolute_adjacent_temporal_change', 'mean_spatial_variance']
+first_row_field_count=44
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy', '421504']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_saturation_by_router_feature.csv
+size_bytes: 612683
+suffix: .csv
+column_count=15
+header=['run_id', 'split', 'true_graph', 'router_id', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'fraction_equal_0', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_equal_1']
+first_row_field_count=15
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', '0', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '0.0', '0.6132705739447313', '0.0024293956878226543', '0.0024293956878226543', '0.0024293956878226543']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_saturation_by_run_feature.csv
+size_bytes: 324245
+suffix: .csv
+column_count=19
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'attackers', 'strength', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'fraction_equal_0', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_equal_1', 'fraction_outside_unit_interval']
+first_row_field_count=19
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '', '0', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '0.0', '0.5497978666869117', '0.0019359246887336774', '0.0018979653811114485', '0.0018979653811114485', '0.0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_saturation_by_temporal_position.csv
+size_bytes: 325317
+suffix: .csv
+column_count=15
+header=['run_id', 'split', 'true_graph', 'temporal_position', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'fraction_equal_0', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_equal_1']
+first_row_field_count=15
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', '0', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '0.0', '0.5499544488308533', '0.0019359246887336774', '0.0018979653811114485', '0.0018979653811114485']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_scan_manifest.csv
+size_bytes: 7440
+suffix: .csv
+column_count=13
+header=['run_scan_order', 'run_id', 'split', 'true_graph', 'number_of_windows', 'dataset_index_minimum', 'dataset_index_maximum', 'indices_contiguous', 'run_array_shape', 'run_array_bytes', 'all_values_finite', 'detailed_selected_run_analysis', 'full_tensor_in_memory']
+first_row_field_count=13
+first_row=['1', 'N-1-6-9-14-Pmixed-R17-V3', 'test', '0', '3293', '72446', '75738', 'True', '3293x16x8x24', '40464384', 'True', 'True', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_selected_direction_summary.csv
+size_bytes: 771982
+suffix: .csv
+column_count=26
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'router_id', 'measurement_type', 'flow_side', 'direction', 'feature_index', 'feature_name', 'mean', 'std', 'median', 'fraction_equal_0', 'fraction_equal_1', 'fraction_above_0_95', 'nonzero_rate', 'directional_imbalance_for_router', 'maximum_direction_share_for_router']
+first_row_field_count=26
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', '0', 'flit_count', 'input', 'local', '4', 'in_count_norm_local', '0.036342658766182215', '0.016362478765181588', '0.03500000014901161']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_selected_router_feature_summary.csv
+size_bytes: 1925962
+suffix: .csv
+column_count=47
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'router_id', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'number_of_values', 'finite_value_count', 'mean', 'std', 'minimum', 'maximum', 'p01', 'p05', 'p25', 'median', 'p75', 'p95', 'p99', 'fraction_equal_0', 'fraction_equal_1', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_outside_unit_interval', 'unique_value_count', 'unique_count_is_sampled', 'unique_count_sample_size', 'mean_temporal_variance', 'mean_temporal_excursion', 'maximum_temporal_excursion', 'mean_spatial_rank', 'fraction_router_is_spatial_maximum']
+first_row_field_count=47
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', '0', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_selected_spatial_concentration.csv
+size_bytes: 110951
+suffix: .csv
+column_count=36
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'number_of_window_positions', 'mean_router_maximum', 'p95_router_maximum', 'mean_router_mean', 'mean_router_median', 'mean_router_std', 'p95_router_std', 'mean_maximum_minus_median', 'mean_top_router_share', 'p95_top_router_share', 'mean_top_two_router_share', 'mean_active_router_value', 'mean_inactive_router_value', 'active_minus_inactive_mean', 'mean_attacker_router_value', 'mean_attacker_neighbor_value', 'attacker_minus_neighbor_mean']
+first_row_field_count=36
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy', '26344']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_selected_temporal_feature_summary.csv
+size_bytes: 910034
+suffix: .csv
+column_count=44
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'temporal_position', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'number_of_values', 'finite_value_count', 'mean', 'std', 'minimum', 'maximum', 'p01', 'p05', 'p25', 'median', 'p75', 'p95', 'p99', 'fraction_equal_0', 'fraction_equal_1', 'fraction_below_0_05', 'fraction_above_0_95', 'fraction_above_0_99', 'fraction_outside_unit_interval', 'unique_value_count', 'unique_count_is_sampled', 'unique_count_sample_size', 'mean_spatial_variance', 'mean_absolute_change_from_previous_position']
+first_row_field_count=44
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', '0', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_summary.json
+size_bytes: 1438
+suffix: .json
+top_level_type=dict
+keys=['all_samples_scanned', 'classifier_fitted', 'clipping_provenance_confirmed', 'corrected_feature_taxonomy_applied', 'dataset_root', 'direction_summary_rows', 'failure_root', 'inference_rerun', 'nearest_run_analysis_performed', 'node_correctness_grouping_performed', 'observed_normalized_saturation_only', 'overall_success', 'pair_difference_rows', 'pair_distance_rows', 'plot_count', 'router_summary_rows', 'run_feature_summary_rows', 'runs_summarized', 'selected_run_count', 'selected_runs', 'spatial_summary_rows', 'stage7a_tables_modified', 'temporal_summary_rows', 'training_performed', 'true_attacker_mask_available_for_stage7e', 'x_dtype', 'x_is_memmap', 'x_shape']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7b_temporal_excursion_summary.csv
+size_bytes: 122021
+suffix: .csv
+column_count=39
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'is_directional', 'taxonomy_source', 'mean_temporal_range', 'median_temporal_range', 'p95_temporal_range', 'maximum_temporal_range', 'mean_temporal_maximum_minus_mean', 'mean_positions_above_0_95', 'fraction_windows_with_any_position_above_0_95', 'mean_positions_deviating_gt_0_10_from_window_median', 'fraction_windows_with_sparse_single_position_excursion', 'maximum_position_mode', 'maximum_position_mode_fraction', 'maximum_position_entropy_bits', 'fraction_maximum_at_position_0', 'fraction_maximum_at_position_1', 'fraction_maximum_at_position_2', 'fraction_maximum_at_position_3', 'fraction_maximum_at_position_4', 'fraction_maximum_at_position_5', 'fraction_maximum_at_position_6', 'fraction_maximum_at_position_7']
+first_row_field_count=39
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', 'False', 'fixed_stage7b_corrected_taxonomy', '0.040976133197546005']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_constant_dimension_violations.csv
+size_bytes: 918
+suffix: .csv
+column_count=54
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'target_active_cores', 'target_attacker_count', 'target_attackers', 'target_strength', 'target_strength_group', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'target_value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'target_provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'below_training_minimum', 'above_training_maximum', 'outside_training_minimum_maximum', 'outside_training_p01_p99', 'outside_training_p05_p95', 'z_score', 'absolute_z_score', 'robust_deviation', 'absolute_robust_deviation', 'absolute_z_gt_2', 'absolute_z_gt_3', 'absolute_z_gt_5', 'constant_dimension_violation', 'zero_iqr_dimension_violation']
+first_row_field_count=0
+first_row=[]
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_coverage_summary_by_representation.csv
+size_bytes: 67737
+suffix: .csv
+column_count=27
+header=['target_run_id', 'target_split', 'target_true_graph', 'reference_cohort', 'reference_role', 'representation', 'dimension_count', 'outside_minimum_maximum_count', 'outside_minimum_maximum_fraction', 'outside_p01_p99_count', 'outside_p01_p99_fraction', 'outside_p05_p95_count', 'outside_p05_p95_fraction', 'absolute_z_gt_2_count', 'absolute_z_gt_2_fraction', 'absolute_z_gt_3_count', 'absolute_z_gt_3_fraction', 'absolute_z_gt_5_count', 'absolute_z_gt_5_fraction', 'constant_dimension_violation_count', 'zero_iqr_dimension_violation_count', 'finite_z_score_count', 'median_absolute_z_score', 'maximum_absolute_z_score', 'finite_robust_deviation_count', 'median_absolute_robust_deviation', 'maximum_absolute_robust_deviation']
+first_row_field_count=27
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'all_training', 'all_training', 'R1_global_run_feature', '264', '0', '0.0', '0', '0.0', '0', '0.0', '0', '0.0', '0', '0.0', '0', '0.0', '0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_coverage_summary_by_run.csv
+size_bytes: 20066
+suffix: .csv
+column_count=27
+header=['target_run_id', 'target_split', 'target_true_graph', 'reference_cohort', 'reference_role', 'dimension_count', 'outside_minimum_maximum_count', 'outside_minimum_maximum_fraction', 'outside_p01_p99_count', 'outside_p01_p99_fraction', 'outside_p05_p95_count', 'outside_p05_p95_fraction', 'absolute_z_gt_2_count', 'absolute_z_gt_2_fraction', 'absolute_z_gt_3_count', 'absolute_z_gt_3_fraction', 'absolute_z_gt_5_count', 'absolute_z_gt_5_fraction', 'constant_dimension_violation_count', 'zero_iqr_dimension_violation_count', 'finite_z_score_count', 'median_absolute_z_score', 'maximum_absolute_z_score', 'finite_robust_deviation_count', 'median_absolute_robust_deviation', 'maximum_absolute_robust_deviation', 'coverage_scope']
+first_row_field_count=27
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'all_training', 'all_training', '3306', '19', '0.005747126436781609', '30', '0.009074410163339383', '71', '0.02147610405323654', '24', '0.007259528130671506', '10', '0.0030248033877797943', '0', '0.0', '0', '0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_hypothesis_evidence.csv
+size_bytes: 1785
+suffix: .csv
+column_count=9
+header=['hypothesis_id', 'hypothesis_name', 'stage7c1_status', 'metric_1_name', 'metric_1_value', 'metric_2_name', 'metric_2_value', 'builder_recovery_required', 'interpretation_boundary']
+first_row_field_count=9
+first_row=['H1', 'structured_router_direction_saturation', 'supported', 'hard_normal_R3_same_class_p01_p99_violation_fraction', '0.049479166666666664', 'hard_normal_R1_same_class_p01_p99_violation_fraction', '0.015151515151515152', 'True', 'Structured novelty can be established, but exact-1.0 meaning cannot.']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_scan_manifest.csv
+size_bytes: 5153
+suffix: .csv
+column_count=14
+header=['training_scan_order', 'run_id', 'split', 'true_graph', 'profile', 'number_of_windows', 'dataset_index_minimum', 'dataset_index_maximum', 'run_array_shape', 'run_array_bytes', 'all_values_finite', 'contains_value_outside_unit_interval', 'used_for_reference_fitting', 'full_tensor_in_memory']
+first_row_field_count=14
+first_row=['1', 'N-0-15-Pbursty-R23-A-1-11-S63-V3', 'train', '1', 'bursty', '3293', '121841', '125133', '3293x16x8x24', '40464384', 'True', 'False', 'True', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_summary.json
+size_bytes: 1547
+suffix: .json
+top_level_type=dict
+keys=['all_reference_cohorts_attached', 'builder_recovery_required', 'builder_recovery_should_proceed_in_parallel', 'classifier_fitted', 'constant_dimension_violation_rows', 'coverage_by_representation_rows', 'coverage_by_run_rows', 'dataset_root', 'dimensions_per_run', 'failure_root', 'histogram_bin_count', 'inference_rerun', 'nearest_run_ranking_performed', 'node_correctness_grouping_performed', 'overall_success', 'plot_count', 'raw_reference_rows', 'reference_application_smoke_test_passed', 'script_version', 'selected_target_run_count', 'selected_target_runs', 'target_coverage_rows', 'target_raw_distribution_coverage_rows', 'training_dimension_rows', 'training_performed', 'training_reference_rows', 'training_run_count', 'training_sample_count', 'training_values_outside_unit_interval_observed']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_target_global_coverage.csv
+size_bytes: 6328165
+suffix: .csv
+column_count=54
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'target_active_cores', 'target_attacker_count', 'target_attackers', 'target_strength', 'target_strength_group', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'target_value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'target_provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'below_training_minimum', 'above_training_maximum', 'outside_training_minimum_maximum', 'outside_training_p01_p99', 'outside_training_p05_p95', 'z_score', 'absolute_z_score', 'robust_deviation', 'absolute_robust_deviation', 'absolute_z_gt_2', 'absolute_z_gt_3', 'absolute_z_gt_5', 'constant_dimension_violation', 'zero_iqr_dimension_violation']
+first_row_field_count=54
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '0', '', '0', 'normal', 'all_training', 'all_training', 'R1_global_run_feature', 'R1_global_run_feature|feature=0|metric=mean', 'mean', '0.0623177855482188', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_target_raw_distribution_coverage.csv
+size_bytes: 15600907
+suffix: .csv
+column_count=77
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'strength_group', 'seed', 'number_of_windows', 'target_run_id', 'target_split', 'target_true_graph', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'target_value_count', 'target_mean', 'target_std', 'target_minimum', 'target_maximum', 'target_fraction_equal_0', 'target_fraction_equal_1', 'training_run_count', 'training_value_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'training_fraction_equal_0', 'training_fraction_equal_1', 'zero_variance_dimension', 'zero_iqr_dimension', 'quantiles_histogram_approximated', 'histogram_bin_count', 'below_training_minimum_count', 'below_training_minimum_fraction', 'above_training_maximum_count', 'above_training_maximum_fraction', 'outside_training_minimum_maximum_count', 'outside_training_minimum_maximum_fraction', 'outside_training_p01_p99_count', 'outside_training_p01_p99_fraction', 'outside_training_p05_p95_count', 'outside_training_p05_p95_fraction', 'absolute_z_gt_2_count', 'absolute_z_gt_2_fraction', 'absolute_z_gt_3_count', 'absolute_z_gt_3_fraction', 'absolute_z_gt_5_count', 'absolute_z_gt_5_fraction', 'median_absolute_z_score', 'maximum_absolute_z_score', 'median_absolute_robust_deviation', 'maximum_absolute_robust_deviation', 'constant_dimension_violation_fraction', 'zero_iqr_dimension_violation_fraction']
+first_row_field_count=77
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', 'normal', '17', '3293', 'N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'all_training', 'all_training', 'R6_raw_global_feature', 'R6_raw_global_feature|feature=0|metric=raw_distribution', 'raw_distribution']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_target_router_feature_coverage.csv
+size_bytes: 36325100
+suffix: .csv
+column_count=54
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'target_active_cores', 'target_attacker_count', 'target_attackers', 'target_strength', 'target_strength_group', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'target_value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'target_provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'below_training_minimum', 'above_training_maximum', 'outside_training_minimum_maximum', 'outside_training_p01_p99', 'outside_training_p05_p95', 'z_score', 'absolute_z_score', 'robust_deviation', 'absolute_robust_deviation', 'absolute_z_gt_2', 'absolute_z_gt_3', 'absolute_z_gt_5', 'constant_dimension_violation', 'zero_iqr_dimension_violation']
+first_row_field_count=54
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '0', '', '0', 'normal', 'all_training', 'all_training', 'R3_router_feature', 'R3_router_feature|feature=0|router=0|metric=mean', 'mean', '0.0572032235277719', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_target_saturation_pattern_coverage.csv
+size_bytes: 6604638
+suffix: .csv
+column_count=60
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'target_active_cores', 'target_attacker_count', 'target_attackers', 'target_strength', 'target_strength_group', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'target_value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'target_provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'below_training_minimum', 'above_training_maximum', 'outside_training_minimum_maximum', 'outside_training_p01_p99', 'outside_training_p05_p95', 'z_score', 'absolute_z_score', 'robust_deviation', 'absolute_robust_deviation', 'absolute_z_gt_2', 'absolute_z_gt_3', 'absolute_z_gt_5', 'constant_dimension_violation', 'zero_iqr_dimension_violation', 'training_runs_with_same_exact_rate', 'training_runs_with_constant_exact_one_pattern', 'training_runs_with_constant_exact_zero_pattern', 'target_is_constant_exact_one_pattern', 'target_is_constant_exact_zero_pattern', 'is_suspicious_attacker_router_pattern']
+first_row_field_count=60
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '0', '', '0', 'normal', 'all_training', 'all_training', 'R3_router_feature', 'R3_router_feature|feature=0|router=0|metric=fraction_equal_1', 'fraction_equal_1', '0.0024293956878226', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_target_spatial_coverage.csv
+size_bytes: 2124814
+suffix: .csv
+column_count=54
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'target_active_cores', 'target_attacker_count', 'target_attackers', 'target_strength', 'target_strength_group', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'target_value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'target_provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'below_training_minimum', 'above_training_maximum', 'outside_training_minimum_maximum', 'outside_training_p01_p99', 'outside_training_p05_p95', 'z_score', 'absolute_z_score', 'robust_deviation', 'absolute_robust_deviation', 'absolute_z_gt_2', 'absolute_z_gt_3', 'absolute_z_gt_5', 'constant_dimension_violation', 'zero_iqr_dimension_violation']
+first_row_field_count=54
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '0', '', '0', 'normal', 'all_training', 'all_training', 'R5_spatial_concentration', 'R5_spatial_concentration|feature=0|metric=mean_router_std', 'mean_router_std', '0.0413904786109924', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_target_temporal_feature_coverage.csv
+size_bytes: 20050728
+suffix: .csv
+column_count=54
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'target_active_cores', 'target_attacker_count', 'target_attackers', 'target_strength', 'target_strength_group', 'reference_cohort', 'reference_role', 'representation', 'dimension_id', 'metric', 'target_value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'target_provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'below_training_minimum', 'above_training_maximum', 'outside_training_minimum_maximum', 'outside_training_p01_p99', 'outside_training_p05_p95', 'z_score', 'absolute_z_score', 'robust_deviation', 'absolute_robust_deviation', 'absolute_z_gt_2', 'absolute_z_gt_3', 'absolute_z_gt_5', 'constant_dimension_violation', 'zero_iqr_dimension_violation']
+first_row_field_count=54
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '0', '', '0', 'normal', 'all_training', 'all_training', 'R4_temporal_position_feature', 'R4_temporal_position_feature|feature=0|position=0|metric=mean', 'mean', '0.06230935702878', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_training_cohort_reference.csv
+size_bytes: 2812929
+suffix: .csv
+column_count=31
+header=['cohort_type', 'cohort_value', 'representation', 'dimension_id', 'metric', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'primary_coverage_reference']
+first_row_field_count=31
+first_row=['graph_class', '0', 'R1_global_run_feature', 'R1_global_run_feature|feature=0|metric=fraction_above_0_95', 'fraction_above_0_95', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '-1', '-1', 'False', 'stage7b_run_feature_summary.csv', '14', '0.10223898908941041', '0.24136082747788715', '0.0', '0.9499506529000912']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_training_dimension_reference.csv
+size_bytes: 5186648
+suffix: .csv
+column_count=34
+header=['reference_cohort', 'representation', 'dimension_id', 'metric', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'training_value_count', 'training_fraction_equal_0', 'training_fraction_equal_1', 'quantiles_histogram_approximated', 'histogram_bin_count']
+first_row_field_count=34
+first_row=['all_training', 'R1_global_run_feature', 'R1_global_run_feature|feature=0|metric=fraction_above_0_95', 'fraction_above_0_95', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '-1', '-1', 'False', 'stage7b_run_feature_summary.csv', '45', '0.03246063830684614', '0.14256075361750395', '0.0', '0.9499506529000912', '0.0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_training_raw_feature_histograms.npz
+size_bytes: 1452687
+suffix: .npz
+npy_members=37
+member=bin_edges.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=cohort_names.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_counts.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_underflow.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_overflow.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_counts.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_underflow.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_overflow.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_counts.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_underflow.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_overflow.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_sum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_sumsq.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_minimum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_maximum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_exact_zero.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=global_feature_exact_one.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_sum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_sumsq.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_minimum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_maximum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_exact_zero.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=router_feature_exact_one.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_sum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_sumsq.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_minimum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_maximum.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_exact_zero.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=temporal_feature_exact_one.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=histogram_bin_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=training_sample_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=training_run_count.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=feature_names.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+member=histogram_scope.npy header_error=AttributeError: module 'numpy.lib.format' has no attribute '_read_array_header'
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_training_router_feature_reference.csv
+size_bytes: 2365997
+suffix: .csv
+column_count=34
+header=['reference_cohort', 'representation', 'dimension_id', 'metric', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'training_value_count', 'training_fraction_equal_0', 'training_fraction_equal_1', 'quantiles_histogram_approximated', 'histogram_bin_count']
+first_row_field_count=34
+first_row=['all_training', 'R3_router_feature', 'R3_router_feature|feature=0|router=0|metric=fraction_above_0_95', 'fraction_above_0_95', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '0', '-1', 'False', 'training_raw_tensor_scan', '45', '0.026244221749839727', '0.1416524849683426', '0.0', '0.9497418767081689', '0.0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_training_run_reference.csv
+size_bytes: 44983555
+suffix: .csv
+column_count=26
+header=['run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'strength_group', 'seed', 'number_of_windows', 'representation', 'dimension_id', 'metric', 'value', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'provenance_table']
+first_row_field_count=26
+first_row=['N-0-15-Pbursty-R23-A-1-11-S63-V3', 'train', '1', 'bursty', '0-15', '2', '1-11', '2', '63', 'medium_21_63', '23', '3293', 'R1_global_run_feature', 'R1_global_run_feature|feature=0|metric=mean', 'mean', '0.057182093688654', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c1_v2_training_temporal_feature_reference.csv
+size_bytes: 1336898
+suffix: .csv
+column_count=34
+header=['reference_cohort', 'representation', 'dimension_id', 'metric', 'feature_index', 'feature_name', 'feature_family', 'measurement_type', 'flow_side', 'direction', 'router_id', 'temporal_position', 'metadata_dependent', 'provenance_table', 'training_run_count', 'training_mean', 'training_std', 'training_minimum', 'training_maximum', 'training_p01', 'training_p05', 'training_q1', 'training_median', 'training_q3', 'training_p95', 'training_p99', 'training_iqr', 'zero_variance_dimension', 'zero_iqr_dimension', 'training_value_count', 'training_fraction_equal_0', 'training_fraction_equal_1', 'quantiles_histogram_approximated', 'histogram_bin_count']
+first_row_field_count=34
+first_row=['all_training', 'R4_temporal_position_feature', 'R4_temporal_position_feature|feature=0|position=0|metric=fraction_above_0_95', 'fraction_above_0_95', '0', 'ifd_in_norm', 'aggregate_ifd', 'ifd', 'input', '', '-1', '0', 'False', 'training_raw_tensor_scan', '45', '0.03242357526065391', '0.1423993303180825', '0.0', '0.9488877922866686', '0.0']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_class_margin_summary.csv
+size_bytes: 62321
+suffix: .csv
+column_count=25
+header=['target_run_id', 'target_split', 'target_true_graph', 'representation', 'distance_metric', 'nearest_same_class_run_id', 'nearest_same_class_distance', 'nearest_opposite_class_run_id', 'nearest_opposite_class_distance', 'class_margin_opposite_minus_same', 'distance_ratio_opposite_over_same', 'margin_interpretation', 'mean_top3_same_class_distance', 'mean_top3_opposite_class_distance', 'mean_top5_same_class_distance', 'mean_top5_opposite_class_distance', 'majority_class_top3', 'normal_count_top3', 'attack_count_top3', 'majority_class_top5', 'normal_count_top5', 'attack_count_top5', 'majority_class_top10', 'normal_count_top10', 'attack_count_top10']
+first_row_field_count=25
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', 'N-2-5-10-13-Pmixed-R7-V3', '0.16202186267042745', 'N-3-12-Pstream-R22-A-1-7-S63-V3', '0.3367546742017095', '0.17473281153128206', '2.078452059810658', 'same_class_closer', '0.2565438081684533', '0.3419014832559468', '0.5580252371669197', '0.35104852887898425', 'normal', '3', '0', 'normal']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_dimension_contributions.csv
+size_bytes: 985426
+suffix: .csv
+column_count=22
+header=['target_run_id', 'representation', 'distance_metric', 'contribution_role', 'neighbor_run_id', 'contribution_rank', 'dimension_id', 'feature_index', 'feature_name', 'feature_family', 'router_id', 'temporal_position', 'metric', 'target_value', 'training_run_value', 'training_scaling_value', 'signed_scaled_difference', 'absolute_scaled_difference', 'distance_contribution', 'constant_dimension_violation', 'contribution_difference_opposite_minus_same', 'contribution_interpretation']
+first_row_field_count=22
+first_row=['N-3-7-8-12-Pmixed-R18-V3', 'R1_global_run_feature', 'D1_standardized_rmse', 'nearest_same_class', 'N-0-6-9-15-Pmixed-R6-V3', '1', 'R1_global_run_feature|feature=21|metric=mean_temporal_variance', '21', 'ifd_out_norm_east', 'directional_output_ifd', '-1', '-1', 'mean_temporal_variance', '0.0306534711271524', '0.0421464145183563', '0.0184049628636231', '-0.6244480619908984', '0.6244480619908984', '0.0014770279625916248', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_distance_results.csv
+size_bytes: 1904524
+suffix: .csv
+column_count=26
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'training_run_id', 'training_split', 'training_true_graph', 'training_profile', 'training_active_cores', 'training_attackers', 'training_strength', 'training_attacker_count', 'training_seed', 'class_relation', 'representation', 'distance_metric', 'distance', 'dimension_count', 'variable_dimension_count', 'constant_dimension_count', 'constant_dimension_violation_count', 'scaling_reference', 'constant_violation_penalty', 'combined_weight_rule', 'rank_overall', 'rank_within_class_relation']
+first_row_field_count=26
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', 'N-2-5-10-13-Pmixed-R7-V3', 'train', '0', 'mixed', '2-5-10-13', '', '0', '0', '7', 'same_class', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', '0.16202186267042745', '3306', '2389', '917']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_dominant_run_block_stability.csv
+size_bytes: 121982
+suffix: .csv
+column_count=18
+header=['target_run_id', 'target_true_graph', 'block_index', 'block_start_window_index', 'block_end_window_index_exclusive', 'block_window_count', 'representation', 'distance_metric', 'nearest_same_class_run_id', 'nearest_same_class_distance', 'nearest_opposite_class_run_id', 'nearest_opposite_class_distance', 'class_margin_opposite_minus_same', 'margin_interpretation', 'top5_majority_class', 'top5_neighbor_run_ids', 'scaling_reference', 'block_reference_refitted']
+first_row_field_count=18
+first_row=['N-3-7-8-12-Pmixed-R18-V3', '0', '0', '0', '411', '411', 'R1_global_run_feature', 'D1_standardized_rmse', 'N-1-4-11-14-Pmixed-R8-V3', '0.25847945723709004', 'N-3-12-Pbursty-R25-A-1-11-S63-V3', '0.2258696091628416', '-0.03260984807424844', 'opposite_class_closer', 'attack', 'N-3-12-Pbursty-R25-A-1-11-S63-V3;N-3-12-Pstream-R22-A-1-7-S63-V3;N-0-6-Pstream-R21-A-7-12-S63-V3;N-0-15-Pbursty-R23-A-1-11-S63-V3;N-0-15-Pstream-R20-A-1-7-S63-V3', 'frozen_all_training_stage7c1_v2', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_missing_scenario_evidence.csv
+size_bytes: 26543
+suffix: .csv
+column_count=13
+header=['target_run_id', 'target_true_graph', 'representation', 'distance_metric', 'class_margin_opposite_minus_same', 'geometry_result', 'nearest_same_class_run_id', 'nearest_same_class_metadata_matches', 'nearest_opposite_class_run_id', 'nearest_opposite_class_metadata_matches', 'top_distance_contributing_dimensions', 'missing_scenario_evidence', 'v4_design_finalized']
+first_row_field_count=13
+first_row=['N-3-7-8-12-Pmixed-R18-V3', '0', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', '0.03759564998804349', 'same_class_closer', 'N-0-6-9-15-Pmixed-R6-V3', 'same_profile;same_active_core_count;same_attacker_count;same_strength;same_attacker_placement', 'N-3-12-Pstream-R22-A-1-7-S63-V3', 'no_exact_metadata_match', 'out_count_norm_south|mean_maximum_minus_median|r=-1|t=-1;in_count_norm_north|mean_maximum_minus_median|r=-1|t=-1;feature_family=aggregate_flit_count|mean_temporal_variance|r=-1|t=-1;feature_family=aggregate_flit_count|mean_absolute_adjacent_temporal_change|r=-1|t=-1;feature_family=directional_input_flit_count|mean_temporal_variance|r=-1|t=-1', 'Add benign configurations around the target placement and its nearest attack-like neighbourhood; preserve mixed traffic and router-local count/IFD structure.', 'False']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_nearest_opposite_class.csv
+size_bytes: 212341
+suffix: .csv
+column_count=26
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'training_run_id', 'training_split', 'training_true_graph', 'training_profile', 'training_active_cores', 'training_attackers', 'training_strength', 'training_attacker_count', 'training_seed', 'class_relation', 'representation', 'distance_metric', 'distance', 'dimension_count', 'variable_dimension_count', 'constant_dimension_count', 'constant_dimension_violation_count', 'scaling_reference', 'constant_violation_penalty', 'combined_weight_rule', 'rank_overall', 'rank_within_class_relation']
+first_row_field_count=26
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', 'N-3-12-Pstream-R22-A-1-7-S63-V3', 'train', '1', 'stream', '3-12', '1-7', '63', '2', '22', 'opposite_class', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', '0.3367546742017095', '3306', '2389', '917']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_nearest_runs_overall.csv
+size_bytes: 422856
+suffix: .csv
+column_count=26
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'training_run_id', 'training_split', 'training_true_graph', 'training_profile', 'training_active_cores', 'training_attackers', 'training_strength', 'training_attacker_count', 'training_seed', 'class_relation', 'representation', 'distance_metric', 'distance', 'dimension_count', 'variable_dimension_count', 'constant_dimension_count', 'constant_dimension_violation_count', 'scaling_reference', 'constant_violation_penalty', 'combined_weight_rule', 'rank_overall', 'rank_within_class_relation']
+first_row_field_count=26
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', 'N-2-5-10-13-Pmixed-R7-V3', 'train', '0', 'mixed', '2-5-10-13', '', '0', '0', '7', 'same_class', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', '0.16202186267042745', '3306', '2389', '917']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_nearest_same_class.csv
+size_bytes: 209780
+suffix: .csv
+column_count=26
+header=['target_run_id', 'target_split', 'target_true_graph', 'target_profile', 'training_run_id', 'training_split', 'training_true_graph', 'training_profile', 'training_active_cores', 'training_attackers', 'training_strength', 'training_attacker_count', 'training_seed', 'class_relation', 'representation', 'distance_metric', 'distance', 'dimension_count', 'variable_dimension_count', 'constant_dimension_count', 'constant_dimension_violation_count', 'scaling_reference', 'constant_violation_penalty', 'combined_weight_rule', 'rank_overall', 'rank_within_class_relation']
+first_row_field_count=26
+first_row=['N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', 'N-2-5-10-13-Pmixed-R7-V3', 'train', '0', 'mixed', '2-5-10-13', '', '0', '0', '7', 'same_class', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', '0.16202186267042745', '3306', '2389', '917']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_summary.json
+size_bytes: 1625
+suffix: .json
+top_level_type=dict
+keys=['block_count', 'block_stability_rows', 'class_margin_rows', 'class_margin_sign_convention', 'classifier_fitted', 'combined_representation', 'constant_violation_penalty', 'dataset_root', 'dimension_contribution_rows', 'distance_metrics', 'distance_result_rows', 'failure_root', 'hard_attack_combined_outcome', 'hard_normal_combined_outcome', 'inference_rerun', 'missing_scenario_evidence_rows', 'model_training_performed', 'nearest_opposite_class_rows', 'nearest_overall_rows', 'nearest_same_class_rows', 'negative_margin_interpretation', 'overall_success', 'plot_count', 'positive_margin_interpretation', 'r6_included_in_primary_geometry', 'representations', 'scaling_reference', 'script_version', 'selected_target_run_count', 'topk_summary_rows', 'training_run_count']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_target_vector_manifest.csv
+size_bytes: 14488
+suffix: .csv
+column_count=18
+header=['vector_role', 'run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'representation', 'dimension_count', 'all_values_finite', 'dimension_id_minimum', 'dimension_id_maximum', 'source_provenance_tables']
+first_row_field_count=18
+first_row=['selected_target', 'N-1-6-9-14-Pmixed-R17-V3', 'test', '0', 'mixed', '1-6-9-14', '4', '', '0', '0', '17', '3293', 'R1_global_run_feature', '264', 'True', 'R1_global_run_feature|feature=0|metric=fraction_above_0_95', 'R1_global_run_feature|feature=9|metric=std', 'stage7b_run_feature_summary.csv']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_topk_class_summary.csv
+size_bytes: 149102
+suffix: .csv
+column_count=10
+header=['target_run_id', 'target_true_graph', 'representation', 'distance_metric', 'k', 'normal_neighbor_count', 'attack_neighbor_count', 'majority_class', 'majority_matches_target', 'neighbor_run_ids']
+first_row_field_count=10
+first_row=['N-1-6-9-14-Pmixed-R17-V3', '0', 'R1_R5_equal_weight_combined', 'D1_standardized_rmse', '3', '3', '0', 'normal', 'True', 'N-2-5-10-13-Pmixed-R7-V3;N-1-4-11-14-Pmixed-R8-V3;N-0-6-9-15-Pmixed-R6-V3']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_training_vector_manifest.csv
+size_bytes: 62413
+suffix: .csv
+column_count=18
+header=['vector_role', 'run_id', 'split', 'true_graph', 'profile', 'active_cores', 'active_core_count', 'attackers', 'attacker_count', 'strength', 'seed', 'number_of_windows', 'representation', 'dimension_count', 'all_values_finite', 'dimension_id_minimum', 'dimension_id_maximum', 'source_provenance_tables']
+first_row_field_count=18
+first_row=['training_neighbor', 'N-0-15-Pbursty-R23-A-1-11-S63-V3', 'train', '1', 'bursty', '0-15', '2', '1-11', '2', '63', '23', '3293', 'R1_global_run_feature', '264', 'True', 'R1_global_run_feature|feature=0|metric=fraction_above_0_95', 'R1_global_run_feature|feature=9|metric=std', 'stage7b_run_feature_summary.csv']
+====================================================================================================
+path: /home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/tables/stage7c2_validation_summary.csv
+size_bytes: 988
+suffix: .csv
+column_count=2
+header=['validation_check', 'passed']
+first_row_field_count=2
+first_row=['synthetic smoke test passed', 'True']

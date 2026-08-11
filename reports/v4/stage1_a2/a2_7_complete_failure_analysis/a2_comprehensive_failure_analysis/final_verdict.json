@@ -1,0 +1,272 @@
+{
+  "a2_capacity_lift_decision": "secondary_only_cardinality_or_set_decoding_is_the_larger_issue",
+  "analysis_pass": true,
+  "calibration": {
+    "test": {
+      "frozen_graph_threshold": 0.5399999999999999,
+      "frozen_node_threshold": 0.8799999999999999,
+      "graph_auc": {
+        "auroc": 0.9365463553543546,
+        "average_precision": 0.9640313784694735
+      },
+      "graph_brier": 0.10385458605146006,
+      "graph_ece_15bin": 0.053104526224916515,
+      "node_auc": {
+        "auroc": 0.9106929511471742,
+        "average_precision": 0.7141740777522432
+      },
+      "node_brier": 0.08269472842889841,
+      "node_ece_15bin": 0.1585752600772798
+    },
+    "validation": {
+      "frozen_graph_threshold": 0.5399999999999999,
+      "frozen_node_threshold": 0.8799999999999999,
+      "graph_auc": {
+        "auroc": 0.9370693702636677,
+        "average_precision": 0.9709767394079152
+      },
+      "graph_brier": 0.10060143668511612,
+      "graph_ece_15bin": 0.05919570323691335,
+      "node_auc": {
+        "auroc": 0.9170010672449405,
+        "average_precision": 0.7318513639347448
+      },
+      "node_brier": 0.09131948585280418,
+      "node_ece_15bin": 0.17090071177193497
+    }
+  },
+  "confirmed_facts": [
+    "Validation and test predictions align with dataset labels and split IDs",
+    "Thresholds were frozen from validation and reused on test",
+    "Multi-attacker exact-set performance must be interpreted separately from micro node F1",
+    "The active-core matched-control condition is audited at run level"
+  ],
+  "count_diagnostics": {
+    "oracle_gain": 0.16526723352566053,
+    "test_count_accuracy": 0.6155784998481628,
+    "test_frozen_exact": 0.5826500657961332,
+    "test_oracle_topk_exact": 0.7479172993217937,
+    "validation_count_accuracy": 0.5783731350783328,
+    "validation_fitted_count_topk": {
+      "count_accuracy": 0.4596695009616358,
+      "count_estimator": "nearest validation median of sum(node probabilities)",
+      "count_mae": 0.8292362587306408,
+      "exact_localization": 0.3946755744508553,
+      "graph_accuracy": 0.8354286871140804,
+      "graph_f1": 0.8571365805221396,
+      "graph_fn": 51889,
+      "graph_fp": 13143,
+      "graph_fpr": 0.08869318756959206,
+      "graph_precision": 0.9368819905008429,
+      "graph_recall": 0.7899018119242839,
+      "graph_tn": 135042,
+      "graph_tp": 195086,
+      "node_accuracy": 0.9250321072476971,
+      "node_f1": 0.5211482605862533,
+      "node_fn": 203092,
+      "node_fp": 270897,
+      "node_fpr": 0.0462160114918605,
+      "node_precision": 0.48773790951638063,
+      "node_recall": 0.5594724740792156,
+      "node_tn": 5590643,
+      "node_tp": 257928,
+      "sample_count": 395160
+    }
+  },
+  "dataset_modified": false,
+  "exact_set_decomposition": {
+    "test": {
+      "all_true_plus_extras": 0.06039578904747444,
+      "empty_prediction": 0.16089685190808786,
+      "exact": 0.5826500657961332,
+      "mixed_misses_and_extras": 0.07526824577386375,
+      "no_true_attacker_found": 0.02258072679420994,
+      "strict_subset_only": 0.09820832068023079
+    },
+    "validation": {
+      "all_true_plus_extras": 0.07859488297609711,
+      "empty_prediction": 0.1406449695997833,
+      "exact": 0.5392887026546391,
+      "mixed_misses_and_extras": 0.08928684565253961,
+      "no_true_attacker_found": 0.031228221188612425,
+      "strict_subset_only": 0.12095637792832846
+    }
+  },
+  "feature_semantics": {
+    "all_runs_sampled": 908,
+    "feature_windows_sampled": 29056,
+    "full_x_scan": false,
+    "note": "Invalid-port versus valid-idle statistics are observational; saved tensors do not include explicit validity/clipping masks.",
+    "windows_per_run": 32
+  },
+  "hard_checks": {
+    "active_core_shortcut_audited": true,
+    "dataset_unmodified": true,
+    "feature_semantics_audited": true,
+    "no_model_inference_in_this_script": true,
+    "no_test_threshold_selection_in_this_script": true,
+    "prediction_dataset_alignment_pass": true,
+    "required_inputs_present": true,
+    "test_sample_count_nonzero": true,
+    "threshold_package_says_test_not_accessed": true,
+    "thresholds_from_validation_package": true,
+    "v3_v4_feature_comparison_completed_or_not_requested": true,
+    "validation_sample_count_nonzero": true
+  },
+  "matched_control": {
+    "active_core_shortcut_fraction": 1.0,
+    "active_core_shortcut_run_count": 608,
+    "attack_activity_topk_exact_run_fraction": 0.08388157894736842,
+    "heuristic_status": "diagnostic_only",
+    "matched_attack_runs": 608,
+    "mean_activity_delta_topk_exact_run_fraction": 0.9654605263157895,
+    "newly_active_topk_exact_run_fraction": 0.03125,
+    "samples_per_pair": 32,
+    "single_attacker_delta_top1_run_fraction": 0.9965277777777778
+  },
+  "model_inference_performed": false,
+  "open_hypotheses": [
+    "False positives may concentrate near true attackers or attacker-victim paths",
+    "Pulsed/intermittent labels may include windows with insufficient observable attack evidence",
+    "Capacity may limit node-score ranking after dataset semantic issues are controlled"
+  ],
+  "overall_metrics": {
+    "generalization_gap": {
+      "exact_localization": {
+        "test": 0.5826500657961332,
+        "test_minus_validation": 0.04336136314149408,
+        "validation": 0.5392887026546391
+      },
+      "graph_f1": {
+        "test": 0.8571365805221396,
+        "test_minus_validation": -0.015698535886855658,
+        "validation": 0.8728351164089952
+      },
+      "graph_fpr": {
+        "test": 0.08869318756959206,
+        "test_minus_validation": -0.007639099773931235,
+        "validation": 0.0963322873435233
+      },
+      "graph_recall": {
+        "test": 0.7899018119242839,
+        "test_minus_validation": -0.020172426789687115,
+        "validation": 0.810074238713971
+      },
+      "node_f1": {
+        "test": 0.6656918428401472,
+        "test_minus_validation": -0.006420944926368022,
+        "validation": 0.6721127877665152
+      }
+    },
+    "test": {
+      "exact_localization": 0.5826500657961332,
+      "graph_accuracy": 0.8354286871140804,
+      "graph_f1": 0.8571365805221396,
+      "graph_fn": 51889,
+      "graph_fp": 13143,
+      "graph_fpr": 0.08869318756959206,
+      "graph_precision": 0.9368819905008429,
+      "graph_recall": 0.7899018119242839,
+      "graph_tn": 135042,
+      "graph_tp": 195086,
+      "node_accuracy": 0.9575111979957486,
+      "node_f1": 0.6656918428401472,
+      "node_fn": 193557,
+      "node_fp": 75081,
+      "node_fpr": 0.012809091126222801,
+      "node_precision": 0.7808135597178757,
+      "node_recall": 0.5801548739750987,
+      "node_tn": 5786459,
+      "node_tp": 267463,
+      "sample_count": 395160
+    },
+    "validation": {
+      "exact_localization": 0.5392887026546391,
+      "graph_accuracy": 0.8403742842349261,
+      "graph_f1": 0.8728351164089952,
+      "graph_fn": 58790,
+      "graph_fp": 14275,
+      "graph_fpr": 0.0963322873435233,
+      "graph_precision": 0.9461375633426028,
+      "graph_recall": 0.810074238713971,
+      "graph_tn": 133910,
+      "graph_tp": 250752,
+      "node_accuracy": 0.9512291169190369,
+      "node_f1": 0.6721127877665152,
+      "node_fn": 246419,
+      "node_fp": 110761,
+      "node_fpr": 0.016504066227853595,
+      "node_precision": 0.7677187316500294,
+      "node_recall": 0.5976819516145359,
+      "node_tn": 6600373,
+      "node_tp": 366079,
+      "sample_count": 457727
+    }
+  },
+  "publication_blockers": [
+    "Confirmed active-core matched-control shortcut risk",
+    "No explicit valid/idle/clipped port masks in saved tensor semantics",
+    "Development test is not an independent publication holdout"
+  ],
+  "publication_ready": false,
+  "recommended_next_action": "Review count and exact-set reports; test count-conditioned decoding before full A2 training.",
+  "router_exposure": {
+    "train_attacker_exposure_max": 62,
+    "train_attacker_exposure_min": 46,
+    "train_attacker_exposure_ratio_max_to_min": 1.3478260869565217
+  },
+  "saved_predictions_reused": true,
+  "spatial_diagnostics": {
+    "corner_node_f1": 0.4956621537503891,
+    "edge_node_f1": 0.7289873297642301,
+    "fp_distance_to_attacker": {
+      "1": 28089,
+      "2": 13923,
+      "3": 8425,
+      "4": 3230,
+      "5": 954,
+      "6": 157
+    },
+    "interior_node_f1": 0.7135554116192301
+  },
+  "strong_inferences": [
+    "A large oracle top-k gain indicates cardinality/set-decoding error; a small gain indicates ranking/representation error",
+    "A corner-edge-interior gap is consistent with topology or boundary-feature effects"
+  ],
+  "temporal_observability": {
+    "status": "not_provable_from_saved_features",
+    "test": {
+      "hard_limitation": "The saved feature tensors do not separate legitimate traffic from malicious injection. Zero/nonzero count activity at a labeled attacker is not proof of attack inactivity. A true active/paused audit requires injection-state or per-epoch attack schedule metadata.",
+      "max_windows_per_run": 64,
+      "sampled_attack_windows": 4800,
+      "status": "heuristic_only",
+      "zero_observed_activity_fraction": 0.0
+    },
+    "validation": {
+      "hard_limitation": "The saved feature tensors do not separate legitimate traffic from malicious injection. Zero/nonzero count activity at a labeled attacker is not proof of attack inactivity. A true active/paused audit requires injection-state or per-epoch attack schedule metadata.",
+      "max_windows_per_run": 64,
+      "sampled_attack_windows": 6016,
+      "status": "heuristic_only",
+      "zero_observed_activity_fraction": 0.0
+    }
+  },
+  "test_thresholds_retuned": false,
+  "thresholds": {
+    "graph_threshold": 0.5399999999999999,
+    "node_threshold": 0.8799999999999999,
+    "source": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_5b_fpr10_frozen_thresholds/selected_thresholds.json"
+  },
+  "v3_v4_feature_comparison": {
+    "comparison_file": "v3_v4_feature_distribution_comparison.csv",
+    "limitation": "This compares tensor marginals only; scenario-conditioned equivalence requires aligned V3 run metadata.",
+    "status": "completed",
+    "v3_data_dir": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+    "v3_windows_sampled": 32768,
+    "v3_x_shape": [
+      233803,
+      16,
+      8,
+      24
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "RTL": {
+    "H0_archive_path": "/home/zira/research/projects/GNN-2d/artifacts/rtl/v5_p3_h0_current_4x4_dynamic70_rtl_handoff/V5_P3_H0_CURRENT_4X4_DYNAMIC70_RTL_HANDOFF_PREQUANTIZATION_REFERENCE.zip",
+    "H0_archive_sha256": "431298f6870489b8b77a1ca0fae774aff1604ef2b6e11155d985a818a21689f0",
+    "compute_RTL_implemented": false,
+    "decision_note_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d5_tranche_a_decoder_review_and_4x4_expert_interface_freeze/V5_P3_D5_RTL_TEAM_DECISION_NOTE.md",
+    "decision_note_sha256": "ed4a45ccc11b84f8e78b40744701c588139dc1ae21bf6c6bbcf56b4c6fc03575",
+    "quantization_frozen": false
+  },
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "created_utc": "2026-08-05T14:58:55.740009+00:00",
+  "decision": {
+    "A_test_evaluation_authorized": false,
+    "D5_complete": true,
+    "H1_quantization_work_authorized": true,
+    "Tranche_B_generation_authorized_by_D5": false,
+    "Tranche_B_spec_remains_frozen": true,
+    "final_model_claim_authorized": false,
+    "next_dataset_governance_stage": "resume_existing_A6_Tranche_B_prefrozen_spec review; generation remains separately governed",
+    "next_hardware_stage": "V5_P3_H1_DYNAMIC70_QUANTIZATION_AND_ACCUMULATOR_WIDTH_FREEZE",
+    "shared_8x8_wrapper_engineering_authorized": true
+  },
+  "decoder_freeze": {
+    "canonical_decoder_modified": false,
+    "certificate_tolerance_relaxed": false,
+    "decision_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d5_tranche_a_decoder_review_and_4x4_expert_interface_freeze/V5_P3_TRANCHE_A_DECODER_POLICY_DECISION.json",
+    "decision_sha256": "6628aaec614de99838bbd64ad1a75c5b7d742695a475f3f1d6970d0006936e02",
+    "hybrid_policy_frozen": true,
+    "threshold_or_margin_retuned": false
+  },
+  "decoder_reexecuted": false,
+  "interface_freeze": {
+    "A_plus_B_model_must_preserve_interface": true,
+    "contract_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d5_tranche_a_decoder_review_and_4x4_expert_interface_freeze/V5_P3_4X4_DYNAMIC70_EXPERT_INTERFACE_CONTRACT.json",
+    "contract_sha256": "f1595d90c5440b49e0f03a574fb06dc35c8607d314314ba8f2b8301bd7d4041d",
+    "current_weights_final": false,
+    "status": "FROZEN"
+  },
+  "metric_summary": {
+    "A0": {
+      "graph_accuracy": 0.8040106758998774,
+      "graph_f1": 0.7071882745985558,
+      "graph_fpr": 0.2167114829200279,
+      "strict_exact": 0.625838563081584
+    },
+    "A1": {
+      "count_active_macro_f1": 0.9355363211130194,
+      "graph_accuracy": 0.7920363557671499,
+      "graph_auroc": 0.8791015965884719,
+      "graph_average_precision": 0.6609415661780897,
+      "graph_f1": 0.7021386506870544,
+      "graph_fpr": 0.24489592670052784,
+      "path_exact_active": 0.8053375196232339,
+      "source_exact_active": 0.8809523809523809,
+      "strict_exact": 0.7528673447305778,
+      "transit_exact_active": 0.8660387231815804,
+      "victim_exact_active": 0.8168498168498168
+    },
+    "Raw": {
+      "graph_accuracy": 0.8021351799754742,
+      "graph_f1": 0.7011657043250901,
+      "graph_fpr": 0.21302659097699433,
+      "strict_exact": 0.6321142609824714
+    },
+    "deltas": {
+      "A1_minus_A0_strict_exact": 0.12702878164899378,
+      "A1_minus_Raw_graph_accuracy": -0.010098824208324308,
+      "A1_minus_Raw_graph_fpr": 0.03186933572353351,
+      "A1_minus_Raw_strict_exact": 0.12075308374810645
+    }
+  },
+  "model_retrained": false,
+  "provenance": {
+    "H0_lock_sha256": "e4ffb28e303cf54dd54330098eefaa0086360da3e088b923974f5b298d1b85b8",
+    "H0_report_sha256": "61bf169859a911f82ca532b9748df4d164c47a21906a6f9dd17fd7ed7b33bde1",
+    "R2_R2_lock_sha256": "748d72bd54620ca2746f98ec2e259bb0ee793985318f7851160f00eeb138662b",
+    "R2_R2_report_sha256": "9232fc53da0a3c9125f23f2d757c0a288afbdaec7f370efdbe6084bf1c22f50d",
+    "R3_lock_sha256": "7e779f3f569077ae3837983e1eaf460126d6b37d5ecb4e4c61bdcbf1458f0fd0",
+    "R3_merged_outputs_sha256": "9ed94c9912ae4c83d346a66b933264b07fdee8fb3ef5cbe64a78b31af4197baa",
+    "R3_report_sha256": "b5c68bbeb81fa71e519b16775ae4f992bc6432aa4363c559fea40f09c5a60905",
+    "canonical_decoder_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+    "fallback_decoder_sha256": "9e82942a6378ef727c5a1f0f88568920ceecabbff1d8d857ce665366988e2a29",
+    "hybrid_decoder_sha256": "674e0ca2fce2953559ee7be7f63ddecf42e5ad883bb841c5b7004e30a1d7d1ee",
+    "installed_script_sha256": "845202424f8b3555e2d52e85a0964b778324551c7ae68953e32ffea38f12986e",
+    "model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+  },
+  "review_conclusion": {
+    "A0_transfer_selected": false,
+    "A1_selected_as_primary_graph_detector": false,
+    "A1_structured_decoder_selected_for_software_optional_use": true,
+    "Raw_graph_logit_retained_for_hardware_detection": true,
+    "architecture_change_required_before_B": false,
+    "graph_bottleneck_remains": true,
+    "victim_and_path_remain_weaker_than_source_and_transit": true
+  },
+  "scope": "Review the completed Raw/A0/A1 Tranche-A validation diagnostic, freeze the decoder role, and ratify the reusable 4x4 Dynamic70 neural expert interface for RTL and regional-wrapper engineering.",
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_tensor_loaded": false
+  },
+  "stage": "V5_P3_D5_TRANCHE_A_DECODER_REVIEW_AND_4X4_EXPERT_INTERFACE_FREEZE",
+  "status": "PASS",
+  "test_tensor_loaded": false,
+  "threshold_tuning_performed": false
+}

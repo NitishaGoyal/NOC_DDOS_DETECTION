@@ -1,0 +1,203 @@
+{
+  "channels": 70,
+  "classification": "VALIDATION-EXPLORATORY",
+  "consensus_definition": "equal-weight mean across the six tasks of each task's mean_fraction_of_total_absolute Integrated Gradients attribution",
+  "f6_root": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z",
+  "f6_task_lineage": {
+    "count": {
+      "fraction_sum": 0.9999999599385774,
+      "integration_points": 256,
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/count/attempt_points_256/CHANNEL_ATTRIBUTION.csv",
+      "sha256": "826eae506a89472e110c345addddbeef6677eaf9517fdd27d7e6f44324315c51"
+    },
+    "graph": {
+      "fraction_sum": 1.0000000471336534,
+      "integration_points": 64,
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/graph/attempt_points_64/CHANNEL_ATTRIBUTION.csv",
+      "sha256": "b4ad9a9608ae32635ed3490b06dce7dfe0c49a8e347cac0e46ee3eb63a957784"
+    },
+    "path": {
+      "fraction_sum": 1.0000001291919034,
+      "integration_points": 64,
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/path/attempt_points_64/CHANNEL_ATTRIBUTION.csv",
+      "sha256": "fc8c760dbd77f480033ef4b479fe43854d45cff4307a6bfa3b68535f1241fe7a"
+    },
+    "source": {
+      "fraction_sum": 1.0000000256259227,
+      "integration_points": 64,
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/source/attempt_points_64/CHANNEL_ATTRIBUTION.csv",
+      "sha256": "ac70ca9e165ad621cce9dcaf79e1935f46fa9812aa6c3ba3875139db553dd5ac"
+    },
+    "transit": {
+      "fraction_sum": 0.9999999696738087,
+      "integration_points": 64,
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/transit/attempt_points_64/CHANNEL_ATTRIBUTION.csv",
+      "sha256": "13de9915d6e75d6072dbe086e9bfc4eeedb1b97a7b52137fae44f9aecd2fe342"
+    },
+    "victim": {
+      "fraction_sum": 0.9999999283536454,
+      "integration_points": 64,
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/f6_runs/run_20260805T224905Z/tasks/victim/attempt_points_64/CHANNEL_ATTRIBUTION.csv",
+      "sha256": "ce4bd851bda8ba46c44c46321f8f5e4e68179b7854b10e6226002f6042becff9"
+    }
+  },
+  "feature_family_causal_or_performance_importance_must_use_f5_f7": true,
+  "feature_family_consensus_is_descriptive_only": true,
+  "feature_removal_performed": false,
+  "final_model_interface_changed": false,
+  "model_inference_performed": false,
+  "paper_top_k": 15,
+  "sealed_test_access": false,
+  "source_stage": "F6_TASK_SPECIFIC_INTEGRATED_GRADIENTS",
+  "stage": "V5_P3_F9_INDIVIDUAL_CHANNEL_RANKING_SYNTHESIS",
+  "status": "PASS",
+  "task_names": [
+    "graph",
+    "count",
+    "source",
+    "transit",
+    "victim",
+    "path"
+  ],
+  "tasks": 6,
+  "test_evaluation_performed": false,
+  "threshold_tuning_performed": false,
+  "top15": [
+    {
+      "average_task_rank": 2.1666666666666665,
+      "channel_index": 46,
+      "channel_name": "occupancy_max_north",
+      "consensus_importance": 0.053475758681694664,
+      "macro_group": "buffer_pressure",
+      "rank": 1,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 3,
+      "channel_index": 45,
+      "channel_name": "occupancy_max_local",
+      "consensus_importance": 0.04830866555372874,
+      "macro_group": "buffer_pressure",
+      "rank": 2,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 4,
+      "channel_index": 47,
+      "channel_name": "occupancy_max_east",
+      "consensus_importance": 0.047636990124980606,
+      "macro_group": "buffer_pressure",
+      "rank": 3,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 5.166666666666667,
+      "channel_index": 48,
+      "channel_name": "occupancy_max_south",
+      "consensus_importance": 0.0452133317788442,
+      "macro_group": "buffer_pressure",
+      "rank": 4,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 5.5,
+      "channel_index": 49,
+      "channel_name": "occupancy_max_west",
+      "consensus_importance": 0.04457601470251878,
+      "macro_group": "buffer_pressure",
+      "rank": 5,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 5.333333333333333,
+      "channel_index": 25,
+      "channel_name": "out_gap_count_local",
+      "consensus_importance": 0.03980193535486857,
+      "macro_group": "inter_flit_timing",
+      "rank": 6,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 5.166666666666667,
+      "channel_index": 5,
+      "channel_name": "out_count_local",
+      "consensus_importance": 0.037947786040604115,
+      "macro_group": "directional_traffic_volume",
+      "rank": 7,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 7.5,
+      "channel_index": 0,
+      "channel_name": "in_count_local",
+      "consensus_importance": 0.030576799375315506,
+      "macro_group": "directional_traffic_volume",
+      "rank": 8,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 8.833333333333334,
+      "channel_index": 15,
+      "channel_name": "in_gap_count_local",
+      "consensus_importance": 0.02923506312072277,
+      "macro_group": "inter_flit_timing",
+      "rank": 9,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 10.166666666666666,
+      "channel_index": 30,
+      "channel_name": "enqueue_count_local",
+      "consensus_importance": 0.02729561583449443,
+      "macro_group": "queue_activity",
+      "rank": 10,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 10.666666666666666,
+      "channel_index": 35,
+      "channel_name": "dequeue_count_local",
+      "consensus_importance": 0.025674008764326572,
+      "macro_group": "queue_activity",
+      "rank": 11,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 11.166666666666666,
+      "channel_index": 14,
+      "channel_name": "in_gap_sum_west",
+      "consensus_importance": 0.025436777000625927,
+      "macro_group": "inter_flit_timing",
+      "rank": 12,
+      "tasks_top15_count": 6
+    },
+    {
+      "average_task_rank": 13.666666666666666,
+      "channel_index": 38,
+      "channel_name": "dequeue_count_south",
+      "consensus_importance": 0.019787446595728397,
+      "macro_group": "queue_activity",
+      "rank": 13,
+      "tasks_top15_count": 4
+    },
+    {
+      "average_task_rank": 17,
+      "channel_index": 12,
+      "channel_name": "in_gap_sum_east",
+      "consensus_importance": 0.018613602655629318,
+      "macro_group": "inter_flit_timing",
+      "rank": 14,
+      "tasks_top15_count": 2
+    },
+    {
+      "average_task_rank": 19,
+      "channel_index": 40,
+      "channel_name": "occupancy_cycle_sum_local",
+      "consensus_importance": 0.01820554320390026,
+      "macro_group": "buffer_pressure",
+      "rank": 15,
+      "tasks_top15_count": 3
+    }
+  ],
+  "training_performed": false
+}

@@ -1,0 +1,176 @@
+{
+  "checks_passed": 29,
+  "checks_total": 29,
+  "chunk_size": 2,
+  "dataset_root": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset",
+  "generated_at": "2026-07-18T18:26:56.027623+00:00",
+  "graph": {
+    "all_nodes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "connected": true,
+    "dtype": "int64",
+    "edge_count": 64,
+    "maximum_router_id": 15,
+    "minimum_router_id": 0,
+    "nonself_edges": 48,
+    "reciprocal_nonself_edges": 48,
+    "self_loops": 16,
+    "shape": [
+      2,
+      64
+    ],
+    "unique_edge_count": 64
+  },
+  "hard_failures": [],
+  "input_files": {
+    "active_cores": {
+      "dtype": "<U4",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/active_cores.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 368
+    },
+    "attackers": {
+      "dtype": "<U3",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/attackers.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 308
+    },
+    "edge_index": {
+      "dtype": "int64",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/edge_index.npy",
+      "shape": [
+        2,
+        64
+      ],
+      "size_bytes": 1152
+    },
+    "end_epoch": {
+      "dtype": "int32",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/end_epoch.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 188
+    },
+    "feature_cols": {
+      "dtype": "<U22",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/feature_cols.npy",
+      "shape": [
+        24
+      ],
+      "size_bytes": 2240
+    },
+    "profile": {
+      "dtype": "<U6",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/profile.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 488
+    },
+    "run_id": {
+      "dtype": "<U27",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/run_id.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 1748
+    },
+    "seed": {
+      "dtype": "<U1",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/seed.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 188
+    },
+    "split": {
+      "dtype": "<U5",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/split.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 428
+    },
+    "strength": {
+      "dtype": "<U2",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/strength.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 248
+    },
+    "x": {
+      "dtype": "float32",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/x.npy",
+      "shape": [
+        15,
+        16,
+        3,
+        24
+      ],
+      "size_bytes": 69248
+    },
+    "y_graph": {
+      "dtype": "float32",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/y_graph.npy",
+      "shape": [
+        15
+      ],
+      "size_bytes": 188
+    },
+    "y_node": {
+      "dtype": "float32",
+      "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test/synthetic_dataset/y_node.npy",
+      "shape": [
+        15,
+        16
+      ],
+      "size_bytes": 1088
+    }
+  },
+  "limitations": [
+    "Directional IFD contains exact 1.0 values: 45/7200 (0.625000%). Their physical causes are overloaded.",
+    "Boundary-port diagnostics use a provisional row-major 4x4 compass mapping and are not treated as hard failures.",
+    "Final arrays alone cannot distinguish invalid, idle, no-gap, and clipped-long-gap IFD states.",
+    "The dataset has many overlapping windows but only 71 independent simulation runs.",
+    "The current V3 test split has been used for diagnosis and is no longer an untouched final publication holdout.",
+    "Archive-derived 1980 modification times cannot establish the original generation date; hashes should be used for identity."
+  ],
+  "numpy": "2.5.1",
+  "output_root": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage8d_final_consistency/smoke_test",
+  "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3",
+  "run_segments": 3,
+  "unique_runs": 3,
+  "verdict": "PASS WITH DOCUMENTED LIMITATIONS",
+  "warning_findings": [],
+  "x_dtype": "float32",
+  "x_memory_mapped": true,
+  "x_shape": [
+    15,
+    16,
+    3,
+    24
+  ]
+}

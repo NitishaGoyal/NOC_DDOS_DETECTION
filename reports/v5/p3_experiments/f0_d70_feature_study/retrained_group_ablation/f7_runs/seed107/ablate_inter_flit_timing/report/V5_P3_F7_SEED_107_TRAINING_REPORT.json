@@ -1,0 +1,251 @@
+{
+  "artifacts": {
+    "best_checkpoint": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_inter_flit_timing/model/v5_p2_b2_seed_107_best.pt",
+      "b5cf6e9498613020c52532db0805ab0cd50357523fd7a637f25885c933f1f310"
+    ],
+    "history_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_inter_flit_timing/report/V5_P2_B2_SEED_107_HISTORY.csv",
+      "39af514b31ea8477c8253f7c07253ceb8fdb3e66765fb2dc7812d65c9aa6859d"
+    ],
+    "progress_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_inter_flit_timing/report/V5_P2_B2_SEED_107_PROGRESS.json",
+      "be5f53da8aaf73876da44703f4d2fffc3c5286aefd79f4e46689a3d39600b793"
+    ]
+  },
+  "best": {
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_inter_flit_timing/model/v5_p2_b2_seed_107_best.pt",
+    "checkpoint_sha256": "b5cf6e9498613020c52532db0805ab0cd50357523fd7a637f25885c933f1f310",
+    "epoch": 8,
+    "ranking_tuple": [
+      0.751350213355496,
+      0.8809211901533384,
+      0.6289378890875487,
+      -1.2050005626877967,
+      -8
+    ],
+    "validation_metrics": {
+      "attack_loss": 0.5530015331175234,
+      "count_active": {
+        "accuracy": 0.9973835688121402,
+        "confusion_matrix": [
+          [
+            1033,
+            0,
+            0,
+            0
+          ],
+          [
+            10,
+            894,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            944,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            941
+          ]
+        ],
+        "macro_f1": 0.9974053272636477,
+        "support": 3822
+      },
+      "count_loss": 0.007558550013735536,
+      "graph": {
+        "auroc": 0.8809211901533384,
+        "average_precision": 0.6289378890875487,
+        "fixed_0_5": {
+          "accuracy": 0.8069681887037438,
+          "f1": 0.6930488644184447,
+          "fn": 801,
+          "fp": 1875,
+          "fpr": 0.1867343890050792,
+          "precision": 0.6170343137254902,
+          "recall": 0.7904238618524333,
+          "tn": 8166,
+          "tp": 3021
+        },
+        "negative_items": 10041,
+        "positive_items": 3822
+      },
+      "loss": 1.2050005626877967,
+      "path_loss": 0.40232364696091855,
+      "roles": {
+        "path": {
+          "auroc": 0.9574403924626547,
+          "average_precision": 0.6062555054844416,
+          "fixed_0_5": {
+            "accuracy": 0.9020594387939118,
+            "f1": 0.6836095656986396,
+            "fn": 569,
+            "fp": 21155,
+            "fpr": 0.10696768974060777,
+            "precision": 0.5259277518823952,
+            "recall": 0.9763291455195939,
+            "tn": 176615,
+            "tp": 23469
+          },
+          "negative_entries": 197770,
+          "positive_entries": 24038
+        },
+        "source": {
+          "auroc": 0.984592595574043,
+          "average_precision": 0.6180435622405145,
+          "fixed_0_5": {
+            "accuracy": 0.9616650436413474,
+            "f1": 0.6870330155692149,
+            "fn": 104,
+            "fp": 8399,
+            "fpr": 0.039548714278314835,
+            "precision": 0.5263365666591473,
+            "recall": 0.9889795485853555,
+            "tn": 203972,
+            "tp": 9333
+          },
+          "negative_entries": 212371,
+          "positive_entries": 9437
+        },
+        "transit": {
+          "auroc": 0.9769890206765023,
+          "average_precision": 0.5976476817449919,
+          "fixed_0_5": {
+            "accuracy": 0.93856849166847,
+            "f1": 0.6409675379426645,
+            "fn": 501,
+            "fp": 13125,
+            "fpr": 0.06275580461308955,
+            "precision": 0.4809791205314774,
+            "recall": 0.9604390397978522,
+            "tn": 196019,
+            "tp": 12163
+          },
+          "negative_entries": 209144,
+          "positive_entries": 12664
+        },
+        "victim": {
+          "auroc": 0.9872831305280315,
+          "average_precision": 0.6092769890982025,
+          "fixed_0_5": {
+            "accuracy": 0.9700010820168795,
+            "f1": 0.6942095588235293,
+            "fn": 170,
+            "fp": 6484,
+            "fpr": 0.030287035523273467,
+            "precision": 0.5380779368811,
+            "recall": 0.9779878285640295,
+            "tn": 207601,
+            "tp": 7553
+          },
+          "negative_entries": 214085,
+          "positive_entries": 7723
+        }
+      },
+      "selection_score": 0.751350213355496,
+      "source_loss": 0.17445455962450895,
+      "transit_loss": 0.3147529015497737,
+      "victim_loss": 0.15363589910978295
+    }
+  },
+  "data": {
+    "item_batch_size": 256,
+    "num_workers": 0,
+    "pair_block_batch_size": 128,
+    "pair_keys_returned_to_model": false,
+    "pair_keys_used_for_loading_only": true,
+    "train_batches": 434,
+    "train_items": 110855,
+    "validation_batches": 55,
+    "validation_items": 13863
+  },
+  "failures": [],
+  "label_weights": {
+    "count_class_mapping": {
+      "1": 0,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "count_class_weights_applied": false,
+    "count_distribution": {
+      "1": 5855,
+      "2": 5441,
+      "3": 4728,
+      "4": 4294
+    },
+    "graph_positive_weight": 2.45339108179939,
+    "role_positive_weights": {
+      "path": {
+        "clamped_positive_weight": 12.232171765776654,
+        "negative_entries": 1639637,
+        "positive_entries": 134043,
+        "raw_positive_weight": 12.232171765776654
+      },
+      "source": {
+        "clamped_positive_weight": 20.0,
+        "negative_entries": 1725583,
+        "positive_entries": 48097,
+        "raw_positive_weight": 35.87714410462191
+      },
+      "transit": {
+        "clamped_positive_weight": 20.0,
+        "negative_entries": 1706629,
+        "positive_entries": 67051,
+        "raw_positive_weight": 25.452700183442456
+      },
+      "victim": {
+        "clamped_positive_weight": 20.0,
+        "negative_entries": 1732695,
+        "positive_entries": 40985,
+        "raw_positive_weight": 42.27632060509943
+      }
+    }
+  },
+  "legacy_compatibility_loader_sha256": {
+    "initial_state_sha256": "7e0c4877841dfc64ea10a3f6d189a8dd26309c4d2d7114d41e07d7c452a9955f",
+    "legacy_compatibility_loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "legacy_compatibility_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "name": "TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4",
+    "parameter_count": 60553,
+    "protocol_sha256": "0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60"
+  },
+  "next_stage": "V5_P3_F7_PRIMARY_MATRIX_AGGREGATION",
+  "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059",
+  "security_boundary": {
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "threshold_tuning_performed": false,
+    "train_tensor_contents_accessed": true,
+    "validation_tensor_contents_accessed": true
+  },
+  "seed": 107,
+  "stage": "V5_P3_F7_SAME_WIDTH_RETRAINED_GROUP_ABLATION",
+  "status": "COMPLETE",
+  "training": {
+    "automatic_mixed_precision": false,
+    "completed_epoch": 20,
+    "device": "cuda",
+    "early_stopping_patience": 12,
+    "gradient_clip_global_norm": 1.0,
+    "initial_learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "minimum_epochs_before_stop": 15,
+    "optimizer": "AdamW",
+    "scheduler": "ReduceLROnPlateau",
+    "stopped_early": true,
+    "total_elapsed_seconds": 7246.494236707687,
+    "weight_decay": 0.0001
+  },
+  "warnings": []
+}

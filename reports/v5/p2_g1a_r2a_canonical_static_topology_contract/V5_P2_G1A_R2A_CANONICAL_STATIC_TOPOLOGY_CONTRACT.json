@@ -1,0 +1,1622 @@
+{
+  "canonical_contract": {
+    "artifacts": {
+      "adjacency": {
+        "dtype": "uint8",
+        "filename": "V5_P2_G1A_R2A_CANONICAL_ADJACENCY_MATRIX.npy",
+        "sha256": "a0deaedb2d92398154be3e6a62f03615e5fc15dfc1b48590a031b940ad6eda84",
+        "shape": [
+          16,
+          16
+        ]
+      },
+      "coordinates": {
+        "dtype": "int64",
+        "filename": "V5_P2_G1A_R2A_ROUTER_COORDINATES_ROW_MAJOR.npy",
+        "sha256": "b0cc6b9e894f2b076f02ae2cf15541f2786c37930ed1facccb2574ea4feec2e1",
+        "shape": [
+          16,
+          2
+        ]
+      },
+      "edge_index": {
+        "dtype": "int64",
+        "filename": "V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+        "sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+        "shape": [
+          2,
+          48
+        ]
+      },
+      "neighbor_table": {
+        "filename": "V5_P2_G1A_R2A_CANONICAL_NEIGHBOR_TABLE.json",
+        "sha256": "1151e816c9e8a5212c698fa8cabcb9bf17d258edc970191cd681004fb816e700"
+      }
+    },
+    "batching_rule": "for batched graphs, replicate this fixed edge list with node-index offsets of 16 per graph",
+    "contract_sha256": "74112ce145cd3347148d4c784be125add7945943e80e98948368f4c076d047af",
+    "contract_version": 1,
+    "coordinate_semantics": {
+      "coordinate_0": "row_vertical",
+      "coordinate_1": "column_horizontal"
+    },
+    "graph_operator_rules": {
+      "GATConv": "operator self-loop behavior must follow the frozen G0 operator contract",
+      "GCNConv": "the stored physical graph has no self-loops; GCNConv may add normalized self-loops according to G0",
+      "GraphConv": "consume the stored physical edge_index directly"
+    },
+    "name": "V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT",
+    "new_explicit_numbering_decision": true,
+    "num_nodes": 16,
+    "physical_routing_graph": {
+      "bidirectional_links": true,
+      "directed": true,
+      "directed_edge_count": 48,
+      "edge_order": "lexicographic ascending by (source_router, destination_router)",
+      "physical_self_loops": false,
+      "undirected_link_count": 24
+    },
+    "provenance": {
+      "g0_operator_contract_file_sha256": "90dc352e737735da1eed2da1a5a846130440eeff3ebeafcd03fdaa2246f740dc",
+      "g0_protocol_sha256": "22e3d9828edaba9323a0c5206806ea93c149a239b8d9043ad79129de76882def",
+      "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+      "r2_hold_report_sha256": "aa9e0a1aebf5deebd072127586d8d6dedf8a67a482b23879ab5d02c52db3990c"
+    },
+    "recovered_edge_artifact_found_in_p2_dataset": false,
+    "router_id_equation": "router_id = row * 4 + column",
+    "router_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "router_numbering": "row_major",
+    "source_kind": "canonical_generation_from_frozen_G0_4x4_mesh_contract",
+    "topology": "4x4_2D_MESH"
+  },
+  "decision": "FREEZE_CANONICAL_ROW_MAJOR_4X4_TOPOLOGY_AND_AUTHORIZE_G1",
+  "failures": [],
+  "historical_g1a_hold_preserved": true,
+  "historical_g1a_r1_hold_preserved": true,
+  "historical_g1a_r2_hold_preserved": true,
+  "interpretation": "The P2 Conv1D dataset does not contain edge_index because the frozen B3 architecture did not require graph message passing. G1 therefore requires an explicit static topology contract rather than recovery of a nonexistent sample field.",
+  "next_stage": "V5_P2_G1_SOURCE_ONLY_GRAPH_BASELINE_IMPLEMENTATION_AND_TRAINING",
+  "security_boundary": {
+    "architecture_selected": false,
+    "b4_validation_cache_accessed": false,
+    "b6_test_cache_accessed": false,
+    "checkpoint_loaded": false,
+    "legal_decoder_implemented": false,
+    "optimization_steps": 0,
+    "p2_test_directory_enumerated": false,
+    "p2_test_tensors_deserialized": false,
+    "p2_train_sample_deserialized": false,
+    "p2_validation_sample_deserialized": false,
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "threshold_tuning_performed": false,
+    "training_performed": false
+  },
+  "source_audit": {
+    "files_scanned": 73,
+    "matching_files": 25,
+    "snippet_count": 300,
+    "snippets": [
+      {
+        "line": 23,
+        "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+        "text": "No identifiers, metadata, edge_index, coordinates, run lengths, or window"
+      },
+      {
+        "line": 168,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "def normalized_adjacency(edge_index: torch.Tensor, node_count: int = 16) -> torch.Tensor:"
+      },
+      {
+        "line": 169,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "edge_index = edge_index.detach().cpu().long()"
+      },
+      {
+        "line": 170,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "if edge_index.ndim != 2 or tuple(edge_index.shape)[0] != 2:"
+      },
+      {
+        "line": 171,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "raise ValueError(f\"edge_index must be [2,E], got {tuple(edge_index.shape)}\")"
+      },
+      {
+        "line": 172,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "src, dst = edge_index[0], edge_index[1]"
+      },
+      {
+        "line": 174,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "raise ValueError(\"edge_index node index out of range\")"
+      },
+      {
+        "line": 196,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "def __init__(self, edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 198,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "edge_index = edge_index.detach().cpu().long().contiguous()"
+      },
+      {
+        "line": 199,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "self.register_buffer(\"expected_edge_index\", edge_index)"
+      },
+      {
+        "line": 200,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "self.register_buffer(\"adjacency\", normalized_adjacency(edge_index))"
+      },
+      {
+        "line": 211,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "def _verify_edge_index(self, edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 212,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "if edge_index.ndim == 3:"
+      },
+      {
+        "line": 213,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "ref = edge_index[0]"
+      },
+      {
+        "line": 214,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "if not torch.equal(edge_index, ref.unsqueeze(0).expand_as(edge_index)):"
+      },
+      {
+        "line": 215,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "raise ValueError(\"non-identical edge_index tensors within batch\")"
+      },
+      {
+        "line": 216,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "elif edge_index.ndim == 2:"
+      },
+      {
+        "line": 217,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "ref = edge_index"
+      },
+      {
+        "line": 219,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "raise ValueError(f\"unexpected edge_index shape: {tuple(edge_index.shape)}\")"
+      },
+      {
+        "line": 221,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "raise ValueError(\"runtime edge_index differs from audited topology\")"
+      },
+      {
+        "line": 223,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "def forward(self, x: torch.Tensor, physical_port_mask: torch.Tensor, edge_index: torch.Tensor):"
+      },
+      {
+        "line": 228,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "self._verify_edge_index(edge_index)"
+      },
+      {
+        "line": 374,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "batch[\"edge_index\"].to(device=device, dtype=torch.long),"
+      },
+      {
+        "line": 491,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"
+      },
+      {
+        "line": 492,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "failures.append(f\"unexpected edge_index shape: {tuple(sample['edge_index'].shape)}\")"
+      },
+      {
+        "line": 506,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "model = GCNOnlyModel(sample[\"edge_index\"]).to(device)"
+      },
+      {
+        "line": 539,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "text": "batch[\"edge_index\"].to(device=device, dtype=torch.long),"
+      },
+      {
+        "line": 24,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b3_conv1d_only.py",
+        "text": "- no edge_index and no graph message passing."
+      },
+      {
+        "line": 42,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b6_dual_temporal_fusion_no_gcn.py",
+        "text": "- edge_index and graph message passing;"
+      },
+      {
+        "line": 1479,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b6_dual_temporal_fusion_no_gcn.py",
+        "text": "\"do not use edge_index or message passing\""
+      },
+      {
+        "line": 33,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "- audited edge_index, used only to verify the fixed 4x4 mesh and construct"
+      },
+      {
+        "line": 405,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "def validate_mesh_edge_index(edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 406,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "if edge_index.ndim != 2 or tuple(edge_index.shape) != (2, 48):"
+      },
+      {
+        "line": 408,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "f\"expected edge_index [2,48], got {tuple(edge_index.shape)}\""
+      },
+      {
+        "line": 411,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "edge_index = edge_index.detach().cpu().long()"
+      },
+      {
+        "line": 415,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "edge_index[0].tolist(),"
+      },
+      {
+        "line": 416,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "edge_index[1].tolist(),"
+      },
+      {
+        "line": 424,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "\"edge_index is not the audited bidirectional 4x4 cardinal mesh; \""
+      },
+      {
+        "line": 609,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 610,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "if edge_index.ndim == 3:"
+      },
+      {
+        "line": 611,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "reference = edge_index[0]"
+      },
+      {
+        "line": 612,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "expanded = reference.unsqueeze(0).expand_as(edge_index)"
+      },
+      {
+        "line": 613,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "if not torch.equal(edge_index, expanded):"
+      },
+      {
+        "line": 615,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "\"batch contains non-identical edge_index tensors\""
+      },
+      {
+        "line": 617,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "elif edge_index.ndim == 2:"
+      },
+      {
+        "line": 618,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "reference = edge_index"
+      },
+      {
+        "line": 621,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "f\"unexpected edge_index shape: {tuple(edge_index.shape)}\""
+      },
+      {
+        "line": 629,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "\"runtime edge_index differs from audited topology\""
+      },
+      {
+        "line": 690,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 706,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "self.verify_edge_index(edge_index)"
+      },
+      {
+        "line": 1043,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "edge_index=batch[\"edge_index\"].to("
+      },
+      {
+        "line": 1427,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"
+      },
+      {
+        "line": 1429,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "\"edge_index shape unexpected: \""
+      },
+      {
+        "line": 1430,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "f\"{tuple(sample['edge_index'].shape)}\""
+      },
+      {
+        "line": 1434,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "validate_mesh_edge_index(sample[\"edge_index\"])"
+      },
+      {
+        "line": 1436,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "failures.append(f\"mesh topology validation failed: {exc}\")"
+      },
+      {
+        "line": 1486,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "expected_edge_index=sample[\"edge_index\"],"
+      },
+      {
+        "line": 1590,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "edge_index=batch[\"edge_index\"].to("
+      },
+      {
+        "line": 1926,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic.py",
+        "text": "sample[\"edge_index\"]"
+      },
+      {
+        "line": 19,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b1_static_final_epoch_mlp.py",
+        "text": "- edge_index;"
+      },
+      {
+        "line": 19,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b2_temporal_mean_pooling.py",
+        "text": "- edge_index;"
+      },
+      {
+        "line": 141,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 142,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "if edge_index.ndim == 3:"
+      },
+      {
+        "line": 143,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "reference = edge_index[0]"
+      },
+      {
+        "line": 145,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "edge_index,"
+      },
+      {
+        "line": 146,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "reference.unsqueeze(0).expand_as(edge_index),"
+      },
+      {
+        "line": 148,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "raise ValueError(\"batch contains non-identical edge_index tensors\")"
+      },
+      {
+        "line": 149,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "elif edge_index.ndim == 2:"
+      },
+      {
+        "line": 150,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "reference = edge_index"
+      },
+      {
+        "line": 152,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "raise ValueError(f\"unexpected edge_index shape: {tuple(edge_index.shape)}\")"
+      },
+      {
+        "line": 154,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "raise ValueError(\"runtime edge_index differs from audited topology\")"
+      },
+      {
+        "line": 160,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 170,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "self.verify_edge_index(edge_index)"
+      },
+      {
+        "line": 229,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 262,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "model = B3Conv1DOnlyModel(module, edge_index)"
+      },
+      {
+        "line": 266,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "expected_edge_index=edge_index,"
+      },
+      {
+        "line": 308,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "edge_index=batch[\"edge_index\"].to(device=device, dtype=torch.long),"
+      },
+      {
+        "line": 625,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "module.validate_mesh_edge_index(sample[\"edge_index\"])"
+      },
+      {
+        "line": 658,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "text": "edge_index=sample[\"edge_index\"],"
+      },
+      {
+        "line": 33,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "- audited edge_index, used only to verify the fixed 4x4 mesh and construct"
+      },
+      {
+        "line": 405,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "def validate_mesh_edge_index(edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 406,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "if edge_index.ndim != 2 or tuple(edge_index.shape) != (2, 48):"
+      },
+      {
+        "line": 408,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "f\"expected edge_index [2,48], got {tuple(edge_index.shape)}\""
+      },
+      {
+        "line": 411,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "edge_index = edge_index.detach().cpu().long()"
+      },
+      {
+        "line": 415,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "edge_index[0].tolist(),"
+      },
+      {
+        "line": 416,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "edge_index[1].tolist(),"
+      },
+      {
+        "line": 424,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "\"edge_index is not the audited bidirectional 4x4 cardinal mesh; \""
+      },
+      {
+        "line": 609,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 610,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "if edge_index.ndim == 3:"
+      },
+      {
+        "line": 611,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "reference = edge_index[0]"
+      },
+      {
+        "line": 612,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "expanded = reference.unsqueeze(0).expand_as(edge_index)"
+      },
+      {
+        "line": 613,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "if not torch.equal(edge_index, expanded):"
+      },
+      {
+        "line": 615,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "\"batch contains non-identical edge_index tensors\""
+      },
+      {
+        "line": 617,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "elif edge_index.ndim == 2:"
+      },
+      {
+        "line": 618,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "reference = edge_index"
+      },
+      {
+        "line": 621,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "f\"unexpected edge_index shape: {tuple(edge_index.shape)}\""
+      },
+      {
+        "line": 629,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "\"runtime edge_index differs from audited topology\""
+      },
+      {
+        "line": 693,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 709,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "self.verify_edge_index(edge_index)"
+      },
+      {
+        "line": 1046,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "edge_index=batch[\"edge_index\"].to("
+      },
+      {
+        "line": 1430,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"
+      },
+      {
+        "line": 1432,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "\"edge_index shape unexpected: \""
+      },
+      {
+        "line": 1433,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "f\"{tuple(sample['edge_index'].shape)}\""
+      },
+      {
+        "line": 1437,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "validate_mesh_edge_index(sample[\"edge_index\"])"
+      },
+      {
+        "line": 1439,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "failures.append(f\"mesh topology validation failed: {exc}\")"
+      },
+      {
+        "line": 1489,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "expected_edge_index=sample[\"edge_index\"],"
+      },
+      {
+        "line": 1593,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "edge_index=batch[\"edge_index\"].to("
+      },
+      {
+        "line": 1929,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b7a_directional_gated_graph_diagnostic_b7b.py",
+        "text": "sample[\"edge_index\"]"
+      },
+      {
+        "line": 31,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "- audited edge_index."
+      },
+      {
+        "line": 331,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 334,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "if edge_index.ndim != 2 or edge_index.shape[0] != 2:"
+      },
+      {
+        "line": 336,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "f\"expected edge_index [2,E], got {tuple(edge_index.shape)}\""
+      },
+      {
+        "line": 339,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "edge_index = edge_index.detach().cpu().long()"
+      },
+      {
+        "line": 340,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "source = edge_index[0]"
+      },
+      {
+        "line": 341,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "destination = edge_index[1]"
+      },
+      {
+        "line": 344,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "raise ValueError(\"edge_index contains negative node indices\")"
+      },
+      {
+        "line": 346,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "raise ValueError(\"edge_index exceeds node_count\")"
+      },
+      {
+        "line": 492,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "def verify_edge_index(self, edge_index: torch.Tensor) -> None:"
+      },
+      {
+        "line": 493,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "if edge_index.ndim == 3:"
+      },
+      {
+        "line": 494,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "reference = edge_index[0]"
+      },
+      {
+        "line": 495,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "expanded = reference.unsqueeze(0).expand_as(edge_index)"
+      },
+      {
+        "line": 496,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "if not torch.equal(edge_index, expanded):"
+      },
+      {
+        "line": 498,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "\"batch contains non-identical edge_index tensors\""
+      },
+      {
+        "line": 500,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "elif edge_index.ndim == 2:"
+      },
+      {
+        "line": 501,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "reference = edge_index"
+      },
+      {
+        "line": 504,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "f\"unexpected edge_index shape: {tuple(edge_index.shape)}\""
+      },
+      {
+        "line": 512,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "\"runtime edge_index differs from audited topology\""
+      },
+      {
+        "line": 519,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 534,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "self.verify_edge_index(edge_index)"
+      },
+      {
+        "line": 863,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "edge_index=batch[\"edge_index\"].to("
+      },
+      {
+        "line": 1155,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "if tuple(sample[\"edge_index\"].shape) != (2, 48):"
+      },
+      {
+        "line": 1157,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "\"edge_index shape unexpected: \""
+      },
+      {
+        "line": 1158,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "f\"{tuple(sample['edge_index'].shape)}\""
+      },
+      {
+        "line": 1207,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "expected_edge_index=sample[\"edge_index\"],"
+      },
+      {
+        "line": 1298,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "edge_index=batch[\"edge_index\"].to("
+      },
+      {
+        "line": 1562,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "text": "sample[\"edge_index\"]"
+      },
+      {
+        "line": 51,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"snapshot_tick\", \"tick\", \"epoch\", \"epoch_id\", \"router\", \"router_id\","
+      },
+      {
+        "line": 414,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"num_nodes\": int(x.shape[1]),"
+      },
+      {
+        "line": 684,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "edge_index = topology.get(\"edge_index\")"
+      },
+      {
+        "line": 685,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "if not isinstance(edge_index, torch.Tensor):"
+      },
+      {
+        "line": 687,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"topology.pt missing tensor edge_index\""
+      },
+      {
+        "line": 690,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "edge_index = edge_index.detach().cpu().long()"
+      },
+      {
+        "line": 692,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "edge_index.shape"
+      },
+      {
+        "line": 694,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "if tuple(edge_index.shape) != (2, 48):"
+      },
+      {
+        "line": 696,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"edge_index shape=\""
+      },
+      {
+        "line": 697,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "f\"{tuple(edge_index.shape)}, expected=(2,48)\""
+      },
+      {
+        "line": 702,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "for src, dst in edge_index.t().tolist()"
+      },
+      {
+        "line": 718,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"edge_index contains negative node IDs\""
+      },
+      {
+        "line": 722,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"edge_index contains node IDs greater than 15\""
+      },
+      {
+        "line": 750,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "\"incorrect 4x4 mesh degree multiset: \""
+      },
+      {
+        "line": 765,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "raw_num_nodes = topology.get(\"num_nodes\")"
+      },
+      {
+        "line": 767,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "num_nodes = ("
+      },
+      {
+        "line": 773,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "num_nodes = None"
+      },
+      {
+        "line": 774,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "topology_report[\"num_nodes\"] = num_nodes"
+      },
+      {
+        "line": 775,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "if num_nodes != 16:"
+      },
+      {
+        "line": 777,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_tensor_handover.py",
+        "text": "f\"topology num_nodes={num_nodes}, expected 16\""
+      },
+      {
+        "line": 35,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 387,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "topology[\"edge_index\"].detach().cpu()"
+      },
+      {
+        "line": 511,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "edge_index = item[\"edge_index\"]"
+      },
+      {
+        "line": 512,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "if not isinstance(edge_index, torch.Tensor):"
+      },
+      {
+        "line": 514,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "f\"{split}[{index}] edge_index is not tensor\""
+      },
+      {
+        "line": 517,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "edge_index.detach().cpu(),"
+      },
+      {
+        "line": 521,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "f\"{split}[{index}] edge_index mismatch\""
+      },
+      {
+        "line": 716,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a3_loader_contract_smoke.py",
+        "text": "\"edge_index\": (4, 2, 48),"
+      },
+      {
+        "line": 347,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_a2_feature_normalization_contract.py",
+        "text": "edge_index = topology.get(\"edge_index\")"
+      },
+      {
+        "line": 348,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_a2_feature_normalization_contract.py",
+        "text": "if not isinstance(edge_index, torch.Tensor):"
+      },
+      {
+        "line": 349,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_a2_feature_normalization_contract.py",
+        "text": "failures.append(\"topology missing edge_index tensor\")"
+      },
+      {
+        "line": 350,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_a2_feature_normalization_contract.py",
+        "text": "elif tuple(edge_index.shape) != (2, 48):"
+      },
+      {
+        "line": 352,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_a2_feature_normalization_contract.py",
+        "text": "f\"edge_index shape={tuple(edge_index.shape)}, expected (2,48)\""
+      },
+      {
+        "line": 488,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_a2_feature_normalization_contract.py",
+        "text": "\"edge_index\": {"
+      },
+      {
+        "line": 239,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_b0_r1c_final_quarantine_release.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 343,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_b0_r1c_final_quarantine_release.py",
+        "text": "- `edge_index`"
+      },
+      {
+        "line": 520,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/audit_v5_p0_a2_1_mask_recoverability.py",
+        "text": "\"edge_index plus topology-derived raw Boolean [16,10] \""
+      },
+      {
+        "line": 17,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/run_v5_p0_b0_r1b_numeric_provenance_audit.py",
+        "text": "edge_index, or physical masks are used."
+      },
+      {
+        "line": 15,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_b0_r1_identifier_quarantine.py",
+        "text": "6. A2/A3 permit only PRIMARY58, edge_index, and the audited physical mask as"
+      },
+      {
+        "line": 370,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_b0_r1_identifier_quarantine.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 463,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/common/freeze_v5_p0_b0_r1_identifier_quarantine.py",
+        "text": "- `edge_index`"
+      },
+      {
+        "line": 171,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"num_nodes\": 16,"
+      },
+      {
+        "line": 218,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "edge_index = sample.get(\"edge_index\")"
+      },
+      {
+        "line": 229,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "if \"edge_index\" in names:"
+      },
+      {
+        "line": 230,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "ei = edge_index"
+      },
+      {
+        "line": 234,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "(\"keyword\", (), {\"x\": x_batched, \"edge_index\": edge_index})"
+      },
+      {
+        "line": 509,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "required = {\"x\", \"edge_index\", \"y_attack\", \"y_source\"}"
+      },
+      {
+        "line": 594,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "train_sample.get(\"edge_index\")"
+      },
+      {
+        "line": 596,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "edge_index = train_sample[\"edge_index\"].detach().cpu()"
+      },
+      {
+        "line": 598,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"shape\": list(edge_index.shape),"
+      },
+      {
+        "line": 599,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"dtype\": str(edge_index.dtype),"
+      },
+      {
+        "line": 600,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"min\": int(edge_index.min().item()),"
+      },
+      {
+        "line": 601,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"max\": int(edge_index.max().item()),"
+      },
+      {
+        "line": 602,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"directed_edge_count\": int(edge_index.shape[1])"
+      },
+      {
+        "line": 603,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "if edge_index.ndim == 2"
+      },
+      {
+        "line": 606,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "torch.unique(edge_index.t(), dim=0).shape[0]"
+      },
+      {
+        "line": 608,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "if edge_index.ndim == 2"
+      },
+      {
+        "line": 611,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "(edge_index[0] == edge_index[1]).sum().item()"
+      },
+      {
+        "line": 613,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "if edge_index.ndim == 2"
+      },
+      {
+        "line": 618,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "f\"unexpected edge_index shape: {topology_checks['shape']}\""
+      },
+      {
+        "line": 621,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "failures.append(\"edge_index node range is not 0..15\")"
+      },
+      {
+        "line": 664,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "text": "\"required_topology_key\": \"edge_index\","
+      },
+      {
+        "line": 43,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "NUM_NODES = 16"
+      },
+      {
+        "line": 83,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"router_id\","
+      },
+      {
+        "line": 100,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"router_id\","
+      },
+      {
+        "line": 131,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index for frozen B3\","
+      },
+      {
+        "line": 525,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"router_id\","
+      },
+      {
+        "line": 591,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "edge_index = None"
+      },
+      {
+        "line": 595,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "edge_index = topology.get(\"edge_index\")"
+      },
+      {
+        "line": 599,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"num_nodes\": 16,"
+      },
+      {
+        "line": 613,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "not isinstance(edge_index, torch.Tensor)"
+      },
+      {
+        "line": 614,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "or edge_index.dtype != torch.int64"
+      },
+      {
+        "line": 615,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "or tuple(edge_index.shape) != (2, 48)"
+      },
+      {
+        "line": 617,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "failures.append(\"edge_index is not int64 [2,48]\")"
+      },
+      {
+        "line": 629,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "isinstance(edge_index, torch.Tensor)"
+      },
+      {
+        "line": 630,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "and tuple(edge_index.shape) == (2, 48)"
+      },
+      {
+        "line": 645,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"router coordinates do not cover a 4x4 grid\""
+      },
+      {
+        "line": 650,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "for source, target in edge_index.t().tolist()"
+      },
+      {
+        "line": 656,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index does not match coordinate-derived \""
+      },
+      {
+        "line": 657,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"directed 4-neighbor mesh\""
+      },
+      {
+        "line": 660,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "failures.append(\"edge_index contains self loops\")"
+      },
+      {
+        "line": 665,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "failures.append(\"edge_index is not symmetric\")"
+      },
+      {
+        "line": 708,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"returns_edge_index\": '\"edge_index\"' in loader_source,"
+      },
+      {
+        "line": 848,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 953,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "B3 has no graph message passing. `edge_index` and router coordinates remain"
+      },
+      {
+        "line": 1019,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_r2_feature_normalization_mask_contract.py",
+        "text": "\"num_nodes\": topology.get(\"num_nodes\"),"
+      },
+      {
+        "line": 50,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_r1_pair_length_window_shortcut.py",
+        "text": "\"num_nodes\","
+      },
+      {
+        "line": 202,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_r1_pair_length_window_shortcut.py",
+        "text": "\"num_nodes\": payload[\"num_nodes\"],"
+      },
+      {
+        "line": 228,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_r1_pair_length_window_shortcut.py",
+        "text": "if payload[\"num_nodes\"] != 16:"
+      },
+      {
+        "line": 230,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_r1_pair_length_window_shortcut.py",
+        "text": "f\"{expected_split}/{path.name}: num_nodes=\""
+      },
+      {
+        "line": 231,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_r1_pair_length_window_shortcut.py",
+        "text": "f\"{payload['num_nodes']!r}\""
+      },
+      {
+        "line": 423,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_r1_pair_length_window_shortcut.py",
+        "text": "\"num_nodes\","
+      },
+      {
+        "line": 14,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "- topology integrity for the 4x4, 16-router directed mesh;"
+      },
+      {
+        "line": 27,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "- always returns edge_index although frozen B3 has no graph message passing."
+      },
+      {
+        "line": 48,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "NUM_NODES = 16"
+      },
+      {
+        "line": 84,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"router_id\","
+      },
+      {
+        "line": 101,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"router_id\","
+      },
+      {
+        "line": 207,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "Return Boolean [num_nodes,10] in this exact order:"
+      },
+      {
+        "line": 506,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"router_id\","
+      },
+      {
+        "line": 581,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 582,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"num_nodes\","
+      },
+      {
+        "line": 591,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "edge_index = None"
+      },
+      {
+        "line": 599,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "edge_index = topology.get(\"edge_index\")"
+      },
+      {
+        "line": 602,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "if topology.get(\"num_nodes\") != NUM_NODES:"
+      },
+      {
+        "line": 603,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "failures.append(\"topology num_nodes is not 16\")"
+      },
+      {
+        "line": 614,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "not isinstance(edge_index, torch.Tensor)"
+      },
+      {
+        "line": 615,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "or edge_index.dtype != torch.int64"
+      },
+      {
+        "line": 616,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "or tuple(edge_index.shape) != (2, 48)"
+      },
+      {
+        "line": 618,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "failures.append(\"edge_index is not int64 [2,48]\")"
+      },
+      {
+        "line": 630,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "isinstance(edge_index, torch.Tensor)"
+      },
+      {
+        "line": 631,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "and tuple(edge_index.shape) == (2, 48)"
+      },
+      {
+        "line": 646,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"router coordinates do not cover the 4x4 grid\""
+      },
+      {
+        "line": 651,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "for source, target in edge_index.t().tolist()"
+      },
+      {
+        "line": 657,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "f\"edge_index has {len(actual_edges)} unique edges\""
+      },
+      {
+        "line": 660,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "failures.append(\"edge_index contains self loops\")"
+      },
+      {
+        "line": 663,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index does not match coordinate-derived \""
+      },
+      {
+        "line": 664,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"4-neighbor directed mesh\""
+      },
+      {
+        "line": 671,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index is not directionally symmetric\""
+      },
+      {
+        "line": 812,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "'\"edge_index\"' in loader_source"
+      },
+      {
+        "line": 947,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 1032,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "The frozen B3 architecture has no graph message passing. `edge_index` and"
+      },
+      {
+        "line": 1092,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_a2_feature_normalization_mask_contract.py",
+        "text": "\"num_nodes\": topology.get(\"num_nodes\"),"
+      },
+      {
+        "line": 11,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "- feature_count=81 and num_nodes=16 compatibility;"
+      },
+      {
+        "line": 56,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "\"edge_index\": (\"edge_index\", \"edges\"),"
+      },
+      {
+        "line": 358,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "expected_nodes = dataset_summary.get(\"num_nodes\")"
+      },
+      {
+        "line": 365,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "f\"num_nodes={expected_nodes!r}, expected 16\""
+      },
+      {
+        "line": 501,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 749,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "\"num_nodes\": expected_nodes,"
+      },
+      {
+        "line": 829,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "\"num_nodes\": expected_nodes,"
+      },
+      {
+        "line": 852,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/audit_v5_p2_a1_tensor_schema_nontest.py",
+        "text": "print(\"num_nodes:\", expected_nodes)"
+      },
+      {
+        "line": 657,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_b1_training_protocol.py",
+        "text": "\"lengths, window positions, epoch IDs, coordinates, edge_index, \""
+      },
+      {
+        "line": 275,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_c2_next_revision_contract.py",
+        "text": "\"primary\": \"4x4 2D mesh, 16 routers\","
+      },
+      {
+        "line": 277,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/freeze_v5_p2_c2_next_revision_contract.py",
+        "text": "\"Resolve the 4x4 regional-expert discrimination problem \""
+      },
+      {
+        "line": 11,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "R1 stopped only because it assumed edge_index must be present in every sample."
+      },
+      {
+        "line": 12,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "For a fixed 4x4 NoC, the loader may store topology once on the dataset/module"
+      },
+      {
+        "line": 23,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "- inspect non-test files inside the P2 data root for edge_index;"
+      },
+      {
+        "line": 24,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "- write a resolved static edge_index artifact and contract."
+      },
+      {
+        "line": 62,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 69,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index.npy\","
+      },
+      {
+        "line": 70,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index.npz\","
+      },
+      {
+        "line": 71,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index.pt\","
+      },
+      {
+        "line": 72,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index.pth\","
+      },
+      {
+        "line": 73,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index.json\","
+      },
+      {
+        "line": 200,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "edge_index = tensor"
+      },
+      {
+        "line": 202,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "edge_index = tensor.t()"
+      },
+      {
+        "line": 206,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "if edge_index.numel() == 0:"
+      },
+      {
+        "line": 209,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "return edge_index.to(dtype=torch.long).contiguous()"
+      },
+      {
+        "line": 221,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index\","
+      },
+      {
+        "line": 239,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "for key in (\"edge_index\", \"edges\"):"
+      },
+      {
+        "line": 249,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "for key in (\"edge_index\", \"edges\"):"
+      },
+      {
+        "line": 259,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "def edge_summary(edge_index: torch.Tensor) -> dict[str, Any]:"
+      },
+      {
+        "line": 260,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "edges = edge_index.t().contiguous()"
+      },
+      {
+        "line": 264,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"shape\": list(edge_index.shape),"
+      },
+      {
+        "line": 265,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"dtype\": str(edge_index.dtype),"
+      },
+      {
+        "line": 266,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"minimum_node\": int(edge_index.min().item()),"
+      },
+      {
+        "line": 267,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"maximum_node\": int(edge_index.max().item()),"
+      },
+      {
+        "line": 268,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"directed_edge_count\": int(edge_index.shape[1]),"
+      },
+      {
+        "line": 271,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "(edge_index[0] == edge_index[1]).sum().item()"
+      },
+      {
+        "line": 274,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "edge_index.numpy().astype(np.int64, copy=False).tobytes()"
+      },
+      {
+        "line": 280,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "edge_index: torch.Tensor,"
+      },
+      {
+        "line": 283,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "summary = edge_summary(edge_index)"
+      },
+      {
+        "line": 287,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "f\"edge_index shape is {summary['shape']}, expected [2, 48]\""
+      },
+      {
+        "line": 291,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index node range is not exactly 0..15\""
+      },
+      {
+        "line": 295,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/resolve_v5_p2_g1a_r2_static_edge_index.py",
+        "text": "\"edge_index does not contain 48 unique directed edges\""
+      }
+    ]
+  },
+  "stage": "V5_P2_G1A_R2A_CANONICAL_STATIC_TOPOLOGY_CONTRACT",
+  "status": "COMPLETE",
+  "warnings": []
+}

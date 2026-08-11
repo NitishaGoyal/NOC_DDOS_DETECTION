@@ -1,0 +1,228 @@
+{
+  "architecture_contract": {
+    "architecture_contract_sha256": "86624dd842a57fe289f7d747151ad2aabf0fb5203d8fbc618f48ce3c91ef71b2",
+    "baseline_threshold": 0.5,
+    "contract_name": "V5_P0_FROZEN_B3_CONV1D_ONLY",
+    "forbidden_inputs": [
+      "run_id",
+      "pair_id",
+      "filename",
+      "mode",
+      "seed",
+      "source/victim metadata",
+      "scenario metadata",
+      "serialization order",
+      "run length",
+      "window position",
+      "router IDs",
+      "router embeddings",
+      "router coordinates",
+      "status_flags",
+      "stored standardized mask channels",
+      "hashes or derivatives of quarantined provenance"
+    ],
+    "freeze_scope": "architecture_input_loss_and_interface",
+    "graph_heads": {
+      "attack": "Linear(64,1)",
+      "attacker_count": "Linear(64,3)",
+      "encoder": "Linear(128,64)->ReLU",
+      "pooling": [
+        "router_mean",
+        "router_max"
+      ]
+    },
+    "input": {
+      "active_only": false,
+      "feature_variant": "PRIMARY58",
+      "physical_port_mask_dtype": "bool",
+      "physical_port_mask_shape": [
+        "B",
+        16,
+        10
+      ],
+      "physical_port_mask_source": "topology-derived recovered binary mask",
+      "second_normalization_forbidden": true,
+      "stored_standardized_mask_channels_forbidden": true,
+      "stored_x_already_standardized": true,
+      "stride": 8,
+      "window": 32,
+      "x_shape": [
+        "B",
+        16,
+        58,
+        32
+      ]
+    },
+    "losses": {
+      "attack": [
+        "BCEWithLogitsLoss",
+        1.0
+      ],
+      "attack_path": [
+        "BCEWithLogitsLoss",
+        0.5
+      ],
+      "attacker_count": [
+        "CrossEntropyLoss",
+        0.5
+      ],
+      "positive_weight_rule": "min(20, negatives/positives)",
+      "source": [
+        "BCEWithLogitsLoss",
+        1.0
+      ],
+      "transit": [
+        "BCEWithLogitsLoss",
+        0.5
+      ],
+      "victim": [
+        "BCEWithLogitsLoss",
+        0.75
+      ]
+    },
+    "node_heads": {
+      "pattern": "Linear(64,32)->ReLU->Linear(32,1)",
+      "tasks": [
+        "source",
+        "transit",
+        "victim",
+        "attack_path"
+      ]
+    },
+    "rejected_primary_alternatives": {
+      "B4": "normalized one-hop GCN harmed localization",
+      "B5": "Conv1D plus normalized GCN harmed generalization",
+      "B6": "dual temporal fusion failed to preserve B2/B3 strengths",
+      "B7A": "directional gated graph was not stable across fresh paired seeds"
+    },
+    "required_baselines": {
+      "B1": "static final-epoch MLP",
+      "B2": "temporal-mean MLP",
+      "B3": "selected Conv1D-only architecture"
+    },
+    "router_representation": {
+      "input": "concat(temporal64, recovered_mask10)",
+      "projection": "Linear(74,64)->ReLU"
+    },
+    "selected_architecture": {
+      "edge_index_as_model_input": false,
+      "graph_message_passing": false,
+      "metadata_as_model_input": false,
+      "name": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY",
+      "parameter_count": 43208,
+      "single_stage": true
+    },
+    "selected_checkpoint_as_final": false,
+    "temporal_encoder": {
+      "block_type": "causal depthwise-separable residual Conv1D",
+      "channels": 64,
+      "dilations": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "input_projection": "Conv1d(58,64,kernel_size=1)",
+      "kernel_size": 3,
+      "readout": "final causal encoded timestep",
+      "receptive_field": 31
+    },
+    "version": 1,
+    "weights_frozen": false
+  },
+  "architecture_only_freeze": true,
+  "artifacts": {
+    "architecture_spec": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_ARCHITECTURE_SPEC.md",
+      "82f7f26aecd26d7d80902179c603a361b6c48e57298ad3bc8ae42a1c08c5c07b"
+    ],
+    "contract": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_B3_CONV1D_ONLY_ARCHITECTURE_CONTRACT.json",
+      "158285664c8b0ecd27b544ef0fd9338fc5d2adb29a33a1e74d328145fa9d43ac"
+    ],
+    "p1_protocol_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_P1_PROTOCOL_BOUNDARY.json",
+      "6e5d7b6d31fe04bdcc1aecb068d46571df3c1da83c9636a550cb2349e9a15399"
+    ],
+    "p1_protocol_markdown": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_P1_PROTOCOL_BOUNDARY.md",
+      "83a267d2187e3e79e9bd6c9d5acb1c17020a7b1123e8bce5b098a33148a3a766"
+    ]
+  },
+  "decision": "FREEZE_B3_CONV1D_ONLY",
+  "evidence": {
+    "B7B_decision": "REJECT_B7A_AND_FREEZE_B3",
+    "B7B_promotion_passed": false,
+    "B7B_seeds": null
+  },
+  "failures": [],
+  "next_stage": "V5_P1_INDEPENDENT_DATASET_AUDIT",
+  "p1_protocol_boundary": {
+    "architecture": "frozen B3 Conv1D-only",
+    "architecture_search_reopening": "requires a new explicitly named phase and cannot be based on P0 or P1 test performance",
+    "before_training": [
+      "audit P1 tensors, labels, masks, normalization, and leakage",
+      "verify PRIMARY58, window 32, stride 8, and recovered Boolean mask",
+      "lock P1 train/validation/test manifests",
+      "keep P1 test inaccessible during development"
+    ],
+    "optional_zero_shot": {
+      "locked_P1_test_forbidden": true,
+      "source": "existing P0-trained B3 checkpoint",
+      "target": "P1 validation or separate locked transfer split"
+    },
+    "required_P1_baseline": "B2 temporal-mean MLP",
+    "test_boundary": {
+      "checkpoint_selection": false,
+      "development_access": false,
+      "final_evaluation_count": 1,
+      "threshold_calibration": false
+    },
+    "training": {
+      "fit_split": "P1 train only",
+      "multiple_preregistered_seeds_recommended": true,
+      "train_from_scratch": true,
+      "validation_may_control": [
+        "early stopping",
+        "checkpoint selection",
+        "learning-rate scheduling",
+        "threshold calibration"
+      ]
+    }
+  },
+  "provenance": {
+    "a2_1_report_sha256": "922b6927b849ea4fbd46e52887b9d0cc4c02b3486b1d13dd9a0de19b4b251f5a",
+    "a2_report_sha256": "b8d52a0d84c33de992bedd5dcafd138c048994695fa056c77c05dc0035f76cc6",
+    "a3_lock_sha256": "829b8c96f5cab1d2463ef1dc7640400c57b89b71dbf737144da7d9547e8abc3a",
+    "a3_report_sha256": "18e1059aeceaf32d51900afa74e3676ff995cb56d26640e2e4f6a9f667d7bd3f",
+    "b1_lock_sha256": "86aec1676673d531152e4d2b21cbf850f3ac6f344ef5ef543754008f4dec9fda",
+    "b1_report_sha256": "793e9628d355636352e377592bb223f70639b0973dbef20e75a4e67ec9bbb43c",
+    "b2_lock_sha256": "d5feb7c833db8926cab55a369e599d7c465fb91a907e50d3cafcf8d7332a3217",
+    "b2_report_sha256": "e8e0365998095eb223fc300fd071315548ded85f5e030b22ceed9ddeb7efcda4",
+    "b3_lock_sha256": "46b0853c0fcc69185fbfc92b249cc39829323b439c0ce03dc805a70de5cfed9b",
+    "b3_report_sha256": "18df62004faccf50fdb220ed77b640fdef2b30d48486d27e4439da8483115467",
+    "b3_training_script_sha256": "27bda802362849d801e7720bad1485b06a54fae3620b62751dadd793dc4a5054",
+    "b4_lock_sha256": "9dcf609980d783a51fc335a78ce713f606ffadd051553d7d49043ac4e5efa21f",
+    "b4_report_sha256": "280209f4461b59d1444d73435d054ab2c8e2957e87b72f298b8c6db17952e2e3",
+    "b5_lock_sha256": "39a86ca9f296eb28243f6a72a70cc65554f17b07d630c0eba7d42d189eddf2bd",
+    "b5_report_sha256": "63b6e7de4b2096c6c18b0f539ccd8cdca8f35625dd6fe960a728fe21c542423b",
+    "b6_lock_sha256": "c39806d6bd201172cfa78aa3d13861ff7fe59b22301ae51beda9130cd6e7bd4b",
+    "b6_report_sha256": "ae486798719e2679b9a62f04c04e973469cd049fdbf07d83ce06b99d7722c2da",
+    "b7a_lock_sha256": "606a7356231e17d07de148b5bac22b04afb0570f04d178b36f3e263822927e37",
+    "b7a_report_sha256": "7e150316c54c1c6f51910795436a1cb5bb15a42fe1bdb029becb2dbe98dc6fe8",
+    "b7b_lock_sha256": "7ef9994119c6f91539c72bbea0fd43cfbc93e666464aee7f331a6a66254baeb3",
+    "b7b_report_sha256": "cdf43f348f65e35c287114e99701a0a824188a02db32841bd3a4ed2538248692",
+    "b8_script_sha256": "c6b8a3add27e74f17b11348de47771f40794f5b5be5ee922d1f7a9da146b8cde",
+    "r1c_lock_sha256": "7b206ac60c34fa407edcbd6b3aa329f5b2faee2ecefc854747cd70221f46a752",
+    "r1c_report_sha256": "39b33f93957485de87896d1e801f4f2c6a96d9c5dfbdaa980018379b9573f919",
+    "wrapper_sha256": "1dc9953682afdc5b743e9e6005a00bc9bdf41a73bd2a80bbebd9d8ebb7783d67"
+  },
+  "stage": "V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE",
+  "status": "COMPLETE",
+  "test_split_accessed": false,
+  "training_performed": false,
+  "warnings": [
+    "B7B seed list not found in report"
+  ],
+  "weights_frozen": false
+}

@@ -1,0 +1,1134 @@
+{
+  "contract_invariants": {
+    "all_certified_rows_structurally_checked_per_row": true,
+    "all_decoder_statuses_allowed": true,
+    "deterministic_repeat_exact": true,
+    "inactive_selected_roles_all_zero": true,
+    "selected_count_candidate_equals_Raw_for_all_rows": true,
+    "selected_graph_equals_Raw_for_all_rows": true,
+    "selected_source_equals_Raw_for_all_raw_positive_rows": true,
+    "selected_victim_equals_Raw_for_all_raw_positive_rows": true,
+    "unresolved_passthrough_all_roles_equal_Raw": true
+  },
+  "decision": {
+    "D6_R2_runtime_decoder_review_authorized": true,
+    "EPLR_V2_selected_as_final_runtime_decoder": false,
+    "next_stage": "V5_P3_FINAL_D6_R2_EPLR_V2_RUNTIME_DECODER_REVIEW_AND_FREEZE",
+    "persistence_candidate_selection_authorized": false,
+    "sealed_test_evaluation_authorized": false
+  },
+  "execution": {
+    "chunk_count": 56,
+    "chunk_size": 500,
+    "decoded_chunks_this_run": 56,
+    "deterministic_repeat_exact": true,
+    "deterministic_repeat_indices": [
+      0,
+      3960,
+      4620,
+      7920,
+      9241,
+      11880,
+      13862,
+      13863,
+      15840,
+      18482,
+      19800,
+      23101,
+      23760,
+      27721
+    ],
+    "reused_chunks_this_run": 0,
+    "second_pass_valid_chunks": 56
+  },
+  "frozen_decoder": {
+    "EPLR_V1_dependency_sha256": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35",
+    "EPLR_V2_source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+    "calibration_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+    "classification": "new validation-informed design; not an evaluated Tranche-A validation candidate",
+    "handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+    "import_namespace_recovery": {
+      "editable_repo_decoder_source_imported": false,
+      "imported_module_files": {
+        "routes": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_xy_route_library.py",
+        "v1": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_p3_eplr_v1.py",
+        "v2": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_p3_eplr_v2.py"
+      },
+      "method": "byte-identical frozen ZIP members reconstructed into temporary package namespace",
+      "namespace": "src.decoders",
+      "namespace_copy_hashes": {
+        "dependencies/v5_p3_eplr_v1.py": {
+          "namespace_path": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_p3_eplr_v1.py",
+          "namespace_sha256": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35",
+          "source_sha256": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35"
+        },
+        "dependencies/v5_xy_route_library.py": {
+          "namespace_path": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_xy_route_library.py",
+          "namespace_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+          "source_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+        },
+        "implementation/v5_p3_eplr_v2.py": {
+          "namespace_path": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_p3_eplr_v2.py",
+          "namespace_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+          "source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de"
+        },
+        "implementation/v5_p3_eplr_v2_calibration.json": {
+          "namespace_path": "/tmp/v5_p3_eplr_v2_3ovvigpn/src/decoders/v5_p3_eplr_v2_calibration.json",
+          "namespace_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+          "source_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db"
+        }
+      }
+    },
+    "route_library_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+  },
+  "metrics": {
+    "A_descriptive": {
+      "EPLR_V2_selected_system": {
+        "count_active_candidate": {
+          "accuracy": 1.0,
+          "active_items": 3822,
+          "macro_f1": 1.0,
+          "per_class": {
+            "1": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1033
+            },
+            "2": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 904
+            },
+            "3": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 944
+            },
+            "4": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 941
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.8194474500468873,
+          "f1": 0.7400560805898847,
+          "fn": 259,
+          "fp": 2244,
+          "fpr": 0.22348371676127876,
+          "items": 13863,
+          "precision": 0.6135698295161013,
+          "recall": 0.9322344322344323,
+          "tn": 7797,
+          "tp": 3563
+        },
+        "roles": {
+          "path": {
+            "cardinality_mae": 3.632663299518652e+17,
+            "exact_active": 0.8485086342229199,
+            "exact_all": 0.7963644232850032,
+            "exact_inactive": 0.7765162832387212,
+            "flat": {
+              "accuracy": 0.9206746375243454,
+              "f1": 0.7177891478338974,
+              "fn": 1662,
+              "fp": 15933,
+              "fpr": 0.08056328057844972,
+              "items": 221808,
+              "precision": 0.5840925108982223,
+              "recall": 0.9308594725018721,
+              "tn": 181837,
+              "tp": 22376
+            },
+            "predicted_cardinality_mean": 2.7633989756906874,
+            "truth_cardinality_mean": 1.733968116569285
+          },
+          "source": {
+            "cardinality_mae": 3.8987924789705683e+17,
+            "exact_active": 0.8778126635269492,
+            "exact_all": 0.8045156171102936,
+            "exact_inactive": 0.7766158749128573,
+            "flat": {
+              "accuracy": 0.9709929308230542,
+              "f1": 0.7302079838980207,
+              "fn": 730,
+              "fp": 5704,
+              "fpr": 0.0268586577263374,
+              "items": 221808,
+              "precision": 0.6041912428006384,
+              "recall": 0.9226449083395146,
+              "tn": 206667,
+              "tp": 8707
+            },
+            "predicted_cardinality_mean": 1.0395296833297265,
+            "truth_cardinality_mean": 0.6807328860996898
+          },
+          "transit": {
+            "cardinality_mae": 3.92540539691576e+17,
+            "exact_active": 0.7990580847723705,
+            "exact_all": 0.8035057346894612,
+            "exact_inactive": 0.8051986853899014,
+            "flat": {
+              "accuracy": 0.9544200389526076,
+              "f1": 0.6991429591715271,
+              "fn": 917,
+              "fp": 9193,
+              "fpr": 0.043955360899667215,
+              "items": 221808,
+              "precision": 0.5609837631327602,
+              "recall": 0.9275900189513582,
+              "tn": 199951,
+              "tp": 11747
+            },
+            "predicted_cardinality_mean": 1.5104955637307942,
+            "truth_cardinality_mean": 0.9135107841015653
+          },
+          "victim": {
+            "cardinality_mae": 3.6858891354090355e+17,
+            "exact_active": 0.913396127681842,
+            "exact_all": 0.8142537690254634,
+            "exact_inactive": 0.7765162832387212,
+            "flat": {
+              "accuracy": 0.9762046454591359,
+              "f1": 0.732651200486273,
+              "fn": 491,
+              "fp": 4787,
+              "fpr": 0.022360277459887428,
+              "items": 221808,
+              "precision": 0.6017139529078959,
+              "recall": 0.9364236695584618,
+              "tn": 209298,
+              "tp": 7232
+            },
+            "predicted_cardinality_mean": 0.8669840582846425,
+            "truth_cardinality_mean": 0.5570944240063478
+          }
+        },
+        "strict": {
+          "strict_active_correct_items": 2938,
+          "strict_active_exactness": 0.7687074829931972,
+          "strict_all_task_exactness": 0.7743634134025824,
+          "strict_correct_items": 10735,
+          "strict_inactive_correct_items": 7797,
+          "strict_inactive_exactness": 0.7765162832387212
+        }
+      },
+      "decoder": {
+        "raw_positive_items": 5807,
+        "route_certified_items": 5059,
+        "route_certified_rate_all": 0.3649282262136623,
+        "route_certified_rate_on_raw_positive": 0.8711899431720338,
+        "status_counts": {
+          "INACTIVE_RAW": 8056,
+          "RAW_ENDPOINTS_LEGAL": 4800,
+          "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT": 259,
+          "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH": 748
+        },
+        "unresolved_items": 748,
+        "unresolved_rate_on_raw_positive": 0.12881005682796626
+      },
+      "items": 13863,
+      "raw": {
+        "count_active": {
+          "accuracy": 1.0,
+          "active_items": 3822,
+          "macro_f1": 1.0,
+          "per_class": {
+            "1": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1033
+            },
+            "2": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 904
+            },
+            "3": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 944
+            },
+            "4": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 941
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.8194474500468873,
+          "f1": 0.7400560805898847,
+          "fn": 259,
+          "fp": 2244,
+          "fpr": 0.22348371676127876,
+          "items": 13863,
+          "precision": 0.6135698295161013,
+          "recall": 0.9322344322344323,
+          "tn": 7797,
+          "tp": 3563
+        },
+        "roles": {
+          "path": {
+            "cardinality_mae": 8.782262921913226e+16,
+            "exact_active": 0.858451072736787,
+            "exact_all": 0.7318040828103585,
+            "exact_inactive": 0.6835972512697939,
+            "flat": {
+              "accuracy": 0.9044669263507178,
+              "f1": 0.6928095100028994,
+              "fn": 143,
+              "fp": 21047,
+              "fpr": 0.10642160084947161,
+              "items": 221808,
+              "precision": 0.5316852832539718,
+              "recall": 0.994051085780847,
+              "tn": 176723,
+              "tp": 23895
+            },
+            "predicted_cardinality_mean": 3.2418668397893673,
+            "truth_cardinality_mean": 1.733968116569285
+          },
+          "source": {
+            "cardinality_mae": 7.717746204105562e+16,
+            "exact_active": 0.934589220303506,
+            "exact_all": 0.7465195123710596,
+            "exact_inactive": 0.6749327756199581,
+            "flat": {
+              "accuracy": 0.9634954555291062,
+              "f1": 0.6984469852147034,
+              "fn": 60,
+              "fp": 8037,
+              "fpr": 0.03784415009582288,
+              "items": 221808,
+              "precision": 0.53847479039853,
+              "recall": 0.993642047260782,
+              "tn": 204334,
+              "tp": 9377
+            },
+            "predicted_cardinality_mean": 1.2561494625982832,
+            "truth_cardinality_mean": 0.6807328860996898
+          },
+          "transit": {
+            "cardinality_mae": 1.7431461254100493e+17,
+            "exact_active": 0.7032967032967034,
+            "exact_all": 0.7277645531270288,
+            "exact_inactive": 0.7370779802808485,
+            "flat": {
+              "accuracy": 0.9400517564740677,
+              "f1": 0.6519201068034868,
+              "fn": 212,
+              "fp": 13085,
+              "fpr": 0.06256454882760204,
+              "items": 221808,
+              "precision": 0.48760621842816304,
+              "recall": 0.9832596336070751,
+              "tn": 196059,
+              "tp": 12452
+            },
+            "predicted_cardinality_mean": 1.8420976700569862,
+            "truth_cardinality_mean": 0.9135107841015653
+          },
+          "victim": {
+            "cardinality_mae": 2.661291794519159e+16,
+            "exact_active": 0.9764521193092621,
+            "exact_all": 0.7697468080502056,
+            "exact_inactive": 0.691066626829997,
+            "flat": {
+              "accuracy": 0.9701678929524634,
+              "f1": 0.6994868068486307,
+              "fn": 22,
+              "fp": 6595,
+              "fpr": 0.0308055211714973,
+              "items": 221808,
+              "precision": 0.538682148852826,
+              "recall": 0.9971513660494626,
+              "tn": 207490,
+              "tp": 7701
+            },
+            "predicted_cardinality_mean": 1.0312342205871745,
+            "truth_cardinality_mean": 0.5570944240063478
+          }
+        },
+        "strict": {
+          "strict_active_correct_items": 2421,
+          "strict_active_exactness": 0.6334379905808477,
+          "strict_all_task_exactness": 0.6596696241794705,
+          "strict_correct_items": 9145,
+          "strict_inactive_correct_items": 6724,
+          "strict_inactive_exactness": 0.6696544168907479
+        }
+      },
+      "true_positive_decoder_effect": {
+        "path": {
+          "delta": 0.04097670502385631,
+          "items": 3563,
+          "raw_exact": 0.8692113387594723,
+          "selected_exact": 0.9101880437833286
+        },
+        "source": {
+          "delta": 0.0,
+          "items": 3563,
+          "raw_exact": 0.9416222284591637,
+          "selected_exact": 0.9416222284591637
+        },
+        "transit": {
+          "delta": 0.1459444288520909,
+          "items": 3563,
+          "raw_exact": 0.7081111422958182,
+          "selected_exact": 0.8540555711479091
+        },
+        "victim": {
+          "delta": 0.0,
+          "items": 3563,
+          "raw_exact": 0.979792309851249,
+          "selected_exact": 0.979792309851249
+        }
+      }
+    },
+    "B_independent_selection_authority": {
+      "EPLR_V2_selected_system": {
+        "count_active_candidate": {
+          "accuracy": 1.0,
+          "active_items": 3702,
+          "macro_f1": 1.0,
+          "per_class": {
+            "1": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 908
+            },
+            "2": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 948
+            },
+            "3": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 941
+            },
+            "4": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 905
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.8082112706544484,
+          "f1": 0.7236431690580162,
+          "fn": 222,
+          "fp": 2436,
+          "fpr": 0.23983459682977257,
+          "items": 13859,
+          "precision": 0.5882352941176471,
+          "recall": 0.940032414910859,
+          "tn": 7721,
+          "tp": 3480
+        },
+        "roles": {
+          "path": {
+            "cardinality_mae": 3.0746791839432186e+17,
+            "exact_active": 0.8549432739059968,
+            "exact_all": 0.7854823580344902,
+            "exact_inactive": 0.7601654031702274,
+            "flat": {
+              "accuracy": 0.9167869254635976,
+              "f1": 0.7195744680851064,
+              "fn": 1464,
+              "fp": 16988,
+              "fpr": 0.08640631516840788,
+              "items": 221744,
+              "precision": 0.5822143524666765,
+              "recall": 0.9417614766488981,
+              "tn": 179618,
+              "tp": 23674
+            },
+            "predicted_cardinality_mean": 2.9339779204848835,
+            "truth_cardinality_mean": 1.813839382350819
+          },
+          "source": {
+            "cardinality_mae": 2.99481738695768e+17,
+            "exact_active": 0.9273365748244192,
+            "exact_all": 0.8048199725809942,
+            "exact_inactive": 0.7601654031702274,
+            "flat": {
+              "accuracy": 0.9703126127426221,
+              "f1": 0.7252160120215386,
+              "fn": 560,
+              "fp": 6023,
+              "fpr": 0.028343929561358512,
+              "items": 221744,
+              "precision": 0.5905506458191706,
+              "recall": 0.939439818319455,
+              "tn": 206474,
+              "tp": 8687
+            },
+            "predicted_cardinality_mean": 1.0614041417129663,
+            "truth_cardinality_mean": 0.6672198571325493
+          },
+          "transit": {
+            "cardinality_mae": 2.4757157065516822e+17,
+            "exact_active": 0.8036196650459211,
+            "exact_all": 0.7973879789306588,
+            "exact_inactive": 0.7951166683075711,
+            "flat": {
+              "accuracy": 0.9520212497294177,
+              "f1": 0.6981073181805284,
+              "fn": 794,
+              "fp": 9845,
+              "fpr": 0.04718450603645356,
+              "items": 221744,
+              "precision": 0.5554501941659894,
+              "recall": 0.9393661702940054,
+              "tn": 198804,
+              "tp": 12301
+            },
+            "predicted_cardinality_mean": 1.5979507901002958,
+            "truth_cardinality_mean": 0.9448733674868317
+          },
+          "victim": {
+            "cardinality_mae": 3.048058584948039e+17,
+            "exact_active": 0.9170718530524041,
+            "exact_all": 0.8020780720109676,
+            "exact_inactive": 0.7601654031702274,
+            "flat": {
+              "accuracy": 0.97556190922866,
+              "f1": 0.725939412329945,
+              "fn": 478,
+              "fp": 4941,
+              "fpr": 0.02307918669338453,
+              "items": 221744,
+              "precision": 0.5922594487539198,
+              "recall": 0.9375571521881123,
+              "tn": 209148,
+              "tp": 7177
+            },
+            "predicted_cardinality_mean": 0.8743776607258821,
+            "truth_cardinality_mean": 0.5523486543040623
+          }
+        },
+        "strict": {
+          "strict_active_correct_items": 2881,
+          "strict_active_exactness": 0.7782279848730416,
+          "strict_all_task_exactness": 0.7649902590374486,
+          "strict_correct_items": 10602,
+          "strict_inactive_correct_items": 7721,
+          "strict_inactive_exactness": 0.7601654031702274
+        }
+      },
+      "decoder": {
+        "raw_positive_items": 5916,
+        "route_certified_items": 5319,
+        "route_certified_rate_all": 0.38379392452557903,
+        "route_certified_rate_on_raw_positive": 0.8990872210953347,
+        "status_counts": {
+          "INACTIVE_RAW": 7943,
+          "RAW_ENDPOINTS_LEGAL": 5122,
+          "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT": 197,
+          "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH": 597
+        },
+        "unresolved_items": 597,
+        "unresolved_rate_on_raw_positive": 0.10091277890466531
+      },
+      "items": 13859,
+      "raw": {
+        "count_active": {
+          "accuracy": 1.0,
+          "active_items": 3702,
+          "macro_f1": 1.0,
+          "per_class": {
+            "1": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 908
+            },
+            "2": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 948
+            },
+            "3": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 941
+            },
+            "4": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 905
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.8082112706544484,
+          "f1": 0.7236431690580162,
+          "fn": 222,
+          "fp": 2436,
+          "fpr": 0.23983459682977257,
+          "items": 13859,
+          "precision": 0.5882352941176471,
+          "recall": 0.940032414910859,
+          "tn": 7721,
+          "tp": 3480
+        },
+        "roles": {
+          "path": {
+            "cardinality_mae": 1.0382033608119958e+17,
+            "exact_active": 0.8714208535926526,
+            "exact_all": 0.722635110758352,
+            "exact_inactive": 0.6684060254012011,
+            "flat": {
+              "accuracy": 0.8996139692618516,
+              "f1": 0.6922694094226941,
+              "fn": 100,
+              "fp": 22160,
+              "fpr": 0.11271273511489985,
+              "items": 221744,
+              "precision": 0.5304885800245773,
+              "recall": 0.996021958787493,
+              "tn": 174446,
+              "tp": 25038
+            },
+            "predicted_cardinality_mean": 3.4055848185294755,
+            "truth_cardinality_mean": 1.813839382350819
+          },
+          "source": {
+            "cardinality_mae": 4.126192844252804e+16,
+            "exact_active": 0.9792004321988115,
+            "exact_all": 0.7459412656035789,
+            "exact_inactive": 0.6609235010337698,
+            "flat": {
+              "accuracy": 0.9628851287971715,
+              "f1": 0.6912283334583927,
+              "fn": 35,
+              "fp": 8195,
+              "fpr": 0.038565250332945875,
+              "items": 221744,
+              "precision": 0.5292123858217959,
+              "recall": 0.9962149886449659,
+              "tn": 204302,
+              "tp": 9212
+            },
+            "predicted_cardinality_mean": 1.2560069269067031,
+            "truth_cardinality_mean": 0.6672198571325493
+          },
+          "transit": {
+            "cardinality_mae": 4.3923988342045976e+16,
+            "exact_active": 0.733387358184765,
+            "exact_all": 0.7312215888592251,
+            "exact_inactive": 0.7304322142364872,
+            "flat": {
+              "accuracy": 0.9390693772999494,
+              "f1": 0.658804515265537,
+              "fn": 51,
+              "fp": 13460,
+              "fpr": 0.06451025406304367,
+              "items": 221744,
+              "precision": 0.49215212798068214,
+              "recall": 0.9961053837342497,
+              "tn": 195189,
+              "tp": 13044
+            },
+            "predicted_cardinality_mean": 1.912403492315463,
+            "truth_cardinality_mean": 0.9448733674868317
+          },
+          "victim": {
+            "cardinality_mae": 1.1979269547830722e+16,
+            "exact_active": 0.9719070772555376,
+            "exact_all": 0.7600115448445054,
+            "exact_inactive": 0.6827803485281086,
+            "flat": {
+              "accuracy": 0.97042084565986,
+              "f1": 0.6996932374891259,
+              "fn": 14,
+              "fp": 6545,
+              "fpr": 0.030571397876584038,
+              "items": 221744,
+              "precision": 0.5386296348512618,
+              "recall": 0.9981711299804049,
+              "tn": 207544,
+              "tp": 7641
+            },
+            "predicted_cardinality_mean": 1.0235947759578614,
+            "truth_cardinality_mean": 0.5523486543040623
+          }
+        },
+        "strict": {
+          "strict_active_correct_items": 2521,
+          "strict_active_exactness": 0.6809832522960562,
+          "strict_all_task_exactness": 0.6626740746085577,
+          "strict_correct_items": 9184,
+          "strict_inactive_correct_items": 6663,
+          "strict_inactive_exactness": 0.6560007876341439
+        }
+      },
+      "true_positive_decoder_effect": {
+        "path": {
+          "delta": 0.022413793103448265,
+          "items": 3480,
+          "raw_exact": 0.8870689655172413,
+          "selected_exact": 0.9094827586206896
+        },
+        "source": {
+          "delta": 0.0,
+          "items": 3480,
+          "raw_exact": 0.9864942528735632,
+          "selected_exact": 0.9864942528735632
+        },
+        "transit": {
+          "delta": 0.09827586206896555,
+          "items": 3480,
+          "raw_exact": 0.7422413793103448,
+          "selected_exact": 0.8405172413793104
+        },
+        "victim": {
+          "delta": 0.0,
+          "items": 3480,
+          "raw_exact": 0.9755747126436781,
+          "selected_exact": 0.9755747126436781
+        }
+      }
+    },
+    "combined_AB_descriptive": {
+      "EPLR_V2_selected_system": {
+        "count_active_candidate": {
+          "accuracy": 1.0,
+          "active_items": 7524,
+          "macro_f1": 1.0,
+          "per_class": {
+            "1": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1941
+            },
+            "2": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1852
+            },
+            "3": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1885
+            },
+            "4": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1846
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.8138301709833345,
+          "f1": 0.7318543149581752,
+          "fn": 481,
+          "fp": 4680,
+          "fpr": 0.23170610951579365,
+          "items": 27722,
+          "precision": 0.6007847820523756,
+          "recall": 0.9360712387028176,
+          "tn": 15518,
+          "tp": 7043
+        },
+        "roles": {
+          "path": {
+            "cardinality_mae": 3.3537114974206816e+17,
+            "exact_active": 0.8516746411483254,
+            "exact_all": 0.7909241757448957,
+            "exact_inactive": 0.7682938904842064,
+            "flat": {
+              "accuracy": 0.9187310619724407,
+              "f1": 0.718705861237485,
+              "fn": 3126,
+              "fp": 32921,
+              "fpr": 0.08347617502079234,
+              "items": 443552,
+              "precision": 0.5831254511149663,
+              "recall": 0.9364324060517325,
+              "tn": 361455,
+              "tp": 46050
+            },
+            "predicted_cardinality_mean": 2.8486761416925184,
+            "truth_cardinality_mean": 1.7738979871582137
+          },
+          "source": {
+            "cardinality_mae": 3.4468701501268115e+17,
+            "exact_active": 0.9021796916533759,
+            "exact_all": 0.804667772887959,
+            "exact_inactive": 0.768343400336667,
+            "flat": {
+              "accuracy": 0.9706528208642955,
+              "f1": 0.7277063068716662,
+              "fn": 1290,
+              "fp": 11727,
+              "fpr": 0.027601513881958632,
+              "items": 443552,
+              "precision": 0.5973009168641187,
+              "recall": 0.9309569685292228,
+              "tn": 413141,
+              "tp": 17394
+            },
+            "predicted_cardinality_mean": 1.050465334391458,
+            "truth_cardinality_mean": 0.6739773465117956
+          },
+          "transit": {
+            "cardinality_mae": 3.200665139403468e+17,
+            "exact_active": 0.8013024986709197,
+            "exact_all": 0.8004472981747349,
+            "exact_inactive": 0.8001287256163977,
+            "flat": {
+              "accuracy": 0.9532208174013419,
+              "f1": 0.6986128259132834,
+              "fn": 1711,
+              "fp": 19038,
+              "fpr": 0.045568020526911654,
+              "items": 443552,
+              "precision": 0.5581395348837209,
+              "recall": 0.9335766139989906,
+              "tn": 398755,
+              "tp": 24048
+            },
+            "predicted_cardinality_mean": 1.5542168674698795,
+            "truth_cardinality_mean": 0.9291898131447948
+          },
+          "victim": {
+            "cardinality_mae": 3.3670198763787e+17,
+            "exact_active": 0.9152046783625731,
+            "exact_all": 0.808166798932256,
+            "exact_inactive": 0.7682938904842064,
+            "flat": {
+              "accuracy": 0.9758833237140178,
+              "f1": 0.7292926736682273,
+              "fn": 969,
+              "fp": 9728,
+              "fpr": 0.02271973543465974,
+              "items": 443552,
+              "precision": 0.5969673115963045,
+              "recall": 0.9369879047990636,
+              "tn": 418446,
+              "tp": 14409
+            },
+            "predicted_cardinality_mean": 0.8706803260947984,
+            "truth_cardinality_mean": 0.5547218815381285
+          }
+        },
+        "strict": {
+          "strict_active_correct_items": 5819,
+          "strict_active_exactness": 0.7733918128654971,
+          "strict_all_task_exactness": 0.7696775124449895,
+          "strict_correct_items": 21337,
+          "strict_inactive_correct_items": 15518,
+          "strict_inactive_exactness": 0.7682938904842064
+        }
+      },
+      "decoder": {
+        "raw_positive_items": 11723,
+        "route_certified_items": 10378,
+        "route_certified_rate_all": 0.3743597143063271,
+        "route_certified_rate_on_raw_positive": 0.8852682760385567,
+        "status_counts": {
+          "INACTIVE_RAW": 15999,
+          "RAW_ENDPOINTS_LEGAL": 9922,
+          "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT": 456,
+          "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH": 1345
+        },
+        "unresolved_items": 1345,
+        "unresolved_rate_on_raw_positive": 0.11473172396144332
+      },
+      "items": 27722,
+      "raw": {
+        "count_active": {
+          "accuracy": 1.0,
+          "active_items": 7524,
+          "macro_f1": 1.0,
+          "per_class": {
+            "1": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1941
+            },
+            "2": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1852
+            },
+            "3": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1885
+            },
+            "4": {
+              "f1": 1.0,
+              "fn": 0,
+              "fp": 0,
+              "precision": 1.0,
+              "recall": 1.0,
+              "tp": 1846
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.8138301709833345,
+          "f1": 0.7318543149581752,
+          "fn": 481,
+          "fp": 4680,
+          "fpr": 0.23170610951579365,
+          "items": 27722,
+          "precision": 0.6007847820523756,
+          "recall": 0.9360712387028176,
+          "tn": 15518,
+          "tp": 7043
+        },
+        "roles": {
+          "path": {
+            "cardinality_mae": 9.582032849773376e+16,
+            "exact_active": 0.8648325358851675,
+            "exact_all": 0.7272202582786235,
+            "exact_inactive": 0.6759580156451134,
+            "flat": {
+              "accuracy": 0.9020407979222278,
+              "f1": 0.6925330465057035,
+              "fn": 243,
+              "fp": 43207,
+              "fpr": 0.10955788384688724,
+              "items": 443552,
+              "precision": 0.5310722813110484,
+              "recall": 0.9950585651537335,
+              "tn": 351169,
+              "tp": 48933
+            },
+            "predicted_cardinality_mean": 3.3237140177476374,
+            "truth_cardinality_mean": 1.7738979871582137
+          },
+          "source": {
+            "cardinality_mae": 5.922228636318267e+16,
+            "exact_active": 0.9565390749601276,
+            "exact_all": 0.7462304307048554,
+            "exact_inactive": 0.6678879096940291,
+            "flat": {
+              "accuracy": 0.9631903361950798,
+              "f1": 0.694850948509485,
+              "fn": 95,
+              "fp": 16232,
+              "fpr": 0.03820480714009998,
+              "items": 443552,
+              "precision": 0.5338445191120301,
+              "recall": 0.9949154356668808,
+              "tn": 408636,
+              "tp": 18589
+            },
+            "predicted_cardinality_mean": 1.2560782050357118,
+            "truth_cardinality_mean": 0.6739773465117956
+          },
+          "transit": {
+            "cardinality_mae": 1.0912870745575234e+17,
+            "exact_active": 0.7181020733652312,
+            "exact_all": 0.7294928215857441,
+            "exact_inactive": 0.7337360134666798,
+            "flat": {
+              "accuracy": 0.9395606377606234,
+              "f1": 0.6554241645244215,
+              "fn": 263,
+              "fp": 26545,
+              "fpr": 0.06353624881221083,
+              "items": 443552,
+              "precision": 0.4899214081205204,
+              "recall": 0.9897899763189565,
+              "tn": 391248,
+              "tp": 25496
+            },
+            "predicted_cardinality_mean": 1.877245508982036,
+            "truth_cardinality_mean": 0.9291898131447948
+          },
+          "victim": {
+            "cardinality_mae": 1.929714948912694e+16,
+            "exact_active": 0.9742158426368953,
+            "exact_all": 0.7648798787966237,
+            "exact_inactive": 0.6868996930389147,
+            "flat": {
+              "accuracy": 0.9702943510569223,
+              "f1": 0.6995896032831737,
+              "fn": 36,
+              "fp": 13140,
+              "fpr": 0.030688458430451173,
+              "items": 443552,
+              "precision": 0.5386559932589003,
+              "recall": 0.9976589933671479,
+              "tn": 415034,
+              "tp": 15342
+            },
+            "predicted_cardinality_mean": 1.0274150494192338,
+            "truth_cardinality_mean": 0.5547218815381285
+          }
+        },
+        "strict": {
+          "strict_active_correct_items": 4942,
+          "strict_active_exactness": 0.6568314726209463,
+          "strict_all_task_exactness": 0.6611716326383378,
+          "strict_correct_items": 18329,
+          "strict_inactive_correct_items": 13387,
+          "strict_inactive_exactness": 0.6627883948905833
+        }
+      },
+      "true_positive_decoder_effect": {
+        "path": {
+          "delta": 0.03180462870935685,
+          "items": 7043,
+          "raw_exact": 0.8780349282976004,
+          "selected_exact": 0.9098395570069573
+        },
+        "source": {
+          "delta": 0.0,
+          "items": 7043,
+          "raw_exact": 0.9637938378531875,
+          "selected_exact": 0.9637938378531875
+        },
+        "transit": {
+          "delta": 0.1223910265511855,
+          "items": 7043,
+          "raw_exact": 0.7249751526338208,
+          "selected_exact": 0.8473661791850063
+        },
+        "victim": {
+          "delta": 0.0,
+          "items": 7043,
+          "raw_exact": 0.9777083629135311,
+          "selected_exact": 0.9777083629135311
+        }
+      }
+    }
+  },
+  "outputs": {
+    "npz": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_r1_r1_frozen_eplr_v2_import_namespace_recovery_and_validation/V5_P3_FINAL_D6_R1_R1_EPLR_V2_VALIDATION_OUTPUTS.npz",
+    "npz_sha256": "7b8e560fff2795132dbb618c74fe2ed6d042e82802818fd446cf591970e79e0b"
+  },
+  "predeclared_runtime_candidate_acceptance_rule": {
+    "all_criteria_met": true,
+    "criteria": {
+      "B_graph_accuracy_identical_to_Raw": true,
+      "B_graph_f1_identical_to_Raw": true,
+      "B_graph_fpr_identical_to_Raw": true,
+      "B_has_nonzero_certified_route_coverage": true,
+      "B_strict_all_task_exactness_strictly_improves_Raw": true,
+      "B_true_positive_path_exact_not_worse_than_Raw": true,
+      "B_true_positive_source_exact_preserved": true,
+      "B_true_positive_transit_exact_not_worse_than_Raw": true,
+      "B_true_positive_victim_exact_preserved": true,
+      "hard_contract_invariants_all_pass": true,
+      "software_mean_decode_faster_than_A1_exact_reference": true
+    },
+    "interpretation": "D6-R1 does not itself select the runtime decoder. D6-R2 may accept EPLR-V2 only if all predeclared B-only correctness/structure criteria and hard invariants are true.",
+    "rule_frozen_before_final_validation_results": true,
+    "selection_authority": "B_only"
+  },
+  "provenance": {
+    "D1_manifest_sha256": "7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c",
+    "D1_npz_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+    "D2_R1_report_sha256": "2da340737a3d9d042d700293776b1ca020397cc35a2e29a9946c17466be1e100",
+    "R2B_lock_sha256": "92d94cad8f986c2a5bcac0b09c0dd3092ea0e46895bae3bad47e490d0f49217a",
+    "R2B_partition": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_p0_r2b_exact_index_semantics_reconstruction/V5_P3_FINAL_D6_P0_R2B_VALIDATION_ROW_PROVENANCE_PARTITION.json",
+    "R2B_partition_sha256": "bcac36c1f051d68d589b4a8a229e8675e89350f517b9d4bbd1e71ced746b61bd",
+    "R2B_report_sha256": "40a6d8a04241954671889828b98cbace76ea90975f695772ef6c87f7e20860da"
+  },
+  "scientific_boundary": {
+    "calibration_retuning_performed": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "persistence_candidate_selection_performed": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scientific_roles": {
+    "A_only": "DESCRIPTIVE_SUPPORTING_RESULT",
+    "B_only": "INDEPENDENT_DECODER_SELECTION_AUTHORITY",
+    "combined_AB": "DESCRIPTIVE_COMPLETE_VALIDATION_REPLAY",
+    "roles_frozen_before_results": true
+  },
+  "scope": "frozen EPLR-V2 replay on immutable final combined A+B validation, stratified by pre-frozen provenance",
+  "stage": "V5_P3_FINAL_D6_R1_R1_FROZEN_EPLR_V2_IMPORT_NAMESPACE_RECOVERY_AND_A_B_STRATIFIED_VALIDATION_EVALUATION",
+  "status": "PASS",
+  "timing": {
+    "A1_exact_reference_mean_seconds": 0.599471,
+    "max_seconds": 0.010077892991830595,
+    "mean_seconds": 6.204785664105811e-05,
+    "mean_speedup_vs_A1_exact": 9661.429619847979,
+    "median_seconds": 2.8811002266593277e-05,
+    "p95_seconds": 0.00028048590174876146,
+    "p99_seconds": 0.0004110841249348596,
+    "total_decode_seconds": 1.7200906818034127
+  }
+}

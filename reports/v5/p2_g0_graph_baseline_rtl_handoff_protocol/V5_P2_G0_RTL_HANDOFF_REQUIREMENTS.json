@@ -1,0 +1,80 @@
+{
+  "claim_label": "VALIDATION-SELECTED GRAPH BASELINE \u2014 NOT A P2 BLIND-TESTED FINAL MODEL",
+  "float_reference_acceptance": {
+    "derived_graph_decision_agreement": 1.0,
+    "max_absolute_output_difference": 1e-06,
+    "source_ranking_agreement": 1.0,
+    "thresholded_source_decision_agreement": 1.0
+  },
+  "forbidden_golden_vector_sources": [
+    "P2 test tensors",
+    "P2 B6 cache"
+  ],
+  "golden_vector_sources": [
+    "validation examples",
+    "hand-constructed topology cases"
+  ],
+  "handoff_purpose": "provide a stable validation-selected temporal-plus-graph accelerator target while Legal NoC decoder research proceeds",
+  "name": "V5_P2_G0_RTL_HANDOFF_REQUIREMENTS",
+  "primary_candidate_policy": {
+    "fallback": "existing frozen B3 Conv1D-count4 temporal-only reference",
+    "not_preselected": true,
+    "preferred": "Conv1D plus GraphConv source-only localization with graph detection derived from source evidence",
+    "selection_condition": "must pass source-only validation, stability, and cost gates"
+  },
+  "quantization_acceptance": {
+    "accumulator_overflow_allowed": false,
+    "graph_decision_agreement_min": 0.999,
+    "source_node_decision_agreement_min": 0.995,
+    "source_ranking_agreement_min": 0.995,
+    "validation_source_f1_loss_max_absolute": 0.005
+  },
+  "quantization_study_order": [
+    "FP32 reference",
+    "INT16 activations with INT8 weights",
+    "INT8 activations with INT8 weights",
+    "freeze selected fixed-point contract"
+  ],
+  "required_artifacts": [
+    "architecture_contract.json",
+    "tensor_interface.json",
+    "graph_operator_equation.md",
+    "fixed_4x4_topology.json",
+    "selected_checkpoint.pt",
+    "selected_checkpoint.sha256",
+    "model_source.py",
+    "explicit_graph_operator_reference.py",
+    "parameter_manifest.csv",
+    "primary58_indices.json",
+    "feature_names.json",
+    "physical_port_mask.npy",
+    "edge_index.npy",
+    "feature_contract.md",
+    "quantization_contract.json",
+    "calibration_manifest.csv",
+    "fixed_point_weights.npz",
+    "fixed_point_biases.npz",
+    "overflow_saturation_policy.md",
+    "pytorch_reference_inference.py",
+    "hardware_explicit_float_reference.py",
+    "integer_reference_inference.py",
+    "layer_order.json",
+    "golden_inputs.npz",
+    "golden_outputs_float.npz",
+    "golden_outputs_integer.npz",
+    "layerwise_float_activations.npz",
+    "layerwise_integer_activations.npz",
+    "vector_manifest.csv",
+    "width_contract.json",
+    "accumulator_bounds.json",
+    "operation_counts.json",
+    "latency_throughput_targets.json",
+    "memory_rom_requirements.json",
+    "equivalence_policy.json",
+    "expected_tolerances.json",
+    "corner_cases.md",
+    "README.md"
+  ],
+  "requirements_sha256": "87c513dc58036dbb9fe0ac678a305462e565a80cf86fc5b410020c4eba6d0a51",
+  "version": 1
+}

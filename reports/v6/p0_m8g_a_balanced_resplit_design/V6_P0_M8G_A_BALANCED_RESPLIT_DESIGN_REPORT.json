@@ -1,0 +1,71 @@
+{
+  "M8D_report_sha256": "f8e3399e0aae1a020cb450e406b66a8b219ae69efc35db35a9f10d74c9f32eab",
+  "M8E_report_sha256": "bb83bd80c1794b46d42a11f85e7b5535691abde5e3d0f396da86ff9a9408e629",
+  "P2_test_used": false,
+  "artifacts": {
+    "coverage_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8g_a_balanced_resplit_design/V6_P0_M8G_A_BALANCED_SPLIT_COVERAGE.csv",
+    "coverage_csv_sha256": "24c432cc75ee725aed4d68c5e62f0f79673655a8d99a6751c21d713a97cde427",
+    "manifest_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8g_a_balanced_resplit_design/V6_P0_M8G_A_BALANCED_PAIR_SPLIT_MANIFEST.csv",
+    "manifest_csv_sha256": "4ae9753f2a7280688372d2c647cc2f95a1b26d1a28cb0db53b437a22679bfd36",
+    "normalization_candidates_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8g_a_balanced_resplit_design/V6_P0_M8G_A_NORMALIZATION_CANDIDATES.csv",
+    "normalization_candidates_csv_sha256": "c1883fad7b90500310d507e2a06e4e1b49521fb469b792357d5d131c4a8470f9",
+    "run_index_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8g_a_balanced_resplit_design/V6_P0_M8G_A_RUN_FILE_INDEX.csv",
+    "run_index_csv_sha256": "95b9de0beac661caafb34aec7feaf3029d1c06e659a5857fe19a6feb153f86d3"
+  },
+  "balanced_split": {
+    "changed_pair_assignments": 38,
+    "distribution_penalty": 17.284965202707262,
+    "low_support_validation_value_count": 4,
+    "objective": 25017.884965202706,
+    "original_validation_overlap": 6,
+    "primary_missing_validation_value_count": 2,
+    "support_penalty": 25000.0,
+    "unseen_validation_value_count": 0,
+    "validation_pair_overlap": 6
+  },
+  "created_utc": "2026-08-03T12:26:19.307860+00:00",
+  "data_copied": false,
+  "decision": {
+    "P1_generation_authorized": false,
+    "additional_full_seeds_authorized": false,
+    "balanced_split_training_authorized": false,
+    "next_stage": "M8G_B_BALANCED_SPLIT_SEED107_WITH_TRAIN_ONLY_RENORMALIZATION"
+  },
+  "design_basis": {
+    "diagnostic_resplit_only": true,
+    "labels_used_in_split_selection": false,
+    "metadata_only": true,
+    "model_metrics_used_in_split_selection": false,
+    "pair_atomicity_preserved": true,
+    "train_pairs": 75,
+    "unbiased_test_claim_allowed": false,
+    "validation_pairs": 25,
+    "visible_pilot_data": true
+  },
+  "improvement": {
+    "low_support_validation_value_reduction": 7,
+    "objective_delta_original_minus_balanced": 229992.36663988154,
+    "primary_missing_validation_value_reduction": -2,
+    "unseen_validation_value_reduction": 2
+  },
+  "normalization_preflight": {
+    "candidate_file_count": 2,
+    "resolved_mean_std_pair_found": true,
+    "scientific_note": "A clean resplit baseline should fit normalization on the new 75 training pairs only. Reusing frozen normalized tensors is diagnostic because some reassigned validation pairs may have contributed to the original normalization statistics.",
+    "status": "CLEAN_RESPLIT_RENORMALIZATION_FEASIBLE"
+  },
+  "original_split": {
+    "distribution_penalty": 7.751605084267108,
+    "low_support_validation_value_count": 11,
+    "objective": 255010.25160508425,
+    "original_validation_overlap": 25,
+    "primary_missing_validation_value_count": 0,
+    "support_penalty": 255000.0,
+    "unseen_validation_value_count": 2
+  },
+  "seed": 107,
+  "source_modified": false,
+  "stage": "V6_P0_M8G_A_BALANCED_RESPLIT_DESIGN_AND_NORMALIZATION_PREFLIGHT",
+  "status": "PASS_WITH_RESIDUAL_COVERAGE_LIMITS",
+  "test_split_used": false
+}

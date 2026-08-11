@@ -1,0 +1,410 @@
+{
+  "artifacts": {
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v5/p0_b7b_directional_gated_graph_multi_seed/seed_017/b3/final_model.pt",
+    "checkpoint_sha256": "923463917f96845c318c29dd9e94e73d5198836ce4e2ee64e5f7a81768eb35d5",
+    "history_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p0_b7b_directional_gated_graph_multi_seed/seed_017/b3/HISTORY.csv",
+    "history_csv_sha256": "fd0c3082f244d054581f1cbd4f323cd874978d2bad5fd93acb056025f9d11098",
+    "metrics_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p0_b7b_directional_gated_graph_multi_seed/seed_017/b3/METRICS.csv",
+    "metrics_csv_sha256": "cf4ed6a475ff4bbdaf8c3db4f55ff4d8040ea49c21a3d545728e0d09712d8b71",
+    "validation_predictions": "/home/zira/research/projects/GNN-2d/models/v5/p0_b7b_directional_gated_graph_multi_seed/seed_017/b3/validation_predictions_and_targets.pt",
+    "validation_predictions_sha256": "1afc75170b212677abe028efa94d652412027e654d3d7bb03867d3764805afa6"
+  },
+  "audit_boundary": {
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_performance_evaluated": false,
+    "test_tensors_read": false,
+    "train_used_for_fitting": true,
+    "validation_used_for_checkpoint_selection": false,
+    "validation_used_for_final_evaluation": true,
+    "validation_used_for_threshold_selection": false
+  },
+  "model_name": "B3",
+  "parameter_count": 43208,
+  "positive_weights": {
+    "attack": 1.0569908814589666,
+    "path": 4.563519588953115,
+    "source": 20.0,
+    "transit": 8.154935531600085,
+    "victim": 20.0
+  },
+  "protocol": {
+    "batch_size": 128,
+    "binary_threshold": 0.5,
+    "early_stopping": false,
+    "epochs": 100,
+    "gradient_clip_norm": 5.0,
+    "learning_rate": 0.001,
+    "optimizer": "AdamW",
+    "test_split_accessed": false,
+    "threshold_search": false,
+    "validation_checkpoint_selection": false,
+    "validation_evaluated_only_after_training": true,
+    "weight_decay": 0.0001
+  },
+  "seed": 17,
+  "stage": "V5_P0_B7B_DIRECTIONAL_GATED_GRAPH_MULTI_SEED_CONFIRMATION",
+  "status": "COMPLETE",
+  "train_graph_diagnostics": {
+    "alpha": 0.0,
+    "gate_mean_east": 0.0,
+    "gate_mean_north": 0.0,
+    "gate_mean_south": 0.0,
+    "gate_mean_west": 0.0
+  },
+  "train_metrics": {
+    "all_tasks_exact": 0.960103452205658,
+    "count": {
+      "accuracy": 1.0,
+      "confusion_matrix": [
+        [
+          1391,
+          0,
+          0
+        ],
+        [
+          0,
+          807,
+          0
+        ],
+        [
+          0,
+          0,
+          509
+        ]
+      ],
+      "macro_f1": 1.0,
+      "per_class": {
+        "0": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1391
+        },
+        "1": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 807
+        },
+        "2": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 509
+        }
+      }
+    },
+    "graph": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "fpr": 0.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support_negative": 1391,
+      "support_positive": 1316,
+      "tn": 1391,
+      "tnr": 1.0,
+      "tp": 1316
+    },
+    "roles": {
+      "path": {
+        "all_windows": {
+          "exact_set": 0.9608422517776489,
+          "fn": 2,
+          "fp": 190,
+          "node_accuracy": 0.995567048393055,
+          "node_f1": 0.9878157126538901,
+          "node_precision": 0.9761695723065346,
+          "node_recall": 0.9997430956968529,
+          "positive_entries": 7785,
+          "tn": 35337,
+          "tp": 7783,
+          "window_count": 2707
+        },
+        "attack_windows": {
+          "exact_set": 0.988601803779602,
+          "fn": 2,
+          "fp": 13,
+          "node_accuracy": 0.9992876139817629,
+          "node_f1": 0.9990372890058405,
+          "node_precision": 0.9983324781939457,
+          "node_recall": 0.9997430956968529,
+          "positive_entries": 7785,
+          "tn": 13258,
+          "tp": 7783,
+          "window_count": 1316
+        }
+      },
+      "source": {
+        "all_windows": {
+          "exact_set": 0.9988917708396912,
+          "fn": 0,
+          "fp": 3,
+          "node_accuracy": 0.9999307351311415,
+          "node_f1": 0.9991787571858747,
+          "node_precision": 0.9983588621444202,
+          "node_recall": 1.0,
+          "positive_entries": 1825,
+          "tn": 41484,
+          "tp": 1825,
+          "window_count": 2707
+        },
+        "attack_windows": {
+          "exact_set": 1.0,
+          "fn": 0,
+          "fp": 0,
+          "node_accuracy": 1.0,
+          "node_f1": 1.0,
+          "node_precision": 1.0,
+          "node_recall": 1.0,
+          "positive_entries": 1825,
+          "tn": 19231,
+          "tp": 1825,
+          "window_count": 1316
+        }
+      },
+      "transit": {
+        "all_windows": {
+          "exact_set": 0.9708163738250732,
+          "fn": 0,
+          "fp": 142,
+          "node_accuracy": 0.9967214628740303,
+          "node_f1": 0.9852144939608496,
+          "node_precision": 0.970859839934332,
+          "node_recall": 1.0,
+          "positive_entries": 4731,
+          "tn": 38439,
+          "tp": 4731,
+          "window_count": 2707
+        },
+        "attack_windows": {
+          "exact_set": 0.9939209818840027,
+          "fn": 0,
+          "fp": 8,
+          "node_accuracy": 0.9996200607902735,
+          "node_f1": 0.9991552270327348,
+          "node_precision": 0.9983118801434901,
+          "node_recall": 1.0,
+          "positive_entries": 4731,
+          "tn": 16317,
+          "tp": 4731,
+          "window_count": 1316
+        }
+      },
+      "victim": {
+        "all_windows": {
+          "exact_set": 0.9915035367012024,
+          "fn": 0,
+          "fp": 23,
+          "node_accuracy": 0.9994689693387514,
+          "node_f1": 0.9934341992577791,
+          "node_precision": 0.9869540555870675,
+          "node_recall": 1.0,
+          "positive_entries": 1740,
+          "tn": 41549,
+          "tp": 1740,
+          "window_count": 2707
+        },
+        "attack_windows": {
+          "exact_set": 0.9992401003837585,
+          "fn": 0,
+          "fp": 1,
+          "node_accuracy": 0.9999525075987842,
+          "node_f1": 0.9997127262280953,
+          "node_precision": 0.9994256174612292,
+          "node_recall": 1.0,
+          "positive_entries": 1740,
+          "tn": 19315,
+          "tp": 1740,
+          "window_count": 1316
+        }
+      }
+    },
+    "window_count": 2707
+  },
+  "validation_graph_diagnostics": {
+    "alpha": 0.0,
+    "gate_mean_east": 0.0,
+    "gate_mean_north": 0.0,
+    "gate_mean_south": 0.0,
+    "gate_mean_west": 0.0
+  },
+  "validation_metrics": {
+    "all_tasks_exact": 0.6725146174430847,
+    "count": {
+      "accuracy": 0.9166666865348816,
+      "confusion_matrix": [
+        [
+          341,
+          37,
+          10
+        ],
+        [
+          10,
+          211,
+          0
+        ],
+        [
+          0,
+          0,
+          75
+        ]
+      ],
+      "macro_f1": 0.9200518406421402,
+      "per_class": {
+        "0": {
+          "f1": 0.9228687415426252,
+          "precision": 0.9715099715099715,
+          "recall": 0.8788659793814433,
+          "support": 388
+        },
+        "1": {
+          "f1": 0.8997867803837954,
+          "precision": 0.8508064516129032,
+          "recall": 0.9547511312217195,
+          "support": 221
+        },
+        "2": {
+          "f1": 0.9375,
+          "precision": 0.8823529411764706,
+          "recall": 1.0,
+          "support": 75
+        }
+      }
+    },
+    "graph": {
+      "accuracy": 0.9152046783625731,
+      "balanced_accuracy": 0.9208519086096405,
+      "f1": 0.9076433121019108,
+      "fn": 11,
+      "fp": 47,
+      "fpr": 0.1211340206185567,
+      "precision": 0.858433734939759,
+      "recall": 0.9628378378378378,
+      "support_negative": 388,
+      "support_positive": 296,
+      "tn": 341,
+      "tnr": 0.8788659793814433,
+      "tp": 285
+    },
+    "roles": {
+      "path": {
+        "all_windows": {
+          "exact_set": 0.7485380172729492,
+          "fn": 90,
+          "fp": 303,
+          "node_accuracy": 0.9640899122807017,
+          "node_f1": 0.8695652173913044,
+          "node_precision": 0.8121512709237446,
+          "node_recall": 0.9357142857142857,
+          "positive_entries": 1400,
+          "tn": 9241,
+          "tp": 1310,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7162162065505981,
+          "fn": 90,
+          "fp": 51,
+          "node_accuracy": 0.9702280405405406,
+          "node_f1": 0.9489315465411083,
+          "node_precision": 0.9625275532696547,
+          "node_recall": 0.9357142857142857,
+          "positive_entries": 1400,
+          "tn": 3285,
+          "tp": 1310,
+          "window_count": 296
+        }
+      },
+      "source": {
+        "all_windows": {
+          "exact_set": 0.7836257219314575,
+          "fn": 83,
+          "fp": 66,
+          "node_accuracy": 0.9863852339181286,
+          "node_f1": 0.7944827586206897,
+          "node_precision": 0.8135593220338984,
+          "node_recall": 0.7762803234501348,
+          "positive_entries": 371,
+          "tn": 10507,
+          "tp": 288,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.6858108043670654,
+          "fn": 83,
+          "fp": 10,
+          "node_accuracy": 0.9803631756756757,
+          "node_f1": 0.8609865470852018,
+          "node_precision": 0.9664429530201343,
+          "node_recall": 0.7762803234501348,
+          "positive_entries": 371,
+          "tn": 4355,
+          "tp": 288,
+          "window_count": 296
+        }
+      },
+      "transit": {
+        "all_windows": {
+          "exact_set": 0.7938596606254578,
+          "fn": 66,
+          "fp": 190,
+          "node_accuracy": 0.9766081871345029,
+          "node_f1": 0.8548752834467119,
+          "node_precision": 0.798728813559322,
+          "node_recall": 0.9195121951219513,
+          "positive_entries": 820,
+          "tn": 9934,
+          "tp": 754,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7567567825317383,
+          "fn": 66,
+          "fp": 52,
+          "node_accuracy": 0.9750844594594594,
+          "node_f1": 0.927429274292743,
+          "node_precision": 0.9354838709677419,
+          "node_recall": 0.9195121951219513,
+          "positive_entries": 820,
+          "tn": 3864,
+          "tp": 754,
+          "window_count": 296
+        }
+      },
+      "victim": {
+        "all_windows": {
+          "exact_set": 0.7982456088066101,
+          "fn": 4,
+          "fp": 137,
+          "node_accuracy": 0.9871162280701754,
+          "node_f1": 0.8055172413793105,
+          "node_precision": 0.6806526806526807,
+          "node_recall": 0.9864864864864865,
+          "positive_entries": 296,
+          "tn": 10511,
+          "tp": 292,
+          "window_count": 684
+        },
+        "attack_windows": {
+          "exact_set": 0.7331081032752991,
+          "fn": 4,
+          "fp": 75,
+          "node_accuracy": 0.9833192567567568,
+          "node_f1": 0.8808446455505279,
+          "node_precision": 0.7956403269754768,
+          "node_recall": 0.9864864864864865,
+          "positive_entries": 296,
+          "tn": 4365,
+          "tp": 292,
+          "window_count": 296
+        }
+      }
+    },
+    "window_count": 684
+  }
+}

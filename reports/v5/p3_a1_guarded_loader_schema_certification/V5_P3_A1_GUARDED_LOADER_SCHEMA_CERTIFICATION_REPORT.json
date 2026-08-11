@@ -1,0 +1,262 @@
+{
+  "a0": {
+    "report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a0_tranche_a_preliminary_handover_preflight/V5_P3_A0_TRANCHE_A_PRELIMINARY_HANDOVER_PREFLIGHT_REPORT.json",
+    "report_sha256": "c6b71c2856c4a75684e4dc1c5aa76ecc3b405d55bdb4fe08f805b5e09dbce388",
+    "sealed_test_tensor_loads": 0,
+    "status": "PASS_WITH_TEST_LOADER_GUARD_GAP"
+  },
+  "artifacts": {
+    "normalization_inventory_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a1_guarded_loader_schema_certification/V5_P3_A1_NORMALIZATION_TENSOR_INVENTORY.csv",
+    "sample_schema_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a1_guarded_loader_schema_certification/V5_P3_A1_SAMPLE_SCHEMA_INVENTORY.csv"
+  },
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "canonical_data_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+  "certified_dataset_modified": false,
+  "created_utc": "2026-08-04T20:52:36.753837+00:00",
+  "dataset_interface": {
+    "required_shapes": {
+      "edge_index": [
+        2,
+        48
+      ],
+      "node_labels": [
+        16
+      ],
+      "physical_mask": [
+        16,
+        10
+      ],
+      "x": [
+        16,
+        70,
+        32
+      ]
+    },
+    "sample_contracts": [
+      {
+        "attack_path_paths": [
+          "train[0].y_attack_path"
+        ],
+        "count_paths": [
+          "train[0].y_attacker_count"
+        ],
+        "edge_dtype": "torch.int64",
+        "edge_path": "train[0].edge_index",
+        "graph_attack_paths": [
+          "train[0].y_attack",
+          "train[0].y_attacker_count"
+        ],
+        "mask_dtype": "torch.uint8",
+        "mask_path": "train[0].physical_port_mask",
+        "sample_index": 0,
+        "sample_python_type": "dict",
+        "source_paths": [
+          "train[0].source_target_router",
+          "train[0].y_source"
+        ],
+        "split": "train",
+        "transit_paths": [
+          "train[0].y_transit"
+        ],
+        "victim_paths": [
+          "train[0].y_victim"
+        ],
+        "x_dtype": "torch.float32",
+        "x_path": "train[0].x"
+      },
+      {
+        "attack_path_paths": [
+          "train[110854].y_attack_path"
+        ],
+        "count_paths": [
+          "train[110854].y_attacker_count"
+        ],
+        "edge_dtype": "torch.int64",
+        "edge_path": "train[110854].edge_index",
+        "graph_attack_paths": [
+          "train[110854].y_attack",
+          "train[110854].y_attacker_count"
+        ],
+        "mask_dtype": "torch.uint8",
+        "mask_path": "train[110854].physical_port_mask",
+        "sample_index": 110854,
+        "sample_python_type": "dict",
+        "source_paths": [
+          "train[110854].source_target_router",
+          "train[110854].y_source"
+        ],
+        "split": "train",
+        "transit_paths": [
+          "train[110854].y_transit"
+        ],
+        "victim_paths": [
+          "train[110854].y_victim"
+        ],
+        "x_dtype": "torch.float32",
+        "x_path": "train[110854].x"
+      },
+      {
+        "attack_path_paths": [
+          "validation[0].y_attack_path"
+        ],
+        "count_paths": [
+          "validation[0].y_attacker_count"
+        ],
+        "edge_dtype": "torch.int64",
+        "edge_path": "validation[0].edge_index",
+        "graph_attack_paths": [
+          "validation[0].y_attack",
+          "validation[0].y_attacker_count"
+        ],
+        "mask_dtype": "torch.uint8",
+        "mask_path": "validation[0].physical_port_mask",
+        "sample_index": 0,
+        "sample_python_type": "dict",
+        "source_paths": [
+          "validation[0].source_target_router",
+          "validation[0].y_source"
+        ],
+        "split": "validation",
+        "transit_paths": [
+          "validation[0].y_transit"
+        ],
+        "victim_paths": [
+          "validation[0].y_victim"
+        ],
+        "x_dtype": "torch.float32",
+        "x_path": "validation[0].x"
+      },
+      {
+        "attack_path_paths": [
+          "validation[13862].y_attack_path"
+        ],
+        "count_paths": [
+          "validation[13862].y_attacker_count"
+        ],
+        "edge_dtype": "torch.int64",
+        "edge_path": "validation[13862].edge_index",
+        "graph_attack_paths": [
+          "validation[13862].y_attack",
+          "validation[13862].y_attacker_count"
+        ],
+        "mask_dtype": "torch.uint8",
+        "mask_path": "validation[13862].physical_port_mask",
+        "sample_index": 13862,
+        "sample_python_type": "dict",
+        "source_paths": [
+          "validation[13862].source_target_router",
+          "validation[13862].y_source"
+        ],
+        "split": "validation",
+        "transit_paths": [
+          "validation[13862].y_transit"
+        ],
+        "victim_paths": [
+          "validation[13862].y_victim"
+        ],
+        "x_dtype": "torch.float32",
+        "x_path": "validation[13862].x"
+      }
+    ],
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "train_length": 110855,
+    "validation_length": 13863
+  },
+  "decision": {
+    "exact_train_validation_interface_certified": true,
+    "guarded_loader_certified": true,
+    "next_stage": "V5_P3_A2_TRAIN_ONLY_TINY_OVERFIT_INTEGRATION_TEST",
+    "preliminary_baseline_authorized": false,
+    "sealed_test_evaluation_authorized": false,
+    "tiny_overfit_authorized": true
+  },
+  "guarded_loader": {
+    "allowed_splits": [
+      "train",
+      "validation"
+    ],
+    "certified_dataset_modified": false,
+    "certified_loader_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/dataset_loader.py",
+    "certified_loader_sha256": "54cf94060748563c6d7e56415f448548da282c08f215bd96a35c50730c33463e",
+    "forbidden_alias_checks": [
+      "test",
+      "TEST",
+      "val",
+      "dev",
+      "testing",
+      ""
+    ],
+    "original_constructor_signature": "(self, root, split, active_only=False)",
+    "original_dataset_class": "V5P3TrancheAPreliminaryDataset",
+    "sealed_test_negative_check": true,
+    "wrapper_path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+    "wrapper_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de"
+  },
+  "model_trained": false,
+  "normalization": {
+    "all_tensor_values_finite": true,
+    "feature_vector_count": 4,
+    "feature_vectors": [
+      {
+        "dtype": "torch.float64",
+        "file": "normalization_sufficient_statistics_tranche_a.pt",
+        "path": "normalization_sufficient_statistics_tranche_a.pt.sum",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float64",
+        "file": "normalization_sufficient_statistics_tranche_a.pt",
+        "path": "normalization_sufficient_statistics_tranche_a.pt.sum_of_squares",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "file": "normalization_tranche_a_provisional.pt",
+        "path": "normalization_tranche_a_provisional.pt.mean",
+        "shape": [
+          70
+        ]
+      },
+      {
+        "dtype": "torch.float32",
+        "file": "normalization_tranche_a_provisional.pt",
+        "path": "normalization_tranche_a_provisional.pt.std",
+        "shape": [
+          70
+        ]
+      }
+    ],
+    "files": [
+      {
+        "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/normalization_sufficient_statistics_tranche_a.pt",
+        "sha256": "36c6e144d2e97d881c66f6c159bcb7b107bc3321f7517aac70bfe9417fdf4eb3"
+      },
+      {
+        "path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/normalization_tranche_a_provisional.pt",
+        "sha256": "03b0627bd77b0d7ccff2268292fd41aa9fd9977c6d4dae4a3d797db3e160adaa"
+      }
+    ],
+    "scope_assurance": "metadata_and_certified_artifact_declaration; final normalization remains A_train_plus_B_train",
+    "scope_mentions_provisional": true,
+    "scope_mentions_train": true,
+    "x_log1p_contract_present_in_loader_source": true
+  },
+  "repository": "/home/zira/research/projects/GNN-2d",
+  "resolved_dataset_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+  "sealed_test": {
+    "evaluation_authorized": false,
+    "guard_rejects_before_original_construction": true,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_sample_read": false
+  },
+  "source_modified": true,
+  "stage": "V5_P3_A1_GUARDED_LOADER_SCHEMA_CERTIFICATION",
+  "status": "PASS",
+  "test_tensor_loaded": false
+}

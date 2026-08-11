@@ -1,0 +1,79 @@
+{
+  "authorizations": {
+    "A4_A5_checkpoint_change": false,
+    "A_test_access": false,
+    "D13_decoder_change": false,
+    "H1_interface_change": false,
+    "Tranche_A_sealed_test_access": false,
+    "Tranche_A_train_access": true,
+    "Tranche_A_validation_diagnostic_access": true,
+    "Tranche_A_validation_model_selection_access": "exploratory feature-study candidates only",
+    "final_feature_interface_promotion": false,
+    "neural_architecture_change_in_mainline": false
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "Tranche-A preliminary auxiliary feature study",
+  "data_loaded_in_F0_F1": {
+    "companion_json_metadata": true,
+    "feature_schema_json": true,
+    "model_checkpoint_loaded": false,
+    "sealed_test_tensors": false,
+    "training_tensors": false,
+    "validation_tensors": false
+  },
+  "frozen_thresholds": {
+    "baseline_reproduction_tolerance": 1e-06,
+    "near_constant_nonzero_fraction": 0.001,
+    "permutation_repeats": 10,
+    "permutation_seeds": [
+      501,
+      502,
+      503,
+      504,
+      505,
+      506,
+      507,
+      508,
+      509,
+      510
+    ],
+    "rare_pair_fraction": 0.01,
+    "reduced_count_macro_F1_min": 0.98,
+    "reduced_graph_AP_drop_max": 0.03,
+    "reduced_graph_FPR_increase_max": 0.03,
+    "reduced_path_AP_drop_max": 0.03,
+    "reduced_selection_score_drop_max": 0.02,
+    "reduced_source_AP_drop_max": 0.03,
+    "reduced_victim_AP_drop_max": 0.03,
+    "schema_exact_match_required": true
+  },
+  "promotion_boundary": [
+    "frozen Tranche-B validation",
+    "future fresh A+B validation"
+  ],
+  "provenance": {
+    "A4_checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+    "A4_checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "A5": {
+      "lock_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness/V5_P3_A5_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS_LOCK.json",
+      "lock_sha256": "a2094b4a7b2e98509a2f23de146e5d41bebf56c5510c464aa4aabee4ece94de5",
+      "report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness/V5_P3_A5_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS_REPORT.json",
+      "report_sha256": "1617eeeed7c28ea5f90fdd870728d5140f24b4fbb9b2e851e3d4bbd3af80c373"
+    },
+    "D13": {
+      "lock_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE_LOCK.json",
+      "lock_sha256": "7be2e37293d987f90cf6a756acfc14c93f368950ec9ddc60978b3554b089c89e",
+      "report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE_REPORT.json",
+      "report_sha256": "d739232c41901934a9852a263bc1302c6059b48abdc6a8f103a1c28679710a38"
+    },
+    "canonical_contract_sha256": "fd30e940d6f4c9c88dcb1064530953a683f0215940ae3163289dcfa559cc95f5",
+    "dataset_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+    "dataset_target": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+    "feature_schema_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/feature_schema.json",
+    "feature_schema_sha256": "4c392673c4b3ded94f09433596ed72de89aef25d2163cca71b0493d4f9984155",
+    "installed_script_sha256": "f9a66c49a251ddab5f36987e81b4988843fc97f217e15806ae802ba5304f0f76"
+  },
+  "purpose": "Analyze Dynamic70 contribution and derive future reduced-interface candidates without changing the frozen A4/A5/D13 mainline.",
+  "stage": "F0_PROTOCOL_LOCK",
+  "status": "FROZEN"
+}

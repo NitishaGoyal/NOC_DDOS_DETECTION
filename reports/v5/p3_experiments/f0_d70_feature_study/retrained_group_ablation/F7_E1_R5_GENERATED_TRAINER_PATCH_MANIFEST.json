@@ -1,0 +1,142 @@
+{
+  "legacy_compatibility": {
+    "b0_r3_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r3_corrected_nontest_label_shortcut_audit",
+    "b1_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p2_b1_training_protocol_lock",
+    "loader_path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "model_path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py",
+    "model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "modules_executed_by_generated_trainer": false
+  },
+  "literal_replacements": {
+    "===== V5 P2-B2 SINGLE-SEED TRAINING =====": "===== V5-P3 F7 SAME-WIDTH RETRAINED GROUP ABLATION =====",
+    "V5_P2_B2_MULTI_SEED_FINALIZATION": "V5_P3_F7_PRIMARY_MATRIX_AGGREGATION",
+    "V5_P2_B2_SEED_{seed}_LOCK.json": "V5_P3_F7_SEED_{seed}_LOCK.json",
+    "V5_P2_B2_SEED_{seed}_TRAINING_REPORT.json": "V5_P3_F7_SEED_{seed}_TRAINING_REPORT.json"
+  },
+  "patch_rows": [
+    {
+      "line_end": 1203,
+      "line_start": 1200,
+      "new_value": "None",
+      "old_value": "import_module(loader_path, f'v5_p2_loader_seed_{seed}')",
+      "operation": "disable_legacy_runtime_route",
+      "target": "loader_module"
+    },
+    {
+      "line_end": 1207,
+      "line_start": 1204,
+      "new_value": "None",
+      "old_value": "import_module(model_path, f'v5_p2_model_seed_{seed}')",
+      "operation": "disable_legacy_runtime_route",
+      "target": "model_module"
+    },
+    {
+      "line_end": 1211,
+      "line_start": 1210,
+      "new_value": "None",
+      "old_value": "loader_module.V5P2PairAlignedPrimary58Dataset",
+      "operation": "disable_legacy_runtime_route",
+      "target": "DatasetClass"
+    },
+    {
+      "line_end": 1215,
+      "line_start": 1214,
+      "new_value": "None",
+      "old_value": "model_module.P2B3Conv1DOnlyCount4",
+      "operation": "disable_legacy_runtime_route",
+      "target": "ModelClass"
+    },
+    {
+      "line_end": 1218,
+      "line_start": 1218,
+      "new_function": "F7TrainDatasetAdapter",
+      "old_function": "DatasetClass",
+      "operation": "replace_constructor_function",
+      "target": "train_dataset"
+    },
+    {
+      "line_end": 1244,
+      "line_start": 1244,
+      "new_function": "F7ValidationDatasetAdapter",
+      "old_function": "DatasetClass",
+      "operation": "replace_constructor_function",
+      "target": "validation_dataset"
+    },
+    {
+      "line_end": 1377,
+      "line_start": 1377,
+      "new_function": "F7Dynamic70ModelFactory",
+      "old_function": "ModelClass",
+      "operation": "replace_constructor_function",
+      "target": "model"
+    }
+  ],
+  "provenance_key_relabels": [
+    {
+      "dictionary_target": "checkpoint_payload",
+      "line_end": 1518,
+      "line_start": 1518,
+      "new_key": "legacy_compatibility_loader_sha256",
+      "old_key": "loader_sha256",
+      "route": "loader_path",
+      "value_source": "sha256_file(loader_path)"
+    },
+    {
+      "dictionary_target": "checkpoint_payload",
+      "line_end": 1521,
+      "line_start": 1521,
+      "new_key": "legacy_compatibility_model_sha256",
+      "old_key": "model_source_sha256",
+      "route": "model_path",
+      "value_source": "sha256_file(model_path)"
+    },
+    {
+      "dictionary_target": "seed_manifest",
+      "line_end": 1663,
+      "line_start": 1663,
+      "new_key": "legacy_compatibility_loader_sha256",
+      "old_key": "architecture",
+      "route": "loader_path",
+      "value_source": "{'name': model.architecture_name, 'parameter_count': parameter_count, 'model_source_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'protocol_sha256': protocol['protocol_sha256'], 'initial_state_sha256': initial_state_sha256}"
+    },
+    {
+      "dictionary_target": "seed_manifest",
+      "line_end": 1666,
+      "line_start": 1666,
+      "new_key": "legacy_compatibility_model_sha256",
+      "old_key": "model_source_sha256",
+      "route": "model_path",
+      "value_source": "sha256_file(model_path)"
+    },
+    {
+      "dictionary_target": "seed_manifest",
+      "line_end": 1669,
+      "line_start": 1669,
+      "new_key": "legacy_compatibility_loader_sha256",
+      "old_key": "loader_sha256",
+      "route": "loader_path",
+      "value_source": "sha256_file(loader_path)"
+    },
+    {
+      "dictionary_target": "lock",
+      "line_end": 1806,
+      "line_start": 1806,
+      "new_key": "legacy_compatibility_model_sha256",
+      "old_key": "model_sha256",
+      "route": "model_path",
+      "value_source": "sha256_file(model_path)"
+    },
+    {
+      "dictionary_target": "lock",
+      "line_end": 1807,
+      "line_start": 1807,
+      "new_key": "legacy_compatibility_loader_sha256",
+      "old_key": "loader_sha256",
+      "route": "loader_path",
+      "value_source": "sha256_file(loader_path)"
+    }
+  ],
+  "skeleton": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+  "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+}

@@ -1,0 +1,238 @@
+{
+  "stage": "B1.12",
+  "protocol": {
+    "thresholds_selected_on": "validation only",
+    "thresholds_reselected_on_test": false,
+    "blind_test_transfer": true
+  },
+  "frozen_thresholds": {
+    "a1_graph": 0.41,
+    "a1_node": 0.765,
+    "b1_graph": 0.08,
+    "b1_node": 0.545
+  },
+  "alignment_checks": {
+    "real_index": true,
+    "y_graph": true,
+    "y_node": true,
+    "run_id": true,
+    "profile": true,
+    "strength": true,
+    "active_cores": true,
+    "attackers": true,
+    "end_epoch": true,
+    "seed": true,
+    "dataset_split": true
+  },
+  "alignment_pass": true,
+  "a1_manifest": {
+    "label": "A1",
+    "rows": 42809,
+    "nodes": 16,
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/best_model.pt",
+    "checkpoint_sha256": "c29cdd2303669a61454ed118ef0be4b8809a635b12c0c42806f8b6992340e0ef",
+    "output": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_12_test_threshold_transfer/a1_test_predictions.npz",
+    "output_sha256": "eece80830d5c856a2d5fcd1d51804a6d90ad13863d97b68d82719014434da92e"
+  },
+  "b1_manifest": {
+    "label": "B1",
+    "rows": 42809,
+    "nodes": 16,
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_b1_conv1d_scenario_balanced_seed7/best_model.pt",
+    "checkpoint_sha256": "7605d9200f86964430de41c90842d2a04842450308d295eb9dc48bc3fca79834",
+    "output": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_12_test_threshold_transfer/b1_test_predictions.npz",
+    "output_sha256": "365ad86482825d62b780b05d2074ffb14d04d21ca00a13b27f2e378e699301cc"
+  },
+  "a1": {
+    "graph": {
+      "threshold": 0.41,
+      "accuracy": 0.8519003013385036,
+      "precision": 0.8159815452104526,
+      "recall": 0.9360548349312394,
+      "f1": 0.8719036650907181,
+      "fpr": 0.24627998785302155,
+      "tnr": 0.7537200121469785,
+      "tn": 14892,
+      "fp": 4866,
+      "fn": 1474,
+      "tp": 21577
+    },
+    "node_attack_only": {
+      "threshold": 0.765,
+      "denominator": "attack-positive test samples only",
+      "attack_sample_count": 23051,
+      "positive_node_count": 42809,
+      "micro_precision": 0.7927174035960647,
+      "micro_recall": 0.8187530659440772,
+      "micro_f1": 0.8055249126677697,
+      "exact_localization": 0.4067936315127326,
+      "mean_predicted_nodes": 1.9181380417335474,
+      "mean_true_nodes": 1.8571428571428572,
+      "tn": 316842,
+      "fp": 9165,
+      "fn": 7759,
+      "tp": 35050
+    },
+    "localization_ranking": {
+      "overall": {
+        "denominator": "attack-positive test samples only",
+        "attack_sample_count": 23051,
+        "attacker_node_count": 42809,
+        "top1_hit_rate": 0.7606177606177607,
+        "top2_hit_rate": 0.9430827295995835,
+        "top3_hit_rate": 0.9767038306364149,
+        "top1_attacker_recall": 0.43502089569505303,
+        "top2_attacker_recall": 0.8332971816117885,
+        "top3_attacker_recall": 0.9373996789727127,
+        "mean_reciprocal_rank": 0.8683661273749557,
+        "mean_best_attacker_rank": 1.3361676283024597,
+        "median_best_attacker_rank": 1.0,
+        "mean_all_attacker_rank": 1.8856548856548856,
+        "median_all_attacker_rank": 2.0,
+        "exact_top_m_set_accuracy": 0.6492126155047503
+      },
+      "by_attacker_count": {
+        "1": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.47312481020346187,
+          "top2_hit_rate": 0.8706346796234437,
+          "top3_hit_rate": 0.9460471707662719,
+          "top1_attacker_recall": 0.47312481020346187,
+          "top2_attacker_recall": 0.8706346796234437,
+          "top3_attacker_recall": 0.9460471707662719,
+          "mean_reciprocal_rank": 0.709321888394922,
+          "mean_best_attacker_rank": 1.7484563214900293,
+          "mean_all_attacker_rank": 1.7484563214900293,
+          "exact_top_m_set_accuracy": 0.47312481020346187
+        },
+        "2": {
+          "sample_count": 6586,
+          "top1_hit_rate": 0.9723656240510173,
+          "top2_hit_rate": 0.9955967203158215,
+          "top3_hit_rate": 1.0,
+          "top1_attacker_recall": 0.48618281202550867,
+          "top2_attacker_recall": 0.9726692985119951,
+          "top3_attacker_recall": 0.9918007895535985,
+          "mean_reciprocal_rank": 0.9854489320781457,
+          "mean_best_attacker_rank": 1.0320376556331612,
+          "mean_all_attacker_rank": 1.5498026116003645,
+          "exact_top_m_set_accuracy": 0.9497418767081689
+        },
+        "3": {
+          "sample_count": 6586,
+          "top1_hit_rate": 0.980109322805952,
+          "top2_hit_rate": 0.9992408138475555,
+          "top3_hit_rate": 0.9993926510780443,
+          "top1_attacker_recall": 0.326703107601984,
+          "top2_attacker_recall": 0.6379188176940985,
+          "top3_attacker_recall": 0.870027330701488,
+          "mean_reciprocal_rank": 0.9898496811418159,
+          "mean_best_attacker_rank": 1.0218645611904038,
+          "mean_all_attacker_rank": 2.178155683773661,
+          "exact_top_m_set_accuracy": 0.6128150622532645
+        }
+      }
+    }
+  },
+  "b1": {
+    "graph": {
+      "threshold": 0.08,
+      "accuracy": 0.8077974257749538,
+      "precision": 0.7546294705740887,
+      "recall": 0.9528870764825821,
+      "f1": 0.8422485524751716,
+      "fpr": 0.36147383338394573,
+      "tnr": 0.6385261666160542,
+      "tn": 12616,
+      "fp": 7142,
+      "fn": 1086,
+      "tp": 21965
+    },
+    "node_attack_only": {
+      "threshold": 0.545,
+      "denominator": "attack-positive test samples only",
+      "attack_sample_count": 23051,
+      "positive_node_count": 42809,
+      "micro_precision": 0.7140851135533879,
+      "micro_recall": 0.8909341493611157,
+      "micro_f1": 0.7927665765953026,
+      "exact_localization": 0.42952583402021605,
+      "mean_predicted_nodes": 2.31707951932671,
+      "mean_true_nodes": 1.8571428571428572,
+      "tn": 310736,
+      "fp": 15271,
+      "fn": 4669,
+      "tp": 38140
+    },
+    "localization_ranking": {
+      "overall": {
+        "denominator": "attack-positive test samples only",
+        "attack_sample_count": 23051,
+        "attacker_node_count": 42809,
+        "top1_hit_rate": 0.7136349832979046,
+        "top2_hit_rate": 0.9082469307188409,
+        "top3_hit_rate": 0.9562274955533383,
+        "top1_attacker_recall": 0.38510259858574464,
+        "top2_attacker_recall": 0.7991048833745463,
+        "top3_attacker_recall": 0.9151085274680781,
+        "mean_reciprocal_rank": 0.8371527932322474,
+        "mean_best_attacker_rank": 1.440197822220294,
+        "median_best_attacker_rank": 1.0,
+        "mean_all_attacker_rank": 1.9440538204583149,
+        "median_all_attacker_rank": 2.0,
+        "exact_top_m_set_accuracy": 0.5863953841481931
+      },
+      "by_attacker_count": {
+        "1": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.35185747545298107,
+          "top2_hit_rate": 0.7865168539325843,
+          "top3_hit_rate": 0.8981678307521004,
+          "top1_attacker_recall": 0.35185747545298107,
+          "top2_attacker_recall": 0.7865168539325843,
+          "top3_attacker_recall": 0.8981678307521004,
+          "mean_reciprocal_rank": 0.6301709724462533,
+          "mean_best_attacker_rank": 2.0061747140398825,
+          "mean_all_attacker_rank": 2.0061747140398825,
+          "exact_top_m_set_accuracy": 0.35185747545298107
+        },
+        "2": {
+          "sample_count": 6586,
+          "top1_hit_rate": 0.9805648344974187,
+          "top2_hit_rate": 0.9996963255390222,
+          "top3_hit_rate": 1.0,
+          "top1_attacker_recall": 0.49028241724870936,
+          "top2_attacker_recall": 0.9727452171272396,
+          "top3_attacker_recall": 0.9968873367749772,
+          "mean_reciprocal_rank": 0.9902318048385464,
+          "mean_best_attacker_rank": 1.019738839963559,
+          "mean_all_attacker_rank": 1.5418311569996963,
+          "exact_top_m_set_accuracy": 0.945794108715457
+        },
+        "3": {
+          "sample_count": 6586,
+          "top1_hit_rate": 0.9893713938657759,
+          "top2_hit_rate": 0.9993926510780443,
+          "top3_hit_rate": 0.9995444883085333,
+          "top1_attacker_recall": 0.3297904646219253,
+          "top2_attacker_recall": 0.6443465937847961,
+          "top3_attacker_recall": 0.8587407632351451,
+          "mean_reciprocal_rank": 0.9945465128049399,
+          "mean_best_attacker_rank": 1.0116914667476464,
+          "mean_all_attacker_rank": 2.1811418159732767,
+          "exact_top_m_set_accuracy": 0.5788035226237473
+        }
+      }
+    }
+  },
+  "test_deltas_b1_minus_a1": {
+    "graph_f1": -0.02965511261554654,
+    "graph_recall": 0.016832241551342664,
+    "graph_fpr": 0.11519384553092418,
+    "attack_only_node_f1": -0.012758336072467125,
+    "attack_only_exact_localization": 0.022732202507483423,
+    "top1_hit_rate": -0.046982777319856006,
+    "top3_hit_rate": -0.020476335083076558,
+    "mean_reciprocal_rank": -0.031213334142708216
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "artifacts": {
+    "dataset_builder_source_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_DATASET_BUILDER_SOURCE_REVIEW.json",
+    "dataset_object_metadata_tables": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_DATASET_OBJECT_METADATA_TABLES.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_DATASET_BUILDER_IDENTITY_DECISION.json",
+    "file_metadata_tables": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_FILE_METADATA_TABLES.json",
+    "mapping_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_FROZEN_ATTACK_TO_CONTROL_MAPPING.csv",
+    "mapping_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_FROZEN_ATTACK_TO_CONTROL_MAPPING.json",
+    "route_evaluations": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_DIRECT_AND_RUN_JOIN_ROUTE_EVALUATIONS.json",
+    "sample_table_alignment_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_SAMPLE_TABLE_ALIGNMENT_REVIEW.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T22:41:17.436501+00:00",
+  "decision": {
+    "F6_P3_complete": true,
+    "F7_retraining_ablation_authorized": false,
+    "actual_F6_execution_authorized": true,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F6_TASK_SPECIFIC_INTEGRATED_GRADIENTS",
+    "sealed_test_access_authorized": false
+  },
+  "finding": {
+    "aligned_validation_sample_table_count": 2,
+    "dataset_object_table_count": 10,
+    "dataset_provenance": {
+      "attempts": [
+        {
+          "length": 13863,
+          "split": "validation",
+          "status": "SUCCESS"
+        }
+      ],
+      "dataset_class": "_v5_p3_tranche_a_certified_loader_5109198408965427230.V5P3TrancheAPreliminaryDataset",
+      "route": "_load_original_class/_construct_original",
+      "split": "validation"
+    },
+    "dataset_source_file": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/dataset_loader.py",
+    "direct_route_count": 2,
+    "failure_distribution": {
+      "joined_run_role_does_not_match_fresh_labels": 2,
+      "mapping_acceptance_gate_failed": 1,
+      "usable": 1
+    },
+    "file_table_count": 14,
+    "mapped_attack_item_count": 3822,
+    "mapping_resolved": true,
+    "run_join_route_count": 2,
+    "selected_mapping_fingerprint": "8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8",
+    "unique_mapping_fingerprint_count": 1,
+    "usable_route_count": 1
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "metric_formulas_changed": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "validation_dataset_getitem_called": false,
+    "validation_dataset_object_constructed": true,
+    "validation_feature_tensors_loaded": false,
+    "validation_labels_loaded": true,
+    "validation_metadata_loaded": true
+  },
+  "provenance": {
+    "F6_P0_protocol_sha256": "e2e1baea996ff831b01f0afbe9c3491784aac2f1670bae100196a19671e1a6d5",
+    "F6_P2_lock_sha256": "37531edc39fdbc0bd55fbd70210ab35c260a2df9d41c7cde4309cab2b865121f",
+    "F6_P2_report_sha256": "5d2cd2590000d113f261de9918bb7a6aeac1eec9c0436342a8c25a17c049878a",
+    "dataset_builder_source_review_sha256": "1f477070b786112534ccc3c272d7ee9c8a912a9ccd25a8f2551f7d4798cadfb5",
+    "dataset_object_metadata_tables_sha256": "49efde8805ee55c5af3a2dc8efa391e181a4efd8917a4bd41420be11ddd5ca56",
+    "decision_sha256": "8b4f937af99985d1989d066e6967bedf9f15247af0c5fe3d7dccd110f9eca6ed",
+    "execution_route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "file_metadata_tables_sha256": "aa3906915526cf609daf6ec06adfe91ed988d1ecccabf0091cf3874b4b9430c1",
+    "fresh_certification_sha256": "35b216294366d45221d0af2d90c562aabb027b20c852f980575255ba2ce15993",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "guarded_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "installed_script_sha256": "e685242aeec09e164c9dcb3533e944b95023c1838338a00aa13e8fd16c80bf69",
+    "mapping_csv_sha256": "73635c535980eacdfc56d5896873da1561d4b2f79b156d3fcf8e9418ee93aaae",
+    "mapping_json_sha256": "2359457c044875b2373b8ded26cf0466e3db11dd052ef7af2d0f4eb6f7aaf7f3",
+    "route_evaluations_sha256": "7b6e0f0a1506061bf94e2e914f162c5d829bfc026814d79a393640fdf87c71cf",
+    "sample_table_alignment_review_sha256": "1fce84fc0180040e452e69b2630bdc8c070b592380a828a092ff02f65cd410c4"
+  },
+  "scope": "Inspect the exact guarded validation dataset builder and its metadata-bearing object state; discover sample-level and run-level tables from dataset artifacts; evaluate direct pair identities and relational joins from validation run/window metadata to run-level pair/member metadata; and freeze a unique complete attack-to-control map when scientifically recoverable.",
+  "stage": "V5_P3_F6_P3_DATASET_BUILDER_IDENTITY_ROUTE_RECOVERY",
+  "status": "PASS"
+}

@@ -1,0 +1,177 @@
+{
+  "a1_test_predictions_sha256": "93a21dee1f3c64ea86e4efabca66ca3e01ed4af11fabd00e9771d8689b109346",
+  "a1_thresholds_sha256": "44e556a048e52eacfde5a1d222f7489988a6fa3c75b5dbfeb8b7282f2805b68b",
+  "a1_validation_predictions_sha256": "414d3ba65d7c5691339ec50bc700a21a97993dbbfc0d4c651a502d8c766db9b2",
+  "a2_test_predictions_sha256": "d3a25dddad2962ba7094de560c01ce117bd199f9191c86a98ab0bc1c0e1dd4da",
+  "a2_thresholds_sha256": "206e369dc9e236661d5375b917544546806758563013b6ba940915e5b1f76123",
+  "a2_validation_predictions_sha256": "3c76b29a96a3026cd24aee3e3ab76a03d2631a973cb8c23d0e7d5c3645164ecd",
+  "checkpoint_audit": {
+    "a1_checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a1_conv1d_gcn_seed7/best_model.pt",
+    "a1_parameter_count": 882,
+    "a1_sha256": "5687cca9a03340348ecea6aa27f9ce9c0663fb8ae63eddfa42a0d3cce5f707cd",
+    "a2_checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a2_capacitylift_conv1d_gcn_seed7/best_model.pt",
+    "a2_parameter_count": 2274,
+    "a2_sha256": "267eb8c9ac627cdae82633403fb0b6c1899e63922081ce89f5911eeda68ea6e1",
+    "declared_width_only_shape_checks": {
+      "gcn1.linear.weight": {
+        "a1_shape": [
+          16,
+          8
+        ],
+        "a2_shape": [
+          32,
+          16
+        ],
+        "pass": true,
+        "present": true
+      },
+      "gcn2.linear.weight": {
+        "a1_shape": [
+          8,
+          16
+        ],
+        "a2_shape": [
+          16,
+          32
+        ],
+        "pass": true,
+        "present": true
+      },
+      "graph_head.weight": {
+        "a1_shape": [
+          1,
+          8
+        ],
+        "a2_shape": [
+          1,
+          16
+        ],
+        "pass": true,
+        "present": true
+      },
+      "node_head.weight": {
+        "a1_shape": [
+          1,
+          8
+        ],
+        "a2_shape": [
+          1,
+          16
+        ],
+        "pass": true,
+        "present": true
+      },
+      "temporal.conv.weight": {
+        "a1_shape": [
+          8,
+          24,
+          3
+        ],
+        "a2_shape": [
+          16,
+          24,
+          3
+        ],
+        "pass": true,
+        "present": true
+      }
+    },
+    "pass": true,
+    "state_dict_key_set_equal": true
+  },
+  "dataset_modified": false,
+  "generated_at": "2026-07-23T13:12:25.226444+00:00",
+  "hard_checks": {
+    "a1_a2_sample_alignment": true,
+    "a1_parameter_count_verified": true,
+    "a2_parameter_count_verified": true,
+    "a2_training_summary_verified": true,
+    "a3_recommendation_generated": true,
+    "all_required_reports_present": true,
+    "analysis_pass": true,
+    "architecture_width_only_verified": true,
+    "base_failure_analysis_pass": true,
+    "capacity_verdict_generated": true,
+    "dataset_unmodified": true,
+    "identical_metric_definitions": true,
+    "remaining_decoder_analysis_pass": true,
+    "test_not_used_for_selection": true,
+    "validation_only_selection": true
+  },
+  "neural_training_performed": false,
+  "paths": {
+    "a1_base_analysis": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_7_failure_analysis",
+    "a1_model": "/home/zira/research/projects/GNN-2d/models/v4/v4_a1_conv1d_gcn_seed7",
+    "a1_remaining_analysis": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_8_remaining_diagnostics",
+    "a1_test_pred": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_6_development_test_transfer/test_predictions.npz",
+    "a1_thresholds": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_5b_fpr10_frozen_thresholds/selected_thresholds.json",
+    "a1_val_pred": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a1/a1_5_validation_thresholds/validation_predictions.npz",
+    "a2_base_analysis": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_7_complete_failure_analysis/a2_comprehensive_failure_analysis",
+    "a2_model": "/home/zira/research/projects/GNN-2d/models/v4/v4_a2_capacitylift_conv1d_gcn_seed7",
+    "a2_remaining_analysis": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_7_complete_failure_analysis/a2_remaining_decoder_diagnostics",
+    "base_script": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/analyze_v4_a1_failures.py",
+    "data": "/home/zira/research/projects/GNN-2d/data/processed/graph_dataset/paper1_temporal_graphs_ports_v4_all16_chrono_memmap",
+    "diagnostic_decision": "/home/zira/research/projects/GNN-2d/reports/v4/stage0_dataset_audit/a0_2_to_a0_7_pretraining_diagnostic/v4_pretraining_diagnostic_decision.json",
+    "evaluator": "/home/zira/research/projects/GNN-2d/scripts/v4/eval/eval_v4_conv1d_gcn_experiment.py",
+    "freeze_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_5b_fpr10_frozen_thresholds",
+    "freezer": "/home/zira/research/projects/GNN-2d/scripts/v4/eval/freeze_v4_fpr_constrained_thresholds.py",
+    "logs": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_7_complete_failure_analysis/logs",
+    "out": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_7_complete_failure_analysis",
+    "remaining_script": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/analyze_v4_a1_remaining_diagnostics.py",
+    "repo": "/home/zira/research/projects/GNN-2d",
+    "test_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_6_development_comparison_transfer_fpr10",
+    "v3_data": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+    "validation_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a2/a2_5_validation_thresholds"
+  },
+  "required_report_presence": {
+    "a1_vs_a2_capacity_verdict.json": true,
+    "a1_vs_a2_failure_modes.csv": true,
+    "a1_vs_a2_metrics.csv": true,
+    "a2_count_confusion.csv": true,
+    "a2_count_diagnostics.csv": true,
+    "a2_exact_set_decomposition.csv": true,
+    "a2_fp_distance.csv": true,
+    "a2_frozen_thresholds.json": true,
+    "a2_graph_node_consistency.csv": true,
+    "a2_overall_metrics.json": true,
+    "a2_per_router_metrics.csv": true,
+    "a2_scenario_metrics.csv": true,
+    "a2_test_predictions.npz": true,
+    "a2_topology_metrics.csv": true,
+    "a2_true_attacker_rank.csv": true,
+    "a2_validation_predictions.npz": true,
+    "a3_recommendation.json": true,
+    "complete_report.md": true
+  },
+  "script": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/run_v4_a2_complete_analysis.py",
+  "script_hash_audit": {
+    "base_analysis": {
+      "expected_sha256": "ce59f87052215719cf9d767bd1fe85c86c99543c7696a89b34ad35dc056bc8fc",
+      "matches": true,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/analyze_v4_a1_failures.py",
+      "sha256": "ce59f87052215719cf9d767bd1fe85c86c99543c7696a89b34ad35dc056bc8fc"
+    },
+    "evaluator": {
+      "expected_sha256": "c73291562dbdca31f63dbf8b1114f78cf30cd2902550c7ddee75f8277203d125",
+      "matches": true,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/eval/eval_v4_conv1d_gcn_experiment.py",
+      "sha256": "c73291562dbdca31f63dbf8b1114f78cf30cd2902550c7ddee75f8277203d125"
+    },
+    "freezer": {
+      "expected_sha256": "8a919b44b15e7ea8edb8d6f928a210e580cc9c19c567e09177819d09fca3715b",
+      "matches": true,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/eval/freeze_v4_fpr_constrained_thresholds.py",
+      "sha256": "8a919b44b15e7ea8edb8d6f928a210e580cc9c19c567e09177819d09fca3715b"
+    },
+    "remaining_analysis": {
+      "expected_sha256": "dcf206e9167e6937262dc109c1c33e753a3dc7f5ca74ccda0279013aad06ab82",
+      "matches": true,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/v4/analyze_v4_a1_remaining_diagnostics.py",
+      "sha256": "dcf206e9167e6937262dc109c1c33e753a3dc7f5ca74ccda0279013aad06ab82"
+    }
+  },
+  "script_sha256": "5de6728b23675041dd8643f68f231c7f00b7820dd63aa25f9c7ec0b9f264ed31",
+  "script_version": "1.0.0",
+  "test_role": "development-comparison transfer; not an independent publication holdout",
+  "test_used_for_fit_or_selection": false
+}

@@ -1,0 +1,121 @@
+{
+  "dataset_accessed": false,
+  "designation": "V4-A4a-1A Slot Implementation Correctness Audit",
+  "development_test_accessed": false,
+  "device": "cuda",
+  "failures": [],
+  "provenance": {
+    "audit_script_sha256": "55d06171893359b6528711e74c9515a2061beffad8718c26e05b1a812424e4ec",
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "contract_lock_sha256": "e513738eb9eb3b411cbb48ee7486f22974eba23c9d76f8a2ef68c7925aef7564",
+    "contract_sha256": "71f7bdc1a940a8a80935095e0dafa6500c555fc659a9464de94a1375515a6e2b",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "slot_module_sha256": "97b56aabb3239dfc7543c241665cacf998eb6b1a1f5f67f931cdeb70e75c111c"
+  },
+  "ready_for_a4a_1b_smoke_training": true,
+  "status": "PASS",
+  "tests": {
+    "all_null_cardinality": true,
+    "cardinality_probability_normalization": true,
+    "duplicate_penalty_ordering": {
+      "collision": 0.1666661500930786,
+      "unique": 1.1253496978724797e-07
+    },
+    "exact_duplicate_suppression": {
+      "assignment_scores": [
+        38.0
+      ],
+      "predicted_sets": [
+        [
+          3,
+          7
+        ]
+      ],
+      "slot_assignments": [
+        [
+          3,
+          16,
+          7,
+          16
+        ]
+      ]
+    },
+    "four_router_cardinality": true,
+    "greedy_duplicate_suppression": {
+      "predicted_sets": [
+        [
+          3,
+          7
+        ]
+      ],
+      "slot_assignments": [
+        [
+          3,
+          16,
+          7,
+          16
+        ]
+      ]
+    },
+    "membership_probability_range": true,
+    "normal_all_null_decode": {
+      "assignment_scores": [
+        32.0
+      ],
+      "predicted_sets": [
+        []
+      ],
+      "slot_assignments": [
+        [
+          16,
+          16,
+          16,
+          16
+        ]
+      ]
+    },
+    "parameter_count": {
+      "expected_model_total": 3189,
+      "expected_model_trainable": 1076,
+      "model": {
+        "frozen": 2113,
+        "total": 3189,
+        "trainable": 1076
+      },
+      "slot_decoder": {
+        "frozen": 0,
+        "total": 1076,
+        "trainable": 1076
+      }
+    },
+    "permutation_invariant_matching": {
+      "ordered_loss": 1.8477422827345436e-06,
+      "permuted_loss": 1.8477422827345436e-06
+    },
+    "slot_probability_normalization": true,
+    "synthetic_backward": {
+      "frozen_gradient_violations": [],
+      "losses": {
+        "cardinality": 13.815510749816895,
+        "duplicate": 1.0,
+        "matching": 3349.18115234375,
+        "membership": 14.0625,
+        "total": 3363.22021484375
+      },
+      "nonfinite_trainable_gradients": [],
+      "trainable_gradient_norms": {
+        "global_context_projection.bias": 27.726957321166992,
+        "global_context_projection.weight": 10636.37109375,
+        "router_key_projection.bias": 38.691383361816406,
+        "router_key_projection.weight": 8030.5029296875,
+        "slot_identity_embeddings": 14.48003101348877,
+        "slot_null_head.bias": 0.2997394800186157,
+        "slot_null_head.weight": 115.84757995605469
+      },
+      "trainable_without_gradient": []
+    }
+  },
+  "threshold_search_performed": false,
+  "training_loop_executed": false,
+  "validation_accessed": false
+}

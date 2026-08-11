@@ -1,0 +1,71 @@
+{
+  "stage": "B1.9",
+  "split": "validation only",
+  "model_source": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py",
+  "model_source_sha256": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b",
+  "device": "cuda",
+  "batch_size": 512,
+  "a1": {
+    "model_label": "A1",
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/best_model.pt",
+    "checkpoint_sha256": "c29cdd2303669a61454ed118ef0be4b8809a635b12c0c42806f8b6992340e0ef",
+    "splits_sha256": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2",
+    "output": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_9_validation_predictions/a1_validation_predictions.npz",
+    "output_sha256": "df833a647d84e2aa5d6799360b1c7c752e989d409ba6ff43bc4f01e22bba3ec3",
+    "rows": 42809,
+    "nodes": 16,
+    "graph_prob_shape": [
+      42809
+    ],
+    "node_prob_shape": [
+      42809,
+      16
+    ],
+    "real_index_first": 46102,
+    "real_index_last": 210751,
+    "graph_prob_min": 5.443111916747512e-08,
+    "graph_prob_max": 1.0,
+    "node_prob_min": 8.981555008446448e-19,
+    "node_prob_max": 1.0
+  },
+  "b1": {
+    "model_label": "B1",
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_b1_conv1d_scenario_balanced_seed7/best_model.pt",
+    "checkpoint_sha256": "7605d9200f86964430de41c90842d2a04842450308d295eb9dc48bc3fca79834",
+    "splits_sha256": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2",
+    "output": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/b1_9_validation_predictions/b1_validation_predictions.npz",
+    "output_sha256": "47f9f6027aba45583b0dfeb75d6c1a34b850dec05fd06c205531d40346452ec8",
+    "rows": 42809,
+    "nodes": 16,
+    "graph_prob_shape": [
+      42809
+    ],
+    "node_prob_shape": [
+      42809,
+      16
+    ],
+    "real_index_first": 46102,
+    "real_index_last": 210751,
+    "graph_prob_min": 2.3390507521980908e-06,
+    "graph_prob_max": 1.0,
+    "node_prob_min": 2.6782330078877796e-22,
+    "node_prob_max": 1.0
+  },
+  "alignment_checks": {
+    "row_count_equal": true,
+    "real_index_equal": true,
+    "y_graph_equal": true,
+    "y_node_equal": true,
+    "run_id_equal": true,
+    "profile_equal": true,
+    "strength_equal": true,
+    "active_cores_equal": true,
+    "attackers_equal": true,
+    "end_epoch_equal": true,
+    "dataset_split_all_val_a1": true,
+    "dataset_split_all_val_b1": true
+  },
+  "alignment_pass": true,
+  "test_predictions_exported": false,
+  "thresholds_selected": false
+}

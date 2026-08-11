@@ -1,0 +1,83 @@
+{
+  "M7_R4_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m7_r4_consolidated_contract_preflight/V6_P0_M7_R4_CONSOLIDATED_CONTRACT_PREFLIGHT_REPORT.json",
+  "M7_R4_report_sha256": "1ae8e56d41458f6377f0327e7b97f5294c602752b3887337971710e3291e3244",
+  "M8A_recovery_disposition": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8a_r1_dynamic70_model_source_freeze/V6_P0_M8A_SOURCE_LITERAL_COUNT_ABORT_DISPOSITION.json",
+    "sha256": "4fc4f892701c252ac16a96f167046d33f8c35ba26fea072e1d7457f6a475283d"
+  },
+  "P1_generation_authorized": false,
+  "P2_test_used": false,
+  "canonical_source_modified": false,
+  "created_utc": "2026-08-03T04:38:15.675879+00:00",
+  "data_copied": false,
+  "fresh_initialization": {
+    "all_parameterized_leaf_modules_reset": true,
+    "digests_differ": true,
+    "fresh_dynamic70_parameter_digest": "ed51d9ded9a5b3455358e89ca016a6f183aaf847707d91387a2a9a998643e502",
+    "historical_checkpoint_parameter_digest": "c12af146af83fd3a47e5df55a68346f8f1c3864cdcc81421c7c8fe6ced195f53",
+    "historical_checkpoint_reused_for_training": false,
+    "seed": 107
+  },
+  "model_contract": {
+    "canonical_parameter_count": 59785,
+    "count_logits": 4,
+    "count_semantics": "conditional attacker counts 1..4",
+    "dynamic70_parameter_count": 60553,
+    "input_shape": [
+      1,
+      16,
+      70,
+      32
+    ],
+    "mask_shape": [
+      1,
+      16,
+      10
+    ],
+    "output_shapes": {
+      "attack_logits": [
+        1
+      ],
+      "count_logits": [
+        1,
+        4
+      ],
+      "path_logits": [
+        1,
+        16
+      ],
+      "source_logits": [
+        1,
+        16
+      ],
+      "transit_logits": [
+        1,
+        16
+      ],
+      "victim_logits": [
+        1,
+        16
+      ]
+    },
+    "parameter_delta": 768
+  },
+  "next_stage": "M8B_SEED107_FULL_MULTITASK_DYNAMIC70_BASELINE",
+  "source_generation": {
+    "canonical_class": "P2TaskDGraphConvCount4",
+    "canonical_source_edited": false,
+    "canonical_source_sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "class_found": true,
+    "encode_pre_graph_literal_replacements_58_to_70": 1,
+    "generated_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "input_projection_replacement_performed_by_builder": true,
+    "new_versioned_source_added": true,
+    "total_dynamic70_adaptations": 2,
+    "versioned_class": "V6P0Dynamic70GraphConvCount4",
+    "versioned_source_path": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+    "versioned_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "write_status": "CREATED"
+  },
+  "stage": "V6_P0_M8A_DYNAMIC70_COUNT4_MODEL_SOURCE_FREEZE",
+  "status": "PASS",
+  "versioned_source_added": true
+}

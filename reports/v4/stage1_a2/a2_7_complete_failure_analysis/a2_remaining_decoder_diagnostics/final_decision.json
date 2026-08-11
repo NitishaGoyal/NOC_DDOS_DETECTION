@@ -1,0 +1,107 @@
+{
+  "analysis_pass": true,
+  "decision": {
+    "count_head_decision": "yes_in_next_structural_model",
+    "decoder_selection": {
+      "fraction_of_oracle_gap_recovered": 0.0,
+      "frozen_validation_attack_exact": 0.39172067118517034,
+      "gap_recovered": 0.0,
+      "oracle_gap": 0.1917736526868729,
+      "oracle_validation_attack_exact": 0.5834943238720433,
+      "selected_validation_attack_exact": 0.39172067118517034,
+      "selected_validation_method": "frozen_threshold",
+      "selection_rule": "max validation attack-only exact; tie attack node F1; tie overall exact",
+      "test_used_for_selection": false
+    },
+    "frozen_test": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 0.4527097884401255,
+      "attack_count_mae": 0.8186699058609171,
+      "attack_empty_prediction_fraction": 0.25743496305294056,
+      "attack_exact_localization": 0.4000242939568782,
+      "attack_fn": 193557,
+      "attack_fp": 54778,
+      "attack_mean_predicted_count": 1.3047514930660997,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.6829473189651981,
+      "attack_node_precision": 0.830009216704268,
+      "attack_node_recall": 0.5801548739750987,
+      "attack_tp": 267463,
+      "method": "frozen_threshold",
+      "overall_exact_localization": 0.5826500657961332,
+      "sample_count": 395160
+    },
+    "graph_readout_decision": "test_mean_plus_max_ablation_for_single_attacker_detection",
+    "interpretation_gates": {
+      "decoder_gap_recovery_ge_0_20": false,
+      "decoder_gap_recovery_ge_0_50": false,
+      "oracle_test_attack_exact_below_0_50": false,
+      "ranking_representation_problem_remains": false,
+      "topology_calibration_gain_ge_0_03": false
+    },
+    "message_passing_decision": "use_one_graph_layer_plus_local_skip_or_gated_propagation",
+    "more_gcn_layers_decision": "do_not_add_more_gcn_layers; neighbour spreading is already a dominant failure",
+    "oracle_test": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 1.0,
+      "attack_count_mae": 0.0,
+      "attack_empty_prediction_fraction": 0.0,
+      "attack_exact_localization": 0.5966676789148699,
+      "attack_fn": 133988,
+      "attack_fp": 133988,
+      "attack_mean_predicted_count": 1.8666666666666667,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.7093661880178734,
+      "attack_node_precision": 0.7093661880178734,
+      "attack_node_recall": 0.7093661880178734,
+      "attack_tp": 327032,
+      "method": "oracle_true_count_topk",
+      "overall_exact_localization": 0.7479172993217937,
+      "sample_count": 395160
+    },
+    "plain_a2_decision": "plain_a2_low_priority",
+    "recommended_next_model_action": "representation_ranking_dominates_build_source_preserving_model",
+    "selected_method_test_transfer": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 0.4527097884401255,
+      "attack_count_mae": 0.8186699058609171,
+      "attack_empty_prediction_fraction": 0.25743496305294056,
+      "attack_exact_localization": 0.4000242939568782,
+      "attack_fn": 193557,
+      "attack_fp": 54778,
+      "attack_mean_predicted_count": 1.3047514930660997,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.6829473189651981,
+      "attack_node_precision": 0.830009216704268,
+      "attack_node_recall": 0.5801548739750987,
+      "attack_tp": 267463,
+      "method": "frozen_threshold",
+      "overall_exact_localization": 0.5826500657961332,
+      "sample_count": 395160
+    },
+    "temporal_encoder_decision": "test_mean_plus_max_temporal pooling or a shallow dilated TCN; do not jump to RNN",
+    "topology_calibration_validation_attack_exact_gain": 0.0019900368932164736,
+    "topology_gate": "small_posthoc_gain_but_masks_still_required_for_dataset_validity",
+    "wider_model_decision": "width_only_is_secondary; use width inside a source_preserving architecture"
+  },
+  "hard_checks": {
+    "all_predeclared_decoders_evaluated": true,
+    "dataset_modified": false,
+    "model_inference_performed": false,
+    "neural_model_training_performed": false,
+    "required_inputs_present": true,
+    "test_used_for_fit_or_selection": false,
+    "validation_only_fitting": true
+  },
+  "limitations": [
+    "Current V4 active-core matched-control shortcut remains a publication blocker",
+    "No explicit valid/idle/clipped port masks",
+    "Mean-readout causality requires an embedding/readout ablation",
+    "Temporal-max causality requires an encoder ablation",
+    "Test is a development-comparison set, not an independent publication holdout"
+  ],
+  "thresholds": {
+    "graph": 0.5399999999999999,
+    "node": 0.8799999999999999
+  }
+}

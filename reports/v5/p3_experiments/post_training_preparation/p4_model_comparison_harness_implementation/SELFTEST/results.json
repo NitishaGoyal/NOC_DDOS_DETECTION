@@ -1,0 +1,92 @@
+[
+  {
+    "experiment_id": "P4_SELFTEST_LR_107",
+    "model_id": "logistic_regression",
+    "model_family": "classical",
+    "task_scope": "graph_detection_only",
+    "dataset_scope": "V5_P3_TRANCHE_A_DYNAMIC70",
+    "split": "validation",
+    "seed": 107,
+    "screen_or_confirmation": "SCREENING",
+    "metrics": {
+      "graph_auroc": 0.88,
+      "graph_average_precision": 0.64,
+      "graph_f1": 0.8,
+      "graph_precision": 0.81,
+      "graph_recall": 0.79,
+      "graph_false_positive_rate": 0.04,
+      "count_active_macro_f1": null,
+      "source_average_precision": null,
+      "transit_average_precision": null,
+      "victim_average_precision": null,
+      "path_average_precision": null
+    },
+    "parameter_count": 701,
+    "provenance": {
+      "dataset_protocol_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "model_or_script_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "threshold_tuning_performed": false,
+    "decoder_used_for_model_selection": false
+  },
+  {
+    "experiment_id": "P4_SELFTEST_GRAPHCONV_107",
+    "model_id": "conv1d_graphconv",
+    "model_family": "neural_graph",
+    "task_scope": "multitask",
+    "dataset_scope": "V5_P3_TRANCHE_A_DYNAMIC70",
+    "split": "validation",
+    "seed": 107,
+    "screen_or_confirmation": "CONFIRMATION",
+    "metrics": {
+      "graph_auroc": 0.89,
+      "graph_average_precision": 0.65,
+      "graph_f1": 0.81,
+      "graph_precision": 0.82,
+      "graph_recall": 0.8,
+      "graph_false_positive_rate": 0.03,
+      "count_active_macro_f1": 0.99,
+      "source_average_precision": 0.63,
+      "transit_average_precision": 0.62,
+      "victim_average_precision": 0.61,
+      "path_average_precision": 0.6
+    },
+    "parameter_count": 60553,
+    "provenance": {
+      "dataset_protocol_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "model_or_script_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "threshold_tuning_performed": false,
+    "decoder_used_for_model_selection": false
+  },
+  {
+    "experiment_id": "P4_SELFTEST_GRAPHCONV_117",
+    "model_id": "conv1d_graphconv",
+    "model_family": "neural_graph",
+    "task_scope": "multitask",
+    "dataset_scope": "V5_P3_TRANCHE_A_DYNAMIC70",
+    "split": "validation",
+    "seed": 117,
+    "screen_or_confirmation": "CONFIRMATION",
+    "metrics": {
+      "graph_auroc": 0.89,
+      "graph_average_precision": 0.65,
+      "graph_f1": 0.81,
+      "graph_precision": 0.82,
+      "graph_recall": 0.8,
+      "graph_false_positive_rate": 0.03,
+      "count_active_macro_f1": 0.99,
+      "source_average_precision": 0.63,
+      "transit_average_precision": 0.62,
+      "victim_average_precision": 0.63,
+      "path_average_precision": 0.6
+    },
+    "parameter_count": 60553,
+    "provenance": {
+      "dataset_protocol_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "model_or_script_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "threshold_tuning_performed": false,
+    "decoder_used_for_model_selection": false
+  }
+]

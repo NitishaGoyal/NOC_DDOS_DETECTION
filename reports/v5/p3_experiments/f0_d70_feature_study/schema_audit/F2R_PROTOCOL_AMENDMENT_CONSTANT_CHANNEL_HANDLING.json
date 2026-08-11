@@ -1,0 +1,24 @@
+{
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "handling_for_future_stages": {
+    "A4_A5_checkpoint_changed": false,
+    "attribution_policy": "retain channels; report zero/near-zero attribution rather than dropping them before attribution",
+    "constant_channels_assigned_zero_descriptive_effect": true,
+    "constant_channels_retained_in_tensor": true,
+    "instrumentation_correctness_proven": false,
+    "official_Dynamic70_tensor_changed": false,
+    "permutation_policy": "permuting a constant channel/group component is expected to produce zero change and remains auditable",
+    "reduced_interface_removal_authorized": false,
+    "retraining_ablation_policy": "macro-group ablations remain unchanged; no single-channel removal is authorized yet",
+    "standardized_effect_denominator_policy": "do not divide by zero; report undefined standardized effect and exact zero signed/absolute response"
+  },
+  "observed_classification": "TRAINING_OBSERVED_ZERO_SIGNAL",
+  "promotion_boundary": [
+    "frozen Tranche-B audit",
+    "future fresh A+B audit"
+  ],
+  "reason": "F2 discovered six channels that are constant on physically valid Tranche-A training inputs.",
+  "scientific_language": "These channels are training-observed zero-signal fields, not yet proven permanently redundant across Tranche-B or future A+B.",
+  "stage": "V5_P3_F2R_DYNAMIC70_DEGENERACY_FINDING_REVIEW",
+  "status": "FROZEN"
+}

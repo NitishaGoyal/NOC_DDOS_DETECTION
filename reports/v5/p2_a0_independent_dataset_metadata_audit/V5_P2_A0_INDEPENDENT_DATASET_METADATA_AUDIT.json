@@ -1,0 +1,224 @@
+{
+  "dataset": {
+    "campaign_id": "V5-P2-COMPLETE558-DYNAMIC",
+    "dataset_name": "V5 P2 Complete558 Dynamic Graph-Tensor Dataset",
+    "feature_count": 81,
+    "feature_list_length": 81,
+    "link_is_symlink": true,
+    "link_path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "matched_pairs": 558,
+    "num_nodes": 16,
+    "recommended_stride": 8,
+    "recommended_window": 32,
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph",
+    "schema_version": 1,
+    "total_runs": 1116
+  },
+  "decision": "AUTHORIZE_P2_A1_NONTEST_TENSOR_SCHEMA_AUDIT",
+  "failures": [],
+  "manifest_checks": {
+    "sha256sums_entry_count": 1125,
+    "split_manifest_explicit_pt_basename_count": 0,
+    "tensor_manifest_explicit_pt_basename_count": 1116,
+    "tensor_manifest_run_count": 1116
+  },
+  "metadata_top_level_keys": {
+    "campaign_manifest": [
+      "campaign_id",
+      "dataset_freeze",
+      "gem5_run_count",
+      "matrix",
+      "pair_count",
+      "pairs",
+      "results_base",
+      "schema_version",
+      "source_campaign_id",
+      "spec_directory",
+      "template"
+    ],
+    "dataset_summary": [
+      "active_attack_graph_epochs",
+      "attack_runs",
+      "campaign_id",
+      "category_run_counts",
+      "control_runs",
+      "dataset_name",
+      "feature_count",
+      "inactive_valid_graph_epochs",
+      "matched_pairs",
+      "normalization",
+      "num_nodes",
+      "positive_node_epoch_labels",
+      "raw_gem5_files_included",
+      "recommended_stride",
+      "recommended_window",
+      "schema_version",
+      "split_run_counts",
+      "target_epoch",
+      "topology",
+      "total_runs",
+      "valid_graph_epochs"
+    ],
+    "feature_schema": [
+      "excluded_observation_columns",
+      "feature_count",
+      "features",
+      "forbidden_model_inputs",
+      "input_tensor_order",
+      "schema_version"
+    ],
+    "split_manifest": [
+      "schema_version",
+      "split_unit",
+      "test",
+      "train",
+      "validation"
+    ],
+    "tensor_manifest": [
+      "campaign_id",
+      "dataset",
+      "runs",
+      "schema_version"
+    ]
+  },
+  "next_stage": "V5_P2_A1_TENSOR_SCHEMA_AND_NONTEST_SAMPLE_AUDIT",
+  "security_boundary": {
+    "run_tensor_bytes_read": false,
+    "run_tensor_file_sizes_read": true,
+    "run_tensor_files_enumerated": true,
+    "run_tensor_files_opened": false,
+    "run_tensors_deserialized": false,
+    "test_dataset_constructed": false,
+    "test_labels_read": false,
+    "test_predictions_computed": false,
+    "test_tensor_contents_accessed": false,
+    "test_windows_constructed": false,
+    "train_tensor_contents_accessed": false,
+    "validation_tensor_contents_accessed": false
+  },
+  "split_inventory": {
+    "test": {
+      "attack_count": 69,
+      "control_count": 69,
+      "directory": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/runs/test",
+      "duplicate_attack_pairs": {},
+      "duplicate_control_pairs": {},
+      "matched_pair_count": 69,
+      "maximum_run_size_bytes": 3974269,
+      "minimum_run_size_bytes": 3782638,
+      "missing_attack_pair_keys": [],
+      "missing_control_pair_keys": [],
+      "pair_keys_sha256": "153a417f441cdda5eecd927b44e7a1776a3663e8e80bfed89fe0b78b85487f56",
+      "run_count": 138,
+      "total_size_bytes": 533158039,
+      "unrecognized_filenames": []
+    },
+    "train": {
+      "attack_count": 415,
+      "control_count": 415,
+      "directory": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/runs/train",
+      "duplicate_attack_pairs": {},
+      "duplicate_control_pairs": {},
+      "matched_pair_count": 415,
+      "maximum_run_size_bytes": 3974269,
+      "minimum_run_size_bytes": 3766254,
+      "missing_attack_pair_keys": [],
+      "missing_control_pair_keys": [],
+      "pair_keys_sha256": "35f9e230fc54866990712054d684668c84264f9cd8a4058da79b53b4d6de51ed",
+      "run_count": 830,
+      "total_size_bytes": 3205549493,
+      "unrecognized_filenames": []
+    },
+    "validation": {
+      "attack_count": 74,
+      "control_count": 74,
+      "directory": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/runs/validation",
+      "duplicate_attack_pairs": {},
+      "duplicate_control_pairs": {},
+      "matched_pair_count": 74,
+      "maximum_run_size_bytes": 3963325,
+      "minimum_run_size_bytes": 3771758,
+      "missing_attack_pair_keys": [],
+      "missing_control_pair_keys": [],
+      "pair_keys_sha256": "cd2513e7e968b6139dbbcbbfd8457915a050046c22d75fe58394778991613c9d",
+      "run_count": 148,
+      "total_size_bytes": 572002734,
+      "unrecognized_filenames": []
+    }
+  },
+  "split_pair_key_overlaps": {
+    "train__test": [],
+    "train__validation": [],
+    "validation__test": []
+  },
+  "stage": "V5_P2_A0_INDEPENDENT_DATASET_METADATA_AUDIT",
+  "status": "COMPLETE",
+  "support_file_integrity": {
+    "README.md": {
+      "checksum_match": true,
+      "listed_sha256": "43defd3ab48d2e8d8a8ce3ed9ecb196a1f9e203eeb7be1e4a7474ad8ef1ccf8a",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/README.md",
+      "sha256": "43defd3ab48d2e8d8a8ce3ed9ecb196a1f9e203eeb7be1e4a7474ad8ef1ccf8a",
+      "size_bytes": 1076
+    },
+    "campaign_manifest.json": {
+      "checksum_match": true,
+      "listed_sha256": "70cdc72ff9012da265592e2773cd40070e1d75ee416f6ae451df272dbf2d7779",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/campaign_manifest.json",
+      "sha256": "70cdc72ff9012da265592e2773cd40070e1d75ee416f6ae451df272dbf2d7779",
+      "size_bytes": 329294
+    },
+    "dataset_loader.py": {
+      "checksum_match": true,
+      "listed_sha256": "290f3fea9c8ca9400c0fb4b2b163c6dd909f94221d6b681beb264cf300a221b3",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/dataset_loader.py",
+      "sha256": "290f3fea9c8ca9400c0fb4b2b163c6dd909f94221d6b681beb264cf300a221b3",
+      "size_bytes": 2673
+    },
+    "dataset_summary.json": {
+      "checksum_match": true,
+      "listed_sha256": "b8229dcbd940b9c3f4fff73fbf9b27dd403816f3cd3754fd3446b0e905d34a91",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/dataset_summary.json",
+      "sha256": "b8229dcbd940b9c3f4fff73fbf9b27dd403816f3cd3754fd3446b0e905d34a91",
+      "size_bytes": 1587
+    },
+    "feature_schema.json": {
+      "checksum_match": true,
+      "listed_sha256": "49170db80de28f475d550a14ff119daff244321fbabdfac39ff56eee2d2cdb4f",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/feature_schema.json",
+      "sha256": "49170db80de28f475d550a14ff119daff244321fbabdfac39ff56eee2d2cdb4f",
+      "size_bytes": 15380
+    },
+    "normalization.pt": {
+      "checksum_match": true,
+      "listed_sha256": "519eda910496769d2d220be26087d230b2c211bcee5bbf74f36a73d8dcd164de",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/normalization.pt",
+      "sha256": "519eda910496769d2d220be26087d230b2c211bcee5bbf74f36a73d8dcd164de",
+      "size_bytes": 5143
+    },
+    "split_manifest.json": {
+      "checksum_match": true,
+      "listed_sha256": "633513a04bd59c6f50520cc7a5f20d328c42cb2fd51ba242fb62de04a28e7b90",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/split_manifest.json",
+      "sha256": "633513a04bd59c6f50520cc7a5f20d328c42cb2fd51ba242fb62de04a28e7b90",
+      "size_bytes": 10730
+    },
+    "tensor_manifest.json": {
+      "checksum_match": true,
+      "listed_sha256": "92fec30715888adf4a28e93153e0f7a43e4dbdc808d426e63410f09d7defba29",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/tensor_manifest.json",
+      "sha256": "92fec30715888adf4a28e93153e0f7a43e4dbdc808d426e63410f09d7defba29",
+      "size_bytes": 514617
+    },
+    "topology.pt": {
+      "checksum_match": true,
+      "listed_sha256": "b71bd307fbddc3a7647a1151eb513a3000026092a0d46a60c2ae27b65f445875",
+      "path": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph/topology.pt",
+      "sha256": "b71bd307fbddc3a7647a1151eb513a3000026092a0d46a60c2ae27b65f445875",
+      "size_bytes": 2989
+    }
+  },
+  "warnings": [
+    "split manifest contains no explicit .pt filenames; structural consistency recorded only"
+  ]
+}

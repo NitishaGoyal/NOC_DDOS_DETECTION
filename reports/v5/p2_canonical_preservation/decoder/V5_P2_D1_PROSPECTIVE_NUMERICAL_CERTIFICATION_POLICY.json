@@ -1,0 +1,244 @@
+{
+  "P2_disclosure_rule": {
+    "forbidden_labels": [
+      "original one-shot blind test",
+      "untouched blind test",
+      "prospective recovery one-shot"
+    ],
+    "future_P2_result_label": "post_hoc numerical-recovery evaluation",
+    "must_disclose_test_informed_policy_change": true,
+    "must_preserve_original_and_recovery_failure_records": true
+  },
+  "V6_rule": {
+    "policy_is_prospective_only_if": [
+      "D2 implementation frozen before V6 test access",
+      "D3 validation/synthetic proof complete before V6 test access",
+      "staged evaluator frozen before V6 test access",
+      "V6 thresholds and checkpoint frozen before V6 test access"
+    ]
+  },
+  "created_utc": "2026-08-01T14:37:58.153788+00:00",
+  "fail_hard_taxonomy": {
+    "BOUND_CERTIFICATE_FAILURE": "variable bound violation greater than 1e-9",
+    "ILLEGAL_ROUTE_CERTIFICATE_FAILURE": "route/source/count/mask contract mismatch",
+    "INTEGRALITY_CERTIFICATE_FAILURE": "integer variable farther than 1e-9 from nearest integer",
+    "LINEAR_FEASIBILITY_CERTIFICATE_FAILURE": "frozen linear-constraint violation greater than 1e-9",
+    "MATERIAL_REPORTED_MIP_GAP": "finite gap outside [0,1e-12]",
+    "NONFINITE_RESULT_PAYLOAD": "missing/nonfinite x, objective, or reported gap",
+    "OBJECTIVE_RECOMPUTATION_FAILURE": "reported/recomputed objective difference exceeds frozen formula",
+    "SEMANTIC_FACE_CERTIFICATE_FAILURE": "high-precision semantic-face or tie-break failure",
+    "SOLVER_NOT_OPTIMAL": "success false or status nonzero"
+  },
+  "frozen_bindings": {
+    "d0_artifact": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_decoder_d0_numerical_root_cause_audit/V5_P2_DECODER_D0_NUMERICAL_ROOT_CAUSE_AUDIT.json",
+      "sha256": "671c6524810a765a0fc54116afd1fe3fd2e1599780310f3b379b6920c8708d81"
+    },
+    "decoder_source": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+      "sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c"
+    },
+    "f1_artifact": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/V5_P2_FINAL_F1_POST_INFERENCE_NUMERICAL_FAILURE_DISPOSITION.json",
+      "sha256": "0265de528df00fc84186688ad64621a1ac688a7aae65b2381f93fb8757c372e8"
+    },
+    "recovery_evaluator": {
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py",
+      "sha256": "770ad8937427c32680c1cced7b3040bf6055662615c88edbf544e8805d9fe7c9"
+    },
+    "route_library": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_xy_route_library.py",
+      "sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+    }
+  },
+  "mandatory_acceptance_sequence": [
+    {
+      "gate": 1,
+      "name": "solver_termination",
+      "requirements": {
+        "result_status": 0,
+        "result_success": true,
+        "status_interpretation": "optimal"
+      }
+    },
+    {
+      "gate": 2,
+      "name": "finite_result_payload",
+      "requirements": {
+        "reported_mip_gap_finite": true,
+        "reported_objective_finite": true,
+        "reported_objective_present": true,
+        "solution_vector_all_finite": true,
+        "solution_vector_present": true
+      }
+    },
+    {
+      "gate": 3,
+      "name": "reported_gap_ceiling",
+      "requirements": {
+        "maximum_inclusive": 1e-12,
+        "minimum": 0.0,
+        "predicate": "isfinite(gap) and 0.0 <= gap <= 1e-12"
+      }
+    },
+    {
+      "gate": 4,
+      "name": "independent_variable_certificate",
+      "requirements": {
+        "all_integer_variables_checked": true,
+        "all_variable_bounds_checked": true,
+        "integrality_abs_tolerance": 1e-09,
+        "variable_bound_abs_tolerance": 1e-09
+      }
+    },
+    {
+      "gate": 5,
+      "name": "independent_linear_feasibility",
+      "requirements": {
+        "all_frozen_lexicographic_constraints_checked": true,
+        "all_frozen_primary_constraints_checked": true,
+        "maximum_abs_violation": 1e-09
+      }
+    },
+    {
+      "gate": 6,
+      "name": "independent_objective_recomputation",
+      "requirements": {
+        "absolute_tolerance": 1e-10,
+        "formula": "abs(reported-recomputed) <= 1e-10 + 1e-12*max(1,abs(reported),abs(recomputed))",
+        "relative_tolerance": 1e-12
+      }
+    },
+    {
+      "gate": 7,
+      "name": "exact_route_legality",
+      "requirements": {
+        "attacker_count_matches_route_count": true,
+        "attacker_sources_unique": true,
+        "mask_comparison_tolerance": 0,
+        "route_ids_in_frozen_route_table": true,
+        "route_ids_sorted": true,
+        "route_ids_unique": true,
+        "source_transit_victim_path_masks_reconstructed_exactly": true
+      }
+    },
+    {
+      "gate": 8,
+      "name": "semantic_face_and_tie_break",
+      "requirements": {
+        "decimal_precision_digits": 80,
+        "high_precision_semantic_face_certified": true,
+        "lexicographic_tie_break_certified": true,
+        "semantic_face_abs_tolerance": 1e-12
+      }
+    }
+  ],
+  "mandatory_per_item_diagnostics": [
+    "solver_success",
+    "solver_status",
+    "solver_message",
+    "raw_reported_mip_gap",
+    "gap_ceiling",
+    "maximum_integrality_error",
+    "maximum_bound_violation",
+    "maximum_linear_constraint_violation",
+    "reported_objective",
+    "recomputed_objective",
+    "objective_absolute_difference",
+    "objective_allowed_difference",
+    "route_ids",
+    "source_ids",
+    "attacker_count",
+    "source_mask",
+    "transit_mask",
+    "victim_mask",
+    "path_mask",
+    "semantic_face_difference",
+    "decoder_certificate_status"
+  ],
+  "mandatory_run_level_diagnostics": [
+    "minimum_raw_reported_mip_gap",
+    "maximum_raw_reported_mip_gap",
+    "count_gap_equal_zero",
+    "count_gap_positive",
+    "count_gap_above_old_64eps_gate",
+    "count_gap_above_1e-12",
+    "maximum_integrality_error",
+    "maximum_bound_violation",
+    "maximum_linear_constraint_violation",
+    "maximum_objective_difference",
+    "certificate_failure_counts_by_taxonomy"
+  ],
+  "next_stage": "V5_P2_DECODER_D2_CERTIFIED_DECODER_IMPLEMENTATION",
+  "numerical_context": {
+    "important_interpretation": "The new gap ceiling alone never certifies a solution. All independent certificate gates remain mandatory.",
+    "new_reporting_ceiling": 1e-12,
+    "new_reporting_ceiling_in_float64_eps": 4503.599627370496,
+    "observed_P2_failure_gap": 2.4064574342771067e-14,
+    "observed_gap_accepted_by_new_gap_gate": true,
+    "observed_gap_fraction_of_new_ceiling": 0.024064574342771067,
+    "old_reporting_ceiling": 1.4210854715202004e-14,
+    "old_reporting_ceiling_in_float64_eps": 64.0
+  },
+  "policy_id": "V5P2-D1-6ce8cc7c76b8d2cff367631077d65f20",
+  "result_persistence_rule": {
+    "A0_metrics_committed_before_A1": true,
+    "A1_consumes_immutable_neural_archive": true,
+    "A1_failure_must_not_invalidate_Raw_or_A0": true,
+    "Raw_metrics_committed_before_A1": true,
+    "neural_archive_committed_before_A1": true
+  },
+  "scope": {
+    "V6_status": "prospective_if_implemented_and_frozen_before_V6_test_access",
+    "changes_model_checkpoint_thresholds_routes_objective": false,
+    "changes_only_numerical_certification_and_diagnostics": true,
+    "future_P2_status": "post_hoc_test_informed_numerical_recovery_only"
+  },
+  "security_boundary": {
+    "authorization_created": false,
+    "decoder_source_modified": false,
+    "inference_performed": false,
+    "model_checkpoint_loaded": false,
+    "test_directory_checked": false,
+    "test_directory_enumerated": false,
+    "test_path_formed": false,
+    "test_tensors_deserialized": false,
+    "validation_logits_loaded": false
+  },
+  "stage": "V5_P2_DECODER_D1_PROSPECTIVE_NUMERICAL_CERTIFICATION_POLICY",
+  "status": "FROZEN",
+  "synthetic_boundary_proof": {
+    "bound_and_linear_boundaries_passed": true,
+    "gap_cases": {
+      "nan": false,
+      "negative_epsilon": false,
+      "negative_infinity": false,
+      "new_ceiling": true,
+      "next_above_new_ceiling": false,
+      "next_below_new_ceiling": true,
+      "observed_P2_gap": true,
+      "old_ceiling": true,
+      "positive_infinity": false,
+      "zero": true
+    },
+    "integrality_cases": {
+      "nan": false,
+      "one": true,
+      "outside_negative_double_tolerance": false,
+      "outside_positive_double_tolerance": false,
+      "within_negative_half_tolerance": true,
+      "within_positive_half_tolerance": true,
+      "zero": true
+    },
+    "next_above_gap_ceiling": 1.0000000000000002e-12,
+    "next_below_gap_ceiling": 9.999999999999998e-13,
+    "objective_cases": {
+      "exact": true,
+      "material_difference": false,
+      "nan": false,
+      "within_absolute": true,
+      "within_relative": true
+    }
+  },
+  "version": "1.0"
+}

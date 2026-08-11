@@ -1,0 +1,81 @@
+{
+  "authoritative_final_model_evidence": {
+    "final_parameter_count": 60553,
+    "forward_output": {
+      "attack_logits": "[B]",
+      "count_logits": "[B,4]",
+      "path_logits": "[B,16]",
+      "source_logits": "[B,16]",
+      "transit_logits": "[B,16]",
+      "victim_logits": "[B,16]"
+    },
+    "source": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+    "source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+  },
+  "canonical_model_io": {
+    "input_x": "[B,16,70,32]",
+    "model_output_key_graph_logits": "FORBIDDEN_AS_CANONICAL_KEY",
+    "output_keys_and_shapes": {
+      "attack_logits": "[B]",
+      "count_logits": "[B,4]",
+      "path_logits": "[B,16]",
+      "source_logits": "[B,16]",
+      "transit_logits": "[B,16]",
+      "victim_logits": "[B,16]"
+    },
+    "physical_port_mask": "[B,16,10]",
+    "reporting_metric_prefix": "graph_* remains valid for detection metrics"
+  },
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "m5_tcn_gcn_semantics": {
+    "dynamic70_six_head_adaptation": "preserve historical temporal/GCN operator semantics; adapt input width to 70 and terminal node embedding width to 64 so the frozen common six-head interface can be attached. Record the adaptation explicitly.",
+    "graph_operator": "historical custom GCNLayer: Linear then normalized-adjacency aggregation via torch.einsum; two graph layers",
+    "historical_source": "scripts/train_temporal_tcn_gcn_v3.py",
+    "historical_source_sha256": "cd218697038f2a71df9efa4bccba610e22a241117fb1fe8f97fda601bb0b99fa",
+    "model_id": "tcn_attention_gcn",
+    "pyg_gcnconv_substitution_for_m5": false,
+    "temporal_encoder": {
+      "dropout": 0.1,
+      "input_projection": "Conv1d(in_features, embedding_dim, kernel_size=1)",
+      "normalization": "BatchNorm1d inside each residual block",
+      "readout": "learned temporal attention softmax followed by weighted sum",
+      "residual_blocks": [
+        "TemporalResidualBlock(kernel_size=3,dilation=1)",
+        "TemporalResidualBlock(kernel_size=3,dilation=2)"
+      ]
+    }
+  },
+  "parent_stage": "V5_P3_MC1_EXPANDED_MODEL_COMPARISON_PROTOCOL_FREEZE",
+  "reason": "MC2A source recovery exposed two implementation-level ambiguities that must be resolved append-only before MC2B: the authoritative final model emits attack_logits with shape [B], not graph_logits [B,1]; and the historical TCN-Attention+GCN uses a custom dense normalized-adjacency GCNLayer rather than PyG GCNConv.",
+  "scientific_boundary": {
+    "purpose": "implementation/interface clarification before any comparison training",
+    "this_erratum_authorizes_retraining_final_seed107": false,
+    "this_erratum_changes_dataset_or_split": false,
+    "this_erratum_changes_final_model_weights": false,
+    "this_erratum_changes_scientific_model_selection_rules": false,
+    "this_erratum_changes_thresholds": false
+  },
+  "spatial_only_semantics": {
+    "M1_GCN_ONLY": "MC1-defined controlled spatial-only baseline, not a claim of exact historical P0 architecture reproduction: all 32 frames are processed by the graph operator and node embeddings are temporally mean-pooled.",
+    "M2_GRAPHCONV_ONLY": "MC1-defined controlled spatial-only baseline: all 32 frames are processed by GraphConv and node embeddings are temporally mean-pooled."
+  },
+  "stage": "V5_P3_MC1_R1_INTERFACE_AND_TCN_SEMANTICS_ERRATUM",
+  "status": "FROZEN",
+  "unchanged_mc1_rules": {
+    "decoder_for_model_selection": false,
+    "detection_only_models": 3,
+    "full_multitask_models": 8,
+    "m7_seed107_retrain_forbidden": true,
+    "maximum_new_neural_training_jobs": 29,
+    "p6_measured_iterations": 1000,
+    "p6_warmup_iterations": 100,
+    "sealed_test_access": false,
+    "seeds": [
+      107,
+      117,
+      127
+    ],
+    "threshold": 0.5,
+    "xgboost_features": 700
+  }
+}

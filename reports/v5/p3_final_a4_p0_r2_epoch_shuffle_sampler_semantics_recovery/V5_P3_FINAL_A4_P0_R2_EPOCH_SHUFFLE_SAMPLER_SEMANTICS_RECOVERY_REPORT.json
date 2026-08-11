@@ -1,0 +1,140 @@
+{
+  "dataset_loader_constructed": false,
+  "decoder_imported": false,
+  "epoch_shuffle_sampler_class": {
+    "end_line": 118,
+    "line": 97,
+    "methods": [
+      {
+        "args": [
+          "self",
+          "length",
+          "seed"
+        ],
+        "end_line": 103,
+        "line": 100,
+        "name": "__init__",
+        "source": "0100:     def __init__(self, length: int, seed: int) -> None:\n0101:         self.length = int(length)\n0102:         self.seed = int(seed)\n0103:         self.epoch = 0",
+        "unparsed": "def __init__(self, length: int, seed: int) -> None:\n    self.length = int(length)\n    self.seed = int(seed)\n    self.epoch = 0"
+      },
+      {
+        "args": [
+          "self",
+          "epoch"
+        ],
+        "end_line": 106,
+        "line": 105,
+        "name": "set_epoch",
+        "source": "0105:     def set_epoch(self, epoch: int) -> None:\n0106:         self.epoch = int(epoch)",
+        "unparsed": "def set_epoch(self, epoch: int) -> None:\n    self.epoch = int(epoch)"
+      },
+      {
+        "args": [
+          "self"
+        ],
+        "end_line": 115,
+        "line": 108,
+        "name": "__iter__",
+        "source": "0108:     def __iter__(self) -> Iterator[int]:\n0109:         generator = torch.Generator()\n0110:         generator.manual_seed(self.seed + self.epoch)\n0111:         permutation = torch.randperm(\n0112:             self.length,\n0113:             generator=generator,\n0114:         )\n0115:         return iter(permutation.tolist())",
+        "unparsed": "def __iter__(self) -> Iterator[int]:\n    generator = torch.Generator()\n    generator.manual_seed(self.seed + self.epoch)\n    permutation = torch.randperm(self.length, generator=generator)\n    return iter(permutation.tolist())"
+      },
+      {
+        "args": [
+          "self"
+        ],
+        "end_line": 118,
+        "line": 117,
+        "name": "__len__",
+        "source": "0117:     def __len__(self) -> int:\n0118:         return self.length",
+        "unparsed": "def __len__(self) -> int:\n    return self.length"
+      }
+    ],
+    "name": "EpochShuffleSampler",
+    "source": "0096: \n0097: class EpochShuffleSampler(Sampler[int]):\n0098:     \"\"\"Deterministic epoch-indexed full permutation for exact resume.\"\"\"\n0099: \n0100:     def __init__(self, length: int, seed: int) -> None:\n0101:         self.length = int(length)\n0102:         self.seed = int(seed)\n0103:         self.epoch = 0\n0104: \n0105:     def set_epoch(self, epoch: int) -> None:\n0106:         self.epoch = int(epoch)\n0107: \n0108:     def __iter__(self) -> Iterator[int]:\n0109:         generator = torch.Generator()\n0110:         generator.manual_seed(self.seed + self.epoch)\n0111:         permutation = torch.randperm(\n0112:             self.length,\n0113:             generator=generator,\n0114:         )\n0115:         return iter(permutation.tolist())\n0116: \n0117:     def __len__(self) -> int:\n0118:         return self.length\n0119: ",
+    "unparsed": "class EpochShuffleSampler(Sampler[int]):\n    \"\"\"Deterministic epoch-indexed full permutation for exact resume.\"\"\"\n\n    def __init__(self, length: int, seed: int) -> None:\n        self.length = int(length)\n        self.seed = int(seed)\n        self.epoch = 0\n\n    def set_epoch(self, epoch: int) -> None:\n        self.epoch = int(epoch)\n\n    def __iter__(self) -> Iterator[int]:\n        generator = torch.Generator()\n        generator.manual_seed(self.seed + self.epoch)\n        permutation = torch.randperm(self.length, generator=generator)\n        return iter(permutation.tolist())\n\n    def __len__(self) -> int:\n        return self.length"
+  },
+  "full_training_authorized": false,
+  "generator_assignments": [
+    {
+      "assignment": "generator = torch.Generator()",
+      "line": 109,
+      "source": "0106:         self.epoch = int(epoch)\n0107: \n0108:     def __iter__(self) -> Iterator[int]:\n0109:         generator = torch.Generator()\n0110:         generator.manual_seed(self.seed + self.epoch)\n0111:         permutation = torch.randperm(\n0112:             self.length,"
+    }
+  ],
+  "generator_method_calls": [
+    {
+      "call": "generator.manual_seed(self.seed + self.epoch)",
+      "line": 110,
+      "source": "0108:     def __iter__(self) -> Iterator[int]:\n0109:         generator = torch.Generator()\n0110:         generator.manual_seed(self.seed + self.epoch)\n0111:         permutation = torch.randperm(\n0112:             self.length,"
+    }
+  ],
+  "model_constructed": false,
+  "native_test_dataset_constructed": false,
+  "next_stage": "V5_P3_FINAL_A4_R1_FRESH_AB_FULL_TRAINING_SEED107_AFTER_EXACT_SAMPLER_SEMANTICS_PIN",
+  "optimizer_constructed": false,
+  "sampler_assignments": [
+    {
+      "assignment": "sampler = EpochShuffleSampler(len(train_dataset), SEED)",
+      "line": 919,
+      "source": "0916:         optimization[\"gradient_clip_norm\"]\n0917:     )\n0918: \n0919:     sampler = EpochShuffleSampler(\n0920:         len(train_dataset),\n0921:         SEED,\n0922:     )\n0923:     device = torch.device(\n0924:         \"cuda\" if torch.cuda.is_available() else \"cpu\"\n0925:     )"
+    }
+  ],
+  "sampler_method_calls": [
+    {
+      "call": "sampler.set_epoch(epoch)",
+      "line": 1093,
+      "source": "1091:     for epoch in range(start_epoch, maximum_epochs + 1):\n1092:         epoch_start = time.time()\n1093:         sampler.set_epoch(epoch)\n1094:         current_lr = float(\n1095:             optimizer.param_groups[0][\"lr\"]"
+    }
+  ],
+  "scope": "read_only_exact_sampler_class_and_epoch_usage_recovery",
+  "seed_assignments": [
+    {
+      "assignment": "SEED = 107",
+      "line": 26,
+      "source": "0025: CAMPAIGN_LABEL = \"V5-P3-1500-D70 Tranche-A Preliminary Diagnostic\"\n0026: SEED = 107\n0027: EXPECTED_PARAMETER_COUNT = 60_553"
+    }
+  ],
+  "source": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+  "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2",
+  "stage": "V5_P3_FINAL_A4_P0_R2_EPOCH_SHUFFLE_SAMPLER_SEMANTICS_RECOVERY",
+  "status": "PASS",
+  "test_tensor_deserialization": false,
+  "train_loader_calls": [
+    {
+      "call": "DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+      "end_line": 935,
+      "keywords": {
+        "batch_size": "batch_size",
+        "drop_last": "False",
+        "num_workers": "num_workers",
+        "pin_memory": "pin_memory",
+        "sampler": "sampler"
+      },
+      "line": 928,
+      "source": "0926:     pin_memory = device.type == \"cuda\"\n0927: \n0928:     train_loader = DataLoader(\n0929:         train_dataset,\n0930:         batch_size=batch_size,\n0931:         sampler=sampler,\n0932:         num_workers=num_workers,\n0933:         pin_memory=pin_memory,\n0934:         drop_last=False,\n0935:     )\n0936:     validation_loader = DataLoader(\n0937:         validation_dataset,",
+      "targets": [
+        "train_loader"
+      ]
+    }
+  ],
+  "training_executed": false,
+  "validation_executed": false,
+  "validation_loader_calls": [
+    {
+      "call": "DataLoader(validation_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+      "end_line": 943,
+      "keywords": {
+        "batch_size": "batch_size",
+        "drop_last": "False",
+        "num_workers": "num_workers",
+        "pin_memory": "pin_memory",
+        "shuffle": "False"
+      },
+      "line": 936,
+      "source": "0934:         drop_last=False,\n0935:     )\n0936:     validation_loader = DataLoader(\n0937:         validation_dataset,\n0938:         batch_size=batch_size,\n0939:         shuffle=False,\n0940:         num_workers=num_workers,\n0941:         pin_memory=pin_memory,\n0942:         drop_last=False,\n0943:     )\n0944: \n0945:     first_train_sample = train_dataset[0]",
+      "targets": [
+        "validation_loader"
+      ]
+    }
+  ]
+}

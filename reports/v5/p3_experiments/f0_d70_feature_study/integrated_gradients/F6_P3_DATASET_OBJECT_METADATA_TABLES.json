@@ -1,0 +1,1216 @@
+{
+  "dataset_getitem_called": false,
+  "dataset_provenance": {
+    "attempts": [
+      {
+        "length": 13863,
+        "split": "validation",
+        "status": "SUCCESS"
+      }
+    ],
+    "dataset_class": "_v5_p3_tranche_a_certified_loader_5109198408965427230.V5P3TrancheAPreliminaryDataset",
+    "route": "_load_original_class/_construct_original",
+    "split": "validation"
+  },
+  "object_inventory": {
+    "dataset_type": "_v5_p3_tranche_a_certified_loader_5109198408965427230.V5P3TrancheAPreliminaryDataset",
+    "entries": [
+      {
+        "attribute_names": [
+          "active_only",
+          "index",
+          "mean",
+          "normalization",
+          "records",
+          "root",
+          "split",
+          "std",
+          "topology",
+          "window"
+        ],
+        "path": "dataset",
+        "type": "_v5_p3_tranche_a_certified_loader_5109198408965427230.V5P3TrancheAPreliminaryDataset"
+      },
+      {
+        "path": "dataset.root",
+        "type": "PosixPath",
+        "value": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY"
+      },
+      {
+        "path": "dataset.split",
+        "type": "str",
+        "value": "validation"
+      },
+      {
+        "path": "dataset.active_only",
+        "type": "bool",
+        "value": "False"
+      },
+      {
+        "path": "dataset.window",
+        "type": "int",
+        "value": "32"
+      },
+      {
+        "length": 150,
+        "path": "dataset.records",
+        "type": "list"
+      },
+      {
+        "keys_preview": [
+          "edge_index",
+          "num_nodes",
+          "mesh_rows",
+          "mesh_cols",
+          "router_coordinates",
+          "physical_port_mask",
+          "physical_port_mask_names",
+          "physical_port_mask_raw_indices",
+          "directed_edge_count",
+          "undirected_edge_count"
+        ],
+        "length": 10,
+        "path": "dataset.topology",
+        "type": "dict"
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.int64",
+        "path": "dataset.topology.edge_index",
+        "shape": [
+          2,
+          48
+        ],
+        "type": "torch.Tensor"
+      },
+      {
+        "path": "dataset.topology.num_nodes",
+        "type": "int",
+        "value": "16"
+      },
+      {
+        "path": "dataset.topology.mesh_rows",
+        "type": "int",
+        "value": "4"
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.int64",
+        "path": "dataset.topology.router_coordinates",
+        "shape": [
+          16,
+          2
+        ],
+        "type": "torch.Tensor"
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.uint8",
+        "path": "dataset.topology.physical_port_mask",
+        "shape": [
+          16,
+          10
+        ],
+        "type": "torch.Tensor"
+      },
+      {
+        "length": 10,
+        "path": "dataset.topology.physical_port_mask_names",
+        "type": "list"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[0]",
+        "type": "str",
+        "value": "input_port_valid_local"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[1]",
+        "type": "str",
+        "value": "input_port_valid_north"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[2]",
+        "type": "str",
+        "value": "input_port_valid_east"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[3]",
+        "type": "str",
+        "value": "input_port_valid_south"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[4]",
+        "type": "str",
+        "value": "input_port_valid_west"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[5]",
+        "type": "str",
+        "value": "output_port_valid_local"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[6]",
+        "type": "str",
+        "value": "output_port_valid_north"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[7]",
+        "type": "str",
+        "value": "output_port_valid_east"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[8]",
+        "type": "str",
+        "value": "output_port_valid_south"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_names[9]",
+        "type": "str",
+        "value": "output_port_valid_west"
+      },
+      {
+        "length": 10,
+        "path": "dataset.topology.physical_port_mask_raw_indices",
+        "type": "list"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[0]",
+        "type": "int",
+        "value": "71"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[1]",
+        "type": "int",
+        "value": "72"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[2]",
+        "type": "int",
+        "value": "73"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[3]",
+        "type": "int",
+        "value": "74"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[4]",
+        "type": "int",
+        "value": "75"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[5]",
+        "type": "int",
+        "value": "76"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[6]",
+        "type": "int",
+        "value": "77"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[7]",
+        "type": "int",
+        "value": "78"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[8]",
+        "type": "int",
+        "value": "79"
+      },
+      {
+        "path": "dataset.topology.physical_port_mask_raw_indices[9]",
+        "type": "int",
+        "value": "80"
+      },
+      {
+        "path": "dataset.topology.directed_edge_count",
+        "type": "int",
+        "value": "48"
+      },
+      {
+        "path": "dataset.topology.undirected_edge_count",
+        "type": "int",
+        "value": "24"
+      },
+      {
+        "keys_preview": [
+          "version",
+          "scope",
+          "final_for_v5_p3",
+          "mean",
+          "std",
+          "std_epsilon",
+          "fit_router_epoch_rows",
+          "fit_pair_count",
+          "fit_run_count",
+          "feature_names",
+          "stored_transform",
+          "loader_transform",
+          "warning"
+        ],
+        "length": 13,
+        "path": "dataset.normalization",
+        "type": "dict"
+      },
+      {
+        "path": "dataset.normalization.version",
+        "type": "str",
+        "value": "V5-P3-TRANCHE-A-PRELIMINARY-D70-A4-RESUMABLE-VALID-SUFFIX"
+      },
+      {
+        "path": "dataset.normalization.scope",
+        "type": "str",
+        "value": "PROVISIONAL_TRANCHE_A_TRAIN_ONLY"
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.float32",
+        "path": "dataset.normalization.mean",
+        "shape": [
+          70
+        ],
+        "type": "torch.Tensor"
+      },
+      {
+        "device": "cpu",
+        "dtype": "torch.float32",
+        "path": "dataset.normalization.std",
+        "shape": [
+          70
+        ],
+        "type": "torch.Tensor"
+      },
+      {
+        "path": "dataset.normalization.std_epsilon",
+        "type": "float",
+        "value": "1e-06"
+      },
+      {
+        "path": "dataset.normalization.fit_router_epoch_rows",
+        "type": "int",
+        "value": "14715040"
+      },
+      {
+        "path": "dataset.normalization.fit_pair_count",
+        "type": "int",
+        "value": "600"
+      },
+      {
+        "path": "dataset.normalization.fit_run_count",
+        "type": "int",
+        "value": "1200"
+      },
+      {
+        "length": 70,
+        "path": "dataset.normalization.feature_names",
+        "type": "list"
+      },
+      {
+        "path": "dataset.normalization.feature_names[0]",
+        "type": "str",
+        "value": "in_count_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[1]",
+        "type": "str",
+        "value": "in_count_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[2]",
+        "type": "str",
+        "value": "in_count_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[3]",
+        "type": "str",
+        "value": "in_count_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[4]",
+        "type": "str",
+        "value": "in_count_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[5]",
+        "type": "str",
+        "value": "out_count_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[6]",
+        "type": "str",
+        "value": "out_count_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[7]",
+        "type": "str",
+        "value": "out_count_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[8]",
+        "type": "str",
+        "value": "out_count_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[9]",
+        "type": "str",
+        "value": "out_count_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[10]",
+        "type": "str",
+        "value": "in_gap_sum_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[11]",
+        "type": "str",
+        "value": "in_gap_sum_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[12]",
+        "type": "str",
+        "value": "in_gap_sum_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[13]",
+        "type": "str",
+        "value": "in_gap_sum_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[14]",
+        "type": "str",
+        "value": "in_gap_sum_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[15]",
+        "type": "str",
+        "value": "in_gap_count_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[16]",
+        "type": "str",
+        "value": "in_gap_count_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[17]",
+        "type": "str",
+        "value": "in_gap_count_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[18]",
+        "type": "str",
+        "value": "in_gap_count_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[19]",
+        "type": "str",
+        "value": "in_gap_count_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[20]",
+        "type": "str",
+        "value": "out_gap_sum_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[21]",
+        "type": "str",
+        "value": "out_gap_sum_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[22]",
+        "type": "str",
+        "value": "out_gap_sum_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[23]",
+        "type": "str",
+        "value": "out_gap_sum_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[24]",
+        "type": "str",
+        "value": "out_gap_sum_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[25]",
+        "type": "str",
+        "value": "out_gap_count_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[26]",
+        "type": "str",
+        "value": "out_gap_count_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[27]",
+        "type": "str",
+        "value": "out_gap_count_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[28]",
+        "type": "str",
+        "value": "out_gap_count_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[29]",
+        "type": "str",
+        "value": "out_gap_count_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[30]",
+        "type": "str",
+        "value": "enqueue_count_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[31]",
+        "type": "str",
+        "value": "enqueue_count_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[32]",
+        "type": "str",
+        "value": "enqueue_count_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[33]",
+        "type": "str",
+        "value": "enqueue_count_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[34]",
+        "type": "str",
+        "value": "enqueue_count_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[35]",
+        "type": "str",
+        "value": "dequeue_count_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[36]",
+        "type": "str",
+        "value": "dequeue_count_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[37]",
+        "type": "str",
+        "value": "dequeue_count_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[38]",
+        "type": "str",
+        "value": "dequeue_count_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[39]",
+        "type": "str",
+        "value": "dequeue_count_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[40]",
+        "type": "str",
+        "value": "occupancy_cycle_sum_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[41]",
+        "type": "str",
+        "value": "occupancy_cycle_sum_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[42]",
+        "type": "str",
+        "value": "occupancy_cycle_sum_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[43]",
+        "type": "str",
+        "value": "occupancy_cycle_sum_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[44]",
+        "type": "str",
+        "value": "occupancy_cycle_sum_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[45]",
+        "type": "str",
+        "value": "occupancy_max_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[46]",
+        "type": "str",
+        "value": "occupancy_max_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[47]",
+        "type": "str",
+        "value": "occupancy_max_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[48]",
+        "type": "str",
+        "value": "occupancy_max_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[49]",
+        "type": "str",
+        "value": "occupancy_max_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[50]",
+        "type": "str",
+        "value": "occupancy_end_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[51]",
+        "type": "str",
+        "value": "occupancy_end_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[52]",
+        "type": "str",
+        "value": "occupancy_end_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[53]",
+        "type": "str",
+        "value": "occupancy_end_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[54]",
+        "type": "str",
+        "value": "occupancy_end_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[55]",
+        "type": "str",
+        "value": "stall_no_free_vc_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[56]",
+        "type": "str",
+        "value": "stall_no_free_vc_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[57]",
+        "type": "str",
+        "value": "stall_no_free_vc_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[58]",
+        "type": "str",
+        "value": "stall_no_free_vc_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[59]",
+        "type": "str",
+        "value": "stall_no_free_vc_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[60]",
+        "type": "str",
+        "value": "stall_no_credit_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[61]",
+        "type": "str",
+        "value": "stall_no_credit_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[62]",
+        "type": "str",
+        "value": "stall_no_credit_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[63]",
+        "type": "str",
+        "value": "stall_no_credit_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[64]",
+        "type": "str",
+        "value": "stall_no_credit_west"
+      },
+      {
+        "path": "dataset.normalization.feature_names[65]",
+        "type": "str",
+        "value": "stall_ordering_local"
+      },
+      {
+        "path": "dataset.normalization.feature_names[66]",
+        "type": "str",
+        "value": "stall_ordering_north"
+      },
+      {
+        "path": "dataset.normalization.feature_names[67]",
+        "type": "str",
+        "value": "stall_ordering_east"
+      },
+      {
+        "path": "dataset.normalization.feature_names[68]",
+        "type": "str",
+        "value": "stall_ordering_south"
+      },
+      {
+        "path": "dataset.normalization.feature_names[69]",
+        "type": "str",
+        "value": "stall_ordering_west"
+      },
+      {
+        "path": "dataset.normalization.stored_transform",
+        "type": "str",
+        "value": "log1p"
+      },
+      {
+        "path": "dataset.normalization.loader_transform",
+        "type": "str",
+        "value": "standardize"
+      },
+      {
+        "path": "dataset.normalization.warning",
+        "type": "str",
+        "value": "Replace with unified A+B train-only normalization before final training/evaluation."
+      },
+      {
+        "length": 13863,
+        "path": "dataset.index",
+        "type": "list"
+      }
+    ]
+  },
+  "tables": [
+    {
+      "column_count": 1,
+      "columns": {
+        "records": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "length": 150,
+        "object_path": "dataset"
+      },
+      "origin": "dataset_object_sibling_attributes",
+      "path": null,
+      "row_count": 150,
+      "table_id": "dataset:dataset:siblings:150",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 2,
+      "columns": {
+        "mean": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "float32",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "std": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "float32",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "length": 70,
+        "object_path": "dataset"
+      },
+      "origin": "dataset_object_sibling_attributes",
+      "path": null,
+      "row_count": 70,
+      "table_id": "dataset:dataset:siblings:70",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 12,
+      "columns": {
+        "active_attack_epochs": {
+          "attack_run_score": 30,
+          "attack_score": 75,
+          "control_run_score": 0,
+          "count_score": 30,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 75,
+          "pair_score": 30,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "case_id": {
+          "attack_run_score": 30,
+          "attack_score": 0,
+          "control_run_score": 30,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 30,
+          "run_score": 30,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 30
+        },
+        "family": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "pair_id": {
+          "attack_run_score": 30,
+          "attack_score": 0,
+          "control_run_score": 30,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 30,
+          "pair_score": 100,
+          "run_score": 30,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 30
+        },
+        "pair_member": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 100,
+          "pair_score": 30,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "relative_path": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "retained_epochs": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "run_id": {
+          "attack_run_score": 40,
+          "attack_score": 0,
+          "control_run_score": 40,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 30,
+          "pair_score": 30,
+          "run_score": 100,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 30
+        },
+        "sha256": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "split": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 30,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 100,
+          "window_score": 0
+        },
+        "target_attack_flags": {
+          "attack_run_score": 30,
+          "attack_score": 30,
+          "control_run_score": 0,
+          "count_score": 30,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 30,
+          "pair_score": 30,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "valid_window_starts": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "object",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            150
+          ],
+          "split_score": 0,
+          "window_score": 75
+        }
+      },
+      "details": {
+        "object_path": "dataset.records"
+      },
+      "origin": "dataset_object_record_list",
+      "path": null,
+      "row_count": 150,
+      "table_id": "dataset:dataset.records",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 2,
+      "columns": {
+        "physical_port_mask_names": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "<U23",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            10
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "physical_port_mask_raw_indices": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "int64",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            10
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.topology"
+      },
+      "origin": "dataset_object_dict_columns",
+      "path": null,
+      "row_count": 10,
+      "table_id": "dataset:dataset.topology",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 1,
+      "columns": {
+        "physical_port_mask_names": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "<U23",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            10
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.topology.physical_port_mask_names"
+      },
+      "origin": "dataset_object_sequence",
+      "path": null,
+      "row_count": 10,
+      "table_id": "dataset:dataset.topology.physical_port_mask_names",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 1,
+      "columns": {
+        "physical_port_mask_raw_indices": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "int64",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            10
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.topology.physical_port_mask_raw_indices"
+      },
+      "origin": "dataset_object_sequence",
+      "path": null,
+      "row_count": 10,
+      "table_id": "dataset:dataset.topology.physical_port_mask_raw_indices",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 3,
+      "columns": {
+        "feature_names": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "<U25",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "mean": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "float32",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        },
+        "std": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "float32",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.normalization"
+      },
+      "origin": "dataset_object_dict_columns",
+      "path": null,
+      "row_count": 70,
+      "table_id": "dataset:dataset.normalization",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 1,
+      "columns": {
+        "mean": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "float32",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.normalization.mean"
+      },
+      "origin": "dataset_object_tensor",
+      "path": null,
+      "row_count": 70,
+      "table_id": "dataset:dataset.normalization.mean",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 1,
+      "columns": {
+        "std": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "float32",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.normalization.std"
+      },
+      "origin": "dataset_object_tensor",
+      "path": null,
+      "row_count": 70,
+      "table_id": "dataset:dataset.normalization.std",
+      "trust": "guarded_dataset_object_order"
+    },
+    {
+      "column_count": 1,
+      "columns": {
+        "feature_names": {
+          "attack_run_score": 0,
+          "attack_score": 0,
+          "control_run_score": 0,
+          "count_score": 0,
+          "dtype": "<U25",
+          "index_score": 0,
+          "member_score": 0,
+          "pair_score": 0,
+          "run_score": 0,
+          "shape": [
+            70
+          ],
+          "split_score": 0,
+          "window_score": 0
+        }
+      },
+      "details": {
+        "object_path": "dataset.normalization.feature_names"
+      },
+      "origin": "dataset_object_sequence",
+      "path": null,
+      "row_count": 70,
+      "table_id": "dataset:dataset.normalization.feature_names",
+      "trust": "guarded_dataset_object_order"
+    }
+  ],
+  "validation_feature_tensors_loaded": false
+}

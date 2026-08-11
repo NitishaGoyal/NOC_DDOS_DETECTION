@@ -1,0 +1,592 @@
+{
+  "A0_graph_gate": "When graph prediction is zero, emit count zero and all-zero source/transit/victim/path masks.",
+  "artifact": "V5_P2_E2_FROZEN_RAW_THRESHOLDS",
+  "count_baseline": {
+    "normal_count_zero": "applied only through A0 graph gating; the raw count head has no K0 class",
+    "rule": "argmax over count logits K1-K4, then add 1"
+  },
+  "created_utc": "2026-07-27T23:06:00.957771+00:00",
+  "decoder_execution_performed": false,
+  "graph_threshold": {
+    "candidate_rule": "0, 0.5, 1, and midpoints between adjacent unique validation probabilities",
+    "candidate_threshold_count": 12525,
+    "objective": "balanced_accuracy",
+    "prediction_rule": "positive iff probability >= threshold",
+    "selected_confusion": {
+      "fn": 5,
+      "fp": 2574,
+      "tn": 6280,
+      "tp": 3669
+    },
+    "selected_metrics": {
+      "accuracy": 0.7941411238825032,
+      "balanced_accuracy": 0.8539615124639113,
+      "f1": 0.7399415145709388,
+      "fpr": 0.2907160605376101,
+      "precision": 0.5876982220086497,
+      "recall": 0.9986390854654328,
+      "specificity": 0.7092839394623899
+    },
+    "selected_threshold": 0.47174675035328983,
+    "selected_threshold_hex": "0x1.e31194830befap-2",
+    "tie_break_order": [
+      "higher balanced_accuracy",
+      "lower false-positive rate",
+      "threshold closest to 0.5",
+      "lower numeric threshold"
+    ],
+    "unique_probability_count": 12523
+  },
+  "input_hashes": {
+    "ARCHIVE_MANIFEST.json": "ac7a38fd1f4b00b578254d9253418655aa78b6cc7a7a1d65f78ba15487b14604",
+    "E0_marker_sha256": "f2be6e1c2b6eb98697dd0a55a357e8d935d9964525ae01d9783874309923aec6",
+    "E0_protocol_sha256": "caff30754e6371427834a577f454200393f0f43d4aacb867fd83842492fa191d",
+    "E1_archive_manifest_sha256": "ac7a38fd1f4b00b578254d9253418655aa78b6cc7a7a1d65f78ba15487b14604",
+    "E1_lock_sha256": "d36d639a9a87374e6de8c7a2e2b93b5bbd7c74aebd21f24d7ce3ebea8ca61b20",
+    "E1_marker_sha256": "a315692904e72f303904acd238dbe51243a945ae5b369187969d13cc5cc2b3a1",
+    "E1_report_sha256": "f848b93eeb4caffbdaef6f8cc4aee3d7d1e13c51add12e5c768d081ac380f110",
+    "count_logits.npy": "3b37a9aec7ba0f787cf9ed4b4ec9c0e1202aeb35a151ca461cb7dfeaf05c6745",
+    "graph_logits.npy": "752323b302d76c69374cc1adcc5a3da2f0dbec208d31cb7c7d9b532e201bdb2e",
+    "manifest_row_index.npy": "191ea84737d420bac6b52e288c375f207789e819e93f12cf05265f77369ce566",
+    "path_logits.npy": "fd1d1c974e34ba3a4d52ff5852464dd3c0ec1b2201fb5e1852b7b23cb881c4c5",
+    "physical_port_mask_static.npy": "3d18729ec5c1e72ff166853ca92b2d9d37c892bf4b8e40bfa46c930adbdb33af",
+    "role_mask.npy": "86ddbaf9cbbc1ce0a3ca40888b10f7406a727be5d95091e48a1c3f3a335ed537",
+    "source_logits.npy": "542475688b502b0db25e5a7be81a54fbcde8f112b1b0f0413c2aab00be02b638",
+    "stable_items.jsonl": "f44938b8fb10217d62c0823621a3d1419926f6833e705f17c2884805ba67195b",
+    "transit_logits.npy": "efc36304aad0aab25098d60949ad836ae65274e37dfcb93c6192973a5e6aee9d",
+    "validation_item_index.npy": "f5587d56579578a5f6e9bab5e151bc9164c9d83237937b30bdb50b4125c15f43",
+    "victim_logits.npy": "b1d3fda56ffde807378f0316dfd4977d64e604b92a1dd5ed45aeba6d39c929b6",
+    "y_attacker_count.npy": "f315bce135362ac3734bf043f9513740e86acec7d03bdc99d159cf2d0267e920",
+    "y_graph.npy": "7e1be695189e3f626ed2ee0f0e9282da28dbb3a6e2a8e9d39ced1594feb11799",
+    "y_path.npy": "309a89032c22c7efee075f2161995faafd5274ceedf4234d2fb193b4fd720069",
+    "y_source.npy": "0d5ac4982e5f26eab4fdc9c796d54994dc40701f68a5d2998b73d518d287b525",
+    "y_transit.npy": "7cc56e9dccc6effc6af0aa2fcceb3f6d4a352b27efe87f10376ef20f2a7c86d7",
+    "y_victim.npy": "a6440b34cf3d198067f20c383d8da4c769cecb6d87065499cf2680de63ca5c36"
+  },
+  "joint_threshold_optimization": false,
+  "metrics": {
+    "A0_count_all_items": {
+      "accuracy": 0.7901500638569604,
+      "class_values": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "confusion_matrix": [
+        [
+          6280,
+          766,
+          690,
+          560,
+          558
+        ],
+        [
+          4,
+          917,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          7,
+          837,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0,
+          974,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          43,
+          891
+        ]
+      ],
+      "macro_f1": 0.7498418289565238,
+      "per_class": {
+        "0": {
+          "f1": 0.8296452870070677,
+          "precision": 0.9992044550517104,
+          "recall": 0.7092839394623899,
+          "support": 8854
+        },
+        "1": {
+          "f1": 0.7024128686327078,
+          "precision": 0.5426035502958579,
+          "recall": 0.995656894679696,
+          "support": 921
+        },
+        "2": {
+          "f1": 0.7060312104597217,
+          "precision": 0.5481335952848723,
+          "recall": 0.9917061611374408,
+          "support": 844
+        },
+        "3": {
+          "f1": 0.7633228840125391,
+          "precision": 0.6176284083703234,
+          "recall": 0.9989743589743589,
+          "support": 975
+        },
+        "4": {
+          "f1": 0.7477968946705833,
+          "precision": 0.6149068322981367,
+          "recall": 0.9539614561027837,
+          "support": 934
+        }
+      }
+    },
+    "A0_gated_role_metrics": {
+      "path": {
+        "accuracy": 0.9134837962962963,
+        "balanced_accuracy": 0.930234191163932,
+        "exact_match_16_router": 0.714639208173691,
+        "f1": 0.7318468579910934,
+        "fn": 1180,
+        "fp": 16162,
+        "fpr": 0.09203715198487497,
+        "precision": 0.5941948929118437,
+        "recall": 0.952505534312739,
+        "specificity": 0.9079628480151251,
+        "tn": 159441,
+        "tp": 23665
+      },
+      "source": {
+        "accuracy": 0.9685903575989783,
+        "balanced_accuracy": 0.9616704688468541,
+        "exact_match_16_router": 0.757742656449553,
+        "f1": 0.7374916611074048,
+        "fn": 426,
+        "fp": 5870,
+        "fpr": 0.030704369749657387,
+        "precision": 0.6010602147614517,
+        "recall": 0.9540453074433657,
+        "specificity": 0.9692956302503426,
+        "tn": 185308,
+        "tp": 8844
+      },
+      "transit": {
+        "accuracy": 0.942448914431673,
+        "balanced_accuracy": 0.912908203089177,
+        "exact_match_16_router": 0.6859833971902938,
+        "f1": 0.6686200160864071,
+        "fn": 1604,
+        "fp": 9932,
+        "fpr": 0.05305385511148147,
+        "precision": 0.5395456652758461,
+        "recall": 0.8788702612898354,
+        "specificity": 0.9469461448885186,
+        "tn": 177274,
+        "tp": 11638
+      },
+      "victim": {
+        "accuracy": 0.974676724137931,
+        "balanced_accuracy": 0.9726544579811897,
+        "exact_match_16_router": 0.7757024265644955,
+        "f1": 0.7541412380122058,
+        "fn": 237,
+        "fp": 4839,
+        "fpr": 0.0251473293629759,
+        "precision": 0.6166825095057035,
+        "recall": 0.9704562453253552,
+        "specificity": 0.9748526706370241,
+        "tn": 187587,
+        "tp": 7785
+      }
+    },
+    "A0_graph_count_exact": 0.7901500638569604,
+    "A0_joint_role_exact": 0.6396072796934866,
+    "A0_macro_role_f1": 0.7230249432992777,
+    "A0_strict_all_task_exact": 0.6376915708812261,
+    "graph": {
+      "accuracy": 0.7941411238825032,
+      "balanced_accuracy": 0.8539615124639113,
+      "f1": 0.7399415145709388,
+      "fn": 5,
+      "fp": 2574,
+      "fpr": 0.2907160605376101,
+      "precision": 0.5876982220086497,
+      "recall": 0.9986390854654328,
+      "specificity": 0.7092839394623899,
+      "tn": 6280,
+      "tp": 3669
+    },
+    "raw_count_attack_only": {
+      "accuracy": 0.9863908546543277,
+      "class_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "confusion_matrix": [
+        [
+          921,
+          0,
+          0,
+          0
+        ],
+        [
+          7,
+          837,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          975,
+          0
+        ],
+        [
+          0,
+          0,
+          43,
+          891
+        ]
+      ],
+      "macro_f1": 0.9867282059256288,
+      "per_class": {
+        "1": {
+          "f1": 0.9962141698215251,
+          "precision": 0.9924568965517241,
+          "recall": 1.0,
+          "support": 921
+        },
+        "2": {
+          "f1": 0.9958358120166567,
+          "precision": 1.0,
+          "recall": 0.9917061611374408,
+          "support": 844
+        },
+        "3": {
+          "f1": 0.9784244856999498,
+          "precision": 0.9577603143418467,
+          "recall": 1.0,
+          "support": 975
+        },
+        "4": {
+          "f1": 0.9764383561643836,
+          "precision": 1.0,
+          "recall": 0.9539614561027837,
+          "support": 934
+        }
+      }
+    },
+    "raw_joint_role_exact": 0.6148627075351213,
+    "raw_macro_role_f1": 0.7178293133329082,
+    "raw_role_metrics": {
+      "path": {
+        "accuracy": 0.9105254230523627,
+        "balanced_accuracy": 0.9286493880780335,
+        "exact_match_16_router": 0.6930076628352491,
+        "f1": 0.7252477901864363,
+        "fn": 1174,
+        "fp": 16761,
+        "fpr": 0.09544825543982734,
+        "precision": 0.5854521171349426,
+        "recall": 0.9527470315958946,
+        "specificity": 0.9045517445601726,
+        "tn": 158842,
+        "tp": 23671
+      },
+      "source": {
+        "accuracy": 0.9674329501915708,
+        "balanced_accuracy": 0.9610637044702,
+        "exact_match_16_router": 0.742816091954023,
+        "f1": 0.7304261645193261,
+        "fn": 426,
+        "fp": 6102,
+        "fpr": 0.03191789850296582,
+        "precision": 0.5917302288237656,
+        "recall": 0.9540453074433657,
+        "specificity": 0.9680821014970342,
+        "tn": 185076,
+        "tp": 8844
+      },
+      "transit": {
+        "accuracy": 0.9407427362707536,
+        "balanced_accuracy": 0.9121000342038809,
+        "exact_match_16_router": 0.6690613026819924,
+        "f1": 0.6621729237770193,
+        "fn": 1601,
+        "fp": 10277,
+        "fpr": 0.054896744762454194,
+        "precision": 0.5311159777351948,
+        "recall": 0.8790968131702159,
+        "specificity": 0.9451032552375458,
+        "tn": 176929,
+        "tp": 11641
+      },
+      "victim": {
+        "accuracy": 0.9745719588122606,
+        "balanced_accuracy": 0.9728388123300442,
+        "exact_match_16_router": 0.7741858237547893,
+        "f1": 0.7534703748488512,
+        "fn": 233,
+        "fp": 4864,
+        "fpr": 0.025277249436146884,
+        "precision": 0.6155852367027582,
+        "recall": 0.9709548740962354,
+        "specificity": 0.9747227505638532,
+        "tn": 187562,
+        "tp": 7789
+      }
+    }
+  },
+  "per_router_thresholding": false,
+  "per_scenario_thresholding": false,
+  "per_seed_thresholding": false,
+  "prediction_artifacts": {
+    "A0_count_pred.npy": {
+      "bytes": 100352,
+      "dtype": "int64",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/A0_count_pred.npy",
+      "sha256": "735c88226366b8f58a9b5b9b4346166bd924911a626f8276b9df282a276b0a8d",
+      "shape": [
+        12528
+      ]
+    },
+    "A0_path_pred.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/A0_path_pred.npy",
+      "sha256": "5bfa2c5d63b85a1e4b2bec03575783108c8494be54d037104b5e3f823491c130",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "A0_source_pred.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/A0_source_pred.npy",
+      "sha256": "3ea34a28797e4dba8fbd00891df533981ecac851c37402f10e04293e7b8d318a",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "A0_strict_all_task_exact.npy": {
+      "bytes": 12656,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/A0_strict_all_task_exact.npy",
+      "sha256": "b222c023e1ac1ea48c889244c2c6e558b286a831029981b6f999a1fac826d38e",
+      "shape": [
+        12528
+      ]
+    },
+    "A0_transit_pred.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/A0_transit_pred.npy",
+      "sha256": "1684879365f81d0b8c4e83610decaf3e6e8b2881d750ea9f1474e1edaa39c062",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "A0_victim_pred.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/A0_victim_pred.npy",
+      "sha256": "e488a32d8793df52f4bc4be679d115df3aba3d6a600bf8484c2e01fde5d12e85",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "count_pred_raw_k1_to_k4.npy": {
+      "bytes": 100352,
+      "dtype": "int64",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/count_pred_raw_k1_to_k4.npy",
+      "sha256": "873147af2838988ac47ce99a864e794cef9c8ef8a83a3bffae0316ed50f8bbe1",
+      "shape": [
+        12528
+      ]
+    },
+    "graph_pred_raw.npy": {
+      "bytes": 12656,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/graph_pred_raw.npy",
+      "sha256": "85cccaf2b186494d97e7fb18fd3e89e54b0734d4970a7fb87e5c274ddebfa24c",
+      "shape": [
+        12528
+      ]
+    },
+    "path_pred_raw.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/path_pred_raw.npy",
+      "sha256": "be3e0f592314158a915618cc4efd2375bd0c20c2ea4ae87423ac6137b1042af4",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "source_pred_raw.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/source_pred_raw.npy",
+      "sha256": "ed15df9fd0094ec04a13651cc4256b2119e15135fab6fa7605ef93bb2cd99775",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "transit_pred_raw.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/transit_pred_raw.npy",
+      "sha256": "fa796df7ffc273bcac62863b3f588c69d7814c00e4aac59dae73a9c8fbd6540f",
+      "shape": [
+        12528,
+        16
+      ]
+    },
+    "victim_pred_raw.npy": {
+      "bytes": 200576,
+      "dtype": "uint8",
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/.p2_e2_threshold_tmp_s8n3cseo/victim_pred_raw.npy",
+      "sha256": "a3a9ff8b7522d7cfe59d868548fefd9b89818d65b673580689590338a8712526",
+      "shape": [
+        12528,
+        16
+      ]
+    }
+  },
+  "probability_transform": "sigmoid(raw_logit) in float64",
+  "role_thresholds": {
+    "path": {
+      "candidate_rule": "0, 0.5, 1, and midpoints between adjacent unique validation probabilities",
+      "candidate_threshold_count": 199418,
+      "objective": "f1",
+      "prediction_rule": "positive iff probability >= threshold",
+      "selected_confusion": {
+        "fn": 1174,
+        "fp": 16761,
+        "tn": 158842,
+        "tp": 23671
+      },
+      "selected_metrics": {
+        "accuracy": 0.9105254230523627,
+        "balanced_accuracy": 0.9286493880780335,
+        "f1": 0.7252477901864363,
+        "fpr": 0.09544825543982734,
+        "precision": 0.5854521171349426,
+        "recall": 0.9527470315958946,
+        "specificity": 0.9045517445601726
+      },
+      "selected_threshold": 0.8339347466090468,
+      "selected_threshold_hex": "0x1.aaf97ebf5e288p-1",
+      "tie_break_order": [
+        "higher f1",
+        "lower false-positive rate",
+        "threshold closest to 0.5",
+        "lower numeric threshold"
+      ],
+      "unique_probability_count": 199416
+    },
+    "source": {
+      "candidate_rule": "0, 0.5, 1, and midpoints between adjacent unique validation probabilities",
+      "candidate_threshold_count": 199048,
+      "objective": "f1",
+      "prediction_rule": "positive iff probability >= threshold",
+      "selected_confusion": {
+        "fn": 426,
+        "fp": 6102,
+        "tn": 185076,
+        "tp": 8844
+      },
+      "selected_metrics": {
+        "accuracy": 0.9674329501915708,
+        "balanced_accuracy": 0.9610637044702,
+        "f1": 0.7304261645193261,
+        "fpr": 0.03191789850296582,
+        "precision": 0.5917302288237656,
+        "recall": 0.9540453074433657,
+        "specificity": 0.9680821014970342
+      },
+      "selected_threshold": 0.9496054929928593,
+      "selected_threshold_hex": "0x1.e632b0f103383p-1",
+      "tie_break_order": [
+        "higher f1",
+        "lower false-positive rate",
+        "threshold closest to 0.5",
+        "lower numeric threshold"
+      ],
+      "unique_probability_count": 199046
+    },
+    "transit": {
+      "candidate_rule": "0, 0.5, 1, and midpoints between adjacent unique validation probabilities",
+      "candidate_threshold_count": 199325,
+      "objective": "f1",
+      "prediction_rule": "positive iff probability >= threshold",
+      "selected_confusion": {
+        "fn": 1601,
+        "fp": 10277,
+        "tn": 176929,
+        "tp": 11641
+      },
+      "selected_metrics": {
+        "accuracy": 0.9407427362707536,
+        "balanced_accuracy": 0.9121000342038809,
+        "f1": 0.6621729237770193,
+        "fpr": 0.054896744762454194,
+        "precision": 0.5311159777351948,
+        "recall": 0.8790968131702159,
+        "specificity": 0.9451032552375458
+      },
+      "selected_threshold": 0.8570333248835911,
+      "selected_threshold_hex": "0x1.b6cd126bea11cp-1",
+      "tie_break_order": [
+        "higher f1",
+        "lower false-positive rate",
+        "threshold closest to 0.5",
+        "lower numeric threshold"
+      ],
+      "unique_probability_count": 199323
+    },
+    "victim": {
+      "candidate_rule": "0, 0.5, 1, and midpoints between adjacent unique validation probabilities",
+      "candidate_threshold_count": 199502,
+      "objective": "f1",
+      "prediction_rule": "positive iff probability >= threshold",
+      "selected_confusion": {
+        "fn": 233,
+        "fp": 4864,
+        "tn": 187562,
+        "tp": 7789
+      },
+      "selected_metrics": {
+        "accuracy": 0.9745719588122606,
+        "balanced_accuracy": 0.9728388123300442,
+        "f1": 0.7534703748488512,
+        "fpr": 0.025277249436146884,
+        "precision": 0.6155852367027582,
+        "recall": 0.9709548740962354,
+        "specificity": 0.9747227505638532
+      },
+      "selected_threshold": 0.8260114802699812,
+      "selected_threshold_hex": "0x1.a6eafa0bc29eep-1",
+      "tie_break_order": [
+        "higher f1",
+        "lower false-positive rate",
+        "threshold closest to 0.5",
+        "lower numeric threshold"
+      ],
+      "unique_probability_count": 199500
+    }
+  },
+  "status": "FROZEN",
+  "threshold_selection_scope": "validation only"
+}

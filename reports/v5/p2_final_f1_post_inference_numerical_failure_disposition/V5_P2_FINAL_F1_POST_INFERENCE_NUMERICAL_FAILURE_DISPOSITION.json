@@ -1,0 +1,178 @@
+{
+  "artifact": {
+    "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/V5_P2_FINAL_F1_POST_INFERENCE_NUMERICAL_FAILURE_DISPOSITION.json",
+    "sha256": "0265de528df00fc84186688ad64621a1ac688a7aae65b2381f93fb8757c372e8"
+  },
+  "classification": "POST_INFERENCE_MID_A1_NUMERICAL_CERTIFICATION_ABORT",
+  "created_utc": "2026-08-01T14:13:28.354163+00:00",
+  "evidence": {
+    "access_started_artifacts": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_TEST_ACCESS_STARTED"
+    ],
+    "evaluator_control_flow": {
+      "full_inference_gate_before_A1": true,
+      "interpretation": "An ExactDecoderError reached from produce_a1 can occur only after perform_single_inference_pass completed its emitted-count gate and Raw/A0 arrays were computed.",
+      "stage_order": [
+        "perform_single_inference_pass",
+        "produce_raw_and_a0",
+        "produce_a1"
+      ],
+      "verified": true
+    },
+    "failure_artifacts": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE",
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE.json"
+    ],
+    "inventory": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE",
+        "sha256": "bb2aba870f9ca051f8de23d3da494b3b5c0f33fbc91de0f626b13b3a79271139",
+        "size_bytes": 63
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE.json",
+        "sha256": "21149d6a20009a729f68d29476d174f069bb3ceaa49455b7b68cbeb1fe4ce38a",
+        "size_bytes": 1753
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_TEST_ACCESS_STARTED",
+        "sha256": "f577c0e79cd7eb3951d2064e8ef50e43b79bcdb45cc68616e2feebcae9e9d6ca",
+        "size_bytes": 868
+      },
+      {
+        "evidence_role": "terminal_capture",
+        "path": "/home/zira/Downloads/v5_p2_f1_numerical_failure_disposition_r0_evidence_patch/USER_PROVIDED_RECOVERY_TERMINAL_EXCERPT.txt",
+        "sha256": "a5f372a5e274428cfadc40acf22fa869c5e31a1a74cd6f636bad73884019f6f4",
+        "size_bytes": 1805
+      }
+    ],
+    "neural_inference_completion_basis": [
+      "user-provided exact terminal progress line",
+      "frozen evaluator control-flow ordering",
+      "failure traceback in the A1 exact decoder"
+    ],
+    "recovery_output_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation",
+    "snapshots": [
+      {
+        "sha256": "bb2aba870f9ca051f8de23d3da494b3b5c0f33fbc91de0f626b13b3a79271139",
+        "snapshot": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/evidence_snapshots/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE",
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE"
+      },
+      {
+        "sha256": "21149d6a20009a729f68d29476d174f069bb3ceaa49455b7b68cbeb1fe4ce38a",
+        "snapshot": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/evidence_snapshots/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE.json",
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE.json"
+      },
+      {
+        "sha256": "f577c0e79cd7eb3951d2064e8ef50e43b79bcdb45cc68616e2feebcae9e9d6ca",
+        "snapshot": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/evidence_snapshots/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_TEST_ACCESS_STARTED",
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_TEST_ACCESS_STARTED"
+      },
+      {
+        "sha256": "a5f372a5e274428cfadc40acf22fa869c5e31a1a74cd6f636bad73884019f6f4",
+        "snapshot": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_final_f1_post_inference_numerical_failure_disposition/evidence_snapshots/V5_P2_RECOVERY_USER_PROVIDED_TERMINAL_EXCERPT.txt",
+        "source": "/home/zira/Downloads/v5_p2_f1_numerical_failure_disposition_r0_evidence_patch/USER_PROVIDED_RECOVERY_TERMINAL_EXCERPT.txt"
+      }
+    ],
+    "terminal_evidence_is_direct_machine_capture": false,
+    "terminal_evidence_provenance": "user_provided_exact_project_conversation_excerpt"
+  },
+  "execution_boundary": {
+    "A1_exact_decode_completed": false,
+    "A1_exact_decode_started": true,
+    "A1_progress_lower_bound": 6200,
+    "A1_total_items": 11666,
+    "model_and_checkpoint_loaded": true,
+    "neural_inference_batches_completed": 92,
+    "neural_inference_batches_total": 92,
+    "neural_inference_completed": true,
+    "neural_items_emitted": 11666,
+    "neural_items_total": 11666,
+    "official_A0_metrics_committed": false,
+    "official_A1_metrics_committed": false,
+    "official_Raw_metrics_committed": false,
+    "successful_completion_marker_present": false,
+    "test_access_started": true,
+    "test_directory_enumerated": true,
+    "test_tensors_deserialized": true
+  },
+  "failure": {
+    "exception_type": "ExactDecoderError",
+    "frozen_float64_numerical_zero_tolerance": 1.4210854715202004e-14,
+    "gap_excess": 9.853719627569063e-15,
+    "gap_to_tolerance_ratio": 1.693393875670834,
+    "illegal_route_established": false,
+    "material_model_failure_established": false,
+    "mathematical_infeasibility_established": false,
+    "message": "ExactDecoderError: primary MILP has material or invalid MIP gap: 2.4064574342771067e-14; float64 numerical-zero tolerance=1.4210854715202004e-14",
+    "reported_mip_gap": 2.4064574342771067e-14,
+    "root_cause_conclusion_frozen_here": false,
+    "root_cause_requires_D0_audit": true
+  },
+  "frozen_dependencies": {
+    "checkpoint": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/selected_graphconv_checkpoint.pt",
+      "sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc"
+    },
+    "decoder_source": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder.py",
+      "sha256": "8da32b3ca3915365b8b01049a4ddc6a043583aa7193589ccf4af8116a4b0783c"
+    },
+    "model_source": {
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_task_d_full_multitask_count4.py",
+      "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+    },
+    "recovery_amendment": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_prospective_recovery_protocol_amendment/V5_P2_PROSPECTIVE_RECOVERY_PROTOCOL_AMENDMENT.json",
+      "sha256": "b2be725493603328bf7ae56a7ba0b8d6bdb3dc5aadc9ffdc52e3c3fc3cfde095"
+    },
+    "recovery_authorization_contract": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_recovery_final_no_data_preflight_and_authorization/V5_P2_RECOVERY_ONE_SHOT_AUTHORIZATION.json",
+      "sha256": "f51323d5496aa40dab5f73c504f79cdbb1e5b66789a46ed82d74fbf617840d7e"
+    },
+    "recovery_authorization_token_consumed": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_recovery_final_no_data_preflight_and_authorization/V5_P2_RECOVERY_ONE_SHOT_AUTHORIZATION_TOKEN.json.consumed",
+      "sha256": "b0ae1535938594cf5e05e595f9c4b5dc52aa21ee102598b7ba5d54f906178f67"
+    },
+    "recovery_evaluator": {
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py",
+      "sha256": "770ad8937427c32680c1cced7b3040bf6055662615c88edbf544e8805d9fe7c9"
+    },
+    "recovery_evaluator_contract": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_recovery_evaluator_source_freeze/V5_P2_RECOVERY_EVALUATOR_SOURCE_CONTRACT.json",
+      "sha256": "d5b906835463969967e4c19dbb1cbadc78468ff0fbf2b7d4d367078f7e7e6d65"
+    },
+    "route_library": {
+      "path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_xy_route_library.py",
+      "sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+    },
+    "thresholds": {
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_e2_raw_threshold_freeze/V5_P2_E2_FROZEN_RAW_THRESHOLDS.json",
+      "sha256": "b9acb9dac24cc1d0fe2cdae32525a4c0bdddc40e1607824599ad5bc3a446d957"
+    }
+  },
+  "immutability_and_safety": {
+    "consumed_recovery_token_must_remain": true,
+    "new_authorization_created": false,
+    "original_guard_artifacts_must_remain": true,
+    "recovery_launcher_must_not_be_rerun": true,
+    "test_directory_checked_by_F1": false,
+    "test_directory_enumerated_by_F1": false,
+    "test_path_formed_by_F1": false,
+    "test_tensors_deserialized_by_F1": false
+  },
+  "next_stage": "V5_P2_DECODER_D0_NUMERICAL_ROOT_CAUSE_AUDIT",
+  "scientific_disposition": {
+    "future_execution_classification": "post_hoc_numerical_recovery_only",
+    "future_execution_requires_new_prospective_amendment": true,
+    "not_a_model_performance_result": true,
+    "official_complete_test_result_obtained": false,
+    "original_authorization_id": "V5P2-caaea91e4eb6772ace0dc1b43b7e28c4",
+    "original_pre_inference_abort_preserved": true,
+    "recovery_authorization_consumed": true,
+    "recovery_authorization_id": "V5P2-RECOVERY-1066fc8903ea19ba256b0924caf0be7b",
+    "recovery_rerun_authorized": false
+  },
+  "stage": "V5_P2_FINAL_F1_POST_INFERENCE_NUMERICAL_FAILURE_DISPOSITION",
+  "status": "COMPLETE"
+}

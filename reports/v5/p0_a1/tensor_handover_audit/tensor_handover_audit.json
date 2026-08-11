@@ -1,0 +1,211 @@
+{
+  "audit_boundary": {
+    "checkpoint_selection_performed": false,
+    "feature_selection_performed": false,
+    "model_inference_performed": false,
+    "model_training_performed": false,
+    "raw_gem5_trace_accessed": false,
+    "test_performance_evaluated": false,
+    "threshold_selection_performed": false
+  },
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/v5_p0_initial24_graph_tensors/p0_initial24_graph",
+  "dual_attacker_run_count": 8,
+  "external_archive": {
+    "requested": false,
+    "verified": false
+  },
+  "failures": [],
+  "feature_count": 81,
+  "feature_names": [
+    "in_count_local",
+    "in_count_north",
+    "in_count_east",
+    "in_count_south",
+    "in_count_west",
+    "out_count_local",
+    "out_count_north",
+    "out_count_east",
+    "out_count_south",
+    "out_count_west",
+    "in_gap_sum_local",
+    "in_gap_sum_north",
+    "in_gap_sum_east",
+    "in_gap_sum_south",
+    "in_gap_sum_west",
+    "in_gap_count_local",
+    "in_gap_count_north",
+    "in_gap_count_east",
+    "in_gap_count_south",
+    "in_gap_count_west",
+    "out_gap_sum_local",
+    "out_gap_sum_north",
+    "out_gap_sum_east",
+    "out_gap_sum_south",
+    "out_gap_sum_west",
+    "out_gap_count_local",
+    "out_gap_count_north",
+    "out_gap_count_east",
+    "out_gap_count_south",
+    "out_gap_count_west",
+    "status_flags",
+    "enqueue_count_local",
+    "enqueue_count_north",
+    "enqueue_count_east",
+    "enqueue_count_south",
+    "enqueue_count_west",
+    "dequeue_count_local",
+    "dequeue_count_north",
+    "dequeue_count_east",
+    "dequeue_count_south",
+    "dequeue_count_west",
+    "occupancy_cycle_sum_local",
+    "occupancy_cycle_sum_north",
+    "occupancy_cycle_sum_east",
+    "occupancy_cycle_sum_south",
+    "occupancy_cycle_sum_west",
+    "occupancy_max_local",
+    "occupancy_max_north",
+    "occupancy_max_east",
+    "occupancy_max_south",
+    "occupancy_max_west",
+    "occupancy_end_local",
+    "occupancy_end_north",
+    "occupancy_end_east",
+    "occupancy_end_south",
+    "occupancy_end_west",
+    "stall_no_free_vc_local",
+    "stall_no_free_vc_north",
+    "stall_no_free_vc_east",
+    "stall_no_free_vc_south",
+    "stall_no_free_vc_west",
+    "stall_no_credit_local",
+    "stall_no_credit_north",
+    "stall_no_credit_east",
+    "stall_no_credit_south",
+    "stall_no_credit_west",
+    "stall_ordering_local",
+    "stall_ordering_north",
+    "stall_ordering_east",
+    "stall_ordering_south",
+    "stall_ordering_west",
+    "input_port_valid_local",
+    "input_port_valid_north",
+    "input_port_valid_east",
+    "input_port_valid_south",
+    "input_port_valid_west",
+    "output_port_valid_local",
+    "output_port_valid_north",
+    "output_port_valid_east",
+    "output_port_valid_south",
+    "output_port_valid_west"
+  ],
+  "internal_checksum_entry_count": 57,
+  "internal_checksum_file_present": true,
+  "local_overlap_run_count": 5,
+  "mode_counts": {
+    "attack": 24,
+    "control": 24
+  },
+  "next_stage": "V5_P0_A2_FEATURE_AND_NORMALIZATION_CONTRACT",
+  "normalization_tensor_count": 3,
+  "pair_count": 24,
+  "run_count": 48,
+  "split_counts": {
+    "test": 8,
+    "train": 32,
+    "validation": 8
+  },
+  "stage": "V5_P0_A1_TENSOR_HANDOVER_AUDIT",
+  "status": "PASS",
+  "top_level_inventory": [
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "directory",
+      "name": "runs"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "topology.pt"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "normalization.pt"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "feature_schema.json"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "split_manifest.json"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "tensor_manifest.json"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "dataset_summary.json"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "dataset_loader.py"
+    },
+    {
+      "correct_type": true,
+      "exists": true,
+      "expected_type": "file",
+      "name": "README.md"
+    }
+  ],
+  "topology": {
+    "directed_edge_count": 48,
+    "duplicate_directed_edge_count": 0,
+    "edge_index_shape": [
+      2,
+      48
+    ],
+    "missing_reverse_count": 0,
+    "num_nodes": 16,
+    "out_degrees": {
+      "0": 2,
+      "1": 3,
+      "10": 4,
+      "11": 3,
+      "12": 2,
+      "13": 3,
+      "14": 3,
+      "15": 2,
+      "2": 3,
+      "3": 2,
+      "4": 3,
+      "5": 4,
+      "6": 4,
+      "7": 3,
+      "8": 3,
+      "9": 4
+    },
+    "router_coordinates_shape": [
+      16,
+      2
+    ],
+    "self_loop_count": 0
+  },
+  "training_authorized": true,
+  "warnings": []
+}

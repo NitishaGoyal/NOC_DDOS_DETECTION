@@ -1,0 +1,149 @@
+{
+  "count_conditioned_topk": {
+    "attack": {
+      "exact_localization": 0.43932002765375944,
+      "node_accuracy": 0.9371856242448521,
+      "node_f1": 0.7189170093251909,
+      "node_fn": 214654,
+      "node_fp": 96445,
+      "node_precision": 0.8048813548349245,
+      "node_recall": 0.6495433454476586,
+      "node_tn": 4243729,
+      "node_tp": 397844
+    },
+    "attack_count_accuracy": 0.5173094442757364,
+    "attack_count_mae": 0.7086308158505147,
+    "attack_empty_prediction_fraction": 0.11533491416350608,
+    "decoder": "argmax count head; count=0 empty, otherwise top-k node probability; no graph gate",
+    "mean_predicted_attack_count": 1.5968398472582073,
+    "mean_true_attack_count": 1.9787234042553192,
+    "normal": {
+      "exact_localization": 0.8483382258663158,
+      "node_accuracy": 0.9884139757735263,
+      "node_f1": 0.0,
+      "node_fn": 0,
+      "node_fp": 27470,
+      "node_precision": 0.0,
+      "node_recall": 0.0,
+      "node_tn": 2343490,
+      "node_tp": 0
+    },
+    "overall": {
+      "exact_localization": 0.5717359911038676,
+      "node_accuracy": 0.953770342365646,
+      "node_f1": 0.7015059197342401,
+      "node_fn": 214654,
+      "node_fp": 123915,
+      "node_precision": 0.762505294590031,
+      "node_recall": 0.6495433454476586,
+      "node_tn": 6587219,
+      "node_tp": 397844
+    },
+    "overall_count_accuracy": 0.6244770354381541,
+    "predicted_count_histogram": [
+      161412,
+      186377,
+      29862,
+      44646,
+      35430
+    ],
+    "true_count_histogram": [
+      148185,
+      154771,
+      52688,
+      55981,
+      46102
+    ]
+  },
+  "fixed_0_5": {
+    "graph": {
+      "accuracy": 0.8732410366878074,
+      "f1": 0.9010925319500391,
+      "fn": 45243,
+      "fp": 12778,
+      "fpr": 0.0862300502749941,
+      "precision": 0.9538828556682799,
+      "recall": 0.8538388974678719,
+      "threshold": 0.5,
+      "tn": 135407,
+      "tp": 264299
+    },
+    "node": {
+      "attack_exact_localization": 0.41900291398259365,
+      "attack_node_f1": 0.7014666667606522,
+      "attack_node_precision": 0.6172104579606307,
+      "attack_node_recall": 0.8123634689419394,
+      "exact_localization": 0.4493551833298014,
+      "node_accuracy": 0.9220491963550326,
+      "node_f1": 0.6354572883574656,
+      "node_fn": 114927,
+      "node_fp": 455956,
+      "node_precision": 0.5218216159584365,
+      "node_recall": 0.8123634689419394,
+      "node_tn": 6255178,
+      "node_tp": 497571,
+      "threshold": 0.5
+    }
+  },
+  "fpr_constrained_graph": {
+    "accuracy": 0.8777502747270753,
+    "f1": 0.9054954408732176,
+    "fn": 41466,
+    "fp": 14491,
+    "fpr": 0.0977899247562169,
+    "precision": 0.9487165875703816,
+    "recall": 0.866040795756311,
+    "threshold": 0.4599999999999999,
+    "tn": 133694,
+    "tp": 268076
+  },
+  "sample_count": 457727,
+  "selected_node_threshold": {
+    "attack_exact_localization": 0.5513759037545793,
+    "attack_node_f1": 0.7899332612370388,
+    "attack_node_precision": 0.8843240181650838,
+    "attack_node_recall": 0.7137492693853694,
+    "exact_localization": 0.6603433924588237,
+    "node_accuracy": 0.9653828865240635,
+    "node_f1": 0.775218266757576,
+    "node_fn": 175328,
+    "node_fp": 78195,
+    "node_precision": 0.8482725835087753,
+    "node_recall": 0.7137492693853694,
+    "node_tn": 6632939,
+    "node_tp": 437170,
+    "task": "node",
+    "threshold": 0.7799999999999999
+  },
+  "selection": {
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v4/v4_a3_sourcepreserve_countaware_rank_mask_seed7/best_model.pt",
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "count_decoder_selected_on_test": false,
+    "expected_parameter_count": 2983,
+    "experiment_designation": "a3_sourcepreserve_countaware_rank_mask",
+    "graph_fpr_cap": 0.1,
+    "graph_gating": false,
+    "graph_selection_rule": "max graph F1 among validation thresholds with FPR<=0.10; tie recall, lower FPR, closest 0.5",
+    "graph_threshold": 0.4599999999999999,
+    "model_name": "V4-A3 SourcePreserve CountAware TemporalGCN",
+    "node_selection_rule": "max validation attack-only node F1; tie attack exact, precision, closest 0.5",
+    "node_threshold": 0.7799999999999999,
+    "primary_count_decoder": "argmax count logits and top-k node scores",
+    "selection_split": "validation",
+    "test_accessed": false,
+    "unconstrained_graph_threshold": 0.22999999999999998
+  },
+  "unconstrained_graph": {
+    "accuracy": 0.8884750080288032,
+    "f1": 0.9178553038105047,
+    "fn": 24346,
+    "fp": 26702,
+    "fpr": 0.1801936768228903,
+    "precision": 0.9143886783499734,
+    "recall": 0.9213483146067416,
+    "task": "graph",
+    "threshold": 0.22999999999999998,
+    "tn": 121483,
+    "tp": 285196
+  }
+}

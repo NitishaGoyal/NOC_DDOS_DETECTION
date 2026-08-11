@@ -1,0 +1,127 @@
+{
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "data": {
+    "edge_index_shape": [
+      2,
+      48
+    ],
+    "input_shape": [
+      16,
+      70,
+      32
+    ],
+    "normalization": "Tranche-A provisional A_train-only",
+    "normalization_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/normalization_tranche_a_provisional.pt",
+    "pair_split_overlap": 0,
+    "physical_mask_shape": [
+      16,
+      10
+    ],
+    "representation": "Dynamic70",
+    "train_items": 110855,
+    "train_pairs": 600,
+    "validation_items": 13863,
+    "validation_pairs": 75
+  },
+  "loss": {
+    "count_class_weights_applied": false,
+    "count_semantics": {
+      "active_mapping": "target_minus_one",
+      "class_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "inactive_target_zero": "masked"
+    },
+    "graph_positive_weight": 2.7072771052103537,
+    "role_positive_weights": {
+      "path": 8.182011606417179,
+      "source": 20.0,
+      "transit": 17.295923419706224,
+      "victim": 20.0
+    },
+    "task_coefficients": {
+      "count": 1.0,
+      "graph": 1.0,
+      "path": 1.0,
+      "source": 1.0,
+      "transit": 1.0,
+      "victim": 1.0
+    }
+  },
+  "model": {
+    "all_parameters_trainable": true,
+    "architecture": "Causal Depthwise-Separable Conv1D Temporal Encoder + Two-Layer GraphConv",
+    "builder": "build_v6_p0_dynamic70_from_canonical_structure",
+    "fresh_initialization": true,
+    "graph_readout": "mean_plus_max",
+    "outputs": [
+      "attack_logits",
+      "count_logits",
+      "source_logits",
+      "transit_logits",
+      "victim_logits",
+      "path_logits"
+    ],
+    "parameter_count": 60553,
+    "seed": 107
+  },
+  "optimization": {
+    "batch_size": 256,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "early_stopping": {
+      "minimum_epochs": 15,
+      "minimum_improvement": 0.0001,
+      "patience": 12
+    },
+    "epsilon": 1e-08,
+    "gradient_clip_norm": 1.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "num_workers": 0,
+    "optimizer": "AdamW",
+    "scheduler": {
+      "factor": 0.5,
+      "minimum_lr": 1e-05,
+      "mode": "max",
+      "name": "ReduceLROnPlateau",
+      "patience": 4,
+      "threshold": 0.0001
+    },
+    "weight_decay": 0.0001
+  },
+  "prohibited_before_baseline_completion": [
+    "architecture changes",
+    "new pooling",
+    "attention",
+    "directional graph layers",
+    "multiscale graph hierarchy",
+    "new labels",
+    "new localization losses",
+    "A_test access"
+  ],
+  "scientific_scope": {
+    "final_1500_pair_claim": false,
+    "generalization_claim_scope": "A_train/A_validation only",
+    "preliminary_only": true,
+    "result_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+    "sealed_test_evaluation_authorized": false
+  },
+  "selection": {
+    "checkpoint_selection_uses_validation": true,
+    "primary_metric_family": "frozen multitask validation composite",
+    "test_used_for_selection": false,
+    "threshold_tuning_during_training": false,
+    "tie_break_order": [
+      "lower_validation_loss",
+      "earlier_epoch"
+    ]
+  },
+  "stage": "V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL",
+  "status": "FROZEN"
+}

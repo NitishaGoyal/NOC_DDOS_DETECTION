@@ -1,0 +1,60 @@
+{
+  "artifacts": {
+    "candidate_evaluations": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P1_MATCHED_CONTROL_CANDIDATE_EVALUATIONS.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P1_MATCHED_CONTROL_IDENTITY_DECISION.json",
+    "mapping_csv": null,
+    "mapping_json": null
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T22:24:49.930813+00:00",
+  "decision": {
+    "F6_P1_complete": true,
+    "F7_retraining_ablation_authorized": false,
+    "actual_F6_execution_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F6_P2_TARGETED_MANIFEST_ROUTE_RECOVERY",
+    "sealed_test_access_authorized": false
+  },
+  "finding": {
+    "candidate_count": 199,
+    "correct_rule": "Require exactly one control for every attack identity and allow control-only identities.",
+    "mapped_attack_item_count": 0,
+    "mapping_resolved": false,
+    "prior_resolver_issue": "The F6-P0 resolver required every identity group to contain one attack and one control. That is incompatible with a validation split containing 3,822 attack items and 10,041 control items because legitimate control-only windows exist.",
+    "selected_source": null,
+    "unique_mapping_fingerprint_count": 0,
+    "usable_candidate_count": 0
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "metric_formulas_changed": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "validation_feature_tensors_loaded": false,
+    "validation_label_payloads_loaded": true,
+    "validation_manifest_payloads_loaded": true
+  },
+  "provenance": {
+    "F6_P0_authorization_sha256": "832b3f9a6ef9c4c70c46668be110ddc622e780e5aca8849666ef016cc53772fa",
+    "F6_P0_identity_route_sha256": "c79f6632dc0a38000807793b104376c4c0d3e7755dc0347ba01c546127cb5b0b",
+    "F6_P0_lock_sha256": "77e016d91c8faeaf998f58d42d59796a3b02183cb562d4c9b9181a7060cce196",
+    "F6_P0_protocol_sha256": "e2e1baea996ff831b01f0afbe9c3491784aac2f1670bae100196a19671e1a6d5",
+    "F6_P0_report_sha256": "f1fdd3f6dd48c1677210c52f216ec9b8b81be0456bc84ae090a2fc714e7bb8ee",
+    "F6_P0_source_contract_sha256": "1a93366fdffa9a81de84a4242604f6e01a1bf402ad40769e1ac27d6f73ad13d4",
+    "candidate_evaluations_sha256": "d6d2b633ea54d79a9faa0f9511e3d088fbe20028f048ca0c526fa7c640cc18ba",
+    "decision_sha256": "e4de9488fb8c1889d1ff17112d8ad8911a182d91aceadab270085feecc211c73",
+    "fresh_certification_sha256": "35b216294366d45221d0af2d90c562aabb027b20c852f980575255ba2ce15993",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "installed_script_sha256": "3ae4ffc9b677a470737f145a4019167702ac9ec9ded90d0194f93f5d6a590781",
+    "mapping_csv_sha256": null,
+    "mapping_json_sha256": null
+  },
+  "scope": "Re-evaluate existing and newly discovered validation manifests with the scientifically correct attack-centric matching rule, prove validation row order against preserved D1 labels, freeze the complete attack-to-control mapping, and decide whether actual F6 execution may begin.",
+  "stage": "V5_P3_F6_P1_MATCHED_CONTROL_IDENTITY_REVIEW",
+  "status": "PASS"
+}

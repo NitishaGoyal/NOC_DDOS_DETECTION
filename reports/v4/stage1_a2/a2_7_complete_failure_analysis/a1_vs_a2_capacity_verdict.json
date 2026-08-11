@@ -1,0 +1,59 @@
+{
+  "analysis_pass": true,
+  "evidence_flags": {
+    "aggregate_metrics_improved_materially": true,
+    "calibration_or_threshold_only_pattern": false,
+    "cardinality_improved_materially": true,
+    "persistent_failure_modes": {
+      "attack_exact_below_0_25": false,
+      "corner_gap_above_0_10": true,
+      "count_accuracy_below_0_50": true,
+      "oracle_attack_exact_below_0_50": false,
+      "within_two_hops_fp_above_0_75": true
+    },
+    "ranking_improved_materially": true
+  },
+  "hard_checks": {
+    "a1_a2_sample_alignment": true,
+    "a1_parameter_count_verified": true,
+    "a2_parameter_count_verified": true,
+    "a2_training_summary_verified": true,
+    "a3_recommendation_generated": true,
+    "all_required_reports_present": true,
+    "analysis_pass": true,
+    "architecture_width_only_verified": true,
+    "base_failure_analysis_pass": true,
+    "capacity_verdict_generated": true,
+    "dataset_unmodified": true,
+    "identical_metric_definitions": true,
+    "remaining_decoder_analysis_pass": true,
+    "test_not_used_for_selection": true,
+    "validation_only_selection": true
+  },
+  "interpretation": "A2 is a diagnostic capacity result, not a publication-final model. A material oracle/rank gain indicates representation capacity helped; persistent cardinality, two-hop, corner, or exact-set failures still require structural changes.",
+  "metric_deltas_a2_minus_a1": {
+    "attack_empty_prediction_fraction": -0.12596416641360464,
+    "attack_exact_localization": 0.28542160137665756,
+    "attack_node_f1": 0.22875039524884871,
+    "attacker_count_accuracy": 0.25824071262273507,
+    "corner_interior_f1_gap": 0.003333543767865099,
+    "corner_node_f1": 0.19767291165144407,
+    "count_mae": -0.7433788845024799,
+    "edge_node_f1": 0.24739611459796057,
+    "graph_f1_at_fpr10": 0.10004553060449495,
+    "graph_recall": 0.1487478489725681,
+    "interior_node_f1": 0.20100645541930917,
+    "learned_decoder_attack_exact": 0.2588966494584472,
+    "one_hop_fp_fraction": -0.07991766856117744,
+    "oracle_count_attack_exact": 0.28307723453790873,
+    "parameter_count": 1392.0,
+    "test_graph_fpr": 0.0010662347740999362,
+    "true_attacker_mean_rank": -1.0821569563142597,
+    "true_attacker_median_rank": -1.0,
+    "validation_to_test_attack_node_f1_gap_abs": -0.012156120165617679,
+    "validation_to_test_graph_f1_gap_abs": 0.0013221883112758404,
+    "within_two_hops_fp_fraction": -0.12441119187995087
+  },
+  "primary_capacity_outcome": "Outcome A \u2014 width improves ranking",
+  "residual_outcome_d": true
+}

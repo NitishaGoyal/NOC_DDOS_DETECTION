@@ -1,0 +1,3065 @@
+{
+  "A5_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a5_final_checkpoint_model_lock/V5_P3_FINAL_A5_FINAL_CHECKPOINT_MODEL_LOCK.json",
+  "A5_lock_sha256": "c341b553f5165c3abf977e1a084b50243dadf93c4edafdc9e15eed7dbf927505",
+  "D0_R1_regression_execution_authorized": false,
+  "D12_ast_contract": {
+    "assignments_of_interest": [
+      {
+        "assignment": "STAGE = 'V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS'",
+        "line": 18
+      },
+      {
+        "assignment": "test_results_path = output_dir / 'V5_P3_D12_EPLR_V2_SYNTHETIC_TEST_RESULTS.json'",
+        "line": 117
+      },
+      {
+        "assignment": "d11_test_matrix_path = d11_dir / 'V5_P3_EPLR_V2_D12_SYNTHETIC_TEST_MATRIX.json'",
+        "line": 136
+      },
+      {
+        "assignment": "d8_dir = repo / 'reports/v5/p3_d8_eplr_v1_implementation_and_train_calibration'",
+        "line": 143
+      },
+      {
+        "assignment": "d8_lock_path = d8_dir / 'V5_P3_D8_EPLR_V1_DETERMINISTIC_IMPLEMENTATION_AND_A_TRAIN_ONLY_CALIBRATION_LOCK.json'",
+        "line": 147
+      },
+      {
+        "assignment": "v1_config_path = repo / 'src/decoders/v5_p3_eplr_v1_calibration.json'",
+        "line": 154
+      },
+      {
+        "assignment": "installed_config_path = repo / 'src/decoders/v5_p3_eplr_v2_calibration.json'",
+        "line": 159
+      },
+      {
+        "assignment": "required = [d11_report_path, d11_lock_path, d11_semantic_path, d11_output_path, d11_test_matrix_path, d11_future_protocol_path, d8_lock_path, route_library_path, v1_path, v1_config_path, candidate_path]",
+        "line": 163
+      },
+      {
+        "assignment": "report = {'stage': STAGE, 'status': 'PASS', 'created_utc': datetime.now(timezone.utc).isoformat(), 'scope': 'Implement and synthetic-test EPLR-V2 preserve-or-passthrough without loading any neural model, training split, Tranche-A validation artifact, or sealed test artifact.', 'tests': {'total': len(results), 'passed': len(results), 'failed': 0, 'results_path': str(test_results_path), 'results_sha256': sha256_file(test_results_path)}, 'implementation': {'installed_path': str(installed_path), 'installed_sha256': sha256_file(installed_path), 'frozen_source_path': str(frozen_source_path), 'frozen_source_sha256': sha256_file(frozen_source_path), 'calibration_path': str(installed_config_path), 'calibration_sha256': sha256_file(installed_config_path), 'calibration_identical_to_D8': sha256_file(installed_config_path) == sha256_file(v1_config_path)}, 'verified_invariants': {'graph_equals_Raw': True, 'count_candidate_equals_Raw': True, 'source_equals_Raw_on_all_active_rows': True, 'victim_equals_Raw_on_all_active_rows': True, 'unresolved_all_role_masks_passthrough': True, 'unresolved_route_certificate_false': True, 'endpoint_repair_solver_called': False, 'shared_victims_supported': True, 'cross_route_role_overlap_supported': True, 'deterministic': True}, 'decision': {'EPLR_V2_implementation_frozen': True, 'A_validation_replay_authorized': False, 'A_test_evaluation_authorized': False, 'independent_future_validation_required': True, 'H1_parallel_work_unaffected': True, 'Tranche_B_parallel_work_unaffected': True, 'next_stage': 'V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE'}, 'data_access': {'model_loaded': False, 'training_data_loaded': False, 'A_validation_data_loaded': False, 'D1_validation_logits_loaded': False, 'D9_validation_outputs_loaded': False, 'A_test_data_loaded': False}, 'provenance': {'D11_report_sha256': sha256_file(d11_report_path), 'D11_lock_sha256': sha256_file(d11_lock_path), 'D11_semantic_sha256': sha256_file(d11_semantic_path), 'D11_output_contract_sha256': sha256_file(d11_output_path), 'D11_D12_test_matrix_sha256': sha256_file(d11_test_matrix_path), 'D11_future_protocol_sha256': sha256_file(d11_future_protocol_path), 'D8_lock_sha256': sha256_file(d8_lock_path), 'route_library_sha256': sha256_file(route_library_path), 'EPLR_V1_source_sha256': sha256_file(v1_path), 'D8_calibration_sha256': sha256_file(v1_config_path), 'candidate_source_sha256': sha256_file(candidate_path), 'installed_script_sha256': sha256_file(installed_script)}}",
+        "line": 695
+      },
+      {
+        "assignment": "lock = {'stage': STAGE, 'status': 'PASS', 'report_sha256': sha256_file(report_path), 'test_results_sha256': sha256_file(test_results_path), 'EPLR_V2_source_sha256': sha256_file(installed_path), 'EPLR_V2_calibration_sha256': sha256_file(installed_config_path), 'synthetic_tests': len(results), 'synthetic_tests_passed': len(results), 'A_validation_replay_authorized': False, 'A_test_data_loaded': False}",
+        "line": 792
+      },
+      {
+        "assignment": "desired = routes.combine_route_ids([routes.route_id_for(0, 3), routes.route_id_for(1, 5)], expected_k=2)",
+        "line": 395
+      },
+      {
+        "assignment": "hypothesis = routes.combine_route_ids([routes.route_id_for(0, 15), routes.route_id_for(3, 12)], expected_k=2)",
+        "line": 580
+      },
+      {
+        "assignment": "hypothesis = routes.combine_route_ids([routes.route_id_for(source, 15) for source in sources], expected_k=k)",
+        "line": 361
+      },
+      {
+        "assignment": "expected_graph = int(v1.stable_sigmoid(graph_logit) >= config.graph_threshold)",
+        "line": 509
+      },
+      {
+        "assignment": "expected_count = int(np.argmax(count_logits)) + 1",
+        "line": 513
+      },
+      {
+        "assignment": "expected_source = v1.mask_from_probabilities(v1.stable_sigmoid_array(source_logits), config.endpoint_threshold)",
+        "line": 514
+      },
+      {
+        "assignment": "expected_victim = v1.mask_from_probabilities(v1.stable_sigmoid_array(victim_logits), config.endpoint_threshold)",
+        "line": 518
+      }
+    ],
+    "calls_of_interest": [
+      {
+        "call": "json.loads(d11_report_path.read_text(encoding='utf-8'))",
+        "line": 180
+      },
+      {
+        "call": "json.loads(d11_lock_path.read_text(encoding='utf-8'))",
+        "line": 181
+      },
+      {
+        "call": "json.loads(d8_lock_path.read_text(encoding='utf-8'))",
+        "line": 182
+      },
+      {
+        "call": "json.loads(v1_config_path.read_text(encoding='utf-8'))",
+        "line": 183
+      },
+      {
+        "call": "v1.EPLRConfig.from_json(v1_config_path)",
+        "line": 248
+      },
+      {
+        "call": "run_test('D12-T01', 'inactive_raw', t01_inactive_raw)",
+        "line": 615
+      },
+      {
+        "call": "run_test('D12-T02', 'K1_exact_endpoint_preservation', t02_k1_exact_preservation)",
+        "line": 616
+      },
+      {
+        "call": "run_test('D12-T03', 'K2_K4_shared_victim_and_union_semantics', t03_k2_k4_shared_victim)",
+        "line": 621
+      },
+      {
+        "call": "run_test('D12-T04', 'cross_route_role_overlap', t04_cross_route_role_overlap)",
+        "line": 626
+      },
+      {
+        "call": "run_test('D12-T05', 'infeasible_endpoint_passthrough', t05_infeasible_endpoint_passthrough)",
+        "line": 631
+      },
+      {
+        "call": "run_test('D12-T06', 'global_graph_count_source_victim_immutability', t06_global_immutability_property)",
+        "line": 636
+      },
+      {
+        "call": "run_test('D12-T07', 'D8_calibration_provenance', t07_calibration_provenance)",
+        "line": 641
+      },
+      {
+        "call": "run_test('D12-T08', 'deterministic_repeat', t08_deterministic_repeat)",
+        "line": 646
+      },
+      {
+        "call": "run_test('D12-T09', 'no_validation_or_test_access', t09_no_validation_or_test_access)",
+        "line": 651
+      },
+      {
+        "call": "atomic_json(test_results_path, {'stage': STAGE, 'status': 'PASS', 'tests': results})",
+        "line": 686
+      },
+      {
+        "call": "atomic_json(report_path, report)",
+        "line": 790
+      },
+      {
+        "call": "atomic_json(lock_path, lock)",
+        "line": 806
+      },
+      {
+        "call": "AssertionError(message)",
+        "line": 69
+      },
+      {
+        "call": "candidate.decode_eplr_v2(graph_logit=10.0, count_logits=count_logits_for_k(k), source_logits=logits_for_mask(int(hypothesis.source_mask)), transit_logits=logits_for_mask(int(hypothesis.transit_mask)), victim_logits=logits_for_mask(int(hypothesis.victim_mask)), path_logits=logits_for_mask(int(hypothesis.path_mask)), config=config)",
+        "line": 281
+      },
+      {
+        "call": "candidate.decode_eplr_v2(graph_logit=-10.0, count_logits=count_logits_for_k(4), source_logits=np.ones(16), transit_logits=np.ones(16), victim_logits=np.ones(16), path_logits=np.ones(16), config=config)",
+        "line": 300
+      },
+      {
+        "call": "decode_for_hypothesis(route, 1)",
+        "line": 325
+      },
+      {
+        "call": "decode_for_hypothesis(desired, 2)",
+        "line": 402
+      },
+      {
+        "call": "json.dumps(payload, indent=2, sort_keys=True)",
+        "line": 45
+      },
+      {
+        "call": "decode_for_hypothesis(hypothesis, k)",
+        "line": 368
+      },
+      {
+        "call": "AssertionError('repair solver must not be called')",
+        "line": 423
+      },
+      {
+        "call": "candidate.decode_eplr_v2(graph_logit=10.0, count_logits=count_logits_for_k(1), source_logits=logits_for_mask(raw_source_mask), transit_logits=logits_for_mask(raw_transit_mask), victim_logits=logits_for_mask(raw_victim_mask), path_logits=logits_for_mask(raw_path_mask), config=config)",
+        "line": 435
+      },
+      {
+        "call": "candidate.decode_eplr_v2(graph_logit=graph_logit, count_logits=count_logits, source_logits=source_logits, transit_logits=transit_logits, victim_logits=victim_logits, path_logits=path_logits, config=config)",
+        "line": 499
+      },
+      {
+        "call": "decode_for_hypothesis(hypothesis, 2)",
+        "line": 588
+      }
+    ],
+    "classes": [],
+    "functions": [
+      {
+        "end_line": 31,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 25,
+        "name": "parse_args",
+        "positional": [],
+        "returns": "argparse.Namespace",
+        "vararg": null
+      },
+      {
+        "end_line": 39,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 34,
+        "name": "sha256_file",
+        "positional": [
+          {
+            "annotation": "Path",
+            "default": null,
+            "name": "path"
+          }
+        ],
+        "returns": "str",
+        "vararg": null
+      },
+      {
+        "end_line": 48,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 42,
+        "name": "atomic_json",
+        "positional": [
+          {
+            "annotation": "Path",
+            "default": null,
+            "name": "path"
+          },
+          {
+            "annotation": "Any",
+            "default": null,
+            "name": "payload"
+          }
+        ],
+        "returns": "None",
+        "vararg": null
+      },
+      {
+        "end_line": 54,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 51,
+        "name": "atomic_text",
+        "positional": [
+          {
+            "annotation": "Path",
+            "default": null,
+            "name": "path"
+          },
+          {
+            "annotation": "str",
+            "default": null,
+            "name": "value"
+          }
+        ],
+        "returns": "None",
+        "vararg": null
+      },
+      {
+        "end_line": 64,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 57,
+        "name": "import_source",
+        "positional": [
+          {
+            "annotation": "Path",
+            "default": null,
+            "name": "path"
+          },
+          {
+            "annotation": "str",
+            "default": null,
+            "name": "name"
+          }
+        ],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 69,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 67,
+        "name": "require",
+        "positional": [
+          {
+            "annotation": "bool",
+            "default": null,
+            "name": "condition"
+          },
+          {
+            "annotation": "str",
+            "default": null,
+            "name": "message"
+          }
+        ],
+        "returns": "None",
+        "vararg": null
+      },
+      {
+        "end_line": 76,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 72,
+        "name": "mask_from_indices",
+        "positional": [
+          {
+            "annotation": "list[int] | tuple[int, ...]",
+            "default": null,
+            "name": "indices"
+          }
+        ],
+        "returns": "int",
+        "vararg": null
+      },
+      {
+        "end_line": 91,
+        "kwarg": null,
+        "kwonly": [
+          {
+            "annotation": "float",
+            "default": "8.0",
+            "name": "positive",
+            "required": false
+          },
+          {
+            "annotation": "float",
+            "default": "-8.0",
+            "name": "negative",
+            "required": false
+          }
+        ],
+        "line": 79,
+        "name": "logits_for_mask",
+        "positional": [
+          {
+            "annotation": "int",
+            "default": null,
+            "name": "mask"
+          }
+        ],
+        "returns": "np.ndarray",
+        "vararg": null
+      },
+      {
+        "end_line": 97,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 94,
+        "name": "count_logits_for_k",
+        "positional": [
+          {
+            "annotation": "int",
+            "default": null,
+            "name": "k"
+          }
+        ],
+        "returns": "np.ndarray",
+        "vararg": null
+      },
+      {
+        "end_line": 846,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 100,
+        "name": "main",
+        "positional": [],
+        "returns": "int",
+        "vararg": null
+      },
+      {
+        "end_line": 278,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 252,
+        "name": "run_test",
+        "positional": [
+          {
+            "annotation": "str",
+            "default": null,
+            "name": "test_id"
+          },
+          {
+            "annotation": "str",
+            "default": null,
+            "name": "name"
+          },
+          {
+            "annotation": null,
+            "default": null,
+            "name": "function"
+          }
+        ],
+        "returns": "None",
+        "vararg": null
+      },
+      {
+        "end_line": 297,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 280,
+        "name": "decode_for_hypothesis",
+        "positional": [
+          {
+            "annotation": null,
+            "default": null,
+            "name": "hypothesis"
+          },
+          {
+            "annotation": "int",
+            "default": null,
+            "name": "k"
+          }
+        ],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 321,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 299,
+        "name": "t01_inactive_raw",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 352,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 323,
+        "name": "t02_k1_exact_preservation",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 392,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 354,
+        "name": "t03_k2_k4_shared_victim",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 415,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 394,
+        "name": "t04_cross_route_role_overlap",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 473,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 417,
+        "name": "t05_infeasible_endpoint_passthrough",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 549,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 475,
+        "name": "t06_global_immutability_property",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 577,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 551,
+        "name": "t07_calibration_provenance",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 598,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 579,
+        "name": "t08_deterministic_repeat",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 613,
+        "kwarg": null,
+        "kwonly": [],
+        "line": 600,
+        "name": "t09_no_validation_or_test_access",
+        "positional": [],
+        "returns": null,
+        "vararg": null
+      },
+      {
+        "end_line": 423,
+        "kwarg": "kwargs",
+        "kwonly": [],
+        "line": 421,
+        "name": "forbidden_repair",
+        "positional": [],
+        "returns": null,
+        "vararg": "args"
+      }
+    ],
+    "member": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d12_eplr_v2_implementation_and_synthetic_tests.py"
+  },
+  "D12_source": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d12_eplr_v2_implementation_and_synthetic_tests.py",
+  "D12_source_blocks": [
+    "0015: import numpy as np\n0016: \n0017: \n0018: STAGE = (\n0019:     \"V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_\"\n0020:     \"AND_SYNTHETIC_TESTS\"\n0021: )\n0022: SEED = 107\n0023: \n0024: \n0025: def parse_args() -> argparse.Namespace:",
+    "0064:     return module\n0065: \n0066: \n0067: def require(condition: bool, message: str) -> None:\n0068:     if not condition:\n0069:         raise AssertionError(message)\n0070: \n0071: \n0072: def mask_from_indices(indices: list[int] | tuple[int, ...]) -> int:\n0073:     mask = 0\n0074:     for index in indices:",
+    "0112:     lock_path = output_dir / f\"{STAGE}_LOCK.json\"\n0113:     complete_path = output_dir / f\"{STAGE}_COMPLETE\"\n0114:     frozen_source_path = output_dir / (\n0115:         \"V5_P3_EPLR_V2_FROZEN_IMPLEMENTATION.py\"\n0116:     )\n0117:     test_results_path = output_dir / (\n0118:         \"V5_P3_D12_EPLR_V2_SYNTHETIC_TEST_RESULTS.json\"\n0119:     )\n0120: \n0121:     d11_dir = repo / \"reports/v5/p3_d11_eplr_v2_semantic_freeze\"\n0122:     d11_report_path = d11_dir / (",
+    "0113:     complete_path = output_dir / f\"{STAGE}_COMPLETE\"\n0114:     frozen_source_path = output_dir / (\n0115:         \"V5_P3_EPLR_V2_FROZEN_IMPLEMENTATION.py\"\n0116:     )\n0117:     test_results_path = output_dir / (\n0118:         \"V5_P3_D12_EPLR_V2_SYNTHETIC_TEST_RESULTS.json\"\n0119:     )\n0120: \n0121:     d11_dir = repo / \"reports/v5/p3_d11_eplr_v2_semantic_freeze\"\n0122:     d11_report_path = d11_dir / (\n0123:         \"V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_\"",
+    "0118:         \"V5_P3_D12_EPLR_V2_SYNTHETIC_TEST_RESULTS.json\"\n0119:     )\n0120: \n0121:     d11_dir = repo / \"reports/v5/p3_d11_eplr_v2_semantic_freeze\"\n0122:     d11_report_path = d11_dir / (\n0123:         \"V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_\"\n0124:         \"SEMANTIC_FREEZE_REPORT.json\"\n0125:     )\n0126:     d11_lock_path = d11_dir / (\n0127:         \"V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_\"\n0128:         \"SEMANTIC_FREEZE_LOCK.json\"",
+    "0122:     d11_report_path = d11_dir / (\n0123:         \"V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_\"\n0124:         \"SEMANTIC_FREEZE_REPORT.json\"\n0125:     )\n0126:     d11_lock_path = d11_dir / (\n0127:         \"V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_\"\n0128:         \"SEMANTIC_FREEZE_LOCK.json\"\n0129:     )\n0130:     d11_semantic_path = d11_dir / (\n0131:         \"V5_P3_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_CONTRACT.json\"\n0132:     )",
+    "0126:     d11_lock_path = d11_dir / (\n0127:         \"V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_\"\n0128:         \"SEMANTIC_FREEZE_LOCK.json\"\n0129:     )\n0130:     d11_semantic_path = d11_dir / (\n0131:         \"V5_P3_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_CONTRACT.json\"\n0132:     )\n0133:     d11_output_path = d11_dir / (\n0134:         \"V5_P3_EPLR_V2_SOFTWARE_OUTPUT_CONTRACT.json\"\n0135:     )\n0136:     d11_test_matrix_path = d11_dir / (",
+    "0132:     )\n0133:     d11_output_path = d11_dir / (\n0134:         \"V5_P3_EPLR_V2_SOFTWARE_OUTPUT_CONTRACT.json\"\n0135:     )\n0136:     d11_test_matrix_path = d11_dir / (\n0137:         \"V5_P3_EPLR_V2_D12_SYNTHETIC_TEST_MATRIX.json\"\n0138:     )\n0139:     d11_future_protocol_path = d11_dir / (\n0140:         \"V5_P3_EPLR_V2_FUTURE_INDEPENDENT_VALIDATION_PROTOCOL.json\"\n0141:     )\n0142: ",
+    "0140:         \"V5_P3_EPLR_V2_FUTURE_INDEPENDENT_VALIDATION_PROTOCOL.json\"\n0141:     )\n0142: \n0143:     d8_dir = (\n0144:         repo\n0145:         / \"reports/v5/p3_d8_eplr_v1_implementation_and_train_calibration\"\n0146:     )\n0147:     d8_lock_path = d8_dir / (\n0148:         \"V5_P3_D8_EPLR_V1_DETERMINISTIC_IMPLEMENTATION_\"\n0149:         \"AND_A_TRAIN_ONLY_CALIBRATION_LOCK.json\"\n0150:     )",
+    "0144:         repo\n0145:         / \"reports/v5/p3_d8_eplr_v1_implementation_and_train_calibration\"\n0146:     )\n0147:     d8_lock_path = d8_dir / (\n0148:         \"V5_P3_D8_EPLR_V1_DETERMINISTIC_IMPLEMENTATION_\"\n0149:         \"AND_A_TRAIN_ONLY_CALIBRATION_LOCK.json\"\n0150:     )\n0151: \n0152:     route_library_path = repo / \"src/decoders/v5_xy_route_library.py\"\n0153:     v1_path = repo / \"src/decoders/v5_p3_eplr_v1.py\"\n0154:     v1_config_path = (",
+    "0150:     )\n0151: \n0152:     route_library_path = repo / \"src/decoders/v5_xy_route_library.py\"\n0153:     v1_path = repo / \"src/decoders/v5_p3_eplr_v1.py\"\n0154:     v1_config_path = (\n0155:         repo / \"src/decoders/v5_p3_eplr_v1_calibration.json\"\n0156:     )\n0157:     candidate_path = package_dir / \"v5_p3_eplr_v2.py\"\n0158:     installed_path = repo / \"src/decoders/v5_p3_eplr_v2.py\"\n0159:     installed_config_path = (\n0160:         repo / \"src/decoders/v5_p3_eplr_v2_calibration.json\"",
+    "0155:         repo / \"src/decoders/v5_p3_eplr_v1_calibration.json\"\n0156:     )\n0157:     candidate_path = package_dir / \"v5_p3_eplr_v2.py\"\n0158:     installed_path = repo / \"src/decoders/v5_p3_eplr_v2.py\"\n0159:     installed_config_path = (\n0160:         repo / \"src/decoders/v5_p3_eplr_v2_calibration.json\"\n0161:     )\n0162: \n0163:     required = [\n0164:         d11_report_path,\n0165:         d11_lock_path,",
+    "0182:     d8_lock = json.loads(d8_lock_path.read_text(encoding=\"utf-8\"))\n0183:     config_payload = json.loads(\n0184:         v1_config_path.read_text(encoding=\"utf-8\")\n0185:     )\n0186: \n0187:     require(d11.get(\"status\") == \"PASS\", \"D11 is not PASS\")\n0188:     require(\n0189:         d11_lock.get(\"report_sha256\") == sha256_file(d11_report_path),\n0190:         \"D11 report/lock mismatch\",\n0191:     )\n0192:     require(",
+    "0213:         d11[\"decision\"].get(\"D12_authorized\") is True,\n0214:         \"D11 did not authorize D12\",\n0215:     )\n0216:     require(\n0217:         d11[\"decision\"].get(\"A_validation_replay_authorized\") is False,\n0218:         \"D11 unexpectedly authorizes A-validation replay\",\n0219:     )\n0220:     require(\n0221:         d8_lock.get(\"config_sha256\") == sha256_file(v1_config_path),\n0222:         \"D8 calibration/config mismatch\",\n0223:     )",
+    "0217:         d11[\"decision\"].get(\"A_validation_replay_authorized\") is False,\n0218:         \"D11 unexpectedly authorizes A-validation replay\",\n0219:     )\n0220:     require(\n0221:         d8_lock.get(\"config_sha256\") == sha256_file(v1_config_path),\n0222:         \"D8 calibration/config mismatch\",\n0223:     )\n0224:     require(\n0225:         float(config_payload[\"transit_weight\"]) == 1.0,\n0226:         \"transit weight changed\",\n0227:     )",
+    "0254:             details = function() or {}\n0255:             results.append(\n0256:                 {\n0257:                     \"id\": test_id,\n0258:                     \"name\": name,\n0259:                     \"status\": \"PASS\",\n0260:                     \"details\": details,\n0261:                 }\n0262:             )\n0263:             print(f\"{test_id} {name}=PASS\", flush=True)\n0264:         except Exception as exc:",
+    "0258:                     \"name\": name,\n0259:                     \"status\": \"PASS\",\n0260:                     \"details\": details,\n0261:                 }\n0262:             )\n0263:             print(f\"{test_id} {name}=PASS\", flush=True)\n0264:         except Exception as exc:\n0265:             results.append(\n0266:                 {\n0267:                     \"id\": test_id,\n0268:                     \"name\": name,",
+    "0276:                 flush=True,\n0277:             )\n0278:             raise\n0279: \n0280:     def decode_for_hypothesis(hypothesis, k: int):\n0281:         return candidate.decode_eplr_v2(\n0282:             graph_logit=10.0,\n0283:             count_logits=count_logits_for_k(k),\n0284:             source_logits=logits_for_mask(\n0285:                 int(hypothesis.source_mask)\n0286:             ),",
+    "0295:             ),\n0296:             config=config,\n0297:         )\n0298: \n0299:     def t01_inactive_raw():\n0300:         result = candidate.decode_eplr_v2(\n0301:             graph_logit=-10.0,\n0302:             count_logits=count_logits_for_k(4),\n0303:             source_logits=np.ones(16),\n0304:             transit_logits=np.ones(16),\n0305:             victim_logits=np.ones(16),",
+    "0361:             hypothesis = routes.combine_route_ids(\n0362:                 [\n0363:                     routes.route_id_for(source, 15)\n0364:                     for source in sources\n0365:                 ],\n0366:                 expected_k=k,\n0367:             )\n0368:             result = decode_for_hypothesis(hypothesis, k)\n0369:             require(\n0370:                 result.effective_attacker_count == k,\n0371:                 f\"K{k} count\",",
+    "0395:         desired = routes.combine_route_ids(\n0396:             [\n0397:                 routes.route_id_for(0, 3),\n0398:                 routes.route_id_for(1, 5),\n0399:             ],\n0400:             expected_k=2,\n0401:         )\n0402:         result = decode_for_hypothesis(desired, 2)\n0403:         require(result.route_certified, \"overlap route not certified\")\n0404:         require(\n0405:             bool(result.selected_source_bitmap & (1 << 1)),",
+    "0412:         return {\n0413:             \"overlap_router\": 1,\n0414:             \"route_ids\": list(result.selected_route_ids),\n0415:         }\n0416: \n0417:     def t05_infeasible_endpoint_passthrough():\n0418:         repair_called = {\"value\": False}\n0419:         original = v1.repair_endpoints_with_milp\n0420: \n0421:         def forbidden_repair(*args, **kwargs):\n0422:             repair_called[\"value\"] = True",
+    "0418:         repair_called = {\"value\": False}\n0419:         original = v1.repair_endpoints_with_milp\n0420: \n0421:         def forbidden_repair(*args, **kwargs):\n0422:             repair_called[\"value\"] = True\n0423:             raise AssertionError(\"repair solver must not be called\")\n0424: \n0425:         v1.repair_endpoints_with_milp = forbidden_repair\n0426:         try:\n0427:             raw_source_mask = (1 << 0) | (1 << 1)\n0428:             raw_transit_mask = (1 << 2) | (1 << 6)",
+    "0430:             raw_path_mask = (\n0431:                 raw_source_mask\n0432:                 | raw_transit_mask\n0433:                 | raw_victim_mask\n0434:             )\n0435:             result = candidate.decode_eplr_v2(\n0436:                 graph_logit=10.0,\n0437:                 count_logits=count_logits_for_k(1),\n0438:                 source_logits=logits_for_mask(raw_source_mask),\n0439:                 transit_logits=logits_for_mask(raw_transit_mask),\n0440:                 victim_logits=logits_for_mask(raw_victim_mask),",
+    "0451:         )\n0452:         require(result.route_certified is False, \"unresolved certified\")\n0453:         require(result.selected_route_ids == (), \"unresolved routes\")\n0454:         require(\n0455:             result.selected_source_bitmap == raw_source_mask,\n0456:             \"source not passed through\",\n0457:         )\n0458:         require(\n0459:             result.selected_transit_bitmap == raw_transit_mask,\n0460:             \"transit not passed through\",\n0461:         )",
+    "0455:             result.selected_source_bitmap == raw_source_mask,\n0456:             \"source not passed through\",\n0457:         )\n0458:         require(\n0459:             result.selected_transit_bitmap == raw_transit_mask,\n0460:             \"transit not passed through\",\n0461:         )\n0462:         require(\n0463:             result.selected_victim_bitmap == raw_victim_mask,\n0464:             \"victim not passed through\",\n0465:         )",
+    "0459:             result.selected_transit_bitmap == raw_transit_mask,\n0460:             \"transit not passed through\",\n0461:         )\n0462:         require(\n0463:             result.selected_victim_bitmap == raw_victim_mask,\n0464:             \"victim not passed through\",\n0465:         )\n0466:         require(\n0467:             result.selected_path_bitmap == raw_path_mask,\n0468:             \"path not passed through\",\n0469:         )",
+    "0463:             result.selected_victim_bitmap == raw_victim_mask,\n0464:             \"victim not passed through\",\n0465:         )\n0466:         require(\n0467:             result.selected_path_bitmap == raw_path_mask,\n0468:             \"path not passed through\",\n0469:         )\n0470:         return {\n0471:             \"status\": result.decoder_status,\n0472:             \"repair_solver_called\": repair_called[\"value\"],\n0473:         }",
+    "0494:             )\n0495:             path_logits = np.asarray(\n0496:                 [random.uniform(-5.0, 5.0) for _ in range(16)],\n0497:                 dtype=np.float64,\n0498:             )\n0499:             result = candidate.decode_eplr_v2(\n0500:                 graph_logit=graph_logit,\n0501:                 count_logits=count_logits,\n0502:                 source_logits=source_logits,\n0503:                 transit_logits=transit_logits,\n0504:                 victim_logits=victim_logits,",
+    "0504:                 victim_logits=victim_logits,\n0505:                 path_logits=path_logits,\n0506:                 config=config,\n0507:             )\n0508: \n0509:             expected_graph = int(\n0510:                 v1.stable_sigmoid(graph_logit)\n0511:                 >= config.graph_threshold\n0512:             )\n0513:             expected_count = int(np.argmax(count_logits)) + 1\n0514:             expected_source = v1.mask_from_probabilities(",
+    "0508: \n0509:             expected_graph = int(\n0510:                 v1.stable_sigmoid(graph_logit)\n0511:                 >= config.graph_threshold\n0512:             )\n0513:             expected_count = int(np.argmax(count_logits)) + 1\n0514:             expected_source = v1.mask_from_probabilities(\n0515:                 v1.stable_sigmoid_array(source_logits),\n0516:                 config.endpoint_threshold,\n0517:             )\n0518:             expected_victim = v1.mask_from_probabilities(",
+    "0509:             expected_graph = int(\n0510:                 v1.stable_sigmoid(graph_logit)\n0511:                 >= config.graph_threshold\n0512:             )\n0513:             expected_count = int(np.argmax(count_logits)) + 1\n0514:             expected_source = v1.mask_from_probabilities(\n0515:                 v1.stable_sigmoid_array(source_logits),\n0516:                 config.endpoint_threshold,\n0517:             )\n0518:             expected_victim = v1.mask_from_probabilities(\n0519:                 v1.stable_sigmoid_array(victim_logits),",
+    "0513:             expected_count = int(np.argmax(count_logits)) + 1\n0514:             expected_source = v1.mask_from_probabilities(\n0515:                 v1.stable_sigmoid_array(source_logits),\n0516:                 config.endpoint_threshold,\n0517:             )\n0518:             expected_victim = v1.mask_from_probabilities(\n0519:                 v1.stable_sigmoid_array(victim_logits),\n0520:                 config.endpoint_threshold,\n0521:             )\n0522: \n0523:             require(",
+    "0519:                 v1.stable_sigmoid_array(victim_logits),\n0520:                 config.endpoint_threshold,\n0521:             )\n0522: \n0523:             require(\n0524:                 result.raw_graph_prediction == expected_graph,\n0525:                 \"graph immutability\",\n0526:             )\n0527:             require(\n0528:                 result.raw_attacker_count_candidate == expected_count,\n0529:                 \"count candidate immutability\",",
+    "0523:             require(\n0524:                 result.raw_graph_prediction == expected_graph,\n0525:                 \"graph immutability\",\n0526:             )\n0527:             require(\n0528:                 result.raw_attacker_count_candidate == expected_count,\n0529:                 \"count candidate immutability\",\n0530:             )\n0531:             if expected_graph:\n0532:                 require(\n0533:                     result.effective_attacker_count == expected_count,",
+    "0526:             )\n0527:             require(\n0528:                 result.raw_attacker_count_candidate == expected_count,\n0529:                 \"count candidate immutability\",\n0530:             )\n0531:             if expected_graph:\n0532:                 require(\n0533:                     result.effective_attacker_count == expected_count,\n0534:                     \"active count immutability\",\n0535:                 )\n0536:                 require(",
+    "0528:                 result.raw_attacker_count_candidate == expected_count,\n0529:                 \"count candidate immutability\",\n0530:             )\n0531:             if expected_graph:\n0532:                 require(\n0533:                     result.effective_attacker_count == expected_count,\n0534:                     \"active count immutability\",\n0535:                 )\n0536:                 require(\n0537:                     result.selected_source_bitmap == expected_source,\n0538:                     \"source immutability\",",
+    "0532:                 require(\n0533:                     result.effective_attacker_count == expected_count,\n0534:                     \"active count immutability\",\n0535:                 )\n0536:                 require(\n0537:                     result.selected_source_bitmap == expected_source,\n0538:                     \"source immutability\",\n0539:                 )\n0540:                 require(\n0541:                     result.selected_victim_bitmap == expected_victim,\n0542:                     \"victim immutability\",",
+    "0536:                 require(\n0537:                     result.selected_source_bitmap == expected_source,\n0538:                     \"source immutability\",\n0539:                 )\n0540:                 require(\n0541:                     result.selected_victim_bitmap == expected_victim,\n0542:                     \"victim immutability\",\n0543:                 )\n0544:             else:\n0545:                 require(\n0546:                     result.effective_attacker_count == 0,",
+    "0546:                     result.effective_attacker_count == 0,\n0547:                     \"inactive effective count\",\n0548:                 )\n0549:         return {\"random_checks\": checks}\n0550: \n0551:     def t07_calibration_provenance():\n0552:         require(\n0553:             float(config_payload[\"transit_weight\"]) == 1.0,\n0554:             \"transit weight\",\n0555:         )\n0556:         require(",
+    "0580:         hypothesis = routes.combine_route_ids(\n0581:             [\n0582:                 routes.route_id_for(0, 15),\n0583:                 routes.route_id_for(3, 12),\n0584:             ],\n0585:             expected_k=2,\n0586:         )\n0587:         outputs = [\n0588:             decode_for_hypothesis(hypothesis, 2)\n0589:             for _ in range(10)\n0590:         ]",
+    "0628:         \"cross_route_role_overlap\",\n0629:         t04_cross_route_role_overlap,\n0630:     )\n0631:     run_test(\n0632:         \"D12-T05\",\n0633:         \"infeasible_endpoint_passthrough\",\n0634:         t05_infeasible_endpoint_passthrough,\n0635:     )\n0636:     run_test(\n0637:         \"D12-T06\",\n0638:         \"global_graph_count_source_victim_immutability\",",
+    "0629:         t04_cross_route_role_overlap,\n0630:     )\n0631:     run_test(\n0632:         \"D12-T05\",\n0633:         \"infeasible_endpoint_passthrough\",\n0634:         t05_infeasible_endpoint_passthrough,\n0635:     )\n0636:     run_test(\n0637:         \"D12-T06\",\n0638:         \"global_graph_count_source_victim_immutability\",\n0639:         t06_global_immutability_property,",
+    "0638:         \"global_graph_count_source_victim_immutability\",\n0639:         t06_global_immutability_property,\n0640:     )\n0641:     run_test(\n0642:         \"D12-T07\",\n0643:         \"D8_calibration_provenance\",\n0644:         t07_calibration_provenance,\n0645:     )\n0646:     run_test(\n0647:         \"D12-T08\",\n0648:         \"deterministic_repeat\",",
+    "0639:         t06_global_immutability_property,\n0640:     )\n0641:     run_test(\n0642:         \"D12-T07\",\n0643:         \"D8_calibration_provenance\",\n0644:         t07_calibration_provenance,\n0645:     )\n0646:     run_test(\n0647:         \"D12-T08\",\n0648:         \"deterministic_repeat\",\n0649:         t08_deterministic_repeat,",
+    "0653:         \"no_validation_or_test_access\",\n0654:         t09_no_validation_or_test_access,\n0655:     )\n0656: \n0657:     require(\n0658:         all(result[\"status\"] == \"PASS\" for result in results),\n0659:         \"one or more D12 tests failed\",\n0660:     )\n0661: \n0662:     shutil.copy2(candidate_path, frozen_source_path)\n0663: ",
+    "0654:         t09_no_validation_or_test_access,\n0655:     )\n0656: \n0657:     require(\n0658:         all(result[\"status\"] == \"PASS\" for result in results),\n0659:         \"one or more D12 tests failed\",\n0660:     )\n0661: \n0662:     shutil.copy2(candidate_path, frozen_source_path)\n0663: \n0664:     # Install V2 only after every synthetic and provenance check passes.",
+    "0659:         \"one or more D12 tests failed\",\n0660:     )\n0661: \n0662:     shutil.copy2(candidate_path, frozen_source_path)\n0663: \n0664:     # Install V2 only after every synthetic and provenance check passes.\n0665:     for source, destination in (\n0666:         (candidate_path, installed_path),\n0667:         (v1_config_path, installed_config_path),\n0668:     ):\n0669:         destination.parent.mkdir(parents=True, exist_ok=True)",
+    "0682:             sha256_file(destination) == sha256_file(source),\n0683:             f\"installed SHA mismatch: {destination}\",\n0684:         )\n0685: \n0686:     atomic_json(\n0687:         test_results_path,\n0688:         {\n0689:             \"stage\": STAGE,\n0690:             \"status\": \"PASS\",\n0691:             \"tests\": results,\n0692:         },",
+    "0685: \n0686:     atomic_json(\n0687:         test_results_path,\n0688:         {\n0689:             \"stage\": STAGE,\n0690:             \"status\": \"PASS\",\n0691:             \"tests\": results,\n0692:         },\n0693:     )\n0694: \n0695:     report = {",
+    "0692:         },\n0693:     )\n0694: \n0695:     report = {\n0696:         \"stage\": STAGE,\n0697:         \"status\": \"PASS\",\n0698:         \"created_utc\": datetime.now(timezone.utc).isoformat(),\n0699:         \"scope\": (\n0700:             \"Implement and synthetic-test EPLR-V2 preserve-or-passthrough \"\n0701:             \"without loading any neural model, training split, Tranche-A \"\n0702:             \"validation artifact, or sealed test artifact.\"",
+    "0695:     report = {\n0696:         \"stage\": STAGE,\n0697:         \"status\": \"PASS\",\n0698:         \"created_utc\": datetime.now(timezone.utc).isoformat(),\n0699:         \"scope\": (\n0700:             \"Implement and synthetic-test EPLR-V2 preserve-or-passthrough \"\n0701:             \"without loading any neural model, training split, Tranche-A \"\n0702:             \"validation artifact, or sealed test artifact.\"\n0703:         ),\n0704:         \"tests\": {\n0705:             \"total\": len(results),",
+    "0701:             \"without loading any neural model, training split, Tranche-A \"\n0702:             \"validation artifact, or sealed test artifact.\"\n0703:         ),\n0704:         \"tests\": {\n0705:             \"total\": len(results),\n0706:             \"passed\": len(results),\n0707:             \"failed\": 0,\n0708:             \"results_path\": str(test_results_path),\n0709:             \"results_sha256\": sha256_file(test_results_path),\n0710:         },\n0711:         \"implementation\": {",
+    "0702:             \"validation artifact, or sealed test artifact.\"\n0703:         ),\n0704:         \"tests\": {\n0705:             \"total\": len(results),\n0706:             \"passed\": len(results),\n0707:             \"failed\": 0,\n0708:             \"results_path\": str(test_results_path),\n0709:             \"results_sha256\": sha256_file(test_results_path),\n0710:         },\n0711:         \"implementation\": {\n0712:             \"installed_path\": str(installed_path),",
+    "0703:         ),\n0704:         \"tests\": {\n0705:             \"total\": len(results),\n0706:             \"passed\": len(results),\n0707:             \"failed\": 0,\n0708:             \"results_path\": str(test_results_path),\n0709:             \"results_sha256\": sha256_file(test_results_path),\n0710:         },\n0711:         \"implementation\": {\n0712:             \"installed_path\": str(installed_path),\n0713:             \"installed_sha256\": sha256_file(installed_path),",
+    "0704:         \"tests\": {\n0705:             \"total\": len(results),\n0706:             \"passed\": len(results),\n0707:             \"failed\": 0,\n0708:             \"results_path\": str(test_results_path),\n0709:             \"results_sha256\": sha256_file(test_results_path),\n0710:         },\n0711:         \"implementation\": {\n0712:             \"installed_path\": str(installed_path),\n0713:             \"installed_sha256\": sha256_file(installed_path),\n0714:             \"frozen_source_path\": str(frozen_source_path),",
+    "0713:             \"installed_sha256\": sha256_file(installed_path),\n0714:             \"frozen_source_path\": str(frozen_source_path),\n0715:             \"frozen_source_sha256\": sha256_file(\n0716:                 frozen_source_path\n0717:             ),\n0718:             \"calibration_path\": str(installed_config_path),\n0719:             \"calibration_sha256\": sha256_file(\n0720:                 installed_config_path\n0721:             ),\n0722:             \"calibration_identical_to_D8\": (\n0723:                 sha256_file(installed_config_path)",
+    "0714:             \"frozen_source_path\": str(frozen_source_path),\n0715:             \"frozen_source_sha256\": sha256_file(\n0716:                 frozen_source_path\n0717:             ),\n0718:             \"calibration_path\": str(installed_config_path),\n0719:             \"calibration_sha256\": sha256_file(\n0720:                 installed_config_path\n0721:             ),\n0722:             \"calibration_identical_to_D8\": (\n0723:                 sha256_file(installed_config_path)\n0724:                 == sha256_file(v1_config_path)",
+    "0717:             ),\n0718:             \"calibration_path\": str(installed_config_path),\n0719:             \"calibration_sha256\": sha256_file(\n0720:                 installed_config_path\n0721:             ),\n0722:             \"calibration_identical_to_D8\": (\n0723:                 sha256_file(installed_config_path)\n0724:                 == sha256_file(v1_config_path)\n0725:             ),\n0726:         },\n0727:         \"verified_invariants\": {",
+    "0727:         \"verified_invariants\": {\n0728:             \"graph_equals_Raw\": True,\n0729:             \"count_candidate_equals_Raw\": True,\n0730:             \"source_equals_Raw_on_all_active_rows\": True,\n0731:             \"victim_equals_Raw_on_all_active_rows\": True,\n0732:             \"unresolved_all_role_masks_passthrough\": True,\n0733:             \"unresolved_route_certificate_false\": True,\n0734:             \"endpoint_repair_solver_called\": False,\n0735:             \"shared_victims_supported\": True,\n0736:             \"cross_route_role_overlap_supported\": True,\n0737:             \"deterministic\": True,",
+    "0774:             \"D8_lock_sha256\": sha256_file(d8_lock_path),\n0775:             \"route_library_sha256\": sha256_file(\n0776:                 route_library_path\n0777:             ),\n0778:             \"EPLR_V1_source_sha256\": sha256_file(v1_path),\n0779:             \"D8_calibration_sha256\": sha256_file(\n0780:                 v1_config_path\n0781:             ),\n0782:             \"candidate_source_sha256\": sha256_file(\n0783:                 candidate_path\n0784:             ),",
+    "0789:     }\n0790:     atomic_json(report_path, report)\n0791: \n0792:     lock = {\n0793:         \"stage\": STAGE,\n0794:         \"status\": \"PASS\",\n0795:         \"report_sha256\": sha256_file(report_path),\n0796:         \"test_results_sha256\": sha256_file(test_results_path),\n0797:         \"EPLR_V2_source_sha256\": sha256_file(installed_path),\n0798:         \"EPLR_V2_calibration_sha256\": sha256_file(\n0799:             installed_config_path",
+    "0791: \n0792:     lock = {\n0793:         \"stage\": STAGE,\n0794:         \"status\": \"PASS\",\n0795:         \"report_sha256\": sha256_file(report_path),\n0796:         \"test_results_sha256\": sha256_file(test_results_path),\n0797:         \"EPLR_V2_source_sha256\": sha256_file(installed_path),\n0798:         \"EPLR_V2_calibration_sha256\": sha256_file(\n0799:             installed_config_path\n0800:         ),\n0801:         \"synthetic_tests\": len(results),",
+    "0793:         \"stage\": STAGE,\n0794:         \"status\": \"PASS\",\n0795:         \"report_sha256\": sha256_file(report_path),\n0796:         \"test_results_sha256\": sha256_file(test_results_path),\n0797:         \"EPLR_V2_source_sha256\": sha256_file(installed_path),\n0798:         \"EPLR_V2_calibration_sha256\": sha256_file(\n0799:             installed_config_path\n0800:         ),\n0801:         \"synthetic_tests\": len(results),\n0802:         \"synthetic_tests_passed\": len(results),\n0803:         \"A_validation_replay_authorized\": False,",
+    "0796:         \"test_results_sha256\": sha256_file(test_results_path),\n0797:         \"EPLR_V2_source_sha256\": sha256_file(installed_path),\n0798:         \"EPLR_V2_calibration_sha256\": sha256_file(\n0799:             installed_config_path\n0800:         ),\n0801:         \"synthetic_tests\": len(results),\n0802:         \"synthetic_tests_passed\": len(results),\n0803:         \"A_validation_replay_authorized\": False,\n0804:         \"A_test_data_loaded\": False,\n0805:     }\n0806:     atomic_json(lock_path, lock)",
+    "0797:         \"EPLR_V2_source_sha256\": sha256_file(installed_path),\n0798:         \"EPLR_V2_calibration_sha256\": sha256_file(\n0799:             installed_config_path\n0800:         ),\n0801:         \"synthetic_tests\": len(results),\n0802:         \"synthetic_tests_passed\": len(results),\n0803:         \"A_validation_replay_authorized\": False,\n0804:         \"A_test_data_loaded\": False,\n0805:     }\n0806:     atomic_json(lock_path, lock)\n0807:     atomic_text(complete_path, f\"{STAGE}_COMPLETE\\n\")",
+    "0805:     }\n0806:     atomic_json(lock_path, lock)\n0807:     atomic_text(complete_path, f\"{STAGE}_COMPLETE\\n\")\n0808: \n0809:     print(f\"{STAGE}_COMPLETE\")\n0810:     print(\"status=PASS\")\n0811:     print(f\"synthetic_tests={len(results)}\")\n0812:     print(f\"synthetic_tests_passed={len(results)}\")\n0813:     print(\"graph_equals_Raw=true\")\n0814:     print(\"count_candidate_equals_Raw=true\")\n0815:     print(\"source_equals_Raw_on_all_active_rows=true\")",
+    "0806:     atomic_json(lock_path, lock)\n0807:     atomic_text(complete_path, f\"{STAGE}_COMPLETE\\n\")\n0808: \n0809:     print(f\"{STAGE}_COMPLETE\")\n0810:     print(\"status=PASS\")\n0811:     print(f\"synthetic_tests={len(results)}\")\n0812:     print(f\"synthetic_tests_passed={len(results)}\")\n0813:     print(\"graph_equals_Raw=true\")\n0814:     print(\"count_candidate_equals_Raw=true\")\n0815:     print(\"source_equals_Raw_on_all_active_rows=true\")\n0816:     print(\"victim_equals_Raw_on_all_active_rows=true\")",
+    "0807:     atomic_text(complete_path, f\"{STAGE}_COMPLETE\\n\")\n0808: \n0809:     print(f\"{STAGE}_COMPLETE\")\n0810:     print(\"status=PASS\")\n0811:     print(f\"synthetic_tests={len(results)}\")\n0812:     print(f\"synthetic_tests_passed={len(results)}\")\n0813:     print(\"graph_equals_Raw=true\")\n0814:     print(\"count_candidate_equals_Raw=true\")\n0815:     print(\"source_equals_Raw_on_all_active_rows=true\")\n0816:     print(\"victim_equals_Raw_on_all_active_rows=true\")\n0817:     print(\"unresolved_all_role_masks_passthrough=true\")",
+    "0812:     print(f\"synthetic_tests_passed={len(results)}\")\n0813:     print(\"graph_equals_Raw=true\")\n0814:     print(\"count_candidate_equals_Raw=true\")\n0815:     print(\"source_equals_Raw_on_all_active_rows=true\")\n0816:     print(\"victim_equals_Raw_on_all_active_rows=true\")\n0817:     print(\"unresolved_all_role_masks_passthrough=true\")\n0818:     print(\"unresolved_route_certificate=false\")\n0819:     print(\"endpoint_repair_solver_called=false\")\n0820:     print(\"shared_victims_supported=true\")\n0821:     print(\"cross_route_role_overlap_supported=true\")\n0822:     print(\"deterministic=true\")",
+    "0823:     print(f\"installed_decoder={installed_path}\")\n0824:     print(\n0825:         \"installed_decoder_sha256=\"\n0826:         f\"{sha256_file(installed_path)}\"\n0827:     )\n0828:     print(f\"installed_calibration={installed_config_path}\")\n0829:     print(\n0830:         \"installed_calibration_sha256=\"\n0831:         f\"{sha256_file(installed_config_path)}\"\n0832:     )\n0833:     print(\"model_loaded=false\")",
+    "0825:         \"installed_decoder_sha256=\"\n0826:         f\"{sha256_file(installed_path)}\"\n0827:     )\n0828:     print(f\"installed_calibration={installed_config_path}\")\n0829:     print(\n0830:         \"installed_calibration_sha256=\"\n0831:         f\"{sha256_file(installed_config_path)}\"\n0832:     )\n0833:     print(\"model_loaded=false\")\n0834:     print(\"training_data_loaded=false\")\n0835:     print(\"A_validation_data_loaded=false\")"
+  ],
+  "D12_source_sha256": "087dc69074646fdf9a14356127e7976e91cca416e8651d245bb024d293f59f91",
+  "decoder_executed": false,
+  "decoder_imported": false,
+  "frozen_decoder_handover": "/home/zira/research/projects/GNN-2d/artifacts/decoders/v5_p3_eplr_v2_frozen_handover/V5_P3_EPLR_V2_FROZEN_SOFTWARE_HANDOVER.zip",
+  "frozen_decoder_handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+  "handover_member_hashes": {
+    "contracts/eplr_v2_output_contract.json": "578f20edda2b865998da1ebcb53db31fa9edff450cc3654abb115c1075a151c1",
+    "contracts/eplr_v2_semantic_contract.json": "01dc7490afbd6c75e763577f8fc95c85e2393677e90fef90a7e3e6fe83342057",
+    "dependencies/v5_p3_eplr_v1.py": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35",
+    "dependencies/v5_xy_route_library.py": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+    "implementation/v5_p3_eplr_v2.py": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+    "implementation/v5_p3_eplr_v2_calibration.json": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+    "verification/d12_synthetic_test_results.json": "009891ac9bf83990f0110765606638383f7fbf59082fe022f25543635e200da2"
+  },
+  "json_contracts": {
+    "contracts/eplr_v2_output_contract.json": {
+      "sha256": "578f20edda2b865998da1ebcb53db31fa9edff450cc3654abb115c1075a151c1",
+      "shape": {
+        "children": {
+          "invariants": {
+            "children": {
+              "selected_count_candidate_equals_Raw_for_all_rows": {
+                "type": "bool",
+                "value": true
+              },
+              "selected_graph_equals_Raw_for_all_rows": {
+                "type": "bool",
+                "value": true
+              },
+              "selected_source_equals_Raw_for_all_active_rows": {
+                "type": "bool",
+                "value": true
+              },
+              "selected_victim_equals_Raw_for_all_active_rows": {
+                "type": "bool",
+                "value": true
+              },
+              "unresolved_passthrough_all_role_masks_equal_Raw": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "keys": [
+              "selected_count_candidate_equals_Raw_for_all_rows",
+              "selected_graph_equals_Raw_for_all_rows",
+              "selected_source_equals_Raw_for_all_active_rows",
+              "selected_victim_equals_Raw_for_all_active_rows",
+              "unresolved_passthrough_all_role_masks_equal_Raw"
+            ],
+            "type": "dict"
+          },
+          "per_sample_outputs": {
+            "children": {
+              "decoder_status": {
+                "type": "str",
+                "value": "enum"
+              },
+              "effective_attacker_count": {
+                "type": "str",
+                "value": "int 0..4"
+              },
+              "endpoint_preserved": {
+                "type": "str",
+                "value": "bool"
+              },
+              "raw_attacker_count_candidate": {
+                "type": "str",
+                "value": "int 1..4"
+              },
+              "raw_graph_prediction": {
+                "type": "str",
+                "value": "uint8"
+              },
+              "raw_graph_probability": {
+                "type": "str",
+                "value": "float64"
+              },
+              "raw_path_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "raw_source_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "raw_transit_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "raw_victim_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "route_certified": {
+                "type": "str",
+                "value": "bool"
+              },
+              "route_consistency_score": {
+                "type": "str",
+                "value": "float64 for certified legal route; null/NaN when unresolved"
+              },
+              "selected_path_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "selected_route_ids": {
+                "type": "str",
+                "value": "ordered tuple; empty when unresolved"
+              },
+              "selected_source_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "selected_transit_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              },
+              "selected_victim_bitmap": {
+                "type": "str",
+                "value": "uint16"
+              }
+            },
+            "keys": [
+              "decoder_status",
+              "effective_attacker_count",
+              "endpoint_preserved",
+              "raw_attacker_count_candidate",
+              "raw_graph_prediction",
+              "raw_graph_probability",
+              "raw_path_bitmap",
+              "raw_source_bitmap",
+              "raw_transit_bitmap",
+              "raw_victim_bitmap",
+              "route_certified",
+              "route_consistency_score",
+              "selected_path_bitmap",
+              "selected_route_ids",
+              "selected_source_bitmap",
+              "selected_transit_bitmap",
+              "selected_victim_bitmap"
+            ],
+            "type": "dict"
+          },
+          "stage": {
+            "type": "str",
+            "value": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE"
+          },
+          "status": {
+            "type": "str",
+            "value": "FROZEN"
+          },
+          "statuses": {
+            "first_items": [
+              {
+                "type": "str",
+                "value": "INACTIVE_RAW"
+              },
+              {
+                "type": "str",
+                "value": "RAW_ENDPOINTS_LEGAL"
+              },
+              {
+                "type": "str",
+                "value": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT"
+              },
+              {
+                "type": "str",
+                "value": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+              }
+            ],
+            "length": 4,
+            "type": "list"
+          }
+        },
+        "keys": [
+          "invariants",
+          "per_sample_outputs",
+          "stage",
+          "status",
+          "statuses"
+        ],
+        "type": "dict"
+      },
+      "value": {
+        "invariants": {
+          "selected_count_candidate_equals_Raw_for_all_rows": true,
+          "selected_graph_equals_Raw_for_all_rows": true,
+          "selected_source_equals_Raw_for_all_active_rows": true,
+          "selected_victim_equals_Raw_for_all_active_rows": true,
+          "unresolved_passthrough_all_role_masks_equal_Raw": true
+        },
+        "per_sample_outputs": {
+          "decoder_status": "enum",
+          "effective_attacker_count": "int 0..4",
+          "endpoint_preserved": "bool",
+          "raw_attacker_count_candidate": "int 1..4",
+          "raw_graph_prediction": "uint8",
+          "raw_graph_probability": "float64",
+          "raw_path_bitmap": "uint16",
+          "raw_source_bitmap": "uint16",
+          "raw_transit_bitmap": "uint16",
+          "raw_victim_bitmap": "uint16",
+          "route_certified": "bool",
+          "route_consistency_score": "float64 for certified legal route; null/NaN when unresolved",
+          "selected_path_bitmap": "uint16",
+          "selected_route_ids": "ordered tuple; empty when unresolved",
+          "selected_source_bitmap": "uint16",
+          "selected_transit_bitmap": "uint16",
+          "selected_victim_bitmap": "uint16"
+        },
+        "stage": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE",
+        "status": "FROZEN",
+        "statuses": [
+          "INACTIVE_RAW",
+          "RAW_ENDPOINTS_LEGAL",
+          "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+          "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+        ]
+      }
+    },
+    "contracts/eplr_v2_semantic_contract.json": {
+      "sha256": "01dc7490afbd6c75e763577f8fc95c85e2393677e90fef90a7e3e6fe83342057",
+      "shape": {
+        "children": {
+          "active_endpoint_feasibility": {
+            "children": {
+              "attacker_sources_unique": {
+                "type": "bool",
+                "value": true
+              },
+              "endpoint_on_one_route_may_be_transit_on_another": {
+                "type": "bool",
+                "value": true
+              },
+              "exactly_K_legal_routes_required": {
+                "type": "bool",
+                "value": true
+              },
+              "global_role_disjointness": {
+                "type": "bool",
+                "value": false
+              },
+              "path_semantics": {
+                "type": "str",
+                "value": "union router bitmap"
+              },
+              "raw_source_mask": {
+                "type": "str",
+                "value": "threshold 0.5"
+              },
+              "raw_victim_mask": {
+                "type": "str",
+                "value": "threshold 0.5"
+              },
+              "shared_victims_allowed": {
+                "type": "bool",
+                "value": true
+              }
+            },
+            "keys": [
+              "attacker_sources_unique",
+              "endpoint_on_one_route_may_be_transit_on_another",
+              "exactly_K_legal_routes_required",
+              "global_role_disjointness",
+              "path_semantics",
+              "raw_source_mask",
+              "raw_victim_mask",
+              "shared_victims_allowed"
+            ],
+            "type": "dict"
+          },
+          "decoder": {
+            "children": {
+              "classification": {
+                "type": "str",
+                "value": "new validation-informed design; not an evaluated Tranche-A validation candidate"
+              },
+              "expansion": {
+                "type": "str",
+                "value": "Endpoint-Preserving Legal-XY Repair, Preserve-or-Passthrough Revision"
+              },
+              "name": {
+                "type": "str",
+                "value": "V5-P3 EPLR-V2"
+              }
+            },
+            "keys": [
+              "classification",
+              "expansion",
+              "name"
+            ],
+            "type": "dict"
+          },
+          "failure_policy": {
+            "children": {
+              "infeasible_raw_endpoints": {
+                "type": "str",
+                "value": "passthrough with unresolved non-certified status"
+              },
+              "invent_legal_explanation": {
+                "type": "bool",
+                "value": false
+              },
+              "software_exception": {
+                "type": "str",
+                "value": "fail closed with explicit error"
+              }
+            },
+            "keys": [
+              "infeasible_raw_endpoints",
+              "invent_legal_explanation",
+              "software_exception"
+            ],
+            "type": "dict"
+          },
+          "feasible_endpoint_policy": {
+            "children": {
+              "low_support_thresholds": {
+                "type": "str",
+                "value": "reuse the D8 A-train-only frozen per-K thresholds without modification"
+              },
+              "path_output": {
+                "type": "str",
+                "value": "route-derived path union from best exact-preserving legal route tuple"
+              },
+              "route_certified": {
+                "type": "bool",
+                "value": true
+              },
+              "route_selection_weights": {
+                "type": "str",
+                "value": "reuse the D8 A-train-only frozen transit=1.0, path=1.0 calibration without modification"
+              },
+              "source_output": {
+                "type": "str",
+                "value": "Raw source bitmap"
+              },
+              "status": {
+                "first_items": [
+                  {
+                    "type": "str",
+                    "value": "RAW_ENDPOINTS_LEGAL"
+                  },
+                  {
+                    "type": "str",
+                    "value": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT"
+                  }
+                ],
+                "length": 2,
+                "type": "list"
+              },
+              "transit_output": {
+                "type": "str",
+                "value": "route-derived transit union from best exact-preserving legal route tuple"
+              },
+              "victim_output": {
+                "type": "str",
+                "value": "Raw victim bitmap"
+              }
+            },
+            "keys": [
+              "low_support_thresholds",
+              "path_output",
+              "route_certified",
+              "route_selection_weights",
+              "source_output",
+              "status",
+              "transit_output",
+              "victim_output"
+            ],
+            "type": "dict"
+          },
+          "hardware_boundary": {
+            "children": {
+              "accelerator_interface_changed": {
+                "type": "bool",
+                "value": false
+              },
+              "input": {
+                "type": "str",
+                "value": "existing 69 raw neural logits"
+              },
+              "inside_RTL": {
+                "type": "bool",
+                "value": false
+              }
+            },
+            "keys": [
+              "accelerator_interface_changed",
+              "input",
+              "inside_RTL"
+            ],
+            "type": "dict"
+          },
+          "immutable_global_outputs": {
+            "children": {
+              "active_count_prediction": {
+                "type": "str",
+                "value": "exactly Raw 1 + argmax(count_logits)"
+              },
+              "decoder_may_change_count": {
+                "type": "bool",
+                "value": false
+              },
+              "decoder_may_change_graph": {
+                "type": "bool",
+                "value": false
+              },
+              "decoder_may_change_source": {
+                "type": "bool",
+                "value": false
+              },
+              "decoder_may_change_victim": {
+                "type": "bool",
+                "value": false
+              },
+              "graph_prediction": {
+                "type": "str",
+                "value": "exactly Raw sigmoid(graph_logit) >= 0.5"
+              },
+              "source_bitmap": {
+                "type": "str",
+                "value": "exactly Raw sigmoid(source_logits) >= 0.5"
+              },
+              "victim_bitmap": {
+                "type": "str",
+                "value": "exactly Raw sigmoid(victim_logits) >= 0.5"
+              }
+            },
+            "keys": [
+              "active_count_prediction",
+              "decoder_may_change_count",
+              "decoder_may_change_graph",
+              "decoder_may_change_source",
+              "decoder_may_change_victim",
+              "graph_prediction",
+              "source_bitmap",
+              "victim_bitmap"
+            ],
+            "type": "dict"
+          },
+          "inactive_policy": {
+            "children": {
+              "effective_count": {
+                "type": "int",
+                "value": 0
+              },
+              "selected_output_path": {
+                "type": "str",
+                "value": "all zero"
+              },
+              "selected_output_source": {
+                "type": "str",
+                "value": "all zero"
+              },
+              "selected_output_transit": {
+                "type": "str",
+                "value": "all zero"
+              },
+              "selected_output_victim": {
+                "type": "str",
+                "value": "all zero"
+              },
+              "status": {
+                "type": "str",
+                "value": "INACTIVE_RAW"
+              }
+            },
+            "keys": [
+              "effective_count",
+              "selected_output_path",
+              "selected_output_source",
+              "selected_output_transit",
+              "selected_output_victim",
+              "status"
+            ],
+            "type": "dict"
+          },
+          "infeasible_endpoint_policy": {
+            "children": {
+              "endpoint_repair_solver_used": {
+                "type": "bool",
+                "value": false
+              },
+              "interpretation": {
+                "type": "str",
+                "value": "Raw prediction is returned unchanged, but no legal-route certificate is claimed."
+              },
+              "path_output": {
+                "type": "str",
+                "value": "Raw path bitmap passthrough"
+              },
+              "route_certified": {
+                "type": "bool",
+                "value": false
+              },
+              "selected_route_ids": {
+                "type": "str",
+                "value": "empty"
+              },
+              "source_output": {
+                "type": "str",
+                "value": "Raw source bitmap passthrough"
+              },
+              "status": {
+                "type": "str",
+                "value": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+              },
+              "transit_output": {
+                "type": "str",
+                "value": "Raw transit bitmap passthrough"
+              },
+              "victim_output": {
+                "type": "str",
+                "value": "Raw victim bitmap passthrough"
+              }
+            },
+            "keys": [
+              "endpoint_repair_solver_used",
+              "interpretation",
+              "path_output",
+              "route_certified",
+              "selected_route_ids",
+              "source_output",
+              "status",
+              "transit_output",
+              "victim_output"
+            ],
+            "type": "dict"
+          },
+          "removed_V1_behaviors": {
+            "children": {
+              "endpoint_reassignment": {
+                "type": "bool",
+                "value": false
+              },
+              "endpoint_repair_MILP": {
+                "type": "bool",
+                "value": false
+              },
+              "old_A1_fallback": {
+                "type": "bool",
+                "value": false
+              },
+              "zero_masks_on_no_solution": {
+                "type": "bool",
+                "value": false
+              }
+            },
+            "keys": [
+              "endpoint_reassignment",
+              "endpoint_repair_MILP",
+              "old_A1_fallback",
+              "zero_masks_on_no_solution"
+            ],
+            "type": "dict"
+          },
+          "stage": {
+            "type": "str",
+            "value": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE"
+          },
+          "status": {
+            "type": "str",
+            "value": "FROZEN"
+          }
+        },
+        "keys": [
+          "active_endpoint_feasibility",
+          "decoder",
+          "failure_policy",
+          "feasible_endpoint_policy",
+          "hardware_boundary",
+          "immutable_global_outputs",
+          "inactive_policy",
+          "infeasible_endpoint_policy",
+          "removed_V1_behaviors",
+          "stage",
+          "status"
+        ],
+        "type": "dict"
+      },
+      "value": {
+        "active_endpoint_feasibility": {
+          "attacker_sources_unique": true,
+          "endpoint_on_one_route_may_be_transit_on_another": true,
+          "exactly_K_legal_routes_required": true,
+          "global_role_disjointness": false,
+          "path_semantics": "union router bitmap",
+          "raw_source_mask": "threshold 0.5",
+          "raw_victim_mask": "threshold 0.5",
+          "shared_victims_allowed": true
+        },
+        "decoder": {
+          "classification": "new validation-informed design; not an evaluated Tranche-A validation candidate",
+          "expansion": "Endpoint-Preserving Legal-XY Repair, Preserve-or-Passthrough Revision",
+          "name": "V5-P3 EPLR-V2"
+        },
+        "failure_policy": {
+          "infeasible_raw_endpoints": "passthrough with unresolved non-certified status",
+          "invent_legal_explanation": false,
+          "software_exception": "fail closed with explicit error"
+        },
+        "feasible_endpoint_policy": {
+          "low_support_thresholds": "reuse the D8 A-train-only frozen per-K thresholds without modification",
+          "path_output": "route-derived path union from best exact-preserving legal route tuple",
+          "route_certified": true,
+          "route_selection_weights": "reuse the D8 A-train-only frozen transit=1.0, path=1.0 calibration without modification",
+          "source_output": "Raw source bitmap",
+          "status": [
+            "RAW_ENDPOINTS_LEGAL",
+            "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT"
+          ],
+          "transit_output": "route-derived transit union from best exact-preserving legal route tuple",
+          "victim_output": "Raw victim bitmap"
+        },
+        "hardware_boundary": {
+          "accelerator_interface_changed": false,
+          "input": "existing 69 raw neural logits",
+          "inside_RTL": false
+        },
+        "immutable_global_outputs": {
+          "active_count_prediction": "exactly Raw 1 + argmax(count_logits)",
+          "decoder_may_change_count": false,
+          "decoder_may_change_graph": false,
+          "decoder_may_change_source": false,
+          "decoder_may_change_victim": false,
+          "graph_prediction": "exactly Raw sigmoid(graph_logit) >= 0.5",
+          "source_bitmap": "exactly Raw sigmoid(source_logits) >= 0.5",
+          "victim_bitmap": "exactly Raw sigmoid(victim_logits) >= 0.5"
+        },
+        "inactive_policy": {
+          "effective_count": 0,
+          "selected_output_path": "all zero",
+          "selected_output_source": "all zero",
+          "selected_output_transit": "all zero",
+          "selected_output_victim": "all zero",
+          "status": "INACTIVE_RAW"
+        },
+        "infeasible_endpoint_policy": {
+          "endpoint_repair_solver_used": false,
+          "interpretation": "Raw prediction is returned unchanged, but no legal-route certificate is claimed.",
+          "path_output": "Raw path bitmap passthrough",
+          "route_certified": false,
+          "selected_route_ids": "empty",
+          "source_output": "Raw source bitmap passthrough",
+          "status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+          "transit_output": "Raw transit bitmap passthrough",
+          "victim_output": "Raw victim bitmap passthrough"
+        },
+        "removed_V1_behaviors": {
+          "endpoint_reassignment": false,
+          "endpoint_repair_MILP": false,
+          "old_A1_fallback": false,
+          "zero_masks_on_no_solution": false
+        },
+        "stage": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE",
+        "status": "FROZEN"
+      }
+    },
+    "implementation/v5_p3_eplr_v2_calibration.json": {
+      "sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+      "shape": {
+        "children": {
+          "calibration_items_selected": {
+            "type": "int",
+            "value": 1024
+          },
+          "calibration_split": {
+            "type": "str",
+            "value": "Tranche-A train only"
+          },
+          "endpoint_preservation_feasible_items": {
+            "type": "int",
+            "value": 497
+          },
+          "endpoint_threshold": {
+            "type": "float",
+            "value": 0.5
+          },
+          "graph_threshold": {
+            "type": "float",
+            "value": 0.5
+          },
+          "integrality_tolerance": {
+            "type": "float",
+            "value": 1e-07
+          },
+          "low_support_threshold_by_k": {
+            "first_items": [
+              {
+                "type": "float",
+                "value": -Infinity
+              },
+              {
+                "type": "float",
+                "value": -157.2750984312622
+              },
+              {
+                "type": "float",
+                "value": -8.82909992557325
+              },
+              {
+                "type": "float",
+                "value": -15.743995066953527
+              }
+            ],
+            "length": 4,
+            "type": "list"
+          },
+          "objective_freeze_tolerance": {
+            "type": "float",
+            "value": 1e-08
+          },
+          "path_weight": {
+            "type": "float",
+            "value": 1.0
+          },
+          "raw_positive_items": {
+            "type": "int",
+            "value": 985
+          },
+          "stage": {
+            "type": "str",
+            "value": "V5_P3_D8_EPLR_V1_DETERMINISTIC_IMPLEMENTATION_AND_A_TRAIN_ONLY_CALIBRATION"
+          },
+          "status": {
+            "type": "str",
+            "value": "FROZEN_A_TRAIN_ONLY"
+          },
+          "test_accessed": {
+            "type": "bool",
+            "value": false
+          },
+          "transit_weight": {
+            "type": "float",
+            "value": 1.0
+          },
+          "validation_accessed": {
+            "type": "bool",
+            "value": false
+          }
+        },
+        "keys": [
+          "calibration_items_selected",
+          "calibration_split",
+          "endpoint_preservation_feasible_items",
+          "endpoint_threshold",
+          "graph_threshold",
+          "integrality_tolerance",
+          "low_support_threshold_by_k",
+          "objective_freeze_tolerance",
+          "path_weight",
+          "raw_positive_items",
+          "stage",
+          "status",
+          "test_accessed",
+          "transit_weight",
+          "validation_accessed"
+        ],
+        "type": "dict"
+      },
+      "value": {
+        "calibration_items_selected": 1024,
+        "calibration_split": "Tranche-A train only",
+        "endpoint_preservation_feasible_items": 497,
+        "endpoint_threshold": 0.5,
+        "graph_threshold": 0.5,
+        "integrality_tolerance": 1e-07,
+        "low_support_threshold_by_k": [
+          -Infinity,
+          -157.2750984312622,
+          -8.82909992557325,
+          -15.743995066953527
+        ],
+        "objective_freeze_tolerance": 1e-08,
+        "path_weight": 1.0,
+        "raw_positive_items": 985,
+        "stage": "V5_P3_D8_EPLR_V1_DETERMINISTIC_IMPLEMENTATION_AND_A_TRAIN_ONLY_CALIBRATION",
+        "status": "FROZEN_A_TRAIN_ONLY",
+        "test_accessed": false,
+        "transit_weight": 1.0,
+        "validation_accessed": false
+      }
+    },
+    "verification/d12_synthetic_test_results.json": {
+      "sha256": "009891ac9bf83990f0110765606638383f7fbf59082fe022f25543635e200da2",
+      "shape": {
+        "children": {
+          "stage": {
+            "type": "str",
+            "value": "V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS"
+          },
+          "status": {
+            "type": "str",
+            "value": "PASS"
+          },
+          "tests": {
+            "first_items": [
+              {
+                "children": {
+                  "details": {
+                    "children": {
+                      "status": {
+                        "type": "str"
+                      }
+                    },
+                    "keys": [
+                      "status"
+                    ],
+                    "type": "dict"
+                  },
+                  "id": {
+                    "type": "str",
+                    "value": "D12-T01"
+                  },
+                  "name": {
+                    "type": "str",
+                    "value": "inactive_raw"
+                  },
+                  "status": {
+                    "type": "str",
+                    "value": "PASS"
+                  }
+                },
+                "keys": [
+                  "details",
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "type": "dict"
+              },
+              {
+                "children": {
+                  "details": {
+                    "children": {
+                      "route_id": {
+                        "type": "int"
+                      },
+                      "status": {
+                        "type": "str"
+                      }
+                    },
+                    "keys": [
+                      "route_id",
+                      "status"
+                    ],
+                    "type": "dict"
+                  },
+                  "id": {
+                    "type": "str",
+                    "value": "D12-T02"
+                  },
+                  "name": {
+                    "type": "str",
+                    "value": "K1_exact_endpoint_preservation"
+                  },
+                  "status": {
+                    "type": "str",
+                    "value": "PASS"
+                  }
+                },
+                "keys": [
+                  "details",
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "type": "dict"
+              },
+              {
+                "children": {
+                  "details": {
+                    "children": {
+                      "2": {
+                        "keys": [
+                          "route_ids",
+                          "victim_cardinality"
+                        ],
+                        "type": "dict"
+                      },
+                      "3": {
+                        "keys": [
+                          "route_ids",
+                          "victim_cardinality"
+                        ],
+                        "type": "dict"
+                      },
+                      "4": {
+                        "keys": [
+                          "route_ids",
+                          "victim_cardinality"
+                        ],
+                        "type": "dict"
+                      }
+                    },
+                    "keys": [
+                      "2",
+                      "3",
+                      "4"
+                    ],
+                    "type": "dict"
+                  },
+                  "id": {
+                    "type": "str",
+                    "value": "D12-T03"
+                  },
+                  "name": {
+                    "type": "str",
+                    "value": "K2_K4_shared_victim_and_union_semantics"
+                  },
+                  "status": {
+                    "type": "str",
+                    "value": "PASS"
+                  }
+                },
+                "keys": [
+                  "details",
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "type": "dict"
+              },
+              {
+                "children": {
+                  "details": {
+                    "children": {
+                      "overlap_router": {
+                        "type": "int"
+                      },
+                      "route_ids": {
+                        "length": 2,
+                        "type": "list"
+                      }
+                    },
+                    "keys": [
+                      "overlap_router",
+                      "route_ids"
+                    ],
+                    "type": "dict"
+                  },
+                  "id": {
+                    "type": "str",
+                    "value": "D12-T04"
+                  },
+                  "name": {
+                    "type": "str",
+                    "value": "cross_route_role_overlap"
+                  },
+                  "status": {
+                    "type": "str",
+                    "value": "PASS"
+                  }
+                },
+                "keys": [
+                  "details",
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "type": "dict"
+              },
+              {
+                "children": {
+                  "details": {
+                    "children": {
+                      "repair_solver_called": {
+                        "type": "bool"
+                      },
+                      "status": {
+                        "type": "str"
+                      }
+                    },
+                    "keys": [
+                      "repair_solver_called",
+                      "status"
+                    ],
+                    "type": "dict"
+                  },
+                  "id": {
+                    "type": "str",
+                    "value": "D12-T05"
+                  },
+                  "name": {
+                    "type": "str",
+                    "value": "infeasible_endpoint_passthrough"
+                  },
+                  "status": {
+                    "type": "str",
+                    "value": "PASS"
+                  }
+                },
+                "keys": [
+                  "details",
+                  "id",
+                  "name",
+                  "status"
+                ],
+                "type": "dict"
+              }
+            ],
+            "length": 9,
+            "type": "list"
+          }
+        },
+        "keys": [
+          "stage",
+          "status",
+          "tests"
+        ],
+        "type": "dict"
+      },
+      "value": {
+        "stage": "V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS",
+        "status": "PASS",
+        "tests": [
+          {
+            "details": {
+              "status": "INACTIVE_RAW"
+            },
+            "id": "D12-T01",
+            "name": "inactive_raw",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "route_id": 14,
+              "status": "RAW_ENDPOINTS_LEGAL"
+            },
+            "id": "D12-T02",
+            "name": "K1_exact_endpoint_preservation",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "2": {
+                "route_ids": [
+                  14,
+                  59
+                ],
+                "victim_cardinality": 1
+              },
+              "3": {
+                "route_ids": [
+                  14,
+                  29,
+                  44
+                ],
+                "victim_cardinality": 1
+              },
+              "4": {
+                "route_ids": [
+                  14,
+                  29,
+                  44,
+                  59
+                ],
+                "victim_cardinality": 1
+              }
+            },
+            "id": "D12-T03",
+            "name": "K2_K4_shared_victim_and_union_semantics",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "overlap_router": 1,
+              "route_ids": [
+                2,
+                19
+              ]
+            },
+            "id": "D12-T04",
+            "name": "cross_route_role_overlap",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "repair_solver_called": false,
+              "status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+            },
+            "id": "D12-T05",
+            "name": "infeasible_endpoint_passthrough",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "random_checks": 512
+            },
+            "id": "D12-T06",
+            "name": "global_graph_count_source_victim_immutability",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "config_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+              "low_support_threshold_by_k": [
+                -Infinity,
+                -157.2750984312622,
+                -8.82909992557325,
+                -15.743995066953527
+              ],
+              "path_weight": 1.0,
+              "transit_weight": 1.0
+            },
+            "id": "D12-T07",
+            "name": "D8_calibration_provenance",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "repeats": 10,
+              "route_ids": [
+                14,
+                56
+              ]
+            },
+            "id": "D12-T08",
+            "name": "deterministic_repeat",
+            "status": "PASS"
+          },
+          {
+            "details": {
+              "A_test_data_loaded": false,
+              "A_validation_data_loaded": false,
+              "D1_logits_loaded": false,
+              "D9_outputs_loaded": false,
+              "model_loaded": false,
+              "training_data_loaded": false
+            },
+            "id": "D12-T09",
+            "name": "no_validation_or_test_access",
+            "status": "PASS"
+          }
+        ]
+      }
+    }
+  },
+  "model_inference_performed": false,
+  "native_test_dataset_constructed": false,
+  "next_stage": "V5_P3_FINAL_D0_R1_FROZEN_EPLR_V2_SYNTHETIC_REGRESSION_AFTER_EXACT_CONTRACT_PIN",
+  "python_contracts": {
+    "dependencies/v5_p3_eplr_v1.py": {
+      "ast_contract": {
+        "assignments_of_interest": [
+          {
+            "assignment": "GRAPH_THRESHOLD = 0.5",
+            "line": 44
+          },
+          {
+            "assignment": "ENDPOINT_THRESHOLD = 0.5",
+            "line": 45
+          },
+          {
+            "assignment": "low_support_threshold_by_k: tuple[float, float, float, float] = (float('-inf'), float('-inf'), float('-inf'), float('-inf'))",
+            "line": 65
+          },
+          {
+            "assignment": "graph_threshold: float = GRAPH_THRESHOLD",
+            "line": 73
+          },
+          {
+            "assignment": "endpoint_threshold: float = ENDPOINT_THRESHOLD",
+            "line": 74
+          },
+          {
+            "assignment": "hypothesis = routes.combine_route_ids(route_ids, expected_k=k)",
+            "line": 747
+          },
+          {
+            "assignment": "graph_prediction = int(graph_probability >= config.graph_threshold)",
+            "line": 777
+          },
+          {
+            "assignment": "raw_source_mask = mask_from_probabilities(source_probabilities, config.endpoint_threshold)",
+            "line": 782
+          },
+          {
+            "assignment": "raw_transit_mask = mask_from_probabilities(transit_probabilities, config.endpoint_threshold)",
+            "line": 786
+          },
+          {
+            "assignment": "raw_victim_mask = mask_from_probabilities(victim_probabilities, config.endpoint_threshold)",
+            "line": 790
+          },
+          {
+            "assignment": "raw_path_mask = mask_from_probabilities(path_probabilities, config.endpoint_threshold)",
+            "line": 794
+          },
+          {
+            "assignment": "low_threshold = config.low_support_threshold_by_k[raw_count - 1]",
+            "line": 873
+          },
+          {
+            "assignment": "low_support = bool(support < low_threshold)",
+            "line": 874
+          },
+          {
+            "assignment": "hypothesis = routes.combine_route_ids(route_ids, expected_k=k)",
+            "line": 239
+          }
+        ],
+        "calls_of_interest": [
+          {
+            "call": "EPLRResult(raw_graph_probability=graph_probability, raw_graph_prediction=1, raw_attacker_count_candidate=raw_count, effective_attacker_count=raw_count, raw_source_bitmap=raw_source_mask, raw_transit_bitmap=raw_transit_mask, raw_victim_bitmap=raw_victim_mask, raw_path_bitmap=raw_path_mask, decoded_source_bitmap=int(hypothesis.source_mask), decoded_transit_bitmap=int(hypothesis.transit_mask), decoded_victim_bitmap=int(hypothesis.victim_mask), decoded_path_bitmap=int(hypothesis.path_mask), selected_route_ids=tuple(hypothesis.route_ids), route_consistency_score=float(support), source_repair_count=hamming_distance(raw_source_mask, int(hypothesis.source_mask)), victim_repair_count=hamming_distance(raw_victim_mask, int(hypothesis.victim_mask)), endpoint_preserved_but_low_route_support=low_support, decoder_status=status, repair_solver_used=repair_solver_used)",
+            "line": 883
+          },
+          {
+            "call": "json.loads(Path(path).read_text(encoding='utf-8'))",
+            "line": 80
+          },
+          {
+            "call": "EPLRDecodeError(f'MILP_FAILED: success={result.success}, status={result.status}, message={result.message!r}')",
+            "line": 566
+          },
+          {
+            "call": "EPLRDecodeError(f'MILP_INTEGRALITY_FAILURE: maximum_error={maximum_error}, tolerance={INTEGRALITY_TOLERANCE}')",
+            "line": 575
+          },
+          {
+            "call": "EPLRResult(raw_graph_probability=graph_probability, raw_graph_prediction=0, raw_attacker_count_candidate=raw_count, effective_attacker_count=0, raw_source_bitmap=raw_source_mask, raw_transit_bitmap=raw_transit_mask, raw_victim_bitmap=raw_victim_mask, raw_path_bitmap=raw_path_mask, decoded_source_bitmap=0, decoded_transit_bitmap=0, decoded_victim_bitmap=0, decoded_path_bitmap=0, selected_route_ids=(), route_consistency_score=float('-inf'), source_repair_count=0, victim_repair_count=0, endpoint_preserved_but_low_route_support=False, decoder_status=STATUS_INACTIVE, repair_solver_used=False)",
+            "line": 800
+          },
+          {
+            "call": "EPLRDecodeError('decoder changed immutable Raw count')",
+            "line": 871
+          },
+          {
+            "call": "EPLRDecodeError(f'LEXICOGRAPHIC_ROUTE_FREEZE_FAILED at route {chosen}')",
+            "line": 672
+          },
+          {
+            "call": "EPLRResult(raw_graph_probability=graph_probability, raw_graph_prediction=1, raw_attacker_count_candidate=raw_count, effective_attacker_count=raw_count, raw_source_bitmap=raw_source_mask, raw_transit_bitmap=raw_transit_mask, raw_victim_bitmap=raw_victim_mask, raw_path_bitmap=raw_path_mask, decoded_source_bitmap=0, decoded_transit_bitmap=0, decoded_victim_bitmap=0, decoded_path_bitmap=0, selected_route_ids=(), route_consistency_score=float('-inf'), source_repair_count=0, victim_repair_count=0, endpoint_preserved_but_low_route_support=False, decoder_status=STATUS_NO_SOLUTION, repair_solver_used=True)",
+            "line": 848
+          }
+        ],
+        "classes": [
+          {
+            "end_line": 58,
+            "line": 57,
+            "name": "EPLRDecodeError"
+          },
+          {
+            "end_line": 106,
+            "line": 62,
+            "name": "EPLRConfig"
+          },
+          {
+            "end_line": 132,
+            "line": 110,
+            "name": "EPLRResult"
+          }
+        ],
+        "functions": [
+          {
+            "end_line": 140,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 135,
+            "name": "stable_sigmoid",
+            "positional": [
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "value"
+              }
+            ],
+            "returns": "float",
+            "vararg": null
+          },
+          {
+            "end_line": 150,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 143,
+            "name": "stable_sigmoid_array",
+            "positional": [
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "values"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 161,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 153,
+            "name": "mask_from_probabilities",
+            "positional": [
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "probabilities"
+              },
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "threshold"
+              }
+            ],
+            "returns": "int",
+            "vararg": null
+          },
+          {
+            "end_line": 169,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 164,
+            "name": "indices_from_mask",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "mask"
+              }
+            ],
+            "returns": "tuple[int, ...]",
+            "vararg": null
+          },
+          {
+            "end_line": 173,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 172,
+            "name": "hamming_distance",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "left"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "right"
+              }
+            ],
+            "returns": "int",
+            "vararg": null
+          },
+          {
+            "end_line": 190,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "float",
+                "default": "1e-12",
+                "name": "epsilon",
+                "required": false
+              }
+            ],
+            "line": 176,
+            "name": "bernoulli_mask_log_likelihood",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "mask"
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "probabilities"
+              }
+            ],
+            "returns": "float",
+            "vararg": null
+          },
+          {
+            "end_line": 210,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 193,
+            "name": "route_support_score",
+            "positional": [
+              {
+                "annotation": "Any",
+                "default": null,
+                "name": "hypothesis"
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "transit_probabilities"
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "path_probabilities"
+              },
+              {
+                "annotation": "EPLRConfig",
+                "default": null,
+                "name": "config"
+              }
+            ],
+            "returns": "float",
+            "vararg": null
+          },
+          {
+            "end_line": 251,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 213,
+            "name": "enumerate_endpoint_preserving_hypotheses",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source_mask"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "victim_mask"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "k"
+              }
+            ],
+            "returns": "tuple[Any, ...]",
+            "vararg": null
+          },
+          {
+            "end_line": 289,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source_mask",
+                "required": true
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "victim_mask",
+                "required": true
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "k",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "transit_probabilities",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "path_probabilities",
+                "required": true
+              },
+              {
+                "annotation": "EPLRConfig",
+                "default": null,
+                "name": "config",
+                "required": true
+              }
+            ],
+            "line": 254,
+            "name": "choose_endpoint_preserving_hypothesis",
+            "positional": [],
+            "returns": "tuple[Any | None, float]",
+            "vararg": null
+          },
+          {
+            "end_line": 302,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 292,
+            "name": "_append_constraint",
+            "positional": [
+              {
+                "annotation": "list[dict[int, float]]",
+                "default": null,
+                "name": "rows"
+              },
+              {
+                "annotation": "list[float]",
+                "default": null,
+                "name": "lower"
+              },
+              {
+                "annotation": "list[float]",
+                "default": null,
+                "name": "upper"
+              },
+              {
+                "annotation": "dict[int, float]",
+                "default": null,
+                "name": "coefficients"
+              },
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "lb"
+              },
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "ub"
+              }
+            ],
+            "returns": "None",
+            "vararg": null
+          },
+          {
+            "end_line": 333,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 305,
+            "name": "_rows_to_constraint",
+            "positional": [
+              {
+                "annotation": "list[dict[int, float]]",
+                "default": null,
+                "name": "rows"
+              },
+              {
+                "annotation": "list[float]",
+                "default": null,
+                "name": "lower"
+              },
+              {
+                "annotation": "list[float]",
+                "default": null,
+                "name": "upper"
+              }
+            ],
+            "returns": "LinearConstraint",
+            "vararg": null
+          },
+          {
+            "end_line": 487,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 336,
+            "name": "_base_repair_constraints",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "k"
+              }
+            ],
+            "returns": "LinearConstraint",
+            "vararg": null
+          },
+          {
+            "end_line": 501,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 490,
+            "name": "_binary_cost_coefficients",
+            "positional": [
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "probabilities"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "offset"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 510,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 504,
+            "name": "_hamming_coefficients",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "raw_mask"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "offset"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 528,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 513,
+            "name": "_negative_support_coefficients",
+            "positional": [
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "probabilities"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "offset"
+              },
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "weight"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 580,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 531,
+            "name": "_solve_milp",
+            "positional": [
+              {
+                "annotation": "np.ndarray",
+                "default": null,
+                "name": "objective"
+              },
+              {
+                "annotation": "list[LinearConstraint]",
+                "default": null,
+                "name": "constraints"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 600,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 583,
+            "name": "_freeze_objective",
+            "positional": [
+              {
+                "annotation": "list[LinearConstraint]",
+                "default": null,
+                "name": "constraints"
+              },
+              {
+                "annotation": "np.ndarray",
+                "default": null,
+                "name": "objective"
+              },
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "optimum"
+              },
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "tolerance"
+              }
+            ],
+            "returns": "list[LinearConstraint]",
+            "vararg": null
+          },
+          {
+            "end_line": 617,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 603,
+            "name": "_feasible_with_extra_rows",
+            "positional": [
+              {
+                "annotation": "list[LinearConstraint]",
+                "default": null,
+                "name": "constraints"
+              },
+              {
+                "annotation": "list[dict[int, float]]",
+                "default": null,
+                "name": "extra_rows"
+              },
+              {
+                "annotation": "list[float]",
+                "default": null,
+                "name": "extra_lb"
+              },
+              {
+                "annotation": "list[float]",
+                "default": null,
+                "name": "extra_ub"
+              }
+            ],
+            "returns": "bool",
+            "vararg": null
+          },
+          {
+            "end_line": 679,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 620,
+            "name": "_lexicographically_smallest_route_set",
+            "positional": [
+              {
+                "annotation": "list[LinearConstraint]",
+                "default": null,
+                "name": "constraints"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "k"
+              }
+            ],
+            "returns": "tuple[int, ...]",
+            "vararg": null
+          },
+          {
+            "end_line": 757,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "raw_source_mask",
+                "required": true
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "raw_victim_mask",
+                "required": true
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "k",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "source_probabilities",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "victim_probabilities",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "transit_probabilities",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "path_probabilities",
+                "required": true
+              },
+              {
+                "annotation": "EPLRConfig",
+                "default": null,
+                "name": "config",
+                "required": true
+              }
+            ],
+            "line": 682,
+            "name": "repair_endpoints_with_milp",
+            "positional": [],
+            "returns": "tuple[Any, float]",
+            "vararg": null
+          },
+          {
+            "end_line": 909,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "graph_logit",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "count_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "source_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "transit_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "victim_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "path_logits",
+                "required": true
+              },
+              {
+                "annotation": "EPLRConfig",
+                "default": null,
+                "name": "config",
+                "required": true
+              }
+            ],
+            "line": 760,
+            "name": "decode_eplr_v1",
+            "positional": [],
+            "returns": "EPLRResult",
+            "vararg": null
+          },
+          {
+            "end_line": 919,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 912,
+            "name": "bitmap_to_array",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "mask"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 106,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 79,
+            "name": "from_json",
+            "positional": [
+              {
+                "annotation": null,
+                "default": null,
+                "name": "cls"
+              },
+              {
+                "annotation": "str | Path",
+                "default": null,
+                "name": "path"
+              }
+            ],
+            "returns": "'EPLRConfig'",
+            "vararg": null
+          },
+          {
+            "end_line": 132,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 131,
+            "name": "to_dict",
+            "positional": [
+              {
+                "annotation": null,
+                "default": null,
+                "name": "self"
+              }
+            ],
+            "returns": "dict[str, Any]",
+            "vararg": null
+          }
+        ],
+        "member": "dependencies/v5_p3_eplr_v1.py"
+      },
+      "decode_related_source_blocks": [
+        "0005: Frozen V1 behavior:\n0006:   - graph decision is Raw sigmoid(graph_logit) >= 0.5;\n0007:   - active count is Raw argmax(count_logits) + 1;\n0008:   - inactive outputs have effective count zero and zero role masks;\n0009:   - exact Raw source/victim preservation is attempted first;\n0010:   - endpoint repair is used only when exact preservation is infeasible;\n0011:   - graph and count never change;\n0012:   - exactly K canonical XY routes are selected;\n0013:   - attacker sources are unique and victims may be shared;",
+        "0006:   - graph decision is Raw sigmoid(graph_logit) >= 0.5;\n0007:   - active count is Raw argmax(count_logits) + 1;\n0008:   - inactive outputs have effective count zero and zero role masks;\n0009:   - exact Raw source/victim preservation is attempted first;\n0010:   - endpoint repair is used only when exact preservation is infeasible;\n0011:   - graph and count never change;\n0012:   - exactly K canonical XY routes are selected;\n0013:   - attacker sources are unique and victims may be shared;\n0014:   - role outputs are union bitmaps;",
+        "0008:   - inactive outputs have effective count zero and zero role masks;\n0009:   - exact Raw source/victim preservation is attempted first;\n0010:   - endpoint repair is used only when exact preservation is infeasible;\n0011:   - graph and count never change;\n0012:   - exactly K canonical XY routes are selected;\n0013:   - attacker sources are unique and victims may be shared;\n0014:   - role outputs are union bitmaps;\n0015:   - no global endpoint/transit disjointness is imposed;\n0016:   - failures are explicit and fail closed.",
+        "0014:   - role outputs are union bitmaps;\n0015:   - no global endpoint/transit disjointness is imposed;\n0016:   - failures are explicit and fail closed.\n0017: \n0018: The production repair path uses SciPy MILP. Exact endpoint-preserving route\n0019: selection uses finite enumeration over Raw endpoints and is much cheaper.\n0020: \"\"\"\n0021: \n0022: from __future__ import annotations",
+        "0040: STATUS_LEGAL_LOW_SUPPORT = \"RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT\"\n0041: STATUS_REPAIRED = \"ENDPOINT_REPAIR_APPLIED\"\n0042: STATUS_NO_SOLUTION = \"NO_CERTIFIED_LEGAL_EXPLANATION\"\n0043: \n0044: GRAPH_THRESHOLD = 0.5\n0045: ENDPOINT_THRESHOLD = 0.5\n0046: OBJECTIVE_FREEZE_TOLERANCE = 1e-8\n0047: INTEGRALITY_TOLERANCE = 1e-7\n0048: ",
+        "0041: STATUS_REPAIRED = \"ENDPOINT_REPAIR_APPLIED\"\n0042: STATUS_NO_SOLUTION = \"NO_CERTIFIED_LEGAL_EXPLANATION\"\n0043: \n0044: GRAPH_THRESHOLD = 0.5\n0045: ENDPOINT_THRESHOLD = 0.5\n0046: OBJECTIVE_FREEZE_TOLERANCE = 1e-8\n0047: INTEGRALITY_TOLERANCE = 1e-7\n0048: \n0049: Q_OFFSET = 0",
+        "0061: @dataclass(frozen=True)\n0062: class EPLRConfig:\n0063:     transit_weight: float = 1.0\n0064:     path_weight: float = 1.0\n0065:     low_support_threshold_by_k: tuple[\n0066:         float, float, float, float\n0067:     ] = (\n0068:         float(\"-inf\"),\n0069:         float(\"-inf\"),",
+        "0069:         float(\"-inf\"),\n0070:         float(\"-inf\"),\n0071:         float(\"-inf\"),\n0072:     )\n0073:     graph_threshold: float = GRAPH_THRESHOLD\n0074:     endpoint_threshold: float = ENDPOINT_THRESHOLD\n0075:     objective_freeze_tolerance: float = OBJECTIVE_FREEZE_TOLERANCE\n0076:     integrality_tolerance: float = INTEGRALITY_TOLERANCE\n0077: ",
+        "0070:         float(\"-inf\"),\n0071:         float(\"-inf\"),\n0072:     )\n0073:     graph_threshold: float = GRAPH_THRESHOLD\n0074:     endpoint_threshold: float = ENDPOINT_THRESHOLD\n0075:     objective_freeze_tolerance: float = OBJECTIVE_FREEZE_TOLERANCE\n0076:     integrality_tolerance: float = INTEGRALITY_TOLERANCE\n0077: \n0078:     @classmethod",
+        "0080:         payload = json.loads(Path(path).read_text(encoding=\"utf-8\"))\n0081:         return cls(\n0082:             transit_weight=float(payload[\"transit_weight\"]),\n0083:             path_weight=float(payload[\"path_weight\"]),\n0084:             low_support_threshold_by_k=tuple(\n0085:                 float(value)\n0086:                 for value in payload[\"low_support_threshold_by_k\"]\n0087:             ),\n0088:             graph_threshold=float(",
+        "0082:             transit_weight=float(payload[\"transit_weight\"]),\n0083:             path_weight=float(payload[\"path_weight\"]),\n0084:             low_support_threshold_by_k=tuple(\n0085:                 float(value)\n0086:                 for value in payload[\"low_support_threshold_by_k\"]\n0087:             ),\n0088:             graph_threshold=float(\n0089:                 payload.get(\"graph_threshold\", GRAPH_THRESHOLD)\n0090:             ),",
+        "0084:             low_support_threshold_by_k=tuple(\n0085:                 float(value)\n0086:                 for value in payload[\"low_support_threshold_by_k\"]\n0087:             ),\n0088:             graph_threshold=float(\n0089:                 payload.get(\"graph_threshold\", GRAPH_THRESHOLD)\n0090:             ),\n0091:             endpoint_threshold=float(\n0092:                 payload.get(\"endpoint_threshold\", ENDPOINT_THRESHOLD)",
+        "0085:                 float(value)\n0086:                 for value in payload[\"low_support_threshold_by_k\"]\n0087:             ),\n0088:             graph_threshold=float(\n0089:                 payload.get(\"graph_threshold\", GRAPH_THRESHOLD)\n0090:             ),\n0091:             endpoint_threshold=float(\n0092:                 payload.get(\"endpoint_threshold\", ENDPOINT_THRESHOLD)\n0093:             ),",
+        "0087:             ),\n0088:             graph_threshold=float(\n0089:                 payload.get(\"graph_threshold\", GRAPH_THRESHOLD)\n0090:             ),\n0091:             endpoint_threshold=float(\n0092:                 payload.get(\"endpoint_threshold\", ENDPOINT_THRESHOLD)\n0093:             ),\n0094:             objective_freeze_tolerance=float(\n0095:                 payload.get(",
+        "0088:             graph_threshold=float(\n0089:                 payload.get(\"graph_threshold\", GRAPH_THRESHOLD)\n0090:             ),\n0091:             endpoint_threshold=float(\n0092:                 payload.get(\"endpoint_threshold\", ENDPOINT_THRESHOLD)\n0093:             ),\n0094:             objective_freeze_tolerance=float(\n0095:                 payload.get(\n0096:                     \"objective_freeze_tolerance\",",
+        "0151: \n0152: \n0153: def mask_from_probabilities(\n0154:     probabilities: Sequence[float],\n0155:     threshold: float,\n0156: ) -> int:\n0157:     mask = 0\n0158:     for index, probability in enumerate(probabilities):\n0159:         if float(probability) >= float(threshold):",
+        "0155:     threshold: float,\n0156: ) -> int:\n0157:     mask = 0\n0158:     for index, probability in enumerate(probabilities):\n0159:         if float(probability) >= float(threshold):\n0160:             mask |= 1 << index\n0161:     return mask\n0162: \n0163: ",
+        "0756:     )\n0757:     return hypothesis, score\n0758: \n0759: \n0760: def decode_eplr_v1(\n0761:     *,\n0762:     graph_logit: float,\n0763:     count_logits: Sequence[float],\n0764:     source_logits: Sequence[float],",
+        "0774:     path_probabilities = stable_sigmoid_array(path_logits).reshape(16)\n0775: \n0776:     graph_probability = stable_sigmoid(float(graph_logit))\n0777:     graph_prediction = int(\n0778:         graph_probability >= config.graph_threshold\n0779:     )\n0780:     raw_count = int(np.argmax(count_logits)) + 1\n0781: \n0782:     raw_source_mask = mask_from_probabilities(",
+        "0780:     raw_count = int(np.argmax(count_logits)) + 1\n0781: \n0782:     raw_source_mask = mask_from_probabilities(\n0783:         source_probabilities,\n0784:         config.endpoint_threshold,\n0785:     )\n0786:     raw_transit_mask = mask_from_probabilities(\n0787:         transit_probabilities,\n0788:         config.endpoint_threshold,",
+        "0784:         config.endpoint_threshold,\n0785:     )\n0786:     raw_transit_mask = mask_from_probabilities(\n0787:         transit_probabilities,\n0788:         config.endpoint_threshold,\n0789:     )\n0790:     raw_victim_mask = mask_from_probabilities(\n0791:         victim_probabilities,\n0792:         config.endpoint_threshold,",
+        "0788:         config.endpoint_threshold,\n0789:     )\n0790:     raw_victim_mask = mask_from_probabilities(\n0791:         victim_probabilities,\n0792:         config.endpoint_threshold,\n0793:     )\n0794:     raw_path_mask = mask_from_probabilities(\n0795:         path_probabilities,\n0796:         config.endpoint_threshold,",
+        "0792:         config.endpoint_threshold,\n0793:     )\n0794:     raw_path_mask = mask_from_probabilities(\n0795:         path_probabilities,\n0796:         config.endpoint_threshold,\n0797:     )\n0798: \n0799:     if graph_prediction == 0:\n0800:         return EPLRResult(",
+        "0869: \n0870:     if hypothesis.attacker_count != raw_count:\n0871:         raise EPLRDecodeError(\"decoder changed immutable Raw count\")\n0872: \n0873:     low_threshold = config.low_support_threshold_by_k[raw_count - 1]\n0874:     low_support = bool(support < low_threshold)\n0875: \n0876:     if endpoint_repaired:\n0877:         status = STATUS_REPAIRED",
+        "0870:     if hypothesis.attacker_count != raw_count:\n0871:         raise EPLRDecodeError(\"decoder changed immutable Raw count\")\n0872: \n0873:     low_threshold = config.low_support_threshold_by_k[raw_count - 1]\n0874:     low_support = bool(support < low_threshold)\n0875: \n0876:     if endpoint_repaired:\n0877:         status = STATUS_REPAIRED\n0878:     elif low_support:"
+      ],
+      "sha256": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35"
+    },
+    "dependencies/v5_xy_route_library.py": {
+      "ast_contract": {
+        "assignments_of_interest": [],
+        "calls_of_interest": [
+          {
+            "call": "AssertionError('path mask identity violated')",
+            "line": 249
+          },
+          {
+            "call": "AssertionError(f'expected 240 routes, got {len(routes)}')",
+            "line": 272
+          },
+          {
+            "call": "AssertionError('route IDs are not contiguous in frozen order')",
+            "line": 274
+          },
+          {
+            "call": "AssertionError('route table ordering mismatch')",
+            "line": 285
+          },
+          {
+            "call": "AssertionError('source count does not equal K')",
+            "line": 333
+          }
+        ],
+        "classes": [
+          {
+            "end_line": 76,
+            "line": 40,
+            "name": "RouteRecord"
+          },
+          {
+            "end_line": 86,
+            "line": 80,
+            "name": "HypothesisMasks"
+          }
+        ],
+        "functions": [
+          {
+            "end_line": 93,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 89,
+            "name": "validate_router_id",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "router_id"
+              }
+            ],
+            "returns": "None",
+            "vararg": null
+          },
+          {
+            "end_line": 99,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 96,
+            "name": "router_to_coordinate",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "router_id"
+              }
+            ],
+            "returns": "tuple[int, int]",
+            "vararg": null
+          },
+          {
+            "end_line": 109,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 102,
+            "name": "coordinate_to_router",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "row"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "column"
+              }
+            ],
+            "returns": "int",
+            "vararg": null
+          },
+          {
+            "end_line": 114,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 112,
+            "name": "coordinate_dict",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "router_id"
+              }
+            ],
+            "returns": "dict[str, int]",
+            "vararg": null
+          },
+          {
+            "end_line": 122,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 117,
+            "name": "route_id_for",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "victim"
+              }
+            ],
+            "returns": "int",
+            "vararg": null
+          },
+          {
+            "end_line": 132,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 125,
+            "name": "source_victim_for_route_id",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "route_id"
+              }
+            ],
+            "returns": "tuple[int, int]",
+            "vararg": null
+          },
+          {
+            "end_line": 153,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 135,
+            "name": "hop_direction",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source_router"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "destination_router"
+              }
+            ],
+            "returns": "str",
+            "vararg": null
+          },
+          {
+            "end_line": 165,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 156,
+            "name": "expected_directed_edges",
+            "positional": [],
+            "returns": "tuple[tuple[int, int], ...]",
+            "vararg": null
+          },
+          {
+            "end_line": 190,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 168,
+            "name": "generate_xy_nodes",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "victim"
+              }
+            ],
+            "returns": "tuple[int, ...]",
+            "vararg": null
+          },
+          {
+            "end_line": 198,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 193,
+            "name": "_mask_from_nodes",
+            "positional": [
+              {
+                "annotation": "Iterable[int]",
+                "default": null,
+                "name": "nodes"
+              }
+            ],
+            "returns": "int",
+            "vararg": null
+          },
+          {
+            "end_line": 232,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "bool",
+                "default": "True",
+                "name": "require_xy",
+                "required": false
+              }
+            ],
+            "line": 201,
+            "name": "validate_route_nodes",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "victim"
+              },
+              {
+                "annotation": "Sequence[int]",
+                "default": null,
+                "name": "nodes"
+              }
+            ],
+            "returns": "None",
+            "vararg": null
+          },
+          {
+            "end_line": 261,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 235,
+            "name": "build_route",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "source"
+              },
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "victim"
+              }
+            ],
+            "returns": "RouteRecord",
+            "vararg": null
+          },
+          {
+            "end_line": 275,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 264,
+            "name": "generate_route_table",
+            "positional": [],
+            "returns": "tuple[RouteRecord, ...]",
+            "vararg": null
+          },
+          {
+            "end_line": 286,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 281,
+            "name": "get_route",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "route_id"
+              }
+            ],
+            "returns": "RouteRecord",
+            "vararg": null
+          },
+          {
+            "end_line": 297,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 289,
+            "name": "empty_hypothesis",
+            "positional": [],
+            "returns": "HypothesisMasks",
+            "vararg": null
+          },
+          {
+            "end_line": 342,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "int | None",
+                "default": "None",
+                "name": "expected_k",
+                "required": false
+              }
+            ],
+            "line": 300,
+            "name": "combine_route_ids",
+            "positional": [
+              {
+                "annotation": "Sequence[int]",
+                "default": null,
+                "name": "route_ids"
+              }
+            ],
+            "returns": "HypothesisMasks",
+            "vararg": null
+          },
+          {
+            "end_line": 361,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "float",
+                "default": "1e-12",
+                "name": "tolerance",
+                "required": false
+              }
+            ],
+            "line": 345,
+            "name": "choose_equal_score_hypothesis",
+            "positional": [
+              {
+                "annotation": "Sequence[tuple[float, Sequence[int]]]",
+                "default": null,
+                "name": "candidates"
+              }
+            ],
+            "returns": "tuple[float, tuple[int, ...]]",
+            "vararg": null
+          },
+          {
+            "end_line": 76,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 51,
+            "name": "to_json_dict",
+            "positional": [
+              {
+                "annotation": null,
+                "default": null,
+                "name": "self"
+              }
+            ],
+            "returns": "dict[str, object]",
+            "vararg": null
+          }
+        ],
+        "member": "dependencies/v5_xy_route_library.py"
+      },
+      "decode_related_source_blocks": [],
+      "sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+    },
+    "implementation/v5_p3_eplr_v2.py": {
+      "ast_contract": {
+        "assignments_of_interest": [
+          {
+            "assignment": "graph_prediction = int(graph_probability >= config.graph_threshold)",
+            "line": 85
+          },
+          {
+            "assignment": "raw_source_mask = v1.mask_from_probabilities(source_probabilities, config.endpoint_threshold)",
+            "line": 90
+          },
+          {
+            "assignment": "raw_transit_mask = v1.mask_from_probabilities(transit_probabilities, config.endpoint_threshold)",
+            "line": 94
+          },
+          {
+            "assignment": "raw_victim_mask = v1.mask_from_probabilities(victim_probabilities, config.endpoint_threshold)",
+            "line": 98
+          },
+          {
+            "assignment": "raw_path_mask = v1.mask_from_probabilities(path_probabilities, config.endpoint_threshold)",
+            "line": 102
+          },
+          {
+            "assignment": "threshold = config.low_support_threshold_by_k[raw_count - 1]",
+            "line": 171
+          },
+          {
+            "assignment": "low_support = bool(float(support) < float(threshold))",
+            "line": 172
+          }
+        ],
+        "calls_of_interest": [
+          {
+            "call": "EPLRV2Result(raw_graph_probability=graph_probability, raw_graph_prediction=1, raw_attacker_count_candidate=raw_count, effective_attacker_count=raw_count, raw_source_bitmap=raw_source_mask, raw_transit_bitmap=raw_transit_mask, raw_victim_bitmap=raw_victim_mask, raw_path_bitmap=raw_path_mask, selected_source_bitmap=raw_source_mask, selected_transit_bitmap=int(hypothesis.transit_mask), selected_victim_bitmap=raw_victim_mask, selected_path_bitmap=int(hypothesis.path_mask), selected_route_ids=tuple(hypothesis.route_ids), route_consistency_score=float(support), route_certified=True, endpoint_preserved=True, decoder_status=status)",
+            "line": 179
+          },
+          {
+            "call": "EPLRV2Result(raw_graph_probability=graph_probability, raw_graph_prediction=0, raw_attacker_count_candidate=raw_count, effective_attacker_count=0, raw_source_bitmap=raw_source_mask, raw_transit_bitmap=raw_transit_mask, raw_victim_bitmap=raw_victim_mask, raw_path_bitmap=raw_path_mask, selected_source_bitmap=0, selected_transit_bitmap=0, selected_victim_bitmap=0, selected_path_bitmap=0, selected_route_ids=(), route_consistency_score=float('nan'), route_certified=False, endpoint_preserved=False, decoder_status=STATUS_INACTIVE)",
+            "line": 108
+          },
+          {
+            "call": "EPLRV2Result(raw_graph_probability=graph_probability, raw_graph_prediction=1, raw_attacker_count_candidate=raw_count, effective_attacker_count=raw_count, raw_source_bitmap=raw_source_mask, raw_transit_bitmap=raw_transit_mask, raw_victim_bitmap=raw_victim_mask, raw_path_bitmap=raw_path_mask, selected_source_bitmap=raw_source_mask, selected_transit_bitmap=raw_transit_mask, selected_victim_bitmap=raw_victim_mask, selected_path_bitmap=raw_path_mask, selected_route_ids=(), route_consistency_score=float('nan'), route_certified=False, endpoint_preserved=True, decoder_status=STATUS_UNRESOLVED)",
+            "line": 138
+          }
+        ],
+        "classes": [
+          {
+            "end_line": 54,
+            "line": 31,
+            "name": "EPLRV2Result"
+          }
+        ],
+        "functions": [
+          {
+            "end_line": 197,
+            "kwarg": null,
+            "kwonly": [
+              {
+                "annotation": "float",
+                "default": null,
+                "name": "graph_logit",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "count_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "source_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "transit_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "victim_logits",
+                "required": true
+              },
+              {
+                "annotation": "Sequence[float]",
+                "default": null,
+                "name": "path_logits",
+                "required": true
+              },
+              {
+                "annotation": "v1.EPLRConfig",
+                "default": null,
+                "name": "config",
+                "required": true
+              }
+            ],
+            "line": 57,
+            "name": "decode_eplr_v2",
+            "positional": [],
+            "returns": "EPLRV2Result",
+            "vararg": null
+          },
+          {
+            "end_line": 207,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 200,
+            "name": "bitmap_to_array",
+            "positional": [
+              {
+                "annotation": "int",
+                "default": null,
+                "name": "mask"
+              }
+            ],
+            "returns": "np.ndarray",
+            "vararg": null
+          },
+          {
+            "end_line": 54,
+            "kwarg": null,
+            "kwonly": [],
+            "line": 53,
+            "name": "to_dict",
+            "positional": [
+              {
+                "annotation": null,
+                "default": null,
+                "name": "self"
+              }
+            ],
+            "returns": "dict[str, Any]",
+            "vararg": null
+          }
+        ],
+        "member": "implementation/v5_p3_eplr_v2.py"
+      },
+      "decode_related_source_blocks": [
+        "0002: \n0003: This software-side decoder consumes the existing 69 neural logits.\n0004: \n0005: Frozen V2 policy:\n0006:   - graph, active count, source, and victim are exactly Raw;\n0007:   - when Raw endpoints admit exactly K canonical XY routes, select the\n0008:     best endpoint-preserving legal route tuple and use its transit/path unions;\n0009:   - when Raw endpoints are not legally explainable, pass through all Raw role\n0010:     masks unchanged and explicitly report an unresolved, non-certified status;",
+        "0003: This software-side decoder consumes the existing 69 neural logits.\n0004: \n0005: Frozen V2 policy:\n0006:   - graph, active count, source, and victim are exactly Raw;\n0007:   - when Raw endpoints admit exactly K canonical XY routes, select the\n0008:     best endpoint-preserving legal route tuple and use its transit/path unions;\n0009:   - when Raw endpoints are not legally explainable, pass through all Raw role\n0010:     masks unchanged and explicitly report an unresolved, non-certified status;\n0011:   - no endpoint repair, endpoint reassignment, or zero-mask fallback exists.",
+        "0027: STATUS_UNRESOLVED = \"RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH\"\n0028: \n0029: \n0030: @dataclass(frozen=True)\n0031: class EPLRV2Result:\n0032:     raw_graph_probability: float\n0033:     raw_graph_prediction: int\n0034:     raw_attacker_count_candidate: int\n0035:     effective_attacker_count: int",
+        "0053:     def to_dict(self) -> dict[str, Any]:\n0054:         return asdict(self)\n0055: \n0056: \n0057: def decode_eplr_v2(\n0058:     *,\n0059:     graph_logit: float,\n0060:     count_logits: Sequence[float],\n0061:     source_logits: Sequence[float],",
+        "0062:     transit_logits: Sequence[float],\n0063:     victim_logits: Sequence[float],\n0064:     path_logits: Sequence[float],\n0065:     config: v1.EPLRConfig,\n0066: ) -> EPLRV2Result:\n0067:     count_logits_array = np.asarray(\n0068:         count_logits,\n0069:         dtype=np.float64,\n0070:     ).reshape(4)",
+        "0082:     ).reshape(16)\n0083: \n0084:     graph_probability = v1.stable_sigmoid(float(graph_logit))\n0085:     graph_prediction = int(\n0086:         graph_probability >= config.graph_threshold\n0087:     )\n0088:     raw_count = int(np.argmax(count_logits_array)) + 1\n0089: \n0090:     raw_source_mask = v1.mask_from_probabilities(",
+        "0088:     raw_count = int(np.argmax(count_logits_array)) + 1\n0089: \n0090:     raw_source_mask = v1.mask_from_probabilities(\n0091:         source_probabilities,\n0092:         config.endpoint_threshold,\n0093:     )\n0094:     raw_transit_mask = v1.mask_from_probabilities(\n0095:         transit_probabilities,\n0096:         config.endpoint_threshold,",
+        "0092:         config.endpoint_threshold,\n0093:     )\n0094:     raw_transit_mask = v1.mask_from_probabilities(\n0095:         transit_probabilities,\n0096:         config.endpoint_threshold,\n0097:     )\n0098:     raw_victim_mask = v1.mask_from_probabilities(\n0099:         victim_probabilities,\n0100:         config.endpoint_threshold,",
+        "0096:         config.endpoint_threshold,\n0097:     )\n0098:     raw_victim_mask = v1.mask_from_probabilities(\n0099:         victim_probabilities,\n0100:         config.endpoint_threshold,\n0101:     )\n0102:     raw_path_mask = v1.mask_from_probabilities(\n0103:         path_probabilities,\n0104:         config.endpoint_threshold,",
+        "0100:         config.endpoint_threshold,\n0101:     )\n0102:     raw_path_mask = v1.mask_from_probabilities(\n0103:         path_probabilities,\n0104:         config.endpoint_threshold,\n0105:     )\n0106: \n0107:     if graph_prediction == 0:\n0108:         return EPLRV2Result(",
+        "0104:         config.endpoint_threshold,\n0105:     )\n0106: \n0107:     if graph_prediction == 0:\n0108:         return EPLRV2Result(\n0109:             raw_graph_probability=graph_probability,\n0110:             raw_graph_prediction=0,\n0111:             raw_attacker_count_candidate=raw_count,\n0112:             effective_attacker_count=0,",
+        "0134:         config=config,\n0135:     )\n0136: \n0137:     if hypothesis is None:\n0138:         return EPLRV2Result(\n0139:             raw_graph_probability=graph_probability,\n0140:             raw_graph_prediction=1,\n0141:             raw_attacker_count_candidate=raw_count,\n0142:             effective_attacker_count=raw_count,",
+        "0167:         raise RuntimeError(\n0168:             \"EPLR-V2 legal route selection changed immutable Raw victim\"\n0169:         )\n0170: \n0171:     threshold = config.low_support_threshold_by_k[raw_count - 1]\n0172:     low_support = bool(float(support) < float(threshold))\n0173:     status = (\n0174:         STATUS_LEGAL_LOW_SUPPORT\n0175:         if low_support",
+        "0168:             \"EPLR-V2 legal route selection changed immutable Raw victim\"\n0169:         )\n0170: \n0171:     threshold = config.low_support_threshold_by_k[raw_count - 1]\n0172:     low_support = bool(float(support) < float(threshold))\n0173:     status = (\n0174:         STATUS_LEGAL_LOW_SUPPORT\n0175:         if low_support\n0176:         else STATUS_LEGAL",
+        "0175:         if low_support\n0176:         else STATUS_LEGAL\n0177:     )\n0178: \n0179:     return EPLRV2Result(\n0180:         raw_graph_probability=graph_probability,\n0181:         raw_graph_prediction=1,\n0182:         raw_attacker_count_candidate=raw_count,\n0183:         effective_attacker_count=raw_count,"
+      ],
+      "sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de"
+    }
+  },
+  "scope": "read_only_source_json_contract_recovery",
+  "sealed_test_access": false,
+  "stage": "V5_P3_FINAL_D0_P1_DECODER_CONTRACT_AND_SYNTHETIC_REGRESSION_SCHEMA_RECOVERY",
+  "status": "PASS",
+  "test_tensor_deserialization": false,
+  "validation_logits_generated": false
+}

@@ -1,0 +1,249 @@
+{
+  "coverage_checks": {
+    "all_counts_present": true,
+    "all_outputs_finite": true,
+    "development_test_accessed": false,
+    "exact_decode_unique": true,
+    "matching_loss_exercised_for_all_counts": true,
+    "parameter_count_pass": true,
+    "slot_probabilities_normalized": true,
+    "test_loader_constructed": false
+  },
+  "coverage_integrity_pass": true,
+  "designation": "V4-A4a-1B2 Deterministic Validation Label-Coverage Audit",
+  "development_test_accessed": false,
+  "device": "cuda",
+  "graph_threshold": 0.275,
+  "interpretation_boundary": "Metrics are diagnostic only. This subset was label-stratified to exercise all cardinalities and must not be used for model, threshold, loss-weight or policy selection.",
+  "matching_loss_by_true_count": {
+    "0": {
+      "batch_values": [
+        0.5862645506858826
+      ],
+      "mean": 0.5862645506858826
+    },
+    "1": {
+      "batch_values": [
+        2.0304908752441406
+      ],
+      "mean": 2.0304908752441406
+    },
+    "2": {
+      "batch_values": [
+        3.0919861793518066
+      ],
+      "mean": 3.0919861793518066
+    },
+    "3": {
+      "batch_values": [
+        4.4464826583862305
+      ],
+      "mean": 4.4464826583862305
+    },
+    "4": {
+      "batch_values": [
+        5.817468643188477
+      ],
+      "mean": 5.817468643188477
+    }
+  },
+  "numerical_diagnostics": {
+    "exact_uniqueness_violations": 0,
+    "finite_batches": 3,
+    "slot_logit_max": 8.685492515563965,
+    "slot_logit_min": -24.431861877441406,
+    "slot_probability_sum_max_abs_diff": 2.980232238769531e-07
+  },
+  "optimizer_constructed": false,
+  "parameter_count": {
+    "frozen": 2113,
+    "total": 3189,
+    "trainable": 1076
+  },
+  "per_true_count_diagnostics": {
+    "0": {
+      "derived_count_accuracy": 0.40625,
+      "derived_count_correct": 52,
+      "exact": 116,
+      "exact_set_fraction": 0.90625,
+      "fn": 0,
+      "fp": 23,
+      "greedy_disagreement": 2,
+      "greedy_disagreement_fraction": 0.015625,
+      "mean_predicted_count": 0.1796875,
+      "nonempty": 12,
+      "nonempty_prediction_fraction": 0.09375,
+      "predicted_count_sum": 23,
+      "raw_all_null": 76,
+      "raw_all_null_fraction": 0.59375,
+      "raw_duplicate": 22,
+      "raw_duplicate_fraction": 0.171875,
+      "samples": 128,
+      "set_f1": 0.0,
+      "set_precision": 0.0,
+      "set_recall": 0.0,
+      "tp": 0,
+      "true_count": 0
+    },
+    "1": {
+      "derived_count_accuracy": 0.3828125,
+      "derived_count_correct": 49,
+      "exact": 9,
+      "exact_set_fraction": 0.0703125,
+      "fn": 115,
+      "fp": 104,
+      "greedy_disagreement": 7,
+      "greedy_disagreement_fraction": 0.0546875,
+      "mean_predicted_count": 0.9140625,
+      "nonempty": 81,
+      "nonempty_prediction_fraction": 0.6328125,
+      "predicted_count_sum": 117,
+      "raw_all_null": 41,
+      "raw_all_null_fraction": 0.3203125,
+      "raw_duplicate": 39,
+      "raw_duplicate_fraction": 0.3046875,
+      "samples": 128,
+      "set_f1": 0.10612244897959183,
+      "set_precision": 0.1111111111111111,
+      "set_recall": 0.1015625,
+      "tp": 13,
+      "true_count": 1
+    },
+    "2": {
+      "derived_count_accuracy": 0.1796875,
+      "derived_count_correct": 23,
+      "exact": 0,
+      "exact_set_fraction": 0.0,
+      "fn": 233,
+      "fp": 114,
+      "greedy_disagreement": 7,
+      "greedy_disagreement_fraction": 0.0546875,
+      "mean_predicted_count": 1.0703125,
+      "nonempty": 109,
+      "nonempty_prediction_fraction": 0.8515625,
+      "predicted_count_sum": 137,
+      "raw_all_null": 14,
+      "raw_all_null_fraction": 0.109375,
+      "raw_duplicate": 28,
+      "raw_duplicate_fraction": 0.21875,
+      "samples": 128,
+      "set_f1": 0.11704834605597962,
+      "set_precision": 0.1678832116788321,
+      "set_recall": 0.08984375,
+      "tp": 23,
+      "true_count": 2
+    },
+    "3": {
+      "derived_count_accuracy": 0.265625,
+      "derived_count_correct": 34,
+      "exact": 0,
+      "exact_set_fraction": 0.0,
+      "fn": 358,
+      "fp": 107,
+      "greedy_disagreement": 11,
+      "greedy_disagreement_fraction": 0.0859375,
+      "mean_predicted_count": 1.0390625,
+      "nonempty": 82,
+      "nonempty_prediction_fraction": 0.640625,
+      "predicted_count_sum": 133,
+      "raw_all_null": 43,
+      "raw_all_null_fraction": 0.3359375,
+      "raw_duplicate": 54,
+      "raw_duplicate_fraction": 0.421875,
+      "samples": 128,
+      "set_f1": 0.10058027079303675,
+      "set_precision": 0.19548872180451127,
+      "set_recall": 0.06770833333333333,
+      "tp": 26,
+      "true_count": 3
+    },
+    "4": {
+      "derived_count_accuracy": 0.0390625,
+      "derived_count_correct": 5,
+      "exact": 0,
+      "exact_set_fraction": 0.0,
+      "fn": 473,
+      "fp": 95,
+      "greedy_disagreement": 10,
+      "greedy_disagreement_fraction": 0.078125,
+      "mean_predicted_count": 1.046875,
+      "nonempty": 83,
+      "nonempty_prediction_fraction": 0.6484375,
+      "predicted_count_sum": 134,
+      "raw_all_null": 43,
+      "raw_all_null_fraction": 0.3359375,
+      "raw_duplicate": 52,
+      "raw_duplicate_fraction": 0.40625,
+      "samples": 128,
+      "set_f1": 0.12074303405572756,
+      "set_precision": 0.291044776119403,
+      "set_recall": 0.076171875,
+      "tp": 39,
+      "true_count": 4
+    }
+  },
+  "positive_integrity_checks": {
+    "all_counts_present": true,
+    "all_outputs_finite": true,
+    "exact_decode_unique": true,
+    "matching_loss_exercised_for_all_counts": true,
+    "parameter_count_pass": true,
+    "slot_probabilities_normalized": true
+  },
+  "prohibited_access_checks": {
+    "development_test_accessed": false,
+    "test_loader_constructed": false
+  },
+  "provenance": {
+    "audit_script_sha256": "4dd81d0aea6ab529765cdcb11056ef332e522fe2f9c5ddbd7cc2e025977a469c",
+    "base_checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "contract_sha256": "71f7bdc1a940a8a80935095e0dafa6500c555fc659a9464de94a1375515a6e2b",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "slot_module_sha256": "97b56aabb3239dfc7543c241665cacf998eb6b1a1f5f67f931cdeb70e75c111c",
+    "smoke_checkpoint_sha256": "7f54ff70bd224e87a4e9c43f672cc320edd99394665d7e3eaa92039a8523beea",
+    "smoke_report_sha256": "95e2e34321c827937d5d363192f36e38f06f74a9376e35af7332fd928c031e54",
+    "smoke_script_sha256": "a1c93ed64198c0bd946e64da116b3438012d742c0c5fafc092e8517b4761a35d",
+    "trainer_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "purpose": "Exercise counts 0-4 after the original bounded smoke validation happened to contain only normal samples.",
+  "ready_for_a4a_1c_training_contract_freeze": true,
+  "selected_sample_count": 640,
+  "selection_inventory": {
+    "0": {
+      "available_validation_samples": 148185,
+      "first_selected_global_index": 3293,
+      "last_selected_global_index": 987899,
+      "selected_samples": 128
+    },
+    "1": {
+      "available_validation_samples": 154771,
+      "first_selected_global_index": 997779,
+      "last_selected_global_index": 1926404,
+      "selected_samples": 128
+    },
+    "2": {
+      "available_validation_samples": 52688,
+      "first_selected_global_index": 1949456,
+      "last_selected_global_index": 2328150,
+      "selected_samples": 128
+    },
+    "3": {
+      "available_validation_samples": 55981,
+      "first_selected_global_index": 2338030,
+      "last_selected_global_index": 2700259,
+      "selected_samples": 128
+    },
+    "4": {
+      "available_validation_samples": 46102,
+      "first_selected_global_index": 2726604,
+      "last_selected_global_index": 2990043,
+      "selected_samples": 128
+    }
+  },
+  "status": "PASS",
+  "test_evaluated": false,
+  "test_loader_constructed": false,
+  "threshold_search_performed": false,
+  "training_performed": false,
+  "validation_selection_performed": false
+}

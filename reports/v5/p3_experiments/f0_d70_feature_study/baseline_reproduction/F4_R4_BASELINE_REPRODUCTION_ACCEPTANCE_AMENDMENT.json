@@ -1,0 +1,26 @@
+{
+  "F4M_authorized": false,
+  "F4_complete": false,
+  "F5_authorized": false,
+  "future_replay_tolerance_changed": false,
+  "generic_tolerance_relaxation_authorized": false,
+  "immutable_reference_replacement_authorized": false,
+  "original_strict_numeric_gate": {
+    "max_absolute_logit_difference_max": 1e-06,
+    "mean_absolute_logit_difference_max": 1e-08,
+    "result": "FAIL"
+  },
+  "recovery_acceptance_rule": {
+    "requirements": [
+      "all non-logit arrays exact",
+      "all graph/source/transit/victim/path threshold decisions exact",
+      "all graph/source/transit/victim/path total score preorders exact",
+      "all score tie partitions exact",
+      "all count argmax decisions exact"
+    ],
+    "result": "FAIL",
+    "scope": "this single F4 replay only"
+  },
+  "scientific_basis": "The frozen metrics depend on binary threshold decisions, count argmaxes, and score rankings. When those objects and all labels are unchanged, the 14 frozen A4/A5 metrics are mathematically invariant despite small backend-level logit drift.",
+  "status": "REVIEW_REQUIRED"
+}

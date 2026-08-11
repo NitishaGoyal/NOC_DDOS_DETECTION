@@ -1,0 +1,164 @@
+{
+  "ablation_sequence": [
+    "A4a-Slot: matching loss only",
+    "A4a-Slot-Full: matching + derived membership + derived count + duplicate penalty",
+    "A4a-TopK control: retrained membership/count decoder with count-controlled top-k",
+    "A4a-Slot-Full+DirectionalProxy only if validation shows the non-proxy slot model is useful"
+  ],
+  "checkpoint_and_validation_contract": {
+    "frozen_development_test_transfers_allowed": 1,
+    "minimum_meaningful_validation_exact_gain_percentage_points": 2.0,
+    "post_transfer_retuning_allowed": false,
+    "primary_model_selection_occurs_after_training": true,
+    "primary_model_selection_source": "validation only",
+    "run_level_paired_bootstrap_required": true,
+    "save_every_full_validation_checkpoint": true,
+    "selection_after_hard_gates": "maximize stable exact localization, then attack exact localization, then minimize normal window false isolation",
+    "selection_hard_gates": {
+      "attacker_set_precision_min": 0.98,
+      "candidate_coverage_min": 0.9,
+      "latency_budget_pass": true,
+      "parameter_budget_pass": true,
+      "persistent_normal_run_false_isolation_fraction": 0.0
+    },
+    "training_early_stop_monitor": "minimum full-validation total slot loss"
+  },
+  "designation": "V4-A4a-1C Decoder-Only Full-Training Runtime Contract",
+  "development_test_accessed": false,
+  "hard_normal_claim_boundary": "A4a is expected to recover part of the decoder/cardinality gap. It is not expected to fully solve the A3.15 router-3 hard-normal ambiguity because those cases are genuinely attacker-like under the saved V4 feature semantics. Remaining failures are a V4 representation/semantics limitation and must be carried into V5.",
+  "kill_criteria": [
+    "Reject further A4a development if the best validation-selected slot model improves attack exact localization by less than 2 percentage points over A3.11-H32.",
+    "Reject any A4a model that increases persistent normal-run false isolation.",
+    "Reject a gain achieved only through material candidate-coverage collapse below 0.90.",
+    "Reject the structured slot design if it does not outperform the retrained A4a-TopK ablation.",
+    "After a kill decision, close V4 architecture tuning and move to V5 rather than introducing development-test-specific fixes."
+  ],
+  "label_coverage_evidence": {
+    "counts_exercised": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "coverage_integrity_pass": true,
+    "metrics_are_diagnostic_only": true,
+    "selected_samples": 640
+  },
+  "loss_contract": {
+    "derived_cardinality_cross_entropy_weight": 0.5,
+    "derived_union_membership_bce_weight": 0.5,
+    "duplicate_slot_penalty_weight": 0.1,
+    "matching_implementation": "vectorized exact enumeration, cross-checked against the audited reference implementation",
+    "null_target_weight": 0.514585764294049,
+    "null_target_weight_report_sha256": "95e2e34321c827937d5d363192f36e38f06f74a9376e35af7332fd928c031e54",
+    "null_target_weight_source": "A4a-1B training-split prevalence only",
+    "permutation_invariant_matching_weight": 1.0
+  },
+  "model_contract": {
+    "frozen_modules": [
+      "temporal_conv",
+      "local_projection",
+      "gcn",
+      "graph_head"
+    ],
+    "hardware_candidate_decode": "greedy unique assignment",
+    "reference_decode": "exact unique constrained assignment",
+    "slot_class_semantics": "routers 0-15 plus NULL",
+    "slot_classes": 17,
+    "slot_count": 4,
+    "total_parameters": 3189,
+    "trainable_modules": [
+      "router_key_projection",
+      "global_context_projection",
+      "slot_identity_embeddings",
+      "slot_null_head"
+    ],
+    "trainable_parameters": 1076
+  },
+  "paper_claim_boundary": "The strongest defensible V4 claim is high-precision candidate localization with temporally stable attacker-set estimation. Fully autonomous isolation remains conditional on strict persistent-normal safety gates.",
+  "primary_variant": "A4a-Slot-Full",
+  "prohibitions": [
+    "No encoder or graph-head fine-tuning in A4a decoder-only training.",
+    "No development-test loader construction during training.",
+    "No threshold search during optimizer training.",
+    "No test-specific checkpoint, loss-weight or persistence selection.",
+    "No smoke checkpoint may be promoted as the final model.",
+    "No naive duplicate removal as the reference decoder.",
+    "No directional proxy in the primary model.",
+    "No autonomous-isolation claim unless persistent-normal safety gates pass."
+  ],
+  "promotion_criteria": {
+    "attacker_set_precision_min": 0.98,
+    "candidate_coverage_must_not_collapse": true,
+    "desirable_exact_improvement_percentage_points_min": 3.0,
+    "latency_budget_must_pass": true,
+    "no_post_transfer_retuning": true,
+    "parameter_budget_must_pass": true,
+    "persistent_normal_run_false_isolation_fraction": 0.0,
+    "strong_exact_improvement_percentage_points": "3 to 5"
+  },
+  "provenance": {
+    "a4a_0s_contract_sha256": "71f7bdc1a940a8a80935095e0dafa6500c555fc659a9464de94a1375515a6e2b",
+    "a4a_1a_audit_sha256": "7075ae14697c24bf359c2aa214b1af8948c3c6a27ed9e500c51623b4cadb28b5",
+    "base_checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "label_audit_script_sha256": "4dd81d0aea6ab529765cdcb11056ef332e522fe2f9c5ddbd7cc2e025977a469c",
+    "label_coverage_audit_sha256": "66a03f3477d6b07ed430add1a30d70bafa081e520acefb293736184f268a92c3",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "slot_module_sha256": "97b56aabb3239dfc7543c241665cacf998eb6b1a1f5f67f931cdeb70e75c111c",
+    "smoke_report_sha256": "95e2e34321c827937d5d363192f36e38f06f74a9376e35af7332fd928c031e54",
+    "smoke_script_sha256": "a1c93ed64198c0bd946e64da116b3438012d742c0c5fafc092e8517b4761a35d",
+    "trainer_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "ready_for_a4a_1d_batch512_resource_probe": true,
+  "resource_probe_contract": {
+    "fallback_batch_size": 256,
+    "fallback_trigger": "documented CUDA OOM or host-memory/loader failure only",
+    "primary_batch_size_to_probe": 512,
+    "probe_batches": 2,
+    "required_before_full_training": true,
+    "required_checks": [
+      "finite forward loss",
+      "finite backward gradients",
+      "gradient clipping",
+      "frozen encoder unchanged",
+      "GPU memory recorded",
+      "checkpoint serialization"
+    ]
+  },
+  "runtime_contract": {
+    "automatic_mixed_precision": false,
+    "batch_size_fallback": 256,
+    "batch_size_primary": 512,
+    "development_test_loader_constructed": false,
+    "early_stopping_patience_epochs": 10,
+    "fallback_requires_authorized_resource_probe_failure": true,
+    "full_validation_every_epochs": 3,
+    "gradient_clip_norm": 5.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 75,
+    "minimum_delta": 0.0001,
+    "num_workers": 2,
+    "optimizer": "AdamW",
+    "persistent_workers": true,
+    "pin_memory": true,
+    "prefetch_factor": 2,
+    "seed": 7,
+    "training_split_only_for_optimizer_steps": true,
+    "validation_split_only_for_checkpointing_and_selection": true,
+    "weight_decay": 0.0001
+  },
+  "scientific_role": "Recover part of the A3.12 decoder/cardinality gap while preserving the frozen A3 representation and graph gate.",
+  "smoke_evidence": {
+    "checkpoint_reload_pass": true,
+    "frozen_encoder_unchanged": true,
+    "gpu_peak_allocated_mib": 26.35009765625,
+    "train_loss_decreased": true,
+    "train_loss_epoch1": 6.6339417695999146,
+    "train_loss_epoch2": 4.463502546151479
+  },
+  "status": "PASS",
+  "threshold_search_performed": false,
+  "training_performed": false,
+  "validation_selection_performed": false
+}

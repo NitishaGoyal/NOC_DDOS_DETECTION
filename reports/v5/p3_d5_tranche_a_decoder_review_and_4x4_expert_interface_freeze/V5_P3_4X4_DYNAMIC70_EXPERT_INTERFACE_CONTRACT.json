@@ -1,0 +1,97 @@
+{
+  "classification": "architecture-and-interface freeze for the reusable 4x4 regional expert; current weights remain Tranche-A preliminary",
+  "decoder_boundary": {
+    "inside_RTL_accelerator": false,
+    "raw_graph_logit_is_primary_hardware_detection_signal": true,
+    "structured_exact_decoder_is_software_side": true
+  },
+  "forbidden_prebaseline_changes": [
+    "attention",
+    "directional GraphConv replacement",
+    "new graph pooling",
+    "multiscale graph hierarchy",
+    "new localization loss",
+    "new output labels"
+  ],
+  "full_neural_architecture": "B3 temporal frontend + two-layer GraphConv",
+  "graph_contract": {
+    "directed_edges": 48,
+    "mesh": "4x4",
+    "router_numbering": "row-major",
+    "routers": 16,
+    "topology": "fixed"
+  },
+  "input_contract": {
+    "feature_representation": "Dynamic70",
+    "physical_port_mask_shape": [
+      "batch",
+      16,
+      10
+    ],
+    "window_length": 32,
+    "x_layout": "x[batch][router][feature][time]",
+    "x_shape": [
+      "batch",
+      16,
+      70,
+      32
+    ]
+  },
+  "model_identity": "Causal Depthwise-Separable Conv1D Temporal Encoder + Two-Layer GraphConv, Dynamic70 adaptation",
+  "output_contract": {
+    "hardware_boundary": "raw neural logits before sigmoid, thresholding, or structured decoding",
+    "layout": {
+      "count": {
+        "classes": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "length": 4,
+        "offset": 1
+      },
+      "graph": {
+        "length": 1,
+        "offset": 0
+      },
+      "path": {
+        "length": 16,
+        "offset": 53
+      },
+      "source": {
+        "length": 16,
+        "offset": 5
+      },
+      "transit": {
+        "length": 16,
+        "offset": 21
+      },
+      "victim": {
+        "length": 16,
+        "offset": 37
+      }
+    },
+    "raw_logit_count": 69
+  },
+  "parameter_contract": {
+    "current_checkpoint_epoch": 14,
+    "current_parameter_count": 60553,
+    "current_weights_are_final": false,
+    "current_weights_classification": "Tranche-A preliminary engineering reference",
+    "future_A_plus_B_retraining_must_preserve_interface": true
+  },
+  "shared_regional_reuse": {
+    "8x8_wrapper_supported": true,
+    "cross_region_reasoning": false,
+    "regions": 4,
+    "same_model_instance_and_shared_weights": true
+  },
+  "source_handoff_archive": {
+    "path": "/home/zira/research/projects/GNN-2d/artifacts/rtl/v5_p3_h0_current_4x4_dynamic70_rtl_handoff/V5_P3_H0_CURRENT_4X4_DYNAMIC70_RTL_HANDOFF_PREQUANTIZATION_REFERENCE.zip",
+    "sha256": "431298f6870489b8b77a1ca0fae774aff1604ef2b6e11155d985a818a21689f0"
+  },
+  "stage": "V5_P3_D5_TRANCHE_A_DECODER_REVIEW_AND_4X4_EXPERT_INTERFACE_FREEZE",
+  "status": "FROZEN",
+  "temporal_frontend_reference": "B3"
+}

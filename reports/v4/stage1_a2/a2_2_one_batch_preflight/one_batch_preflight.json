@@ -1,0 +1,140 @@
+{
+  "actual_shapes": {
+    "gcn1_output": [
+      256,
+      16,
+      32
+    ],
+    "gcn2_output": [
+      256,
+      16,
+      16
+    ],
+    "graph_embedding": [
+      256,
+      16
+    ],
+    "graph_logits": [
+      256
+    ],
+    "input": [
+      256,
+      16,
+      8,
+      24
+    ],
+    "node_logits": [
+      256,
+      16
+    ],
+    "temporal_embedding": [
+      256,
+      16,
+      16
+    ]
+  },
+  "all_gradients_finite": true,
+  "any_nonzero_gradient": true,
+  "checkpoint_written": false,
+  "combined_loss": 1.7622281312942505,
+  "cuda_memory_allocated_mib": 20.32568359375,
+  "cuda_memory_reserved_mib": 44.0,
+  "device": "cuda",
+  "expected_shapes": {
+    "gcn1_output": [
+      256,
+      16,
+      32
+    ],
+    "gcn2_output": [
+      256,
+      16,
+      16
+    ],
+    "graph_embedding": [
+      256,
+      16
+    ],
+    "graph_logits": [
+      256
+    ],
+    "input": [
+      256,
+      16,
+      8,
+      24
+    ],
+    "node_logits": [
+      256,
+      16
+    ],
+    "temporal_embedding": [
+      256,
+      16,
+      16
+    ]
+  },
+  "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "gradients": {
+    "gcn1.linear.bias": {
+      "finite": true,
+      "norm": 0.008955217897891998,
+      "present": true
+    },
+    "gcn1.linear.weight": {
+      "finite": true,
+      "norm": 0.007075140718370676,
+      "present": true
+    },
+    "gcn2.linear.bias": {
+      "finite": true,
+      "norm": 0.024163121357560158,
+      "present": true
+    },
+    "gcn2.linear.weight": {
+      "finite": true,
+      "norm": 0.014735745266079903,
+      "present": true
+    },
+    "graph_head.bias": {
+      "finite": true,
+      "norm": 0.04412027820944786,
+      "present": true
+    },
+    "graph_head.weight": {
+      "finite": true,
+      "norm": 0.02120640128850937,
+      "present": true
+    },
+    "node_head.bias": {
+      "finite": true,
+      "norm": 0.020428122952580452,
+      "present": true
+    },
+    "node_head.weight": {
+      "finite": true,
+      "norm": 0.009523122571408749,
+      "present": true
+    },
+    "temporal.conv.bias": {
+      "finite": true,
+      "norm": 0.004676281940191984,
+      "present": true
+    },
+    "temporal.conv.weight": {
+      "finite": true,
+      "norm": 0.011220061220228672,
+      "present": true
+    }
+  },
+  "graph_loss": 0.4382965564727783,
+  "loss_finite": true,
+  "node_loss": 1.3239315748214722,
+  "optimizer_step_performed": false,
+  "parameter_count": 2274,
+  "pass": true,
+  "shapes_ok": true,
+  "stage": "V4-A2.2 one-batch forward/backward preflight",
+  "test_opened": false,
+  "validation_opened": false
+}

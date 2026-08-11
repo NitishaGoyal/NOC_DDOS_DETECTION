@@ -1,0 +1,460 @@
+{
+  "array_payloads_loaded": false,
+  "arrays": {
+    "attack_logits.npy": {
+      "dtype": "float32",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "count_logits.npy": {
+      "dtype": "float32",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        4
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "dataset_index.npy": {
+      "dtype": "int32",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "edge_index.npy": {
+      "dtype": "int64",
+      "fortran_order": false,
+      "shape": [
+        2,
+        48
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "epoch_id.npy": {
+      "dtype": "int32",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "epoch_tick.npy": {
+      "dtype": "int64",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "path_logits.npy": {
+      "dtype": "float32",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "physical_port_mask_template.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        16,
+        10
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "role_mask.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "source_logits.npy": {
+      "dtype": "float32",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "source_target_router.npy": {
+      "dtype": "int8",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "transit_logits.npy": {
+      "dtype": "float32",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "victim_logits.npy": {
+      "dtype": "float32",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "window_start.npy": {
+      "dtype": "int32",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "window_target.npy": {
+      "dtype": "int32",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "y_attack.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "y_attack_path.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "y_attacker_count.npy": {
+      "dtype": "int8",
+      "fortran_order": false,
+      "shape": [
+        13863
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "y_source.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "y_transit.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    },
+    "y_victim.npy": {
+      "dtype": "uint8",
+      "fortran_order": false,
+      "shape": [
+        13863,
+        16
+      ],
+      "version": [
+        1,
+        0
+      ]
+    }
+  },
+  "classification": {
+    "ambiguous_logits": {},
+    "composite_logit_width": 69,
+    "composite_width_match": true,
+    "logit_candidates": {
+      "count": [
+        {
+          "dtype": "float32",
+          "member": "count_logits.npy",
+          "shape": [
+            13863,
+            4
+          ],
+          "width": 4
+        }
+      ],
+      "graph": [
+        {
+          "dtype": "float32",
+          "member": "attack_logits.npy",
+          "shape": [
+            13863
+          ],
+          "width": 1
+        }
+      ],
+      "path": [
+        {
+          "dtype": "float32",
+          "member": "path_logits.npy",
+          "shape": [
+            13863,
+            16
+          ],
+          "width": 16
+        }
+      ],
+      "source": [
+        {
+          "dtype": "float32",
+          "member": "source_logits.npy",
+          "shape": [
+            13863,
+            16
+          ],
+          "width": 16
+        }
+      ],
+      "transit": [
+        {
+          "dtype": "float32",
+          "member": "transit_logits.npy",
+          "shape": [
+            13863,
+            16
+          ],
+          "width": 16
+        }
+      ],
+      "victim": [
+        {
+          "dtype": "float32",
+          "member": "victim_logits.npy",
+          "shape": [
+            13863,
+            16
+          ],
+          "width": 16
+        }
+      ]
+    },
+    "missing_logits": [],
+    "other_validation_arrays": [
+      {
+        "dtype": "int32",
+        "member": "dataset_index.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      {
+        "dtype": "int32",
+        "member": "epoch_id.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      {
+        "dtype": "int64",
+        "member": "epoch_tick.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      {
+        "dtype": "int32",
+        "member": "window_start.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      {
+        "dtype": "int32",
+        "member": "window_target.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      {
+        "dtype": "uint8",
+        "member": "role_mask.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      }
+    ],
+    "selected_labels": {
+      "transit": {
+        "dtype": "uint8",
+        "member": "y_transit.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "victim": {
+        "dtype": "uint8",
+        "member": "y_victim.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      }
+    },
+    "selected_logits": {
+      "count": {
+        "dtype": "float32",
+        "member": "count_logits.npy",
+        "shape": [
+          13863,
+          4
+        ],
+        "width": 4
+      },
+      "graph": {
+        "dtype": "float32",
+        "member": "attack_logits.npy",
+        "shape": [
+          13863
+        ],
+        "width": 1
+      },
+      "path": {
+        "dtype": "float32",
+        "member": "path_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "source": {
+        "dtype": "float32",
+        "member": "source_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "transit": {
+        "dtype": "float32",
+        "member": "transit_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      },
+      "victim": {
+        "dtype": "float32",
+        "member": "victim_logits.npy",
+        "shape": [
+          13863,
+          16
+        ],
+        "width": 16
+      }
+    }
+  },
+  "expected_composite_width": 69,
+  "expected_head_widths": {
+    "count": 4,
+    "graph": 1,
+    "path": 16,
+    "source": 16,
+    "transit": 16,
+    "victim": 16
+  },
+  "headers_only": true,
+  "reference_artifact": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+  "reference_artifact_sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f"
+}

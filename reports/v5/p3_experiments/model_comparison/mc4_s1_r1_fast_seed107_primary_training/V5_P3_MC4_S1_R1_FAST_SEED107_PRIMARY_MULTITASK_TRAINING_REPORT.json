@@ -1,0 +1,109 @@
+{
+  "certified_loader_execution_route": {
+    "collate_fn": "promotion_safe_collate",
+    "num_workers": 8,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "scientific_training_semantics_changed": false,
+    "t1_report_sha256": "ba9cffb816732a34ca918f0005aec9e76e7dc6b88e263030417009355824d07f",
+    "worker_torch_threads": 1
+  },
+  "classification": "SCIENTIFIC_VALIDATION_ONLY_CONTROLLED_SEED107_ARCHITECTURE_COMPARISON_WITH_CERTIFIED_EXECUTION_ONLY_LOADER_OPTIMIZATION",
+  "comparison_claim_scope": "controlled_seed107_architecture_comparison_not_multiseed_robustness",
+  "governance": {
+    "decoder_applied": false,
+    "persistence_applied": false,
+    "sealed_test_access": false,
+    "test_evaluation": false,
+    "threshold_fixed_0_5": true,
+    "threshold_tuning_performed": false,
+    "validation_only_for_comparison": true
+  },
+  "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "m7_seed107_retrained": false,
+  "matrix_entries": 8,
+  "new_training_jobs": 7,
+  "next_stage": "MC5_S1_SEED107_BINARY_DETECTION_D0_D1_THEN_D2_XGBOOST",
+  "primary_comparison_seed": 107,
+  "reuse_entries": 1,
+  "secondary_seeds_117_127_required": false,
+  "stage": "V5_P3_MC4_S1_R1_FAST_SEED107_PRIMARY_MULTITASK_TRAINING",
+  "status": "PASS",
+  "strictly_sequential": true,
+  "summary": [
+    {
+      "action": "TRAIN",
+      "best_epoch": 13,
+      "checkpoint_sha256": "19e204afcfe950a81c1f7c94f629cfa0723ad6790f142a93e8458447b9ef95f1",
+      "model_id": "conv1d_only",
+      "seed": 107,
+      "selection_score": 0.7109778502416833,
+      "status": "PASS"
+    },
+    {
+      "action": "TRAIN",
+      "best_epoch": 51,
+      "checkpoint_sha256": "93d4e194711196851886b4bf2f84295e57087ab88c59aea2812485080df75afb",
+      "model_id": "gcn_only_temporal_mean",
+      "seed": 107,
+      "selection_score": 0.7141597902655042,
+      "status": "PASS"
+    },
+    {
+      "action": "TRAIN",
+      "best_epoch": 8,
+      "checkpoint_sha256": "460bc77428a0065f0559eb821c8917ed929824238be3a0c156fb7754dd7aed3f",
+      "model_id": "graphconv_only_temporal_mean",
+      "seed": 107,
+      "selection_score": 0.7121475695670962,
+      "status": "PASS"
+    },
+    {
+      "action": "TRAIN",
+      "best_epoch": 28,
+      "checkpoint_sha256": "87d90bd802e4955a70fb9a8cbd4fc9230ffaba329445bd654a01696ebd9bb244",
+      "model_id": "conv1d_gcnconv",
+      "seed": 107,
+      "selection_score": 0.7010546493190307,
+      "status": "PASS"
+    },
+    {
+      "action": "TRAIN",
+      "best_epoch": 22,
+      "checkpoint_sha256": "aee994aaf6730fc5cd0ac7a63b6c0420569cf571e3842770f1a859c73271d502",
+      "model_id": "conv1d_gatconv",
+      "seed": 107,
+      "selection_score": 0.7036062058225525,
+      "status": "PASS"
+    },
+    {
+      "action": "TRAIN",
+      "best_epoch": 28,
+      "checkpoint_sha256": "28227e8ed609bb36d6e0420e48c6e390dcefc8875c51d87e7159df1f12738840",
+      "model_id": "tcn_attention_gcn",
+      "seed": 107,
+      "selection_score": 0.7011317844377922,
+      "status": "PASS"
+    },
+    {
+      "action": "TRAIN",
+      "best_epoch": 5,
+      "checkpoint_sha256": "f74cd131fb407ca17daf6103da01136a2156f08f8b06e57ec87def18729bbf00",
+      "model_id": "lstm_graphconv",
+      "seed": 107,
+      "selection_score": 0.708259278861598,
+      "status": "PASS"
+    },
+    {
+      "action": "REUSE",
+      "best_epoch": 5,
+      "checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+      "model_id": "conv1d_graphconv",
+      "seed": 107,
+      "selection_score": 0.7121144010900406,
+      "status": "PASS"
+    }
+  ],
+  "train_items": 221773,
+  "validation_items": 27722
+}

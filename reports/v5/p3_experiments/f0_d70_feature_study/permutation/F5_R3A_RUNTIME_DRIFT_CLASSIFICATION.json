@@ -1,0 +1,16 @@
+{
+  "F5_permutation_units_authorized": false,
+  "classification": "F5_RUNTIME_CONFIGURATION_DRIFT_CONFIRMED",
+  "minimum_matching_subset": [
+    "cudnn_allow_tf32"
+  ],
+  "next_stage": "V5_P3_F5_R3B_OFFICIAL_RUNTIME_BASELINE_RECOVERY_AND_PERMUTATION_RESUME",
+  "reasons": [
+    "The official runtime replay reproduces the official D1 first batch at the small F4 numeric scale.",
+    "The F5 run-contract runtime replay reproduces the stored F5 baseline.",
+    "The official and F5 runtime configurations differ.",
+    "A deterministic subset search identifies the smallest runtime field set that moves the output from the official result to the stored F5 baseline."
+  ],
+  "repair_authorized": true,
+  "runtime_drift_confirmed": true
+}

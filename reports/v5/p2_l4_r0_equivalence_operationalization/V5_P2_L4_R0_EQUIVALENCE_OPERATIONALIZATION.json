@@ -1,0 +1,46 @@
+{
+  "agreement": {
+    "eligibility_uses": "full_hypothesis_agreement",
+    "full_hypothesis_agreement": "equal final attack decision, count, sorted route-ID tuple, and all four role-union masks",
+    "graph_decision_agreement": "equal final attack/no-attack decision",
+    "structured_output_agreement": "equal final attack decision, count, and all four role-union masks"
+  },
+  "created_utc": "2026-07-28T19:41:30.096190+00:00",
+  "eligibility": {
+    "full_hypothesis_agreement_minimum": 0.99,
+    "graph_decision_agreement_minimum": 0.999,
+    "higher_is_better_metrics": [
+      "graph balanced accuracy",
+      "all-item count macro F1",
+      "macro role F1",
+      "strict all-task exactness"
+    ],
+    "lower_is_better_metrics": [
+      "graph FPR"
+    ],
+    "maximum_metric_loss_absolute": 0.001,
+    "maximum_metric_loss_percentage_points": 0.1
+  },
+  "eligible_selection_order": [
+    "lower per-source B",
+    "lower beam width",
+    "higher full-hypothesis agreement",
+    "higher graph-decision agreement"
+  ],
+  "evidence_hashes": {
+    "E2_report_sha256": "c8089208fbbe3f8c5c2d10b2988e65bec107e75f014c2ebe0d4b063db1fc81d0",
+    "L0_protocol_sha256": "6b9de697bb8457e07162c28ade6d57d7779515a977b933543769f1aa7f3b8dc6",
+    "L3_report_sha256": "1366a15eda62ec32f4f82ba2dd91bd80abde6088e21faabc5e6f3e0fd2c51e88"
+  },
+  "no_eligible_policy": "L4 HOLD; A2 not authorized; L5 and blind testing prohibited without a prospective amendment",
+  "prospective_before_decoder_result_inspection": true,
+  "security_boundary": {
+    "decoder_execution_performed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_tensors_deserialized": false,
+    "validation_archive_read": false
+  },
+  "stage": "V5_P2_L4_R0_EQUIVALENCE_OPERATIONALIZATION",
+  "status": "COMPLETE"
+}

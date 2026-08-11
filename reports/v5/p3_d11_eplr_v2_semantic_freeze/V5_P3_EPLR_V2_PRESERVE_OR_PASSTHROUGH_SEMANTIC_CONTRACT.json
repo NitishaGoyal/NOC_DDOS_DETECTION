@@ -1,0 +1,77 @@
+{
+  "active_endpoint_feasibility": {
+    "attacker_sources_unique": true,
+    "endpoint_on_one_route_may_be_transit_on_another": true,
+    "exactly_K_legal_routes_required": true,
+    "global_role_disjointness": false,
+    "path_semantics": "union router bitmap",
+    "raw_source_mask": "threshold 0.5",
+    "raw_victim_mask": "threshold 0.5",
+    "shared_victims_allowed": true
+  },
+  "decoder": {
+    "classification": "new validation-informed design; not an evaluated Tranche-A validation candidate",
+    "expansion": "Endpoint-Preserving Legal-XY Repair, Preserve-or-Passthrough Revision",
+    "name": "V5-P3 EPLR-V2"
+  },
+  "failure_policy": {
+    "infeasible_raw_endpoints": "passthrough with unresolved non-certified status",
+    "invent_legal_explanation": false,
+    "software_exception": "fail closed with explicit error"
+  },
+  "feasible_endpoint_policy": {
+    "low_support_thresholds": "reuse the D8 A-train-only frozen per-K thresholds without modification",
+    "path_output": "route-derived path union from best exact-preserving legal route tuple",
+    "route_certified": true,
+    "route_selection_weights": "reuse the D8 A-train-only frozen transit=1.0, path=1.0 calibration without modification",
+    "source_output": "Raw source bitmap",
+    "status": [
+      "RAW_ENDPOINTS_LEGAL",
+      "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT"
+    ],
+    "transit_output": "route-derived transit union from best exact-preserving legal route tuple",
+    "victim_output": "Raw victim bitmap"
+  },
+  "hardware_boundary": {
+    "accelerator_interface_changed": false,
+    "input": "existing 69 raw neural logits",
+    "inside_RTL": false
+  },
+  "immutable_global_outputs": {
+    "active_count_prediction": "exactly Raw 1 + argmax(count_logits)",
+    "decoder_may_change_count": false,
+    "decoder_may_change_graph": false,
+    "decoder_may_change_source": false,
+    "decoder_may_change_victim": false,
+    "graph_prediction": "exactly Raw sigmoid(graph_logit) >= 0.5",
+    "source_bitmap": "exactly Raw sigmoid(source_logits) >= 0.5",
+    "victim_bitmap": "exactly Raw sigmoid(victim_logits) >= 0.5"
+  },
+  "inactive_policy": {
+    "effective_count": 0,
+    "selected_output_path": "all zero",
+    "selected_output_source": "all zero",
+    "selected_output_transit": "all zero",
+    "selected_output_victim": "all zero",
+    "status": "INACTIVE_RAW"
+  },
+  "infeasible_endpoint_policy": {
+    "endpoint_repair_solver_used": false,
+    "interpretation": "Raw prediction is returned unchanged, but no legal-route certificate is claimed.",
+    "path_output": "Raw path bitmap passthrough",
+    "route_certified": false,
+    "selected_route_ids": "empty",
+    "source_output": "Raw source bitmap passthrough",
+    "status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+    "transit_output": "Raw transit bitmap passthrough",
+    "victim_output": "Raw victim bitmap passthrough"
+  },
+  "removed_V1_behaviors": {
+    "endpoint_reassignment": false,
+    "endpoint_repair_MILP": false,
+    "old_A1_fallback": false,
+    "zero_masks_on_no_solution": false
+  },
+  "stage": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE",
+  "status": "FROZEN"
+}

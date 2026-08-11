@@ -1,0 +1,37 @@
+{
+  "aggregation": {
+    "extra_route_length_penalty_used": false,
+    "length_normalization_used": false,
+    "path": "sum once over path union",
+    "per_route_duplicate_counting_allowed": false,
+    "source": "sum once over source union",
+    "transit": "sum once over transit union",
+    "victim": "sum once over victim union"
+  },
+  "attack_score_formula": "Q(H) = 1.0*g + 0.5*log_softmax(c)[K-1] + 1.0*sum(s_i for i in source_union) + 0.5*sum(t_i for i in transit_union) + 0.75*sum(v_i for i in victim_union) + 0.5*sum(p_i for i in path_union)",
+  "best_attack_hypothesis": "H_star = argmax over all legal H of Q(H)",
+  "continuous_margin": "M = Q(H_star) - Q(H0) = Q(H_star)",
+  "contract_name": "V5_P2_L0_STRUCTURED_SCORE",
+  "count_evidence": "log_softmax(c)[K-1]",
+  "count_logits": "c[4] corresponding to K1,K2,K3,K4",
+  "decision": "attack iff M >= tau; otherwise emit H0",
+  "graph_logit": "g",
+  "input_domain": "raw_frozen_float_logits",
+  "manual_score_or_threshold_adjustment_allowed": false,
+  "normal_score": 0.0,
+  "numeric_type_for_A1": "float64",
+  "path_logits": "p[16]",
+  "source_logits": "s[16]",
+  "tau_selected_on": "immutable E1 validation archive only",
+  "transit_logits": "t[16]",
+  "victim_logits": "v[16]",
+  "weight_origin": "Inherited exactly from the frozen B1/Task-D multitask loss weights; no validation grid over score weights is allowed.",
+  "weights": {
+    "alpha_count": 0.5,
+    "alpha_graph": 1.0,
+    "alpha_path": 0.5,
+    "alpha_source": 1.0,
+    "alpha_transit": 0.5,
+    "alpha_victim": 0.75
+  }
+}

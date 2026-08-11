@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "case": 1,
+      "condition": "GraphConv source-only improves source F1 and exact source set by at least 0.03 absolute, while role-aware localization degrades or shows no all-role gain",
+      "decision": "support temporal role heads plus Legal NoC decoder; retain GraphConv as source-only/reviewer baseline"
+    },
+    {
+      "case": 2,
+      "condition": "GraphConv improves graph balanced accuracy by at least 0.02, reduces FPR without recall loss greater than 0.01, improves at least 3 of 4 role F1 scores by at least 0.02, degrades no role by more than 0.02, and improves strict exactness by at least 0.03",
+      "decision": "promote GraphConv into candidate final architecture; still evaluate Legal NoC decoder as consistency module and hardware-oriented alternative"
+    },
+    {
+      "case": 3,
+      "condition": "no graph operator beats Conv1D-only source F1 by 0.01 or source-only results show high seed variance",
+      "decision": "audit labels, edge_index, self-loops, class weighting, positive prevalence, temporal observability, window length, normalization, losses, and split integrity before blaming graph learning"
+    },
+    {
+      "case": 4,
+      "condition": "GraphConv gain is below 0.02 absolute or cost is disproportionate",
+      "decision": "preserve GraphConv as reviewer baseline and continue with B3 plus Legal NoC decoder as main lightweight path"
+    }
+  ],
+  "criteria_sha256": "3897e122f0a36faa9a3a3ead2e6a7448545d187236df276b493a106f1b113f92",
+  "name": "V5_P2_G0_STOP_GO_CRITERIA",
+  "return_to_l0_rule": "G6 completion or an explicit G4 stop decision must return the project to V5_P2_L0_LEGAL_XY_DECODER_CONTRACT",
+  "version": 1
+}

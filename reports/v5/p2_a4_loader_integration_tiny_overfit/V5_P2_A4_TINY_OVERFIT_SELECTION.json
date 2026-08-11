@@ -1,0 +1,109 @@
+{
+  "count_class_mapping": {
+    "1": 0,
+    "2": 1,
+    "4": 2
+  },
+  "model_inputs": [
+    "x",
+    "physical_port_mask"
+  ],
+  "positive_raw_attacker_counts": [
+    1,
+    2,
+    4
+  ],
+  "provenance_used_as_model_input": false,
+  "seed": 2404,
+  "selected_dataset_indices": [
+    172,
+    173,
+    342,
+    343,
+    21064,
+    21065,
+    21236,
+    21237,
+    55868,
+    55869,
+    56034,
+    56035
+  ],
+  "selected_pairs": [
+    {
+      "attack_index": 172,
+      "base_index": 172,
+      "category": "K1",
+      "common_length": 722,
+      "control_index": 173,
+      "pair_key": "P2TR-K1-001",
+      "raw_positive_attacker_count": 1,
+      "window_start": 688,
+      "window_target": 719
+    },
+    {
+      "attack_index": 342,
+      "base_index": 342,
+      "category": "K1",
+      "common_length": 707,
+      "control_index": 343,
+      "pair_key": "P2TR-K1-002",
+      "raw_positive_attacker_count": 1,
+      "window_start": 672,
+      "window_target": 703
+    },
+    {
+      "attack_index": 21064,
+      "base_index": 21064,
+      "category": "K2",
+      "common_length": 711,
+      "control_index": 21065,
+      "pair_key": "P2TR-K2-126",
+      "raw_positive_attacker_count": 2,
+      "window_start": 672,
+      "window_target": 703
+    },
+    {
+      "attack_index": 21236,
+      "base_index": 21236,
+      "category": "K2",
+      "common_length": 714,
+      "control_index": 21237,
+      "pair_key": "P2TR-K2-127",
+      "raw_positive_attacker_count": 2,
+      "window_start": 680,
+      "window_target": 711
+    },
+    {
+      "attack_index": 55868,
+      "base_index": 55868,
+      "category": "K4",
+      "common_length": 702,
+      "control_index": 55869,
+      "pair_key": "P2TR-K4-362",
+      "raw_positive_attacker_count": 4,
+      "window_start": 664,
+      "window_target": 695
+    },
+    {
+      "attack_index": 56034,
+      "base_index": 56034,
+      "category": "K4",
+      "common_length": 695,
+      "control_index": 56035,
+      "pair_key": "P2TR-K4-363",
+      "raw_positive_attacker_count": 4,
+      "window_start": 656,
+      "window_target": 687
+    }
+  ],
+  "selection_policy": "two active final pair-aligned windows per K1/K2/K4 category plus matched controls",
+  "targets": [
+    "y_attack",
+    "y_attacker_count",
+    "y_source",
+    "y_transit",
+    "y_victim",
+    "y_attack_path"
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "audit": {
+    "A_alignment_gap_items": 76,
+    "A_alignment_gap_rate_among_P2_alarm_items": 0.01320590790616855,
+    "A_gap_context_counts": {
+      "IN_EPISODE_POSITIVE": 40,
+      "POST_EPISODE_NEGATIVE": 3,
+      "PRE_EPISODE_NEGATIVE": 33
+    },
+    "A_gap_truth_graph_counts": {
+      "0": 36,
+      "1": 40
+    },
+    "A_max_consecutive_alignment_gap_windows": 1,
+    "A_runs_with_alignment_gap": 37,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d8_p0_p2_alarm_to_localization_alignment_audit/V5_P3_FINAL_D8_P0_A_ONLY_P2_ALIGNMENT_AUDIT.json",
+    "sha256": "923a43f63c1f7350d9a2efbfe2004763c8b2e6755c273e89a4b234c6f585d30f"
+  },
+  "decision": {
+    "D8_P1_alignment_candidate_protocol_freeze_authorized": true,
+    "alignment_gap_empirically_characterized_on_A": true,
+    "next_stage": "V5_P3_FINAL_D8_P1_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_CANDIDATE_PROTOCOL_FREEZE",
+    "sealed_test_evaluation_authorized": false,
+    "total_system_freeze_authorized": false
+  },
+  "evidence_governance": {
+    "A_only_used_for_alignment_design_audit": true,
+    "B_alignment_candidate_evaluation_performed": false,
+    "B_alignment_metrics_computed": false,
+    "B_reserved_as_independent_alignment_selection_authority": true,
+    "combined_AB_alignment_metrics_computed": false
+  },
+  "frozen_elements_not_modified": {
+    "EPLR_V2_calibration": true,
+    "EPLR_V2_implementation": true,
+    "P2_graph_alarm_policy": true,
+    "Raw_graph_threshold_0P5": true
+  },
+  "reason_for_stage": "P2 may be positive with current Raw_t=0 while frozen current-window EPLR-V2 must be INACTIVE_RAW with zero selected masks.",
+  "scientific_boundary": {
+    "alignment_policy_selected": false,
+    "calibration_retuning_performed": false,
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "A-only design audit of P2 graph-alarm / current-window EPLR-V2 temporal alignment",
+  "stage": "V5_P3_FINAL_D8_P0_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_AUDIT",
+  "status": "PASS"
+}

@@ -1,0 +1,76 @@
+{
+  "analysis_role": "descriptive; no test policy selection",
+  "base_node_threshold": 0.78,
+  "candidate_policy": {
+    "graph_threshold": 0.275,
+    "horizon": 32,
+    "mode": "deoverlap",
+    "node_threshold": 0.675
+  },
+  "designation": "V4-A3.12 Cardinality and Router-Ranking Decomposition",
+  "development_test_used_for_selection": false,
+  "node_topology_classes": {
+    "0": "corner",
+    "1": "edge",
+    "10": "interior",
+    "11": "edge",
+    "12": "corner",
+    "13": "edge",
+    "14": "edge",
+    "15": "corner",
+    "2": "edge",
+    "3": "corner",
+    "4": "edge",
+    "5": "interior",
+    "6": "interior",
+    "7": "edge",
+    "8": "edge",
+    "9": "interior"
+  },
+  "provenance": {
+    "a3_11_closure_summary_sha256": "edf066fb2f4b90f607925d07da81717986222b8bda20d6eed7ea4b80f622d3a9",
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "metadata_sha256": "97ca343f292d67c1e4150e18df764156fab4472d16ba9c4ea1085957e6863b2e",
+    "operational_policy_sha256": "f989349fc47162898291a213bcb83d07cf4ebcfd75c62fac166f16784adf817f",
+    "test_predictions_sha256": "f0df8d5d54fe1193ed9a9fa51ea6fa2bdfa3dff59c2b4515d01d54d5b1ac9dab",
+    "validation_predictions_sha256": "58531f5513889a3efc74caf54de0a7fa26dd6f23c43db4be091cc19e05f5f1d3",
+    "validation_search_script_sha256": "c38490dc8108f961468b733d7f66d786535bd7cda1cea0340bccad964fceaac4"
+  },
+  "split_summaries": {
+    "development_test": {
+      "archive": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_9_development_test_transfer/test_predictions.npz",
+      "base_node_threshold": 0.78,
+      "single_window_sample_count": 395160,
+      "split": "development_test",
+      "temporal_oracle_attack_exact": 0.9137007874015748,
+      "temporal_oracle_minus_primary_exact_gap": 0.12587926509186353,
+      "temporal_policy": {
+        "graph_threshold": 0.275,
+        "horizon": 32,
+        "mode": "deoverlap",
+        "node_threshold": 0.675
+      },
+      "temporal_primary_attack_exact": 0.7878215223097113,
+      "temporal_sample_count": 45720
+    },
+    "validation": {
+      "archive": "/home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_8_validation_selection/validation_predictions.npz",
+      "base_node_threshold": 0.78,
+      "single_window_sample_count": 457727,
+      "split": "validation",
+      "temporal_oracle_attack_exact": 0.905511811023622,
+      "temporal_oracle_minus_primary_exact_gap": 0.1119115429720221,
+      "temporal_policy": {
+        "graph_threshold": 0.275,
+        "horizon": 32,
+        "mode": "deoverlap",
+        "node_threshold": 0.675
+      },
+      "temporal_primary_attack_exact": 0.7936002680515999,
+      "temporal_sample_count": 52959
+    }
+  },
+  "status": "PASS",
+  "validation_based_decision_class": "decoder_cardinality_gap_is_large",
+  "validation_based_recommendation": "A4a structured null-aware set head is justified after A3.13 confirms the encoder representation is not the dominant limiter."
+}

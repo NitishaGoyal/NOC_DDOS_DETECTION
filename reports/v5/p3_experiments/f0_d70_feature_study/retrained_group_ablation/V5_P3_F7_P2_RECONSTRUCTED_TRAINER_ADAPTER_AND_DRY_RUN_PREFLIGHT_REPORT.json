@@ -1,0 +1,1851 @@
+{
+  "artifacts": {
+    "adapter_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P2_SAME_WIDTH_MASKING_ADAPTER_CERTIFICATION.json",
+    "data_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P2_GUARDED_TRAIN_VALIDATION_BATCH_CERTIFICATION.json",
+    "dry_run": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P2_CONTROL_AND_FLOW_STALL_MASKED_DRY_RUN.json",
+    "execution_authorization": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P2_EXECUTION_AUTHORIZATION.json",
+    "model_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P2_MODEL_CONSTRUCTION_AND_FRESH_RESET_CERTIFICATION.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:42:51.265035+00:00",
+  "decision": {
+    "F8_multi_seed_authorized": false,
+    "P1B_reconstructed_route_frozen": true,
+    "actual_F7_retraining_authorized": true,
+    "authorized_primary_runs": [
+      "control_dynamic70",
+      "ablate_directional_traffic_volume",
+      "ablate_inter_flit_timing",
+      "ablate_queue_activity",
+      "ablate_buffer_pressure",
+      "ablate_flow_control_stalls"
+    ],
+    "authorized_primary_seed": 107,
+    "compact_interface_equivalence_authorized": false,
+    "control_forward_backward_verified": true,
+    "deterministic_fresh_reset_route_verified": true,
+    "exact_checkpoint_model_construction_verified": true,
+    "feature_removal_authorized": false,
+    "flow_control_stalls_masked_forward_backward_verified": true,
+    "fresh_route_declared_non_byte_identical_to_A4": true,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F7_SAME_WIDTH_RETRAINED_GROUP_ABLATION_EXECUTION",
+    "parameter_count_preserved": true,
+    "same_width_mask_isolation_verified": true,
+    "sealed_test_access": false,
+    "train_batch_verified": true,
+    "validation_batch_verified": true
+  },
+  "finding": {
+    "adapter": {
+      "changed_value_count": 9216,
+      "edge_index_and_model_buffers_changed": false,
+      "end_exclusive": 70,
+      "group": "flow_control_stalls",
+      "input_shape": [
+        2,
+        16,
+        70,
+        32
+      ],
+      "labels_changed": false,
+      "masked_region_all_zero": true,
+      "operation": "x.clone(); x[:,:,55:70,:]=0.0 after guarded loader output and before model forward",
+      "original_group_nonzero_count": 9216,
+      "outside_left_exactly_equal": true,
+      "outside_right_exactly_equal": true,
+      "physical_port_mask_exactly_reused": true,
+      "same_width_channels": 70,
+      "start": 55
+    },
+    "all_gates_pass": true,
+    "data": {
+      "dataset_class": "_v5_p3_tranche_a_certified_loader_8611329888215267823.V5P3TrancheAPreliminaryDataset",
+      "guarded_loader": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+      "guarded_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+      "sealed_test_dataset_constructed": false,
+      "sealed_test_items_accessed": 0,
+      "train_batch": {
+        "batch_size": 2,
+        "inventory": {
+          "all_tensor_paths": [
+            {
+              "dtype": "torch.float32",
+              "path": "root.x",
+              "shape": [
+                2,
+                16,
+                70,
+                32
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "path": "root.physical_port_mask",
+              "shape": [
+                2,
+                16,
+                10
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.edge_index",
+              "shape": [
+                2,
+                2,
+                48
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_attack",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.y_attacker_count",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_source",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_transit",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_victim",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_attack_path",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "path": "root.role_mask",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int8",
+              "path": "root.source_target_router",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.epoch_id",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.epoch_tick",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.window_start",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.window_target",
+              "shape": [
+                2
+              ]
+            }
+          ],
+          "selected_mask_dtype": "torch.float32",
+          "selected_mask_path": "root.physical_port_mask",
+          "selected_mask_shape": [
+            2,
+            16,
+            10
+          ],
+          "selected_x_dtype": "torch.float32",
+          "selected_x_path": "root.x",
+          "selected_x_shape": [
+            2,
+            16,
+            70,
+            32
+          ]
+        },
+        "route": "torch_DataLoader_default_collate"
+      },
+      "train_dataset_items_accessed": 2,
+      "train_mask_shape": [
+        2,
+        16,
+        10
+      ],
+      "train_split": {
+        "attempts": [
+          {
+            "length": 110855,
+            "split": "train",
+            "status": "SUCCESS"
+          }
+        ],
+        "dataset_type": "_v5_p3_tranche_a_certified_loader_8611329888215267823.V5P3TrancheAPreliminaryDataset",
+        "length": 110855,
+        "selected_split_alias": "train"
+      },
+      "train_x_shape": [
+        2,
+        16,
+        70,
+        32
+      ],
+      "validation_batch": {
+        "batch_size": 2,
+        "inventory": {
+          "all_tensor_paths": [
+            {
+              "dtype": "torch.float32",
+              "path": "root.x",
+              "shape": [
+                2,
+                16,
+                70,
+                32
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "path": "root.physical_port_mask",
+              "shape": [
+                2,
+                16,
+                10
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.edge_index",
+              "shape": [
+                2,
+                2,
+                48
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_attack",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.y_attacker_count",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_source",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_transit",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_victim",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.float32",
+              "path": "root.y_attack_path",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.uint8",
+              "path": "root.role_mask",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int8",
+              "path": "root.source_target_router",
+              "shape": [
+                2,
+                16
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.epoch_id",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.epoch_tick",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.window_start",
+              "shape": [
+                2
+              ]
+            },
+            {
+              "dtype": "torch.int64",
+              "path": "root.window_target",
+              "shape": [
+                2
+              ]
+            }
+          ],
+          "selected_mask_dtype": "torch.float32",
+          "selected_mask_path": "root.physical_port_mask",
+          "selected_mask_shape": [
+            2,
+            16,
+            10
+          ],
+          "selected_x_dtype": "torch.float32",
+          "selected_x_path": "root.x",
+          "selected_x_shape": [
+            2,
+            16,
+            70,
+            32
+          ]
+        },
+        "route": "torch_DataLoader_default_collate"
+      },
+      "validation_dataset_items_accessed": 2,
+      "validation_mask_shape": [
+        2,
+        16,
+        10
+      ],
+      "validation_split": {
+        "attempts": [
+          {
+            "length": 13863,
+            "split": "validation",
+            "status": "SUCCESS"
+          }
+        ],
+        "dataset_type": "_v5_p3_tranche_a_certified_loader_8611329888215267823.V5P3TrancheAPreliminaryDataset",
+        "length": 13863,
+        "selected_split_alias": "validation"
+      },
+      "validation_x_shape": [
+        2,
+        16,
+        70,
+        32
+      ]
+    },
+    "dry_run": {
+      "control": {
+        "input_gradient_l2_norm": 0.007758331019431353,
+        "label": "no_mask_control",
+        "model_state_hash_after_backward": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+        "objective": 0.10111615061759949,
+        "output_heads": {
+          "count": {
+            "dtype": "torch.float32",
+            "mean": 0.011803541332483292,
+            "shape": [
+              2,
+              4
+            ],
+            "squared_mean_term": 0.009647473692893982,
+            "std": 0.09750974923372269
+          },
+          "graph": {
+            "dtype": "torch.float32",
+            "mean": 0.12123723328113556,
+            "shape": [
+              2
+            ],
+            "squared_mean_term": 0.014870895072817802,
+            "std": 0.013131264597177505
+          },
+          "path": {
+            "dtype": "torch.float32",
+            "mean": -0.017117619514465332,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.000954073911998421,
+            "std": 0.02571110799908638
+          },
+          "source": {
+            "dtype": "torch.float32",
+            "mean": 0.024298179894685745,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.0007039540214464068,
+            "std": 0.010656099766492844
+          },
+          "transit": {
+            "dtype": "torch.float32",
+            "mean": -0.25404831767082214,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.06573554128408432,
+            "std": 0.034568656235933304
+          },
+          "victim": {
+            "dtype": "torch.float32",
+            "mean": 0.09276816248893738,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.009204206056892872,
+            "std": 0.02445964887738228
+          }
+        },
+        "parameter_gradients": {
+          "finite_gradient_tensor_count": 48,
+          "global_l2_norm": 1.7568746074774466,
+          "missing_gradient_tensor_count": 0,
+          "nonfinite_gradient_tensor_count": 0,
+          "nonzero_gradient_tensor_count": 48,
+          "parameter_gradients": [
+            {
+              "finite": true,
+              "name": "input_projection.weight",
+              "nonzero": true,
+              "norm": 0.1418812870979309,
+              "shape": [
+                64,
+                70,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "input_projection.bias",
+              "nonzero": true,
+              "norm": 0.03335278108716011,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.005337267182767391,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.01705637201666832,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.09336787462234497,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.04360390082001686,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.007516465615481138,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.02040492370724678,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.09359202533960342,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.05054692551493645,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.009351015090942383,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.02132958546280861,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.12622703611850739,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.055086635053157806,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.010218448005616665,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.021301401779055595,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.14829537272453308,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.06107387691736221,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "node_projection.weight",
+              "nonzero": true,
+              "norm": 0.6275702714920044,
+              "shape": [
+                64,
+                74
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "node_projection.bias",
+              "nonzero": true,
+              "norm": 0.15592120587825775,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.0.weight",
+              "nonzero": true,
+              "norm": 0.04464135318994522,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.0.bias",
+              "nonzero": true,
+              "norm": 0.018372245132923126,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.2.weight",
+              "nonzero": true,
+              "norm": 0.03955141454935074,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.2.bias",
+              "nonzero": true,
+              "norm": 0.04859635978937149,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.0.weight",
+              "nonzero": true,
+              "norm": 0.5973793864250183,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.0.bias",
+              "nonzero": true,
+              "norm": 0.23123174905776978,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.2.weight",
+              "nonzero": true,
+              "norm": 0.4810859262943268,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.2.bias",
+              "nonzero": true,
+              "norm": 0.5080966353416443,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.0.weight",
+              "nonzero": true,
+              "norm": 0.1882902979850769,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.0.bias",
+              "nonzero": true,
+              "norm": 0.08140333741903305,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.2.weight",
+              "nonzero": true,
+              "norm": 0.10147678852081299,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.2.bias",
+              "nonzero": true,
+              "norm": 0.18553632497787476,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.0.weight",
+              "nonzero": true,
+              "norm": 0.02106042206287384,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.0.bias",
+              "nonzero": true,
+              "norm": 0.012182941660284996,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.2.weight",
+              "nonzero": true,
+              "norm": 0.01572795771062374,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.2.bias",
+              "nonzero": true,
+              "norm": 0.034235239028930664,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph_projection.0.weight",
+              "nonzero": true,
+              "norm": 0.6541340351104736,
+              "shape": [
+                64,
+                128
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph_projection.0.bias",
+              "nonzero": true,
+              "norm": 0.13414132595062256,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "attack_head.weight",
+              "nonzero": true,
+              "norm": 0.34058135747909546,
+              "shape": [
+                1,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "attack_head.bias",
+              "nonzero": true,
+              "norm": 0.24247446656227112,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "count_head.weight",
+              "nonzero": true,
+              "norm": 0.13762684166431427,
+              "shape": [
+                4,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "count_head.bias",
+              "nonzero": true,
+              "norm": 0.09788919985294342,
+              "shape": [
+                4
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph1.lin_rel.weight",
+              "nonzero": true,
+              "norm": 0.65290367603302,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph1.lin_rel.bias",
+              "nonzero": true,
+              "norm": 0.14532160758972168,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph1.lin_root.weight",
+              "nonzero": true,
+              "norm": 0.20772770047187805,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph2.lin_rel.weight",
+              "nonzero": true,
+              "norm": 0.6274898648262024,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph2.lin_rel.bias",
+              "nonzero": true,
+              "norm": 0.1082647368311882,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph2.lin_root.weight",
+              "nonzero": true,
+              "norm": 0.19614829123020172,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            }
+          ]
+        }
+      },
+      "device": "cuda",
+      "flow_control_stalls_masked": {
+        "input_gradient_l2_norm": 0.007801258936524391,
+        "label": "flow_control_stalls_masked",
+        "model_state_hash_after_backward": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+        "objective": 0.10110769420862198,
+        "output_heads": {
+          "count": {
+            "dtype": "torch.float32",
+            "mean": 0.011722151190042496,
+            "shape": [
+              2,
+              4
+            ],
+            "squared_mean_term": 0.009631485678255558,
+            "std": 0.09743756055831909
+          },
+          "graph": {
+            "dtype": "torch.float32",
+            "mean": 0.12130279093980789,
+            "shape": [
+              2
+            ],
+            "squared_mean_term": 0.014884639531373978,
+            "std": 0.01304887980222702
+          },
+          "path": {
+            "dtype": "torch.float32",
+            "mean": -0.017011795192956924,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.0009523991029709578,
+            "std": 0.02574874460697174
+          },
+          "source": {
+            "dtype": "torch.float32",
+            "mean": 0.024239998310804367,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.000701226235833019,
+            "std": 0.010660619474947453
+          },
+          "transit": {
+            "dtype": "torch.float32",
+            "mean": -0.2540803551673889,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.06575387716293335,
+            "std": 0.034598458558321
+          },
+          "victim": {
+            "dtype": "torch.float32",
+            "mean": 0.09265162795782089,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.009184063412249088,
+            "std": 0.02448956109583378
+          }
+        },
+        "parameter_gradients": {
+          "finite_gradient_tensor_count": 48,
+          "global_l2_norm": 1.7568866517804322,
+          "missing_gradient_tensor_count": 0,
+          "nonfinite_gradient_tensor_count": 0,
+          "nonzero_gradient_tensor_count": 48,
+          "parameter_gradients": [
+            {
+              "finite": true,
+              "name": "input_projection.weight",
+              "nonzero": true,
+              "norm": 0.1427011340856552,
+              "shape": [
+                64,
+                70,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "input_projection.bias",
+              "nonzero": true,
+              "norm": 0.033540189266204834,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.005347969010472298,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.017281999811530113,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.09372870624065399,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.0.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.043757643550634384,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.007575085386633873,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.020704710856080055,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.09406604617834091,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.1.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.05080375820398331,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.009331472218036652,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.02137116715312004,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.12620551884174347,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.2.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.05509834364056587,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.depthwise.weight",
+              "nonzero": true,
+              "norm": 0.010201796889305115,
+              "shape": [
+                64,
+                1,
+                3
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.depthwise.bias",
+              "nonzero": true,
+              "norm": 0.02128566987812519,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.pointwise.weight",
+              "nonzero": true,
+              "norm": 0.14870283007621765,
+              "shape": [
+                64,
+                64,
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "temporal_blocks.3.pointwise.bias",
+              "nonzero": true,
+              "norm": 0.06121014058589935,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "node_projection.weight",
+              "nonzero": true,
+              "norm": 0.6287742257118225,
+              "shape": [
+                64,
+                74
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "node_projection.bias",
+              "nonzero": true,
+              "norm": 0.1561313420534134,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.0.weight",
+              "nonzero": true,
+              "norm": 0.04454074800014496,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.0.bias",
+              "nonzero": true,
+              "norm": 0.01832772232592106,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.2.weight",
+              "nonzero": true,
+              "norm": 0.0394575335085392,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "source_head.2.bias",
+              "nonzero": true,
+              "norm": 0.048479996621608734,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.0.weight",
+              "nonzero": true,
+              "norm": 0.597724974155426,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.0.bias",
+              "nonzero": true,
+              "norm": 0.23126214742660522,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.2.weight",
+              "nonzero": true,
+              "norm": 0.48143959045410156,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "transit_head.2.bias",
+              "nonzero": true,
+              "norm": 0.5081607103347778,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.0.weight",
+              "nonzero": true,
+              "norm": 0.18810172379016876,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.0.bias",
+              "nonzero": true,
+              "norm": 0.08130096644163132,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.2.weight",
+              "nonzero": true,
+              "norm": 0.10137540847063065,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "victim_head.2.bias",
+              "nonzero": true,
+              "norm": 0.18530325591564178,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.0.weight",
+              "nonzero": true,
+              "norm": 0.02086317166686058,
+              "shape": [
+                32,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.0.bias",
+              "nonzero": true,
+              "norm": 0.012109578587114811,
+              "shape": [
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.2.weight",
+              "nonzero": true,
+              "norm": 0.015575418248772621,
+              "shape": [
+                1,
+                32
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "path_head.2.bias",
+              "nonzero": true,
+              "norm": 0.03402359038591385,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph_projection.0.weight",
+              "nonzero": true,
+              "norm": 0.6544923186302185,
+              "shape": [
+                64,
+                128
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph_projection.0.bias",
+              "nonzero": true,
+              "norm": 0.13416552543640137,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "attack_head.weight",
+              "nonzero": true,
+              "norm": 0.3408569395542145,
+              "shape": [
+                1,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "attack_head.bias",
+              "nonzero": true,
+              "norm": 0.24260558187961578,
+              "shape": [
+                1
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "count_head.weight",
+              "nonzero": true,
+              "norm": 0.1375434845685959,
+              "shape": [
+                4,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "count_head.bias",
+              "nonzero": true,
+              "norm": 0.09780565649271011,
+              "shape": [
+                4
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph1.lin_rel.weight",
+              "nonzero": true,
+              "norm": 0.6502177715301514,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph1.lin_rel.bias",
+              "nonzero": true,
+              "norm": 0.14467722177505493,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph1.lin_root.weight",
+              "nonzero": true,
+              "norm": 0.20675495266914368,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph2.lin_rel.weight",
+              "nonzero": true,
+              "norm": 0.6280030012130737,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph2.lin_rel.bias",
+              "nonzero": true,
+              "norm": 0.10825951397418976,
+              "shape": [
+                64
+              ],
+              "status": "PRESENT"
+            },
+            {
+              "finite": true,
+              "name": "graph2.lin_root.weight",
+              "nonzero": true,
+              "norm": 0.19626948237419128,
+              "shape": [
+                64,
+                64
+              ],
+              "status": "PRESENT"
+            }
+          ]
+        }
+      },
+      "model_weights_persisted": false,
+      "no_optimizer_step_performed": true,
+      "runtime": {
+        "cuda_available": true,
+        "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+        "cuda_matmul_allow_tf32": false,
+        "cudnn_allow_tf32": true,
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "cudnn_version": 92000,
+        "deterministic_algorithms_enabled": false,
+        "device": "cuda",
+        "float32_matmul_precision": "highest",
+        "torch_cuda_version": "13.0",
+        "torch_version": "2.12.1+cu130"
+      },
+      "scientific_checkpoint_saved": false,
+      "scientific_metric_reported": false,
+      "validation_no_mask_forward": {
+        "all_outputs_finite": true,
+        "output_heads": {
+          "count": {
+            "dtype": "torch.float32",
+            "mean": 0.011338252574205399,
+            "shape": [
+              2,
+              4
+            ],
+            "squared_mean_term": 0.0069239637814462185,
+            "std": 0.0824342668056488
+          },
+          "graph": {
+            "dtype": "torch.float32",
+            "mean": 0.13211345672607422,
+            "shape": [
+              2
+            ],
+            "squared_mean_term": 0.017454955726861954,
+            "std": 0.0009948313236236572
+          },
+          "path": {
+            "dtype": "torch.float32",
+            "mean": -0.028021516278386116,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.0011860653758049011,
+            "std": 0.020021487027406693
+          },
+          "source": {
+            "dtype": "torch.float32",
+            "mean": 0.026847802102565765,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.0008891976904124022,
+            "std": 0.012976637110114098
+          },
+          "transit": {
+            "dtype": "torch.float32",
+            "mean": -0.24967160820960999,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.06324353814125061,
+            "std": 0.030126996338367462
+          },
+          "victim": {
+            "dtype": "torch.float32",
+            "mean": 0.07565732300281525,
+            "shape": [
+              2,
+              16
+            ],
+            "squared_mean_term": 0.006613885052502155,
+            "std": 0.02983042784035206
+          }
+        },
+        "sample_count": 2
+      }
+    },
+    "model": {
+      "captured_model_class": "V6P0Dynamic70GraphConvCount4",
+      "captured_parameter_count": 60553,
+      "certified_model_source": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+      "certified_model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+      "checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+      "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+      "checkpoint_state_exact_match": true,
+      "control_masked_initial_state_exact_match": true,
+      "exporter": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+      "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+      "fresh_parameter_count": 60553,
+      "fresh_reset": {
+        "changed_state_tensor_count": 48,
+        "checkpoint_state_hash": "c7ce69fc36104dabeca399a84d01d819d87127accdea7bc9f410f7ef771f578c",
+        "fresh_state_hash": "e6cd2f9a601897c52172a9a19201d72fa8748c33091ade1571ead2ff8a677d4b",
+        "nonfinite_state_tensor_count": 0,
+        "policy": "deterministic seed-107 reset_parameters on leaf modules only; topology/buffer objects from the certified model construction are retained",
+        "reset_leaf_module_count": 27,
+        "reset_leaf_modules": [
+          {
+            "module_name": "input_projection",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.0.depthwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.0.pointwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.1.depthwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.1.pointwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.2.depthwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.2.pointwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.3.depthwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "temporal_blocks.3.pointwise",
+            "module_type": "torch.nn.modules.conv.Conv1d"
+          },
+          {
+            "module_name": "node_projection",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "source_head.0",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "source_head.2",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "transit_head.0",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "transit_head.2",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "victim_head.0",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "victim_head.2",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "path_head.0",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "path_head.2",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "graph_projection.0",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "attack_head",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "count_head",
+            "module_type": "torch.nn.modules.linear.Linear"
+          },
+          {
+            "module_name": "graph1.aggr_module",
+            "module_type": "torch_geometric.nn.aggr.basic.SumAggregation"
+          },
+          {
+            "module_name": "graph1.lin_rel",
+            "module_type": "torch_geometric.nn.dense.linear.Linear"
+          },
+          {
+            "module_name": "graph1.lin_root",
+            "module_type": "torch_geometric.nn.dense.linear.Linear"
+          },
+          {
+            "module_name": "graph2.aggr_module",
+            "module_type": "torch_geometric.nn.aggr.basic.SumAggregation"
+          },
+          {
+            "module_name": "graph2.lin_rel",
+            "module_type": "torch_geometric.nn.dense.linear.Linear"
+          },
+          {
+            "module_name": "graph2.lin_root",
+            "module_type": "torch_geometric.nn.dense.linear.Linear"
+          }
+        ],
+        "seed": 107,
+        "unchanged_state_tensor_count": 1
+      },
+      "fresh_route_is_byte_identical_to_missing_A4_initialization": false,
+      "fresh_trainable_parameter_count": 60553,
+      "model_capture": {
+        "captured_function": "main",
+        "captured_line": 434,
+        "captured_local_name": "model",
+        "exporter": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+        "exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+        "model_class": "V6P0Dynamic70GraphConvCount4",
+        "observation": "captured_exact_checkpoint_model",
+        "parameter_count": 60553,
+        "route": "official_D1_exporter_trace_capture",
+        "sealed_test_access": false,
+        "state_dict_exact_match": true,
+        "validation_inference_completed_by_probe": false
+      }
+    }
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": true,
+    "feature_removal_authorized": false,
+    "model_loaded": true,
+    "optimizer_step_performed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_result_generated": false,
+    "sealed_test_tensors_loaded": false,
+    "training_feature_tensors_loaded": true,
+    "training_items_accessed": 2,
+    "validation_feature_tensors_loaded": true,
+    "validation_items_accessed": 2
+  },
+  "provenance": {
+    "F7_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "P1B_lock_sha256": "ae5e893e3de1cedc09de69d37f2de6aff7e3132d3157ea111f9d109c0c32fa8c",
+    "P1B_report_sha256": "d94885aa102c50830d06df8d77a14cea370b5dc4bb29142467820f88f09a3833",
+    "P1B_route_sha256": "b24276c374258990a33850a1aaf516d92a5636f09350d98bc5e353821293ec02",
+    "adapter_certification_sha256": "fbb536780466f8510c0261daa4e9fea7205a12b51b23766ef9c999d8d434c286",
+    "certified_checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "certified_exporter_sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+    "certified_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "certified_model_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "data_certification_sha256": "3390117b7998e4c6be04315982d42707ccb29dbbf917578e5864b0cbbe2d55da",
+    "dry_run_sha256": "5da965364d1e70ccae19f55deba7b90434b3998c031ccff9dc224f880099c953",
+    "execution_authorization_sha256": "457f6f1aa4708c8f6a507a7734c33cbcbea01a0f45f8692a0322cce86854fc67",
+    "installed_script_sha256": "e3c5bfb86f5c5a2e821a93c9ff20f6af7c31619864fc3001630da149865da698",
+    "model_certification_sha256": "d4430b4e19ff9241863e3507c42e7591b48b450f063c56195d1868f83dcfb8e9",
+    "original_F6_route_sha256": "2837d384ab6e2b12ceead378011daa1778c906bbab088154456c25dde03ced3a",
+    "route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca"
+  },
+  "scope": "Verify the frozen reconstructed route; capture the exact certified V6P0 model through the official exporter; deterministically reset leaf trainable modules at seed 107 while retaining topology and buffers; construct guarded train and validation datasets; access only one two-item batch from each; certify the same-width flow-control-stall masking adapter; run identical-initialization control and masked forward/backward dry runs plus validation forward; save no scientific checkpoint or metric; and authorize the six-run seed-107 F7 matrix only when every gate passes.",
+  "stage": "V5_P3_F7_P2_RECONSTRUCTED_TRAINER_ADAPTER_AND_DRY_RUN_PREFLIGHT",
+  "status": "PASS"
+}

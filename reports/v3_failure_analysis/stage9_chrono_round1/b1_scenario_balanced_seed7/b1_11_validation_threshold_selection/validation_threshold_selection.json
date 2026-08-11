@@ -1,0 +1,389 @@
+{
+  "stage": "B1.11",
+  "data_scope": "validation only",
+  "test_data_read": false,
+  "threshold_grid": {
+    "minimum": 0.005,
+    "maximum": 0.995,
+    "step": 0.005,
+    "count": 199
+  },
+  "selection_protocol": {
+    "graph": [
+      "maximize graph F1",
+      "minimize FPR",
+      "maximize recall",
+      "threshold closest to 0.5",
+      "lower threshold"
+    ],
+    "node": [
+      "attack-positive validation samples only",
+      "maximize micro node F1",
+      "maximize exact localization",
+      "maximize precision",
+      "maximize recall",
+      "threshold closest to 0.5",
+      "lower threshold"
+    ],
+    "selection_applied_independently_to_each_model": true
+  },
+  "localization_denominator": "All node-threshold and ranking metrics use graph-label-positive validation samples only. Normal samples are excluded.",
+  "a1": {
+    "graph_threshold": {
+      "selected": 0.41,
+      "selected_metrics": {
+        "threshold": 0.41,
+        "accuracy": 0.9417178630661777,
+        "precision": 0.9406454964608092,
+        "recall": 0.9774943482808651,
+        "f1": 0.9587159758418135,
+        "fpr": 0.13877922866686912,
+        "tnr": 0.8612207713331309,
+        "tn": 11344,
+        "fp": 1828,
+        "fn": 667,
+        "tp": 28970
+      },
+      "default_0_5_metrics": {
+        "threshold": 0.5,
+        "accuracy": 0.9401994907612885,
+        "precision": 0.9489339125244554,
+        "recall": 0.9655835610891791,
+        "f1": 0.9571863397665317,
+        "fpr": 0.11691466747646523,
+        "tnr": 0.8830853325235347,
+        "tn": 11632,
+        "fp": 1540,
+        "fn": 1020,
+        "tp": 28617
+      }
+    },
+    "node_threshold": {
+      "selected": 0.765,
+      "selected_metrics_attack_only": {
+        "threshold": 0.765,
+        "attack_sample_count": 29637,
+        "positive_node_count": 59274,
+        "micro_precision": 0.8836895821297901,
+        "micro_recall": 0.9290414009515133,
+        "micro_f1": 0.9057981741919566,
+        "exact_localization": 0.7049633903566488,
+        "mean_predicted_nodes": 2.102641967810507,
+        "mean_true_nodes": 2.0,
+        "tn": 407670,
+        "fp": 7248,
+        "fn": 4206,
+        "tp": 55068
+      },
+      "default_0_5_metrics_attack_only": {
+        "threshold": 0.5,
+        "attack_sample_count": 29637,
+        "positive_node_count": 59274,
+        "micro_precision": 0.836504344016938,
+        "micro_recall": 0.9664945844721126,
+        "micro_f1": 0.896813531727706,
+        "exact_localization": 0.6735162128420555,
+        "mean_predicted_nodes": 2.3107939400074233,
+        "mean_true_nodes": 2.0,
+        "tn": 403721,
+        "fp": 11197,
+        "fn": 1986,
+        "tp": 57288
+      },
+      "selected_metrics_by_attacker_count": {
+        "1": {
+          "threshold": 0.765,
+          "attack_sample_count": 9879,
+          "positive_node_count": 9879,
+          "micro_precision": 0.7123789184654107,
+          "micro_recall": 0.9454398218443162,
+          "micro_f1": 0.8125271857329274,
+          "exact_localization": 0.6863042818098998,
+          "mean_predicted_nodes": 1.3271586192934508,
+          "mean_true_nodes": 1.0,
+          "tn": 144414,
+          "fp": 3771,
+          "fn": 539,
+          "tp": 9340
+        },
+        "2": {
+          "threshold": 0.765,
+          "attack_sample_count": 9879,
+          "positive_node_count": 19758,
+          "micro_precision": 0.9056937649630478,
+          "micro_recall": 0.880757161656038,
+          "micro_f1": 0.8930514215334086,
+          "exact_localization": 0.6559368357121166,
+          "mean_predicted_nodes": 1.9449336977426865,
+          "mean_true_nodes": 2.0,
+          "tn": 136494,
+          "fp": 1812,
+          "fn": 2356,
+          "tp": 17402
+        },
+        "3": {
+          "threshold": 0.765,
+          "attack_sample_count": 9879,
+          "positive_node_count": 29637,
+          "micro_precision": 0.9444833450035011,
+          "micro_recall": 0.9557647535175625,
+          "micro_f1": 0.9500905614811832,
+          "exact_localization": 0.7726490535479299,
+          "mean_predicted_nodes": 3.035833586395384,
+          "mean_true_nodes": 3.0,
+          "tn": 126762,
+          "fp": 1665,
+          "fn": 1311,
+          "tp": 28326
+        }
+      }
+    },
+    "threshold_independent_localization_ranking": {
+      "denominator": "attack-positive validation samples only",
+      "overall": {
+        "attack_sample_count": 29637,
+        "attacker_node_count": 59274,
+        "top1_hit_rate": 0.9522556264129298,
+        "top2_hit_rate": 0.986705806930526,
+        "top3_hit_rate": 0.9951074670175794,
+        "top1_attacker_recall": 0.5739784728548774,
+        "top2_attacker_recall": 0.8555578049960072,
+        "top3_attacker_recall": 0.9751211886043347,
+        "mean_reciprocal_rank": 0.9734346036780493,
+        "mean_best_attacker_rank": 1.0679555960454836,
+        "median_best_attacker_rank": 1.0,
+        "mean_all_attacker_rank": 1.7585450619158485,
+        "median_all_attacker_rank": 2.0,
+        "exact_top_m_set_accuracy": 0.9000911023382934
+      },
+      "by_attacker_count": {
+        "1": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.9127442048790363,
+          "top2_hit_rate": 0.9678105071363499,
+          "top3_hit_rate": 0.9860309747950198,
+          "top1_attacker_recall": 0.9127442048790363,
+          "top2_attacker_recall": 0.9678105071363499,
+          "top3_attacker_recall": 0.9860309747950198,
+          "mean_reciprocal_rank": 0.9496604549975336,
+          "mean_best_attacker_rank": 1.1387792286668692,
+          "mean_all_attacker_rank": 1.1387792286668692,
+          "exact_top_m_set_accuracy": 0.9127442048790363
+        },
+        "2": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.9671019333940682,
+          "top2_hit_rate": 0.9924081384755542,
+          "top3_hit_rate": 0.9993926510780443,
+          "top1_attacker_recall": 0.4835509666970341,
+          "top2_attacker_recall": 0.9507541249114283,
+          "top3_attacker_recall": 0.9802611600364409,
+          "mean_reciprocal_rank": 0.9822082917588536,
+          "mean_best_attacker_rank": 1.0418058507946149,
+          "mean_all_attacker_rank": 1.5959611296689948,
+          "exact_top_m_set_accuracy": 0.9091001113473024
+        },
+        "3": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.9769207409656848,
+          "top2_hit_rate": 0.9998987751796741,
+          "top3_hit_rate": 0.9998987751796741,
+          "top1_attacker_recall": 0.3256402469885616,
+          "top2_attacker_recall": 0.6481087829402435,
+          "top3_attacker_recall": 0.9590714309815432,
+          "mean_reciprocal_rank": 0.988435064277761,
+          "mean_best_attacker_rank": 1.023281708674967,
+          "mean_all_attacker_rank": 2.0735229611634107,
+          "exact_top_m_set_accuracy": 0.8784289907885413
+        }
+      }
+    }
+  },
+  "b1": {
+    "graph_threshold": {
+      "selected": 0.08,
+      "selected_metrics": {
+        "threshold": 0.08,
+        "accuracy": 0.8865659090378192,
+        "precision": 0.9000936420291259,
+        "recall": 0.9405472888618956,
+        "f1": 0.9198759198759198,
+        "fpr": 0.23489219556635288,
+        "tnr": 0.7651078044336471,
+        "tn": 10078,
+        "fp": 3094,
+        "fn": 1762,
+        "tp": 27875
+      },
+      "default_0_5_metrics": {
+        "threshold": 0.5,
+        "accuracy": 0.8429769441005396,
+        "precision": 0.9714826550347723,
+        "recall": 0.796571852751628,
+        "f1": 0.8753754310504653,
+        "fpr": 0.05261160036440935,
+        "tnr": 0.9473883996355906,
+        "tn": 12479,
+        "fp": 693,
+        "fn": 6029,
+        "tp": 23608
+      }
+    },
+    "node_threshold": {
+      "selected": 0.545,
+      "selected_metrics_attack_only": {
+        "threshold": 0.545,
+        "attack_sample_count": 29637,
+        "positive_node_count": 59274,
+        "micro_precision": 0.8131817369017107,
+        "micro_recall": 0.9206566116678476,
+        "micro_f1": 0.8635881692013103,
+        "exact_localization": 0.5689172318385801,
+        "mean_predicted_nodes": 2.264331747477815,
+        "mean_true_nodes": 2.0,
+        "tn": 402381,
+        "fp": 12537,
+        "fn": 4703,
+        "tp": 54571
+      },
+      "default_0_5_metrics_attack_only": {
+        "threshold": 0.5,
+        "attack_sample_count": 29637,
+        "positive_node_count": 59274,
+        "micro_precision": 0.8045933405317068,
+        "micro_recall": 0.9302898404022,
+        "micro_f1": 0.8628880821231848,
+        "exact_localization": 0.5642946317103621,
+        "mean_predicted_nodes": 2.3124472787394135,
+        "mean_true_nodes": 2.0,
+        "tn": 401526,
+        "fp": 13392,
+        "fn": 4132,
+        "tp": 55142
+      },
+      "selected_metrics_by_attacker_count": {
+        "1": {
+          "threshold": 0.545,
+          "attack_sample_count": 9879,
+          "positive_node_count": 9879,
+          "micro_precision": 0.5870805472056929,
+          "micro_recall": 0.9687215305192833,
+          "micro_f1": 0.7310924369747899,
+          "exact_localization": 0.49144650268245776,
+          "mean_predicted_nodes": 1.650065796133212,
+          "mean_true_nodes": 1.0,
+          "tn": 141454,
+          "fp": 6731,
+          "fn": 309,
+          "tp": 9570
+        },
+        "2": {
+          "threshold": 0.545,
+          "attack_sample_count": 9879,
+          "positive_node_count": 19758,
+          "micro_precision": 0.8302917878271333,
+          "micro_recall": 0.8381921247089786,
+          "micro_f1": 0.8342232520652831,
+          "exact_localization": 0.5174612815062253,
+          "mean_predicted_nodes": 2.0190302662212773,
+          "mean_true_nodes": 2.0,
+          "tn": 134921,
+          "fp": 3385,
+          "fn": 3197,
+          "tp": 16561
+        },
+        "3": {
+          "threshold": 0.545,
+          "attack_sample_count": 9879,
+          "positive_node_count": 29637,
+          "micro_precision": 0.9215514727325751,
+          "micro_recall": 0.9596112966899484,
+          "micro_f1": 0.9401963701279381,
+          "exact_localization": 0.6978439113270574,
+          "mean_predicted_nodes": 3.1238991800789555,
+          "mean_true_nodes": 3.0,
+          "tn": 126006,
+          "fp": 2421,
+          "fn": 1197,
+          "tp": 28440
+        }
+      }
+    },
+    "threshold_independent_localization_ranking": {
+      "denominator": "attack-positive validation samples only",
+      "overall": {
+        "attack_sample_count": 29637,
+        "attacker_node_count": 59274,
+        "top1_hit_rate": 0.9455073050578668,
+        "top2_hit_rate": 0.9882916624489658,
+        "top3_hit_rate": 0.996996996996997,
+        "top1_attacker_recall": 0.5697382776034461,
+        "top2_attacker_recall": 0.8410095488747175,
+        "top3_attacker_recall": 0.9604435896570728,
+        "mean_reciprocal_rank": 0.9704748622351619,
+        "mean_best_attacker_rank": 1.071532206363667,
+        "median_best_attacker_rank": 1.0,
+        "mean_all_attacker_rank": 1.8001484630698115,
+        "median_all_attacker_rank": 2.0,
+        "exact_top_m_set_accuracy": 0.8387488612207713
+      },
+      "by_attacker_count": {
+        "1": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.9023180483854641,
+          "top2_hit_rate": 0.9736815467152545,
+          "top3_hit_rate": 0.992813037756858,
+          "top1_attacker_recall": 0.9023180483854641,
+          "top2_attacker_recall": 0.9736815467152545,
+          "top3_attacker_recall": 0.992813037756858,
+          "mean_reciprocal_rank": 0.9460578154398379,
+          "mean_best_attacker_rank": 1.1347302358538314,
+          "mean_all_attacker_rank": 1.1347302358538314,
+          "exact_top_m_set_accuracy": 0.9023180483854641
+        },
+        "2": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.972972972972973,
+          "top2_hit_rate": 0.9911934406316428,
+          "top3_hit_rate": 0.998177953234133,
+          "top1_attacker_recall": 0.4864864864864865,
+          "top2_attacker_recall": 0.9080878631440429,
+          "top3_attacker_recall": 0.9589027229476668,
+          "mean_reciprocal_rank": 0.984751324358066,
+          "mean_best_attacker_rank": 1.0410972770523332,
+          "mean_all_attacker_rank": 1.664287883389007,
+          "exact_top_m_set_accuracy": 0.8249822856564429
+        },
+        "3": {
+          "sample_count": 9879,
+          "top1_hit_rate": 0.9612308938151635,
+          "top2_hit_rate": 1.0,
+          "top3_hit_rate": 1.0,
+          "top1_attacker_recall": 0.3204102979383878,
+          "top2_attacker_recall": 0.6412592367648547,
+          "top3_attacker_recall": 0.9296150082666936,
+          "mean_reciprocal_rank": 0.9806154469075817,
+          "mean_best_attacker_rank": 1.0387691061848365,
+          "mean_all_attacker_rank": 2.1125282585956744,
+          "exact_top_m_set_accuracy": 0.7889462496204069
+        }
+      }
+    }
+  },
+  "validation_deltas_b1_minus_a1": {
+    "selected_graph_f1": -0.03884005596589368,
+    "selected_graph_recall": -0.036947059418969475,
+    "selected_graph_fpr": 0.09611296689948376,
+    "selected_attack_only_node_f1": -0.04221000499064631,
+    "selected_attack_only_exact_localization": -0.13604615851806867,
+    "top1_hit_rate": -0.006748321355062981,
+    "top3_hit_rate": 0.0018895299794176035,
+    "mean_reciprocal_rank": -0.0029597414428874647
+  },
+  "frozen_thresholds_for_test_transfer": {
+    "a1_graph": 0.41,
+    "a1_node": 0.765,
+    "b1_graph": 0.08,
+    "b1_node": 0.545
+  }
+}

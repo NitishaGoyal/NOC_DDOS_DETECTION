@@ -1,0 +1,300 @@
+{
+  "artifacts": {
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1B_RECONSTRUCTED_ROUTE_DECISION.json",
+    "frozen_reconstructed_route": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1B_FROZEN_RECONSTRUCTED_TRAINING_ROUTE.json",
+    "training_recipe_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1B_ARTIFACT_ANCHORED_TRAINING_RECIPE_EVIDENCE.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:36:44.367939+00:00",
+  "decision": {
+    "F7_adapter_preflight_authorized": true,
+    "F8_multi_seed_authorized": false,
+    "P1A_official_route_unresolved": true,
+    "actual_F7_retraining_authorized": false,
+    "canonical_metric_adapter_verified": true,
+    "certified_loader_verified": true,
+    "certified_model_verified": true,
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F7_P2_RECONSTRUCTED_TRAINER_ADAPTER_AND_DRY_RUN_PREFLIGHT",
+    "reconstructed_route_frozen": true,
+    "reconstructed_route_is_declared_non_byte_identical_to_A4": true,
+    "sealed_test_access": false,
+    "seed_107_lineage_verified": true,
+    "selection_formula_verified": true,
+    "split_counts_certified": true,
+    "training_loop_skeleton_verified": true
+  },
+  "finding": {
+    "P1A_skeleton_candidate": {
+      "aggregate_evidence": {
+        "backward": true,
+        "checkpoint_save": true,
+        "dataloader": true,
+        "epoch_loop": true,
+        "model_class": false,
+        "optimizer_step": true,
+        "train_split": true,
+        "validation_split": true,
+        "zero_grad": true
+      },
+      "all_required_evidence": false,
+      "direct_main_function": true,
+      "entrypoint": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "entrypoint_name_hit": true,
+      "entrypoint_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+      "evidence_sources": {
+        "backward": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "checkpoint_save": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "dataloader": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "epoch_loop": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "optimizer_step": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "train_split": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "validation_split": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ],
+        "zero_grad": [
+          "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+        ]
+      },
+      "explicit_match": false,
+      "reference_count": 17,
+      "referenced_by": [
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_immutable_validation_logit_export/V5_P2_E1_IMMUTABLE_VALIDATION_LOGIT_EXPORT_SHA256SUMS.txt",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p0_validation_export_interface_preflight/V5_P2_E1_P0_VALIDATION_EXPORT_INTERFACE_PREFLIGHT.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p0_validation_export_interface_preflight/V5_P2_E1_P0_VALIDATION_EXPORT_INTERFACE_PREFLIGHT.md",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p1_compact_interface_resolution/V5_P2_E1_P1_COMPACT_INTERFACE_RESOLUTION.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p1_compact_interface_resolution/V5_P2_E1_P1_COMPACT_INTERFACE_RESOLUTION.md",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p2_exact_source_interface_resolution/V5_P2_E1_P2_EXACT_SOURCE_INTERFACE_RESOLUTION.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p2_exact_source_interface_resolution/V5_P2_E1_P2_EXACT_SOURCE_INTERFACE_RESOLUTION.md",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p2_exact_source_interface_resolution/V5_P2_E1_P2_EXACT_SOURCE_INTERFACE_RESOLUTION_SHA256SUMS.txt",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1c_training_matrix_inventory_20260726_215633.txt",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_l0_r0_semantic_resolution/V5_P2_L0_R0_SEMANTIC_RESOLUTION.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_l0_structured_decoder_protocol_preflight/V5_P2_L0_STRUCTURED_DECODER_PROTOCOL_PREFLIGHT.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_l0_structured_decoder_protocol_preflight/V5_P2_L0_STRUCTURED_DECODER_PROTOCOL_PREFLIGHT.md",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_concrete_interface_resolution/V5_P2_PREFLIGHT_CONCRETE_INTERFACE_RESOLUTION.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_concrete_interface_resolution/V5_P2_PREFLIGHT_CONCRETE_INTERFACE_RESOLUTION.md",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_source_interface_discovery/V5_P2_PREFLIGHT_SOURCE_INTERFACE_DISCOVERY.json",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_source_interface_discovery/V5_P2_PREFLIGHT_SOURCE_INTERFACE_DISCOVERY.md",
+        "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_STRICT_TRAINER_CANDIDATE_REVIEW.json"
+      ],
+      "rejected": false,
+      "rejection_terms": [],
+      "route_fingerprint_sha256": "d447bef60327c102245cf06b45b6219f153a616072e5e13b38832f585a334b2d",
+      "score": 1045,
+      "source_count": 1,
+      "source_hashes": [
+        {
+          "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+          "sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+        }
+      ],
+      "sources": [
+        "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py"
+      ]
+    },
+    "components": {
+      "adapter": {
+        "path": "/home/zira/research/projects/GNN-2d/src/evaluation/v5_p3_f4m_canonical_metric_adapter.py",
+        "sha256": "9e2a9f36339550b86dee6d19e3b0403a9f70c06c8ad9afcf20c0c4797eba4384"
+      },
+      "checkpoint": {
+        "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+        "sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979"
+      },
+      "loader": {
+        "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+        "sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de"
+      },
+      "model": {
+        "path": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+      }
+    },
+    "official_A4_trainer_source_available": false,
+    "recipe_evidence": {
+      "batch_size": [],
+      "epochs": [],
+      "learning_rate": [],
+      "optimizer": [],
+      "patience": [],
+      "seed": [
+        {
+          "path": "root.F7_protocol.run_matrix[0].seed",
+          "value": 107
+        },
+        {
+          "path": "root.F7_protocol.run_matrix[1].seed",
+          "value": 107
+        },
+        {
+          "path": "root.F7_protocol.run_matrix[2].seed",
+          "value": 107
+        },
+        {
+          "path": "root.F7_protocol.run_matrix[3].seed",
+          "value": 107
+        },
+        {
+          "path": "root.F7_protocol.run_matrix[4].seed",
+          "value": 107
+        },
+        {
+          "path": "root.F7_protocol.run_matrix[5].seed",
+          "value": 107
+        },
+        {
+          "path": "root.F7_protocol.training_recipe_policy.seed_107_primary_matrix",
+          "value": true
+        }
+      ],
+      "seed_107_evidence_count": 6,
+      "selection_formula_frozen": "(graph_auroc + graph_ap + source_ap + transit_ap + victim_ap + path_ap + count_active_macro_f1) / 7",
+      "selection_formula_matches_expected": true,
+      "selection_score": [
+        {
+          "path": "root.A4_evidence.artifacts[2].selection_fields[0].value.selection_score",
+          "value": 0.7297737200464675
+        },
+        {
+          "path": "root.A4_evidence.artifacts[2].selection_fields[4].value.selection_score",
+          "value": 0.7198312628627728
+        },
+        {
+          "path": "root.A4_evidence.artifacts[3].selection_fields[0].value.best_validation_metrics.selection_score",
+          "value": 0.7297737200464675
+        },
+        {
+          "path": "root.A4_evidence.artifacts[3].selection_fields[0].value.best_validation_selection_score",
+          "value": 0.7297737200464675
+        },
+        {
+          "path": "root.A4_evidence.artifacts[3].selection_fields[1].value.selection_score",
+          "value": 0.7297737200464675
+        },
+        {
+          "path": "root.F4_report.provenance.selection_score_review_sha256",
+          "value": "b2771161e5278ec531857ec148afc9e2095305938b449d321d73e4eda7ee1053"
+        },
+        {
+          "path": "root.F4M_report.selection_formula.checkpoint_reconstructed_selection_score",
+          "value": 0.7297737200464675
+        },
+        {
+          "path": "root.F4M_report.selection_formula.checkpoint_recorded_selection_score",
+          "value": 0.7297737200464675
+        },
+        {
+          "path": "root.F4M_report.selection_formula.published_rounded_selection_score",
+          "value": 0.72977369
+        },
+        {
+          "path": "root.F7_protocol.metric_protocol.candidate_reduction_gates.selection_score_drop_max",
+          "value": 0.02
+        }
+      ],
+      "skeleton_argparse_defaults": {},
+      "weight_decay": []
+    },
+    "skeleton": {
+      "argparse_defaults": {},
+      "classes": [
+        "PairBlockBatchSampler"
+      ],
+      "contains_expected_model_class": false,
+      "evidence": {
+        "backward": true,
+        "checkpoint_save": true,
+        "dataloader": true,
+        "epoch_loop": true,
+        "optimizer_step": true,
+        "train_split": true,
+        "validation_split": true,
+        "zero_grad": true
+      },
+      "functions": [
+        "__init__",
+        "__iter__",
+        "__len__",
+        "atomic_torch_save",
+        "atomic_write",
+        "average_precision",
+        "binary_auroc",
+        "checkpoint_rank",
+        "compute_loss",
+        "fixed_binary_metrics",
+        "flatten_epoch_row",
+        "import_module",
+        "load_json",
+        "main",
+        "move_batch",
+        "multiclass_macro_f1",
+        "parse_distribution",
+        "role_positive_count",
+        "set_epoch",
+        "set_seed",
+        "sha256_file",
+        "sha256_state_dict",
+        "train_one_epoch",
+        "validate",
+        "write_csv",
+        "write_json"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+      "size_bytes": 54362
+    },
+    "train_items": 110855,
+    "validation_items": 13863
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "actual_F7_retraining_authorized": false,
+    "checkpoint_loaded": false,
+    "dataset_getitem_called": false,
+    "missing_A4_trainer_concealed": false,
+    "model_loaded": false,
+    "scientific_protocol_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "training_feature_tensors_loaded": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "A4_evidence_sha256": "d065604166517a3cd9d96962d63b0dbb3bb2b05f61e01386038fe35e99dbdf0f",
+    "F4M_lock_sha256": "1a0e5268d7d4f3d13238762e0a0382275a47e4011960cd4816de325f1af1f59a",
+    "F4M_report_sha256": "e7dc2dbafee80d96f156fb08f65abfd8781fe9cb04288cec8539ede9a0adf348",
+    "F4_lock_sha256": "8e406761413ca0f68351ec3d55ebb997f1a511a839c749cdfabdc007993e682b",
+    "F4_report_sha256": "8ab88718e1dfdd5b27f77d4eebf5581df414ff767672cb054646e0c35a7cef76",
+    "F6R_lock_sha256": "ab3573c845beab2aaa8c7120f0f7b9206fe061f559c78ad3e3799623accf0012",
+    "F6R_report_sha256": "020b01b78f57d843a9914729d1a4b4c2d0b866a9bc96df5752133a41d0029065",
+    "F7_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "P1A_candidate_document_sha256": "47da844e577106430562871447c59aa1dcb1d0600f3070096dad955fbee3fe90",
+    "P1A_lock_sha256": "4f3427d9212b0f27041ebbcfa2faed1d140131df379ad6553eae31d36d2aee1d",
+    "P1A_report_sha256": "83c72759865e64473e19bff81c7c37e78b317c7b0a4ba54cd3e17e3c09017844",
+    "P1_lock_sha256": "2f54ae1cb6c7f0e5eed588c79c637d347709d394a194eebe2d4dcb100b6317e9",
+    "P1_report_sha256": "d4406e9929b67a783d0df0bf079aad27f197226c3d9c95b7add1b871d3d89ed9",
+    "decision_sha256": "f59d6d41c59d1bc8f0cbedcf3ba08f33303f04451077c9dd5c2a33281e548ea0",
+    "frozen_route_sha256": "b24276c374258990a33850a1aaf516d92a5636f09350d98bc5e353821293ec02",
+    "installed_script_sha256": "2f2ec0eab8704760657a8feb1e9fe7c5fcb2374517009a5d99486b2fb34830cf",
+    "recipe_evidence_sha256": "38e718f7e8832a3f279918ae09e3bf38c31a4145dc6348bd54ac0b49e55de6a2",
+    "route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "split_certification_sha256": "3501747fa16b4db289d5552937981ce1fd881295c8d30296b80cecf50c52ea7e"
+  },
+  "scope": "Resolve the absence of a monolithic official A4 trainer by pinning a transparently reconstructed, artifact-anchored F7 training route: verify the complete V5-P2 optimization-loop skeleton, certified V6P0 model, guarded loader, canonical metric adapter, checkpoint, split counts, seed-107 lineage, selection formula and frozen same-width masking protocol; then authorize only an isolated adapter dry-run preflight.",
+  "stage": "V5_P3_F7_P1B_RECONSTRUCTED_TRAINING_RECIPE_PIN",
+  "status": "PASS"
+}

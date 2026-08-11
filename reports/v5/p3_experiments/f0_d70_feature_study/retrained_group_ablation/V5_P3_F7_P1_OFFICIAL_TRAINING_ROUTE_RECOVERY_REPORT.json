@@ -1,0 +1,119 @@
+{
+  "artifacts": {
+    "A4_training_source_reference_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_A4_TRAINING_SOURCE_REFERENCE_REVIEW.json",
+    "execution_route_decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_EXECUTION_ROUTE_DECISION.json",
+    "frozen_official_training_route": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_FROZEN_OFFICIAL_TRAINING_ROUTE.json",
+    "git_history_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_GIT_HISTORY_TRAINER_ROUTE_REVIEW.json",
+    "guarded_split_length_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_GUARDED_SPLIT_LENGTH_CERTIFICATION.json",
+    "strict_trainer_candidate_review": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1_STRICT_TRAINER_CANDIDATE_REVIEW.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:26:07.274295+00:00",
+  "decision": {
+    "F7_P0_complete": true,
+    "F7_adapter_preflight_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "P0_false_positive_reason": "The selected file was the F7-P0 preflight itself. It contains training-related words and AST symbols for discovery logic but does not execute the official A4 training loop.",
+    "P0_false_positive_trainer_detected": true,
+    "actual_F7_retraining_authorized": false,
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F7_P1A_MANUAL_TRAINING_ROUTE_PIN",
+    "official_trainer_route_resolved": false,
+    "sealed_test_access": false,
+    "train_count_certified": true,
+    "trainer_selection_classification": "no_strict_official_training_route_found",
+    "validation_count_certified": true
+  },
+  "finding": {
+    "P0_false_positive_detected": true,
+    "P0_selected_trainer": {
+      "class_names": [],
+      "function_names": [
+        "atomic_json",
+        "atomic_text",
+        "check_training_counts",
+        "collect_a4_protocol_evidence",
+        "load_json",
+        "main",
+        "normalize",
+        "parse_args",
+        "recursive_find",
+        "require",
+        "safe_python_parse",
+        "select_trainer",
+        "sha256_file",
+        "trainer_candidates",
+        "verify_report_lock",
+        "write_csv"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_p0_same_width_retrained_group_ablation_preflight.py",
+      "required_hits": {
+        "DataLoader": true,
+        "V6P0Dynamic70GraphConvCount4": true,
+        "backward": true,
+        "optimizer": true
+      },
+      "score": 53,
+      "sha256": "39863e02e9733a918b394445faafd705810092b3f33ccb5d7b78c4ea12a31849",
+      "support_hits": {
+        "checkpoint": true,
+        "count": true,
+        "early": true,
+        "path": true,
+        "selection": true,
+        "source": true,
+        "transit": true,
+        "validation": true,
+        "victim": true
+      },
+      "syntax_ok": true
+    },
+    "selected_trainer": null,
+    "train_count_certified": true,
+    "train_items": 110855,
+    "trainer_candidate_count": 60,
+    "trainer_selection": {
+      "classification": "no_strict_official_training_route_found",
+      "groups": [],
+      "selection_rule": "Select one unique strict training implementation SHA. Prefer implementations explicitly referenced by A4 evidence; copied files with the same SHA are one implementation.",
+      "strict_candidate_count": 0,
+      "unique_strict_sha256_count": 0
+    },
+    "validation_count_certified": true,
+    "validation_items": 13863
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "actual_F7_retraining_authorized": false,
+    "checkpoint_loaded": false,
+    "dataset_getitem_called": false,
+    "model_loaded": false,
+    "scientific_protocol_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_object_constructed": true,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_object_constructed": true,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "A4_reference_review_sha256": "23331bc31ef1c92727fca2dd1193a897ba5ded0dbf0696f7ef8a7c1c44a17a1c",
+    "F6R_lock_sha256": "ab3573c845beab2aaa8c7120f0f7b9206fe061f559c78ad3e3799623accf0012",
+    "F6R_report_sha256": "020b01b78f57d843a9914729d1a4b4c2d0b866a9bc96df5752133a41d0029065",
+    "F7_P0_lock_sha256": "ff1a4105fa5dbd4f5dd7ce0288fa38b62bd88d0de07041c401c37b4437e569aa",
+    "F7_P0_report_sha256": "d7182ca961f4558977066cd4a49314c3e2ad7439ea65dd00574d49c39a4293ab",
+    "candidate_review_sha256": "bb4caa286feab06d78afc79dc9a07add999448ed18279abd49266b9bb363f2a9",
+    "certified_loader_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "decision_sha256": "bdd6d5ec95931df2950e636efb80159929a21c298cca0b5a7200592dde752a6b",
+    "frozen_training_route_sha256": "f8a80ef773f49d6ba7e8e18474ebaf6c9e2bcd2de13d058dfdc59d9a153bb3b2",
+    "git_history_review_sha256": "9b258879e84d5bdcc67f83d25c4283fe524566b5c9377b6627402046be3138ff",
+    "installed_script_sha256": "837e46c3540b753eaf6052c57483b5efbc1010f00e42326e4f5d23dd90dc9412",
+    "route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "split_length_certification_sha256": "3501747fa16b4db289d5552937981ce1fd881295c8d30296b80cecf50c52ea7e"
+  },
+  "scope": "Correct the F7-P0 trainer-discovery false positive; mine A4 artifacts for explicit Python source references; inspect repository candidates with strict AST evidence for a real optimization loop; group copied implementations by SHA; review git history; construct the guarded train and validation dataset objects without item access; certify exact split lengths; freeze the official trainer route when unique; and authorize only the trainer-adapter dry-run preflight.",
+  "stage": "V5_P3_F7_P1_OFFICIAL_TRAINING_ROUTE_RECOVERY",
+  "status": "PASS"
+}

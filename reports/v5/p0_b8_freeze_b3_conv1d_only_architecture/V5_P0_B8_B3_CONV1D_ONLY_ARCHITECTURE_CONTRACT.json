@@ -1,0 +1,131 @@
+{
+  "architecture_contract_sha256": "86624dd842a57fe289f7d747151ad2aabf0fb5203d8fbc618f48ce3c91ef71b2",
+  "baseline_threshold": 0.5,
+  "contract_name": "V5_P0_FROZEN_B3_CONV1D_ONLY",
+  "forbidden_inputs": [
+    "run_id",
+    "pair_id",
+    "filename",
+    "mode",
+    "seed",
+    "source/victim metadata",
+    "scenario metadata",
+    "serialization order",
+    "run length",
+    "window position",
+    "router IDs",
+    "router embeddings",
+    "router coordinates",
+    "status_flags",
+    "stored standardized mask channels",
+    "hashes or derivatives of quarantined provenance"
+  ],
+  "freeze_scope": "architecture_input_loss_and_interface",
+  "graph_heads": {
+    "attack": "Linear(64,1)",
+    "attacker_count": "Linear(64,3)",
+    "encoder": "Linear(128,64)->ReLU",
+    "pooling": [
+      "router_mean",
+      "router_max"
+    ]
+  },
+  "input": {
+    "active_only": false,
+    "feature_variant": "PRIMARY58",
+    "physical_port_mask_dtype": "bool",
+    "physical_port_mask_shape": [
+      "B",
+      16,
+      10
+    ],
+    "physical_port_mask_source": "topology-derived recovered binary mask",
+    "second_normalization_forbidden": true,
+    "stored_standardized_mask_channels_forbidden": true,
+    "stored_x_already_standardized": true,
+    "stride": 8,
+    "window": 32,
+    "x_shape": [
+      "B",
+      16,
+      58,
+      32
+    ]
+  },
+  "losses": {
+    "attack": [
+      "BCEWithLogitsLoss",
+      1.0
+    ],
+    "attack_path": [
+      "BCEWithLogitsLoss",
+      0.5
+    ],
+    "attacker_count": [
+      "CrossEntropyLoss",
+      0.5
+    ],
+    "positive_weight_rule": "min(20, negatives/positives)",
+    "source": [
+      "BCEWithLogitsLoss",
+      1.0
+    ],
+    "transit": [
+      "BCEWithLogitsLoss",
+      0.5
+    ],
+    "victim": [
+      "BCEWithLogitsLoss",
+      0.75
+    ]
+  },
+  "node_heads": {
+    "pattern": "Linear(64,32)->ReLU->Linear(32,1)",
+    "tasks": [
+      "source",
+      "transit",
+      "victim",
+      "attack_path"
+    ]
+  },
+  "rejected_primary_alternatives": {
+    "B4": "normalized one-hop GCN harmed localization",
+    "B5": "Conv1D plus normalized GCN harmed generalization",
+    "B6": "dual temporal fusion failed to preserve B2/B3 strengths",
+    "B7A": "directional gated graph was not stable across fresh paired seeds"
+  },
+  "required_baselines": {
+    "B1": "static final-epoch MLP",
+    "B2": "temporal-mean MLP",
+    "B3": "selected Conv1D-only architecture"
+  },
+  "router_representation": {
+    "input": "concat(temporal64, recovered_mask10)",
+    "projection": "Linear(74,64)->ReLU"
+  },
+  "selected_architecture": {
+    "edge_index_as_model_input": false,
+    "graph_message_passing": false,
+    "metadata_as_model_input": false,
+    "name": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY",
+    "parameter_count": 43208,
+    "single_stage": true
+  },
+  "selected_checkpoint_as_final": false,
+  "temporal_encoder": {
+    "block_type": "causal depthwise-separable residual Conv1D",
+    "channels": 64,
+    "dilations": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "input_projection": "Conv1d(58,64,kernel_size=1)",
+    "kernel_size": 3,
+    "readout": "final causal encoded timestep",
+    "receptive_field": 31
+  },
+  "version": 1,
+  "weights_frozen": false
+}

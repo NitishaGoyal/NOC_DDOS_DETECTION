@@ -1,0 +1,72 @@
+{
+  "artifacts": {
+    "candidate_excerpts": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0D_EARLY_STOP_BREAK_CANDIDATE_EXCERPTS.json",
+    "decision": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0D_TRAINER_GENERATION_DECISION.json",
+    "improvement_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0D_IMPROVEMENT_BRANCH_EVIDENCE.json",
+    "manual_pin": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0D_MANUAL_SOURCE_EXCERPT_PIN.json",
+    "symbol_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E0D_SYMBOL_ASSIGNMENT_AND_ARGPARSE_EVIDENCE.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-06T00:08:42.719216+00:00",
+  "decision": {
+    "E0C_complete": true,
+    "E1_trainer_generation_authorized": false,
+    "F8_multi_seed_authorized": false,
+    "actual_scientific_training_started": false,
+    "compact_interface_equivalence_authorized": false,
+    "early_stopping_semantics_resolved": false,
+    "epoch_semantics_resolved": true,
+    "feature_removal_authorized": false,
+    "gradient_clipping_semantics_resolved": true,
+    "hardware_reduction_claim_authorized": false,
+    "loss_semantics_resolved": true,
+    "next_stage": "V5_P3_F7_E0D_R1_EXACT_EARLY_STOP_POLICY_PIN",
+    "optimizer_step_cadence_resolved": true,
+    "scheduler_semantics_resolved": true,
+    "sealed_test_access": false,
+    "source_excerpt_frozen": true,
+    "unique_early_stop_candidate": true
+  },
+  "finding": {
+    "argparse_record_count": 0,
+    "assignment_record_count": 5,
+    "break_candidate_count": 1,
+    "early_stop_candidate_count": 1,
+    "improvement_candidate_count": 2,
+    "relevant_symbols": [
+      "early_stop_patience_counter",
+      "epoch"
+    ],
+    "skeleton": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "unique_candidate": true
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "model_loaded": false,
+    "optimizer_step_performed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": false,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_constructed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "E0C_lock_sha256": "ab088176f1bf81653e49e0e2cef77a047006ac3088097dc347f17f6ac2f9879c",
+    "E0C_report_sha256": "6fd84980fa9293c4f8e7daf174c4ecd4e30c0826cfa7633e43ca6ebadcdca5cc",
+    "candidate_excerpts_sha256": "3ba7daadf28cc59efc1c49132936d0069264d21a284ae7f0bcbd8cd46428c86c",
+    "decision_sha256": "62b6ea1000f292edab48b6d7a3f09a153f6faf0d50526525f3cd8a0ee44d20e6",
+    "improvement_evidence_sha256": "4dc4925a224962984374483e35d7d59280ed6bf0ffcdc00460520f5dc37c17bc",
+    "installed_script_sha256": "03698006817d363300caf5fcf710542c20f183e1282851b14a0ece3ebbb890d4",
+    "manual_pin_sha256": "06e5bb10aba1efd8e5af04b78fd7483996ea6e2a47bbe8a378c7ed78089daf52",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "symbol_evidence_sha256": "723dfd68dae6c5d83680110dc32913afe51afa396195bf86bdf3b85a96970384"
+  },
+  "scope": "Freeze exact line-numbered and hashed early-stop source evidence after E0C resolved all other control-flow fields.",
+  "stage": "V5_P3_F7_E0D_MANUAL_EARLY_STOP_SOURCE_EXCERPT_PIN",
+  "status": "PASS"
+}

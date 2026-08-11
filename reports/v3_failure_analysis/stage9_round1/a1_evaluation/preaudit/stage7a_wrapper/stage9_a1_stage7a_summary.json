@@ -1,0 +1,89 @@
+{
+  "stage": "Stage 9 A1 Stage 7A",
+  "verdict": "PASS",
+  "completed_at": "2026-07-20T10:10:39.477412+00:00",
+  "command": [
+    "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+    "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/align_v3_stage7a.py",
+    "--dataset-root",
+    "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+    "--failure-root",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation"
+  ],
+  "implementation": "/home/zira/research/projects/GNN-2d/scripts/failure_analysis/align_v3_stage7a.py",
+  "implementation_sha256": "71da731af68f3de72e45f6b214804a737bc758521bdee16a5180a44edcbdde3a",
+  "dataset_root": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3",
+  "failure_root": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation",
+  "historical_output": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/stage7a_alignment",
+  "wrapper_output": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/preaudit/stage7a_wrapper",
+  "dataset_preflight": {
+    "x_shape": [
+      233803,
+      16,
+      8,
+      24
+    ],
+    "x_dtype": "float32",
+    "y_graph_shape": [
+      233803
+    ],
+    "y_node_shape": [
+      233803,
+      16
+    ]
+  },
+  "prediction_preflight": {
+    "metadata_rows": 85618,
+    "split_counts": {
+      "val": 42809,
+      "test": 42809
+    },
+    "comparator_files": {
+      "tcn_attention_gcn_predictions.npz": true,
+      "tcn_meanpool_gcn_predictions.npz": true,
+      "tcn_maxpool_gcn_predictions.npz": true
+    },
+    "metadata_checks": {
+      "metadata_rows": true,
+      "validation_rows": true,
+      "test_rows": true,
+      "sample_index_unique": true,
+      "sample_id_unique": true
+    },
+    "prediction_checks": {
+      "sample_index_shape": true,
+      "graph_probability_shape": true,
+      "graph_logit_shape": true,
+      "node_probability_shape": true,
+      "node_logit_shape": true,
+      "sample_index_unique": true,
+      "graph_probability_finite": true,
+      "node_probability_finite": true,
+      "graph_logit_finite": true,
+      "node_logit_finite": true,
+      "graph_probability_range": true,
+      "node_probability_range": true
+    },
+    "manifest_points_to_a1": true,
+    "conv1d_prediction_sha256": "c8aa698d297b073e01c7ed53f27807b37526c87f5fa88d1d2ba72bc087fb878b",
+    "metadata_sha256": "f057d9603ec78418f7536426d8baff513ea4438c4213c030d5acc5d78739d521",
+    "manifest_sha256": "26cbe43f72b4e9a9df9895935b472d58486f437bc88a2253e883608a76fb012c"
+  },
+  "new_output_files": [
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/STAGE7A_ALIGNMENT_REPORT.md",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/logs/34_stage7a_alignment_validation.txt",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_dataset_manifest.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_feature_map.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_node_export_status.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_prediction_array_manifest.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_run_inventory.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_sample_alignment.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_selected_run_inventory.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_selected_sample_indices.npz",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_split_summary.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7_topology_manifest.csv",
+    "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_round1/a1_evaluation/tables/stage7a_alignment_summary.json"
+  ],
+  "modified_preexisting_files": [],
+  "subprocess_exit_code": 0
+}

@@ -1,0 +1,93 @@
+{
+  "comparison_claim_scope": "controlled_seed107_architecture_comparison_not_multiseed_robustness",
+  "created_utc": "2026-08-07T13:43:31.173709+00:00",
+  "device": "cuda:0",
+  "execution": "strictly_sequential_one_gpu_job_at_a_time",
+  "gpu_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "m7_seed107_checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+  "m7_seed107_reused": true,
+  "matrix": [
+    {
+      "action": "TRAIN",
+      "model_id": "conv1d_only",
+      "seed": 107
+    },
+    {
+      "action": "TRAIN",
+      "model_id": "gcn_only_temporal_mean",
+      "seed": 107
+    },
+    {
+      "action": "TRAIN",
+      "model_id": "graphconv_only_temporal_mean",
+      "seed": 107
+    },
+    {
+      "action": "TRAIN",
+      "model_id": "conv1d_gcnconv",
+      "seed": 107
+    },
+    {
+      "action": "TRAIN",
+      "model_id": "conv1d_gatconv",
+      "seed": 107
+    },
+    {
+      "action": "TRAIN",
+      "model_id": "tcn_attention_gcn",
+      "seed": 107
+    },
+    {
+      "action": "TRAIN",
+      "model_id": "lstm_graphconv",
+      "seed": 107
+    },
+    {
+      "action": "REUSE",
+      "checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_SEED107_BEST.pt",
+      "checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+      "model_id": "conv1d_graphconv",
+      "seed": 107
+    }
+  ],
+  "models": [
+    "conv1d_only",
+    "gcn_only_temporal_mean",
+    "graphconv_only_temporal_mean",
+    "conv1d_gcnconv",
+    "conv1d_gatconv",
+    "tcn_attention_gcn",
+    "lstm_graphconv",
+    "conv1d_graphconv"
+  ],
+  "new_training_jobs": 7,
+  "nohup_parent_expected": true,
+  "primary_comparison_seed": 107,
+  "protocol": {
+    "batch_size": 256,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "gradient_clip_norm": 1.0,
+    "graph_positive_weight": 2.7082685394197807,
+    "learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "num_workers": 0,
+    "role_positive_weights": {
+      "path": 8.208121405883452,
+      "source": 20.0,
+      "transit": 17.186033877456886,
+      "victim": 20.0
+    },
+    "weight_decay": 0.0001
+  },
+  "sealed_test_access": false,
+  "secondary_seeds_117_127_required": false,
+  "seeds": [
+    107
+  ],
+  "stage": "V5_P3_MC4_S1_SEED107_PRIMARY_MULTITASK_TRAINING",
+  "status": "RUNNING"
+}

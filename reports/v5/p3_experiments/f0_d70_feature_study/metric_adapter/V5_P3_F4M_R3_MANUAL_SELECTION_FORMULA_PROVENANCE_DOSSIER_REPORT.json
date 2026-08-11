@@ -1,0 +1,63 @@
+{
+  "artifacts": {
+    "callsite_and_import_lineage": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3_SELECTION_CALLSITE_AND_IMPORT_LINEAGE.json",
+    "checkpoint_selection_metadata": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3_CHECKPOINT_SELECTION_METADATA.json",
+    "graph_fpr_cap_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3_GRAPH_FPR_CAP_EVIDENCE.json",
+    "helper_source": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3_SELECTION_AND_THRESHOLD_HELPER_SOURCE.json",
+    "manual_pin_dossier": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R3_MANUAL_SELECTION_FORMULA_PIN_DOSSIER.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "created_utc": "2026-08-05T21:15:03.585022+00:00",
+  "decision": {
+    "F4M_R3_dossier_complete": true,
+    "F4M_complete": false,
+    "F5_group_block_permutation_authorized": false,
+    "F6_integrated_gradients_authorized": false,
+    "manual_selection_formula_pin_authorized": true,
+    "next_stage": "V5_P3_F4M_R3A_MANUAL_SELECTION_FORMULA_PIN",
+    "sealed_test_access_authorized": false
+  },
+  "findings": {
+    "callsite": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+    "callsite_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+    "checkpoint_selection_score": 0.7297737200464675,
+    "graph_fpr_cap_evidence_count": 2,
+    "helpers_share_source": true,
+    "manual_pin_ready": true,
+    "selection_components_available": true,
+    "selection_source": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+    "selection_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "selection_source_unique": true,
+    "threshold_policy_available": true,
+    "threshold_source": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+    "threshold_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "threshold_source_unique": true
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "candidate_modules_imported": false,
+    "checkpoint_deserialized_for_metadata_only": true,
+    "model_instantiated": false,
+    "model_state_dict_used": false,
+    "optimizer_state_dict_used": false,
+    "sealed_test_tensors_loaded": false,
+    "training_tensors_loaded": false,
+    "validation_dataset_tensors_loaded": false,
+    "validation_output_artifact_payloads_loaded": false
+  },
+  "provenance": {
+    "F4M_R2_lock_sha256": "d98e100439c133c822812f83d1e49a37d5cea1b2c6f5818c077abd41bc31986e",
+    "F4M_R2_report_sha256": "a46366a1f9aafacd8dfb6d3e4a4e9f232b92cc93f1b6bf14632fdae5e296e713",
+    "callsite_lineage_sha256": "d6aabef88524ae073e468b46f56cfde2dc5da6ce0b79446da842f93f52ab73db",
+    "callsite_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+    "cap_evidence_sha256": "238ff69f30a59cc256a5d8406668d87a7c3624f1197a80890bd4baf1941846da",
+    "checkpoint_metadata_sha256": "ca55ba05a28abbf7ef6beecbb1a439e648ea5ee7b5f03407b9a7de8be4966bda",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "dossier_sha256": "060c3cfa8f38be4cea60ac786042f5fc32ff35d3d70f1660fd338b2734c1bf7d",
+    "helper_source_sha256": "1580976048bb4c0084ef279c42c6cdfd9e056602f122320ae7dec7ad619e63b8",
+    "installed_script_sha256": "fc5595a4d295f631e39c04a6d066e630bbd63c16ee33243625761230c6061c15"
+  },
+  "scope": "Resolve the V4 helper import lineage used by the A4/A5 selection-score call site and expose the exact function bodies, threshold policy, and frozen checkpoint selection components for a manual formula pin.",
+  "stage": "V5_P3_F4M_R3_MANUAL_SELECTION_FORMULA_PROVENANCE_DOSSIER",
+  "status": "PASS"
+}

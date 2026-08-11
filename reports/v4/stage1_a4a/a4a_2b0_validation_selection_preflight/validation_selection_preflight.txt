@@ -1,0 +1,186 @@
+V4-A4a-2B0 VALIDATION-SELECTION PREFLIGHT
+status: PASS
+ready_to_build_a4a_2b_selector: True
+validation_checkpoint_count: 12
+full_validation_epochs: [1, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 31]
+a3_source_candidate_count: 17
+a3_report_candidate_count: 51
+dataset_samples_loaded: false
+model_inference_performed: false
+checkpoint_selection_performed: false
+threshold_search_performed: false
+development_test_accessed: false
+
+CHECKPOINTS
+- epoch=1 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_001.pt sha256=341c71a97177347095502883b6eb24478488e1b70e5705460b803c48bb09c493 manifest_hash_matches=True
+- epoch=3 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_003.pt sha256=f9ab22d2ae2bddbd5ecaa70f49dd9d8156bc3f0b3bc6dcac720130748ed97160 manifest_hash_matches=True
+- epoch=6 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_006.pt sha256=6dcb604e310a5fda65c7ce1ca3f433b206e29e7b6a3849a16ac7b68939f70fad manifest_hash_matches=True
+- epoch=9 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_009.pt sha256=b21669089891acc2f6bd1776ee0ba46696b5cfa4e9d575a1fba1d79b288b443b manifest_hash_matches=True
+- epoch=12 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_012.pt sha256=18b481b9a31060ecf6b1b00377c703ad6ec469a2a1a10496abeb32b1a52513da manifest_hash_matches=True
+- epoch=15 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_015.pt sha256=9619bc565898b6f3d3ef26365e202cb70429964f0642b0172e5452bf99485996 manifest_hash_matches=True
+- epoch=18 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_018.pt sha256=65c63995220b1bbc7270e38903368482f3b66965a6bf41abb2e013a897c84039 manifest_hash_matches=True
+- epoch=21 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_021.pt sha256=5151c34160f99a6a22b44b3f47200b82f10815bdd10dede02e3552994100ebab manifest_hash_matches=True
+- epoch=24 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_024.pt sha256=21d9d71441f94f869ad3d010c3911a44ee1a6b109786971d6860111bac35f403 manifest_hash_matches=True
+- epoch=27 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_027.pt sha256=3b46c34cfbd0b11175e3453797ac2abba86294089f293f0b26f32423ef1229c3 manifest_hash_matches=True
+- epoch=30 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_030.pt sha256=4b9dfdee2bfc673b2fba4c19d03729f00a9383fdfcf257fea4c42e125fa72c08 manifest_hash_matches=True
+- epoch=31 path=/home/zira/research/projects/GNN-2d/models/v4/v4_a4a_slot_full_seed7/validation_checkpoints/epoch_031.pt sha256=13c724b56ed2984e51d1fc1979a9cdfdba5b75942c252d2128e677d2c470f9a6 manifest_hash_matches=True
+
+A3 SOURCE CANDIDATES
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/train_v4_a4a_1b_slot_smoke.py hits=18
+  line=364 terms=['graph_threshold']
+  line=395 terms=['graph_threshold']
+  line=431 terms=['graph_threshold']
+  line=459 terms=['exact_localization']
+  line=469 terms=['candidate_coverage']
+  line=593 terms=['graph_threshold']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/train_v4_a4a_2a_slot_full.py hits=2
+  line=1005 terms=['persistent']
+  line=1107 terms=['persistent']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_0_contract_audit.py hits=17
+  line=11 terms=['a3.12']
+  line=197 terms=['run_index']
+  line=307 terms=['a3.12']
+  line=315 terms=['a3.12']
+  line=373 terms=['run_index']
+  line=395 terms=['run_index']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_0_slot_contract_audit.py hits=38
+  line=48 terms=['run_index']
+  line=55 terms=['end_epoch']
+  line=304 terms=['oracle']
+  line=305 terms=['oracle']
+  line=311 terms=['a3.12']
+  line=470 terms=['a3.12']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_1b2_label_coverage_audit.py hits=9
+  line=200 terms=['persistent']
+  line=214 terms=['persistent']
+  line=216 terms=['persistent']
+  line=382 terms=['persistent']
+  line=437 terms=['graph_threshold']
+  line=438 terms=['graph_threshold']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_1b_trainer_interface_preflight.py hits=1
+  line=491 terms=['run_index']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_1c_freeze_full_training_contract.py hits=9
+  line=335 terms=['a3.12']
+  line=373 terms=['persistent']
+  line=407 terms=['candidate_coverage']
+  line=408 terms=['persistent']
+  line=413 terms=['exact localization']
+  line=414 terms=['false isolation']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_1d_batch512_resource_probe.py hits=5
+  line=212 terms=['persistent']
+  line=228 terms=['persistent']
+  line=230 terms=['persistent']
+  line=445 terms=['persistent']
+  line=814 terms=['persistent']
+- /home/zira/research/projects/GNN-2d/scripts/v4/a4a/v4_a4a_2b0_validation_selection_preflight.py hits=22
+  line=19 terms=['h32']
+  line=20 terms=['persistent']
+  line=21 terms=['false isolation']
+  line=22 terms=['candidate coverage']
+  line=23 terms=['candidate_coverage']
+  line=24 terms=['exact localization']
+- /home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py hits=21
+  line=168 terms=['run_index']
+  line=176 terms=['run_index']
+  line=185 terms=['run_index']
+  line=233 terms=['run_index']
+  line=266 terms=['run_index']
+  line=267 terms=['run_index']
+- /home/zira/research/projects/GNN-2d/scripts/v4/eval/eval_v4_a1_thresholds_and_test.py hits=26
+  line=73 terms=['run_index']
+  line=86 terms=['run_index']
+  line=98 terms=['run_index']
+  line=105 terms=['run_index']
+  line=196 terms=['exact_localization']
+  line=209 terms=['persistent']
+- /home/zira/research/projects/GNN-2d/scripts/v4/eval/eval_v4_a3_sourcepreserve.py hits=15
+  line=48 terms=['graph_threshold']
+  line=103 terms=['persistent']
+  line=120 terms=['run_index']
+  line=153 terms=['exact_localization']
+  line=199 terms=['graph_threshold']
+  line=215 terms=['exact_localization']
+- /home/zira/research/projects/GNN-2d/scripts/v4/eval/eval_v4_conv1d_gcn_experiment.py hits=26
+  line=105 terms=['run_index']
+  line=118 terms=['run_index']
+  line=130 terms=['run_index']
+  line=137 terms=['run_index']
+  line=228 terms=['exact_localization']
+  line=242 terms=['persistent']
+- /home/zira/research/projects/GNN-2d/scripts/v4/eval/freeze_v4_fpr_constrained_thresholds.py hits=2
+  line=70 terms=['graph_threshold']
+  line=77 terms=['graph_threshold']
+- /home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a1_conv1d_gcn_memmap.py hits=30
+  line=159 terms=['run_index']
+  line=171 terms=['run_index']
+  line=186 terms=['run_index']
+  line=187 terms=['run_index']
+  line=196 terms=['run_index']
+  line=207 terms=['persistent']
+- /home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py hits=14
+  line=58 terms=['graph_threshold']
+  line=95 terms=['persistent']
+  line=107 terms=['graph_threshold']
+  line=144 terms=['graph_threshold']
+  line=386 terms=['persistent']
+  line=399 terms=['persistent']
+- /home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_conv1d_gcn_experiment.py hits=30
+  line=211 terms=['run_index']
+  line=223 terms=['run_index']
+  line=238 terms=['run_index']
+  line=239 terms=['run_index']
+  line=248 terms=['run_index']
+  line=259 terms=['persistent']
+
+A3 REPORT CANDIDATES
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_comprehensive/test/localization_method_comparison.csv suffix=.csv bytes=1258
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_comprehensive/test/worst_attack_runs_by_exact_localization.csv suffix=.csv bytes=14707
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_comprehensive/validation/localization_method_comparison.csv suffix=.csv bytes=1249
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_comprehensive/validation/worst_attack_runs_by_exact_localization.csv suffix=.csv bytes=14743
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/exact_set_decomposition__frozen_threshold.csv suffix=.csv bytes=306
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/exact_set_decomposition__oracle_true_count_topk.csv suffix=.csv bytes=166
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/exact_set_decomposition__predicted_count_specific_thresholds.csv suffix=.csv bytes=306
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/graph_node_consistency__frozen_threshold.csv suffix=.csv bytes=523
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/graph_node_consistency__oracle_true_count_topk.csv suffix=.csv bytes=377
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/graph_node_consistency__predicted_count_specific_thresholds.csv suffix=.csv bytes=524
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/substitution_distance__frozen_threshold.csv suffix=.csv bytes=772
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/substitution_distance__oracle_true_count_topk.csv suffix=.csv bytes=637
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/test/substitution_distance__predicted_count_specific_thresholds.csv suffix=.csv bytes=770
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/exact_set_decomposition__frozen_threshold.csv suffix=.csv bytes=307
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/exact_set_decomposition__oracle_true_count_topk.csv suffix=.csv bytes=167
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/exact_set_decomposition__predicted_count_specific_thresholds.csv suffix=.csv bytes=303
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/graph_node_consistency__frozen_threshold.csv suffix=.csv bytes=524
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/graph_node_consistency__oracle_true_count_topk.csv suffix=.csv bytes=377
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/graph_node_consistency__predicted_count_specific_thresholds.csv suffix=.csv bytes=523
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/substitution_distance__frozen_threshold.csv suffix=.csv bytes=773
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/substitution_distance__oracle_true_count_topk.csv suffix=.csv bytes=635
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis/generic_remaining/validation/substitution_distance__predicted_count_specific_thresholds.csv suffix=.csv bytes=771
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis.archived.20260723T205834Z/generic_comprehensive/test/localization_method_comparison.csv suffix=.csv bytes=1258
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis.archived.20260723T205834Z/generic_comprehensive/test/worst_attack_runs_by_exact_localization.csv suffix=.csv bytes=14707
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis.archived.20260723T205834Z/generic_comprehensive/validation/localization_method_comparison.csv suffix=.csv bytes=1249
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_10_complete_failure_analysis.archived.20260723T205834Z/generic_comprehensive/validation/worst_attack_runs_by_exact_localization.csv suffix=.csv bytes=14743
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/01_validation_search/VALIDATION_POLICY_LOCK.json suffix=.json bytes=416
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/01_validation_search/isolation_shortlist_operational.csv suffix=.csv bytes=15891
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/01_validation_search/localization_candidates.csv suffix=.csv bytes=1900542
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/01_validation_search/selected_validation_policy.json suffix=.json bytes=4545
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/02_latency_family_validation_audit/FROZEN_LATENCY_POLICY_FAMILY.json suffix=.json bytes=2519
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/02_latency_family_validation_audit/LATENCY_POLICY_FAMILY_LOCK.json suffix=.json bytes=452
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/02_latency_family_validation_audit/latency_policy_family_validation.json suffix=.json bytes=10728
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/03_l2_graph_gated_refinement/FROZEN_L2_POLICY.json suffix=.json bytes=4455
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/03_l2_graph_gated_refinement/L2_POLICY_LOCK.json suffix=.json bytes=435
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/03_l2_graph_gated_refinement/selected_policy_hard_normal_runs.csv suffix=.csv bytes=258
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/04_operational_policy_freeze/FROZEN_OPERATIONAL_POLICY_FAMILY.json suffix=.json bytes=6367
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/04_operational_policy_freeze/OPERATIONAL_POLICY_FAMILY_LOCK.json suffix=.json bytes=376
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/05_frozen_development_test_transfer/FROZEN_POLICY_TEST_TRANSFER_LOCK.json suffix=.json bytes=676
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/05_frozen_development_test_transfer/frozen_policy_test_transfer_report.json suffix=.json bytes=16950
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/05_frozen_development_test_transfer/hard_normal_runs_by_policy.csv suffix=.csv bytes=415
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/05_frozen_development_test_transfer/policy_test_summary.csv suffix=.csv bytes=4144
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_11_temporal_aggregation_precision_first/06_a3_11_closure_hard_normal_audit/A3_11_CLOSURE_LOCK.json suffix=.json bytes=588
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_12_cardinality_ranking_decomposition/A3_12_LOCK.json suffix=.json bytes=584
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_13_local_graph_attribution/02_frozen_branch_attribution/hard_normal_branch_attribution.csv suffix=.csv bytes=1644
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_15_directional_source_transit_attribution/hard_normal_directional_trace.csv suffix=.csv bytes=62447
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_15_directional_source_transit_attribution/hard_normal_metric_summary.csv suffix=.csv bytes=258182
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_15_directional_source_transit_attribution/hard_normal_top_metric_closeness.csv suffix=.csv bytes=13879
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_8_validation_selection/graph_threshold_sweep.csv suffix=.csv bytes=13036
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_8_validation_selection/node_threshold_sweep.csv suffix=.csv bytes=20313
+- /home/zira/research/projects/GNN-2d/reports/v4/stage1_a3/a3_8_validation_selection/selected_thresholds.json suffix=.json bytes=978

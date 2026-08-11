@@ -1,0 +1,120 @@
+{
+  "active_raw_counts": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "count_class_mapping": {
+    "1": 0,
+    "2": 1,
+    "3": 2,
+    "4": 3
+  },
+  "role_mask_mismatch_count": 0,
+  "role_mask_semantics": "source + 2*transit + 4*victim",
+  "role_mask_used_as_model_input": false,
+  "role_mask_used_as_model_output": false,
+  "seed": 2405,
+  "selected_indices": [
+    172,
+    173,
+    342,
+    343,
+    20454,
+    20455,
+    20662,
+    20663,
+    39312,
+    39313,
+    39516,
+    39517,
+    55686,
+    55687,
+    55868,
+    55869
+  ],
+  "selected_pairs": [
+    {
+      "attack_index": 172,
+      "category": 1,
+      "common_length": 722,
+      "control_index": 173,
+      "pair_key": "P2TR-K1-001",
+      "raw_positive_attacker_count": 1,
+      "window_start": 688,
+      "window_target": 719
+    },
+    {
+      "attack_index": 342,
+      "category": 1,
+      "common_length": 707,
+      "control_index": 343,
+      "pair_key": "P2TR-K1-002",
+      "raw_positive_attacker_count": 1,
+      "window_start": 672,
+      "window_target": 703
+    },
+    {
+      "attack_index": 20454,
+      "category": 2,
+      "common_length": 707,
+      "control_index": 20455,
+      "pair_key": "P2TR-K2-123",
+      "raw_positive_attacker_count": 2,
+      "window_start": 272,
+      "window_target": 303
+    },
+    {
+      "attack_index": 20662,
+      "category": 2,
+      "common_length": 709,
+      "control_index": 20663,
+      "pair_key": "P2TR-K2-124",
+      "raw_positive_attacker_count": 2,
+      "window_start": 424,
+      "window_target": 455
+    },
+    {
+      "attack_index": 39312,
+      "category": 3,
+      "common_length": 698,
+      "control_index": 39313,
+      "pair_key": "P2TR-K3-241",
+      "raw_positive_attacker_count": 3,
+      "window_start": 264,
+      "window_target": 295
+    },
+    {
+      "attack_index": 39516,
+      "category": 3,
+      "common_length": 693,
+      "control_index": 39517,
+      "pair_key": "P2TR-K3-242",
+      "raw_positive_attacker_count": 3,
+      "window_start": 408,
+      "window_target": 439
+    },
+    {
+      "attack_index": 55686,
+      "category": 4,
+      "common_length": 697,
+      "control_index": 55687,
+      "pair_key": "P2TR-K4-361",
+      "raw_positive_attacker_count": 4,
+      "window_start": 608,
+      "window_target": 639
+    },
+    {
+      "attack_index": 55868,
+      "category": 4,
+      "common_length": 702,
+      "control_index": 55869,
+      "pair_key": "P2TR-K4-362",
+      "raw_positive_attacker_count": 4,
+      "window_start": 664,
+      "window_target": 695
+    }
+  ],
+  "selection_policy": "two active latest pair-aligned windows per K1/K2/K3/K4 plus matched controls"
+}

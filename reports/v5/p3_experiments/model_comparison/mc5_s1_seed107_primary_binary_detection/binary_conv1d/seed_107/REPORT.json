@@ -1,0 +1,61 @@
+{
+  "artifacts": {
+    "best_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s1_seed107_primary_binary_detection/binary_conv1d/seed_107/BEST.pt",
+    "best_checkpoint_sha256": "04884be22b0570bde85927bab748c5b625365a782b96fb36c7a5e7e70727607c",
+    "history_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s1_seed107_primary_binary_detection/binary_conv1d/seed_107/EPOCHS.csv",
+    "history_csv_sha256": "5c0678397bcbb2063e4709d9d07f8e9589a18d8f2f8f103d263340e1c641733c",
+    "last_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s1_seed107_primary_binary_detection/binary_conv1d/seed_107/LAST.pt",
+    "last_checkpoint_sha256": "66738dad96e43edafd336733215dc0ef3cab8d218a80144cd75089f58cd3b710"
+  },
+  "batch_size": 256,
+  "best_epoch": 5,
+  "best_validation": {
+    "graph": {
+      "accuracy": 0.8179424283962196,
+      "auroc": 0.8920314353082578,
+      "average_precision": 0.6562429395093303,
+      "f1": 0.7281150676076065,
+      "fn": 766,
+      "fp": 4281,
+      "fpr": 0.21195167838399842,
+      "precision": 0.6121931334359997,
+      "recall": 0.8981924508240298,
+      "threshold": 0.5,
+      "tn": 15917,
+      "tp": 6758
+    },
+    "loss": {
+      "graph": 0.5202307501583022,
+      "total": 0.5202307501583022
+    },
+    "selection_components": {
+      "graph_auroc": 0.8920314353082578,
+      "graph_average_precision": 0.6562429395093303
+    },
+    "selection_score": 0.7741371874087941
+  },
+  "elapsed_seconds_this_invocation": 1917.4518101215363,
+  "epochs_completed": 17,
+  "governance": {
+    "decoder_applied": false,
+    "persistence_applied": false,
+    "sealed_test_access": false,
+    "selection_rule_frozen_before_mc5_training": true,
+    "test_dataset_constructed": false,
+    "test_tensor_loaded": false,
+    "threshold_fixed_0_5": true,
+    "threshold_tuning_performed": false,
+    "validation_used_for_checkpoint_selection": true
+  },
+  "model_id": "binary_conv1d",
+  "parameter_count": 35329,
+  "peak_cuda_memory_bytes": 623860224,
+  "resumed": false,
+  "seed": 107,
+  "selection_rule": "mean(graph_AUROC, graph_AP)",
+  "stage": "V5_P3_MC5_S1_SEED107_PRIMARY_BINARY_DETECTION",
+  "status": "PASS",
+  "stopped_early": true,
+  "train_items": 221773,
+  "validation_items": 27722
+}

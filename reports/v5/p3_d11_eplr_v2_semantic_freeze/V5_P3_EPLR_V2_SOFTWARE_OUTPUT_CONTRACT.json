@@ -1,0 +1,36 @@
+{
+  "invariants": {
+    "selected_count_candidate_equals_Raw_for_all_rows": true,
+    "selected_graph_equals_Raw_for_all_rows": true,
+    "selected_source_equals_Raw_for_all_active_rows": true,
+    "selected_victim_equals_Raw_for_all_active_rows": true,
+    "unresolved_passthrough_all_role_masks_equal_Raw": true
+  },
+  "per_sample_outputs": {
+    "decoder_status": "enum",
+    "effective_attacker_count": "int 0..4",
+    "endpoint_preserved": "bool",
+    "raw_attacker_count_candidate": "int 1..4",
+    "raw_graph_prediction": "uint8",
+    "raw_graph_probability": "float64",
+    "raw_path_bitmap": "uint16",
+    "raw_source_bitmap": "uint16",
+    "raw_transit_bitmap": "uint16",
+    "raw_victim_bitmap": "uint16",
+    "route_certified": "bool",
+    "route_consistency_score": "float64 for certified legal route; null/NaN when unresolved",
+    "selected_path_bitmap": "uint16",
+    "selected_route_ids": "ordered tuple; empty when unresolved",
+    "selected_source_bitmap": "uint16",
+    "selected_transit_bitmap": "uint16",
+    "selected_victim_bitmap": "uint16"
+  },
+  "stage": "V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE",
+  "status": "FROZEN",
+  "statuses": [
+    "INACTIVE_RAW",
+    "RAW_ENDPOINTS_LEGAL",
+    "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+    "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH"
+  ]
+}

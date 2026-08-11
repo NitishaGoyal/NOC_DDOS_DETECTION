@@ -1,0 +1,61 @@
+{
+  "evidence_class": "VALIDATION-EXPLORATORY unless separately promoted",
+  "f7_supplied": true,
+  "feature_removal_authorized_from_f7": false,
+  "inference_latency": {
+    "batch_size": 1,
+    "device": "cpu",
+    "maximum_latency_ms": 0.4,
+    "mean_latency_ms": 0.21,
+    "measured_iterations": 1000,
+    "median_latency_ms": 0.2,
+    "minimum_latency_ms": 0.18,
+    "p95_latency_ms": 0.25,
+    "parameter_count": 60553,
+    "peak_cuda_allocated_bytes": null,
+    "precision": "fp32",
+    "sample_standard_deviation_ms": 0.03,
+    "sealed_test_access": false,
+    "warmup_iterations": 100,
+    "weight_bytes": 242212
+  },
+  "model_comparison_rows": 1,
+  "response_latency": {
+    "detected_during_attack_fraction": 0.75,
+    "detected_during_attack_runs": 3,
+    "eligible_attack_runs": 4,
+    "false_alarm_windows_per_run": 0.5,
+    "graph_first_latency_epochs_median_detected_during_attack": 8.0,
+    "graph_first_latency_epochs_p95_detected_during_attack": 15.2,
+    "pre_onset_false_alarm_rate": 0.25,
+    "sealed_test_access": false,
+    "stable_detection_consecutive_decisions_q": 2,
+    "undetected_during_attack_runs": 1
+  },
+  "robustness": {
+    "sealed_test_access": false,
+    "validation_runs": 2,
+    "validation_windows": 20
+  },
+  "sealed_test_claims_created": false,
+  "victim_role_path": {
+    "complete_source_path_victim_exact_accuracy_active_windows": 0.42,
+    "control_any_victim_alarm_rate": 0.03,
+    "joint_source_victim_exact_accuracy_active_windows": 0.48,
+    "path_exact_set_accuracy_active_windows": 0.55,
+    "sealed_test_access": false,
+    "source_exact_set_accuracy_active_windows": 0.6,
+    "top1_victim_accuracy": 0.84,
+    "transit_exact_set_accuracy_active_windows": 0.57,
+    "victim_auroc_active_windows": 0.91,
+    "victim_average_precision_active_windows": 0.71,
+    "victim_exact_set_accuracy_active_windows": 0.61,
+    "victim_f1_active_windows": 0.71,
+    "victim_mean_reciprocal_rank": 0.88,
+    "victim_precision_active_windows": 0.7,
+    "victim_recall_active_windows": 0.72,
+    "victim_recall_at_1": 0.78,
+    "victim_recall_at_2": 0.9,
+    "victim_recall_at_3": 0.95
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "D1_npz_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+  "D7_R1_temporal_persistence_validation_authorized": true,
+  "R2B_partition_sha256": "bcac36c1f051d68d589b4a8a229e8675e89350f517b9d4bbd1e71ced746b61bd",
+  "certified_record_position": 0,
+  "certified_temporal_position": 1,
+  "cross_run_history_forbidden": true,
+  "loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+  "next_stage": "V5_P3_FINAL_D7_R1_TEMPORAL_ALARM_CONFIRMATION_VALIDATION",
+  "persistence_candidate_selection_performed": false,
+  "persistence_candidates_frozen": {
+    "P0": {
+      "name": "instantaneous_raw",
+      "rule": "alarm_t = raw_graph_prediction_t"
+    },
+    "P1": {
+      "name": "two_consecutive",
+      "rule": "alarm_t = raw_t AND raw_t_minus_1"
+    },
+    "P2": {
+      "name": "two_of_three",
+      "rule": "alarm_t = at_least_2_positive_raw_predictions_in_t_minus_2_to_t"
+    },
+    "P3": {
+      "name": "three_consecutive",
+      "rule": "alarm_t = raw_t AND raw_t_minus_1 AND raw_t_minus_2"
+    }
+  },
+  "persistence_reset_at_each_run_boundary": true,
+  "report_sha256": "b7bf757da3ed3ccac853935afde2099c3eda6ddefb992034a842d7a0ee16af2d",
+  "sealed_test_evaluation_authorized": false,
+  "stage": "V5_P3_FINAL_D7_P0_TEMPORAL_ORDER_AND_RUN_BOUNDARY_CERTIFICATION",
+  "status": "PASS",
+  "temporal_map_sha256": "05d120ea2613a9d3e618cab0da13df3e1de75ce7532e005178b28cf452190c86",
+  "validation_items": 27722,
+  "validation_runs": 300
+}

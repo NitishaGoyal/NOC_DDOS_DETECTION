@@ -1,0 +1,47 @@
+{
+  "classification": "ENGINEERING_PROTOCOL_LOCK",
+  "outputs": [
+    "per_run_onset_latency.csv",
+    "onset_latency_summary.json",
+    "graph_first_latency_cdf.csv"
+  ],
+  "scientific_semantics": {
+    "attack_onset": "attack_onset_epoch from authoritative runtime/packet truth carried in prediction archive",
+    "attack_termination": "attack_termination_epoch from authoritative runtime/packet truth carried in prediction archive",
+    "cdf_denominator": "all eligible attack runs, so terminal CDF mass may be <1 when attacks are undetected during attack",
+    "complete_source_path_victim_rule": "source, path and victim exact-set rules all true on the same post-onset decision",
+    "cycle_conversion": "optional only when authoritative cycles_per_epoch is supplied explicitly at execution time",
+    "decision_epoch": "window_end_epoch",
+    "during_attack_rule": "attack_onset_epoch <= decision_epoch <= attack_termination_epoch",
+    "graph_positive_rule": "graph_probability >= externally supplied frozen graph threshold",
+    "latency_unit_primary": "epochs",
+    "path_correct_set_rule": "thresholded 16-router path probability vector exactly equals path truth vector",
+    "post_onset_decision_rule": "decision_epoch >= attack_onset_epoch",
+    "pre_onset_false_alarm_rule": "decision_epoch < attack_onset_epoch and graph decision positive",
+    "source_correct_set_rule": "thresholded 16-router source probability vector exactly equals source truth vector",
+    "stable_graph_detection_q": 2,
+    "stable_graph_rule": "first two consecutive post-onset archive decisions both satisfying frozen graph decision rule",
+    "undetected_policy": "never silently discard; preserve null latency and explicit undetected_during_attack flag",
+    "victim_correct_set_rule": "thresholded 16-router victim probability vector exactly equals victim truth vector"
+  },
+  "scope": "validation_prediction_archive_postprocessing_only",
+  "sealed_test_policy": {
+    "reject_split_tokens": [
+      "test",
+      "sealed"
+    ],
+    "sealed_test_access": false,
+    "test_directory_enumerated": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false,
+    "validation_only": true
+  },
+  "stage": "V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION",
+  "threshold_policy": {
+    "default_scientific_thresholds": null,
+    "graph_threshold_source": "must be supplied explicitly from a frozen/mainline threshold contract",
+    "role_threshold_source": "must be supplied explicitly from a frozen/mainline threshold contract",
+    "selftest_threshold": 0.5,
+    "threshold_tuning_performed_by_evaluator": false
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "M5_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m5_direct_observability/V6_P0_M5_DIRECT_OBSERVABILITY_REPORT.json",
+  "M5_report_sha256": "3f1664d5d3ec710e97d57a60627ca51827588058efd006b9ad53d91447041e1b",
+  "P1_generation_authorized": false,
+  "P2_test_used": false,
+  "artifacts": {
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m6_tiny_multitask_overfit/V6_P0_M6_TINY_MULTITASK_OVERFIT_BEST.pt",
+    "checkpoint_sha256": "0ca9ac4a14ca2499e98cfbe9f1b6f475089f58d6a797549ae08c74386696e1d4",
+    "epoch_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m6_tiny_multitask_overfit/V6_P0_M6_TINY_MULTITASK_OVERFIT_EPOCHS.csv",
+    "epoch_csv_sha256": "eddd48c4cf7530d7bf92475458df8ba03d7fd5abe81d6036b91e5ebfaf94d123"
+  },
+  "best_metrics": {
+    "composite": 0.9814514420948561,
+    "count_accuracy": 0.9904661178588867,
+    "exact_path": 0.9581567645072937,
+    "exact_source": 0.9872881174087524,
+    "exact_victim": 0.9952330589294434,
+    "graph": {
+      "accuracy": 0.9978813559322034,
+      "f1": 0.9922779922779923,
+      "fpr": 0.0006142506142506142,
+      "precision": 0.9961240310077519,
+      "recall": 0.9884615384615385
+    },
+    "roles": {
+      "path": {
+        "accuracy": 0.9963585805084746,
+        "f1": 0.9558587479935794,
+        "fpr": 0.0015887818188097952,
+        "precision": 0.9628132578819725,
+        "recall": 0.949003984063745
+      },
+      "source": {
+        "accuracy": 0.999073093220339,
+        "f1": 0.9694989106753812,
+        "fpr": 0.000772901404664292,
+        "precision": 0.9508547008547008,
+        "recall": 0.9888888888888889
+      },
+      "transit": {
+        "accuracy": 0.9985765360169492,
+        "f1": 0.9639564124057,
+        "fpr": 0.0004391446812823025,
+        "precision": 0.9778911564625851,
+        "recall": 0.9504132231404959
+      },
+      "victim": {
+        "accuracy": 0.9997020656779662,
+        "f1": 0.9827255278310941,
+        "fpr": 0.00016695605716575396,
+        "precision": 0.9808429118773946,
+        "recall": 0.9846153846153847
+      }
+    }
+  },
+  "created_utc": "2026-08-03T04:15:45.447658+00:00",
+  "data_copied": false,
+  "device": "cuda",
+  "exact_duplicate_graph_count_conflicts": 0,
+  "gate": {
+    "criteria": {
+      "count_accuracy": 0.98,
+      "graph_accuracy": 0.995,
+      "graph_f1": 0.99,
+      "path_f1": 0.95,
+      "source_f1": 0.95,
+      "victim_f1": 0.95
+    },
+    "interpretation": "PASS means the loader, labels, losses and model interface can memorize a fixed tiny subset. It is not a generalization result.",
+    "pass": true
+  },
+  "loss_weights": {
+    "count_class_weights": [
+      0.02958313189446926,
+      0.2918868958950043,
+      1.3760381937026978,
+      1.9264534711837769,
+      1.3760381937026978
+    ],
+    "graph_pos_weight": 6.261538505554199,
+    "path_pos_weight": 23.070119857788086,
+    "source_pos_weight": 50.0,
+    "transit_pos_weight": 48.930580139160156,
+    "victim_pos_weight": 50.0
+  },
+  "model": {
+    "deployment_candidate": false,
+    "description": "Dynamic70 causal depthwise-separable Conv1D temporal encoder + two dense fixed-mesh GraphConv-equivalent layers + graph, count, source, transit, victim and path heads",
+    "input_shape": [
+      16,
+      70,
+      32
+    ],
+    "parameter_count": 44682,
+    "tiny_overfit_sanity_only": true
+  },
+  "pair_count": 8,
+  "run_count": 16,
+  "seed": 107,
+  "selected_pair_ids": [
+    "V6-P0-0002",
+    "V6-P0-0013",
+    "V6-P0-0020",
+    "V6-P0-0024",
+    "V6-P0-0003",
+    "V6-P0-0004",
+    "V6-P0-0005",
+    "V6-P0-0006"
+  ],
+  "selected_pair_max_attacker_counts": {
+    "V6-P0-0002": 1,
+    "V6-P0-0003": 1,
+    "V6-P0-0004": 1,
+    "V6-P0-0005": 1,
+    "V6-P0-0006": 1,
+    "V6-P0-0013": 2,
+    "V6-P0-0020": 3,
+    "V6-P0-0024": 4
+  },
+  "source_modified": false,
+  "stage": "V6_P0_M6_TINY_MULTITASK_OVERFIT",
+  "status": "PASS",
+  "training": {
+    "batch_size": 64,
+    "best_epoch": 35,
+    "epochs_run": 35,
+    "gradient_clip": 5.0,
+    "learning_rate": 0.002,
+    "max_epochs": 300,
+    "success_epoch": 35,
+    "weight_decay": 1e-05
+  },
+  "window_count": 1888
+}

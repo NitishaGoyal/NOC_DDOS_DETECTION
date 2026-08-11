@@ -1,0 +1,466 @@
+{
+  "F5_authorized": false,
+  "callsite": {
+    "calls": {
+      "select_graph_threshold_fpr_cap": [
+        {
+          "context": {
+            "line_end": 588,
+            "line_start": 570,
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+            "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+            "source": "        \"rank_computation_skipped\": bool(rank_skipped_batches > 0 and rank_pairs == 0),\n        \"rank_skipped_batches\": rank_skipped_batches,\n        \"topk_metrics_computed\": bool(compute_topk_metrics),\n    }\n    if collect_graph_scores:\n        if not compute_topk_metrics:\n            raise RuntimeError(\"Full graph-score collection requires top-k metrics for checkpointing\")\n        graph_truth, graph_prob = metric.graph_arrays()\n        constrained, sweep = select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )\n        extra[\"constrained_graph\"] = constrained\n        extra[\"graph_threshold_sweep\"] = sweep\n        extra[\"checkpoint_score\"] = selection_score(metrics, constrained)\n    return losses, metrics, extra\n\n\ndef one_batch(args: argparse.Namespace) -> int:\n    validate_primary_args(args)"
+          },
+          "line": 578,
+          "source": "select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )"
+        }
+      ],
+      "selection_score": [
+        {
+          "context": {
+            "line_end": 591,
+            "line_start": 575,
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+            "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+            "source": "        if not compute_topk_metrics:\n            raise RuntimeError(\"Full graph-score collection requires top-k metrics for checkpointing\")\n        graph_truth, graph_prob = metric.graph_arrays()\n        constrained, sweep = select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )\n        extra[\"constrained_graph\"] = constrained\n        extra[\"graph_threshold_sweep\"] = sweep\n        extra[\"checkpoint_score\"] = selection_score(metrics, constrained)\n    return losses, metrics, extra\n\n\ndef one_batch(args: argparse.Namespace) -> int:\n    validate_primary_args(args)\n    out = Path(args.out_dir).resolve()\n    out.mkdir(parents=True, exist_ok=True)\n    report_path = out / \"one_batch_preflight.json\""
+          },
+          "line": 583,
+          "source": "selection_score(metrics, constrained)"
+        }
+      ]
+    },
+    "imports": [
+      {
+        "kind": "from",
+        "level": 0,
+        "line": 34,
+        "module": "v4_a3_sourcepreserve",
+        "names": [
+          {
+            "asname": null,
+            "name": "A3SourcePreserveModel"
+          },
+          {
+            "asname": null,
+            "name": "COUNT_CLASSES"
+          },
+          {
+            "asname": null,
+            "name": "EXPECTED_PARAMETER_COUNT"
+          },
+          {
+            "asname": null,
+            "name": "EXPERIMENT_DESIGNATION"
+          },
+          {
+            "asname": null,
+            "name": "MODEL_NAME"
+          },
+          {
+            "asname": null,
+            "name": "PRIMARY_SEED"
+          },
+          {
+            "asname": null,
+            "name": "STAGE_LABEL"
+          },
+          {
+            "asname": null,
+            "name": "V4A3MemmapDataset"
+          },
+          {
+            "asname": null,
+            "name": "EpochMetrics"
+          },
+          {
+            "asname": null,
+            "name": "architecture_contract"
+          },
+          {
+            "asname": null,
+            "name": "atomic_csv_dump"
+          },
+          {
+            "asname": null,
+            "name": "atomic_json_dump"
+          },
+          {
+            "asname": null,
+            "name": "atomic_torch_save"
+          },
+          {
+            "asname": null,
+            "name": "build_loader"
+          },
+          {
+            "asname": null,
+            "name": "build_normalized_adjacency"
+          },
+          {
+            "asname": null,
+            "name": "build_physical_valid_port_mask"
+          },
+          {
+            "asname": null,
+            "name": "compute_training_class_weights"
+          },
+          {
+            "asname": null,
+            "name": "hard_negative_ranking_loss"
+          },
+          {
+            "asname": null,
+            "name": "load_metadata"
+          },
+          {
+            "asname": null,
+            "name": "load_split_indices"
+          },
+          {
+            "asname": null,
+            "name": "manhattan_distance_matrix"
+          },
+          {
+            "asname": null,
+            "name": "model_signature"
+          },
+          {
+            "asname": null,
+            "name": "rank_weight_for_epoch"
+          },
+          {
+            "asname": null,
+            "name": "select_graph_threshold_fpr_cap"
+          },
+          {
+            "asname": null,
+            "name": "selection_score"
+          },
+          {
+            "asname": null,
+            "name": "set_seed"
+          },
+          {
+            "asname": null,
+            "name": "sha256_file"
+          },
+          {
+            "asname": null,
+            "name": "validate_dataset_headers"
+          },
+          {
+            "asname": null,
+            "name": "validate_port_mask"
+          }
+        ],
+        "source": "from v4_a3_sourcepreserve import (  # noqa: E402\n    A3SourcePreserveModel,\n    COUNT_CLASSES,\n    EXPECTED_PARAMETER_COUNT,\n    EXPERIMENT_DESIGNATION,\n    MODEL_NAME,\n    PRIMARY_SEED,\n    STAGE_LABEL,\n    V4A3MemmapDataset,\n    EpochMetrics,\n    architecture_contract,\n    atomic_csv_dump,\n    atomic_json_dump,\n    atomic_torch_save,\n    build_loader,\n    build_normalized_adjacency,\n    build_physical_valid_port_mask,\n    compute_training_class_weights,\n    hard_negative_ranking_loss,\n    load_metadata,\n    load_split_indices,\n    manhattan_distance_matrix,\n    model_signature,\n    rank_weight_for_epoch,\n    select_graph_threshold_fpr_cap,\n    selection_score,\n    set_seed,\n    sha256_file,\n    validate_dataset_headers,\n    validate_port_mask,\n)",
+        "target_hits": {
+          "select_graph_threshold_fpr_cap": "select_graph_threshold_fpr_cap",
+          "selection_score": "selection_score"
+        }
+      }
+    ],
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+    "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "checkpoint_metadata": {
+    "checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+    "checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+    "deserialization_mode": "weights_only_true",
+    "selection_components": {
+      "count_active_macro_f1": 0.9973039624464042,
+      "graph_auroc": 0.8908390955533386,
+      "graph_average_precision": 0.6891215624201737,
+      "path_average_precision": 0.6246351771235719,
+      "source_average_precision": 0.6446929029617371,
+      "transit_average_precision": 0.6369269223988839,
+      "victim_average_precision": 0.6248964174211628
+    },
+    "selection_score": 0.7297737200464675,
+    "threshold_policy": {
+      "reporting_threshold": 0.5,
+      "selection_metrics_are_threshold_free_except_count_macro_f1": true,
+      "threshold_tuning_performed": false
+    },
+    "top_level_keys": [
+      "a3_report_sha256",
+      "campaign_label",
+      "dynamic70_model_sha256",
+      "epoch",
+      "guarded_loader_sha256",
+      "model_state_dict",
+      "normalization_sha256",
+      "optimizer_state_dict",
+      "parameter_count",
+      "protocol_sha256",
+      "scheduler_state_dict",
+      "seed",
+      "stage",
+      "test_tensor_loaded",
+      "threshold_tuning_performed",
+      "validation_metrics"
+    ],
+    "validation_metric_keys": [
+      "count_active",
+      "graph",
+      "loss",
+      "roles",
+      "selection_components",
+      "selection_score",
+      "threshold_policy"
+    ],
+    "validation_metrics": {
+      "count_active": {
+        "accuracy": 0.9973835688121402,
+        "items": 3822,
+        "macro_f1": 0.9973039624464042
+      },
+      "graph": {
+        "accuracy": 0.8021351799754742,
+        "auroc": 0.8908390955533386,
+        "average_precision": 0.6891215624201737,
+        "f1": 0.7011657043250901,
+        "fn": 604,
+        "fp": 2139,
+        "fpr": 0.21302659097699433,
+        "precision": 0.6007093522493934,
+        "recall": 0.8419675562532706,
+        "tn": 7902,
+        "tp": 3218
+      },
+      "loss": {
+        "count": 0.004579157167204158,
+        "graph": 0.6033980787759184,
+        "path": 0.3452813190264352,
+        "source": 0.16528003586238918,
+        "total": 1.5309855420980019,
+        "transit": 0.2784200691776101,
+        "victim": 0.1340268951064966
+      },
+      "roles": {
+        "path": {
+          "accuracy": 0.9123791747817933,
+          "auroc": 0.9604526665009758,
+          "average_precision": 0.6246351771235719,
+          "exact_active": 0.8178963893249608,
+          "exact_all": 0.7219216619779268,
+          "f1": 0.7052221261621999,
+          "fn": 790,
+          "fp": 18645,
+          "fpr": 0.09427617940031349,
+          "precision": 0.5549375790704891,
+          "recall": 0.9671353689990848,
+          "tn": 179125,
+          "tp": 23248
+        },
+        "source": {
+          "accuracy": 0.9630040395296833,
+          "auroc": 0.9860851287043546,
+          "average_precision": 0.6446929029617371,
+          "exact_active": 0.9209837781266352,
+          "exact_all": 0.7354829402005338,
+          "f1": 0.6950122649223222,
+          "fn": 87,
+          "fp": 8119,
+          "fpr": 0.03823026684434316,
+          "precision": 0.5352338428072586,
+          "recall": 0.9907809685281339,
+          "tn": 204252,
+          "tp": 9350
+        },
+        "transit": {
+          "accuracy": 0.9444384332395586,
+          "auroc": 0.9795682987820836,
+          "average_precision": 0.6369269223988839,
+          "exact_active": 0.6802721088435374,
+          "exact_all": 0.7247349058645315,
+          "f1": 0.6652178637400847,
+          "fn": 420,
+          "fp": 11904,
+          "fpr": 0.05691772176108327,
+          "precision": 0.5070399204903098,
+          "recall": 0.9668351231838281,
+          "tn": 197240,
+          "tp": 12244
+        },
+        "victim": {
+          "accuracy": 0.9706998845848662,
+          "auroc": 0.9882425382154868,
+          "average_precision": 0.6248964174211628,
+          "exact_active": 0.9481946624803768,
+          "exact_all": 0.7650580682391979,
+          "f1": 0.7021949319525271,
+          "fn": 61,
+          "fp": 6438,
+          "fpr": 0.030072167596982505,
+          "precision": 0.5434042553191489,
+          "recall": 0.9921015149553283,
+          "tn": 207647,
+          "tp": 7662
+        }
+      },
+      "selection_components": {
+        "count_active_macro_f1": 0.9973039624464042,
+        "graph_auroc": 0.8908390955533386,
+        "graph_average_precision": 0.6891215624201737,
+        "path_average_precision": 0.6246351771235719,
+        "source_average_precision": 0.6446929029617371,
+        "transit_average_precision": 0.6369269223988839,
+        "victim_average_precision": 0.6248964174211628
+      },
+      "selection_score": 0.7297737200464675,
+      "threshold_policy": {
+        "reporting_threshold": 0.5,
+        "selection_metrics_are_threshold_free_except_count_macro_f1": true,
+        "threshold_tuning_performed": false
+      }
+    }
+  },
+  "graph_fpr_cap_evidence": [
+    {
+      "context": {
+        "line_end": 1156,
+        "line_start": 1150,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+        "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+        "source": "    parser.add_argument(\"--rank-margin\", type=float, default=0.2)\n    parser.add_argument(\"--graph-threshold\", type=float, default=0.5)\n    parser.add_argument(\"--node-threshold\", type=float, default=0.5)\n    parser.add_argument(\"--graph-fpr-cap\", type=float, default=0.10)\n    parser.add_argument(\"--full-val-every\", type=int, default=3)\n    parser.add_argument(\"--seed\", type=int, default=7)\n    parser.add_argument(\"--amp\", action=\"store_true\")"
+      },
+      "kind": "argparse_default",
+      "line": 1153,
+      "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+      "source": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+      "value_candidates": [
+        0.1
+      ]
+    },
+    {
+      "context": {
+        "line_end": 585,
+        "line_start": 573,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+        "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+        "source": "    }\n    if collect_graph_scores:\n        if not compute_topk_metrics:\n            raise RuntimeError(\"Full graph-score collection requires top-k metrics for checkpointing\")\n        graph_truth, graph_prob = metric.graph_arrays()\n        constrained, sweep = select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )\n        extra[\"constrained_graph\"] = constrained\n        extra[\"graph_threshold_sweep\"] = sweep\n        extra[\"checkpoint_score\"] = selection_score(metrics, constrained)\n    return losses, metrics, extra\n"
+      },
+      "kind": "threshold_helper_call",
+      "line": 578,
+      "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+      "source": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+      "value_expression": "args.graph_fpr_cap"
+    }
+  ],
+  "manual_pin_ready": true,
+  "manual_pin_requirements": {
+    "certify_on_immutable_and_fresh_NPZ": true,
+    "freeze_graph_fpr_cap": true,
+    "freeze_selection_components_structure": true,
+    "freeze_selection_function_body": true,
+    "freeze_selection_source_path_and_hash": true,
+    "freeze_threshold_helper_path_hash_and_body": true
+  },
+  "selection_score": {
+    "candidate_count": 3,
+    "candidates": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "reason": "repository symbol search",
+        "reasons": [
+          "V4 training lineage",
+          "defines both target helpers"
+        ],
+        "score": 40,
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704"
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/final/train_v5_p0_c1_b3_multi_seed_validation.py",
+        "reason": "repository symbol search",
+        "reasons": [],
+        "score": 0,
+        "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4"
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_preflight_concrete_interface_resolution/source_snapshots/18_train_v5_p0_c1_b3_multi_seed_validation.py",
+        "reason": "repository symbol search",
+        "reasons": [],
+        "score": 0,
+        "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4"
+      }
+    ],
+    "selected": {
+      "function": {
+        "line_end": 994,
+        "line_start": 984,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+        "source": "\n\ndef selection_score(validation_metrics: Mapping[str, Any], constrained_graph: Mapping[str, Any]) -> float:\n    return float(\n        constrained_graph[\"f1\"]\n        + validation_metrics[\"attack_topk_exact_localization\"]\n        + validation_metrics[\"attack_node_topk\"][\"f1\"]\n        + 0.5 * validation_metrics[\"attack_count_accuracy\"]\n    )\n\n"
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+      "reason": "repository symbol search",
+      "reasons": [
+        "V4 training lineage",
+        "defines both target helpers"
+      ],
+      "score": 40,
+      "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+      "signature": {
+        "kwarg": null,
+        "kwonly": [],
+        "positional": [
+          "validation_metrics",
+          "constrained_graph"
+        ],
+        "vararg": null
+      }
+    },
+    "symbol": "selection_score",
+    "unique": true
+  },
+  "stage": "V5_P3_F4M_R3_MANUAL_SELECTION_FORMULA_PROVENANCE_DOSSIER",
+  "status": "READY_FOR_MANUAL_PIN",
+  "threshold_helper": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "reason": "repository symbol search",
+        "reasons": [
+          "V4 training lineage",
+          "defines both target helpers"
+        ],
+        "score": 40,
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704"
+      }
+    ],
+    "selected": {
+      "function": {
+        "line_end": 985,
+        "line_start": 957,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+        "source": "\n\ndef select_graph_threshold_fpr_cap(\n    y_true: np.ndarray,\n    y_prob: np.ndarray,\n    fpr_cap: float = 0.10,\n    start: float = 0.05,\n    end: float = 0.95,\n    step: float = 0.01,\n) -> tuple[dict[str, Any], list[dict[str, Any]]]:\n    rows = [\n        binary_metrics_numpy(y_true, y_prob, float(threshold))\n        for threshold in threshold_values(start, end, step)\n    ]\n    feasible = [row for row in rows if float(row[\"fpr\"]) <= fpr_cap + 1e-12]\n    if not feasible:\n        raise RuntimeError(f\"No validation graph threshold satisfies FPR<={fpr_cap}\")\n    selected = max(\n        feasible,\n        key=lambda row: (\n            row[\"f1\"],\n            row[\"recall\"],\n            -row[\"fpr\"],\n            -abs(row[\"threshold\"] - 0.5),\n        ),\n    )\n    return selected, rows\n\n"
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+      "reason": "repository symbol search",
+      "reasons": [
+        "V4 training lineage",
+        "defines both target helpers"
+      ],
+      "score": 40,
+      "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+      "signature": {
+        "kwarg": null,
+        "kwonly": [],
+        "positional": [
+          "y_true",
+          "y_prob",
+          "fpr_cap",
+          "start",
+          "end",
+          "step"
+        ],
+        "vararg": null
+      }
+    },
+    "symbol": "select_graph_threshold_fpr_cap",
+    "unique": true
+  }
+}

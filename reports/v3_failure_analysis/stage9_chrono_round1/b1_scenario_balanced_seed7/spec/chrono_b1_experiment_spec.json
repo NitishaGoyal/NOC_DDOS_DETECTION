@@ -1,0 +1,124 @@
+{
+  "experiment_id": "stage9_b1_conv1d_scenario_balanced_seed7",
+  "stage": "Chrono-B1",
+  "created_date": "2026-07-21",
+  "purpose": "Sampling-only ablation of the corrected Chrono-A1 Conv1D-TemporalGCN baseline.",
+  "parent_experiment": {
+    "name": "Chrono-A1",
+    "model_dir": "models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7",
+    "training_source": "scripts/train_temporal_gcn_v3.py",
+    "training_source_sha256": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b",
+    "checkpoint": "models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/best_model.pt",
+    "checkpoint_sha256": "c29cdd2303669a61454ed118ef0be4b8809a635b12c0c42806f8b6992340e0ef"
+  },
+  "dataset": {
+    "path": "data/processed/graph_dataset/paper1_temporal_graphs_ports_v3_chrono_dir",
+    "expected_total_samples": 233803,
+    "expected_train_samples": 148185,
+    "expected_validation_samples": 42809,
+    "expected_test_samples": 42809
+  },
+  "hypotheses": {
+    "null": "Hierarchical scenario-balanced sampling does not materially improve normal-run false-positive robustness relative to Chrono-A1 when all other variables are frozen.",
+    "alternative": "Hierarchical scenario-balanced sampling reduces normal-run macro and worst-run false-positive rates without materially degrading attack recall, weak-S20 performance, or attacker localization."
+  },
+  "single_changed_variable": {
+    "from": "ordinary shuffled-window sampling",
+    "to": "hierarchical scenario-balanced sampling"
+  },
+  "frozen_variables": [
+    "corrected chronological V3 dataset",
+    "train/validation/test split",
+    "feature normalization",
+    "Conv1D temporal encoder",
+    "GCN layers",
+    "graph head",
+    "node head",
+    "graph loss",
+    "node loss",
+    "graph pos_weight",
+    "node pos_weight",
+    "loss coefficients",
+    "optimizer",
+    "learning rate",
+    "scheduler",
+    "batch size",
+    "seed",
+    "epoch limit",
+    "early stopping",
+    "checkpoint-selection rule",
+    "fixed-threshold evaluation",
+    "validation-only threshold selection",
+    "prediction export and alignment protocol",
+    "metric definitions"
+  ],
+  "sampler_definition": {
+    "graph_class_probability": {
+      "normal": 0.5,
+      "attack": 0.5
+    },
+    "normal_hierarchy": [
+      "profile",
+      "active-core grouping",
+      "run",
+      "temporally separated window"
+    ],
+    "attack_hierarchy": [
+      "strength",
+      "attacker count",
+      "profile",
+      "run",
+      "temporally separated window"
+    ],
+    "placement_handling": "Balance exact active-core and attacker placements primarily through run-uniform selection unless the B1.1 audit demonstrates the need for another explicit hierarchy level.",
+    "replacement_policy": "To be frozen after B1.1 distribution audit.",
+    "samples_per_epoch": "To be frozen after B1.1 distribution audit; default candidate is the original Chrono-A1 training-sample count.",
+    "temporal_separation": "To be frozen after inspecting window length and end_epoch spacing; minibatches should avoid adjacent highly overlapping windows from the same run."
+  },
+  "seed": 7,
+  "planned_outputs": {
+    "training_script": "scripts/train_temporal_gcn_v3_chrono_b1.py",
+    "sampler_module": "scripts/samplers/chrono_b1_scenario_sampler.py",
+    "model_dir": "models/v3_chrono/stage9_b1_conv1d_scenario_balanced_seed7",
+    "report_root": "reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7",
+    "prediction_dir": "reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/evaluation/predictions"
+  },
+  "validation_success_criteria": {
+    "primary_improvements": {
+      "normal_run_macro_fpr_absolute_improvement_min": 0.02,
+      "worst_normal_run_fpr_absolute_improvement_min": 0.05
+    },
+    "detection_safeguards": {
+      "overall_graph_recall_drop_max": 0.02,
+      "attack_run_macro_recall_drop_max": 0.02,
+      "s20_validation_recall_drop_max": 0.03,
+      "worst_attack_run_recall_drop_max": 0.05
+    },
+    "localization_safeguards": {
+      "attack_only_node_f1_drop_max": 0.02,
+      "attack_only_exact_localization_drop_max": 0.03,
+      "top1_hit_drop_max": 0.02,
+      "top3_hit_drop_max": 0.01
+    }
+  },
+  "verdict_rules": {
+    "retain": "Both primary FPR improvements pass and all safeguards pass.",
+    "promising_but_inconclusive": "FPR improves materially but one safeguard narrowly fails, or seed-7 evidence needs replication.",
+    "reject": "Normal FPR does not improve materially, or improvements require unacceptable losses in attack/S20 recall or localization."
+  },
+  "evaluation_protocol": {
+    "primary_common_operating_point": {
+      "graph_threshold": 0.5,
+      "node_threshold": 0.5
+    },
+    "secondary_operating_point": "Select graph and node thresholds independently from B1 validation predictions, freeze them, then transfer to B1 test.",
+    "test_set_role": "Diagnostic confirmation only; never used to tune B1."
+  },
+  "status": {
+    "b1_training_started": false,
+    "b1_sampler_implemented": false,
+    "b1_dry_run_passed": false,
+    "architecture_changed": false,
+    "loss_changed": false
+  }
+}

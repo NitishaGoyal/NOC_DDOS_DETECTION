@@ -1,0 +1,75 @@
+{
+  "created_utc": "2026-08-07T22:30:50.193759+00:00",
+  "governance": {
+    "decoder": false,
+    "sealed_test_access": false,
+    "split": "validation",
+    "test_access": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "models": {
+    "alarm_only": [
+      "D0",
+      "D1",
+      "D2"
+    ],
+    "checkpoints": "frozen seed107 only",
+    "multitask": [
+      "M0",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M7"
+    ],
+    "seed": 107
+  },
+  "population": {
+    "fully_observed_interval_runs_expected": 56,
+    "left_censored_onset_runs_excluded_expected": 19,
+    "primary_eligibility": "ground-truth attack onset observable in raw run tensor",
+    "primary_onset_observed_runs_expected": 131,
+    "right_censored_termination_only_runs_expected": 75,
+    "total_validation_attack_runs_expected": 150
+  },
+  "provenance": {
+    "model_zoo": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_mc_comparison_zoo.py",
+    "model_zoo_sha256": "fcc77e5ceab02394b59472514d9205c23adbf1195482cb12df4352d6f5b2322b",
+    "native_loader": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+  },
+  "reuse": {
+    "MC6_R1_complete_case_prediction_archives": true,
+    "R1_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2",
+    "checkpoint_selection": false,
+    "decoder": false,
+    "new_neural_inference": "only the 75 onset-observed/right-censored-termination runs missing from R1",
+    "new_training": false
+  },
+  "stage": "V5_P3_MC6_R2_CENSOR_AWARE_RESPONSE_LATENCY",
+  "status": "PROSPECTIVE_FREEZE_BEFORE_R2_RESULTS",
+  "thresholds": {
+    "graph": 0.5,
+    "path": 0.5,
+    "source": 0.5,
+    "transit": 0.5,
+    "tuning": false,
+    "victim": 0.5
+  },
+  "time_to_response": {
+    "alarm_event": "q=2 confirmation at SECOND positive decision",
+    "decision_epoch": "window target epoch_id / window_end_epoch",
+    "event_fraction": "descriptive observed-response-by-end fraction; not interpreted as permanent failure rate",
+    "no_event_by_observation_end": "right-censored time-to-response",
+    "observation_end_fully_observed": "min(last available decision, observed attack termination)",
+    "observation_end_right_censored_termination": "last available decision; attack is still active there",
+    "onset": "first raw per-epoch y_attack==1; scheduled campaign attack_start_tick not used",
+    "primary_estimator": "Kaplan-Meier product-limit estimator",
+    "primary_median": "first epoch with KM response CDF >= 0.50",
+    "primary_p95": "first epoch with KM response CDF >= 0.95; NR if not estimable",
+    "structured_event": "first exact 16-router role set at or after successful q=2 alarm"
+  }
+}

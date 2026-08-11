@@ -1,0 +1,251 @@
+{
+  "artifacts": {
+    "best_checkpoint": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_directional_traffic_volume/model/v5_p2_b2_seed_107_best.pt",
+      "90278d45d23ae15bf9c7ef6cd108fa69f4ef1dec5d072164ee96435efed07c28"
+    ],
+    "history_csv": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_directional_traffic_volume/report/V5_P2_B2_SEED_107_HISTORY.csv",
+      "1e0b50a5a97c8c73f7d46f7dc4e9b32c04c4ad5362794d5cb853c19aed2a9993"
+    ],
+    "progress_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_directional_traffic_volume/report/V5_P2_B2_SEED_107_PROGRESS.json",
+      "dad6c05d4c9f6ed00aa0b4a2a2e721e3f1d5d0570af86155022fad4033882183"
+    ]
+  },
+  "best": {
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/f7_runs/seed107/ablate_directional_traffic_volume/model/v5_p2_b2_seed_107_best.pt",
+    "checkpoint_sha256": "90278d45d23ae15bf9c7ef6cd108fa69f4ef1dec5d072164ee96435efed07c28",
+    "epoch": 10,
+    "ranking_tuple": [
+      0.7523156857784283,
+      0.8789859535089806,
+      0.6282378348422301,
+      -1.2136732079392343,
+      -10
+    ],
+    "validation_metrics": {
+      "attack_loss": 0.6002390485251267,
+      "count_active": {
+        "accuracy": 0.9994767137624281,
+        "confusion_matrix": [
+          [
+            1033,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            904,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            944,
+            0
+          ],
+          [
+            0,
+            0,
+            2,
+            939
+          ]
+        ],
+        "macro_f1": 0.9994694922886411,
+        "support": 3822
+      },
+      "count_loss": 0.0008548170334140177,
+      "graph": {
+        "auroc": 0.8789859535089806,
+        "average_precision": 0.6282378348422301,
+        "fixed_0_5": {
+          "accuracy": 0.7998268772992859,
+          "f1": 0.6743339983570004,
+          "fn": 949,
+          "fp": 1826,
+          "fpr": 0.1818543969724131,
+          "precision": 0.611406682272824,
+          "recall": 0.7517006802721088,
+          "tn": 8215,
+          "tp": 2873
+        },
+        "negative_items": 10041,
+        "positive_items": 3822
+      },
+      "loss": 1.2136732079392343,
+      "path_loss": 0.37942255757067067,
+      "roles": {
+        "path": {
+          "auroc": 0.9578436135209777,
+          "average_precision": 0.6091741229686711,
+          "fixed_0_5": {
+            "accuracy": 0.9045120103873621,
+            "f1": 0.6912446427009534,
+            "fn": 329,
+            "fp": 20851,
+            "fpr": 0.1054305506396319,
+            "precision": 0.5320691202872532,
+            "recall": 0.9863133372160745,
+            "tn": 176919,
+            "tp": 23709
+          },
+          "negative_entries": 197770,
+          "positive_entries": 24038
+        },
+        "source": {
+          "auroc": 0.9854615620857681,
+          "average_precision": 0.6277681576494668,
+          "fixed_0_5": {
+            "accuracy": 0.9639733463175358,
+            "f1": 0.6997557768175842,
+            "fn": 125,
+            "fp": 7866,
+            "fpr": 0.037038955412933026,
+            "precision": 0.542088718127838,
+            "recall": 0.9867542651266292,
+            "tn": 204505,
+            "tp": 9312
+          },
+          "negative_entries": 212371,
+          "positive_entries": 9437
+        },
+        "transit": {
+          "auroc": 0.9769230920631531,
+          "average_precision": 0.5979654210227047,
+          "fixed_0_5": {
+            "accuracy": 0.9363142898362548,
+            "f1": 0.6366395719724252,
+            "fn": 289,
+            "fp": 13837,
+            "fpr": 0.06616015759476725,
+            "precision": 0.4721120097665191,
+            "recall": 0.977179406190777,
+            "tn": 195307,
+            "tp": 12375
+          },
+          "negative_entries": 209144,
+          "positive_entries": 12664
+        },
+        "victim": {
+          "auroc": 0.9874815708784593,
+          "average_precision": 0.6097303049201931,
+          "fixed_0_5": {
+            "accuracy": 0.9704158551540071,
+            "f1": 0.6988803230543319,
+            "fn": 108,
+            "fp": 6454,
+            "fpr": 0.030146904266996753,
+            "precision": 0.5412609282820385,
+            "recall": 0.9860157969700893,
+            "tn": 207631,
+            "tp": 7615
+          },
+          "negative_entries": 214085,
+          "positive_entries": 7723
+        }
+      },
+      "selection_score": 0.7523156857784283,
+      "source_loss": 0.17349979376660482,
+      "transit_loss": 0.28695592747049004,
+      "victim_loss": 0.14175696261369553
+    }
+  },
+  "data": {
+    "item_batch_size": 256,
+    "num_workers": 0,
+    "pair_block_batch_size": 128,
+    "pair_keys_returned_to_model": false,
+    "pair_keys_used_for_loading_only": true,
+    "train_batches": 434,
+    "train_items": 110855,
+    "validation_batches": 55,
+    "validation_items": 13863
+  },
+  "failures": [],
+  "label_weights": {
+    "count_class_mapping": {
+      "1": 0,
+      "2": 1,
+      "3": 2,
+      "4": 3
+    },
+    "count_class_weights_applied": false,
+    "count_distribution": {
+      "1": 5855,
+      "2": 5441,
+      "3": 4728,
+      "4": 4294
+    },
+    "graph_positive_weight": 2.45339108179939,
+    "role_positive_weights": {
+      "path": {
+        "clamped_positive_weight": 12.232171765776654,
+        "negative_entries": 1639637,
+        "positive_entries": 134043,
+        "raw_positive_weight": 12.232171765776654
+      },
+      "source": {
+        "clamped_positive_weight": 20.0,
+        "negative_entries": 1725583,
+        "positive_entries": 48097,
+        "raw_positive_weight": 35.87714410462191
+      },
+      "transit": {
+        "clamped_positive_weight": 20.0,
+        "negative_entries": 1706629,
+        "positive_entries": 67051,
+        "raw_positive_weight": 25.452700183442456
+      },
+      "victim": {
+        "clamped_positive_weight": 20.0,
+        "negative_entries": 1732695,
+        "positive_entries": 40985,
+        "raw_positive_weight": 42.27632060509943
+      }
+    }
+  },
+  "legacy_compatibility_loader_sha256": {
+    "initial_state_sha256": "7e0c4877841dfc64ea10a3f6d189a8dd26309c4d2d7114d41e07d7c452a9955f",
+    "legacy_compatibility_loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "legacy_compatibility_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "name": "TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4",
+    "parameter_count": 60553,
+    "protocol_sha256": "0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60"
+  },
+  "next_stage": "V5_P3_F7_PRIMARY_MATRIX_AGGREGATION",
+  "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059",
+  "security_boundary": {
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "threshold_tuning_performed": false,
+    "train_tensor_contents_accessed": true,
+    "validation_tensor_contents_accessed": true
+  },
+  "seed": 107,
+  "stage": "V5_P3_F7_SAME_WIDTH_RETRAINED_GROUP_ABLATION",
+  "status": "COMPLETE",
+  "training": {
+    "automatic_mixed_precision": false,
+    "completed_epoch": 22,
+    "device": "cuda",
+    "early_stopping_patience": 12,
+    "gradient_clip_global_norm": 1.0,
+    "initial_learning_rate": 0.001,
+    "maximum_epochs": 100,
+    "minimum_epochs_before_stop": 15,
+    "optimizer": "AdamW",
+    "scheduler": "ReduceLROnPlateau",
+    "stopped_early": true,
+    "total_elapsed_seconds": 4623.468989610672,
+    "weight_decay": 0.0001
+  },
+  "warnings": []
+}

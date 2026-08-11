@@ -1,0 +1,285 @@
+{
+  "artifacts": {
+    "E2_authorization": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_E2_PREFLIGHT_AUTHORIZATION.json",
+    "generated_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer.py",
+    "matrix_launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix.sh",
+    "matrix_manifest": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_MATRIX_MANIFEST.json",
+    "matrix_spec_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS",
+    "patch_manifest": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_GENERATED_TRAINER_PATCH_MANIFEST.json",
+    "runtime_adapter": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_f7_r5_runtime_adapter.py",
+    "static_certification": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_GENERATED_SOURCE_STATIC_CERTIFICATION.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-06T04:38:56.473380+00:00",
+  "decision": {
+    "E2_generated_trainer_preflight_authorized": true,
+    "F8_multi_seed_authorized": false,
+    "R5_P0_verified": true,
+    "actual_F7_primary_matrix_execution_started": false,
+    "actual_scientific_training_started": false,
+    "compact_interface_equivalence_authorized": false,
+    "compute_loss_hash_preserved": true,
+    "early_stop_policy_preserved": true,
+    "feature_removal_authorized": false,
+    "frozen_legacy_hash_gates_preserved": true,
+    "hardware_reduction_claim_authorized": false,
+    "legacy_class_construction_removed": true,
+    "legacy_loader_module_execution_removed": true,
+    "legacy_model_module_execution_removed": true,
+    "next_stage": "V5_P3_F7_E2_GENERATED_TRAINER_STATIC_AND_RUNTIME_PREFLIGHT",
+    "primary_matrix_execution_authorized": false,
+    "runtime_adapter_provenance_disambiguated": true,
+    "runtime_import_patch_plan_applied": true,
+    "sealed_test_access": false,
+    "six_run_matrix_generated": true
+  },
+  "finding": {
+    "matrix_manifest": {
+      "F8_included": false,
+      "execution_guard": "requires E2 lock with primary_matrix_execution_authorized=true",
+      "execution_order": [
+        "control_dynamic70",
+        "ablate_directional_traffic_volume",
+        "ablate_inter_flit_timing",
+        "ablate_queue_activity",
+        "ablate_buffer_pressure",
+        "ablate_flow_control_stalls"
+      ],
+      "launcher": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_primary_seed107_matrix.sh",
+      "launcher_sha256": "fb9410c20ef355b282ce61ec65aa2fa44227b2b423be11c12a9218bdfa6231bf",
+      "model_dir_policy": "<run_dir>/model; distinct and append-only",
+      "report_dir_policy": "<run_dir>/report; distinct and append-only",
+      "run_count": 6,
+      "run_specs": [
+        {
+          "label": "control_dynamic70",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/control_dynamic70.json",
+          "sha256": "25991e9d3616d975697e670ae066f84ffbceec3a0cb094b050ebe51e1584bbb5"
+        },
+        {
+          "label": "ablate_directional_traffic_volume",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_directional_traffic_volume.json",
+          "sha256": "f6f344900f6b54aa1bef35fbd53da24fa54de2eabcc2d2367f5a066ccfc53f02"
+        },
+        {
+          "label": "ablate_inter_flit_timing",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_inter_flit_timing.json",
+          "sha256": "35f406f0bf3def4307de31ff10d77220cf8c551b50044dd7fe8803149f304daa"
+        },
+        {
+          "label": "ablate_queue_activity",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_queue_activity.json",
+          "sha256": "0886ece154692ee44bec9c55239793eb715252b6452617770849cb43f0c5c4a1"
+        },
+        {
+          "label": "ablate_buffer_pressure",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_buffer_pressure.json",
+          "sha256": "d4d7e9a4856012520b05d3f1dbbfeb05de0279c00bd6a0b9a2f678cae94ace1b"
+        },
+        {
+          "label": "ablate_flow_control_stalls",
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_E1_R5_PRIMARY_SEED107_RUN_SPECS/ablate_flow_control_stalls.json",
+          "sha256": "31cdb2ccca74cade9c76a3c3822ea2258b6c8f8ea49ff0f4f960590cbdb8f6b4"
+        }
+      ],
+      "sealed_test_access": false,
+      "seed": 107
+    },
+    "patch_manifest": {
+      "legacy_compatibility": {
+        "b0_r3_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r3_corrected_nontest_label_shortcut_audit",
+        "b1_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p2_b1_training_protocol_lock",
+        "loader_path": "/home/zira/research/projects/GNN-2d/src/data/v5_p2_pair_aligned_primary58_dataset.py",
+        "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+        "model_path": "/home/zira/research/projects/GNN-2d/src/models/v5_p2_b3_conv1d_only_count4.py",
+        "model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+        "modules_executed_by_generated_trainer": false
+      },
+      "literal_replacements": {
+        "===== V5 P2-B2 SINGLE-SEED TRAINING =====": "===== V5-P3 F7 SAME-WIDTH RETRAINED GROUP ABLATION =====",
+        "V5_P2_B2_MULTI_SEED_FINALIZATION": "V5_P3_F7_PRIMARY_MATRIX_AGGREGATION",
+        "V5_P2_B2_SEED_{seed}_LOCK.json": "V5_P3_F7_SEED_{seed}_LOCK.json",
+        "V5_P2_B2_SEED_{seed}_TRAINING_REPORT.json": "V5_P3_F7_SEED_{seed}_TRAINING_REPORT.json"
+      },
+      "patch_rows": [
+        {
+          "line_end": 1203,
+          "line_start": 1200,
+          "new_value": "None",
+          "old_value": "import_module(loader_path, f'v5_p2_loader_seed_{seed}')",
+          "operation": "disable_legacy_runtime_route",
+          "target": "loader_module"
+        },
+        {
+          "line_end": 1207,
+          "line_start": 1204,
+          "new_value": "None",
+          "old_value": "import_module(model_path, f'v5_p2_model_seed_{seed}')",
+          "operation": "disable_legacy_runtime_route",
+          "target": "model_module"
+        },
+        {
+          "line_end": 1211,
+          "line_start": 1210,
+          "new_value": "None",
+          "old_value": "loader_module.V5P2PairAlignedPrimary58Dataset",
+          "operation": "disable_legacy_runtime_route",
+          "target": "DatasetClass"
+        },
+        {
+          "line_end": 1215,
+          "line_start": 1214,
+          "new_value": "None",
+          "old_value": "model_module.P2B3Conv1DOnlyCount4",
+          "operation": "disable_legacy_runtime_route",
+          "target": "ModelClass"
+        },
+        {
+          "line_end": 1218,
+          "line_start": 1218,
+          "new_function": "F7TrainDatasetAdapter",
+          "old_function": "DatasetClass",
+          "operation": "replace_constructor_function",
+          "target": "train_dataset"
+        },
+        {
+          "line_end": 1244,
+          "line_start": 1244,
+          "new_function": "F7ValidationDatasetAdapter",
+          "old_function": "DatasetClass",
+          "operation": "replace_constructor_function",
+          "target": "validation_dataset"
+        },
+        {
+          "line_end": 1377,
+          "line_start": 1377,
+          "new_function": "F7Dynamic70ModelFactory",
+          "old_function": "ModelClass",
+          "operation": "replace_constructor_function",
+          "target": "model"
+        }
+      ],
+      "provenance_key_relabels": [
+        {
+          "dictionary_target": "checkpoint_payload",
+          "line_end": 1518,
+          "line_start": 1518,
+          "new_key": "legacy_compatibility_loader_sha256",
+          "old_key": "loader_sha256",
+          "route": "loader_path",
+          "value_source": "sha256_file(loader_path)"
+        },
+        {
+          "dictionary_target": "checkpoint_payload",
+          "line_end": 1521,
+          "line_start": 1521,
+          "new_key": "legacy_compatibility_model_sha256",
+          "old_key": "model_source_sha256",
+          "route": "model_path",
+          "value_source": "sha256_file(model_path)"
+        },
+        {
+          "dictionary_target": "seed_manifest",
+          "line_end": 1663,
+          "line_start": 1663,
+          "new_key": "legacy_compatibility_loader_sha256",
+          "old_key": "architecture",
+          "route": "loader_path",
+          "value_source": "{'name': model.architecture_name, 'parameter_count': parameter_count, 'model_source_sha256': sha256_file(model_path), 'loader_sha256': sha256_file(loader_path), 'protocol_sha256': protocol['protocol_sha256'], 'initial_state_sha256': initial_state_sha256}"
+        },
+        {
+          "dictionary_target": "seed_manifest",
+          "line_end": 1666,
+          "line_start": 1666,
+          "new_key": "legacy_compatibility_model_sha256",
+          "old_key": "model_source_sha256",
+          "route": "model_path",
+          "value_source": "sha256_file(model_path)"
+        },
+        {
+          "dictionary_target": "seed_manifest",
+          "line_end": 1669,
+          "line_start": 1669,
+          "new_key": "legacy_compatibility_loader_sha256",
+          "old_key": "loader_sha256",
+          "route": "loader_path",
+          "value_source": "sha256_file(loader_path)"
+        },
+        {
+          "dictionary_target": "lock",
+          "line_end": 1806,
+          "line_start": 1806,
+          "new_key": "legacy_compatibility_model_sha256",
+          "old_key": "model_sha256",
+          "route": "model_path",
+          "value_source": "sha256_file(model_path)"
+        },
+        {
+          "dictionary_target": "lock",
+          "line_end": 1807,
+          "line_start": 1807,
+          "new_key": "legacy_compatibility_loader_sha256",
+          "old_key": "loader_sha256",
+          "route": "loader_path",
+          "value_source": "sha256_file(loader_path)"
+        }
+      ],
+      "skeleton": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+      "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c"
+    },
+    "static_certification": {
+      "adapter_call_counts": {
+        "F7Dynamic70ModelFactory": 1,
+        "F7TrainDatasetAdapter": 1,
+        "F7ValidationDatasetAdapter": 1
+      },
+      "ambiguous_runtime_provenance_key_count": 0,
+      "compute_loss_sha256": "d9629317801a72a1905dbcd49eace1418f15014df3a2f55d097c25ae4997155f",
+      "early_stop_condition": "epoch >= 15 and early_stop_patience_counter >= 12",
+      "frozen_legacy_hash_gates_preserved": true,
+      "generated_trainer": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_reconstructed_group_ablation_trainer.py",
+      "generated_trainer_sha256": "a2662a0d6a0e06bce012b692c6be1e6e124a2a105348842672d493b112c5f08c",
+      "historical_A4_trainer_claimed": false,
+      "legacy_class_extraction_count": 0,
+      "legacy_dynamic_import_call_count": 0,
+      "runtime_adapter": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_f7_r5_runtime_adapter.py",
+      "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059",
+      "runtime_adapter_sha_key_count": 3
+    }
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "generated_trainer_executed": false,
+    "legacy_loader_module_executed": false,
+    "legacy_model_module_executed": false,
+    "model_loaded": false,
+    "optimizer_step_performed": false,
+    "primary_matrix_execution_authorized": false,
+    "runtime_adapter_executed": false,
+    "scientific_checkpoint_saved": false,
+    "scientific_training_started": false,
+    "sealed_test_tensors_loaded": false,
+    "training_dataset_constructed": false,
+    "training_feature_tensors_loaded": false,
+    "validation_dataset_constructed": false,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "E2_authorization_sha256": "828d742fe147745f4a5aca58b279f828ac680c78c3261178cdc4b31eac59fbed",
+    "R5_P0_lock_sha256": "3fe2f4fa9e6087ba7488f8ee4c7713d93ec7696fc35ab1f375eb54003c339095",
+    "R5_P0_report_sha256": "4facb3e6cfc403d0a168f316cb94c534124cfc1dc3e3349ee5536e02e962415c",
+    "generated_trainer_sha256": "a2662a0d6a0e06bce012b692c6be1e6e124a2a105348842672d493b112c5f08c",
+    "installed_script_sha256": "f1870389257cc533e7a8a8f7e24a0507dd8b1248e9f994a04efd7b28930ed1d2",
+    "matrix_launcher_sha256": "fb9410c20ef355b282ce61ec65aa2fa44227b2b423be11c12a9218bdfa6231bf",
+    "matrix_manifest_sha256": "a8d587de8e2f0ebe394369bfe8c1ee9936b1dc046b36b900a576556750aef144",
+    "patch_manifest_sha256": "d0248a6968f1287b764b3f998e490b822b65d38ff5ecf872796ca1715cb075a0",
+    "runtime_adapter_sha256": "6e2b355d1c5f4f0e71c3eb0798b263aca2e936d11623d8526a20f6204feba059",
+    "skeleton_sha256": "8fa354698056653a4ff9d467047fced850ff36c3bdef557b08cbd58aa3d3ae1c",
+    "static_certification_sha256": "fc0b6d9eef7ec2bb465483a7f44321c2cc493eac6af3d7672afafeec02ec67c6"
+  },
+  "scope": "Generate an isolated F7 trainer by removing both legacy runtime imports and legacy class construction; preserve the frozen B1/B0-R3 source-hash identity gates strictly as compatibility provenance; relabel legacy source hashes in generated checkpoints/reports/locks; separately record the actual F7 runtime-adapter hash; preserve compute_loss and the frozen execution recipe; generate six seed-107 run specs and an E2-guarded sequential launcher. No generated code is executed and no model, checkpoint or dataset is loaded.",
+  "stage": "V5_P3_F7_E1_R5_RUNTIME_IMPORT_USE_SITE_PATCH_AND_GENERATED_TRAINER_RECOVERY",
+  "status": "PASS"
+}

@@ -1,0 +1,88 @@
+{
+  "artifacts": {
+    "authorization_token": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_b5_one_shot_test_authorization/V5_P2_B5_ONE_SHOT_TEST_AUTHORIZATION_TOKEN.json",
+      "88ef7686ef461af589e4ccc52a01a19ada6a1a05e43bba9bad6dff800908526b"
+    ]
+  },
+  "authorization": {
+    "authorization_consumed": false,
+    "authorization_id": "95da82aebaf1b61b13ce4bf31346b08500037841369cfd3fe5dba0965dff24e2",
+    "authorization_name": "V5_P2_SINGLE_USE_BLIND_TEST_EVALUATION",
+    "authorization_version": 1,
+    "authorized_evaluation_count": 1,
+    "authorized_stage": "V5_P2_B6_ONE_SHOT_TEST_EVALUATION",
+    "count_decision": {
+      "class_index_to_raw_count": {
+        "0": 1,
+        "1": 2,
+        "2": 3,
+        "3": 4
+      },
+      "method": "argmax"
+    },
+    "evaluation_contract": {
+      "model_weights_must_not_change": true,
+      "no_checkpoint_reselection": true,
+      "no_post_hoc_threshold_adjustment": true,
+      "no_seed_reselection": true,
+      "no_test_driven_analysis_before_primary_report": true,
+      "one_complete_test_pass_only": true,
+      "primary_metrics_must_be_written_before_error_analysis": true,
+      "rerun_after_success_forbidden": true,
+      "test_prediction_cache_may_be_written_once": true,
+      "test_split": "P2 test only",
+      "thresholds_must_not_change": true
+    },
+    "protocol_sha256": "0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60",
+    "selected_checkpoint_path": "/home/zira/research/projects/GNN-2d/models/v5/p2_b3_selected_checkpoint/v5_p2_b3_selected_seed_127_epoch_59.pt",
+    "selected_checkpoint_sha256": "7d4afae2214f67ecd9c65c6ff4614ba8238614234d7b07cdf1408b6d3efb07ef",
+    "selected_epoch": 59,
+    "selected_seed": 127,
+    "test_directory_enumerated_at_authorization": false,
+    "test_evaluation_performed": false,
+    "test_tensor_contents_accessed_at_authorization": false,
+    "threshold_manifest_file_sha256": "b0e6dc88a561db2ca616badafa0117e508fabb0bdf2baa8c01c845664695558c",
+    "threshold_manifest_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_b4_validation_threshold_tuning/V5_P2_B4_FROZEN_THRESHOLD_MANIFEST.json",
+    "threshold_manifest_sha256": "64bb23f1d0f36ec5f09236c4939317cddc96260f0ed4695036c4e802cd3056a7",
+    "thresholds": {
+      "attack": 0.2,
+      "path": 0.545,
+      "source": 0.778,
+      "transit": 0.824,
+      "victim": 0.661
+    }
+  },
+  "decision": "AUTHORIZE_EXACTLY_ONE_P2_TEST_EVALUATION",
+  "failures": [],
+  "next_stage": "V5_P2_B6_ONE_SHOT_TEST_EVALUATION",
+  "provenance": {
+    "b1_lock": "4bfbf2a555899a841c445c576b2431cb4eb8cfaea5a7d8c6698d022744f89587",
+    "b1_protocol": "e18253eb2545b453ffbfb3f627d8646307d7a0c3e9da337547f5d061553baa4a",
+    "b1_report": "523aa60c95d20f2223e43882ca7fb1077148c2b731f8f101c439451f6d8aa9b4",
+    "b3_lock": "2c252c59b8dab2331dbc25d4e43b5a6a15b0cf7865b42ad943df567fc665a090",
+    "b3_manifest": "54040ff0cd8f61cb640b71ae715612661fbd76cdd7dfc06725c1ed098406248a",
+    "b3_report": "b3f3497f5ecb67749dd564c9d729931ceb33ee50808e4c17fed31523d786e7aa",
+    "b4_lock": "112dd70f8e8e235f6ea31a2dc7fa02229e94d0de1b8513418cf9f4f818c26db0",
+    "b4_report": "e16b69ec79543a7e9c02848b289c73f66944be8949b11756aa45524f43a547e2",
+    "b4_threshold_manifest": "b0e6dc88a561db2ca616badafa0117e508fabb0bdf2baa8c01c845664695558c"
+  },
+  "security_boundary": {
+    "authorized_evaluation_count": 1,
+    "dataset_constructed": false,
+    "run_tensors_deserialized": false,
+    "selected_checkpoint_deserialized": false,
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_authorized": true,
+    "test_evaluation_performed": false,
+    "test_tensor_bytes_read": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false
+  },
+  "stage": "V5_P2_B5_ONE_SHOT_TEST_AUTHORIZATION",
+  "status": "COMPLETE",
+  "warnings": []
+}

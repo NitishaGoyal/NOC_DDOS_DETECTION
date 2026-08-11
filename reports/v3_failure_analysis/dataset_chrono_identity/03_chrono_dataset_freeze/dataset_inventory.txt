@@ -1,0 +1,46 @@
+root: /home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono
+
+x: shape=(233803, 16, 8, 24) dtype=float32
+y_graph: shape=(233803,) dtype=float32
+y_node: shape=(233803, 16) dtype=float32
+edge_index: shape=(2, 64) dtype=int64
+run_id: shape=(233803,) dtype=<U39
+end_epoch: shape=(233803,) dtype=int32
+feature_cols: shape=(24,) dtype=<U22
+profile: shape=(233803,) dtype=<U7
+seed: shape=(233803,) dtype=<U2
+split: shape=(233803,) dtype=<U5
+strength: shape=(233803,) dtype=<U2
+active_cores: shape=(233803,) dtype=<U14
+attackers: shape=(233803,) dtype=<U7
+
+samples: 233803
+unique_runs: 71
+split_counts: Counter({'train': 148185, 'val': 42809, 'test': 42809})
+graph_class_counts: Counter({1: 154771, 0: 79032})
+
+features:
+00: ifd_in_norm
+01: ifd_out_norm
+02: input_flit_count_norm
+03: output_flit_count_norm
+04: in_count_norm_local
+05: in_count_norm_north
+06: in_count_norm_east
+07: in_count_norm_south
+08: in_count_norm_west
+09: out_count_norm_local
+10: out_count_norm_north
+11: out_count_norm_east
+12: out_count_norm_south
+13: out_count_norm_west
+14: ifd_in_norm_local
+15: ifd_in_norm_north
+16: ifd_in_norm_east
+17: ifd_in_norm_south
+18: ifd_in_norm_west
+19: ifd_out_norm_local
+20: ifd_out_norm_north
+21: ifd_out_norm_east
+22: ifd_out_norm_south
+23: ifd_out_norm_west

@@ -1,0 +1,117 @@
+{
+  "stage": "C1.6_FINAL_V3_FREEZE",
+  "status": "V3_ARCHITECTURE_FROZEN",
+  "created_utc": "2026-07-21T12:08:29.296090+00:00",
+  "decision_checks": {
+    "b1_closed_and_rejected": true,
+    "b1_sampler_not_retained": true,
+    "c1_spec_frozen": true,
+    "c1_training_verified": true,
+    "c1_validation_gate_completed": true,
+    "c1_validation_advanced": true,
+    "c1_test_transfer_completed": true,
+    "c1_test_not_corroborated": true,
+    "multiseed_not_authorized": true,
+    "test_thresholds_not_reselected": true,
+    "test_sweep_not_performed": true
+  },
+  "hash_checks": {
+    "a1_source_hash_matches": true,
+    "a1_checkpoint_hash_matches": true,
+    "c1_checkpoint_hash_matches": true,
+    "c1_source_matches_validation_manifest": true,
+    "a1_source_matches_validation_manifest": true
+  },
+  "final_decision": {
+    "retained_model": "Chrono-A1 Conv1D-TemporalGCN",
+    "retained_model_source": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py",
+    "retained_model_checkpoint": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/best_model.pt",
+    "rejected_ablation_b1": "scenario-balanced sampling",
+    "rejected_ablation_c1": "mean-plus-max graph readout",
+    "c1_multiseed_required": false,
+    "further_v3_architecture_search_allowed": false,
+    "next_phase": "V3.1 raw-trace and feature-semantics audit",
+    "scientific_interpretation": "C1 improved validation graph F1 and normal-run FPR, but the improvement did not transfer. On blind test, graph F1 decreased and normal false-positive rate increased substantially. The remaining failure is therefore not solved by a simple readout change and is more consistent with representation and scenario distribution mismatch."
+  },
+  "key_metrics": {
+    "validation": {
+      "a1_graph_f1": 0.9587159758418135,
+      "c1_graph_f1": 0.9749346301817031,
+      "graph_f1_delta": 0.01621865433988967,
+      "a1_normal_run_macro_fpr": 0.1387792286668691,
+      "c1_normal_run_macro_fpr": 0.08631946553294867,
+      "normal_run_macro_fpr_delta": -0.05245976313392042
+    },
+    "test": {
+      "a1_graph_f1": 0.8719036650907181,
+      "c1_graph_f1": 0.8336303877038657,
+      "graph_f1_delta": -0.03827327738685249,
+      "a1_graph_fpr": 0.24627998785302155,
+      "c1_graph_fpr": 0.3734689745925701,
+      "graph_fpr_delta": 0.12718898673954857,
+      "a1_normal_run_macro_fpr": 0.2462799878530216,
+      "c1_normal_run_macro_fpr": 0.3734689745925701,
+      "normal_run_macro_fpr_delta": 0.1271889867395485,
+      "strength20_macro_recall_delta": 0.04798056483449742,
+      "top1_hit_rate_delta": 0.012103596373259307
+    }
+  },
+  "artifact_inventory": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/final_v3_architecture_freeze/final_v3_artifact_hashes.csv",
+    "sha256": "c2cc32b0f9af909fb57150859219c76ef3f52076b691a8d32235b80cf93ddb40",
+    "file_count": 13
+  },
+  "repository": {
+    "root": "/home/zira/research/projects/GNN-2d",
+    "git_head": {
+      "command": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "0c4c2d85976e648fd93df792cc19023bc2a61f9c",
+      "stderr": ""
+    },
+    "git_branch": {
+      "command": [
+        "git",
+        "rev-parse",
+        "--abbrev-ref",
+        "HEAD"
+      ],
+      "returncode": 0,
+      "stdout": "siya/gcn_model",
+      "stderr": ""
+    },
+    "git_status_short": {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "returncode": 0,
+      "stdout": "?? **Graph-level\n?? 10^{-4}\n?? Mean\n?? archive/\n?? references/GNN_UofF.pdf\n?? reports/balanced_placement_ds2_4x4_seed7_split_composition.txt\n?? reports/tcn-gcn-ds-24feature/\n?? reports/v3-ds-24feature/\n?? reports/v3_conv_vs_tcn_error_analysis.txt\n?? reports/v3_failure_analysis/\n?? reports/v3_tcn_gcn_builtin_split_result.txt\n?? scripts/compare_v3_conv_vs_meanpool_errors.py\n?? scripts/compare_v3_conv_vs_tcn_errors.py\n?? scripts/eval_temporal_tcn_gcn.py\n?? scripts/failure_analysis/\n?? scripts/make_balanced_placement_splits.py\n?? scripts/samplers/\n?? scripts/sweep_v3_graph_thresholds.py\n?? scripts/sweep_v3_graph_thresholds_maxpool.py\n?? scripts/sweep_v3_graph_thresholds_meanpool.py\n?? scripts/train_temporal_gcn_early_stopping.py\n?? scripts/train_temporal_gcn_v3.py\n?? scripts/train_temporal_gcn_v3.py.broken\n?? scripts/train_temporal_gcn_v3_c1_meanmax.py\n?? scripts/train_temporal_gcn_v3_chrono_b1.py\n?? scripts/train_temporal_gcn_v3_stage9_b1.py\n?? scripts/train_temporal_tcn_gcn_early_stopping.py\n?? scripts/train_temporal_tcn_gcn_v3.py\n?? scripts/train_temporal_tcn_gcn_v3.py.broken\n?? scripts/train_temporal_tcn_maxpool_gcn_v3.py\n?? scripts/train_temporal_tcn_meanpool_gcn_v3.py",
+      "stderr": ""
+    }
+  },
+  "prohibitions_after_freeze": [
+    "No B1 multiseed training",
+    "No C1 multiseed training",
+    "No additional V3 sampler search",
+    "No additional V3 readout search",
+    "No V3 loss-weight search",
+    "No V3 hidden-width or depth search",
+    "No V3 attention variant",
+    "No victim or path head on V3",
+    "No hardware optimization before V3.1/V4 model freeze",
+    "No 16x16 scaling before V4 baseline stability"
+  ],
+  "authorized_next_work": [
+    "Audit raw trace availability and feature semantics for V3.1",
+    "Define validity, observation, and clipping masks",
+    "Build deterministic V3.1 representation with unchanged samples and splits",
+    "Compare retained A1 architecture on V3 versus V3.1",
+    "Prepare V4 scenario and metadata specification"
+  ]
+}

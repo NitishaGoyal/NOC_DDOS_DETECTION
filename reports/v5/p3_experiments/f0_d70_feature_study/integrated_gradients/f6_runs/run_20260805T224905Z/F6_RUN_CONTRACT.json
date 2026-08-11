@@ -1,0 +1,63 @@
+{
+  "F5_validation_cache": {
+    "cache_complete_sha256": "404a078b1809d4af9540ee989a5464ffbad8cb3ee57402bd8ca6a4bf4c244e23",
+    "cache_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/f5_runs/run_20260805T213252Z/validation_cache",
+    "run_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/f5_runs/run_20260805T213252Z"
+  },
+  "bootstrap_resamples": 1000,
+  "bootstrap_seed": 6102,
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "checkpoint": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+    "sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979"
+  },
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T22:49:08.035156+00:00",
+  "default_IG_points": 64,
+  "exporter": {
+    "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+    "sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+  },
+  "fallback_IG_points": 128,
+  "items_per_count": 128,
+  "mapping": {
+    "fingerprint": "8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8",
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P3_FROZEN_ATTACK_TO_CONTROL_MAPPING.json",
+    "sha256": "2359457c044875b2373b8ded26cf0466e3db11dd052ef7af2d0f4eb6f7aaf7f3"
+  },
+  "protocol": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P0_TASK_SPECIFIC_INTEGRATED_GRADIENTS_PROTOCOL.json",
+    "sha256": "e2e1baea996ff831b01f0afbe9c3491784aac2f1670bae100196a19671e1a6d5"
+  },
+  "runtime": {
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_version": 92000,
+    "deterministic_algorithms_enabled": false,
+    "device": "cuda",
+    "float32_matmul_precision": "highest",
+    "torch_cuda_version": "13.0",
+    "torch_version": "2.12.1+cu130"
+  },
+  "sample_microbatch_size": 16,
+  "sample_selection_seed": 6101,
+  "sealed_test_access": false,
+  "stage": "V5_P3_F6_TASK_SPECIFIC_INTEGRATED_GRADIENTS",
+  "task_target_policy": {
+    "count": "true count-class logit minus mean of the other three logits",
+    "graph": "attack logit",
+    "source_transit_victim_path": "mean true-positive router logit minus mean true-negative router logit"
+  },
+  "tasks": [
+    "graph",
+    "count",
+    "source",
+    "transit",
+    "victim",
+    "path"
+  ]
+}

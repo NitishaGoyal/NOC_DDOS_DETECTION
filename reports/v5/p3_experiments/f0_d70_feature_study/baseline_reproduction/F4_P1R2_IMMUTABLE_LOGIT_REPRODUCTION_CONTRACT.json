@@ -1,0 +1,1827 @@
+{
+  "actual_F4": {
+    "A_test_access": false,
+    "compare_export_hash_or_numeric_content_to_immutable_reference": true,
+    "export_69_raw_logits": true,
+    "metric_tolerance": 1e-06,
+    "recompute_metrics_with_canonical_evaluator": true,
+    "replay_checkpoint_on_guarded_validation": true,
+    "sealed_test_access": false
+  },
+  "actual_F4_authorized": false,
+  "exporter": {
+    "selected": {
+      "analysis": {
+        "calls": [
+          "ArgumentParser",
+          "DataLoader",
+          "DictWriter",
+          "GuardedDataset",
+          "P2B3Conv1DOnlyCount4",
+          "P2TaskDGraphConvCount4",
+          "Path",
+          "PermissionError",
+          "RuntimeError",
+          "SystemExit",
+          "abs",
+          "add_argument",
+          "all",
+          "append",
+          "arange",
+          "argmax",
+          "argsort",
+          "array_equal",
+          "as_tensor",
+          "asarray",
+          "astype",
+          "atomic_csv",
+          "atomic_json",
+          "atomic_npz",
+          "average_ranks",
+          "binary_auroc",
+          "binary_average_precision",
+          "binary_threshold_metrics",
+          "bool",
+          "build_v6_p0_dynamic70_from_canonical_structure",
+          "cpu",
+          "cumsum",
+          "detach",
+          "device",
+          "dumps",
+          "empty",
+          "endswith",
+          "enumerate",
+          "eval",
+          "exact_active",
+          "exec_module",
+          "exists",
+          "expanduser",
+          "float",
+          "from_numpy",
+          "fspath",
+          "get",
+          "hexdigest",
+          "import_source",
+          "int",
+          "is_available",
+          "is_file",
+          "is_symlink",
+          "isfinite",
+          "isinstance",
+          "isoformat",
+          "issubdtype",
+          "item",
+          "items",
+          "iter",
+          "len",
+          "list",
+          "load",
+          "load_state_dict",
+          "loads",
+          "main",
+          "manual_seed",
+          "manual_seed_all",
+          "max",
+          "mean",
+          "mkdir",
+          "model",
+          "module_from_spec",
+          "multiclass_macro_f1",
+          "no_grad",
+          "now",
+          "numel",
+          "numpy",
+          "open",
+          "original_torch_load",
+          "parameters",
+          "parse_args",
+          "print",
+          "range",
+          "read",
+          "read_text",
+          "replace",
+          "reshape",
+          "resolve",
+          "savez_compressed",
+          "scalar_batch_values",
+          "seed",
+          "set_seed",
+          "sha256",
+          "sha256_file",
+          "sigmoid",
+          "sorted",
+          "spec_from_file_location",
+          "stat",
+          "str",
+          "sum",
+          "time",
+          "to",
+          "tolist",
+          "tuple",
+          "unlink",
+          "update",
+          "values",
+          "with_suffix",
+          "write_text",
+          "writeheader",
+          "writerows"
+        ],
+        "classes": [],
+        "from_imports": [
+          {
+            "module": "__future__",
+            "names": [
+              "annotations"
+            ]
+          },
+          {
+            "module": "datetime",
+            "names": [
+              "datetime",
+              "timezone"
+            ]
+          },
+          {
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          },
+          {
+            "module": "typing",
+            "names": [
+              "Any"
+            ]
+          },
+          {
+            "module": "torch.utils.data",
+            "names": [
+              "DataLoader"
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "arguments": [],
+            "line": 30,
+            "name": "parse_args"
+          },
+          {
+            "arguments": [
+              "seed"
+            ],
+            "line": 39,
+            "name": "set_seed"
+          },
+          {
+            "arguments": [
+              "path"
+            ],
+            "line": 49,
+            "name": "sha256_file"
+          },
+          {
+            "arguments": [
+              "path",
+              "value"
+            ],
+            "line": 57,
+            "name": "atomic_json"
+          },
+          {
+            "arguments": [
+              "path",
+              "arrays"
+            ],
+            "line": 66,
+            "name": "atomic_npz"
+          },
+          {
+            "arguments": [
+              "path",
+              "rows"
+            ],
+            "line": 73,
+            "name": "atomic_csv"
+          },
+          {
+            "arguments": [
+              "path",
+              "name"
+            ],
+            "line": 83,
+            "name": "import_source"
+          },
+          {
+            "arguments": [
+              "values"
+            ],
+            "line": 93,
+            "name": "average_ranks"
+          },
+          {
+            "arguments": [
+              "scores",
+              "targets"
+            ],
+            "line": 110,
+            "name": "binary_auroc"
+          },
+          {
+            "arguments": [
+              "scores",
+              "targets"
+            ],
+            "line": 127,
+            "name": "binary_average_precision"
+          },
+          {
+            "arguments": [
+              "probabilities",
+              "targets",
+              "threshold"
+            ],
+            "line": 147,
+            "name": "binary_threshold_metrics"
+          },
+          {
+            "arguments": [
+              "predictions",
+              "targets"
+            ],
+            "line": 184,
+            "name": "multiclass_macro_f1"
+          },
+          {
+            "arguments": [
+              "probabilities",
+              "targets",
+              "active_mask"
+            ],
+            "line": 205,
+            "name": "exact_active"
+          },
+          {
+            "arguments": [
+              "batch",
+              "key",
+              "batch_size",
+              "fallback_start"
+            ],
+            "line": 224,
+            "name": "scalar_batch_values"
+          },
+          {
+            "arguments": [],
+            "line": 252,
+            "name": "main"
+          },
+          {
+            "arguments": [
+              "file"
+            ],
+            "line": 334,
+            "name": "guarded_torch_load"
+          }
+        ],
+        "imports": [
+          "argparse",
+          "csv",
+          "hashlib",
+          "importlib.util",
+          "json",
+          "math",
+          "numpy",
+          "os",
+          "random",
+          "sys",
+          "time",
+          "torch"
+        ]
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+      "reasons": [
+        "exact D1 exporter filename",
+        "immutable validation logit export path",
+        "exact guarded loader",
+        "validation logit logic",
+        "NPZ export"
+      ],
+      "score": 190,
+      "sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+      "string_literals": [
+        "V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT",
+        "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+        "__main__",
+        "--repo",
+        "--data-link",
+        "--output-dir",
+        "--installed-script",
+        "accuracy",
+        "precision",
+        "recall",
+        "f1",
+        "fpr",
+        "tp",
+        "fp",
+        "fn",
+        "tn",
+        "V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+        "V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+        "V5_P3_D1_TRANCHE_A_VALIDATION_EXPORT_MANIFEST.json",
+        "reports/v5/p3_d0_frozen_decoder_transfer_preflight",
+        "V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_REPORT.json",
+        "V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_LOCK.json",
+        "reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness",
+        "V5_P3_A5_STABLE_BEST_CHECKPOINT_VALIDATION_METRICS.json",
+        "reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107",
+        "V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+        "src/data/v5_p3_tranche_a_guarded_loader.py",
+        "src/models/v5_p2_b3_conv1d_only_count4.py",
+        "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "PASS",
+        "test_tensor_loaded",
+        "_v5_p3_d1_guarded_loader",
+        "_v5_p3_d1_b3",
+        "_v5_p3_d1_canonical",
+        "_v5_p3_d1_dynamic70",
+        "validation",
+        "dataset_index",
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits",
+        "y_attack",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim",
+        "y_attack_path",
+        "edge_index",
+        "physical_port_mask_template",
+        "epoch_id",
+        "epoch_tick",
+        "window_start",
+        "window_target",
+        "role_mask",
+        "source_target_router",
+        "graph_auroc",
+        "graph_average_precision",
+        "count_macro_f1",
+        "source_average_precision",
+        "transit_average_precision",
+        "victim_average_precision",
+        "path_average_precision",
+        "selection_score",
+        "graph_auroc",
+        "graph_average_precision",
+        "graph_f1_at_0p5",
+        "graph_fpr_at_0p5",
+        "count_macro_f1",
+        "source",
+        "transit",
+        "victim",
+        "path",
+        "stage",
+        "status",
+        "created_utc",
+        "campaign_label",
+        "split",
+        "row_order",
+        "items",
+        "model_checkpoint_epoch",
+        "parameter_count",
+        "input_features",
+        "arrays",
+        "export_path",
+        "export_sha256",
+        "metadata_path",
+        "metadata_sha256",
+        "metric_replay",
+        "decoder_executed",
+        "threshold_tuning_performed",
+        "test_accessed",
+        "FROZEN_BY_HASH",
+        "validation",
+        "guarded_validation_dataset_index_ascending",
+        "stage",
+        "status",
+        "created_utc",
+        "campaign_label",
+        "scope",
+        "export",
+        "model",
+        "metric_certification",
+        "data",
+        "runtime",
+        "decision",
+        "sealed_test",
+        "provenance",
+        "model_trained",
+        "decoder_executed",
+        "threshold_tuning_performed",
+        "certified_dataset_modified",
+        "generalization_claim_authorized",
+        "PASS",
+        "Single deterministic replay of the A4 epoch-14 model on A_validation, producing an immutable-by-hash raw-logit and label export for decoder evaluation.",
+        "stage",
+        "status",
+        "report_sha256",
+        "export_sha256",
+        "metadata_sha256",
+        "manifest_sha256",
+        "d0_report_sha256",
+        "a4_checkpoint_sha256",
+        "items",
+        "parameter_count",
+        "input_features",
+        "metric_maximum_absolute_delta_vs_A5",
+        "decoder_executed",
+        "test_tensor_loaded",
+        "certified_dataset_modified",
+        "PASS",
+        "status=PASS",
+        "row_order=ascending_dataset_index",
+        "input_features=70",
+        "decoder_executed=false",
+        "threshold_tuning_performed=false",
+        "test_dataset_instantiated=false",
+        "test_length_computed=false",
+        "test_tensor_loaded=false",
+        "raw_and_A0_evaluation_authorized=true",
+        "A1_exact_full_evaluation_authorized=false",
+        "sealed_test_evaluation_authorized=false",
+        "next_stage=V5_P3_D2_RAW_AND_FROZEN_A0_TRANCHE_A_VALIDATION_EVALUATION",
+        "rb",
+        ".tmp",
+        "\n",
+        "utf-8",
+        ".tmp",
+        "wb",
+        ".tmp",
+        "dataset_index",
+        "w",
+        "mergesort",
+        "nan",
+        "nan",
+        "mergesort",
+        "dataset_index",
+        "_REPORT.json",
+        "_LOCK.json",
+        "_COMPLETE",
+        "_HOLD",
+        "status",
+        "D0 report is not PASS",
+        "immutable_validation_logit_export_authorized",
+        "D0 did not authorize D1 export",
+        "report_sha256",
+        "D0 report/lock SHA mismatch",
+        "D0 reports sealed-test access",
+        "test",
+        "guarded loader failed to reject A_test",
+        "edge_index",
+        "physical_port_mask",
+        "cuda",
+        "cpu",
+        "checkpoint parameter-count contract changed",
+        "threshold_tuning_performed",
+        "checkpoint unexpectedly reports threshold tuning",
+        "test_tensor_loaded",
+        "checkpoint reports sealed-test access",
+        "model_state_dict",
+        "metadata row count mismatch",
+        "attack_logits",
+        "attack_logits",
+        "source",
+        "y_source",
+        "transit",
+        "y_transit",
+        "victim",
+        "y_victim",
+        "path",
+        "y_attack_path",
+        "average_precision",
+        "exact_active_at_0p5",
+        "average_precision",
+        "average_precision",
+        "average_precision",
+        "average_precision",
+        "shape",
+        "dtype",
+        "finite",
+        "selection_score",
+        "selection_components",
+        "graph_threshold_0p5",
+        "count_macro_f1",
+        "roles",
+        "maximum_absolute_delta_vs_A5",
+        "tolerance",
+        "consistency_pass",
+        "path",
+        "sha256",
+        "size_bytes",
+        "metadata_path",
+        "metadata_sha256",
+        "manifest_path",
+        "manifest_sha256",
+        "items",
+        "arrays",
+        "pickle_required",
+        "immutable_by_hash",
+        "class",
+        "checkpoint_epoch",
+        "checkpoint_sha256",
+        "parameter_count",
+        "input_features",
+        "selection_score",
+        "selection_components",
+        "graph_threshold_0p5",
+        "count_macro_f1",
+        "roles",
+        "maximum_absolute_delta_vs_A5",
+        "tolerance",
+        "consistency_pass",
+        "split",
+        "items",
+        "batches",
+        "ordering",
+        "optional_metadata_arrays_present",
+        "test_dataset_instantiated",
+        "test_tensor_loaded",
+        "validation",
+        "ascending_dataset_index",
+        "device",
+        "elapsed_seconds",
+        "immutable_validation_export_complete",
+        "raw_and_A0_evaluation_authorized",
+        "A1_exact_full_evaluation_authorized",
+        "A1_exact_resumable_preflight_authorized",
+        "sealed_test_evaluation_authorized",
+        "next_stage",
+        "V5_P3_D2_RAW_AND_FROZEN_A0_TRANCHE_A_VALIDATION_EVALUATION",
+        "guard_negative_check",
+        "test_dataset_instantiated",
+        "test_length_computed",
+        "test_tensor_loaded",
+        "test_loaded_paths",
+        "evaluation_authorized",
+        "d0_report_sha256",
+        "d0_lock_sha256",
+        "a5_stable_metrics_sha256",
+        "a4_checkpoint_sha256",
+        "guarded_loader_sha256",
+        "dynamic70_model_sha256",
+        "installed_script_sha256",
+        "_COMPLETE\n",
+        "utf-8",
+        "_COMPLETE",
+        "campaign_label=",
+        "validation_items=",
+        "validation_batches=",
+        "model_checkpoint_epoch=",
+        "parameter_count=",
+        "export_size_bytes=",
+        "export_sha256=",
+        "metric_maximum_absolute_delta_vs_A5=",
+        "metric_consistency_pass=",
+        "export=",
+        "metadata=",
+        "manifest=",
+        "report=",
+        "lock=",
+        "utf-8",
+        "",
+        "cannot import module from ",
+        "",
+        "required artifacts missing: ",
+        "dataset path is not the canonical symlink: ",
+        "utf-8",
+        "utf-8",
+        "utf-8",
+        "sealed_test",
+        "/runs/test/",
+        "validation length=",
+        ", expected=",
+        "parameter count=",
+        ", expected=",
+        "epoch",
+        "checkpoint epoch=",
+        ", expected=14",
+        "parameter_count",
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits",
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits",
+        "edge_index",
+        "physical_port_mask",
+        "pair_id",
+        "run_id",
+        "window_start",
+        "epoch_id",
+        "exported items=",
+        ", expected=",
+        "_logits",
+        "non-finite exported logits: ",
+        "y_attack",
+        "_logits",
+        "source",
+        "transit",
+        "victim",
+        "path",
+        "f1",
+        "fpr",
+        "_average_precision",
+        "average_precision",
+        "_exact_active",
+        "exact_active_at_0p5",
+        "export metrics differ from A5 stable replay: max_delta=",
+        "; deltas=",
+        "/runs/test/",
+        "sealed-test tensors were deserialized: ",
+        "decision",
+        "y_attack",
+        "y_attacker_count",
+        "y_source",
+        "y_source",
+        "y_transit",
+        "y_transit",
+        "y_victim",
+        "y_victim",
+        "y_attack_path",
+        "y_attack_path",
+        "edge_index",
+        "physical_port_mask_template",
+        "y_attacker_count",
+        "count_logits",
+        "selection_score",
+        "auroc_raw_logits",
+        "average_precision_raw_logits",
+        "f1",
+        "fpr",
+        "macro_f1",
+        "average_precision_raw_logits",
+        "exact_active",
+        "reopened array names=",
+        ", expected=",
+        "_logits",
+        "epoch",
+        "epoch",
+        ".10f",
+        "D1 sealed-test deserialization guard blocked ",
+        "epoch",
+        "x",
+        "cuda",
+        "physical_port_mask",
+        "cuda",
+        "output shapes=",
+        ", expected=",
+        "edge_index varies within validation",
+        "physical_port_mask varies within validation",
+        "dataset_index",
+        "pair_id",
+        "run_id",
+        "window_start",
+        "epoch_id",
+        "validation_batches_exported=",
+        "/",
+        "; items=",
+        "/",
+        "attack_logits",
+        "graph",
+        "graph",
+        "graph",
+        "graph",
+        "count_active",
+        "reopened ",
+        ": shape=",
+        ", dtype=",
+        "; expected shape=",
+        ", dtype=",
+        "reopened logits differ for ",
+        "roles",
+        "roles",
+        "edge_index",
+        "physical_port_mask",
+        "y_attack",
+        "y_attacker_count"
+      ]
+    },
+    "unique": true
+  },
+  "immutable_reference_artifact": {
+    "exact_13863x69_shape": false,
+    "selected": {
+      "arrays": {
+        "attack_logits.npy": {
+          "dtype": "float32",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "count_logits.npy": {
+          "dtype": "float32",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            4
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "dataset_index.npy": {
+          "dtype": "int32",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "edge_index.npy": {
+          "dtype": "int64",
+          "fortran_order": false,
+          "shape": [
+            2,
+            48
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "epoch_id.npy": {
+          "dtype": "int32",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "epoch_tick.npy": {
+          "dtype": "int64",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "path_logits.npy": {
+          "dtype": "float32",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "physical_port_mask_template.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            16,
+            10
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "role_mask.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "source_logits.npy": {
+          "dtype": "float32",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "source_target_router.npy": {
+          "dtype": "int8",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "transit_logits.npy": {
+          "dtype": "float32",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "victim_logits.npy": {
+          "dtype": "float32",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "window_start.npy": {
+          "dtype": "int32",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "window_target.npy": {
+          "dtype": "int32",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "y_attack.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "y_attack_path.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "y_attacker_count.npy": {
+          "dtype": "int8",
+          "fortran_order": false,
+          "shape": [
+            13863
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "y_source.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "y_transit.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        },
+        "y_victim.npy": {
+          "dtype": "uint8",
+          "fortran_order": false,
+          "shape": [
+            13863,
+            16
+          ],
+          "version": [
+            1,
+            0
+          ]
+        }
+      },
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+      "reasons": [
+        "D1 path",
+        "immutable path",
+        "validation path",
+        "logit/prediction path",
+        "filename referenced by D1 exporter",
+        "dataset_index.npy includes validation dimension 13863",
+        "attack_logits.npy includes validation dimension 13863",
+        "count_logits.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 4]",
+        "source_logits.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "transit_logits.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "victim_logits.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "path_logits.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "y_attack.npy includes validation dimension 13863",
+        "y_attacker_count.npy includes validation dimension 13863",
+        "y_source.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "y_transit.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "y_victim.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "y_attack_path.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "epoch_id.npy includes validation dimension 13863",
+        "epoch_tick.npy includes validation dimension 13863",
+        "window_start.npy includes validation dimension 13863",
+        "window_target.npy includes validation dimension 13863",
+        "role_mask.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]",
+        "source_target_router.npy includes validation dimension 13863",
+        "plausible validation output shape [13863, 16]"
+      ],
+      "score": 800,
+      "sha256": "c92c535e991554bcfcf537411fa633032c98de251923201b02043f30e805325f",
+      "size_bytes": 3439335,
+      "suffix": ".npz"
+    },
+    "unique": true
+  },
+  "loader": {
+    "active_only": false,
+    "expected_items": 13863,
+    "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+    "sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "split": "validation"
+  },
+  "metric_evaluator": {
+    "selected": {
+      "analysis": {
+        "calls": [
+          "ArgumentParser",
+          "DataLoader",
+          "DictWriter",
+          "GuardedDataset",
+          "P2B3Conv1DOnlyCount4",
+          "P2TaskDGraphConvCount4",
+          "Path",
+          "PermissionError",
+          "RuntimeError",
+          "SystemExit",
+          "abs",
+          "add_argument",
+          "all",
+          "append",
+          "arange",
+          "argmax",
+          "argsort",
+          "array_equal",
+          "as_tensor",
+          "asarray",
+          "astype",
+          "atomic_csv",
+          "atomic_json",
+          "atomic_npz",
+          "average_ranks",
+          "binary_auroc",
+          "binary_average_precision",
+          "binary_threshold_metrics",
+          "bool",
+          "build_v6_p0_dynamic70_from_canonical_structure",
+          "cpu",
+          "cumsum",
+          "detach",
+          "device",
+          "dumps",
+          "empty",
+          "endswith",
+          "enumerate",
+          "eval",
+          "exact_active",
+          "exec_module",
+          "exists",
+          "expanduser",
+          "float",
+          "from_numpy",
+          "fspath",
+          "get",
+          "hexdigest",
+          "import_source",
+          "int",
+          "is_available",
+          "is_file",
+          "is_symlink",
+          "isfinite",
+          "isinstance",
+          "isoformat",
+          "issubdtype",
+          "item",
+          "items",
+          "iter",
+          "len",
+          "list",
+          "load",
+          "load_state_dict",
+          "loads",
+          "main",
+          "manual_seed",
+          "manual_seed_all",
+          "max",
+          "mean",
+          "mkdir",
+          "model",
+          "module_from_spec",
+          "multiclass_macro_f1",
+          "no_grad",
+          "now",
+          "numel",
+          "numpy",
+          "open",
+          "original_torch_load",
+          "parameters",
+          "parse_args",
+          "print",
+          "range",
+          "read",
+          "read_text",
+          "replace",
+          "reshape",
+          "resolve",
+          "savez_compressed",
+          "scalar_batch_values",
+          "seed",
+          "set_seed",
+          "sha256",
+          "sha256_file",
+          "sigmoid",
+          "sorted",
+          "spec_from_file_location",
+          "stat",
+          "str",
+          "sum",
+          "time",
+          "to",
+          "tolist",
+          "tuple",
+          "unlink",
+          "update",
+          "values",
+          "with_suffix",
+          "write_text",
+          "writeheader",
+          "writerows"
+        ],
+        "classes": [],
+        "from_imports": [
+          {
+            "module": "__future__",
+            "names": [
+              "annotations"
+            ]
+          },
+          {
+            "module": "datetime",
+            "names": [
+              "datetime",
+              "timezone"
+            ]
+          },
+          {
+            "module": "pathlib",
+            "names": [
+              "Path"
+            ]
+          },
+          {
+            "module": "typing",
+            "names": [
+              "Any"
+            ]
+          },
+          {
+            "module": "torch.utils.data",
+            "names": [
+              "DataLoader"
+            ]
+          }
+        ],
+        "functions": [
+          {
+            "arguments": [],
+            "line": 30,
+            "name": "parse_args"
+          },
+          {
+            "arguments": [
+              "seed"
+            ],
+            "line": 39,
+            "name": "set_seed"
+          },
+          {
+            "arguments": [
+              "path"
+            ],
+            "line": 49,
+            "name": "sha256_file"
+          },
+          {
+            "arguments": [
+              "path",
+              "value"
+            ],
+            "line": 57,
+            "name": "atomic_json"
+          },
+          {
+            "arguments": [
+              "path",
+              "arrays"
+            ],
+            "line": 66,
+            "name": "atomic_npz"
+          },
+          {
+            "arguments": [
+              "path",
+              "rows"
+            ],
+            "line": 73,
+            "name": "atomic_csv"
+          },
+          {
+            "arguments": [
+              "path",
+              "name"
+            ],
+            "line": 83,
+            "name": "import_source"
+          },
+          {
+            "arguments": [
+              "values"
+            ],
+            "line": 93,
+            "name": "average_ranks"
+          },
+          {
+            "arguments": [
+              "scores",
+              "targets"
+            ],
+            "line": 110,
+            "name": "binary_auroc"
+          },
+          {
+            "arguments": [
+              "scores",
+              "targets"
+            ],
+            "line": 127,
+            "name": "binary_average_precision"
+          },
+          {
+            "arguments": [
+              "probabilities",
+              "targets",
+              "threshold"
+            ],
+            "line": 147,
+            "name": "binary_threshold_metrics"
+          },
+          {
+            "arguments": [
+              "predictions",
+              "targets"
+            ],
+            "line": 184,
+            "name": "multiclass_macro_f1"
+          },
+          {
+            "arguments": [
+              "probabilities",
+              "targets",
+              "active_mask"
+            ],
+            "line": 205,
+            "name": "exact_active"
+          },
+          {
+            "arguments": [
+              "batch",
+              "key",
+              "batch_size",
+              "fallback_start"
+            ],
+            "line": 224,
+            "name": "scalar_batch_values"
+          },
+          {
+            "arguments": [],
+            "line": 252,
+            "name": "main"
+          },
+          {
+            "arguments": [
+              "file"
+            ],
+            "line": 334,
+            "name": "guarded_torch_load"
+          }
+        ],
+        "imports": [
+          "argparse",
+          "csv",
+          "hashlib",
+          "importlib.util",
+          "json",
+          "math",
+          "numpy",
+          "os",
+          "random",
+          "sys",
+          "time",
+          "torch"
+        ]
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+      "reasons": [
+        "references canonical metric report filename",
+        "logit metric logic",
+        "AP metric",
+        "AUROC metric",
+        "validation logic",
+        "exporter, not downstream metric evaluator"
+      ],
+      "score": 70,
+      "sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204",
+      "string_literals": [
+        "V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT",
+        "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+        "__main__",
+        "--repo",
+        "--data-link",
+        "--output-dir",
+        "--installed-script",
+        "accuracy",
+        "precision",
+        "recall",
+        "f1",
+        "fpr",
+        "tp",
+        "fp",
+        "fn",
+        "tn",
+        "V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+        "V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+        "V5_P3_D1_TRANCHE_A_VALIDATION_EXPORT_MANIFEST.json",
+        "reports/v5/p3_d0_frozen_decoder_transfer_preflight",
+        "V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_REPORT.json",
+        "V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_LOCK.json",
+        "reports/v5/p3_a5_tranche_a_review_and_b_handover_readiness",
+        "V5_P3_A5_STABLE_BEST_CHECKPOINT_VALIDATION_METRICS.json",
+        "reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107",
+        "V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+        "src/data/v5_p3_tranche_a_guarded_loader.py",
+        "src/models/v5_p2_b3_conv1d_only_count4.py",
+        "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "PASS",
+        "test_tensor_loaded",
+        "_v5_p3_d1_guarded_loader",
+        "_v5_p3_d1_b3",
+        "_v5_p3_d1_canonical",
+        "_v5_p3_d1_dynamic70",
+        "validation",
+        "dataset_index",
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits",
+        "y_attack",
+        "y_attacker_count",
+        "y_source",
+        "y_transit",
+        "y_victim",
+        "y_attack_path",
+        "edge_index",
+        "physical_port_mask_template",
+        "epoch_id",
+        "epoch_tick",
+        "window_start",
+        "window_target",
+        "role_mask",
+        "source_target_router",
+        "graph_auroc",
+        "graph_average_precision",
+        "count_macro_f1",
+        "source_average_precision",
+        "transit_average_precision",
+        "victim_average_precision",
+        "path_average_precision",
+        "selection_score",
+        "graph_auroc",
+        "graph_average_precision",
+        "graph_f1_at_0p5",
+        "graph_fpr_at_0p5",
+        "count_macro_f1",
+        "source",
+        "transit",
+        "victim",
+        "path",
+        "stage",
+        "status",
+        "created_utc",
+        "campaign_label",
+        "split",
+        "row_order",
+        "items",
+        "model_checkpoint_epoch",
+        "parameter_count",
+        "input_features",
+        "arrays",
+        "export_path",
+        "export_sha256",
+        "metadata_path",
+        "metadata_sha256",
+        "metric_replay",
+        "decoder_executed",
+        "threshold_tuning_performed",
+        "test_accessed",
+        "FROZEN_BY_HASH",
+        "validation",
+        "guarded_validation_dataset_index_ascending",
+        "stage",
+        "status",
+        "created_utc",
+        "campaign_label",
+        "scope",
+        "export",
+        "model",
+        "metric_certification",
+        "data",
+        "runtime",
+        "decision",
+        "sealed_test",
+        "provenance",
+        "model_trained",
+        "decoder_executed",
+        "threshold_tuning_performed",
+        "certified_dataset_modified",
+        "generalization_claim_authorized",
+        "PASS",
+        "Single deterministic replay of the A4 epoch-14 model on A_validation, producing an immutable-by-hash raw-logit and label export for decoder evaluation.",
+        "stage",
+        "status",
+        "report_sha256",
+        "export_sha256",
+        "metadata_sha256",
+        "manifest_sha256",
+        "d0_report_sha256",
+        "a4_checkpoint_sha256",
+        "items",
+        "parameter_count",
+        "input_features",
+        "metric_maximum_absolute_delta_vs_A5",
+        "decoder_executed",
+        "test_tensor_loaded",
+        "certified_dataset_modified",
+        "PASS",
+        "status=PASS",
+        "row_order=ascending_dataset_index",
+        "input_features=70",
+        "decoder_executed=false",
+        "threshold_tuning_performed=false",
+        "test_dataset_instantiated=false",
+        "test_length_computed=false",
+        "test_tensor_loaded=false",
+        "raw_and_A0_evaluation_authorized=true",
+        "A1_exact_full_evaluation_authorized=false",
+        "sealed_test_evaluation_authorized=false",
+        "next_stage=V5_P3_D2_RAW_AND_FROZEN_A0_TRANCHE_A_VALIDATION_EVALUATION",
+        "rb",
+        ".tmp",
+        "\n",
+        "utf-8",
+        ".tmp",
+        "wb",
+        ".tmp",
+        "dataset_index",
+        "w",
+        "mergesort",
+        "nan",
+        "nan",
+        "mergesort",
+        "dataset_index",
+        "_REPORT.json",
+        "_LOCK.json",
+        "_COMPLETE",
+        "_HOLD",
+        "status",
+        "D0 report is not PASS",
+        "immutable_validation_logit_export_authorized",
+        "D0 did not authorize D1 export",
+        "report_sha256",
+        "D0 report/lock SHA mismatch",
+        "D0 reports sealed-test access",
+        "test",
+        "guarded loader failed to reject A_test",
+        "edge_index",
+        "physical_port_mask",
+        "cuda",
+        "cpu",
+        "checkpoint parameter-count contract changed",
+        "threshold_tuning_performed",
+        "checkpoint unexpectedly reports threshold tuning",
+        "test_tensor_loaded",
+        "checkpoint reports sealed-test access",
+        "model_state_dict",
+        "metadata row count mismatch",
+        "attack_logits",
+        "attack_logits",
+        "source",
+        "y_source",
+        "transit",
+        "y_transit",
+        "victim",
+        "y_victim",
+        "path",
+        "y_attack_path",
+        "average_precision",
+        "exact_active_at_0p5",
+        "average_precision",
+        "average_precision",
+        "average_precision",
+        "average_precision",
+        "shape",
+        "dtype",
+        "finite",
+        "selection_score",
+        "selection_components",
+        "graph_threshold_0p5",
+        "count_macro_f1",
+        "roles",
+        "maximum_absolute_delta_vs_A5",
+        "tolerance",
+        "consistency_pass",
+        "path",
+        "sha256",
+        "size_bytes",
+        "metadata_path",
+        "metadata_sha256",
+        "manifest_path",
+        "manifest_sha256",
+        "items",
+        "arrays",
+        "pickle_required",
+        "immutable_by_hash",
+        "class",
+        "checkpoint_epoch",
+        "checkpoint_sha256",
+        "parameter_count",
+        "input_features",
+        "selection_score",
+        "selection_components",
+        "graph_threshold_0p5",
+        "count_macro_f1",
+        "roles",
+        "maximum_absolute_delta_vs_A5",
+        "tolerance",
+        "consistency_pass",
+        "split",
+        "items",
+        "batches",
+        "ordering",
+        "optional_metadata_arrays_present",
+        "test_dataset_instantiated",
+        "test_tensor_loaded",
+        "validation",
+        "ascending_dataset_index",
+        "device",
+        "elapsed_seconds",
+        "immutable_validation_export_complete",
+        "raw_and_A0_evaluation_authorized",
+        "A1_exact_full_evaluation_authorized",
+        "A1_exact_resumable_preflight_authorized",
+        "sealed_test_evaluation_authorized",
+        "next_stage",
+        "V5_P3_D2_RAW_AND_FROZEN_A0_TRANCHE_A_VALIDATION_EVALUATION",
+        "guard_negative_check",
+        "test_dataset_instantiated",
+        "test_length_computed",
+        "test_tensor_loaded",
+        "test_loaded_paths",
+        "evaluation_authorized",
+        "d0_report_sha256",
+        "d0_lock_sha256",
+        "a5_stable_metrics_sha256",
+        "a4_checkpoint_sha256",
+        "guarded_loader_sha256",
+        "dynamic70_model_sha256",
+        "installed_script_sha256",
+        "_COMPLETE\n",
+        "utf-8",
+        "_COMPLETE",
+        "campaign_label=",
+        "validation_items=",
+        "validation_batches=",
+        "model_checkpoint_epoch=",
+        "parameter_count=",
+        "export_size_bytes=",
+        "export_sha256=",
+        "metric_maximum_absolute_delta_vs_A5=",
+        "metric_consistency_pass=",
+        "export=",
+        "metadata=",
+        "manifest=",
+        "report=",
+        "lock=",
+        "utf-8",
+        "",
+        "cannot import module from ",
+        "",
+        "required artifacts missing: ",
+        "dataset path is not the canonical symlink: ",
+        "utf-8",
+        "utf-8",
+        "utf-8",
+        "sealed_test",
+        "/runs/test/",
+        "validation length=",
+        ", expected=",
+        "parameter count=",
+        ", expected=",
+        "epoch",
+        "checkpoint epoch=",
+        ", expected=14",
+        "parameter_count",
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits",
+        "attack_logits",
+        "count_logits",
+        "source_logits",
+        "transit_logits",
+        "victim_logits",
+        "path_logits",
+        "edge_index",
+        "physical_port_mask",
+        "pair_id",
+        "run_id",
+        "window_start",
+        "epoch_id",
+        "exported items=",
+        ", expected=",
+        "_logits",
+        "non-finite exported logits: ",
+        "y_attack",
+        "_logits",
+        "source",
+        "transit",
+        "victim",
+        "path",
+        "f1",
+        "fpr",
+        "_average_precision",
+        "average_precision",
+        "_exact_active",
+        "exact_active_at_0p5",
+        "export metrics differ from A5 stable replay: max_delta=",
+        "; deltas=",
+        "/runs/test/",
+        "sealed-test tensors were deserialized: ",
+        "decision",
+        "y_attack",
+        "y_attacker_count",
+        "y_source",
+        "y_source",
+        "y_transit",
+        "y_transit",
+        "y_victim",
+        "y_victim",
+        "y_attack_path",
+        "y_attack_path",
+        "edge_index",
+        "physical_port_mask_template",
+        "y_attacker_count",
+        "count_logits",
+        "selection_score",
+        "auroc_raw_logits",
+        "average_precision_raw_logits",
+        "f1",
+        "fpr",
+        "macro_f1",
+        "average_precision_raw_logits",
+        "exact_active",
+        "reopened array names=",
+        ", expected=",
+        "_logits",
+        "epoch",
+        "epoch",
+        ".10f",
+        "D1 sealed-test deserialization guard blocked ",
+        "epoch",
+        "x",
+        "cuda",
+        "physical_port_mask",
+        "cuda",
+        "output shapes=",
+        ", expected=",
+        "edge_index varies within validation",
+        "physical_port_mask varies within validation",
+        "dataset_index",
+        "pair_id",
+        "run_id",
+        "window_start",
+        "epoch_id",
+        "validation_batches_exported=",
+        "/",
+        "; items=",
+        "/",
+        "attack_logits",
+        "graph",
+        "graph",
+        "graph",
+        "graph",
+        "count_active",
+        "reopened ",
+        ": shape=",
+        ", dtype=",
+        "; expected shape=",
+        ", dtype=",
+        "reopened logits differ for ",
+        "roles",
+        "roles",
+        "edge_index",
+        "physical_port_mask",
+        "y_attack",
+        "y_attacker_count"
+      ]
+    },
+    "unique": true
+  },
+  "metric_source": {
+    "required_coverage": 0.875,
+    "selected": {
+      "ambiguous": {},
+      "coverage": 0.75,
+      "missing": [
+        "graph_accuracy",
+        "graph_f1",
+        "graph_fpr",
+        "strict_exact"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d1_immutable_validation_logit_export/V5_P3_D1_TRANCHE_A_VALIDATION_EXPORT_MANIFEST.json",
+      "reasons": [
+        "validation path",
+        "immutable path",
+        "metric coverage 0.750",
+        "no internal top-rank ambiguity"
+      ],
+      "resolved": {
+        "count_active_macro_f1": {
+          "json_path": "$.metric_replay.selection_components.count_macro_f1",
+          "path_score": 0,
+          "value": 0.9973039624464042
+        },
+        "graph_ap": {
+          "json_path": "$.metric_replay.selection_components.graph_average_precision",
+          "path_score": 0,
+          "value": 0.6891211441694642
+        },
+        "graph_auroc": {
+          "json_path": "$.metric_replay.selection_components.graph_auroc",
+          "path_score": 0,
+          "value": 0.8908390825246004
+        },
+        "path_ap": {
+          "json_path": "$.metric_replay.selection_components.path_average_precision",
+          "path_score": 0,
+          "value": 0.624635212392569
+        },
+        "path_exact_active": {
+          "json_path": "$.metric_replay.roles.path.exact_active_at_0p5",
+          "path_score": 0,
+          "value": 0.8178963893249608
+        },
+        "selection_score": {
+          "json_path": "$.metric_replay.selection_score",
+          "path_score": 0,
+          "value": 0.7297736727434252
+        },
+        "source_ap": {
+          "json_path": "$.metric_replay.selection_components.source_average_precision",
+          "path_score": 0,
+          "value": 0.6446929824219041
+        },
+        "source_exact_active": {
+          "json_path": "$.metric_replay.roles.source.exact_active_at_0p5",
+          "path_score": 0,
+          "value": 0.9209837781266352
+        },
+        "transit_ap": {
+          "json_path": "$.metric_replay.selection_components.transit_average_precision",
+          "path_score": 0,
+          "value": 0.6369271321910471
+        },
+        "transit_exact_active": {
+          "json_path": "$.metric_replay.roles.transit.exact_active_at_0p5",
+          "path_score": 0,
+          "value": 0.6802721088435374
+        },
+        "victim_ap": {
+          "json_path": "$.metric_replay.selection_components.victim_average_precision",
+          "path_score": 0,
+          "value": 0.624896193057987
+        },
+        "victim_exact_active": {
+          "json_path": "$.metric_replay.roles.victim.exact_active_at_0p5",
+          "path_score": 0,
+          "value": 0.9481946624803768
+        }
+      },
+      "score": 105,
+      "sha256": "b68b8baf9a9f37b8e424608533b23bf37be7128a205dd9d653d94e26bc62434b"
+    },
+    "strict_exact_required": true,
+    "unique": false
+  },
+  "model": {
+    "path": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+    "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+  },
+  "route": "D1 immutable validation-logit export + canonical downstream raw-neural metric evaluator",
+  "stage": "V5_P3_F4_P1R2_IMMUTABLE_LOGIT_AND_METRIC_LINEAGE_REVIEW",
+  "status": "REVIEW_REQUIRED"
+}

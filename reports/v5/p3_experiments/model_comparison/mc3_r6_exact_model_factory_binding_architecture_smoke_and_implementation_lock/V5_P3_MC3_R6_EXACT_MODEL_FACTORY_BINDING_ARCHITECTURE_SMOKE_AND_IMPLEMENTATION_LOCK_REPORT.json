@@ -1,0 +1,686 @@
+{
+  "classification": "ENGINEERING_ARCHITECTURE_SMOKE_WITH_EXACT_FINAL_AB_LOSS_NATIVE_LOADER_AND_MODEL_FACTORY_BINDING",
+  "execution": {
+    "d2_reason": "D2 is non-neural and has no forward/backward AdamW MC3 step.",
+    "d2_xgboost_included": false,
+    "device": "cpu",
+    "factory_diagnostics": [
+      {
+        "factory": "build_model",
+        "model_id": "conv1d_only",
+        "parameter_count": 44041,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "gcn_only_temporal_mean",
+        "parameter_count": 34697,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "graphconv_only_temporal_mean",
+        "parameter_count": 42889,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "conv1d_gcnconv",
+        "parameter_count": 52361,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "conv1d_gatconv",
+        "parameter_count": 52617,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "tcn_attention_gcn",
+        "parameter_count": 24506,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "lstm_graphconv",
+        "parameter_count": 73161,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "conv1d_graphconv",
+        "parameter_count": 60553,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "binary_conv1d",
+        "parameter_count": 35329,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      },
+      {
+        "factory": "build_model",
+        "model_id": "binary_conv1d_graphconv",
+        "parameter_count": 51841,
+        "signature": "(model_id: 'str', base_edge_index: 'torch.Tensor', seed: 'int' = 107) -> 'nn.Module'",
+        "status": "PASS"
+      }
+    ],
+    "model_factory_route": "exact_factory:build_model(model_id,base_edge_index,seed=107)",
+    "seed": 107,
+    "selected_train_indices": {
+      "attack_index": 0,
+      "control_index": 93
+    },
+    "tiny_batch_graph_labels": [
+      0,
+      1
+    ],
+    "tiny_batch_size": 2
+  },
+  "final_ab_route": {
+    "a1_native_loader_certification_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_TRAIN_ONLY_NORMALIZATION_SEMANTICS_RECOVERY_AND_NATIVE_LOADER_CERTIFICATION_REPORT.json",
+    "a1_native_loader_certification_report_sha256": "fc2bd289c4e94aa65d9ebe8066dc587b52df7ae00a6784f2e123a0eb8c2c0ef7",
+    "data_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "expected_train_items": 221773,
+    "f7_adapter_route_used": false,
+    "native_loader_class": "V5P3Dynamic70WindowDataset",
+    "native_loader_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "native_loader_signature": "(root, split, window=32, stride=8, active_only=False)",
+    "r3_mc3_runtime_authorized": false,
+    "r3_static_heuristic_route_resolution": "UNRESOLVED",
+    "r4_resolution_basis": "FINAL-A1-R1 directly certified V5P3Dynamic70WindowDataset on the Final Dynamic70 physical root at 221773/27722; R3's repository-only executable scan missed the external physical-root loader.",
+    "raw_a4_tranche_cardinality_route_used": false,
+    "test_dataset_instantiated": false,
+    "train_items": 221773,
+    "validation_dataset_instantiated": false
+  },
+  "frozen_training_protocol": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "count_class_weights_applied": false,
+    "epsilon": 1e-08,
+    "gradient_clip_norm": 1.0,
+    "graph_positive_weight": 2.7082685394197807,
+    "learning_rate": 0.001,
+    "positive_weight_source": "V5-P3 final A+B train windows only",
+    "role_positive_weights": {
+      "path": 8.208121405883452,
+      "source": 20.0,
+      "transit": 17.186033877456886,
+      "victim": 20.0
+    },
+    "source_key": "final_ab_report.loss",
+    "task_coefficients": {
+      "count": 1.0,
+      "graph": 1.0,
+      "path": 1.0,
+      "source": 1.0,
+      "transit": 1.0,
+      "victim": 1.0
+    },
+    "weight_decay": 0.0001
+  },
+  "implementation_lock": {
+    "authoritative_a4_loss_source_path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+    "authoritative_a4_loss_source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2",
+    "canonical_edge_index_sha256": "323b45a19a4c281f6309a93aeee64e8b9bb7fd37460a0cb72701b1a336297de0",
+    "canonical_edge_index_shape": [
+      2,
+      48
+    ],
+    "final_ab_a1_report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a1_r1_normalization_semantics_recovery/V5_P3_FINAL_A1_R1_TRAIN_ONLY_NORMALIZATION_SEMANTICS_RECOVERY_AND_NATIVE_LOADER_CERTIFICATION_REPORT.json",
+    "final_ab_a1_report_sha256": "fc2bd289c4e94aa65d9ebe8066dc587b52df7ae00a6784f2e123a0eb8c2c0ef7",
+    "final_ab_data_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "final_ab_native_loader_class": "V5P3Dynamic70WindowDataset",
+    "final_ab_native_loader_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "final_ab_native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "final_ab_native_loader_signature": "(root, split, window=32, stride=8, active_only=False)",
+    "m7_mc3_instance_disposable_only": true,
+    "m7_seed107_retrain_forbidden": true,
+    "model_zoo_path": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_mc_comparison_zoo.py",
+    "model_zoo_sha256": "fcc77e5ceab02394b59472514d9205c23adbf1195482cb12df4352d6f5b2322b",
+    "parameter_counts": {
+      "binary_conv1d": 35329,
+      "binary_conv1d_graphconv": 51841,
+      "conv1d_gatconv": 52617,
+      "conv1d_gcnconv": 52361,
+      "conv1d_graphconv": 60553,
+      "conv1d_only": 44041,
+      "gcn_only_temporal_mean": 34697,
+      "graphconv_only_temporal_mean": 42889,
+      "lstm_graphconv": 73161,
+      "tcn_attention_gcn": 24506
+    },
+    "scientific_selection_rules_changed": false,
+    "train_items": 221773
+  },
+  "loss_contract_binding": {
+    "final_ab_report_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+    "final_ab_report_sha256": "07979163ec1dc1be1e9ccd5e4af5f945389602b70777d67d1bdb1390d4d9c41d",
+    "r4_failure_classification": "MC3-R4 searched for dictionary name loss_protocol, but the authoritative report stores the frozen contract as loss",
+    "scientific_protocol_changed": false,
+    "source": "authoritative Final A+B report top-level loss"
+  },
+  "mc2c_p3_authorization": {
+    "guard": "MC3 may proceed only through the certified Final A+B adapter/effective route; do not instantiate the raw A4 tranche-A dataset path directly.",
+    "mc3_authorized": true,
+    "verdict": "FULL_AB_CARDINALITY_CONFIRMED_IN_FINAL_REPORT__A4_DIRECT_BINDING_IS_TRANCHE_A_SEMANTICS_AND_MUST_NOT_BE_USED_RAW_FOR_MC3"
+  },
+  "mc3_r3_resolution": {
+    "note": "R3's executable-candidate heuristic scanned repository .py/.sh files; the authoritative native loader is stored in the Final Dynamic70 physical dataset root outside the repository. FINAL-A1-R1 already imported and certified that exact loader/class on train and validation.",
+    "r3_route_resolution": "UNRESOLVED",
+    "r3_runtime_authorized": false,
+    "r3_status": "PASS",
+    "resolution": "FINAL_A1_R1_NATIVE_LOADER_CERTIFICATION"
+  },
+  "mc4_authorized": true,
+  "mc4_guard": "MC4 may proceed sequentially under the frozen MC1 protocol and this implementation SHA lock. M7 seed107 remains REUSE-only and must not be retrained.",
+  "model_factory_binding": {
+    "binding_mode": "exact_nonheuristic",
+    "r5_failure_classification": "generic factory resolver omitted the actual required parameter name model_id",
+    "required_signature": "(model_id, base_edge_index, seed=107)",
+    "scientific_model_definition_changed": false,
+    "source": "src/models/v5_p3_mc_comparison_zoo.py::build_model"
+  },
+  "models": [
+    {
+      "changed_parameter_tensor_count": 42,
+      "checkpoint_saved": false,
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "first_changed_parameter": "input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7278988361358643,
+        "parameter_tensors_with_grad": 42,
+        "trainable_parameter_tensors": 42
+      },
+      "loss_components": {
+        "count": 1.3015812635421753,
+        "graph": 1.238507866859436,
+        "path": 0.8251062035560608,
+        "source": 1.1137460470199585,
+        "total": 6.196192264556885,
+        "transit": 0.5808675289154053,
+        "victim": 1.136383295059204
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 44041,
+      "token": "conv1d_only"
+    },
+    {
+      "changed_parameter_tensor_count": 30,
+      "checkpoint_saved": false,
+      "class": "SpatialOnlyMultitask",
+      "first_changed_parameter": "frame_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7273702621459961,
+        "parameter_tensors_with_grad": 30,
+        "trainable_parameter_tensors": 30
+      },
+      "loss_components": {
+        "count": 1.2996406555175781,
+        "graph": 1.2151215076446533,
+        "path": 0.82588791847229,
+        "source": 1.116806149482727,
+        "total": 6.185978889465332,
+        "transit": 0.5891637802124023,
+        "victim": 1.1393589973449707
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 34697,
+      "token": "gcn_only_temporal_mean"
+    },
+    {
+      "changed_parameter_tensor_count": 32,
+      "checkpoint_saved": false,
+      "class": "SpatialOnlyMultitask",
+      "first_changed_parameter": "frame_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7352400422096252,
+        "parameter_tensors_with_grad": 32,
+        "trainable_parameter_tensors": 32
+      },
+      "loss_components": {
+        "count": 1.3289316892623901,
+        "graph": 1.2255209684371948,
+        "path": 0.8361925482749939,
+        "source": 1.1192325353622437,
+        "total": 6.248394012451172,
+        "transit": 0.5996291637420654,
+        "victim": 1.13888680934906
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 42889,
+      "token": "graphconv_only_temporal_mean"
+    },
+    {
+      "changed_parameter_tensor_count": 46,
+      "checkpoint_saved": false,
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "first_changed_parameter": "input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7391537427902222,
+        "parameter_tensors_with_grad": 46,
+        "trainable_parameter_tensors": 46
+      },
+      "loss_components": {
+        "count": 1.3438242673873901,
+        "graph": 1.247757911682129,
+        "path": 0.8289144039154053,
+        "source": 1.1114482879638672,
+        "total": 6.267407417297363,
+        "transit": 0.6012347340583801,
+        "victim": 1.1342278718948364
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 52361,
+      "token": "conv1d_gcnconv"
+    },
+    {
+      "changed_parameter_tensor_count": 50,
+      "checkpoint_saved": false,
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "first_changed_parameter": "input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7317731380462646,
+        "parameter_tensors_with_grad": 50,
+        "trainable_parameter_tensors": 50
+      },
+      "loss_components": {
+        "count": 1.3159220218658447,
+        "graph": 1.2504639625549316,
+        "path": 0.8274098038673401,
+        "source": 1.1124380826950073,
+        "total": 6.2407941818237305,
+        "transit": 0.5979166626930237,
+        "victim": 1.136643886566162
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 52617,
+      "token": "conv1d_gatconv"
+    },
+    {
+      "changed_parameter_tensor_count": 48,
+      "checkpoint_saved": false,
+      "class": "TCNAttentionGCNMultitask",
+      "first_changed_parameter": "temporal.input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.728032112121582,
+        "parameter_tensors_with_grad": 48,
+        "trainable_parameter_tensors": 48
+      },
+      "loss_components": {
+        "count": 1.3020713329315186,
+        "graph": 1.2119605541229248,
+        "path": 0.831150472164154,
+        "source": 1.1178934574127197,
+        "total": 6.186866283416748,
+        "transit": 0.5812129378318787,
+        "victim": 1.1425775289535522
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 24506,
+      "token": "tcn_attention_gcn"
+    },
+    {
+      "changed_parameter_tensor_count": 34,
+      "checkpoint_saved": false,
+      "class": "LSTMGraphConvMultitask",
+      "first_changed_parameter": "lstm.weight_ih_l0",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7209585905075073,
+        "parameter_tensors_with_grad": 34,
+        "trainable_parameter_tensors": 34
+      },
+      "loss_components": {
+        "count": 1.2763950824737549,
+        "graph": 1.2304775714874268,
+        "path": 0.8183283805847168,
+        "source": 1.111274242401123,
+        "total": 6.157545566558838,
+        "transit": 0.5825921893119812,
+        "victim": 1.138478398323059
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 73161,
+      "token": "lstm_graphconv"
+    },
+    {
+      "changed_parameter_tensor_count": 48,
+      "checkpoint_saved": false,
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "first_changed_parameter": "input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.7244068384170532,
+        "parameter_tensors_with_grad": 48,
+        "trainable_parameter_tensors": 48
+      },
+      "loss_components": {
+        "count": 1.2888295650482178,
+        "graph": 1.2139713764190674,
+        "path": 0.8433763980865479,
+        "source": 1.1078593730926514,
+        "total": 6.146300315856934,
+        "transit": 0.5746865272521973,
+        "victim": 1.1175776720046997
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 60553,
+      "token": "conv1d_graphconv"
+    },
+    {
+      "changed_parameter_tensor_count": 24,
+      "checkpoint_saved": false,
+      "class": "BinaryFromTemporalBackbone",
+      "first_changed_parameter": "input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.36858946084976196,
+        "parameter_tensors_with_grad": 24,
+        "trainable_parameter_tensors": 24
+      },
+      "loss_components": {
+        "graph": 1.238507866859436,
+        "total": 1.238507866859436
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ]
+      },
+      "parameter_count": 35329,
+      "token": "binary_conv1d"
+    },
+    {
+      "changed_parameter_tensor_count": 30,
+      "checkpoint_saved": false,
+      "class": "BinaryFromTemporalBackbone",
+      "first_changed_parameter": "input_projection.weight",
+      "gradient_summary": {
+        "all_present_gradients_finite": true,
+        "max_abs_gradient": 0.36223599314689636,
+        "parameter_tensors_with_grad": 30,
+        "trainable_parameter_tensors": 30
+      },
+      "loss_components": {
+        "graph": 1.2139713764190674,
+        "total": 1.2139713764190674
+      },
+      "loss_finite": true,
+      "optimizer": "AdamW",
+      "optimizer_step": true,
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ]
+      },
+      "parameter_count": 51841,
+      "token": "binary_conv1d_graphconv"
+    }
+  ],
+  "safety": {
+    "architecture_smoke_training_step_performed": true,
+    "checkpoint_deserialization": false,
+    "checkpoint_saved": false,
+    "cuda_used": false,
+    "cuda_visible_devices": "",
+    "decoder_applied": false,
+    "forward_backward": true,
+    "model_construction": true,
+    "native_loader_import_side_effect_free_per_final_a1": true,
+    "native_loader_imported": true,
+    "optimizer_steps": 10,
+    "production_checkpoint_loaded": false,
+    "scientific_training_performed": false,
+    "sealed_test_access": false,
+    "test_evaluation": false,
+    "threshold_tuning": false,
+    "train_dataset_constructed": true,
+    "train_tensor_access": true,
+    "validation_dataset_constructed": false,
+    "validation_evaluation": false,
+    "validation_tensor_access": false
+  },
+  "stage": "V5_P3_MC3_R6_EXACT_MODEL_FACTORY_BINDING_ARCHITECTURE_SMOKE_AND_IMPLEMENTATION_LOCK",
+  "status": "PASS"
+}

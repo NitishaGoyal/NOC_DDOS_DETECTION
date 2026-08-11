@@ -1,0 +1,90 @@
+{
+  "active": true,
+  "classification": "EARLY_STOP_THRESHOLD_OR_COUNTER_UNRESOLVED",
+  "counter_candidates": [
+    "epoch",
+    "early_stop_patience_counter"
+  ],
+  "numeric_threshold_candidates": [
+    15.0,
+    12.0
+  ],
+  "operator_candidates": [
+    ">="
+  ],
+  "semantics_resolved": false,
+  "stop_candidates": [
+    {
+      "comparison_rows": [
+        {
+          "left_expression": "epoch",
+          "left_resolution": {
+            "assignment_count": 0,
+            "expression": "epoch",
+            "reason": "symbol_not_found",
+            "resolved": false,
+            "resolved_candidate_values": [],
+            "symbol": "epoch"
+          },
+          "operator": ">=",
+          "right_expression": "15",
+          "right_resolution": {
+            "expression": "15",
+            "resolved": true,
+            "route": "literal",
+            "value": 15
+          }
+        },
+        {
+          "left_expression": "early_stop_patience_counter",
+          "left_resolution": {
+            "candidate_count": 2,
+            "children": [
+              {
+                "expression": "0",
+                "resolved": true,
+                "route": "literal",
+                "value": 0
+              },
+              {
+                "expression": "0",
+                "resolved": true,
+                "route": "literal",
+                "value": 0
+              }
+            ],
+            "expression": "early_stop_patience_counter",
+            "resolved": true,
+            "route": "unique_resolved_assignment_value",
+            "symbol": "early_stop_patience_counter",
+            "value": 0
+          },
+          "operator": ">=",
+          "right_expression": "12",
+          "right_resolution": {
+            "expression": "12",
+            "resolved": true,
+            "route": "literal",
+            "value": 12
+          }
+        }
+      ],
+      "loop_ancestors": [
+        {
+          "iterator": "range(1, 101)",
+          "line_start": 1462,
+          "target": "epoch",
+          "type": "for"
+        }
+      ],
+      "record": {
+        "excerpt": "        if (\n            epoch >= 15\n            and early_stop_patience_counter >= 12\n        ):\n            stopped_early = True\n            print(\n                f\"early stopping at epoch {epoch}; \"\n                \"patience reached 12\"\n            )\n            break",
+        "excerpt_sha256": "1ef6c534962a04a5f6ed7717c319bdc34553eec7c83c4c99dd2a9c9fecc8ea60",
+        "line_end": 1639,
+        "line_start": 1630,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "source": "if epoch >= 15 and early_stop_patience_counter >= 12:\n    stopped_early = True\n    print(f'early stopping at epoch {epoch}; patience reached 12')\n    break"
+      }
+    }
+  ]
+}

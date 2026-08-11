@@ -1,0 +1,37 @@
+{
+  "branch_definitions": {
+    "full": "concat(h_local,h_graph)",
+    "graph_only": "concat(zeros_like(h_local),h_graph)",
+    "local_only": "concat(h_local,zeros_like(h_graph))"
+  },
+  "designation": "V4-A3.13 Frozen Local-versus-Graph Attribution",
+  "development_test_role": "descriptive frozen confirmation and hard-normal attribution only",
+  "development_test_used_for_selection": false,
+  "device": "cuda",
+  "graph_gate_source": "frozen full-model graph probability",
+  "provenance": {
+    "checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "latency_policy_sha256": "b3a0f3dcd764c2aac965bdceec575bf7135a7db118fc5a21ac9b3f9bb6985ffc",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "operational_policy_sha256": "f989349fc47162898291a213bcb83d07cf4ebcfd75c62fac166f16784adf817f",
+    "source_resolution_sha256": "15a4b762de115fd7f4fe147a5adba1c63c8b052d1885fef664d24881c26c4e65",
+    "test_predictions_sha256": "f0df8d5d54fe1193ed9a9fa51ea6fa2bdfa3dff59c2b4515d01d54d5b1ac9dab",
+    "validation_predictions_sha256": "58531f5513889a3efc74caf54de0a7fa26dd6f23c43db4be091cc19e05f5f1d3",
+    "validation_search_script_sha256": "c38490dc8108f961468b733d7f66d786535bd7cda1cea0340bccad964fceaac4"
+  },
+  "status": "PASS",
+  "threshold_search_performed": false,
+  "training_performed": false,
+  "validation_based_decision_class": "local_graph_fusion_is_complementary",
+  "validation_based_recommendation": "Neither branch alone preserves full ranking. Keep source-preserving fusion and proceed to A4a structured null-aware set decoding, while A3.15 separately addresses hard-normal safety.",
+  "validation_full_minus_branch_oracle_gap": {
+    "graph_only": 0.8380242363321606,
+    "local_only": 0.35659239403585186
+  },
+  "validation_primary_oracle_exact": {
+    "full": 0.905511811023622,
+    "graph_only": 0.06748757469146144,
+    "local_only": 0.5489194169877701
+  },
+  "weights_modified": false
+}

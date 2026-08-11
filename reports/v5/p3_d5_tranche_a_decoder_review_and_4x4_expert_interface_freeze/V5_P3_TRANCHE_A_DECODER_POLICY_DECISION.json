@@ -1,0 +1,66 @@
+{
+  "classification": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "decision": {
+    "A0_transfer_rejected_as_primary": true,
+    "A1_rejected_as_primary_graph_detector": true,
+    "A1_retained_as_optional_software_structured_decoder": true,
+    "Raw_0.5_retained_as_current_P3_baseline": true,
+    "additional_Tranche_A_seed_authorized": false,
+    "architecture_change_authorized": false,
+    "hardware_exports_raw_69_logits": true,
+    "hardware_implements_exact_MILP_decoder": false,
+    "sealed_A_test_evaluation_authorized": false
+  },
+  "deltas": {
+    "A1_minus_A0_strict_exact": 0.12702878164899378,
+    "A1_minus_Raw_graph_accuracy": -0.010098824208324308,
+    "A1_minus_Raw_graph_fpr": 0.03186933572353351,
+    "A1_minus_Raw_strict_exact": 0.12075308374810645
+  },
+  "frozen_numerical_policy": {
+    "beam_selected": false,
+    "canonical": "presolve=True certified exact decoder",
+    "certificate_tolerance_relaxed": false,
+    "fail_closed_if_both_fail": true,
+    "fallback": "presolve=False certified exact decoder only after canonical ExactDecoderError",
+    "threshold_or_margin_retuned": false
+  },
+  "policies": {
+    "Frozen_P2_A0_transfer": {
+      "graph_accuracy": 0.8040106758998774,
+      "graph_f1": 0.7071882745985558,
+      "graph_fpr": 0.2167114829200279,
+      "reason": "slightly changes graph metrics but reduces strict exact relative to Raw",
+      "retained_as_primary": false,
+      "role": "diagnostic transfer only",
+      "strict_exact": 0.625838563081584
+    },
+    "Frozen_P2_A1_exact_transfer_with_P3_hybrid_numerics": {
+      "count_active_macro_f1": 0.9355363211130194,
+      "graph_accuracy": 0.7920363557671499,
+      "graph_f1": 0.7021386506870544,
+      "graph_fpr": 0.24489592670052784,
+      "path_exact_active": 0.8053375196232339,
+      "reason": "large strict-structure gain, but lower graph accuracy and higher graph FPR than Raw",
+      "replaces_primary_graph_detector": false,
+      "retained": true,
+      "role": "optional software-side structured localization and consistency decoder",
+      "source_exact_active": 0.8809523809523809,
+      "strict_exact": 0.7528673447305778,
+      "transit_exact_active": 0.8660387231815804,
+      "victim_exact_active": 0.8168498168498168
+    },
+    "Raw_0.5": {
+      "graph_accuracy": 0.8021351799754742,
+      "graph_f1": 0.7011657043250901,
+      "graph_fpr": 0.21302659097699433,
+      "retained": true,
+      "role": "primary current P3 neural baseline and primary hardware graph-detection output policy",
+      "strict_exact": 0.6321142609824714
+    }
+  },
+  "stage": "V5_P3_D5_TRANCHE_A_DECODER_REVIEW_AND_4X4_EXPERT_INTERFACE_FREEZE",
+  "status": "FROZEN_PRELIMINARY_DECISION",
+  "test_accessed": false,
+  "validation_only": true
+}

@@ -1,0 +1,520 @@
+#!/usr/bin/env python3
+"""
+Safe Stage 9 A1 wrapper for the existing Stage 7A alignment implementation.
+
+This runner does not modify the historical Stage 7A script. It validates the
+A1 prediction export, invokes align_v3_stage7a.py with explicit paths, lets
+the historical implementation own stage7a_alignment/, records logs/status, and
+stores wrapper-only reports under preaudit/stage7a_wrapper/.
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import shlex
+import subprocess
+import sys
+from collections import Counter
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Iterable
+
+import numpy as np
+
+EXPECTED_TOTAL = 85618
+EXPECTED_VAL = 42809
+EXPECTED_TEST = 42809
+EXPECTED_NODES = 16
+EXPECTED_DATASET_SAMPLES = 233803
+EXPECTED_DATASET_SHAPE = (233803, 16, 8, 24)
+A1_MODEL_FRAGMENT = "models/v3/stage9_a1_conv1d_exact_reproduction_seed7"
+COMPARATOR_FILES = (
+    "tcn_attention_gcn_predictions.npz",
+    "tcn_meanpool_gcn_predictions.npz",
+    "tcn_maxpool_gcn_predictions.npz",
+)
+
+
+def now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def expand(path: str | Path) -> Path:
+    return Path(path).expanduser().resolve()
+
+
+def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while block := handle.read(chunk_size):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def printable_command(command: list[str]) -> str:
+    return " ".join(shlex.quote(part) for part in command)
+
+
+def require_file(path: Path, label: str) -> None:
+    if not path.is_file():
+        raise RuntimeError(f"Missing {label}: {path}")
+
+
+def require_dir(path: Path, label: str) -> None:
+    if not path.is_dir():
+        raise RuntimeError(f"Missing {label}: {path}")
+
+
+def find_key(archive: Any, candidates: Iterable[str]) -> str:
+    for candidate in candidates:
+        if candidate in archive.files:
+            return candidate
+    raise RuntimeError(
+        f"None of the expected keys are present: {list(candidates)}; "
+        f"available={archive.files}"
+    )
+
+
+def validate_predictions(
+    predictions_dir: Path,
+    metadata_csv: Path,
+    manifest_json: Path,
+    require_comparators: bool,
+) -> dict[str, Any]:
+    conv_path = predictions_dir / "conv1d_gcn_predictions.npz"
+    require_file(conv_path, "A1 Conv1D prediction file")
+    require_file(metadata_csv, "prediction metadata CSV")
+    require_file(manifest_json, "prediction manifest")
+
+    comparator_status: dict[str, bool] = {}
+    for filename in COMPARATOR_FILES:
+        present = (predictions_dir / filename).is_file()
+        comparator_status[filename] = present
+        if require_comparators and not present:
+            raise RuntimeError(
+                f"Missing comparator prediction file: {predictions_dir / filename}. "
+                "Use --allow-missing-comparators only after confirming the "
+                "historical Stage 7A implementation does not require it."
+            )
+
+    with metadata_csv.open("r", encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+    if not rows:
+        raise RuntimeError(f"Metadata CSV has no rows: {metadata_csv}")
+
+    required_columns = {
+        "sample_index", "sample_id", "run_id", "split", "end_epoch", "true_graph"
+    }
+    missing_columns = sorted(required_columns - set(rows[0]))
+    if missing_columns:
+        raise RuntimeError(
+            f"Metadata CSV is missing columns {missing_columns}: {metadata_csv}"
+        )
+
+    split_counts = Counter(row["split"] for row in rows)
+    sample_indices = [row["sample_index"] for row in rows]
+    sample_ids = [row["sample_id"] for row in rows]
+
+    checks = {
+        "metadata_rows": len(rows) == EXPECTED_TOTAL,
+        "validation_rows": split_counts.get("val", 0) == EXPECTED_VAL,
+        "test_rows": split_counts.get("test", 0) == EXPECTED_TEST,
+        "sample_index_unique": len(set(sample_indices)) == EXPECTED_TOTAL,
+        "sample_id_unique": len(set(sample_ids)) == EXPECTED_TOTAL,
+    }
+    failed = [name for name, passed in checks.items() if not passed]
+    if failed:
+        raise RuntimeError(f"Metadata validation failed: {failed}")
+
+    with np.load(conv_path, allow_pickle=False) as archive:
+        sample_index_key = find_key(archive, ("sample_index", "sample_indices"))
+        graph_prob_key = find_key(
+            archive, ("graph_probability", "graph_prob", "graph_probabilities")
+        )
+        node_prob_key = find_key(
+            archive, ("node_probabilities", "node_probability", "node_prob")
+        )
+        graph_logit_key = find_key(archive, ("graph_logit", "graph_logits"))
+        node_logit_key = find_key(archive, ("node_logits", "node_logit"))
+
+        sample_index = archive[sample_index_key]
+        graph_prob = archive[graph_prob_key]
+        node_prob = archive[node_prob_key]
+        graph_logit = archive[graph_logit_key]
+        node_logit = archive[node_logit_key]
+
+        array_checks = {
+            "sample_index_shape": tuple(sample_index.shape) == (EXPECTED_TOTAL,),
+            "graph_probability_shape": tuple(graph_prob.shape) == (EXPECTED_TOTAL,),
+            "graph_logit_shape": tuple(graph_logit.shape) == (EXPECTED_TOTAL,),
+            "node_probability_shape": tuple(node_prob.shape)
+            == (EXPECTED_TOTAL, EXPECTED_NODES),
+            "node_logit_shape": tuple(node_logit.shape)
+            == (EXPECTED_TOTAL, EXPECTED_NODES),
+            "sample_index_unique": np.unique(sample_index).size == EXPECTED_TOTAL,
+            "graph_probability_finite": bool(np.isfinite(graph_prob).all()),
+            "node_probability_finite": bool(np.isfinite(node_prob).all()),
+            "graph_logit_finite": bool(np.isfinite(graph_logit).all()),
+            "node_logit_finite": bool(np.isfinite(node_logit).all()),
+            "graph_probability_range": bool(
+                ((graph_prob >= 0.0) & (graph_prob <= 1.0)).all()
+            ),
+            "node_probability_range": bool(
+                ((node_prob >= 0.0) & (node_prob <= 1.0)).all()
+            ),
+        }
+    failed = [name for name, passed in array_checks.items() if not passed]
+    if failed:
+        raise RuntimeError(f"A1 prediction validation failed: {failed}")
+
+    manifest_text = manifest_json.read_text(encoding="utf-8")
+    if A1_MODEL_FRAGMENT not in manifest_text:
+        raise RuntimeError(
+            "Prediction manifest does not point to the A1 Conv1D model: "
+            f"expected fragment {A1_MODEL_FRAGMENT!r}"
+        )
+
+    return {
+        "metadata_rows": len(rows),
+        "split_counts": dict(split_counts),
+        "comparator_files": comparator_status,
+        "metadata_checks": checks,
+        "prediction_checks": array_checks,
+        "manifest_points_to_a1": True,
+        "conv1d_prediction_sha256": sha256_file(conv_path),
+        "metadata_sha256": sha256_file(metadata_csv),
+        "manifest_sha256": sha256_file(manifest_json),
+    }
+
+
+def validate_dataset(dataset_root: Path) -> dict[str, Any]:
+    required_arrays = (
+        "x.npy", "y_graph.npy", "y_node.npy", "run_id.npy",
+        "end_epoch.npy", "split.npy", "feature_cols.npy",
+    )
+    for filename in required_arrays:
+        require_file(dataset_root / filename, f"dataset array {filename}")
+
+    x = np.load(dataset_root / "x.npy", mmap_mode="r", allow_pickle=False)
+    y_graph = np.load(dataset_root / "y_graph.npy", mmap_mode="r", allow_pickle=False)
+    y_node = np.load(dataset_root / "y_node.npy", mmap_mode="r", allow_pickle=False)
+
+    if tuple(x.shape) != EXPECTED_DATASET_SHAPE:
+        raise RuntimeError(
+            f"x.npy shape mismatch: expected {EXPECTED_DATASET_SHAPE}, "
+            f"found {tuple(x.shape)}"
+        )
+    if tuple(y_graph.shape) != (EXPECTED_DATASET_SAMPLES,):
+        raise RuntimeError(f"y_graph.npy shape mismatch: {tuple(y_graph.shape)}")
+    if tuple(y_node.shape) != (EXPECTED_DATASET_SAMPLES, EXPECTED_NODES):
+        raise RuntimeError(f"y_node.npy shape mismatch: {tuple(y_node.shape)}")
+
+    return {
+        "x_shape": list(x.shape),
+        "x_dtype": str(x.dtype),
+        "y_graph_shape": list(y_graph.shape),
+        "y_node_shape": list(y_node.shape),
+    }
+
+
+def existing_stage7a_outputs(failure_root: Path) -> list[Path]:
+    candidates: list[Path] = []
+    for path in failure_root.rglob("*"):
+        relative_parts = path.relative_to(failure_root).parts
+
+        # Archived failed attempts are provenance records, not active outputs.
+        if "aborted_runs" in relative_parts:
+            continue
+
+        if not path.is_file():
+            continue
+        lowered = path.name.lower()
+        if (
+            path.name == "STAGE7A_ALIGNMENT_REPORT.md"
+            or "stage7a" in lowered
+            or "stage7_a" in lowered
+            or "alignment_validation" in lowered
+        ):
+            candidates.append(path)
+    return sorted(set(candidates))
+
+
+def snapshot_files(root: Path, excluded: set[Path]) -> dict[str, tuple[int, int]]:
+    snapshot: dict[str, tuple[int, int]] = {}
+    for path in root.rglob("*"):
+        if path.is_file() and path.resolve() not in excluded:
+            stat = path.stat()
+            snapshot[str(path.resolve())] = (stat.st_size, stat.st_mtime_ns)
+    return snapshot
+
+
+def changed_files(
+    root: Path,
+    before: dict[str, tuple[int, int]],
+    excluded: set[Path],
+) -> tuple[list[Path], list[Path]]:
+    new_files: list[Path] = []
+    modified_files: list[Path] = []
+    for path in root.rglob("*"):
+        if not path.is_file() or path.resolve() in excluded:
+            continue
+        key = str(path.resolve())
+        current = (path.stat().st_size, path.stat().st_mtime_ns)
+        if key not in before:
+            new_files.append(path.resolve())
+        elif before[key] != current:
+            modified_files.append(path.resolve())
+    return sorted(new_files), sorted(modified_files)
+
+
+def run_streaming(command: list[str], cwd: Path, log_path: Path) -> int:
+    log_path.parent.mkdir(parents=True, exist_ok=True)
+    with log_path.open("x", encoding="utf-8") as log:
+        log.write(f"started_at={now_iso()}\n")
+        log.write(f"cwd={cwd}\n")
+        log.write(f"command={printable_command(command)}\n\n")
+        log.flush()
+        process = subprocess.Popen(
+            command,
+            cwd=str(cwd),
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+        )
+        assert process.stdout is not None
+        for line in process.stdout:
+            print(line, end="")
+            log.write(line)
+        return process.wait()
+
+
+def write_hashes(paths: list[Path], output: Path) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("x", encoding="utf-8") as handle:
+        for path in sorted(set(path.resolve() for path in paths if path.is_file())):
+            handle.write(f"{sha256_file(path)}  {path}\n")
+
+
+def parse_args() -> argparse.Namespace:
+    home = Path.home()
+    repo = home / "research/projects/GNN-2d"
+    failure_root = repo / "reports/v3_failure_analysis/stage9_round1/a1_evaluation"
+    parser = argparse.ArgumentParser(
+        description="Safely run Stage 7A alignment for the Stage 9 A1 export."
+    )
+    parser.add_argument("--repo-root", default=str(repo))
+    parser.add_argument(
+        "--dataset-root",
+        default=str(
+            home / "tools/architecture/gem5/experiments/"
+            "paper1_temporal_graphs_ports_v3"
+        ),
+    )
+    parser.add_argument("--failure-root", default=str(failure_root))
+    parser.add_argument(
+        "--implementation",
+        default=str(repo / "scripts/failure_analysis/align_v3_stage7a.py"),
+    )
+    parser.add_argument(
+        "--log-file",
+        default=str(failure_root / "logs/52_stage9_a1_stage7a.log"),
+    )
+    parser.add_argument("--allow-missing-comparators", action="store_true")
+    parser.add_argument("--dry-run", action="store_true")
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    repo_root = expand(args.repo_root)
+    dataset_root = expand(args.dataset_root)
+    failure_root = expand(args.failure_root)
+    implementation = expand(args.implementation)
+    log_path = expand(args.log_file)
+
+    predictions_dir = failure_root / "predictions"
+    metadata_csv = predictions_dir / "prediction_metadata.csv"
+    manifest_json = predictions_dir / "prediction_manifest.json"
+    historical_output = failure_root / "stage7a_alignment"
+    wrapper_output = failure_root / "preaudit/stage7a_wrapper"
+    status_path = failure_root / "logs/52_stage9_a1_stage7a_status.txt"
+    summary_path = wrapper_output / "stage9_a1_stage7a_summary.json"
+    report_path = wrapper_output / "STAGE9_A1_STAGE7A_REPORT.md"
+    hashes_path = wrapper_output / "stage9_a1_stage7a_outputs_sha256.txt"
+
+    try:
+        require_dir(repo_root, "repository root")
+        require_dir(dataset_root, "dataset root")
+        require_dir(failure_root, "A1 evaluation root")
+        require_dir(predictions_dir, "A1 predictions directory")
+        require_file(implementation, "historical Stage 7A implementation")
+
+        dataset_summary = validate_dataset(dataset_root)
+        prediction_summary = validate_predictions(
+            predictions_dir,
+            metadata_csv,
+            manifest_json,
+            require_comparators=not args.allow_missing_comparators,
+        )
+
+        empty_historical_output = False
+        if historical_output.exists():
+            if not historical_output.is_dir():
+                raise RuntimeError(
+                    f"Historical Stage 7A output path is not a directory: "
+                    f"{historical_output}"
+                )
+            existing_entries = sorted(historical_output.iterdir())
+            if existing_entries:
+                listing = "\n".join(f"  {path}" for path in existing_entries)
+                raise RuntimeError(
+                    "Historical Stage 7A output directory is nonempty. "
+                    "Refusing to overwrite:\n" + listing
+                )
+            empty_historical_output = True
+
+        collisions = [
+            path for path in existing_stage7a_outputs(failure_root)
+            if not str(path.resolve()).startswith(str(wrapper_output.resolve()))
+        ]
+        if collisions:
+            listing = "\n".join(f"  {path}" for path in collisions)
+            raise RuntimeError(
+                "Stage 7A-like output files already exist outside the empty "
+                "historical output directory. Refusing to overwrite:\n"
+                f"{listing}"
+            )
+
+        if wrapper_output.exists():
+            raise RuntimeError(
+                f"Wrapper report directory already exists: {wrapper_output}"
+            )
+        for path in (log_path, status_path):
+            if path.exists():
+                raise RuntimeError(f"Refusing to overwrite existing file: {path}")
+
+        command = [
+            sys.executable,
+            str(implementation),
+            "--dataset-root",
+            str(dataset_root),
+            "--failure-root",
+            str(failure_root),
+        ]
+
+        print("===== STAGE 9 A1 STAGE 7A PREFLIGHT =====")
+        print(json.dumps({
+            "repo_root": str(repo_root),
+            "dataset_root": str(dataset_root),
+            "failure_root": str(failure_root),
+            "implementation": str(implementation),
+            "historical_output": str(historical_output),
+            "wrapper_output": str(wrapper_output),
+            "empty_historical_output_will_be_removed": empty_historical_output,
+            "dataset": dataset_summary,
+            "predictions": prediction_summary,
+            "command": command,
+        }, indent=2))
+        print("\nExact command:")
+        print(printable_command(command))
+
+        if args.dry_run:
+            print("\nDRY RUN PASSED: Stage 7A was not executed.")
+            return 0
+
+        if empty_historical_output:
+            historical_output.rmdir()
+            print(
+                "Removed empty directory left by the failed wrapper attempt: "
+                f"{historical_output}"
+            )
+
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        excluded = {
+            log_path.resolve(), status_path.resolve(), summary_path.resolve(),
+            report_path.resolve(), hashes_path.resolve(),
+        }
+        before = snapshot_files(failure_root, excluded)
+        exit_code = run_streaming(command, repo_root, log_path)
+        status_path.write_text(
+            f"stage7a_exit_code={exit_code}\nfinished_at={now_iso()}\n",
+            encoding="utf-8",
+        )
+        if exit_code != 0:
+            print(f"STOP: Stage 7A failed with exit code {exit_code}")
+            return exit_code
+
+        new_files, modified_files = changed_files(failure_root, before, excluded)
+        if not new_files:
+            raise RuntimeError(
+                "Stage 7A exited successfully but produced no new files under "
+                f"{failure_root}"
+            )
+        if modified_files:
+            listing = "\n".join(f"  {path}" for path in modified_files)
+            raise RuntimeError(
+                "Stage 7A modified pre-existing A1 evaluation files:\n" + listing
+            )
+
+        wrapper_output.mkdir(parents=True, exist_ok=False)
+
+        summary = {
+            "stage": "Stage 9 A1 Stage 7A",
+            "verdict": "PASS",
+            "completed_at": now_iso(),
+            "command": command,
+            "implementation": str(implementation),
+            "implementation_sha256": sha256_file(implementation),
+            "dataset_root": str(dataset_root),
+            "failure_root": str(failure_root),
+            "historical_output": str(historical_output),
+            "wrapper_output": str(wrapper_output),
+            "dataset_preflight": dataset_summary,
+            "prediction_preflight": prediction_summary,
+            "new_output_files": [str(path) for path in new_files],
+            "modified_preexisting_files": [],
+            "subprocess_exit_code": exit_code,
+        }
+        summary_path.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
+
+        report_lines = [
+            "# Stage 9 A1 — Stage 7A Alignment", "", "**Verdict: PASS**", "",
+            f"- Completed: `{summary['completed_at']}`",
+            f"- Dataset: `{dataset_root}`",
+            f"- A1 evaluation root: `{failure_root}`",
+            f"- Historical Stage 7A output: `{historical_output}`",
+            f"- Wrapper report directory: `{wrapper_output}`",
+            f"- Historical implementation: `{implementation}`",
+            f"- Subprocess exit code: `{exit_code}`",
+            f"- Exported samples: `{EXPECTED_TOTAL}`",
+            f"- Validation samples: `{EXPECTED_VAL}`",
+            f"- Test samples: `{EXPECTED_TEST}`",
+            f"- Node dimension: `{EXPECTED_NODES}`", "",
+            "## Newly produced Stage 7A files", "",
+        ]
+        report_lines.extend(f"- `{path}`" for path in new_files)
+        report_lines.extend([
+            "", "Stage 7A completed without modifying pre-existing A1 artifacts.", ""
+        ])
+        report_path.write_text("\n".join(report_lines), encoding="utf-8")
+
+        write_hashes(new_files + [log_path, status_path, summary_path, report_path], hashes_path)
+        print("\n===== STAGE 9 A1 STAGE 7A COMPLETE =====")
+        print("verdict: PASS")
+        print("historical_output:", historical_output)
+        print("summary:", summary_path)
+        print("report:", report_path)
+        print("hashes:", hashes_path)
+        print("next_gate: validation-only graph-threshold transfer")
+        return 0
+    except Exception as exc:
+        print(f"STOP: {exc}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

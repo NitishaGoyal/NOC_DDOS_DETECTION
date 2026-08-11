@@ -1,0 +1,163 @@
+{
+  "stage": "C1.0",
+  "experiment_id": "chrono_c1_mean_plus_max_readout_seed7",
+  "created_utc": "2026-07-21T11:24:21.441525+00:00",
+  "status": "SPECIFICATION_FROZEN",
+  "objective": "Test whether concatenated mean-plus-max graph aggregation converts localized node evidence into a more robust graph-level attack decision than Chrono-A1 mean pooling.",
+  "control": {
+    "name": "Chrono-A1 Conv1D-TemporalGCN",
+    "source": "/home/zira/research/projects/GNN-2d/scripts/train_temporal_gcn_v3.py",
+    "source_sha256": "2a70d2c6cac90f54504fa120126e643d9ce3a5d312436d6e59004e273d6d593b",
+    "model_dir": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7",
+    "checkpoint": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/best_model.pt",
+    "checkpoint_sha256": "c29cdd2303669a61454ed118ef0be4b8809a635b12c0c42806f8b6992340e0ef",
+    "splits": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7/splits.npz",
+    "splits_sha256": "4a58d9fa6667de6d15c5d6563db0e7a0ec306382cd9816900f7098c80bbee8a2",
+    "best_epoch": 92,
+    "best_validation_score": 1.8269244417945951,
+    "saved_training_arguments": {
+      "data": "/home/zira/research/projects/GNN-2d/data/processed/graph_dataset/paper1_temporal_graphs_ports_v3_chrono_dir",
+      "out_dir": "/home/zira/research/projects/GNN-2d/models/v3_chrono/stage9_a1_conv1d_exact_reproduction_seed7",
+      "split_mode": "v3",
+      "splits_file": null,
+      "epochs": 100,
+      "patience": 15,
+      "min_delta": 0.0001,
+      "batch_size": 256,
+      "lr": 0.001,
+      "weight_decay": 0.0001,
+      "temporal_dim": 8,
+      "gcn_hidden": 16,
+      "gcn_out": 8,
+      "node_loss_weight": 1.0,
+      "graph_threshold": 0.5,
+      "node_threshold": 0.5,
+      "seed": 7
+    }
+  },
+  "dataset": {
+    "path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "resolved_path": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v3_chrono",
+    "x_shape": [
+      233803,
+      16,
+      8,
+      24
+    ],
+    "y_graph_shape": [
+      233803
+    ],
+    "y_node_shape": [
+      233803,
+      16
+    ],
+    "edge_index_shape": [
+      2,
+      64
+    ],
+    "split_counts": {
+      "train": 148185,
+      "val": 42809,
+      "test": 42809
+    },
+    "split_integrity": {
+      "train_unique": true,
+      "val_unique": true,
+      "test_unique": true,
+      "train_val_disjoint": true,
+      "train_test_disjoint": true,
+      "val_test_disjoint": true
+    },
+    "dataset_integrity": {
+      "x_y_graph_rows_match": true,
+      "x_y_node_rows_match": true,
+      "node_counts_match": true,
+      "edge_index_shape_valid": true,
+      "all_split_indices_in_range": true
+    }
+  },
+  "single_permitted_change": {
+    "component": "graph readout and required graph-head input width",
+    "control_readout": "mean(h, dim=1)",
+    "c1_readout": "concat(mean(h, dim=1), max(h, dim=1).values), dim=-1",
+    "control_graph_head_input_width": "gcn_out",
+    "c1_graph_head_input_width": "2 * gcn_out"
+  },
+  "frozen_factors": [
+    "corrected chronological V3 dataset",
+    "exact train/validation/test split indices",
+    "ordinary Chrono-A1 shuffled training loader",
+    "no B1 sampler or scenario-balanced sampling",
+    "Conv1D temporal encoder",
+    "GCN layer count, widths and operations",
+    "node head",
+    "graph and node loss definitions",
+    "graph and node class weights",
+    "node loss weight",
+    "optimizer",
+    "learning rate",
+    "weight decay",
+    "batch size",
+    "epoch budget",
+    "early-stopping patience and minimum delta",
+    "model seed",
+    "checkpoint-selection score",
+    "validation-only graph threshold protocol",
+    "validation-only node threshold protocol",
+    "blind-test threshold-transfer protocol"
+  ],
+  "forbidden_changes": [
+    "B1 scenario-balanced sampler",
+    "new sampler hierarchy",
+    "loss-weight adjustment",
+    "class-weight adjustment",
+    "temporal encoder change",
+    "GCN change",
+    "node-head change",
+    "hidden-width change",
+    "learning-rate change",
+    "additional auxiliary task",
+    "test-set threshold selection"
+  ],
+  "validation_advancement_gate": {
+    "delta_definition": "C1 minus Chrono-A1",
+    "primary_improvement_any_one_required": {
+      "graph_f1": ">= +0.010",
+      "strength20_macro_recall": ">= +0.030",
+      "worst_attack_run_recall": ">= +0.050"
+    },
+    "mandatory_safeguards_all_required": {
+      "normal_run_macro_fpr": "<= +0.020",
+      "worst_normal_run_fpr": "<= +0.050",
+      "overall_graph_recall": ">= -0.020",
+      "attack_run_macro_recall": ">= -0.020",
+      "attack_only_node_f1": ">= -0.020",
+      "attack_only_exact_localization": ">= -0.030",
+      "top1_hit_rate": ">= -0.020",
+      "top3_hit_rate": ">= -0.010"
+    }
+  },
+  "decision_rules": {
+    "reject_without_test": "Reject if no primary improvement passes or any mandatory validation safeguard fails materially.",
+    "advance_to_blind_test": "Advance only if at least one primary improvement and all mandatory safeguards pass on validation.",
+    "multi_seed_confirmation": "Run matched A1/C1 additional seeds only if validation and blind-test transfer remain promising.",
+    "v3_stopping_rule": "After the C1 verdict, or after matched multi-seed confirmation if C1 is promising, V3 model development ends permanently."
+  },
+  "closure_dependency": {
+    "manifest": "/home/zira/research/projects/GNN-2d/reports/v3_failure_analysis/stage9_chrono_round1/b1_scenario_balanced_seed7/c0_b1_closure/b1_closure_manifest.json",
+    "manifest_sha256": "e89fc0cd26a4dac4155f22c5f85f4d0126b6b5cd9bca6adaf29dee091f57b48f",
+    "checks": {
+      "closure_stage_correct": true,
+      "closure_status_correct": true,
+      "b1_verdict_reject": true,
+      "a1_retained": true,
+      "b1_sampler_not_retained": true
+    }
+  },
+  "provenance_checks": {
+    "a1_source_hash_matches": true,
+    "a1_checkpoint_hash_matches": true
+  },
+  "training_started": false,
+  "test_data_used_for_selection": false
+}

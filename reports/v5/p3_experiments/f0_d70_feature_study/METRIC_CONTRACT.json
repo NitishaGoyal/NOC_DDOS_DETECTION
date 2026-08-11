@@ -1,0 +1,35 @@
+{
+  "baseline_metrics": [
+    "existing frozen multitask selection score",
+    "graph accuracy",
+    "graph AUROC",
+    "graph average precision",
+    "graph F1 at 0.5",
+    "graph FPR at 0.5",
+    "count active macro F1",
+    "source average precision",
+    "source exact-active at 0.5",
+    "transit average precision",
+    "transit exact-active at 0.5",
+    "victim average precision",
+    "victim exact-active at 0.5",
+    "path average precision",
+    "path exact-active at 0.5",
+    "strict all-task exactness"
+  ],
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "cluster_unit_for_confidence_intervals": "matched pair",
+  "importance_sign": {
+    "graph_FPR": "perturbed/ablated minus baseline",
+    "higher_is_better": "baseline minus perturbed/ablated"
+  },
+  "primary_evidence": "same-width groupwise retraining ablation",
+  "status": "FROZEN_BEFORE_RESULTS",
+  "supporting_evidence": [
+    "training-only degeneracy audit",
+    "training-only matched CONTROL-ATTACK physical response",
+    "frozen-checkpoint group-block permutation",
+    "task-specific attribution",
+    "hardware cost"
+  ]
+}

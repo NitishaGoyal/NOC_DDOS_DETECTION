@@ -1,0 +1,479 @@
+{
+  "checkpoint_deserialization": false,
+  "classification": "ENGINEERING",
+  "cuda_used": false,
+  "model_construction": false,
+  "model_inference": false,
+  "modules": {
+    "FINAL_DYNAMIC70": {
+      "classes": [
+        {
+          "constants": [
+            "40: architecture_name = 'TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4'",
+            "41: expected_parameter_count = 59785",
+            "63: if parameter_count != self.expected_parameter_count:",
+            "64: raise RuntimeError(f'Task-D GraphConv parameter count={parameter_count}, expected {self.expected_parameter_count}')"
+          ],
+          "forward": "forward(self,x,physical_port_mask)",
+          "heads": [
+            "40: architecture_name = 'TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4'",
+            "41: expected_parameter_count = 59785",
+            "42: count_class_values = (1, 2, 3, 4)",
+            "51: self.source_head = copy.deepcopy(reference_b3.source_head)",
+            "52: self.transit_head = copy.deepcopy(reference_b3.transit_head)",
+            "53: self.victim_head = copy.deepcopy(reference_b3.victim_head)",
+            "54: self.path_head = copy.deepcopy(reference_b3.path_head)",
+            "55: self.graph_projection = copy.deepcopy(reference_b3.graph_projection)",
+            "57: self.count_head = copy.deepcopy(reference_b3.count_head)",
+            "59: self.graph1 = GraphConv(64, 64, aggr='add', bias=True)",
+            "60: self.graph2 = GraphConv(64, 64, aggr='add', bias=True)",
+            "62: parameter_count = sum((parameter.numel() for parameter in self.parameters()))",
+            "63: if parameter_count != self.expected_parameter_count:",
+            "64: raise RuntimeError(f'Task-D GraphConv parameter count={parameter_count}, expected {self.expected_parameter_count}')",
+            "81: node_embedding = self.encode_pre_graph(x, physical_port_mask)",
+            "85: flat = self.activation(self.graph1(flat, edges))",
+            "86: flat = self.activation(self.graph2(flat, edges))",
+            "88: source_logits = self.source_head(node_embedding).squeeze(-1)",
+            "89: transit_logits = self.transit_head(node_embedding).squeeze(-1)",
+            "90: victim_logits = self.victim_head(node_embedding).squeeze(-1)",
+            "91: path_logits = self.path_head(node_embedding).squeeze(-1)",
+            "93: graph_embedding = self.graph_projection(pooled)",
+            "94: outputs = {'attack_logits': self.attack_head(graph_embedding).squeeze(-1), 'count_logits': self.count_head(graph_embedding), 'source_logits': source_logits, 'transit_logits': transit_logits, 'victim_logits': victim_logits, 'path_logits': path_logits}",
+            "95: expected = {'attack_logits': (batch_size,), 'count_logits': (batch_size, 4), 'source_logits': (batch_size, 16), 'transit_logits': (batch_size, 16), 'victim_logits': (batch_size, 16), 'path_logits': (batch_size, 16)}"
+          ],
+          "init": "__init__(self,reference_b3,base_edge_index)",
+          "layers": [
+            "32: class V6P0Dynamic70GraphConvCount4(nn.Module):",
+            "34: B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.",
+            "37: the Conv1D and GraphConv candidates begin with byte-identical common",
+            "46: if GraphConv is None:",
+            "47: raise RuntimeError(f'torch_geometric GraphConv unavailable: {_PYG_IMPORT_ERROR}')",
+            "59: self.graph1 = GraphConv(64, 64, aggr='add', bias=True)",
+            "60: self.graph2 = GraphConv(64, 64, aggr='add', bias=True)",
+            "64: raise RuntimeError(f'Task-D GraphConv parameter count={parameter_count}, expected {self.expected_parameter_count}')"
+          ],
+          "name": "V6P0Dynamic70GraphConvCount4",
+          "reductions": [
+            "62: parameter_count = sum((parameter.numel() for parameter in self.parameters()))",
+            "92: pooled = torch.cat((node_embedding.mean(dim=1), node_embedding.amax(dim=1)), dim=-1)",
+            "93: graph_embedding = self.graph_projection(pooled)"
+          ]
+        }
+      ],
+      "label": "FINAL_DYNAMIC70",
+      "operator_mentions": {
+        "Conv1d": 3,
+        "GATConv": 0,
+        "GCNConv": 0,
+        "GraphConv": 10,
+        "LSTM": 0
+      },
+      "path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+      "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+    },
+    "P0_GCN_ONLY": {
+      "classes": [
+        {
+          "constants": [],
+          "forward": "forward(self,x,adjacency)",
+          "heads": [],
+          "init": "__init__(self,channels)",
+          "layers": [],
+          "name": "DenseGCNLayer",
+          "reductions": [
+            "192: return torch.einsum(\"ij,bjf->bif\", adjacency, support) + self.bias"
+          ]
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,x,physical_port_mask,edge_index)",
+          "heads": [
+            "207: self.graph_encoder = nn.Sequential(nn.Linear(128, 64), nn.ReLU())",
+            "209: self.count_head = nn.Linear(64, 3)",
+            "233: graph = self.graph_encoder(torch.cat([h.mean(dim=1), h.max(dim=1).values], dim=-1))",
+            "234: out = {\"attack\": self.attack_head(graph).squeeze(-1), \"count\": self.count_head(graph)}"
+          ],
+          "init": "__init__(self,edge_index)",
+          "layers": [
+            "201: self.input_projection = nn.Linear(68, 64)",
+            "204: role: nn.Sequential(nn.Linear(64, 32), nn.ReLU(), nn.Linear(32, 1))",
+            "207: self.graph_encoder = nn.Sequential(nn.Linear(128, 64), nn.ReLU())",
+            "208: self.attack_head = nn.Linear(64, 1)",
+            "209: self.count_head = nn.Linear(64, 3)"
+          ],
+          "name": "GCNOnlyModel",
+          "reductions": [
+            "229: temporal_mean = x.mean(dim=-1)",
+            "233: graph = self.graph_encoder(torch.cat([h.mean(dim=1), h.max(dim=1).values], dim=-1))"
+          ]
+        }
+      ],
+      "label": "P0_GCN_ONLY",
+      "operator_mentions": {
+        "Conv1d": 0,
+        "GATConv": 0,
+        "GCNConv": 0,
+        "GraphConv": 0,
+        "LSTM": 0
+      },
+      "path": "scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+      "sha256": "ff2fadd15d2d8468cf289fec2756493d820e6172e7eeb5accd6d90a26a22901c"
+    },
+    "P2_B3_CONV1D_ONLY": {
+      "classes": [
+        {
+          "constants": [],
+          "forward": "forward(self,x)",
+          "heads": [],
+          "init": "__init__(self,channels,kernel_size,dilation)",
+          "layers": [
+            "35: self.depthwise = nn.Conv1d(",
+            "43: self.pointwise = nn.Conv1d("
+          ],
+          "name": "CausalDepthwiseSeparableResidualBlock",
+          "reductions": []
+        },
+        {
+          "constants": [
+            "80: architecture_name = (",
+            "83: expected_parameter_count = 43_273",
+            "141: if parameter_count != self.expected_parameter_count:",
+            "144: f\"expected {self.expected_parameter_count}\""
+          ],
+          "forward": "forward(self,x,physical_port_mask)",
+          "heads": [
+            "83: expected_parameter_count = 43_273",
+            "84: count_class_values = (1, 2, 3, 4)",
+            "109: self.source_head = nn.Sequential(",
+            "114: self.transit_head = nn.Sequential(",
+            "119: self.victim_head = nn.Sequential(",
+            "124: self.path_head = nn.Sequential(",
+            "130: self.graph_projection = nn.Sequential(",
+            "135: self.count_head = nn.Linear(64, 4)",
+            "137: parameter_count = sum(",
+            "141: if parameter_count != self.expected_parameter_count:",
+            "143: f\"P2 B3 parameter count={parameter_count}, \"",
+            "204: source_logits = self.source_head(",
+            "207: transit_logits = self.transit_head(",
+            "210: victim_logits = self.victim_head(",
+            "213: path_logits = self.path_head(",
+            "224: graph_embedding = self.graph_projection(pooled)"
+          ],
+          "init": "__init__(self)",
+          "layers": [
+            "89: self.input_projection = nn.Conv1d(",
+            "107: self.node_projection = nn.Linear(64 + 10, 64)",
+            "110: nn.Linear(64, 32),",
+            "112: nn.Linear(32, 1),",
+            "115: nn.Linear(64, 32),",
+            "117: nn.Linear(32, 1),",
+            "120: nn.Linear(64, 32),",
+            "122: nn.Linear(32, 1),",
+            "125: nn.Linear(64, 32),",
+            "127: nn.Linear(32, 1),",
+            "131: nn.Linear(128, 64),",
+            "134: self.attack_head = nn.Linear(64, 1)",
+            "135: self.count_head = nn.Linear(64, 4)"
+          ],
+          "name": "P2B3Conv1DOnlyCount4",
+          "reductions": [
+            "137: parameter_count = sum(",
+            "217: pooled = torch.cat(",
+            "219: node_embedding.mean(dim=1),",
+            "220: node_embedding.amax(dim=1),",
+            "224: graph_embedding = self.graph_projection(pooled)"
+          ]
+        }
+      ],
+      "label": "P2_B3_CONV1D_ONLY",
+      "operator_mentions": {
+        "Conv1d": 3,
+        "GATConv": 0,
+        "GCNConv": 0,
+        "GraphConv": 0,
+        "LSTM": 0
+      },
+      "path": "src/models/v5_p2_b3_conv1d_only_count4.py",
+      "sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def"
+    },
+    "P2_OPERATOR_SMOKE": {
+      "classes": [
+        {
+          "constants": [],
+          "forward": "forward(self,batch)",
+          "heads": [
+            "776: ) = select_source_cutpoint(self.b3)"
+          ],
+          "init": "__init__(self,b3)",
+          "layers": [],
+          "name": "B3NodeEmbeddingAdapter",
+          "reductions": []
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,batch)",
+          "heads": [
+            "855: self.source_head = copy.deepcopy(",
+            "865: self.graph1 = None",
+            "866: self.graph2 = None",
+            "868: self.graph1 = GCNConv(",
+            "874: self.graph2 = GCNConv(",
+            "880: elif operator == \"graphconv\":",
+            "881: self.graph1 = GraphConv(",
+            "886: self.graph2 = GraphConv(",
+            "892: self.graph1 = GATConv(",
+            "899: self.graph2 = GATConv(",
+            "926: flat = self.activation(self.graph1(flat, edge_index))",
+            "927: flat = self.activation(self.graph2(flat, edge_index))",
+            "934: output = self.source_head(node_embedding)",
+            "940: \"source head must return [batch,16] or [batch,16,1], got \""
+          ],
+          "init": "__init__(self,b3,operator,embedding_dim,base_edge_index)",
+          "layers": [
+            "868: self.graph1 = GCNConv(",
+            "874: self.graph2 = GCNConv(",
+            "881: self.graph1 = GraphConv(",
+            "886: self.graph2 = GraphConv(",
+            "892: self.graph1 = GATConv(",
+            "899: self.graph2 = GATConv("
+          ],
+          "name": "SourceOnlyBaseline",
+          "reductions": []
+        }
+      ],
+      "label": "P2_OPERATOR_SMOKE",
+      "operator_mentions": {
+        "Conv1d": 0,
+        "GATConv": 6,
+        "GCNConv": 6,
+        "GraphConv": 6,
+        "LSTM": 0
+      },
+      "path": "scripts/v5/p2/g1_source_only_graph_smoke.py",
+      "sha256": "2f543a9f1bf4b8a556a173dfb54626e2e35fb10dabc45337d6b4e071938785d4"
+    },
+    "P2_OPERATOR_TRAINER": {
+      "classes": [
+        {
+          "constants": [],
+          "forward": null,
+          "heads": [
+            "480: self.block_count = sum(len(group) for group in groups.values())",
+            "481: if self.block_count * 2 != len(dataset):",
+            "488: return math.ceil(self.block_count / self.block_batch_size)"
+          ],
+          "init": "__init__(self,dataset)",
+          "layers": [],
+          "name": "PairBlockBatchSampler",
+          "reductions": [
+            "480: self.block_count = sum(len(group) for group in groups.values())"
+          ]
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,x,physical_port_mask)",
+          "heads": [
+            "569: self.source_head = copy.deepcopy(reference_b3.source_head)",
+            "576: self.graph1 = None",
+            "577: self.graph2 = None",
+            "579: self.graph1 = GCNConv(64, 64, add_self_loops=True, normalize=True)",
+            "580: self.graph2 = GCNConv(64, 64, add_self_loops=True, normalize=True)",
+            "581: elif operator == \"graphconv\":",
+            "582: self.graph1 = GraphConv(64, 64, aggr=\"add\")",
+            "583: self.graph2 = GraphConv(64, 64, aggr=\"add\")",
+            "585: self.graph1 = GATConv(",
+            "595: self.graph2 = GATConv(",
+            "641: return self.source_head(",
+            "660: flat = self.activation(self.graph1(flat, edges))",
+            "661: flat = self.activation(self.graph2(flat, edges))",
+            "663: logits = self.source_head(node_embedding)",
+            "665: raise RuntimeError(f\"source head returned unexpected shape {tuple(logits.shape)}\")"
+          ],
+          "init": "__init__(self,reference_b3,operator,base_edge_index)",
+          "layers": [
+            "579: self.graph1 = GCNConv(64, 64, add_self_loops=True, normalize=True)",
+            "580: self.graph2 = GCNConv(64, 64, add_self_loops=True, normalize=True)",
+            "582: self.graph1 = GraphConv(64, 64, aggr=\"add\")",
+            "583: self.graph2 = GraphConv(64, 64, aggr=\"add\")",
+            "585: self.graph1 = GATConv(",
+            "595: self.graph2 = GATConv("
+          ],
+          "name": "CleanSourceOnlyBaseline",
+          "reductions": []
+        }
+      ],
+      "label": "P2_OPERATOR_TRAINER",
+      "operator_mentions": {
+        "Conv1d": 0,
+        "GATConv": 5,
+        "GCNConv": 5,
+        "GraphConv": 5,
+        "LSTM": 0
+      },
+      "path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+      "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d"
+    },
+    "P2_TASKD_GRAPHCONV": {
+      "classes": [
+        {
+          "constants": [
+            "50: architecture_name = \"TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4\"",
+            "51: expected_parameter_count = 59_785",
+            "80: if parameter_count != self.expected_parameter_count:",
+            "83: f\"expected {self.expected_parameter_count}\""
+          ],
+          "forward": "forward(self,x,physical_port_mask)",
+          "heads": [
+            "50: architecture_name = \"TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4\"",
+            "51: expected_parameter_count = 59_785",
+            "52: count_class_values = (1, 2, 3, 4)",
+            "63: self.source_head = copy.deepcopy(reference_b3.source_head)",
+            "64: self.transit_head = copy.deepcopy(reference_b3.transit_head)",
+            "65: self.victim_head = copy.deepcopy(reference_b3.victim_head)",
+            "66: self.path_head = copy.deepcopy(reference_b3.path_head)",
+            "67: self.graph_projection = copy.deepcopy(reference_b3.graph_projection)",
+            "69: self.count_head = copy.deepcopy(reference_b3.count_head)",
+            "75: self.graph1 = GraphConv(64, 64, aggr=\"add\", bias=True)",
+            "76: self.graph2 = GraphConv(64, 64, aggr=\"add\", bias=True)",
+            "79: parameter_count = sum(parameter.numel() for parameter in self.parameters())",
+            "80: if parameter_count != self.expected_parameter_count:",
+            "82: f\"Task-D GraphConv parameter count={parameter_count}, \"",
+            "120: node_embedding = self.encode_pre_graph(x, physical_port_mask)",
+            "129: flat = self.activation(self.graph1(flat, edges))",
+            "130: flat = self.activation(self.graph2(flat, edges))",
+            "133: source_logits = self.source_head(node_embedding).squeeze(-1)",
+            "134: transit_logits = self.transit_head(node_embedding).squeeze(-1)",
+            "135: victim_logits = self.victim_head(node_embedding).squeeze(-1)",
+            "136: path_logits = self.path_head(node_embedding).squeeze(-1)",
+            "142: graph_embedding = self.graph_projection(pooled)"
+          ],
+          "init": "__init__(self,reference_b3,base_edge_index)",
+          "layers": [
+            "41: class P2TaskDGraphConvCount4(nn.Module):",
+            "43: B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.",
+            "46: the Conv1D and GraphConv candidates begin with byte-identical common",
+            "56: if GraphConv is None:",
+            "57: raise RuntimeError(f\"torch_geometric GraphConv unavailable: {_PYG_IMPORT_ERROR}\")",
+            "75: self.graph1 = GraphConv(64, 64, aggr=\"add\", bias=True)",
+            "76: self.graph2 = GraphConv(64, 64, aggr=\"add\", bias=True)",
+            "82: f\"Task-D GraphConv parameter count={parameter_count}, \""
+          ],
+          "name": "P2TaskDGraphConvCount4",
+          "reductions": [
+            "79: parameter_count = sum(parameter.numel() for parameter in self.parameters())",
+            "138: pooled = torch.cat(",
+            "139: (node_embedding.mean(dim=1), node_embedding.amax(dim=1)),",
+            "142: graph_embedding = self.graph_projection(pooled)"
+          ]
+        }
+      ],
+      "label": "P2_TASKD_GRAPHCONV",
+      "operator_mentions": {
+        "Conv1d": 0,
+        "GATConv": 0,
+        "GCNConv": 0,
+        "GraphConv": 10,
+        "LSTM": 0
+      },
+      "path": "src/models/v5_p2_task_d_full_multitask_count4.py",
+      "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+    },
+    "TCN_GCN": {
+      "classes": [
+        {
+          "constants": [],
+          "forward": null,
+          "heads": [
+            "77: d = load_graph_arrays(npz_path)",
+            "79: self.y_graph = d[\"y_graph\"].astype(np.float32)",
+            "93: \"y_graph\": torch.tensor(self.y_graph[real_idx], dtype=torch.float32),"
+          ],
+          "init": "__init__(self,npz_path,indices)",
+          "layers": [],
+          "name": "NoCTemporalGraphDataset",
+          "reductions": []
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,h,a_hat)",
+          "heads": [],
+          "init": "__init__(self,in_dim,out_dim)",
+          "layers": [
+            "196: self.linear = nn.Linear(in_dim, out_dim)"
+          ],
+          "name": "GCNLayer",
+          "reductions": [
+            "199: aggregated = torch.einsum(\"ij,bjf->bif\", a_hat, h)"
+          ]
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,x)",
+          "heads": [],
+          "init": "__init__(self,channels,kernel_size,dilation,dropout)",
+          "layers": [
+            "316: self.conv1 = nn.Conv1d(channels, channels, kernel_size, padding=padding, dilation=dilation)",
+            "317: self.norm1 = nn.BatchNorm1d(channels)",
+            "318: self.conv2 = nn.Conv1d(channels, channels, kernel_size, padding=padding, dilation=dilation)",
+            "319: self.norm2 = nn.BatchNorm1d(channels)",
+            "320: self.dropout = nn.Dropout(dropout)"
+          ],
+          "name": "TemporalResidualBlock",
+          "reductions": []
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,x)",
+          "heads": [],
+          "init": "__init__(self,in_features,embedding_dim,kernel_size,dropout)",
+          "layers": [
+            "332: self.input_projection = nn.Conv1d(in_features, embedding_dim, kernel_size=1)",
+            "335: self.attention_score = nn.Conv1d(embedding_dim, 1, kernel_size=1)"
+          ],
+          "name": "TemporalTCNEncoder",
+          "reductions": [
+            "335: self.attention_score = nn.Conv1d(embedding_dim, 1, kernel_size=1)",
+            "344: attention_weights = torch.softmax(self.attention_score(h), dim=2)",
+            "345: h = torch.sum(h * attention_weights, dim=2)"
+          ]
+        },
+        {
+          "constants": [],
+          "forward": "forward(self,x,a_hat)",
+          "heads": [
+            "356: self.graph_head = nn.Linear(gcn_out, 1)",
+            "363: graph_embedding = h.mean(dim=1)",
+            "364: graph_logits = self.graph_head(graph_embedding).squeeze(-1)",
+            "365: return graph_logits, node_logits"
+          ],
+          "init": "__init__(self,input_features,temporal_dim,gcn_hidden,gcn_out,tcn_dropout)",
+          "layers": [
+            "355: self.node_head = nn.Linear(gcn_out, 1)",
+            "356: self.graph_head = nn.Linear(gcn_out, 1)"
+          ],
+          "name": "TemporalTCNGCN",
+          "reductions": [
+            "363: graph_embedding = h.mean(dim=1)"
+          ]
+        }
+      ],
+      "label": "TCN_GCN",
+      "operator_mentions": {
+        "Conv1d": 4,
+        "GATConv": 0,
+        "GCNConv": 0,
+        "GraphConv": 0,
+        "LSTM": 0
+      },
+      "path": "scripts/train_temporal_tcn_gcn_v3.py",
+      "sha256": "cd218697038f2a71df9efa4bccba610e22a241117fb1fe8f97fda601bb0b99fa"
+    }
+  },
+  "project_model_imports_executed": false,
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC2A_EXACT_ARCHITECTURE_BLUEPRINT_RECOVERY",
+  "status": "PASS",
+  "test_evaluation": false,
+  "training_performed": false,
+  "validation_evaluation": false
+}

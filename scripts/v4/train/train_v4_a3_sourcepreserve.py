@@ -1,0 +1,1195 @@
+#!/usr/bin/env python3
+"""Stage-gated V4-A3 SourcePreserve CountAware TemporalGCN trainer.
+
+Modes
+-----
+freeze-contract  Write the immutable A3 experiment contract and review gate.
+authorize        Verify A2 closure and create the explicit A3 training authorization.
+source-audit     Verify model structure, source hashes, outputs, and parameter count.
+dataset-audit    Verify V4 memmaps, split isolation, adjacency, and physical masks.
+one-batch        Run one forward/backward audit without an optimizer step.
+smoke            Run a bounded two-epoch integrity test in a separate directory.
+train            Run/resume the primary seed-7 A3 experiment. Test samples are never loaded.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import math
+import os
+import sys
+import time
+from pathlib import Path
+from typing import Any, Mapping
+
+import numpy as np
+import torch
+import torch.nn as nn
+
+COMMON_DIR = Path(__file__).resolve().parents[1] / "common"
+if str(COMMON_DIR) not in sys.path:
+    sys.path.insert(0, str(COMMON_DIR))
+
+from v4_a3_sourcepreserve import (  # noqa: E402
+    A3SourcePreserveModel,
+    COUNT_CLASSES,
+    EXPECTED_PARAMETER_COUNT,
+    EXPERIMENT_DESIGNATION,
+    MODEL_NAME,
+    PRIMARY_SEED,
+    STAGE_LABEL,
+    V4A3MemmapDataset,
+    EpochMetrics,
+    architecture_contract,
+    atomic_csv_dump,
+    atomic_json_dump,
+    atomic_torch_save,
+    build_loader,
+    build_normalized_adjacency,
+    build_physical_valid_port_mask,
+    compute_training_class_weights,
+    hard_negative_ranking_loss,
+    load_metadata,
+    load_split_indices,
+    manhattan_distance_matrix,
+    model_signature,
+    rank_weight_for_epoch,
+    select_graph_threshold_fpr_cap,
+    selection_score,
+    set_seed,
+    sha256_file,
+    validate_dataset_headers,
+    validate_port_mask,
+)
+
+PASS = {
+    "freeze-contract": "V4_A3_EXPERIMENT_CONTRACT_FROZEN",
+    "authorize": "V4_A3_TRAINING_AUTHORIZED",
+    "source-audit": "V4_A3_SOURCE_AUDIT_PASS",
+    "dataset-audit": "V4_A3_DATASET_AND_MASK_AUDIT_PASS",
+    "one-batch": "V4_A3_ONE_BATCH_PREFLIGHT_PASS",
+    "smoke": "V4_A3_SMOKE_TEST_PASS",
+    "train": "V4_A3_FULL_TRAINING_COMPLETE",
+}
+
+
+def source_paths() -> dict[str, Path]:
+    return {
+        "trainer": Path(__file__).resolve(),
+        "common": (COMMON_DIR / "v4_a3_sourcepreserve.py").resolve(),
+    }
+
+
+def immutable_config(args: argparse.Namespace) -> dict[str, Any]:
+    return {
+        "experiment_designation": EXPERIMENT_DESIGNATION,
+        "model_name": MODEL_NAME,
+        "expected_parameter_count": EXPECTED_PARAMETER_COUNT,
+        "seed": int(args.seed),
+        "batch_size": int(args.batch_size),
+        "batch_size_fallback_authorized": bool(args.batch_size_fallback_authorized),
+        "batch_size_fallback_reason": str(args.batch_size_fallback_reason or ""),
+        "num_workers": int(args.num_workers),
+        "pin_memory": bool(args.pin_memory),
+        "persistent_workers": bool(args.persistent_workers),
+        "prefetch_factor": int(args.prefetch_factor),
+        "epochs": int(args.epochs),
+        "patience": int(args.patience),
+        "min_delta": float(args.min_delta),
+        "lr": float(args.lr),
+        "weight_decay": float(args.weight_decay),
+        "graph_loss_weight": float(args.graph_loss_weight),
+        "node_loss_weight": float(args.node_loss_weight),
+        "count_loss_weight": float(args.count_loss_weight),
+        "rank_loss_weight": float(args.rank_loss_weight),
+        "rank_margin": float(args.rank_margin),
+        "graph_threshold_training": float(args.graph_threshold),
+        "node_threshold_training": float(args.node_threshold),
+        "graph_fpr_cap": float(args.graph_fpr_cap),
+        "full_val_every": int(args.full_val_every),
+        "runtime_schedule_version": "1.1.0",
+        "amp": bool(args.amp),
+        "data_dir": str(Path(args.data_dir).resolve()) if args.data_dir else None,
+    }
+
+
+def validate_primary_args(args: argparse.Namespace) -> None:
+    if args.seed != PRIMARY_SEED:
+        raise RuntimeError(f"Primary A3 is frozen to seed {PRIMARY_SEED}")
+    if args.batch_size <= 0 or args.num_workers < 0:
+        raise ValueError("Invalid loader settings")
+    if args.batch_size != 256:
+        if not args.batch_size_fallback_authorized:
+            raise RuntimeError(
+                "Primary A3 batch size is frozen to 256. A fallback requires "
+                "--batch-size-fallback-authorized and a recorded --batch-size-fallback-reason."
+            )
+        if args.batch_size not in {128}:
+            raise RuntimeError("Only the predeclared batch-size fallback 128 is authorized")
+        if not str(args.batch_size_fallback_reason or "").strip():
+            raise RuntimeError("--batch-size-fallback-reason is required")
+    if args.epochs <= 0 or args.patience <= 0 or args.min_delta < 0:
+        raise ValueError("Invalid epoch/early-stopping settings")
+    if args.full_val_every != 3:
+        raise RuntimeError("Primary A3 full-validation cadence is frozen to every 3 epochs")
+    expected = {
+        "lr": 1e-3,
+        "weight_decay": 1e-4,
+        "graph_loss_weight": 1.0,
+        "node_loss_weight": 1.0,
+        "count_loss_weight": 0.5,
+        "rank_loss_weight": 0.2,
+        "rank_margin": 0.2,
+        "graph_threshold": 0.5,
+        "node_threshold": 0.5,
+        "graph_fpr_cap": 0.10,
+    }
+    for name, value in expected.items():
+        actual = float(getattr(args, name))
+        if not math.isclose(actual, value, rel_tol=0.0, abs_tol=1e-12):
+            raise RuntimeError(f"Frozen A3 primary setting mismatch: {name}={actual}, expected={value}")
+    if args.amp:
+        raise RuntimeError("AMP is not authorized for the primary A3 run")
+
+
+def freeze_contract(args: argparse.Namespace) -> int:
+    out = Path(args.out_dir).resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    contract_path = out / "A3_EXPERIMENT_CONTRACT.json"
+    gate_path = out / "A3_CONTRACT_REVIEW_GATE.json"
+    if contract_path.exists() or gate_path.exists():
+        existing = json.loads(contract_path.read_text(encoding="utf-8")) if contract_path.exists() else None
+        if existing == architecture_contract():
+            print("REUSE verified frozen A3 contract")
+            print(PASS["freeze-contract"])
+            return 0
+        raise RuntimeError(f"Existing contract differs: {contract_path}")
+    contract = architecture_contract()
+    paths = source_paths()
+    contract["source_hashes"] = {name: sha256_file(path) for name, path in paths.items()}
+    atomic_json_dump(contract_path, contract)
+    atomic_json_dump(
+        gate_path,
+        {
+            "status": "HOLD_FOR_REVIEW",
+            "reviewed": False,
+            "training_authorized": False,
+            "contract_sha256": sha256_file(contract_path),
+            "required_review": [
+                "A2 capacity verdict",
+                "A3 architecture",
+                "loss schedule",
+                "checkpoint rule",
+                "RTL output interface",
+            ],
+        },
+    )
+    print(contract_path)
+    print(gate_path)
+    print(PASS["freeze-contract"])
+    return 0
+
+
+def authorize(args: argparse.Namespace) -> int:
+    out = Path(args.out_dir).resolve()
+    contract_path = out / "A3_EXPERIMENT_CONTRACT.json"
+    gate_path = out / "A3_CONTRACT_REVIEW_GATE.json"
+    a2 = Path(args.a2_analysis_dir).resolve()
+    required = [
+        contract_path,
+        gate_path,
+        a2 / "analysis_summary.json",
+        a2 / "a1_vs_a2_capacity_verdict.json",
+        a2 / "a3_recommendation.json",
+    ]
+    missing = [str(path) for path in required if not path.is_file()]
+    if missing:
+        raise FileNotFoundError("Authorization inputs missing:\n  " + "\n  ".join(missing))
+    summary = json.loads((a2 / "analysis_summary.json").read_text(encoding="utf-8"))
+    verdict = json.loads((a2 / "a1_vs_a2_capacity_verdict.json").read_text(encoding="utf-8"))
+    recommendation = json.loads((a2 / "a3_recommendation.json").read_text(encoding="utf-8"))
+    checks = {
+        "a2_analysis_pass": summary.get("analysis_pass") is True,
+        "a2_hard_checks": all(summary.get("hard_checks", {}).values()),
+        "capacity_outcome_a": verdict.get("primary_capacity_outcome") == "Outcome A — width improves ranking",
+        "a3_still_necessary": recommendation.get("a3_still_necessary") is True,
+        "user_approval_flag": bool(args.approve),
+    }
+    if not all(checks.values()):
+        raise RuntimeError(f"A3 authorization gate failed: {checks}")
+    authorization = {
+        "status": "APPROVED_FOR_A3_MAIN",
+        "training_authorized": True,
+        "approved_variant": MODEL_NAME,
+        "experiment_designation": EXPERIMENT_DESIGNATION,
+        "contract_sha256": sha256_file(contract_path),
+        "a2_analysis_dir": str(a2),
+        "a2_analysis_summary_sha256": sha256_file(a2 / "analysis_summary.json"),
+        "a2_capacity_verdict_sha256": sha256_file(a2 / "a1_vs_a2_capacity_verdict.json"),
+        "a3_recommendation_sha256": sha256_file(a2 / "a3_recommendation.json"),
+        "checks": checks,
+        "test_access_authorized_during_training": False,
+    }
+    atomic_json_dump(out / "A3_TRAINING_AUTHORIZATION.json", authorization)
+    atomic_json_dump(
+        gate_path,
+        {
+            "status": "APPROVED_FOR_A3_MAIN",
+            "reviewed": True,
+            "training_authorized": True,
+            "contract_sha256": sha256_file(contract_path),
+            "authorization_sha256": sha256_file(out / "A3_TRAINING_AUTHORIZATION.json"),
+        },
+    )
+    print(json.dumps(authorization, indent=2))
+    print(PASS["authorize"])
+    return 0
+
+
+def validate_authorization(path: Path, contract_path: Path) -> dict[str, Any]:
+    if not path.is_file():
+        raise FileNotFoundError(path)
+    value = json.loads(path.read_text(encoding="utf-8"))
+    checks = {
+        "training_authorized": value.get("training_authorized") is True,
+        "status": value.get("status") == "APPROVED_FOR_A3_MAIN",
+        "designation": value.get("experiment_designation") == EXPERIMENT_DESIGNATION,
+        "variant": value.get("approved_variant") == MODEL_NAME,
+        "contract_hash": value.get("contract_sha256") == sha256_file(contract_path),
+        "no_test": value.get("test_access_authorized_during_training") is False,
+    }
+    if not all(checks.values()):
+        raise RuntimeError(f"Training authorization invalid: {checks}")
+    return value
+
+
+def source_audit(args: argparse.Namespace) -> int:
+    out = Path(args.out_dir).resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    report_path = out / "source_audit.json"
+    if report_path.exists():
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        if report.get("pass") is True:
+            print("REUSE verified source audit")
+            print(PASS["source-audit"])
+            return 0
+        raise RuntimeError(f"Existing failed source audit: {report_path}")
+    model = A3SourcePreserveModel()
+    signature = model_signature(model)
+    mask = build_physical_valid_port_mask()
+    adjacency = torch.eye(16, dtype=torch.float32)
+    sample = torch.zeros((2, 16, 8, 24), dtype=torch.float32)
+    output = model(sample, adjacency, mask, return_intermediates=True)
+    expected_shapes = {
+        "graph_logits": [2],
+        "node_logits": [2, 16],
+        "count_logits": [2, 5],
+        "regional_embedding": [2, 64],
+        "temporal_sequence": [2, 16, 8, 16],
+        "temporal_pooled": [2, 16, 32],
+        "mask": [2, 16, 5],
+        "local_input": [2, 16, 37],
+        "h_local": [2, 16, 16],
+        "h_graph": [2, 16, 16],
+        "h_node": [2, 16, 32],
+    }
+    actual_shapes = {key: list(value.shape) for key, value in output.items()}
+    checks = {
+        "parameter_count": signature["parameter_count_ok"],
+        "exactly_one_gcn": signature["gcn_count"] == 1,
+        "count_head_five": signature["count_head"] == [64, 5],
+        "regional_embedding_64": signature["regional_embedding_dim"] == 64,
+        "local_skip": signature["source_preserving_fusion"] == "concat(h_local,h_graph)",
+        "no_graph_gating": signature["graph_gates_attacker_decoder"] is False,
+        "output_shapes": actual_shapes == expected_shapes,
+        "port_mask": validate_port_mask(mask)["pass"],
+    }
+    paths = source_paths()
+    report = {
+        "pass": all(checks.values()),
+        "checks": checks,
+        "signature": signature,
+        "actual_shapes": actual_shapes,
+        "expected_shapes": expected_shapes,
+        "source_hashes": {name: sha256_file(path) for name, path in paths.items()},
+        "source_paths": {name: str(path) for name, path in paths.items()},
+        "training_path_split_loaders": ["train", "validation"],
+        "test_loader_constructed": False,
+        "ranking_uses_raw_logits": True,
+        "true_attackers_excluded_from_negative_pool": True,
+    }
+    atomic_json_dump(report_path, report)
+    if not report["pass"]:
+        raise RuntimeError(f"Source audit failed: {checks}")
+    print(json.dumps(report, indent=2))
+    print(PASS["source-audit"])
+    return 0
+
+
+def dataset_audit(args: argparse.Namespace) -> int:
+    out = Path(args.out_dir).resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    report_path = out / "dataset_and_mask_audit.json"
+    if report_path.exists():
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        if report.get("pass") is True:
+            print("REUSE verified dataset audit")
+            print(PASS["dataset-audit"])
+            return 0
+        raise RuntimeError(f"Existing failed dataset audit: {report_path}")
+    data_dir = Path(args.data_dir).resolve()
+    headers = validate_dataset_headers(data_dir)
+    mask = build_physical_valid_port_mask()
+    mask_report = validate_port_mask(mask)
+    edge_index = np.load(data_dir / "edge_index.npy")
+    adjacency = build_normalized_adjacency(edge_index)
+    checks = {
+        "headers": all(headers["checks"].values()),
+        "mask": mask_report["pass"],
+        "adjacency_shape": tuple(adjacency.shape) == (16, 16),
+        "adjacency_finite": bool(torch.isfinite(adjacency).all().item()),
+        "adjacency_symmetric": bool(torch.allclose(adjacency, adjacency.T, atol=1e-6)),
+        "router_order": "router_id = row * 4 + column",
+        "physical_mask_separate_from_regional_adjacency": True,
+    }
+    report = {
+        "pass": all(value is True or isinstance(value, str) for value in checks.values()),
+        "checks": checks,
+        "headers": headers,
+        "physical_port_mask": mask.tolist(),
+        "port_order": ["local", "north", "east", "south", "west"],
+        "mask_report": mask_report,
+        "adjacency_shape": list(adjacency.shape),
+        "data_dir": str(data_dir),
+    }
+    atomic_json_dump(report_path, report)
+    np.save(out / "physical_valid_port_mask.npy", mask.numpy())
+    if not report["pass"]:
+        raise RuntimeError(f"Dataset audit failed: {checks}")
+    print(json.dumps(report, indent=2))
+    print(PASS["dataset-audit"])
+    return 0
+
+
+def prepare_objects(args: argparse.Namespace, include_val: bool = True) -> dict[str, Any]:
+    data_dir = Path(args.data_dir).resolve()
+    metadata = load_metadata(data_dir)
+    splits = load_split_indices(data_dir, metadata)
+    train_dataset = V4A3MemmapDataset(data_dir, splits["train"])
+    train_loader = build_loader(
+        train_dataset,
+        args.batch_size,
+        True,
+        args.num_workers,
+        args.pin_memory,
+        args.persistent_workers,
+        args.prefetch_factor,
+        args.seed,
+    )
+    val_loader = None
+    if include_val:
+        val_dataset = V4A3MemmapDataset(data_dir, splits["val"])
+        val_loader = build_loader(
+            val_dataset,
+            args.batch_size,
+            False,
+            args.num_workers,
+            args.pin_memory,
+            args.persistent_workers,
+            args.prefetch_factor,
+            args.seed,
+        )
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = A3SourcePreserveModel().to(device)
+    signature = model_signature(model)
+    if signature["parameter_count"] != EXPECTED_PARAMETER_COUNT:
+        raise RuntimeError(f"Parameter guard failed: {signature}")
+    edge_index = np.load(data_dir / "edge_index.npy")
+    adjacency = build_normalized_adjacency(edge_index).to(device)
+    mask = build_physical_valid_port_mask().to(device)
+    distances = manhattan_distance_matrix().to(device)
+    weights = compute_training_class_weights(data_dir, splits["train"])
+    graph_loss_fn = nn.BCEWithLogitsLoss(
+        pos_weight=torch.tensor(weights["graph_pos_weight"], dtype=torch.float32, device=device)
+    )
+    node_loss_fn = nn.BCEWithLogitsLoss(
+        pos_weight=torch.tensor(weights["node_pos_weight"], dtype=torch.float32, device=device)
+    )
+    count_loss_fn = nn.CrossEntropyLoss()
+    return {
+        "data_dir": data_dir,
+        "metadata": metadata,
+        "splits": splits,
+        "train_loader": train_loader,
+        "val_loader": val_loader,
+        "device": device,
+        "model": model,
+        "signature": signature,
+        "adjacency": adjacency,
+        "mask": mask,
+        "distances": distances,
+        "weights": weights,
+        "graph_loss_fn": graph_loss_fn,
+        "node_loss_fn": node_loss_fn,
+        "count_loss_fn": count_loss_fn,
+    }
+
+
+def compute_losses(
+    output: Mapping[str, torch.Tensor],
+    y_graph: torch.Tensor,
+    y_node: torch.Tensor,
+    attacker_count: torch.Tensor,
+    graph_loss_fn: nn.Module,
+    node_loss_fn: nn.Module,
+    count_loss_fn: nn.Module,
+    distances: torch.Tensor,
+    args: argparse.Namespace,
+    rank_weight: float,
+    compute_rank: bool = True,
+) -> tuple[torch.Tensor, dict[str, torch.Tensor], dict[str, Any]]:
+    graph_loss = graph_loss_fn(output["graph_logits"], y_graph)
+    node_loss = node_loss_fn(output["node_logits"], y_node)
+    count_loss = count_loss_fn(output["count_logits"], attacker_count)
+
+    rank_skipped = (not compute_rank) or rank_weight <= 0.0
+    if rank_skipped:
+        rank_loss = output["node_logits"].sum() * 0.0
+        rank_stats: dict[str, Any] = {
+            "attack_samples": 0,
+            "pairs": 0,
+            "skipped": True,
+        }
+    else:
+        rank_loss, rank_stats = hard_negative_ranking_loss(
+            output["node_logits"], y_node, distances, margin=args.rank_margin
+        )
+        rank_stats = dict(rank_stats)
+        rank_stats["skipped"] = False
+
+    total = (
+        args.graph_loss_weight * graph_loss
+        + args.node_loss_weight * node_loss
+        + args.count_loss_weight * count_loss
+        + rank_weight * rank_loss
+    )
+    return total, {
+        "graph": graph_loss,
+        "node": node_loss,
+        "count": count_loss,
+        "rank": rank_loss,
+    }, rank_stats
+
+
+def run_epoch(
+    model: A3SourcePreserveModel,
+    loader: torch.utils.data.DataLoader,
+    adjacency: torch.Tensor,
+    mask: torch.Tensor,
+    distances: torch.Tensor,
+    device: torch.device,
+    graph_loss_fn: nn.Module,
+    node_loss_fn: nn.Module,
+    count_loss_fn: nn.Module,
+    args: argparse.Namespace,
+    epoch: int,
+    optimizer: torch.optim.Optimizer | None,
+    max_batches: int | None = None,
+    collect_graph_scores: bool = False,
+    compute_topk_metrics: bool = False,
+    compute_rank_loss: bool = True,
+) -> tuple[dict[str, float], dict[str, Any], dict[str, Any]]:
+    training = optimizer is not None
+    model.train(training)
+    metric = EpochMetrics(
+        args.graph_threshold,
+        args.node_threshold,
+        compute_topk=compute_topk_metrics,
+    )
+    totals = {"total": 0.0, "graph": 0.0, "node": 0.0, "count": 0.0, "rank": 0.0}
+    samples = 0
+    rank_pairs = 0
+    rank_attack_samples = 0
+    rank_skipped_batches = 0
+    weight = rank_weight_for_epoch(epoch, args.rank_loss_weight)
+    context = torch.enable_grad() if training else torch.no_grad()
+    with context:
+        for batch_number, batch in enumerate(loader, start=1):
+            if max_batches is not None and batch_number > max_batches:
+                break
+            x = batch["x"].to(device, non_blocking=True)
+            y_graph = batch["y_graph"].to(device, non_blocking=True)
+            y_node = batch["y_node"].to(device, non_blocking=True)
+            count = batch["attacker_count"].to(device, non_blocking=True)
+            output = model(x, adjacency, mask)
+            total_loss, components, rank_stats = compute_losses(
+                output,
+                y_graph,
+                y_node,
+                count,
+                graph_loss_fn,
+                node_loss_fn,
+                count_loss_fn,
+                distances,
+                args,
+                weight,
+                compute_rank=compute_rank_loss,
+            )
+            if not torch.isfinite(total_loss):
+                raise FloatingPointError(f"Non-finite loss at batch {batch_number}")
+            if training:
+                optimizer.zero_grad(set_to_none=True)
+                total_loss.backward()
+                for name, parameter in model.named_parameters():
+                    if parameter.grad is not None and not torch.isfinite(parameter.grad).all():
+                        raise FloatingPointError(f"Non-finite gradient in {name}")
+                optimizer.step()
+            batch_size = int(x.shape[0])
+            samples += batch_size
+            totals["total"] += float(total_loss.detach().item()) * batch_size
+            for key, value in components.items():
+                totals[key] += float(value.detach().item()) * batch_size
+            rank_pairs += int(rank_stats["pairs"])
+            rank_attack_samples += int(rank_stats["attack_samples"])
+            rank_skipped_batches += int(bool(rank_stats.get("skipped", False)))
+            metric.update(
+                output["graph_logits"].detach(),
+                output["node_logits"].detach(),
+                output["count_logits"].detach(),
+                y_graph,
+                y_node,
+                collect_graph_scores=collect_graph_scores,
+            )
+    losses = {key: value / max(samples, 1) for key, value in totals.items()}
+    metrics = metric.metrics()
+    extra: dict[str, Any] = {
+        "rank_weight": weight,
+        "rank_pairs": rank_pairs,
+        "rank_attack_samples": rank_attack_samples,
+        "rank_computation_skipped": bool(rank_skipped_batches > 0 and rank_pairs == 0),
+        "rank_skipped_batches": rank_skipped_batches,
+        "topk_metrics_computed": bool(compute_topk_metrics),
+    }
+    if collect_graph_scores:
+        if not compute_topk_metrics:
+            raise RuntimeError("Full graph-score collection requires top-k metrics for checkpointing")
+        graph_truth, graph_prob = metric.graph_arrays()
+        constrained, sweep = select_graph_threshold_fpr_cap(
+            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap
+        )
+        extra["constrained_graph"] = constrained
+        extra["graph_threshold_sweep"] = sweep
+        extra["checkpoint_score"] = selection_score(metrics, constrained)
+    return losses, metrics, extra
+
+
+def one_batch(args: argparse.Namespace) -> int:
+    validate_primary_args(args)
+    out = Path(args.out_dir).resolve()
+    out.mkdir(parents=True, exist_ok=True)
+    report_path = out / "one_batch_preflight.json"
+    if report_path.exists():
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+        if report.get("pass") is True:
+            print("REUSE verified one-batch preflight")
+            print(PASS["one-batch"])
+            return 0
+        raise RuntimeError(f"Existing failed one-batch report: {report_path}")
+    set_seed(args.seed)
+    objects = prepare_objects(args, include_val=False)
+    model = objects["model"]
+    model.train()
+    batch = next(iter(objects["train_loader"]))
+    device = objects["device"]
+    x = batch["x"].to(device)
+    y_graph = batch["y_graph"].to(device)
+    y_node = batch["y_node"].to(device)
+    count = batch["attacker_count"].to(device)
+    if torch.cuda.is_available():
+        torch.cuda.reset_peak_memory_stats()
+    output = model(x, objects["adjacency"], objects["mask"], return_intermediates=True)
+    rank_weight = rank_weight_for_epoch(9, args.rank_loss_weight)
+    total_loss, components, rank_stats = compute_losses(
+        output,
+        y_graph,
+        y_node,
+        count,
+        objects["graph_loss_fn"],
+        objects["node_loss_fn"],
+        objects["count_loss_fn"],
+        objects["distances"],
+        args,
+        rank_weight,
+    )
+    total_loss.backward()
+    finite_tensors = all(torch.isfinite(value).all().item() for value in output.values())
+    finite_gradients = all(
+        parameter.grad is None or torch.isfinite(parameter.grad).all().item()
+        for parameter in model.parameters()
+    )
+    report = {
+        "pass": bool(torch.isfinite(total_loss).item() and finite_tensors and finite_gradients),
+        "device": str(device),
+        "input_shape": list(x.shape),
+        "mask_shape": list(objects["mask"].shape),
+        "temporal_output_shape": list(output["temporal_sequence"].shape),
+        "temporal_pooled_shape": list(output["temporal_pooled"].shape),
+        "h_local_shape": list(output["h_local"].shape),
+        "h_graph_shape": list(output["h_graph"].shape),
+        "h_node_shape": list(output["h_node"].shape),
+        "graph_logits_shape": list(output["graph_logits"].shape),
+        "node_logits_shape": list(output["node_logits"].shape),
+        "count_logits_shape": list(output["count_logits"].shape),
+        "regional_embedding_shape": list(output["regional_embedding"].shape),
+        "graph_loss": float(components["graph"].item()),
+        "node_loss": float(components["node"].item()),
+        "count_loss": float(components["count"].item()),
+        "rank_loss": float(components["rank"].item()),
+        "rank_weight": rank_weight,
+        "total_loss": float(total_loss.item()),
+        "rank_stats": rank_stats,
+        "all_tensors_finite": finite_tensors,
+        "all_gradients_finite": finite_gradients,
+        "cuda_memory_allocated_mib": (
+            torch.cuda.memory_allocated() / 1024**2 if torch.cuda.is_available() else 0.0
+        ),
+        "cuda_peak_allocated_mib": (
+            torch.cuda.max_memory_allocated() / 1024**2 if torch.cuda.is_available() else 0.0
+        ),
+        "parameter_count": objects["signature"]["parameter_count"],
+        "expected_parameter_count": EXPECTED_PARAMETER_COUNT,
+    }
+    atomic_json_dump(report_path, report)
+    if not report["pass"]:
+        raise RuntimeError(f"One-batch preflight failed: {report}")
+    print(json.dumps(report, indent=2))
+    print(PASS["one-batch"])
+    return 0
+
+
+def smoke(args: argparse.Namespace) -> int:
+    validate_primary_args(args)
+    out = Path(args.out_dir).resolve()
+    if out.exists() and any(out.iterdir()):
+        raise RuntimeError(f"Smoke output must be a new empty directory: {out}")
+    out.mkdir(parents=True, exist_ok=True)
+    set_seed(args.seed)
+    objects = prepare_objects(args, include_val=True)
+    model = objects["model"]
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    history: list[dict[str, Any]] = []
+
+    # Exercise both runtime paths: epoch 1 skips ranking; epoch 4 activates it.
+    schedule_epochs = [1, 4]
+    for schedule_epoch in schedule_epochs[: args.smoke_epochs]:
+        train_losses, train_metrics, train_extra = run_epoch(
+            model,
+            objects["train_loader"],
+            objects["adjacency"],
+            objects["mask"],
+            objects["distances"],
+            objects["device"],
+            objects["graph_loss_fn"],
+            objects["node_loss_fn"],
+            objects["count_loss_fn"],
+            args,
+            schedule_epoch,
+            optimizer,
+            max_batches=args.smoke_train_batches,
+            compute_topk_metrics=False,
+            compute_rank_loss=True,
+        )
+        val_losses, val_metrics, val_extra = run_epoch(
+            model,
+            objects["val_loader"],
+            objects["adjacency"],
+            objects["mask"],
+            objects["distances"],
+            objects["device"],
+            objects["graph_loss_fn"],
+            objects["node_loss_fn"],
+            objects["count_loss_fn"],
+            args,
+            schedule_epoch,
+            None,
+            max_batches=args.smoke_val_batches,
+            collect_graph_scores=True,
+            compute_topk_metrics=True,
+            compute_rank_loss=True,
+        )
+        history.append(
+            {
+                "schedule_epoch": schedule_epoch,
+                "train_losses": train_losses,
+                "train_metrics": train_metrics,
+                "train_extra": train_extra,
+                "val_losses": val_losses,
+                "val_metrics": val_metrics,
+                "val_extra": {key: value for key, value in val_extra.items() if key != "graph_threshold_sweep"},
+            }
+        )
+    checkpoint = {
+        "model_state_dict": model.state_dict(),
+        "args": vars(args),
+        "model_signature": objects["signature"],
+        "smoke_only": True,
+        "test_evaluated": False,
+    }
+    atomic_torch_save(out / "smoke_last_model.pt", checkpoint)
+    loaded = torch.load(out / "smoke_last_model.pt", map_location="cpu", weights_only=False)
+    first = history[0]["train_extra"]
+    second = history[-1]["train_extra"]
+    report = {
+        "pass": bool(
+            loaded.get("smoke_only") is True
+            and loaded.get("model_signature", {}).get("parameter_count") == EXPECTED_PARAMETER_COUNT
+            and first.get("rank_computation_skipped") is True
+            and (len(history) == 1 or second.get("rank_computation_skipped") is False)
+        ),
+        "history": history,
+        "checkpoint_reload_pass": True,
+        "parameter_count": EXPECTED_PARAMETER_COUNT,
+        "zero_weight_rank_skip_verified": first.get("rank_computation_skipped") is True,
+        "positive_weight_rank_active_verified": len(history) == 1 or second.get("rank_computation_skipped") is False,
+        "test_evaluated": False,
+        "smoke_output_must_not_be_used_as_full_model": True,
+    }
+    atomic_json_dump(out / "smoke_report.json", report)
+    if not report["pass"]:
+        raise RuntimeError("Smoke test failed")
+    print(json.dumps(report, indent=2))
+    print(PASS["smoke"])
+    return 0
+
+
+def flatten_history_record(
+    epoch: int,
+    duration: float,
+    train_losses: Mapping[str, float],
+    train_metrics: Mapping[str, Any],
+    train_extra: Mapping[str, Any],
+    full_validation_performed: bool,
+    val_losses: Mapping[str, float] | None,
+    val_metrics: Mapping[str, Any] | None,
+    val_extra: Mapping[str, Any] | None,
+    best_score: float,
+    best_epoch: int,
+    patience_counter: int,
+    improved: bool,
+    gpu_peak: float,
+) -> dict[str, Any]:
+    constrained = val_extra["constrained_graph"] if val_extra is not None else None
+    return {
+        "epoch": epoch,
+        "epoch_duration_seconds": duration,
+        "rank_weight": train_extra["rank_weight"],
+        "rank_computation_skipped": train_extra["rank_computation_skipped"],
+        "train_total_loss": train_losses["total"],
+        "train_graph_loss": train_losses["graph"],
+        "train_node_loss": train_losses["node"],
+        "train_count_loss": train_losses["count"],
+        "train_rank_loss": train_losses["rank"],
+        "train_graph_f1_fixed_0_5": train_metrics["graph"]["f1"],
+        "train_graph_fpr_fixed_0_5": train_metrics["graph"]["fpr"],
+        "train_node_f1_fixed_0_5": train_metrics["node_threshold"]["f1"],
+        "train_count_accuracy": train_metrics["attack_count_accuracy"],
+        "training_topk_metrics_computed": train_metrics["topk_metrics_computed"],
+        "full_validation_performed": full_validation_performed,
+        "val_total_loss": None if val_losses is None else val_losses["total"],
+        "val_graph_loss": None if val_losses is None else val_losses["graph"],
+        "val_node_loss": None if val_losses is None else val_losses["node"],
+        "val_count_loss": None if val_losses is None else val_losses["count"],
+        "val_rank_loss": None if val_losses is None else val_losses["rank"],
+        "val_graph_threshold_fpr10": None if constrained is None else constrained["threshold"],
+        "val_graph_f1_fpr10": None if constrained is None else constrained["f1"],
+        "val_graph_fpr": None if constrained is None else constrained["fpr"],
+        "val_graph_recall": None if constrained is None else constrained["recall"],
+        "val_attack_exact_topk": None if val_metrics is None else val_metrics["attack_topk_exact_localization"],
+        "val_attack_node_f1_topk": None if val_metrics is None else val_metrics["attack_node_topk"]["f1"],
+        "val_count_accuracy": None if val_metrics is None else val_metrics["attack_count_accuracy"],
+        "val_count_mae": None if val_metrics is None else val_metrics["attack_count_mae"],
+        "val_empty_attack_fraction": None if val_metrics is None else val_metrics["attack_empty_prediction_fraction"],
+        "checkpoint_score": None if val_extra is None else val_extra["checkpoint_score"],
+        "best_score_after_epoch": best_score,
+        "best_epoch_after_epoch": best_epoch,
+        "epochs_since_best": patience_counter,
+        "improved": improved,
+        "gpu_peak_allocated_mib": gpu_peak,
+    }
+
+
+def read_history(path: Path) -> list[dict[str, Any]]:
+    if not path.is_file():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def train(args: argparse.Namespace) -> int:
+    validate_primary_args(args)
+    data_dir = Path(args.data_dir).resolve()
+    out = Path(args.out_dir).resolve()
+    contract_dir = Path(args.contract_dir).resolve()
+    contract_path = contract_dir / "A3_EXPERIMENT_CONTRACT.json"
+    authorization_path = contract_dir / "A3_TRAINING_AUTHORIZATION.json"
+    authorization = validate_authorization(authorization_path, contract_path)
+    set_seed(args.seed)
+
+    if args.resume:
+        required = [out / "last_model.pt", out / "config.json", out / "training_history.csv"]
+        missing = [str(path) for path in required if not path.is_file()]
+        if missing:
+            raise FileNotFoundError("Resume files missing:\n  " + "\n  ".join(missing))
+        stored = json.loads((out / "config.json").read_text(encoding="utf-8"))
+        if stored.get("immutable_config") != immutable_config(args):
+            raise RuntimeError("Resume configuration differs from frozen original configuration")
+    else:
+        if out.exists() and any(out.iterdir()):
+            raise RuntimeError(
+                f"Full-training output is non-empty: {out}. Use --resume only for a verified last_model.pt. "
+                "Otherwise archive the directory manually after reviewing it."
+            )
+        out.mkdir(parents=True, exist_ok=True)
+
+    objects = prepare_objects(args, include_val=True)
+    model: A3SourcePreserveModel = objects["model"]
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+    start_epoch = 1
+    best_score = -float("inf")
+    best_epoch = -1
+    patience_counter = 0
+    history_rows: list[dict[str, Any]] = []
+
+    if args.resume:
+        checkpoint = torch.load(out / "last_model.pt", map_location=objects["device"], weights_only=False)
+        model.load_state_dict(checkpoint["model_state_dict"])
+        optimizer.load_state_dict(checkpoint["optimizer_state_dict"])
+        start_epoch = int(checkpoint["epoch"]) + 1
+        best_score = float(checkpoint["best_score"])
+        best_epoch = int(checkpoint["best_epoch"])
+        patience_counter = int(checkpoint["patience_counter"])
+        history_rows = read_history(out / "training_history.csv")
+        print(f"RESUME epoch={start_epoch} best_epoch={best_epoch} patience={patience_counter}")
+    else:
+        paths = source_paths()
+        config = {
+            "immutable_config": immutable_config(args),
+            "device": str(objects["device"]),
+            "gpu_name": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None,
+            "source_paths": {name: str(path) for name, path in paths.items()},
+            "source_hashes": {name: sha256_file(path) for name, path in paths.items()},
+            "contract_path": str(contract_path),
+            "contract_sha256": sha256_file(contract_path),
+            "authorization_path": str(authorization_path),
+            "authorization": authorization,
+            "checkpoint_selection": architecture_contract()["checkpoint_selection"],
+            "test_loader_constructed": False,
+            "test_evaluated": False,
+        }
+        atomic_json_dump(out / "config.json", config)
+        atomic_json_dump(out / "class_weights.json", objects["weights"])
+        atomic_json_dump(out / "model_signature.json", objects["signature"])
+        atomic_json_dump(
+            out / "split_counts.json",
+            {"train": int(len(objects["splits"]["train"])), "validation": int(len(objects["splits"]["val"]))},
+        )
+        np.savez_compressed(
+            out / "train_val_indices.npz",
+            train_idx=objects["splits"]["train"],
+            val_idx=objects["splits"]["val"],
+        )
+
+    if start_epoch > args.epochs:
+        raise RuntimeError(f"Resume start epoch {start_epoch} exceeds maximum epochs {args.epochs}")
+
+    stopped_early = False
+    last_full_validation: dict[str, Any] | None = None
+    for epoch in range(start_epoch, args.epochs + 1):
+        started = time.perf_counter()
+        if torch.cuda.is_available():
+            torch.cuda.reset_peak_memory_stats()
+
+        train_losses, train_metrics, train_extra = run_epoch(
+            model,
+            objects["train_loader"],
+            objects["adjacency"],
+            objects["mask"],
+            objects["distances"],
+            objects["device"],
+            objects["graph_loss_fn"],
+            objects["node_loss_fn"],
+            objects["count_loss_fn"],
+            args,
+            epoch,
+            optimizer,
+            compute_topk_metrics=False,
+            compute_rank_loss=True,
+        )
+
+        patience_boundary_due = best_epoch >= 1 and (epoch - best_epoch) >= args.patience
+        full_validation_performed = (
+            epoch == 1
+            or epoch % args.full_val_every == 0
+            or patience_boundary_due
+        )
+        val_losses: dict[str, float] | None = None
+        val_metrics: dict[str, Any] | None = None
+        val_extra: dict[str, Any] | None = None
+        current_score: float | None = None
+        improved = False
+
+        if full_validation_performed:
+            val_losses, val_metrics, val_extra = run_epoch(
+                model,
+                objects["val_loader"],
+                objects["adjacency"],
+                objects["mask"],
+                objects["distances"],
+                objects["device"],
+                objects["graph_loss_fn"],
+                objects["node_loss_fn"],
+                objects["count_loss_fn"],
+                args,
+                epoch,
+                None,
+                collect_graph_scores=True,
+                compute_topk_metrics=True,
+                compute_rank_loss=True,
+            )
+            current_score = float(val_extra["checkpoint_score"])
+            improvement = current_score - best_score
+            improved = improvement > args.min_delta
+            if improved:
+                best_score = current_score
+                best_epoch = epoch
+                best_checkpoint = {
+                    "model_state_dict": model.state_dict(),
+                    "optimizer_state_dict": optimizer.state_dict(),
+                    "args": vars(args),
+                    "immutable_config": immutable_config(args),
+                    "A_hat": objects["adjacency"].detach().cpu(),
+                    "physical_valid_port_mask": objects["mask"].detach().cpu(),
+                    "best_epoch": best_epoch,
+                    "best_score": best_score,
+                    "val_losses": val_losses,
+                    "val_metrics": val_metrics,
+                    "val_constrained_graph": val_extra["constrained_graph"],
+                    "model_signature": objects["signature"],
+                    "test_evaluated": False,
+                    "runtime_schedule_version": "1.1.0",
+                    "source_hashes": {
+                        name: sha256_file(path) for name, path in source_paths().items()
+                    },
+                }
+                atomic_torch_save(out / "best_model.pt", best_checkpoint)
+            last_full_validation = {
+                "epoch": epoch,
+                "score": current_score,
+                "losses": val_losses,
+                "metrics": val_metrics,
+                "constrained_graph": val_extra["constrained_graph"],
+                "improved": improved,
+            }
+
+        patience_counter = 0 if best_epoch < 1 else max(0, epoch - best_epoch)
+        last_checkpoint = {
+            "model_state_dict": model.state_dict(),
+            "optimizer_state_dict": optimizer.state_dict(),
+            "args": vars(args),
+            "immutable_config": immutable_config(args),
+            "A_hat": objects["adjacency"].detach().cpu(),
+            "physical_valid_port_mask": objects["mask"].detach().cpu(),
+            "epoch": epoch,
+            "best_epoch": best_epoch,
+            "best_score": best_score,
+            "patience_counter": patience_counter,
+            "last_full_validation": last_full_validation,
+            "full_validation_performed": full_validation_performed,
+            "runtime_schedule_version": "1.1.0",
+            "model_signature": objects["signature"],
+            "test_evaluated": False,
+        }
+        atomic_torch_save(out / "last_model.pt", last_checkpoint)
+        duration = time.perf_counter() - started
+        gpu_peak = torch.cuda.max_memory_allocated() / 1024**2 if torch.cuda.is_available() else 0.0
+        row = flatten_history_record(
+            epoch,
+            duration,
+            train_losses,
+            train_metrics,
+            train_extra,
+            full_validation_performed,
+            val_losses,
+            val_metrics,
+            val_extra,
+            best_score,
+            best_epoch,
+            patience_counter,
+            improved,
+            gpu_peak,
+        )
+        history_rows.append(row)
+        atomic_csv_dump(out / "training_history.csv", history_rows)
+        atomic_json_dump(
+            out / "latest_epoch.json",
+            {
+                "epoch": epoch,
+                "best_epoch": best_epoch,
+                "best_score": best_score,
+                "patience_counter": patience_counter,
+                "full_validation_performed": full_validation_performed,
+                "record": row,
+            },
+        )
+
+        if full_validation_performed:
+            assert val_losses is not None and val_metrics is not None and val_extra is not None
+            print(
+                f"epoch={epoch:03d} duration={duration:.1f}s rank_w={train_extra['rank_weight']:.3f} "
+                f"rank_skipped={train_extra['rank_computation_skipped']} "
+                f"train_loss={train_losses['total']:.4f} full_val=True "
+                f"val_loss={val_losses['total']:.4f} "
+                f"val_g_f1_fpr10={val_extra['constrained_graph']['f1']:.4f} "
+                f"val_g_fpr={val_extra['constrained_graph']['fpr']:.4f} "
+                f"val_attack_exact={val_metrics['attack_topk_exact_localization']:.4f} "
+                f"val_node_f1={val_metrics['attack_node_topk']['f1']:.4f} "
+                f"val_count_acc={val_metrics['attack_count_accuracy']:.4f} "
+                f"score={current_score:.6f} best_epoch={best_epoch} "
+                f"epochs_since_best={patience_counter}/{args.patience} improved={improved}"
+            )
+        else:
+            print(
+                f"epoch={epoch:03d} duration={duration:.1f}s rank_w={train_extra['rank_weight']:.3f} "
+                f"rank_skipped={train_extra['rank_computation_skipped']} "
+                f"train_loss={train_losses['total']:.4f} full_val=False "
+                f"train_g_f1_0.5={train_metrics['graph']['f1']:.4f} "
+                f"train_node_f1_0.5={train_metrics['node_threshold']['f1']:.4f} "
+                f"train_count_acc={train_metrics['attack_count_accuracy']:.4f} "
+                f"best_epoch={best_epoch} epochs_since_best={patience_counter}/{args.patience}"
+            )
+
+        if full_validation_performed and patience_counter >= args.patience:
+            stopped_early = True
+            print(f"EARLY_STOP epoch={epoch}")
+            break
+
+    best_path = out / "best_model.pt"
+    if not best_path.is_file():
+        raise RuntimeError("Training completed without best_model.pt")
+    best = torch.load(best_path, map_location="cpu", weights_only=False)
+    completed_epoch = int(json.loads((out / "latest_epoch.json").read_text(encoding="utf-8"))["epoch"])
+    summary = {
+        "model": MODEL_NAME,
+        "experiment_designation": EXPERIMENT_DESIGNATION,
+        "stage_label": STAGE_LABEL,
+        "parameter_count": EXPECTED_PARAMETER_COUNT,
+        "expected_parameter_count": EXPECTED_PARAMETER_COUNT,
+        "epochs_completed": completed_epoch,
+        "stopped_early": stopped_early,
+        "best_epoch": int(best["best_epoch"]),
+        "best_validation_score": float(best["best_score"]),
+        "best_validation_losses": best["val_losses"],
+        "best_validation_metrics": best["val_metrics"],
+        "best_validation_graph_at_fpr10": best["val_constrained_graph"],
+        "checkpoint_rule": architecture_contract()["checkpoint_selection"],
+        "runtime_schedule": architecture_contract()["training"]["runtime_schedule"],
+        "test_evaluated": False,
+        "test_threshold_selected": False,
+        "next_stage": "V4-A3.8 validation-only threshold and decoder selection",
+        "checkpoint_sha256": sha256_file(best_path),
+    }
+    atomic_json_dump(out / "summary.json", summary)
+    artifacts = []
+    for path in sorted(out.iterdir()):
+        if path.is_file() and path.name != "artifact_manifest.csv":
+            artifacts.append({"filename": path.name, "bytes": path.stat().st_size, "sha256": sha256_file(path)})
+    atomic_csv_dump(out / "artifact_manifest.csv", artifacts, ["filename", "bytes", "sha256"])
+    print(PASS["train"])
+    print(json.dumps(summary, indent=2))
+    return 0
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--mode",
+        required=True,
+        choices=[
+            "freeze-contract",
+            "authorize",
+            "source-audit",
+            "dataset-audit",
+            "one-batch",
+            "smoke",
+            "train",
+        ],
+    )
+    parser.add_argument("--data-dir")
+    parser.add_argument("--out-dir", required=True)
+    parser.add_argument("--contract-dir")
+    parser.add_argument("--a2-analysis-dir")
+    parser.add_argument("--approve", action="store_true")
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--batch-size", type=int, default=256)
+    parser.add_argument("--batch-size-fallback-authorized", action="store_true")
+    parser.add_argument("--batch-size-fallback-reason")
+    parser.add_argument("--num-workers", type=int, default=2)
+    parser.add_argument("--pin-memory", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--persistent-workers", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--prefetch-factor", type=int, default=2)
+    parser.add_argument("--epochs", type=int, default=100)
+    parser.add_argument("--patience", type=int, default=15)
+    parser.add_argument("--min-delta", type=float, default=1e-4)
+    parser.add_argument("--lr", type=float, default=1e-3)
+    parser.add_argument("--weight-decay", type=float, default=1e-4)
+    parser.add_argument("--graph-loss-weight", type=float, default=1.0)
+    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+    parser.add_argument("--count-loss-weight", type=float, default=0.5)
+    parser.add_argument("--rank-loss-weight", type=float, default=0.2)
+    parser.add_argument("--rank-margin", type=float, default=0.2)
+    parser.add_argument("--graph-threshold", type=float, default=0.5)
+    parser.add_argument("--node-threshold", type=float, default=0.5)
+    parser.add_argument("--graph-fpr-cap", type=float, default=0.10)
+    parser.add_argument("--full-val-every", type=int, default=3)
+    parser.add_argument("--seed", type=int, default=7)
+    parser.add_argument("--amp", action="store_true")
+    parser.add_argument("--smoke-epochs", type=int, default=2)
+    parser.add_argument("--smoke-train-batches", type=int, default=40)
+    parser.add_argument("--smoke-val-batches", type=int, default=12)
+    return parser
+
+
+def main() -> int:
+    args = build_parser().parse_args()
+    if args.mode == "freeze-contract":
+        return freeze_contract(args)
+    if args.mode == "authorize":
+        if not args.a2_analysis_dir:
+            raise ValueError("--a2-analysis-dir is required for authorize")
+        return authorize(args)
+    if args.mode in {"dataset-audit", "one-batch", "smoke", "train"} and not args.data_dir:
+        raise ValueError(f"--data-dir is required for {args.mode}")
+    if args.mode in {"one-batch", "smoke", "train"}:
+        validate_primary_args(args)
+    if args.mode == "source-audit":
+        return source_audit(args)
+    if args.mode == "dataset-audit":
+        return dataset_audit(args)
+    if args.mode == "one-batch":
+        return one_batch(args)
+    if args.mode == "smoke":
+        return smoke(args)
+    if args.mode == "train":
+        if not args.contract_dir:
+            raise ValueError("--contract-dir is required for train")
+        return train(args)
+    raise AssertionError(args.mode)
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except Exception as error:
+        print(f"ERROR: {type(error).__name__}: {error}", file=sys.stderr)
+        raise

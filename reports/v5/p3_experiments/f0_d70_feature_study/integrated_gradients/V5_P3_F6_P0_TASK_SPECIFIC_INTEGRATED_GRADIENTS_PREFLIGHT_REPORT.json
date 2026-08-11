@@ -1,0 +1,208 @@
+{
+  "artifacts": {
+    "IG_protocol": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P0_TASK_SPECIFIC_INTEGRATED_GRADIENTS_PROTOCOL.json",
+    "authorization": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P0_EXECUTION_AUTHORIZATION.json",
+    "identity_route": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P0_MATCHED_CONTROL_IDENTITY_ROUTE.json",
+    "source_and_runtime_contract": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P0_FROZEN_EXECUTION_SOURCE_AND_RUNTIME_CONTRACT.json"
+  },
+  "authorization": {
+    "F5R_complete": true,
+    "F6_authorized_by_F5R": true,
+    "F7_authorized": false,
+    "actual_F6_execution_authorized": false,
+    "count_strata_ready": true,
+    "matched_control_resolved": false,
+    "sample_capacity_ready": false
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T22:19:48.628252+00:00",
+  "decision": {
+    "F6_P0_complete": true,
+    "F7_retraining_ablation_authorized": false,
+    "actual_F6_execution_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F6_P1_MATCHED_CONTROL_IDENTITY_REVIEW",
+    "sealed_test_access_authorized": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "metric_formulas_changed": false,
+    "model_loaded": false,
+    "model_weights_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "thresholds_changed": false,
+    "validation_feature_tensors_loaded": false,
+    "validation_output_identity_payloads_loaded": true
+  },
+  "identity": {
+    "count_strata": {
+      "active_count_strata": {
+        "1": 1033,
+        "2": 904,
+        "3": 944,
+        "4": 941
+      },
+      "active_item_count": 3822,
+      "attack_key": "y_attack",
+      "control_item_count": 10041,
+      "count_key": "y_attacker_count",
+      "resolved": true,
+      "supports_128_per_count": true
+    },
+    "matched_attack_item_count": 0,
+    "selected_pair_source": null
+  },
+  "protocol": {
+    "aggregation": {
+      "absolute_channel_mean": true,
+      "bootstrap_resamples": 1000,
+      "bootstrap_seed": 6102,
+      "confidence_interval": 0.95,
+      "group_mean_absolute_attribution_per_channel": true,
+      "group_total_absolute_attribution": true,
+      "normalization": [
+        "fraction_of_total_absolute_attribution",
+        "per_channel_mean_to_control_for_group_width"
+      ],
+      "router_absolute_attribution": true,
+      "signed_channel_mean": true,
+      "time_step_absolute_attribution": true
+    },
+    "baseline": {
+      "attack_item_attributed": true,
+      "control_item_attributed": false,
+      "edge_index": "unchanged",
+      "matching_priority": [
+        "pair_id+window_start",
+        "pair_id"
+      ],
+      "physical_port_mask": "attack-item mask retained; baseline feature tensor only",
+      "type": "matched_control_feature_tensor"
+    },
+    "classification": "VALIDATION-EXPLORATORY",
+    "completeness_gate": {
+      "absolute_error_reported": true,
+      "fallback_if_failed": "repeat failed task with 128 steps",
+      "identity": "sum(IG) approximately equals target(attack)-target(control)",
+      "relative_error_denominator": "max(abs(target_difference),1e-6)",
+      "task_median_relative_error_max": 0.02,
+      "task_p95_relative_error_max": 0.05
+    },
+    "integrated_gradients": {
+      "gradient_microbatch_size": 16,
+      "input_requires_grad_only": true,
+      "integration_rule": "trapezoidal",
+      "model_parameters_require_grad": false,
+      "path": "straight_line_matched_control_to_attack",
+      "runtime": {
+        "cuda_matmul_allow_tf32": false,
+        "cudnn_allow_tf32": true,
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "deterministic_algorithms_enabled": false,
+        "float32_matmul_precision": "highest"
+      },
+      "step_endpoints_included": true,
+      "steps": 64
+    },
+    "macro_groups": {
+      "buffer_pressure": {
+        "count": 15,
+        "end_exclusive": 55,
+        "start": 40
+      },
+      "directional_traffic_volume": {
+        "count": 10,
+        "end_exclusive": 10,
+        "start": 0
+      },
+      "flow_control_stalls": {
+        "count": 15,
+        "end_exclusive": 70,
+        "start": 55
+      },
+      "inter_flit_timing": {
+        "count": 20,
+        "end_exclusive": 30,
+        "start": 10
+      },
+      "queue_activity": {
+        "count": 10,
+        "end_exclusive": 40,
+        "start": 30
+      }
+    },
+    "paper_claim_boundary": {
+      "compact_interface_equivalence_authorized": false,
+      "feature_importance_wording_authorized_after_F6": true,
+      "feature_removal_authorized": false,
+      "hardware_reduction_claim_authorized": false
+    },
+    "sample_selection": {
+      "items_per_count": 128,
+      "same_sample_set_for_all_tasks_when_target_is_defined": true,
+      "scope": "active validation items only",
+      "selection_seed": 6101,
+      "stratification": "attacker_count in {1,2,3,4}",
+      "total_items": 512,
+      "without_replacement": true
+    },
+    "tasks": {
+      "count": {
+        "sample_scope": "active_attack_items",
+        "target": "true_count_class_logit_minus_mean_of_other_three_logits"
+      },
+      "graph": {
+        "sample_scope": "active_attack_items",
+        "target": "attack_logit"
+      },
+      "path": {
+        "sample_scope": "active_attack_items_with_nonempty_path_target",
+        "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+      },
+      "source": {
+        "sample_scope": "active_attack_items_with_nonempty_source_target",
+        "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+      },
+      "transit": {
+        "sample_scope": "active_attack_items_with_nonempty_transit_target",
+        "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+      },
+      "victim": {
+        "sample_scope": "active_attack_items_with_nonempty_victim_target",
+        "target": "mean_true_positive_node_logit_minus_mean_true_negative_node_logit"
+      }
+    }
+  },
+  "provenance": {
+    "F4M_lock_sha256": "1a0e5268d7d4f3d13238762e0a0382275a47e4011960cd4816de325f1af1f59a",
+    "F4M_report_sha256": "e7dc2dbafee80d96f156fb08f65abfd8781fe9cb04288cec8539ede9a0adf348",
+    "F5R_lock_sha256": "fbe9b9b38619d2d6f3b91c40b24fa03c34bab5cb5ba3589044cf3fd0c9f9f365",
+    "F5R_report_sha256": "d19a17b411472d58c5c467f59563b0cf034f2932a84c8418674ae755842876d6",
+    "F5_lock_sha256": "e22fe747a6e32c251d5a79f4b7ea2e7c720091d417cde82c726ab744d637813c",
+    "F5_report_sha256": "1f933f33479c49954ec6598742e385a81ced5c61fa8585f43f49f554c562fca2",
+    "IG_protocol_sha256": "e2e1baea996ff831b01f0afbe9c3491784aac2f1670bae100196a19671e1a6d5",
+    "authorization_sha256": "832b3f9a6ef9c4c70c46668be110ddc622e780e5aca8849666ef016cc53772fa",
+    "fresh_certification_sha256": "35b216294366d45221d0af2d90c562aabb027b20c852f980575255ba2ce15993",
+    "fresh_npz_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+    "identity_route_sha256": "c79f6632dc0a38000807793b104376c4c0d3e7755dc0347ba01c546127cb5b0b",
+    "installed_script_sha256": "de05f1c1a13bfd90efc1ee8c54b3e1dbe85da98860bba8e46975d215eec89da7",
+    "route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "runtime_recovery_sha256": "0e4a0bae7c89f8a825c4163c89fee5fb3b5f32ec1f5ba910e94192e3586615ea",
+    "source_and_runtime_contract_sha256": "1a93366fdffa9a81de84a4242604f6e01a1bf402ad40769e1ac27d6f73ad13d4"
+  },
+  "recovery": {
+    "failed_private_API": "numpy.lib.format._read_array_header",
+    "failure_classification": "private_NumPy_header_API_removed_in_installed_NumPy",
+    "model_or_checkpoint_replay_required": false,
+    "replacement": "portable published-format header parser supporting npy 1.0, 2.0 and 3.0",
+    "stage": "V5_P3_F6_P0_R1_NUMPY_HEADER_API_RECOVERY",
+    "validation_feature_tensor_replay_required": false
+  },
+  "scope": "Freeze task-specific differentiable targets, matched-control baseline policy, deterministic validation sampling, integration and completeness gates, source hashes, official D1 runtime, and the F6 versus F7 authorization boundary.",
+  "stage": "V5_P3_F6_P0_TASK_SPECIFIC_INTEGRATED_GRADIENTS_PREFLIGHT",
+  "status": "PASS"
+}

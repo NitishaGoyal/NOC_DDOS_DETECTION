@@ -1,0 +1,282 @@
+{
+  "audit_script_revision": "v3_gate_passing_checkpoint_selection",
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "canonical_data_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+  "certified_dataset_modified": false,
+  "checkpoint": {
+    "optimizer_resume_functional": true,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a2_train_only_tiny_overfit_integration_test/V5_P3_A2_TRAIN_ONLY_TINY_OVERFIT_INTEGRATION_TEST_BEST.pt",
+    "reload_exact": true,
+    "reload_max_abs_diff": 0.0,
+    "selected_epoch": 71,
+    "selection_reason": "FIRST_GATE_PASSING_EPOCH",
+    "sha256": "9a7531648b366d8f96066582f2dd3235b686eb30c71327b4abc733f7cad0018d"
+  },
+  "created_utc": "2026-08-04T21:19:06.394888+00:00",
+  "data": {
+    "active_count_distribution": {
+      "1": 3,
+      "2": 3,
+      "3": 3,
+      "4": 3
+    },
+    "active_examples": 12,
+    "inactive_examples": 12,
+    "maximum_items_per_pair_per_group": 2,
+    "pair_capped_selection": true,
+    "role_positive_counts": {
+      "path": 60,
+      "source": 30,
+      "transit": 29,
+      "victim": 15
+    },
+    "split": "train",
+    "subset_manifest": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a2_train_only_tiny_overfit_integration_test/V5_P3_A2_TRAIN_ONLY_TINY_OVERFIT_INTEGRATION_TEST_SUBSET.json",
+    "subset_size": 24,
+    "test_accessed": false,
+    "train_active_only_length": 29902,
+    "train_all_length": 110855,
+    "unique_pair_count": 19,
+    "validation_accessed": false
+  },
+  "decision": {
+    "next_stage": "V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT",
+    "preliminary_baseline_preflight_authorized": true,
+    "preliminary_baseline_training_authorized": false,
+    "sealed_test_evaluation_authorized": false,
+    "tiny_overfit_integration_passed": true
+  },
+  "device": "cuda",
+  "first_backward_gradient_norms": {
+    "attack_head": 0.062292230958044564,
+    "count_head": 0.3179215015488723,
+    "graph1": 0.5710299939654431,
+    "graph2": 0.6251519411515254,
+    "graph_projection": 0.6198207901558861,
+    "input_projection": 0.35430079622133326,
+    "node_projection": 0.5431353944512485,
+    "path_head": 0.11359186939490094,
+    "source_head": 0.16267434258695904,
+    "temporal_blocks": 0.2045106977272294,
+    "transit_head": 0.41737572376566767,
+    "victim_head": 0.2384219975340871
+  },
+  "generalization_claim_authorized": false,
+  "integration_checks": {
+    "checkpoint_reload_exact": true,
+    "first_backward_all_groups_nonzero": true,
+    "input_width_exact": true,
+    "optimizer_resume_functional": true,
+    "output_shapes_exact": true,
+    "parameter_count_exact": true,
+    "sealed_test_negative_check": true,
+    "test_tensor_loaded_false": true,
+    "tiny_overfit_gate": true,
+    "validation_accessed_false": true
+  },
+  "interpretation": "Train-only fixed-subset memorization and integration sanity test. It is not a generalization result.",
+  "loss": {
+    "component_coefficients": {
+      "count": 1.0,
+      "graph": 1.0,
+      "path": 1.0,
+      "source": 1.0,
+      "transit": 1.0,
+      "victim": 1.0
+    },
+    "components": [
+      "graph",
+      "count_active_only",
+      "source",
+      "transit",
+      "victim",
+      "path"
+    ],
+    "count_mapping": {
+      "active_targets": "y_count_minus_1",
+      "class_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "inactive": "masked",
+      "logits": 4
+    },
+    "initial": {
+      "count": 1.4054282903671265,
+      "graph": 0.6989108324050903,
+      "path": 1.1609793901443481,
+      "source": 1.2784521579742432,
+      "total": 7.069918632507324,
+      "transit": 1.3107843399047852,
+      "victim": 1.2153637409210205
+    },
+    "lowest_total_loss_value": 0.14442647993564606,
+    "positive_weights": {
+      "graph": 1.0,
+      "path": 5.4,
+      "source": 11.8,
+      "transit": 12.241379310344827,
+      "victim": 20.0
+    },
+    "selected_gate_state": {
+      "count": 1.9023318600375205e-05,
+      "graph": 0.0002018762461375445,
+      "path": 0.003631681902334094,
+      "source": 0.061938803642988205,
+      "total": 0.14442647993564606,
+      "transit": 0.034502338618040085,
+      "victim": 0.04413275048136711
+    }
+  },
+  "model": {
+    "builder": "build_v6_p0_dynamic70_from_canonical_structure",
+    "class": "V6P0Dynamic70GraphConvCount4",
+    "expected_parameter_count": 60553,
+    "fresh_initialization": true,
+    "historical_checkpoint_used_for_training": false,
+    "input_shape": [
+      16,
+      70,
+      32
+    ],
+    "mask_shape": [
+      16,
+      10
+    ],
+    "output_shapes": {
+      "attack_logits": [
+        24
+      ],
+      "count_logits": [
+        24,
+        4
+      ],
+      "path_logits": [
+        24,
+        16
+      ],
+      "source_logits": [
+        24,
+        16
+      ],
+      "transit_logits": [
+        24,
+        16
+      ],
+      "victim_logits": [
+        24,
+        16
+      ]
+    },
+    "parameter_count": 60553
+  },
+  "model_trained": true,
+  "provenance": {
+    "a1_lock_sha256": "dee708418c45aa075e81ff0f3cc52898f23e1beacaedc8513fb18782d3a6b2ab",
+    "a1_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a1_guarded_loader_schema_certification/V5_P3_A1_GUARDED_LOADER_SCHEMA_CERTIFICATION_REPORT.json",
+    "a1_report_sha256": "e3d2c5b9443485e25e5d0ae030986f13742e62a370ec726112cf38eda47c1283",
+    "b3_source_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "canonical_model_source_sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+    "dynamic70_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+    "guarded_wrapper_sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de",
+    "installed_script_sha256": "ea0ee4978814b6ef11b1babe88c5ef93991651041547d64718f7312131c68d95",
+    "source_freeze_report_sha256": "e6987456c264746e514069a00dd0a89c0ff96e1de9d51fb710d45232761ebe49"
+  },
+  "repository": "/home/zira/research/projects/GNN-2d",
+  "resolved_dataset_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+  "sealed_test": {
+    "guard_negative_check": true,
+    "sealed_test_evaluation_authorized": false,
+    "test_dataset_instantiated": false,
+    "test_length_computed": false,
+    "test_loaded_paths": [],
+    "test_tensor_loaded": false
+  },
+  "seed": 107,
+  "selected_metrics": {
+    "count_active_accuracy": 1.0,
+    "graph": {
+      "accuracy": 1.0,
+      "exact": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 12,
+      "tp": 12
+    },
+    "path": {
+      "accuracy": 1.0,
+      "exact": 1.0,
+      "f1": 1.0,
+      "fn": 0,
+      "fp": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "tn": 324,
+      "tp": 60
+    },
+    "source": {
+      "accuracy": 0.984375,
+      "exact": 0.75,
+      "f1": 0.9090909090909091,
+      "fn": 0,
+      "fp": 6,
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "tn": 348,
+      "tp": 30
+    },
+    "transit": {
+      "accuracy": 0.9869791666666666,
+      "exact": 0.875,
+      "f1": 0.9206349206349206,
+      "fn": 0,
+      "fp": 5,
+      "precision": 0.8529411764705882,
+      "recall": 1.0,
+      "tn": 350,
+      "tp": 29
+    },
+    "victim": {
+      "accuracy": 0.9895833333333334,
+      "exact": 0.8333333730697632,
+      "f1": 0.8823529411764706,
+      "fn": 0,
+      "fp": 4,
+      "precision": 0.7894736842105263,
+      "recall": 1.0,
+      "tn": 365,
+      "tp": 15
+    }
+  },
+  "source_modified": true,
+  "stage": "V5_P3_A2_TRAIN_ONLY_TINY_OVERFIT_INTEGRATION_TEST",
+  "status": "PASS",
+  "tiny_overfit_gate_checks": {
+    "count_accuracy_ge_0p90": true,
+    "every_component_loss_decreased": true,
+    "graph_accuracy_ge_0p95": true,
+    "path_f1_ge_0p85": true,
+    "source_f1_ge_0p85": true,
+    "total_loss_ratio_le_0p25": true,
+    "transit_f1_ge_0p85": true,
+    "victim_f1_ge_0p85": true
+  },
+  "training": {
+    "elapsed_seconds": 0.8500189781188965,
+    "epochs_run": 71,
+    "gradient_clip": 5.0,
+    "learning_rate": 0.003,
+    "lowest_loss_epoch": 71,
+    "max_epochs": 600,
+    "optimizer": "AdamW",
+    "selected_checkpoint_epoch": 71,
+    "selected_checkpoint_reason": "FIRST_GATE_PASSING_EPOCH",
+    "success_epoch": 71,
+    "weight_decay": 1e-05
+  }
+}

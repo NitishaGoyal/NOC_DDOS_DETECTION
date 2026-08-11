@@ -1,0 +1,664 @@
+{
+  "alias_assignments": [],
+  "alias_map": {},
+  "argparse_inventory": [
+    {
+      "default": null,
+      "dest": "root",
+      "line_end": 1001,
+      "line_start": 1001,
+      "options": [
+        "--root"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--root', type=Path, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "b1_dir",
+      "line_end": 1002,
+      "line_start": 1002,
+      "options": [
+        "--b1-dir"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--b1-dir', type=Path, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "b0_r3_dir",
+      "line_end": 1003,
+      "line_start": 1003,
+      "options": [
+        "--b0-r3-dir"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--b0-r3-dir', type=Path, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "loader_path",
+      "line_end": 1004,
+      "line_start": 1004,
+      "options": [
+        "--loader-path"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--loader-path', type=Path, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "model_path",
+      "line_end": 1005,
+      "line_start": 1005,
+      "options": [
+        "--model-path"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--model-path', type=Path, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "seed",
+      "line_end": 1006,
+      "line_start": 1006,
+      "options": [
+        "--seed"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--seed', type=int, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "model_dir",
+      "line_end": 1007,
+      "line_start": 1007,
+      "options": [
+        "--model-dir"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--model-dir', type=Path, required=True)"
+    },
+    {
+      "default": null,
+      "dest": "report_dir",
+      "line_end": 1008,
+      "line_start": 1008,
+      "options": [
+        "--report-dir"
+      ],
+      "required": true,
+      "source": "parser.add_argument('--report-dir', type=Path, required=True)"
+    }
+  ],
+  "argument_summaries": {
+    "b0_r3_dir": {
+      "alias_names": [],
+      "argument": "b0_r3_dir",
+      "assignment_count": 0,
+      "assignments": [],
+      "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+      "classifications_observed": [
+        "existence_or_path_normalization"
+      ],
+      "flags": {
+        "comparison_or_manifest_gate": false,
+        "copy_use": false,
+        "dynamic_runtime_use": false,
+        "existence_or_path_normalization": true,
+        "file_read_use": false,
+        "hash_use": false,
+        "output_or_mutation_use": false,
+        "provenance_or_log_use": false
+      },
+      "use_site_count": 1,
+      "use_sites": [
+        {
+          "classifications": [
+            "existence_or_path_normalization"
+          ],
+          "excerpt": {
+            "context_end": 1018,
+            "context_start": 1008,
+            "line_end": 1013,
+            "line_start": 1013,
+            "numbered": "01008:     parser.add_argument(\"--report-dir\", type=Path, required=True)\n01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)",
+            "numbered_sha256": "fd4fa2c2ff3fcaf05cb69d350cf1809c34ba3ff57a1d52f23c03503ca55d2708",
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "raw": "    parser.add_argument(\"--report-dir\", type=Path, required=True)\n    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)",
+            "raw_sha256": "d6490b29c9609da810e34b92f050dde342d94c6dcae38ff64a068aef98200475"
+          },
+          "function": "args.b0_r3_dir.expanduser",
+          "function_scope": "main",
+          "line_end": 1013,
+          "line_start": 1013,
+          "node_type": "Call",
+          "receiver_tags": [
+            "b0_r3_dir"
+          ],
+          "source": "args.b0_r3_dir.expanduser()",
+          "tagged_arguments": [],
+          "tags": [
+            "b0_r3_dir"
+          ]
+        }
+      ]
+    },
+    "b1_dir": {
+      "alias_names": [],
+      "argument": "b1_dir",
+      "assignment_count": 0,
+      "assignments": [],
+      "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+      "classifications_observed": [
+        "existence_or_path_normalization"
+      ],
+      "flags": {
+        "comparison_or_manifest_gate": false,
+        "copy_use": false,
+        "dynamic_runtime_use": false,
+        "existence_or_path_normalization": true,
+        "file_read_use": false,
+        "hash_use": false,
+        "output_or_mutation_use": false,
+        "provenance_or_log_use": false
+      },
+      "use_site_count": 1,
+      "use_sites": [
+        {
+          "classifications": [
+            "existence_or_path_normalization"
+          ],
+          "excerpt": {
+            "context_end": 1017,
+            "context_start": 1007,
+            "line_end": 1012,
+            "line_start": 1012,
+            "numbered": "01007:     parser.add_argument(\"--model-dir\", type=Path, required=True)\n01008:     parser.add_argument(\"--report-dir\", type=Path, required=True)\n01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()",
+            "numbered_sha256": "38bebf7235a5322060951b0ceb6f9e82f69d5b76912871c5d4d26733fb18c51b",
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "raw": "    parser.add_argument(\"--model-dir\", type=Path, required=True)\n    parser.add_argument(\"--report-dir\", type=Path, required=True)\n    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()",
+            "raw_sha256": "6d1492a04bc18b7a2aec203d01fc005a9098d29a908a344010bd22b90ee67b60"
+          },
+          "function": "args.b1_dir.expanduser",
+          "function_scope": "main",
+          "line_end": 1012,
+          "line_start": 1012,
+          "node_type": "Call",
+          "receiver_tags": [
+            "b1_dir"
+          ],
+          "source": "args.b1_dir.expanduser()",
+          "tagged_arguments": [],
+          "tags": [
+            "b1_dir"
+          ]
+        }
+      ]
+    },
+    "loader_path": {
+      "alias_names": [],
+      "argument": "loader_path",
+      "assignment_count": 0,
+      "assignments": [],
+      "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+      "classifications_observed": [
+        "existence_or_path_normalization"
+      ],
+      "flags": {
+        "comparison_or_manifest_gate": false,
+        "copy_use": false,
+        "dynamic_runtime_use": false,
+        "existence_or_path_normalization": true,
+        "file_read_use": false,
+        "hash_use": false,
+        "output_or_mutation_use": false,
+        "provenance_or_log_use": false
+      },
+      "use_site_count": 1,
+      "use_sites": [
+        {
+          "classifications": [
+            "existence_or_path_normalization"
+          ],
+          "excerpt": {
+            "context_end": 1019,
+            "context_start": 1009,
+            "line_end": 1014,
+            "line_start": 1014,
+            "numbered": "01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)\n01019: ",
+            "numbered_sha256": "c04cf63116577e6fab7a0088f22cce9d37953834428cdc477774afdc909a9d74",
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "raw": "    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)\n",
+            "raw_sha256": "739095f66e71bab8cc1c764a3b1c5732fb8e54dd5ce6bf28b4b5b3c161c12ac2"
+          },
+          "function": "args.loader_path.expanduser",
+          "function_scope": "main",
+          "line_end": 1014,
+          "line_start": 1014,
+          "node_type": "Call",
+          "receiver_tags": [
+            "loader_path"
+          ],
+          "source": "args.loader_path.expanduser()",
+          "tagged_arguments": [],
+          "tags": [
+            "loader_path"
+          ]
+        }
+      ]
+    },
+    "model_dir": {
+      "alias_names": [],
+      "argument": "model_dir",
+      "assignment_count": 0,
+      "assignments": [],
+      "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+      "classifications_observed": [
+        "existence_or_path_normalization"
+      ],
+      "flags": {
+        "comparison_or_manifest_gate": false,
+        "copy_use": false,
+        "dynamic_runtime_use": false,
+        "existence_or_path_normalization": true,
+        "file_read_use": false,
+        "hash_use": false,
+        "output_or_mutation_use": false,
+        "provenance_or_log_use": false
+      },
+      "use_site_count": 1,
+      "use_sites": [
+        {
+          "classifications": [
+            "existence_or_path_normalization"
+          ],
+          "excerpt": {
+            "context_end": 1021,
+            "context_start": 1011,
+            "line_end": 1016,
+            "line_start": 1016,
+            "numbered": "01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)\n01019: \n01020:     if seed not in EXPECTED_SEEDS:\n01021:         print(",
+            "numbered_sha256": "732532975f32cc3ea322a7a893e5b4ef1ba20b79457bbd32f93174941cdd5d13",
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "raw": "    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)\n\n    if seed not in EXPECTED_SEEDS:\n        print(",
+            "raw_sha256": "bf493fa4eeae14afa6df8142f1b0ffc1f1acab1ce457a30a291eb00f5b8b275a"
+          },
+          "function": "args.model_dir.expanduser",
+          "function_scope": "main",
+          "line_end": 1016,
+          "line_start": 1016,
+          "node_type": "Call",
+          "receiver_tags": [
+            "model_dir"
+          ],
+          "source": "args.model_dir.expanduser()",
+          "tagged_arguments": [],
+          "tags": [
+            "model_dir"
+          ]
+        }
+      ]
+    },
+    "model_path": {
+      "alias_names": [],
+      "argument": "model_path",
+      "assignment_count": 0,
+      "assignments": [],
+      "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+      "classifications_observed": [
+        "existence_or_path_normalization"
+      ],
+      "flags": {
+        "comparison_or_manifest_gate": false,
+        "copy_use": false,
+        "dynamic_runtime_use": false,
+        "existence_or_path_normalization": true,
+        "file_read_use": false,
+        "hash_use": false,
+        "output_or_mutation_use": false,
+        "provenance_or_log_use": false
+      },
+      "use_site_count": 1,
+      "use_sites": [
+        {
+          "classifications": [
+            "existence_or_path_normalization"
+          ],
+          "excerpt": {
+            "context_end": 1020,
+            "context_start": 1010,
+            "line_end": 1015,
+            "line_start": 1015,
+            "numbered": "01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)\n01019: \n01020:     if seed not in EXPECTED_SEEDS:",
+            "numbered_sha256": "849d3c167f9970ead8315339f091393a1ec67055d9af28908ce489977117fcac",
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "raw": "\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)\n\n    if seed not in EXPECTED_SEEDS:",
+            "raw_sha256": "04b1fefc8cc5e9b940336a0fcc5e6b8f90ee9ea84fd5d4ae97dca2073626a613"
+          },
+          "function": "args.model_path.expanduser",
+          "function_scope": "main",
+          "line_end": 1015,
+          "line_start": 1015,
+          "node_type": "Call",
+          "receiver_tags": [
+            "model_path"
+          ],
+          "source": "args.model_path.expanduser()",
+          "tagged_arguments": [],
+          "tags": [
+            "model_path"
+          ]
+        }
+      ]
+    },
+    "root": {
+      "alias_names": [],
+      "argument": "root",
+      "assignment_count": 0,
+      "assignments": [],
+      "classification": "PROVENANCE_OR_COMPATIBILITY_ONLY",
+      "classifications_observed": [
+        "existence_or_path_normalization"
+      ],
+      "flags": {
+        "comparison_or_manifest_gate": false,
+        "copy_use": false,
+        "dynamic_runtime_use": false,
+        "existence_or_path_normalization": true,
+        "file_read_use": false,
+        "hash_use": false,
+        "output_or_mutation_use": false,
+        "provenance_or_log_use": false
+      },
+      "use_site_count": 1,
+      "use_sites": [
+        {
+          "classifications": [
+            "existence_or_path_normalization"
+          ],
+          "excerpt": {
+            "context_end": 1016,
+            "context_start": 1006,
+            "line_end": 1011,
+            "line_start": 1011,
+            "numbered": "01006:     parser.add_argument(\"--seed\", type=int, required=True)\n01007:     parser.add_argument(\"--model-dir\", type=Path, required=True)\n01008:     parser.add_argument(\"--report-dir\", type=Path, required=True)\n01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()",
+            "numbered_sha256": "b10ea7bfda345ae1eedd89ce10672783ff0f4b514dd942c4142442f186e42267",
+            "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+            "raw": "    parser.add_argument(\"--seed\", type=int, required=True)\n    parser.add_argument(\"--model-dir\", type=Path, required=True)\n    parser.add_argument(\"--report-dir\", type=Path, required=True)\n    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()",
+            "raw_sha256": "00fd9654e3af04a885f302a03e92d3effa68810a7d9a9930d14515abee4c21a9"
+          },
+          "function": "args.root.expanduser",
+          "function_scope": "main",
+          "line_end": 1011,
+          "line_start": 1011,
+          "node_type": "Call",
+          "receiver_tags": [
+            "root"
+          ],
+          "source": "args.root.expanduser()",
+          "tagged_arguments": [],
+          "tags": [
+            "root"
+          ]
+        }
+      ]
+    }
+  },
+  "target_cli_arguments": {
+    "b0_r3_dir": [
+      {
+        "default": null,
+        "dest": "b0_r3_dir",
+        "line_end": 1003,
+        "line_start": 1003,
+        "options": [
+          "--b0-r3-dir"
+        ],
+        "required": true,
+        "source": "parser.add_argument('--b0-r3-dir', type=Path, required=True)"
+      }
+    ],
+    "b1_dir": [
+      {
+        "default": null,
+        "dest": "b1_dir",
+        "line_end": 1002,
+        "line_start": 1002,
+        "options": [
+          "--b1-dir"
+        ],
+        "required": true,
+        "source": "parser.add_argument('--b1-dir', type=Path, required=True)"
+      }
+    ],
+    "loader_path": [
+      {
+        "default": null,
+        "dest": "loader_path",
+        "line_end": 1004,
+        "line_start": 1004,
+        "options": [
+          "--loader-path"
+        ],
+        "required": true,
+        "source": "parser.add_argument('--loader-path', type=Path, required=True)"
+      }
+    ],
+    "model_dir": [
+      {
+        "default": null,
+        "dest": "model_dir",
+        "line_end": 1007,
+        "line_start": 1007,
+        "options": [
+          "--model-dir"
+        ],
+        "required": true,
+        "source": "parser.add_argument('--model-dir', type=Path, required=True)"
+      }
+    ],
+    "model_path": [
+      {
+        "default": null,
+        "dest": "model_path",
+        "line_end": 1005,
+        "line_start": 1005,
+        "options": [
+          "--model-path"
+        ],
+        "required": true,
+        "source": "parser.add_argument('--model-path', type=Path, required=True)"
+      }
+    ],
+    "root": [
+      {
+        "default": null,
+        "dest": "root",
+        "line_end": 1001,
+        "line_start": 1001,
+        "options": [
+          "--root"
+        ],
+        "required": true,
+        "source": "parser.add_argument('--root', type=Path, required=True)"
+      }
+    ]
+  },
+  "use_sites": [
+    {
+      "classifications": [
+        "existence_or_path_normalization"
+      ],
+      "excerpt": {
+        "context_end": 1016,
+        "context_start": 1006,
+        "line_end": 1011,
+        "line_start": 1011,
+        "numbered": "01006:     parser.add_argument(\"--seed\", type=int, required=True)\n01007:     parser.add_argument(\"--model-dir\", type=Path, required=True)\n01008:     parser.add_argument(\"--report-dir\", type=Path, required=True)\n01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()",
+        "numbered_sha256": "b10ea7bfda345ae1eedd89ce10672783ff0f4b514dd942c4142442f186e42267",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    parser.add_argument(\"--seed\", type=int, required=True)\n    parser.add_argument(\"--model-dir\", type=Path, required=True)\n    parser.add_argument(\"--report-dir\", type=Path, required=True)\n    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()",
+        "raw_sha256": "00fd9654e3af04a885f302a03e92d3effa68810a7d9a9930d14515abee4c21a9"
+      },
+      "function": "args.root.expanduser",
+      "function_scope": "main",
+      "line_end": 1011,
+      "line_start": 1011,
+      "node_type": "Call",
+      "receiver_tags": [
+        "root"
+      ],
+      "source": "args.root.expanduser()",
+      "tagged_arguments": [],
+      "tags": [
+        "root"
+      ]
+    },
+    {
+      "classifications": [
+        "existence_or_path_normalization"
+      ],
+      "excerpt": {
+        "context_end": 1017,
+        "context_start": 1007,
+        "line_end": 1012,
+        "line_start": 1012,
+        "numbered": "01007:     parser.add_argument(\"--model-dir\", type=Path, required=True)\n01008:     parser.add_argument(\"--report-dir\", type=Path, required=True)\n01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()",
+        "numbered_sha256": "38bebf7235a5322060951b0ceb6f9e82f69d5b76912871c5d4d26733fb18c51b",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    parser.add_argument(\"--model-dir\", type=Path, required=True)\n    parser.add_argument(\"--report-dir\", type=Path, required=True)\n    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()",
+        "raw_sha256": "6d1492a04bc18b7a2aec203d01fc005a9098d29a908a344010bd22b90ee67b60"
+      },
+      "function": "args.b1_dir.expanduser",
+      "function_scope": "main",
+      "line_end": 1012,
+      "line_start": 1012,
+      "node_type": "Call",
+      "receiver_tags": [
+        "b1_dir"
+      ],
+      "source": "args.b1_dir.expanduser()",
+      "tagged_arguments": [],
+      "tags": [
+        "b1_dir"
+      ]
+    },
+    {
+      "classifications": [
+        "existence_or_path_normalization"
+      ],
+      "excerpt": {
+        "context_end": 1018,
+        "context_start": 1008,
+        "line_end": 1013,
+        "line_start": 1013,
+        "numbered": "01008:     parser.add_argument(\"--report-dir\", type=Path, required=True)\n01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)",
+        "numbered_sha256": "fd4fa2c2ff3fcaf05cb69d350cf1809c34ba3ff57a1d52f23c03503ca55d2708",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    parser.add_argument(\"--report-dir\", type=Path, required=True)\n    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)",
+        "raw_sha256": "d6490b29c9609da810e34b92f050dde342d94c6dcae38ff64a068aef98200475"
+      },
+      "function": "args.b0_r3_dir.expanduser",
+      "function_scope": "main",
+      "line_end": 1013,
+      "line_start": 1013,
+      "node_type": "Call",
+      "receiver_tags": [
+        "b0_r3_dir"
+      ],
+      "source": "args.b0_r3_dir.expanduser()",
+      "tagged_arguments": [],
+      "tags": [
+        "b0_r3_dir"
+      ]
+    },
+    {
+      "classifications": [
+        "existence_or_path_normalization"
+      ],
+      "excerpt": {
+        "context_end": 1019,
+        "context_start": 1009,
+        "line_end": 1014,
+        "line_start": 1014,
+        "numbered": "01009:     args = parser.parse_args()\n01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)\n01019: ",
+        "numbered_sha256": "c04cf63116577e6fab7a0088f22cce9d37953834428cdc477774afdc909a9d74",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    args = parser.parse_args()\n\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)\n",
+        "raw_sha256": "739095f66e71bab8cc1c764a3b1c5732fb8e54dd5ce6bf28b4b5b3c161c12ac2"
+      },
+      "function": "args.loader_path.expanduser",
+      "function_scope": "main",
+      "line_end": 1014,
+      "line_start": 1014,
+      "node_type": "Call",
+      "receiver_tags": [
+        "loader_path"
+      ],
+      "source": "args.loader_path.expanduser()",
+      "tagged_arguments": [],
+      "tags": [
+        "loader_path"
+      ]
+    },
+    {
+      "classifications": [
+        "existence_or_path_normalization"
+      ],
+      "excerpt": {
+        "context_end": 1020,
+        "context_start": 1010,
+        "line_end": 1015,
+        "line_start": 1015,
+        "numbered": "01010: \n01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)\n01019: \n01020:     if seed not in EXPECTED_SEEDS:",
+        "numbered_sha256": "849d3c167f9970ead8315339f091393a1ec67055d9af28908ce489977117fcac",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "\n    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)\n\n    if seed not in EXPECTED_SEEDS:",
+        "raw_sha256": "04b1fefc8cc5e9b940336a0fcc5e6b8f90ee9ea84fd5d4ae97dca2073626a613"
+      },
+      "function": "args.model_path.expanduser",
+      "function_scope": "main",
+      "line_end": 1015,
+      "line_start": 1015,
+      "node_type": "Call",
+      "receiver_tags": [
+        "model_path"
+      ],
+      "source": "args.model_path.expanduser()",
+      "tagged_arguments": [],
+      "tags": [
+        "model_path"
+      ]
+    },
+    {
+      "classifications": [
+        "existence_or_path_normalization"
+      ],
+      "excerpt": {
+        "context_end": 1021,
+        "context_start": 1011,
+        "line_end": 1016,
+        "line_start": 1016,
+        "numbered": "01011:     root = args.root.expanduser().resolve()\n01012:     b1_dir = args.b1_dir.expanduser().resolve()\n01013:     b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n01014:     loader_path = args.loader_path.expanduser().resolve()\n01015:     model_path = args.model_path.expanduser().resolve()\n01016:     model_dir = args.model_dir.expanduser().resolve()\n01017:     report_dir = args.report_dir.expanduser().resolve()\n01018:     seed = int(args.seed)\n01019: \n01020:     if seed not in EXPECTED_SEEDS:\n01021:         print(",
+        "numbered_sha256": "732532975f32cc3ea322a7a893e5b4ef1ba20b79457bbd32f93174941cdd5d13",
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p2/train_v5_p2_b2_single_seed.py",
+        "raw": "    root = args.root.expanduser().resolve()\n    b1_dir = args.b1_dir.expanduser().resolve()\n    b0_r3_dir = args.b0_r3_dir.expanduser().resolve()\n    loader_path = args.loader_path.expanduser().resolve()\n    model_path = args.model_path.expanduser().resolve()\n    model_dir = args.model_dir.expanduser().resolve()\n    report_dir = args.report_dir.expanduser().resolve()\n    seed = int(args.seed)\n\n    if seed not in EXPECTED_SEEDS:\n        print(",
+        "raw_sha256": "bf493fa4eeae14afa6df8142f1b0ffc1f1acab1ce457a30a291eb00f5b8b275a"
+      },
+      "function": "args.model_dir.expanduser",
+      "function_scope": "main",
+      "line_end": 1016,
+      "line_start": 1016,
+      "node_type": "Call",
+      "receiver_tags": [
+        "model_dir"
+      ],
+      "source": "args.model_dir.expanduser()",
+      "tagged_arguments": [],
+      "tags": [
+        "model_dir"
+      ]
+    }
+  ]
+}

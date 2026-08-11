@@ -1,0 +1,1689 @@
+{
+  "decision_boundary": {
+    "architecture_selected": false,
+    "interpretation": "G3 metric leaders are validation evidence only. Review G1, G2, and G3 jointly before executing frozen Task D."
+  },
+  "matrix": {
+    "checkpoint_score": "0.30 source AP + 0.25 transit AP + 0.25 victim AP + 0.20 path AP",
+    "completed_runs": 9,
+    "execution_policy": "serial one-model-at-a-time",
+    "gat_exclusion_reason": "DO_NOT_PROMOTE_GAT_FROM_G1_AND_G2",
+    "gat_included": false,
+    "loss": "sum of independently class-weighted source, transit, victim, and path BCEWithLogits losses",
+    "operators": [
+      "conv1d",
+      "gcnconv",
+      "graphconv"
+    ],
+    "roles_mutually_exclusive": false,
+    "seeds": [
+      107,
+      117,
+      127
+    ],
+    "task": "C_ROLE_AWARE_MULTILABEL_LOCALIZATION",
+    "threshold_policy": "four separate validation-only thresholds; each maximizes 0.60 node F1 + 0.40 exact role-set accuracy on attack items"
+  },
+  "mean_and_standard_deviation": {
+    "conv1d": {
+      "graph_message_scalar_ops": 0,
+      "inference_microseconds_per_item": {
+        "maximum": 50.046941328076855,
+        "mean": 49.875393750002196,
+        "minimum": 49.69004687499279,
+        "standard_deviation": 0.1788469404475903
+      },
+      "joint_exact_all_roles_attack": {
+        "maximum": 0.6333696243875885,
+        "mean": 0.6088731627653784,
+        "minimum": 0.5699510070767556,
+        "standard_deviation": 0.034081604163797324
+      },
+      "joint_exact_all_roles_overall": {
+        "maximum": 0.5755906768837803,
+        "mean": 0.5515112813963389,
+        "minimum": 0.5265804597701149,
+        "standard_deviation": 0.024516199547126104
+      },
+      "macro_role_checkpoint_ap": {
+        "maximum": 0.6448382052321792,
+        "mean": 0.634304326463207,
+        "minimum": 0.6176905895096465,
+        "standard_deviation": 0.014559250204358222
+      },
+      "macro_role_exact_set_attack": {
+        "maximum": 0.8408410451823626,
+        "mean": 0.8300444565414625,
+        "minimum": 0.8132825258573761,
+        "standard_deviation": 0.014715874969418823
+      },
+      "macro_role_node_f1": {
+        "maximum": 0.7227488764023428,
+        "mean": 0.7178856973416116,
+        "minimum": 0.7147266956636299,
+        "standard_deviation": 0.004273992438581282
+      },
+      "parameter_count": 34692,
+      "path_checkpoint_ap": {
+        "maximum": 0.652896483229776,
+        "mean": 0.640578788968968,
+        "minimum": 0.6245082108254961,
+        "standard_deviation": 0.014561476765852736
+      },
+      "path_checkpoint_auroc": {
+        "maximum": 0.9584624623692789,
+        "mean": 0.9567732765630962,
+        "minimum": 0.95510356714033,
+        "standard_deviation": 0.0016795323119539064
+      },
+      "path_exact_set_attack": {
+        "maximum": 0.7716385410996189,
+        "mean": 0.7506804572672836,
+        "minimum": 0.7346216657593904,
+        "standard_deviation": 0.018988537699063553
+      },
+      "path_exact_set_control": {
+        "maximum": 0.6070702507341315,
+        "mean": 0.570928393946239,
+        "minimum": 0.5397560424666817,
+        "standard_deviation": 0.03393114566184846
+      },
+      "path_node_balanced_accuracy": {
+        "maximum": 0.9379801923741231,
+        "mean": 0.9354095028705774,
+        "minimum": 0.933917538959369,
+        "standard_deviation": 0.002235849921120772
+      },
+      "path_node_f1": {
+        "maximum": 0.7239385727190605,
+        "mean": 0.7192672944205345,
+        "minimum": 0.7137286065368711,
+        "standard_deviation": 0.0051599565794349335
+      },
+      "path_node_fpr": {
+        "maximum": 0.10738996486392602,
+        "mean": 0.10415919242078249,
+        "minimum": 0.09984453568560901,
+        "standard_deviation": 0.0038877344611137404
+      },
+      "path_node_precision": {
+        "maximum": 0.5782802164762477,
+        "mean": 0.569872054796915,
+        "minimum": 0.5625405957130927,
+        "standard_deviation": 0.007924858472008788
+      },
+      "path_node_recall": {
+        "maximum": 0.9812034614610585,
+        "mean": 0.9749781981619373,
+        "minimum": 0.967679613604347,
+        "standard_deviation": 0.006825513102015252
+      },
+      "path_selected_threshold": {
+        "maximum": 0.549,
+        "mean": 0.37233333333333335,
+        "minimum": 0.223,
+        "standard_deviation": 0.1647098458906854
+      },
+      "pooling_scalar_ops": 0,
+      "selection_score": {
+        "maximum": 0.6454718933659155,
+        "mean": 0.634991147362746,
+        "minimum": 0.6184869068761601,
+        "standard_deviation": 0.014465795460564219
+      },
+      "source_checkpoint_ap": {
+        "maximum": 0.6655702459045032,
+        "mean": 0.6543152069597482,
+        "minimum": 0.6404345581557691,
+        "standard_deviation": 0.012771885921824795
+      },
+      "source_checkpoint_auroc": {
+        "maximum": 0.9862944924006785,
+        "mean": 0.9854487332496771,
+        "minimum": 0.9847622484309313,
+        "standard_deviation": 0.000778440190633328
+      },
+      "source_exact_set_attack": {
+        "maximum": 0.9205225911812738,
+        "mean": 0.9129014697876973,
+        "minimum": 0.8984757757212847,
+        "standard_deviation": 0.012499686993146466
+      },
+      "source_exact_set_control": {
+        "maximum": 0.6081996837587531,
+        "mean": 0.5704389729689029,
+        "minimum": 0.5380618929297493,
+        "standard_deviation": 0.035377465082141735
+      },
+      "source_node_balanced_accuracy": {
+        "maximum": 0.9668273261730262,
+        "mean": 0.9653323351954385,
+        "minimum": 0.9636566623673135,
+        "standard_deviation": 0.0015930353701501224
+      },
+      "source_node_f1": {
+        "maximum": 0.7154342115736687,
+        "mean": 0.7015490621229649,
+        "minimum": 0.6913011780054487,
+        "standard_deviation": 0.012470890169880233
+      },
+      "source_node_fpr": {
+        "maximum": 0.04071075123706703,
+        "mean": 0.038519076462772917,
+        "minimum": 0.03592463567983764,
+        "standard_deviation": 0.0024183446559735526
+      },
+      "source_node_precision": {
+        "maximum": 0.5668516649848637,
+        "mean": 0.5498515631484798,
+        "minimum": 0.5364778750521112,
+        "standard_deviation": 0.01550822156728726
+      },
+      "source_node_recall": {
+        "maximum": 0.9717367853290183,
+        "mean": 0.9691837468536497,
+        "minimum": 0.966235167206041,
+        "standard_deviation": 0.002772055213550238
+      },
+      "source_selected_threshold": {
+        "maximum": 0.459,
+        "mean": 0.4266666666666667,
+        "minimum": 0.374,
+        "standard_deviation": 0.04600362304572689
+      },
+      "total_linear_macs": 10891264,
+      "total_training_seconds": {
+        "maximum": 2027.3244869709015,
+        "mean": 1620.8185589313507,
+        "minimum": 1228.8029537200928,
+        "standard_deviation": 399.4579287710493
+      },
+      "transit_checkpoint_ap": {
+        "maximum": 0.6168623747263359,
+        "mean": 0.598344082900833,
+        "minimum": 0.5851095420060685,
+        "standard_deviation": 0.016522684841268377
+      },
+      "transit_checkpoint_auroc": {
+        "maximum": 0.9753632226267706,
+        "mean": 0.9748655023635082,
+        "minimum": 0.9740439669019408,
+        "standard_deviation": 0.0007167643468142062
+      },
+      "transit_exact_set_attack": {
+        "maximum": 0.6888949373979314,
+        "mean": 0.6815459989112683,
+        "minimum": 0.670386499727817,
+        "standard_deviation": 0.00982501123994561
+      },
+      "transit_exact_set_control": {
+        "maximum": 0.7117686921165575,
+        "mean": 0.7094345305323394,
+        "minimum": 0.707250960018071,
+        "standard_deviation": 0.002262627693896017
+      },
+      "transit_node_balanced_accuracy": {
+        "maximum": 0.9487085882063165,
+        "mean": 0.945252755323519,
+        "minimum": 0.9422456260079148,
+        "standard_deviation": 0.0032547613219560925
+      },
+      "transit_node_f1": {
+        "maximum": 0.6953695286890891,
+        "mean": 0.6926552594246828,
+        "minimum": 0.6894502228826151,
+        "standard_deviation": 0.002990014163554472
+      },
+      "transit_node_fpr": {
+        "maximum": 0.05647254895676421,
+        "mean": 0.05557514182237749,
+        "minimum": 0.05449077486832687,
+        "standard_deviation": 0.001004028194338675
+      },
+      "transit_node_precision": {
+        "maximum": 0.5493262646344157,
+        "mean": 0.5463316395632322,
+        "minimum": 0.5423376623376623,
+        "standard_deviation": 0.003599884590081181
+      },
+      "transit_node_recall": {
+        "maximum": 0.9531792780546745,
+        "mean": 0.9460806524694155,
+        "minimum": 0.9389820268841564,
+        "standard_deviation": 0.007098625585259033
+      },
+      "transit_selected_threshold": {
+        "maximum": 0.802,
+        "mean": 0.7493333333333334,
+        "minimum": 0.687,
+        "standard_deviation": 0.058106224566162726
+      },
+      "victim_checkpoint_ap": {
+        "maximum": 0.6678257598243427,
+        "mean": 0.6439792270232787,
+        "minimum": 0.6207100470512522,
+        "standard_deviation": 0.02356316192165194
+      },
+      "victim_checkpoint_auroc": {
+        "maximum": 0.9888468935775583,
+        "mean": 0.9880449955315139,
+        "minimum": 0.9874248391808457,
+        "standard_deviation": 0.0007282391157312643
+      },
+      "victim_exact_set_attack": {
+        "maximum": 0.9896570495372891,
+        "mean": 0.9750499001996008,
+        "minimum": 0.9496461622210125,
+        "standard_deviation": 0.02208262938758775
+      },
+      "victim_exact_set_control": {
+        "maximum": 0.7060085836909872,
+        "mean": 0.705217980573752,
+        "minimum": 0.704540320758979,
+        "standard_deviation": 0.0007406187626273181
+      },
+      "victim_node_balanced_accuracy": {
+        "maximum": 0.9855016797256455,
+        "mean": 0.9827280847199268,
+        "minimum": 0.9775860140654484,
+        "standard_deviation": 0.004457768318910441
+      },
+      "victim_node_f1": {
+        "maximum": 0.7600570613409415,
+        "mean": 0.7580711733982644,
+        "minimum": 0.754120352625527,
+        "standard_deviation": 0.003421527197452309
+      },
+      "victim_node_fpr": {
+        "maximum": 0.026129525116148546,
+        "mean": 0.026025589057611757,
+        "minimum": 0.025880078575660253,
+        "standard_deviation": 0.0001298160955047331
+      },
+      "victim_node_precision": {
+        "maximum": 0.6143911439114391,
+        "mean": 0.6136249666790743,
+        "minimum": 0.6124513618677043,
+        "standard_deviation": 0.001032078736531024
+      },
+      "victim_node_recall": {
+        "maximum": 0.9971328845674395,
+        "mean": 0.9914817584974653,
+        "minimum": 0.981052106706557,
+        "standard_deviation": 0.009042874830604725
+      },
+      "victim_selected_threshold": {
+        "maximum": 0.631,
+        "mean": 0.45366666666666666,
+        "minimum": 0.231,
+        "standard_deviation": 0.20381691130358476
+      }
+    },
+    "gcnconv": {
+      "graph_message_scalar_ops": 8192,
+      "inference_microseconds_per_item": {
+        "maximum": 62.87776601553219,
+        "mean": 59.66757416662934,
+        "minimum": 57.852444218724486,
+        "standard_deviation": 2.788030321047414
+      },
+      "joint_exact_all_roles_attack": {
+        "maximum": 0.40228633641807293,
+        "mean": 0.38631827254581746,
+        "minimum": 0.376701143168209,
+        "standard_deviation": 0.013924844886916834
+      },
+      "joint_exact_all_roles_overall": {
+        "maximum": 0.6158205619412516,
+        "mean": 0.6082109408258833,
+        "minimum": 0.6019316730523627,
+        "standard_deviation": 0.007039367063351562
+      },
+      "macro_role_checkpoint_ap": {
+        "maximum": 0.6301354670060544,
+        "mean": 0.6039529257657811,
+        "minimum": 0.5778155433987444,
+        "standard_deviation": 0.026159991037107828
+      },
+      "macro_role_exact_set_attack": {
+        "maximum": 0.6420114316820904,
+        "mean": 0.6311921611322809,
+        "minimum": 0.6130919978225368,
+        "standard_deviation": 0.015774725456423194
+      },
+      "macro_role_node_f1": {
+        "maximum": 0.6952728373760255,
+        "mean": 0.6868490597630601,
+        "minimum": 0.6777988813873373,
+        "standard_deviation": 0.008753803054121111
+      },
+      "parameter_count": 43012,
+      "path_checkpoint_ap": {
+        "maximum": 0.6373020358937744,
+        "mean": 0.614808445102238,
+        "minimum": 0.5903955051891407,
+        "standard_deviation": 0.02351209436596436
+      },
+      "path_checkpoint_auroc": {
+        "maximum": 0.9562215849941992,
+        "mean": 0.9534103080853807,
+        "minimum": 0.9505815929837812,
+        "standard_deviation": 0.0028200364425518105
+      },
+      "path_exact_set_attack": {
+        "maximum": 0.5939031028851388,
+        "mean": 0.5749410270368354,
+        "minimum": 0.5438214480130648,
+        "standard_deviation": 0.027164254108616833
+      },
+      "path_exact_set_control": {
+        "maximum": 0.7096227693697764,
+        "mean": 0.7032979444318952,
+        "minimum": 0.6988931556358708,
+        "standard_deviation": 0.005616587648139307
+      },
+      "path_node_balanced_accuracy": {
+        "maximum": 0.9320315777928737,
+        "mean": 0.9288468438793928,
+        "minimum": 0.9242318281960193,
+        "standard_deviation": 0.0040918581230747104
+      },
+      "path_node_f1": {
+        "maximum": 0.7146085136713123,
+        "mean": 0.7114126058312158,
+        "minimum": 0.7074732051093819,
+        "standard_deviation": 0.0036252921699339914
+      },
+      "path_node_fpr": {
+        "maximum": 0.10917808921259888,
+        "mean": 0.10533039488695144,
+        "minimum": 0.09985592501267063,
+        "standard_deviation": 0.004869341367867889
+      },
+      "path_node_precision": {
+        "maximum": 0.5733161378236324,
+        "mean": 0.5641497184193557,
+        "minimum": 0.5568704495550676,
+        "standard_deviation": 0.0083836846629115
+      },
+      "path_node_recall": {
+        "maximum": 0.9710203260213323,
+        "mean": 0.9630240826457369,
+        "minimum": 0.9483195814047092,
+        "standard_deviation": 0.012750744849973945
+      },
+      "path_selected_threshold": {
+        "maximum": 0.653,
+        "mean": 0.443,
+        "minimum": 0.253,
+        "standard_deviation": 0.2007485989988473
+      },
+      "pooling_scalar_ops": 0,
+      "selection_score": {
+        "maximum": 0.629333345678764,
+        "mean": 0.6025677867010073,
+        "minimum": 0.5760500183067143,
+        "standard_deviation": 0.026642527922274832
+      },
+      "source_checkpoint_ap": {
+        "maximum": 0.6212596093479685,
+        "mean": 0.5871056638067643,
+        "minimum": 0.5550850033485389,
+        "standard_deviation": 0.03313884123998425
+      },
+      "source_checkpoint_auroc": {
+        "maximum": 0.9830836834676163,
+        "mean": 0.981519036731063,
+        "minimum": 0.9804001882813582,
+        "standard_deviation": 0.00139618719664858
+      },
+      "source_exact_set_attack": {
+        "maximum": 0.726456178551987,
+        "mean": 0.6988749773180911,
+        "minimum": 0.6777354382144801,
+        "standard_deviation": 0.02499097623161712
+      },
+      "source_exact_set_control": {
+        "maximum": 0.7229500790603117,
+        "mean": 0.7158722987726828,
+        "minimum": 0.7074768466229953,
+        "standard_deviation": 0.007820321276447103
+      },
+      "source_node_balanced_accuracy": {
+        "maximum": 0.9498637624043145,
+        "mean": 0.9438764331558237,
+        "minimum": 0.9336436779752961,
+        "standard_deviation": 0.008904522206689658
+      },
+      "source_node_f1": {
+        "maximum": 0.690035728463676,
+        "mean": 0.678030587149494,
+        "minimum": 0.6646057552858561,
+        "standard_deviation": 0.012774291561504341
+      },
+      "source_node_fpr": {
+        "maximum": 0.04302273274121499,
+        "mean": 0.039179891689071614,
+        "minimum": 0.03670401406019521,
+        "standard_deviation": 0.003373869172460517
+      },
+      "source_node_precision": {
+        "maximum": 0.5459170854271357,
+        "mean": 0.534804119609163,
+        "minimum": 0.5142334042050555,
+        "standard_deviation": 0.017833975562704007
+      },
+      "source_node_recall": {
+        "maximum": 0.9392664509169364,
+        "mean": 0.9269327580007192,
+        "minimum": 0.9039913700107874,
+        "standard_deviation": 0.01988655901146598
+      },
+      "source_selected_threshold": {
+        "maximum": 0.8190000000000001,
+        "mean": 0.726,
+        "minimum": 0.609,
+        "standard_deviation": 0.10703737664946768
+      },
+      "total_linear_macs": 11022336,
+      "total_training_seconds": {
+        "maximum": 1977.8037440776825,
+        "mean": 1839.2603993415833,
+        "minimum": 1689.6837966442108,
+        "standard_deviation": 144.3765064447697
+      },
+      "transit_checkpoint_ap": {
+        "maximum": 0.615863711494054,
+        "mean": 0.5920684734986923,
+        "minimum": 0.5611849334559631,
+        "standard_deviation": 0.02802008585587733
+      },
+      "transit_checkpoint_auroc": {
+        "maximum": 0.9725305780495888,
+        "mean": 0.9707037345023695,
+        "minimum": 0.9681757765042324,
+        "standard_deviation": 0.002260474558543815
+      },
+      "transit_exact_set_attack": {
+        "maximum": 0.5253130103429504,
+        "mean": 0.5095264017419706,
+        "minimum": 0.4972781709308655,
+        "standard_deviation": 0.0143484543855168
+      },
+      "transit_exact_set_control": {
+        "maximum": 0.7552518635644906,
+        "mean": 0.7517506211881635,
+        "minimum": 0.7477976056019878,
+        "standard_deviation": 0.0037476078660575837
+      },
+      "transit_node_balanced_accuracy": {
+        "maximum": 0.9243639581916552,
+        "mean": 0.9203154896674088,
+        "minimum": 0.9151622058748334,
+        "standard_deviation": 0.00469931101416827
+      },
+      "transit_node_f1": {
+        "maximum": 0.6580450117568022,
+        "mean": 0.6509565530941089,
+        "minimum": 0.643273914672662,
+        "standard_deviation": 0.007403452873933744
+      },
+      "transit_node_fpr": {
+        "maximum": 0.0646507056397765,
+        "mean": 0.06154895320306685,
+        "minimum": 0.05730585558155187,
+        "standard_deviation": 0.003803118091462493
+      },
+      "transit_node_precision": {
+        "maximum": 0.5228182546036829,
+        "mean": 0.5093432768746741,
+        "minimum": 0.4982172470978441,
+        "standard_deviation": 0.012467580356152443
+      },
+      "transit_node_recall": {
+        "maximum": 0.9114182147711826,
+        "mean": 0.9021799325378845,
+        "minimum": 0.8876302673312189,
+        "standard_deviation": 0.012752439087051275
+      },
+      "transit_selected_threshold": {
+        "maximum": 0.8130000000000001,
+        "mean": 0.7023333333333334,
+        "minimum": 0.62,
+        "standard_deviation": 0.09957074536897541
+      },
+      "victim_checkpoint_ap": {
+        "maximum": 0.6461165112884204,
+        "mean": 0.6218291206554296,
+        "minimum": 0.6045967316013346,
+        "standard_deviation": 0.02164030526066355
+      },
+      "victim_checkpoint_auroc": {
+        "maximum": 0.9875193695572964,
+        "mean": 0.9864030369699973,
+        "minimum": 0.9854569455657217,
+        "standard_deviation": 0.0010416980011277734
+      },
+      "victim_exact_set_attack": {
+        "maximum": 0.7569406641262929,
+        "mean": 0.7414262384322264,
+        "minimum": 0.7188350571584105,
+        "standard_deviation": 0.02001423675160561
+      },
+      "victim_exact_set_control": {
+        "maximum": 0.7201264964987576,
+        "mean": 0.7160605376101197,
+        "minimum": 0.7134628416534899,
+        "standard_deviation": 0.0035662194271169814
+      },
+      "victim_node_balanced_accuracy": {
+        "maximum": 0.9638701663406829,
+        "mean": 0.9616423639104174,
+        "minimum": 0.9589090366774647,
+        "standard_deviation": 0.0025189022169220215
+      },
+      "victim_node_f1": {
+        "maximum": 0.7184020956123117,
+        "mean": 0.7069964929774218,
+        "minimum": 0.6958426504814493,
+        "standard_deviation": 0.011281829573644446
+      },
+      "victim_node_fpr": {
+        "maximum": 0.03256836394250257,
+        "mean": 0.0310907396436379,
+        "minimum": 0.02950225021566732,
+        "standard_deviation": 0.0015360604330919533
+      },
+      "victim_node_precision": {
+        "maximum": 0.5749475890985325,
+        "mean": 0.5615166947008853,
+        "minimum": 0.5488445756245051,
+        "standard_deviation": 0.013068038609425573
+      },
+      "victim_node_recall": {
+        "maximum": 0.9572425828970331,
+        "mean": 0.9543754674644727,
+        "minimum": 0.9503864372974321,
+        "standard_deviation": 0.003563102948879651
+      },
+      "victim_selected_threshold": {
+        "maximum": 0.8280000000000001,
+        "mean": 0.7033333333333334,
+        "minimum": 0.588,
+        "standard_deviation": 0.12027191415011797
+      }
+    },
+    "graphconv": {
+      "graph_message_scalar_ops": 6144,
+      "inference_microseconds_per_item": {
+        "maximum": 55.146965312502516,
+        "mean": 55.0470102083267,
+        "minimum": 54.97002796879258,
+        "standard_deviation": 0.09067811357856205
+      },
+      "joint_exact_all_roles_attack": {
+        "maximum": 0.6818181818181818,
+        "mean": 0.6596806387225549,
+        "minimum": 0.6333696243875885,
+        "standard_deviation": 0.024492428950913987
+      },
+      "joint_exact_all_roles_overall": {
+        "maximum": 0.6878991060025543,
+        "mean": 0.6832960834397617,
+        "minimum": 0.6769636015325671,
+        "standard_deviation": 0.005669178663724756
+      },
+      "macro_role_checkpoint_ap": {
+        "maximum": 0.6692590676652008,
+        "mean": 0.6533028505118371,
+        "minimum": 0.6363628284578848,
+        "standard_deviation": 0.016470171297167956
+      },
+      "macro_role_exact_set_attack": {
+        "maximum": 0.8652014153511159,
+        "mean": 0.8563101070586101,
+        "minimum": 0.8510479041916168,
+        "standard_deviation": 0.007743272833733194
+      },
+      "macro_role_node_f1": {
+        "maximum": 0.7372574411168213,
+        "mean": 0.736588666453143,
+        "minimum": 0.7355342280509322,
+        "standard_deviation": 0.0009240769486503924
+      },
+      "parameter_count": 51204,
+      "path_checkpoint_ap": {
+        "maximum": 0.6659571964144922,
+        "mean": 0.6529381581411532,
+        "minimum": 0.6349350810128149,
+        "standard_deviation": 0.016100415941206384
+      },
+      "path_checkpoint_auroc": {
+        "maximum": 0.9596615388133546,
+        "mean": 0.9586630637015282,
+        "minimum": 0.9573866179168323,
+        "standard_deviation": 0.001162655169252698
+      },
+      "path_exact_set_attack": {
+        "maximum": 0.8081110506260207,
+        "mean": 0.798131010705861,
+        "minimum": 0.7827980402830702,
+        "standard_deviation": 0.01347878042999732
+      },
+      "path_exact_set_control": {
+        "maximum": 0.7080415631353061,
+        "mean": 0.701528499359988,
+        "minimum": 0.6973119494014005,
+        "standard_deviation": 0.005721593703028028
+      },
+      "path_node_balanced_accuracy": {
+        "maximum": 0.9441682424013056,
+        "mean": 0.9431970200383101,
+        "minimum": 0.9422073796199215,
+        "standard_deviation": 0.0009805611303879364
+      },
+      "path_node_f1": {
+        "maximum": 0.7419379477857047,
+        "mean": 0.7400111888772943,
+        "minimum": 0.7378966455122394,
+        "standard_deviation": 0.0020271848134782344
+      },
+      "path_node_fpr": {
+        "maximum": 0.09634231761416377,
+        "mean": 0.09491675351028551,
+        "minimum": 0.09300524478511187,
+        "standard_deviation": 0.0017207906316061693
+      },
+      "path_node_precision": {
+        "maximum": 0.5978924561749065,
+        "mean": 0.5939723561872693,
+        "minimum": 0.5907100520140317,
+        "standard_deviation": 0.003636104217788462
+      },
+      "path_node_recall": {
+        "maximum": 0.9837391829341919,
+        "mean": 0.9813107935869054,
+        "minimum": 0.9774200040249548,
+        "standard_deviation": 0.0034039633242184666
+      },
+      "path_selected_threshold": {
+        "maximum": 0.526,
+        "mean": 0.3096666666666667,
+        "minimum": 0.084,
+        "standard_deviation": 0.22114776357298604
+      },
+      "pooling_scalar_ops": 0,
+      "selection_score": {
+        "maximum": 0.669436542491646,
+        "mean": 0.6536526608219964,
+        "minimum": 0.6370222492210066,
+        "standard_deviation": 0.01622371910975549
+      },
+      "source_checkpoint_ap": {
+        "maximum": 0.6695066929433946,
+        "mean": 0.6599343643443376,
+        "minimum": 0.6481234962752516,
+        "standard_deviation": 0.010865936184069901
+      },
+      "source_checkpoint_auroc": {
+        "maximum": 0.9865579582707127,
+        "mean": 0.9863678702331508,
+        "minimum": 0.9860033964969339,
+        "standard_deviation": 0.0003157411426401152
+      },
+      "source_exact_set_attack": {
+        "maximum": 0.9485574305933587,
+        "mean": 0.9470150607875158,
+        "minimum": 0.9442025040827436,
+        "standard_deviation": 0.00243954448552869
+      },
+      "source_exact_set_control": {
+        "maximum": 0.7030720578269709,
+        "mean": 0.6975001882388374,
+        "minimum": 0.6918906708832167,
+        "standard_deviation": 0.0055907885411887225
+      },
+      "source_node_balanced_accuracy": {
+        "maximum": 0.9786626238730194,
+        "mean": 0.9767258023250227,
+        "minimum": 0.9755865956059655,
+        "standard_deviation": 0.001686009945533165
+      },
+      "source_node_f1": {
+        "maximum": 0.743383762182441,
+        "mean": 0.7422482863621352,
+        "minimum": 0.7411802696375233,
+        "standard_deviation": 0.001103294111318839
+      },
+      "source_node_fpr": {
+        "maximum": 0.033073889255039804,
+        "mean": 0.03252466287962004,
+        "minimum": 0.032106204688824025,
+        "standard_deviation": 0.0004969191015702642
+      },
+      "source_node_precision": {
+        "maximum": 0.5975873598636334,
+        "mean": 0.5951450424455885,
+        "minimum": 0.5921697626418989,
+        "standard_deviation": 0.002747840350642748
+      },
+      "source_node_recall": {
+        "maximum": 0.9903991370010787,
+        "mean": 0.9859762675296656,
+        "minimum": 0.9832793959007551,
+        "standard_deviation": 0.003860955807588631
+      },
+      "source_selected_threshold": {
+        "maximum": 0.323,
+        "mean": 0.25433333333333336,
+        "minimum": 0.17500000000000002,
+        "standard_deviation": 0.07457434768962672
+      },
+      "total_linear_macs": 11153408,
+      "total_training_seconds": {
+        "maximum": 1715.0491564273834,
+        "mean": 1480.3923474947612,
+        "minimum": 1260.7046020030975,
+        "standard_deviation": 227.54186027844483
+      },
+      "transit_checkpoint_ap": {
+        "maximum": 0.6422058505070318,
+        "mean": 0.6341862258049465,
+        "minimum": 0.6237332994534701,
+        "standard_deviation": 0.009473621445588195
+      },
+      "transit_checkpoint_auroc": {
+        "maximum": 0.9764592001942578,
+        "mean": 0.976419229550697,
+        "minimum": 0.9763773143588145,
+        "standard_deviation": 4.097753607398418e-05
+      },
+      "transit_exact_set_attack": {
+        "maximum": 0.728905824714208,
+        "mean": 0.7042279078207222,
+        "minimum": 0.6739248775176919,
+        "standard_deviation": 0.027918767241932426
+      },
+      "transit_exact_set_control": {
+        "maximum": 0.7522023943980122,
+        "mean": 0.7482493788118364,
+        "minimum": 0.7433928168059634,
+        "standard_deviation": 0.00447375250064116
+      },
+      "transit_node_balanced_accuracy": {
+        "maximum": 0.9477505840167805,
+        "mean": 0.9405637641594159,
+        "minimum": 0.9352460253508947,
+        "standard_deviation": 0.006458412717727455
+      },
+      "transit_node_f1": {
+        "maximum": 0.7067158161502131,
+        "mean": 0.7037251797782742,
+        "minimum": 0.7017367509912324,
+        "standard_deviation": 0.0026364915127423632
+      },
+      "transit_node_fpr": {
+        "maximum": 0.053449141587342285,
+        "mean": 0.050680355686605484,
+        "minimum": 0.04920782453553839,
+        "standard_deviation": 0.002399458244169207
+      },
+      "transit_node_precision": {
+        "maximum": 0.5711758681686994,
+        "mean": 0.565466060583486,
+        "minimum": 0.5567074251284777,
+        "standard_deviation": 0.007701004774492977
+      },
+      "transit_node_recall": {
+        "maximum": 0.9489503096209032,
+        "mean": 0.9318078840054372,
+        "minimum": 0.9198761516387253,
+        "standard_deviation": 0.015221371774338154
+      },
+      "transit_selected_threshold": {
+        "maximum": 0.709,
+        "mean": 0.5536666666666666,
+        "minimum": 0.455,
+        "standard_deviation": 0.13615187598168937
+      },
+      "victim_checkpoint_ap": {
+        "maximum": 0.6993665307958845,
+        "mean": 0.666152653756911,
+        "minimum": 0.6386594370900025,
+        "standard_deviation": 0.030755199119385818
+      },
+      "victim_checkpoint_auroc": {
+        "maximum": 0.9896468245216221,
+        "mean": 0.9886666076391393,
+        "minimum": 0.9879032547075319,
+        "standard_deviation": 0.0008917855145961919
+      },
+      "victim_exact_set_attack": {
+        "maximum": 0.9784975503538378,
+        "mean": 0.9758664489203411,
+        "minimum": 0.9738704409363091,
+        "standard_deviation": 0.0023780334643587865
+      },
+      "victim_exact_set_control": {
+        "maximum": 0.7112039756042466,
+        "mean": 0.7104510202544989,
+        "minimum": 0.7092839394623899,
+        "standard_deviation": 0.0010248217445084087
+      },
+      "victim_node_balanced_accuracy": {
+        "maximum": 0.9851485614367169,
+        "mean": 0.9840733848898162,
+        "minimum": 0.9834890749481675,
+        "standard_deviation": 0.0009323016515769837
+      },
+      "victim_node_f1": {
+        "maximum": 0.7615916130569454,
+        "mean": 0.7603700107948683,
+        "minimum": 0.7591957308938442,
+        "standard_deviation": 0.0011986418936690089
+      },
+      "victim_node_fpr": {
+        "maximum": 0.025978817831270203,
+        "mean": 0.025869684969806576,
+        "minimum": 0.025791732925903983,
+        "standard_deviation": 9.736207162854997e-05
+      },
+      "victim_node_precision": {
+        "maximum": 0.616446810151971,
+        "mean": 0.6156582924785239,
+        "minimum": 0.6144531852537406,
+        "standard_deviation": 0.0010600920712008246
+      },
+      "victim_node_recall": {
+        "maximum": 0.9961356270256794,
+        "mean": 0.994016454749439,
+        "minimum": 0.9927698828222389,
+        "standard_deviation": 0.0018447579888991085
+      },
+      "victim_selected_threshold": {
+        "maximum": 0.398,
+        "mean": 0.23500000000000001,
+        "minimum": 0.067,
+        "standard_deviation": 0.16555663683464944
+      }
+    }
+  },
+  "next_action": "JOINT_G1_G2_G3_REVIEW_THEN_FROZEN_TASK_D_FULL_MULTITASK_SYSTEM",
+  "per_seed": [
+    {
+      "best_epoch": 40,
+      "graph_message_scalar_ops": 0,
+      "inference_microseconds_per_item": 49.69004687499279,
+      "joint_exact_all_roles_attack": 0.6333696243875885,
+      "joint_exact_all_roles_control": 0.5187485882087193,
+      "joint_exact_all_roles_overall": 0.5523627075351213,
+      "macro_role_checkpoint_ap": 0.6403841846477953,
+      "macro_role_exact_set_attack": 0.8360097985846489,
+      "macro_role_node_f1": 0.7161815199588621,
+      "operator": "conv1d",
+      "parameter_count": 34692,
+      "path_checkpoint_ap": 0.6443316728516321,
+      "path_checkpoint_auroc": 0.9567538001796797,
+      "path_exact_set_attack": 0.7457811649428416,
+      "path_exact_set_control": 0.6070702507341315,
+      "path_exact_set_overall": 0.6477490421455939,
+      "path_exact_set_role_active": 0.7457811649428416,
+      "path_node_accuracy": 0.9085249042145593,
+      "path_node_balanced_accuracy": 0.933917538959369,
+      "path_node_f1": 0.7239385727190605,
+      "path_node_fpr": 0.09984453568560901,
+      "path_node_precision": 0.5782802164762477,
+      "path_node_recall": 0.967679613604347,
+      "path_node_tnr": 0.900155464314391,
+      "path_selected_threshold": 0.549,
+      "path_threshold_objective": 0.7326756096085729,
+      "peak_cuda_memory_allocated_bytes": 667597312,
+      "pooling_scalar_ops": 0,
+      "seed": 107,
+      "selection_score": 0.6410146418461624,
+      "source_checkpoint_ap": 0.6569408168189723,
+      "source_checkpoint_auroc": 0.9852894589174214,
+      "source_exact_set_attack": 0.9197060424605334,
+      "source_exact_set_control": 0.5380618929297493,
+      "source_exact_set_overall": 0.6499840357598978,
+      "source_exact_set_role_active": 0.9197060424605334,
+      "source_node_accuracy": 0.9598649026181354,
+      "source_node_balanced_accuracy": 0.9655130170459756,
+      "source_node_f1": 0.6913011780054487,
+      "source_node_fpr": 0.04071075123706703,
+      "source_node_precision": 0.5364778750521112,
+      "source_node_recall": 0.9717367853290183,
+      "source_node_tnr": 0.959289248762933,
+      "source_selected_threshold": 0.447,
+      "source_threshold_objective": 0.7826631237874826,
+      "total_linear_macs": 10891264,
+      "total_training_seconds": 1228.8029537200928,
+      "transit_checkpoint_ap": 0.6168623747263359,
+      "transit_checkpoint_auroc": 0.9753632226267706,
+      "transit_exact_set_attack": 0.6888949373979314,
+      "transit_exact_set_control": 0.7117686921165575,
+      "transit_exact_set_overall": 0.7050606641123882,
+      "transit_exact_set_role_active": 0.6517367458866545,
+      "transit_node_accuracy": 0.9436961206896551,
+      "transit_node_balanced_accuracy": 0.9448040517563256,
+      "transit_node_f1": 0.6894502228826151,
+      "transit_node_fpr": 0.05647254895676421,
+      "transit_node_precision": 0.5423376623376623,
+      "transit_node_recall": 0.9460806524694155,
+      "transit_node_tnr": 0.9435274510432358,
+      "transit_selected_threshold": 0.759,
+      "transit_threshold_objective": 0.6892281086887416,
+      "victim_checkpoint_ap": 0.6434018741942412,
+      "victim_checkpoint_auroc": 0.9878632538361378,
+      "victim_exact_set_attack": 0.9896570495372891,
+      "victim_exact_set_control": 0.704540320758979,
+      "victim_exact_set_overall": 0.788154533844189,
+      "victim_exact_set_role_active": 0.9896570495372891,
+      "victim_node_accuracy": 0.9748014447637292,
+      "victim_node_balanced_accuracy": 0.9855016797256455,
+      "victim_node_f1": 0.7600361062283245,
+      "victim_node_fpr": 0.026129525116148546,
+      "victim_node_precision": 0.6140323942580794,
+      "victim_node_recall": 0.9971328845674395,
+      "victim_node_tnr": 0.9738704748838515,
+      "victim_selected_threshold": 0.499,
+      "victim_threshold_objective": 0.8518844835519104
+    },
+    {
+      "best_epoch": 65,
+      "graph_message_scalar_ops": 0,
+      "inference_microseconds_per_item": 50.046941328076855,
+      "joint_exact_all_roles_attack": 0.5699510070767556,
+      "joint_exact_all_roles_control": 0.5085836909871244,
+      "joint_exact_all_roles_overall": 0.5265804597701149,
+      "macro_role_checkpoint_ap": 0.6176905895096465,
+      "macro_role_exact_set_attack": 0.8132825258573761,
+      "macro_role_node_f1": 0.7147266956636299,
+      "operator": "conv1d",
+      "parameter_count": 34692,
+      "path_checkpoint_ap": 0.6245082108254961,
+      "path_checkpoint_auroc": 0.95510356714033,
+      "path_exact_set_attack": 0.7346216657593904,
+      "path_exact_set_control": 0.5397560424666817,
+      "path_exact_set_overall": 0.5969029374201787,
+      "path_exact_set_role_active": 0.7346216657593904,
+      "path_node_accuracy": 0.9029523866538953,
+      "path_node_balanced_accuracy": 0.9343307772782402,
+      "path_node_f1": 0.7137286065368711,
+      "path_node_fpr": 0.10738996486392602,
+      "path_node_precision": 0.5625405957130927,
+      "path_node_recall": 0.9760515194204065,
+      "path_node_tnr": 0.892610035136074,
+      "path_selected_threshold": 0.34500000000000003,
+      "path_threshold_objective": 0.7220858302258788,
+      "peak_cuda_memory_allocated_bytes": 667597312,
+      "pooling_scalar_ops": 0,
+      "seed": 117,
+      "selection_score": 0.6184869068761601,
+      "source_checkpoint_ap": 0.6404345581557691,
+      "source_checkpoint_auroc": 0.9847622484309313,
+      "source_exact_set_attack": 0.8984757757212847,
+      "source_exact_set_control": 0.5650553422182064,
+      "source_exact_set_overall": 0.6628352490421456,
+      "source_exact_set_role_active": 0.8984757757212847,
+      "source_node_accuracy": 0.9613166507024266,
+      "source_node_balanced_accuracy": 0.9636566623673135,
+      "source_node_f1": 0.6979117967897772,
+      "source_node_fpr": 0.03892184247141407,
+      "source_node_precision": 0.5462251494084644,
+      "source_node_recall": 0.966235167206041,
+      "source_node_tnr": 0.9610781575285859,
+      "source_selected_threshold": 0.459,
+      "source_threshold_objective": 0.7781373883623801,
+      "total_linear_macs": 10891264,
+      "total_training_seconds": 1606.3282361030579,
+      "transit_checkpoint_ap": 0.5851095420060685,
+      "transit_checkpoint_auroc": 0.9740439669019408,
+      "transit_exact_set_attack": 0.670386499727817,
+      "transit_exact_set_control": 0.7092839394623899,
+      "transit_exact_set_overall": 0.6978767560664112,
+      "transit_exact_set_role_active": 0.6310176721511274,
+      "transit_node_accuracy": 0.9450780252234994,
+      "transit_node_balanced_accuracy": 0.9422456260079148,
+      "transit_node_f1": 0.6931460267023442,
+      "transit_node_fpr": 0.05449077486832687,
+      "transit_node_precision": 0.5493262646344157,
+      "transit_node_recall": 0.9389820268841564,
+      "transit_node_tnr": 0.9455092251316731,
+      "transit_selected_threshold": 0.802,
+      "transit_threshold_objective": 0.6840422159125333,
+      "victim_checkpoint_ap": 0.6207100470512522,
+      "victim_checkpoint_auroc": 0.9874248391808457,
+      "victim_exact_set_attack": 0.9496461622210125,
+      "victim_exact_set_control": 0.7060085836909872,
+      "victim_exact_set_overall": 0.7774584929757343,
+      "victim_exact_set_role_active": 0.9496461622210125,
+      "victim_node_accuracy": 0.974397349936143,
+      "victim_node_balanced_accuracy": 0.9775860140654484,
+      "victim_node_f1": 0.754120352625527,
+      "victim_node_fpr": 0.025880078575660253,
+      "victim_node_precision": 0.6124513618677043,
+      "victim_node_recall": 0.981052106706557,
+      "victim_node_tnr": 0.9741199214243398,
+      "victim_selected_threshold": 0.631,
+      "victim_threshold_objective": 0.8323306764637213
+    },
+    {
+      "best_epoch": 72,
+      "graph_message_scalar_ops": 0,
+      "inference_microseconds_per_item": 49.88919304693695,
+      "joint_exact_all_roles_attack": 0.623298856831791,
+      "joint_exact_all_roles_control": 0.555793991416309,
+      "joint_exact_all_roles_overall": 0.5755906768837803,
+      "macro_role_checkpoint_ap": 0.6448382052321792,
+      "macro_role_exact_set_attack": 0.8408410451823626,
+      "macro_role_node_f1": 0.7227488764023428,
+      "operator": "conv1d",
+      "parameter_count": 34692,
+      "path_checkpoint_ap": 0.652896483229776,
+      "path_checkpoint_auroc": 0.9584624623692789,
+      "path_exact_set_attack": 0.7716385410996189,
+      "path_exact_set_control": 0.5659588886379038,
+      "path_exact_set_overall": 0.6262771392081737,
+      "path_exact_set_role_active": 0.7716385410996189,
+      "path_node_accuracy": 0.9054717432950191,
+      "path_node_balanced_accuracy": 0.9379801923741231,
+      "path_node_f1": 0.7201347040056718,
+      "path_node_fpr": 0.10524307671281243,
+      "path_node_precision": 0.5687953522014046,
+      "path_node_recall": 0.9812034614610585,
+      "path_node_tnr": 0.8947569232871876,
+      "path_selected_threshold": 0.223,
+      "path_threshold_objective": 0.7407362388432507,
+      "peak_cuda_memory_allocated_bytes": 667597312,
+      "pooling_scalar_ops": 0,
+      "seed": 127,
+      "selection_score": 0.6454718933659155,
+      "source_checkpoint_ap": 0.6655702459045032,
+      "source_checkpoint_auroc": 0.9862944924006785,
+      "source_exact_set_attack": 0.9205225911812738,
+      "source_exact_set_control": 0.6081996837587531,
+      "source_exact_set_overall": 0.6997924648786717,
+      "source_exact_set_role_active": 0.9205225911812738,
+      "source_node_accuracy": 0.9643299010217113,
+      "source_node_balanced_accuracy": 0.9668273261730262,
+      "source_node_f1": 0.7154342115736687,
+      "source_node_fpr": 0.03592463567983764,
+      "source_node_precision": 0.5668516649848637,
+      "source_node_recall": 0.96957928802589,
+      "source_node_tnr": 0.9640753643201624,
+      "source_selected_threshold": 0.374,
+      "source_threshold_objective": 0.7974695634167107,
+      "total_linear_macs": 10891264,
+      "total_training_seconds": 2027.3244869709015,
+      "transit_checkpoint_ap": 0.5930603319700947,
+      "transit_checkpoint_auroc": 0.9751893175618133,
+      "transit_exact_set_attack": 0.6853565596080566,
+      "transit_exact_set_control": 0.707250960018071,
+      "transit_exact_set_overall": 0.7008301404853129,
+      "transit_exact_set_role_active": 0.647775746496039,
+      "transit_node_accuracy": 0.944828583971903,
+      "transit_node_balanced_accuracy": 0.9487085882063165,
+      "transit_node_f1": 0.6953695286890891,
+      "transit_node_fpr": 0.05576210164204139,
+      "transit_node_precision": 0.5473309917176185,
+      "transit_node_recall": 0.9531792780546745,
+      "transit_node_tnr": 0.9442378983579586,
+      "transit_selected_threshold": 0.687,
+      "transit_threshold_objective": 0.6913643410566761,
+      "victim_checkpoint_ap": 0.6678257598243427,
+      "victim_checkpoint_auroc": 0.9888468935775583,
+      "victim_exact_set_attack": 0.9858464888405009,
+      "victim_exact_set_control": 0.7051050372712898,
+      "victim_exact_set_overall": 0.7874361430395913,
+      "victim_exact_set_role_active": 0.9858464888405009,
+      "victim_node_accuracy": 0.9748263888888888,
+      "victim_node_balanced_accuracy": 0.9850965603686865,
+      "victim_node_f1": 0.7600570613409415,
+      "victim_node_fpr": 0.026067163481026473,
+      "victim_node_precision": 0.6143911439114391,
+      "victim_node_recall": 0.9962602842183994,
+      "victim_node_tnr": 0.9739328365189736,
+      "victim_selected_threshold": 0.231,
+      "victim_threshold_objective": 0.8503728323407653
+    },
+    {
+      "best_epoch": 69,
+      "graph_message_scalar_ops": 8192,
+      "inference_microseconds_per_item": 57.852444218724486,
+      "joint_exact_all_roles_attack": 0.40228633641807293,
+      "joint_exact_all_roles_control": 0.7044273774565168,
+      "joint_exact_all_roles_overall": 0.6158205619412516,
+      "macro_role_checkpoint_ap": 0.6301354670060544,
+      "macro_role_exact_set_attack": 0.6420114316820904,
+      "macro_role_node_f1": 0.6952728373760255,
+      "operator": "gcnconv",
+      "parameter_count": 43012,
+      "path_checkpoint_ap": 0.6373020358937744,
+      "path_checkpoint_auroc": 0.9562215849941992,
+      "path_exact_set_attack": 0.5870985302123026,
+      "path_exact_set_control": 0.7096227693697764,
+      "path_exact_set_overall": 0.6736909323116219,
+      "path_exact_set_role_active": 0.5870985302123026,
+      "path_node_accuracy": 0.9061153017241379,
+      "path_node_balanced_accuracy": 0.9242318281960193,
+      "path_node_f1": 0.7146085136713123,
+      "path_node_fpr": 0.09985592501267063,
+      "path_node_precision": 0.5733161378236324,
+      "path_node_recall": 0.9483195814047092,
+      "path_node_tnr": 0.9001440749873294,
+      "path_selected_threshold": 0.653,
+      "path_threshold_objective": 0.6636045202877084,
+      "peak_cuda_memory_allocated_bytes": 667732480,
+      "pooling_scalar_ops": 0,
+      "seed": 107,
+      "selection_score": 0.629333345678764,
+      "source_checkpoint_ap": 0.6212596093479685,
+      "source_checkpoint_auroc": 0.9830836834676163,
+      "source_exact_set_attack": 0.726456178551987,
+      "source_exact_set_control": 0.7171899706347413,
+      "source_exact_set_overall": 0.7199074074074074,
+      "source_exact_set_role_active": 0.726456178551987,
+      "source_node_accuracy": 0.9610472541507025,
+      "source_node_balanced_accuracy": 0.9498637624043145,
+      "source_node_f1": 0.690035728463676,
+      "source_node_fpr": 0.037812928265804645,
+      "source_node_precision": 0.5459170854271357,
+      "source_node_recall": 0.9375404530744337,
+      "source_node_tnr": 0.9621870717341954,
+      "source_selected_threshold": 0.8190000000000001,
+      "source_threshold_objective": 0.7046039084990003,
+      "total_linear_macs": 11022336,
+      "total_training_seconds": 1977.8037440776825,
+      "transit_checkpoint_ap": 0.615863711494054,
+      "transit_checkpoint_auroc": 0.9725305780495888,
+      "transit_exact_set_attack": 0.5059880239520959,
+      "transit_exact_set_control": 0.7552518635644906,
+      "transit_exact_set_overall": 0.6821519795657727,
+      "transit_exact_set_role_active": 0.4469835466179159,
+      "transit_node_accuracy": 0.9390565134099617,
+      "transit_node_balanced_accuracy": 0.9151622058748334,
+      "transit_node_f1": 0.6580450117568022,
+      "transit_node_fpr": 0.05730585558155187,
+      "transit_node_precision": 0.5228182546036829,
+      "transit_node_recall": 0.8876302673312189,
+      "transit_node_tnr": 0.9426941444184481,
+      "transit_selected_threshold": 0.8130000000000001,
+      "transit_threshold_objective": 0.5972222166349197,
+      "victim_checkpoint_ap": 0.6461165112884204,
+      "victim_checkpoint_auroc": 0.9875193695572964,
+      "victim_exact_set_attack": 0.7485029940119761,
+      "victim_exact_set_control": 0.7201264964987576,
+      "victim_exact_set_overall": 0.728448275862069,
+      "victim_exact_set_role_active": 0.7485029940119761,
+      "victim_node_accuracy": 0.9699672733077905,
+      "victim_node_balanced_accuracy": 0.9638701663406829,
+      "victim_node_f1": 0.7184020956123117,
+      "victim_node_fpr": 0.02950225021566732,
+      "victim_node_precision": 0.5749475890985325,
+      "victim_node_recall": 0.9572425828970331,
+      "victim_node_tnr": 0.9704977497843327,
+      "victim_selected_threshold": 0.8280000000000001,
+      "victim_threshold_objective": 0.7304424549721775
+    },
+    {
+      "best_epoch": 63,
+      "graph_message_scalar_ops": 8192,
+      "inference_microseconds_per_item": 62.87776601553219,
+      "joint_exact_all_roles_attack": 0.3799673380511704,
+      "joint_exact_all_roles_control": 0.7010390783826519,
+      "joint_exact_all_roles_overall": 0.6068805874840357,
+      "macro_role_checkpoint_ap": 0.6039077668925444,
+      "macro_role_exact_set_attack": 0.6384730538922155,
+      "macro_role_node_f1": 0.6874754605258175,
+      "operator": "gcnconv",
+      "parameter_count": 43012,
+      "path_checkpoint_ap": 0.6167277942237989,
+      "path_checkpoint_auroc": 0.9534277462781617,
+      "path_exact_set_attack": 0.5939031028851388,
+      "path_exact_set_control": 0.7013779082900384,
+      "path_exact_set_overall": 0.6698595146871009,
+      "path_exact_set_role_active": 0.5939031028851388,
+      "path_node_accuracy": 0.9027079342273308,
+      "path_node_balanced_accuracy": 0.9320315777928737,
+      "path_node_f1": 0.7121560987129532,
+      "path_node_fpr": 0.10695717043558481,
+      "path_node_precision": 0.562262567879367,
+      "path_node_recall": 0.9710203260213323,
+      "path_node_tnr": 0.8930428295644152,
+      "path_selected_threshold": 0.253,
+      "path_threshold_objective": 0.6648549003818274,
+      "peak_cuda_memory_allocated_bytes": 667732480,
+      "pooling_scalar_ops": 0,
+      "seed": 117,
+      "selection_score": 0.6023199961175437,
+      "source_checkpoint_ap": 0.5849723787237854,
+      "source_checkpoint_auroc": 0.9810732384442145,
+      "source_exact_set_attack": 0.6777354382144801,
+      "source_exact_set_control": 0.7229500790603117,
+      "source_exact_set_overall": 0.7096902937420179,
+      "source_exact_set_role_active": 0.6777354382144801,
+      "source_node_accuracy": 0.9605533604725415,
+      "source_node_balanced_accuracy": 0.9336436779752961,
+      "source_node_f1": 0.67945027769895,
+      "source_node_fpr": 0.03670401406019521,
+      "source_node_precision": 0.5442618691952977,
+      "source_node_recall": 0.9039913700107874,
+      "source_node_tnr": 0.9632959859398048,
+      "source_selected_threshold": 0.75,
+      "source_threshold_objective": 0.678764341905162,
+      "total_linear_macs": 11022336,
+      "total_training_seconds": 1850.2936573028564,
+      "transit_checkpoint_ap": 0.5991567755460597,
+      "transit_checkpoint_auroc": 0.9714048489532872,
+      "transit_exact_set_attack": 0.5253130103429504,
+      "transit_exact_set_control": 0.7522023943980122,
+      "transit_exact_set_overall": 0.6856641123882503,
+      "transit_exact_set_role_active": 0.46861669713589277,
+      "transit_node_accuracy": 0.9355992576628352,
+      "transit_node_balanced_accuracy": 0.9243639581916552,
+      "transit_node_f1": 0.6515507328528626,
+      "transit_node_fpr": 0.06269029838787218,
+      "transit_node_precision": 0.5069943289224953,
+      "transit_node_recall": 0.9114182147711826,
+      "transit_node_tnr": 0.9373097016121278,
+      "transit_selected_threshold": 0.62,
+      "transit_threshold_objective": 0.6010556438488976,
+      "victim_checkpoint_ap": 0.6147741190765337,
+      "victim_checkpoint_auroc": 0.9862327957869738,
+      "victim_exact_set_attack": 0.7569406641262929,
+      "victim_exact_set_control": 0.7134628416534899,
+      "victim_exact_set_overall": 0.726213282247765,
+      "victim_exact_set_role_active": 0.7569406641262929,
+      "victim_node_accuracy": 0.968266083971903,
+      "victim_node_balanced_accuracy": 0.9621478887131045,
+      "victim_node_f1": 0.7067447328385045,
+      "victim_node_fpr": 0.031201604772743807,
+      "victim_node_precision": 0.5607579193796182,
+      "victim_node_recall": 0.9554973821989529,
+      "victim_node_tnr": 0.9687983952272562,
+      "victim_selected_threshold": 0.588,
+      "victim_threshold_objective": 0.7268231053536198
+    },
+    {
+      "best_epoch": 57,
+      "graph_message_scalar_ops": 8192,
+      "inference_microseconds_per_item": 58.27251226563135,
+      "joint_exact_all_roles_attack": 0.376701143168209,
+      "joint_exact_all_roles_control": 0.6953919132595437,
+      "joint_exact_all_roles_overall": 0.6019316730523627,
+      "macro_role_checkpoint_ap": 0.5778155433987444,
+      "macro_role_exact_set_attack": 0.6130919978225368,
+      "macro_role_node_f1": 0.6777988813873373,
+      "operator": "gcnconv",
+      "parameter_count": 43012,
+      "path_checkpoint_ap": 0.5903955051891407,
+      "path_checkpoint_auroc": 0.9505815929837812,
+      "path_exact_set_attack": 0.5438214480130648,
+      "path_exact_set_control": 0.6988931556358708,
+      "path_exact_set_overall": 0.6534163473818646,
+      "path_exact_set_role_active": 0.5438214480130648,
+      "path_node_accuracy": 0.900602650063857,
+      "path_node_balanced_accuracy": 0.9302771256492852,
+      "path_node_f1": 0.7074732051093819,
+      "path_node_fpr": 0.10917808921259888,
+      "path_node_precision": 0.5568704495550676,
+      "path_node_recall": 0.9697323405111693,
+      "path_node_tnr": 0.8908219107874011,
+      "path_selected_threshold": 0.423,
+      "path_threshold_objective": 0.642012502270855,
+      "peak_cuda_memory_allocated_bytes": 667732480,
+      "pooling_scalar_ops": 0,
+      "seed": 127,
+      "selection_score": 0.5760500183067143,
+      "source_checkpoint_ap": 0.5550850033485389,
+      "source_checkpoint_auroc": 0.9804001882813582,
+      "source_exact_set_attack": 0.6924333151878062,
+      "source_exact_set_control": 0.7074768466229953,
+      "source_exact_set_overall": 0.7030651340996169,
+      "source_exact_set_role_active": 0.6924333151878062,
+      "source_node_accuracy": 0.9561582056194126,
+      "source_node_balanced_accuracy": 0.9481218590878606,
+      "source_node_f1": 0.6646057552858561,
+      "source_node_fpr": 0.04302273274121499,
+      "source_node_precision": 0.5142334042050555,
+      "source_node_recall": 0.9392664509169364,
+      "source_node_tnr": 0.956977267258785,
+      "source_selected_threshold": 0.609,
+      "source_threshold_objective": 0.6757367792466361,
+      "total_linear_macs": 11022336,
+      "total_training_seconds": 1689.6837966442108,
+      "transit_checkpoint_ap": 0.5611849334559631,
+      "transit_checkpoint_auroc": 0.9681757765042324,
+      "transit_exact_set_attack": 0.4972781709308655,
+      "transit_exact_set_control": 0.7477976056019878,
+      "transit_exact_set_overall": 0.6743295019157088,
+      "transit_exact_set_role_active": 0.4372333942717855,
+      "transit_node_accuracy": 0.9335089399744572,
+      "transit_node_balanced_accuracy": 0.9214203049357378,
+      "transit_node_f1": 0.643273914672662,
+      "transit_node_fpr": 0.0646507056397765,
+      "transit_node_precision": 0.4982172470978441,
+      "transit_node_recall": 0.9074913155112521,
+      "transit_node_tnr": 0.9353492943602235,
+      "transit_selected_threshold": 0.674,
+      "transit_threshold_objective": 0.5848756171759434,
+      "victim_checkpoint_ap": 0.6045967316013346,
+      "victim_checkpoint_auroc": 0.9854569455657217,
+      "victim_exact_set_attack": 0.7188350571584105,
+      "victim_exact_set_control": 0.7145922746781116,
+      "victim_exact_set_overall": 0.7158365261813537,
+      "victim_exact_set_role_active": 0.7188350571584105,
+      "victim_node_accuracy": 0.9667494811621967,
+      "victim_node_balanced_accuracy": 0.9589090366774647,
+      "victim_node_f1": 0.6958426504814493,
+      "victim_node_fpr": 0.03256836394250257,
+      "victim_node_precision": 0.5488445756245051,
+      "victim_node_recall": 0.9503864372974321,
+      "victim_node_tnr": 0.9674316360574974,
+      "victim_selected_threshold": 0.6940000000000001,
+      "victim_threshold_objective": 0.7050396131522338
+    },
+    {
+      "best_epoch": 58,
+      "graph_message_scalar_ops": 6144,
+      "inference_microseconds_per_item": 54.97002796879258,
+      "joint_exact_all_roles_attack": 0.6333696243875885,
+      "joint_exact_all_roles_control": 0.6950530833521572,
+      "joint_exact_all_roles_overall": 0.6769636015325671,
+      "macro_role_checkpoint_ap": 0.6692590676652008,
+      "macro_role_exact_set_attack": 0.8510479041916168,
+      "macro_role_node_f1": 0.7369743301916757,
+      "operator": "graphconv",
+      "parameter_count": 51204,
+      "path_checkpoint_ap": 0.6659571964144922,
+      "path_checkpoint_auroc": 0.9596615388133546,
+      "path_exact_set_attack": 0.8034839412084921,
+      "path_exact_set_control": 0.6973119494014005,
+      "path_exact_set_overall": 0.728448275862069,
+      "path_exact_set_role_active": 0.8034839412084921,
+      "path_node_accuracy": 0.9144067289272031,
+      "path_node_balanced_accuracy": 0.9441682424013056,
+      "path_node_f1": 0.740198973333939,
+      "path_node_fpr": 0.0954026981315809,
+      "path_node_precision": 0.5933145603728698,
+      "path_node_recall": 0.9837391829341919,
+      "path_node_tnr": 0.9045973018684191,
+      "path_selected_threshold": 0.084,
+      "path_threshold_objective": 0.7655129604837603,
+      "peak_cuda_memory_allocated_bytes": 667863552,
+      "pooling_scalar_ops": 0,
+      "seed": 107,
+      "selection_score": 0.669436542491646,
+      "source_checkpoint_ap": 0.6695066929433946,
+      "source_checkpoint_auroc": 0.9865422559318057,
+      "source_exact_set_attack": 0.9482852476864453,
+      "source_exact_set_control": 0.7030720578269709,
+      "source_exact_set_overall": 0.7749840357598978,
+      "source_exact_set_role_active": 0.9482852476864453,
+      "source_node_accuracy": 0.9686053240740741,
+      "source_node_balanced_accuracy": 0.9755865956059655,
+      "source_node_f1": 0.743383762182441,
+      "source_node_fpr": 0.032106204688824025,
+      "source_node_precision": 0.5975873598636334,
+      "source_node_recall": 0.9832793959007551,
+      "source_node_tnr": 0.9678937953111759,
+      "source_selected_threshold": 0.17500000000000002,
+      "source_threshold_objective": 0.8253443563840427,
+      "total_linear_macs": 11153408,
+      "total_training_seconds": 1715.0491564273834,
+      "transit_checkpoint_ap": 0.6422058505070318,
+      "transit_checkpoint_auroc": 0.9764592001942578,
+      "transit_exact_set_attack": 0.6739248775176919,
+      "transit_exact_set_control": 0.7522023943980122,
+      "transit_exact_set_overall": 0.7292464878671775,
+      "transit_exact_set_role_active": 0.6349786715417428,
+      "transit_node_accuracy": 0.948585169220945,
+      "transit_node_balanced_accuracy": 0.9352460253508947,
+      "transit_node_f1": 0.7027229721933772,
+      "transit_node_fpr": 0.04938410093693578,
+      "transit_node_precision": 0.568514888453281,
+      "transit_node_recall": 0.9198761516387253,
+      "transit_node_tnr": 0.9506158990630642,
+      "transit_selected_threshold": 0.455,
+      "transit_threshold_objective": 0.691203734323103,
+      "victim_checkpoint_ap": 0.6993665307958845,
+      "victim_checkpoint_auroc": 0.9896468245216221,
+      "victim_exact_set_attack": 0.9784975503538378,
+      "victim_exact_set_control": 0.7112039756042466,
+      "victim_exact_set_overall": 0.7895913154533845,
+      "victim_exact_set_role_active": 0.9784975503538378,
+      "victim_node_accuracy": 0.9750409083652618,
+      "victim_node_balanced_accuracy": 0.9851485614367169,
+      "victim_node_f1": 0.7615916130569454,
+      "victim_node_fpr": 0.025838504152245537,
+      "victim_node_precision": 0.616446810151971,
+      "victim_node_recall": 0.9961356270256794,
+      "victim_node_tnr": 0.9741614958477545,
+      "victim_selected_threshold": 0.067,
+      "victim_threshold_objective": 0.8483539879757024
+    },
+    {
+      "best_epoch": 40,
+      "graph_message_scalar_ops": 6144,
+      "inference_microseconds_per_item": 55.146965312502516,
+      "joint_exact_all_roles_attack": 0.6818181818181818,
+      "joint_exact_all_roles_control": 0.6904224079512085,
+      "joint_exact_all_roles_overall": 0.6878991060025543,
+      "macro_role_checkpoint_ap": 0.6363628284578848,
+      "macro_role_exact_set_attack": 0.8652014153511159,
+      "macro_role_node_f1": 0.7372574411168213,
+      "operator": "graphconv",
+      "parameter_count": 51204,
+      "path_checkpoint_ap": 0.6349350810128149,
+      "path_checkpoint_auroc": 0.9573866179168323,
+      "path_exact_set_attack": 0.8081110506260207,
+      "path_exact_set_control": 0.7080415631353061,
+      "path_exact_set_overall": 0.7373882503192848,
+      "path_exact_set_role_active": 0.8081110506260207,
+      "path_node_accuracy": 0.9157237787356322,
+      "path_node_balanced_accuracy": 0.9422073796199215,
+      "path_node_f1": 0.7419379477857047,
+      "path_node_fpr": 0.09300524478511187,
+      "path_node_precision": 0.5978924561749065,
+      "path_node_recall": 0.9774200040249548,
+      "path_node_tnr": 0.9069947552148881,
+      "path_selected_threshold": 0.526,
+      "path_threshold_objective": 0.7684071889218311,
+      "peak_cuda_memory_allocated_bytes": 667863552,
+      "pooling_scalar_ops": 0,
+      "seed": 117,
+      "selection_score": 0.6370222492210066,
+      "source_checkpoint_ap": 0.6481234962752516,
+      "source_checkpoint_auroc": 0.9860033964969339,
+      "source_exact_set_attack": 0.9485574305933587,
+      "source_exact_set_control": 0.6918906708832167,
+      "source_exact_set_overall": 0.767161558109834,
+      "source_exact_set_role_active": 0.9485574305933587,
+      "source_node_accuracy": 0.9680116538952745,
+      "source_node_balanced_accuracy": 0.9786626238730194,
+      "source_node_f1": 0.7411802696375233,
+      "source_node_fpr": 0.033073889255039804,
+      "source_node_precision": 0.5921697626418989,
+      "source_node_recall": 0.9903991370010787,
+      "source_node_tnr": 0.9669261107449602,
+      "source_selected_threshold": 0.265,
+      "source_threshold_objective": 0.8241311340198574,
+      "total_linear_macs": 11153408,
+      "total_training_seconds": 1260.7046020030975,
+      "transit_checkpoint_ap": 0.6237332994534701,
+      "transit_checkpoint_auroc": 0.9764211740990187,
+      "transit_exact_set_attack": 0.728905824714208,
+      "transit_exact_set_control": 0.7491529252315338,
+      "transit_exact_set_overall": 0.7432151979565773,
+      "transit_exact_set_role_active": 0.696526508226691,
+      "transit_node_accuracy": 0.9491938058748404,
+      "transit_node_balanced_accuracy": 0.9386946831105725,
+      "transit_node_f1": 0.7067158161502131,
+      "transit_node_fpr": 0.04920782453553839,
+      "transit_node_precision": 0.5711758681686994,
+      "transit_node_recall": 0.9265971907566832,
+      "transit_node_tnr": 0.9507921754644616,
+      "transit_selected_threshold": 0.709,
+      "transit_threshold_objective": 0.7155918195758111,
+      "victim_checkpoint_ap": 0.6386594370900025,
+      "victim_checkpoint_auroc": 0.9879032547075319,
+      "victim_exact_set_attack": 0.9752313554708765,
+      "victim_exact_set_control": 0.7092839394623899,
+      "victim_exact_set_overall": 0.7872765006385696,
+      "victim_exact_set_role_active": 0.9752313554708765,
+      "victim_node_accuracy": 0.9747864782886334,
+      "victim_node_balanced_accuracy": 0.9835825182845643,
+      "victim_node_f1": 0.7591957308938442,
+      "victim_node_fpr": 0.025978817831270203,
+      "victim_node_precision": 0.6144531852537406,
+      "victim_node_recall": 0.9931438544003989,
+      "victim_node_tnr": 0.9740211821687298,
+      "victim_selected_threshold": 0.398,
+      "victim_threshold_objective": 0.8456099807246571
+    },
+    {
+      "best_epoch": 48,
+      "graph_message_scalar_ops": 6144,
+      "inference_microseconds_per_item": 55.024037343684995,
+      "joint_exact_all_roles_attack": 0.6638541099618944,
+      "joint_exact_all_roles_control": 0.6938107070250734,
+      "joint_exact_all_roles_overall": 0.6850255427841635,
+      "macro_role_checkpoint_ap": 0.6542866554124258,
+      "macro_role_exact_set_attack": 0.8526810016330975,
+      "macro_role_node_f1": 0.7355342280509322,
+      "operator": "graphconv",
+      "parameter_count": 51204,
+      "path_checkpoint_ap": 0.6579221969961524,
+      "path_checkpoint_auroc": 0.9589410343743976,
+      "path_exact_set_attack": 0.7827980402830702,
+      "path_exact_set_control": 0.6992319855432573,
+      "path_exact_set_overall": 0.7237388250319284,
+      "path_exact_set_role_active": 0.7827980402830702,
+      "path_node_accuracy": 0.9134638409961686,
+      "path_node_balanced_accuracy": 0.943215438093703,
+      "path_node_f1": 0.7378966455122394,
+      "path_node_fpr": 0.09634231761416377,
+      "path_node_precision": 0.5907100520140317,
+      "path_node_recall": 0.9827731938015697,
+      "path_node_tnr": 0.9036576823858362,
+      "path_selected_threshold": 0.319,
+      "path_threshold_objective": 0.7558572034205717,
+      "peak_cuda_memory_allocated_bytes": 667863552,
+      "pooling_scalar_ops": 0,
+      "seed": 127,
+      "selection_score": 0.6544991907533365,
+      "source_checkpoint_ap": 0.6621729038143668,
+      "source_checkpoint_auroc": 0.9865579582707127,
+      "source_exact_set_attack": 0.9442025040827436,
+      "source_exact_set_control": 0.6975378360063248,
+      "source_exact_set_overall": 0.7698754789272031,
+      "source_exact_set_role_active": 0.9442025040827436,
+      "source_node_accuracy": 0.9683758381226054,
+      "source_node_balanced_accuracy": 0.9759281874960832,
+      "source_node_f1": 0.7421808272664415,
+      "source_node_fpr": 0.03239389469499629,
+      "source_node_precision": 0.5956780048312332,
+      "source_node_recall": 0.9842502696871629,
+      "source_node_tnr": 0.9676061053050037,
+      "source_selected_threshold": 0.323,
+      "source_threshold_objective": 0.8229894979929624,
+      "total_linear_macs": 11153408,
+      "total_training_seconds": 1465.4232840538025,
+      "transit_checkpoint_ap": 0.6366195274543378,
+      "transit_checkpoint_auroc": 0.9763773143588145,
+      "transit_exact_set_attack": 0.7098530212302667,
+      "transit_exact_set_control": 0.7433928168059634,
+      "transit_exact_set_overall": 0.7335568326947637,
+      "transit_exact_set_role_active": 0.6751980499695308,
+      "transit_node_accuracy": 0.9467093710089399,
+      "transit_node_balanced_accuracy": 0.9477505840167805,
+      "transit_node_f1": 0.7017367509912324,
+      "transit_node_fpr": 0.053449141587342285,
+      "transit_node_precision": 0.5567074251284777,
+      "transit_node_recall": 0.9489503096209032,
+      "transit_node_tnr": 0.9465508584126577,
+      "transit_selected_threshold": 0.497,
+      "transit_threshold_objective": 0.7049832590868461,
+      "victim_checkpoint_ap": 0.6604319933848461,
+      "victim_checkpoint_auroc": 0.9884497436882639,
+      "victim_exact_set_attack": 0.9738704409363091,
+      "victim_exact_set_control": 0.7108651456968602,
+      "victim_exact_set_overall": 0.7879948914431673,
+      "victim_exact_set_role_active": 0.9738704409363091,
+      "victim_node_accuracy": 0.9749511095146871,
+      "victim_node_balanced_accuracy": 0.9834890749481675,
+      "victim_node_f1": 0.7603226884338153,
+      "victim_node_fpr": 0.025791732925903983,
+      "victim_node_precision": 0.6160748820298599,
+      "victim_node_recall": 0.9927698828222389,
+      "victim_node_tnr": 0.974208267074096,
+      "victim_selected_threshold": 0.24,
+      "victim_threshold_objective": 0.8457417894348128
+    }
+  ],
+  "prior_stage_provenance": {
+    "g1_aggregation_report": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1c_source_only_graph_matrix_aggregation/V5_P2_G1C_SOURCE_ONLY_GRAPH_MATRIX_AGGREGATION.json",
+    "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g2_aggregation_report": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g2_direct_graph_matrix_aggregation/V5_P2_G2_DIRECT_GRAPH_MATRIX_AGGREGATION.json",
+    "g2_aggregation_report_sha256": "66748c90e128e2e869e30b55b461a49383a5253ccc4b49f3fb72111221b95a74"
+  },
+  "report_paths": {
+    "conv1d/seed_107": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/conv1d/seed_107/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "conv1d/seed_117": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/conv1d/seed_117/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "conv1d/seed_127": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/conv1d/seed_127/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "gcnconv/seed_107": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/gcnconv/seed_107/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "gcnconv/seed_117": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/gcnconv/seed_117/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "gcnconv/seed_127": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/gcnconv/seed_127/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "graphconv/seed_107": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/graphconv/seed_107/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "graphconv/seed_117": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/graphconv/seed_117/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json",
+    "graphconv/seed_127": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g3_role_aware_multilabel_training/graphconv/seed_127/V5_P2_G3_ROLE_AWARE_MULTILABEL_SINGLE_RUN.json"
+  },
+  "security_boundary": {
+    "architecture_selected": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_tensors_deserialized": false,
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "test_evaluation_performed": false
+  },
+  "stage": "V5_P2_G3_ROLE_AWARE_MULTILABEL_MATRIX_AGGREGATION",
+  "status": "COMPLETE",
+  "validation_only_metric_leaders": {
+    "joint_exact_all_roles_attack": {
+      "architecture_selected": false,
+      "mean": 0.6596806387225549,
+      "operator": "graphconv"
+    },
+    "macro_role_exact_set_attack": {
+      "architecture_selected": false,
+      "mean": 0.8563101070586101,
+      "operator": "graphconv"
+    },
+    "macro_role_node_f1": {
+      "architecture_selected": false,
+      "mean": 0.736588666453143,
+      "operator": "graphconv"
+    },
+    "path_node_f1": {
+      "architecture_selected": false,
+      "mean": 0.7400111888772943,
+      "operator": "graphconv"
+    },
+    "source_node_f1": {
+      "architecture_selected": false,
+      "mean": 0.7422482863621352,
+      "operator": "graphconv"
+    },
+    "transit_node_f1": {
+      "architecture_selected": false,
+      "mean": 0.7037251797782742,
+      "operator": "graphconv"
+    },
+    "victim_node_f1": {
+      "architecture_selected": false,
+      "mean": 0.7603700107948683,
+      "operator": "graphconv"
+    }
+  }
+}

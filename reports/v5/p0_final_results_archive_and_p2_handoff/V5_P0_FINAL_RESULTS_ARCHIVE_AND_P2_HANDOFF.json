@@ -1,0 +1,305 @@
+{
+  "P0_test_already_consumed_in_C3": true,
+  "P1_executed": false,
+  "P1_status": "skipped_not_executed",
+  "P2_handoff": {
+    "P0_test_status": {
+      "consumed": true,
+      "evaluation_count": 1,
+      "must_not_be_reused_for_model_or_threshold_selection": true
+    },
+    "P2_entry_requirements": [
+      "independent P2 file and run inventory",
+      "P2 split and leakage audit",
+      "tensor shape and label-contract audit",
+      "PRIMARY58 compatibility audit",
+      "normalization provenance audit",
+      "physical-mask recoverability audit",
+      "window-32 and stride-8 compatibility audit",
+      "metadata/provenance quarantine",
+      "locked P2 test manifest before training"
+    ],
+    "P2_test_boundary": {
+      "do_not_access_before_checkpoint_and_threshold_freeze": true,
+      "final_locked_evaluation_count": 1
+    },
+    "frozen_B3_status_for_P2": {
+      "P0_checkpoint_zero_shot_use": "optional only after P2 audit and only on P2 validation or a separately locked transfer split",
+      "P2_final_training": "train the frozen B3 architecture from scratch on P2 train unless the explicitly named P2 study defines a different pre-registered objective",
+      "architecture_contract_sha256": "86624dd842a57fe289f7d747151ad2aabf0fb5203d8fbc618f48ce3c91ef71b2",
+      "architecture_may_not_be_silently_changed": true,
+      "role": "mandatory transferred baseline if P2 interface is compatible"
+    },
+    "handoff_name": "V5_P0_TO_P2_HANDOFF",
+    "handoff_sha256": "8c5bf457408ac91b9be43e2dbf366a641fa3af1665b8347bf4722cd7da97e276",
+    "handoff_version": 1,
+    "known_P0_limitation": {
+      "primary_issue": "false positives on control traffic",
+      "test_false_negatives": 12,
+      "test_false_positives": 56,
+      "test_graph_accuracy": 0.8997050147492626,
+      "test_graph_fpr": 0.14285714285714285,
+      "test_graph_recall": 0.958041958041958
+    },
+    "next_stage": "V5_P2_INDEPENDENT_DATASET_AUDIT",
+    "project_route": {
+      "P0": "complete",
+      "P1": "skipped_not_executed_by_project_decision",
+      "P2": "next"
+    }
+  },
+  "archive_manifest": {
+    "archive_manifest_sha256": "9dfffdb3f2f20b81f4177f0826fe894079ed09b6b1927e4c30bfa216a4665f19",
+    "binary_references": {
+      "c1_selected_checkpoint": {
+        "path": "/home/zira/research/projects/GNN-2d/models/v5/p0_c1_b3_multi_seed_validation_training/selected/selected_best_checkpoint.pt",
+        "sha256": "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc",
+        "size_bytes": 573791
+      },
+      "c2_final_checkpoint": {
+        "path": "/home/zira/research/projects/GNN-2d/models/v5/p0_c2_final_checkpoint_threshold_freeze/final_locked_b3_checkpoint.pt",
+        "sha256": "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc",
+        "size_bytes": 573791
+      },
+      "c3_test_predictions": {
+        "path": "/home/zira/research/projects/GNN-2d/models/v5/p0_c3_one_shot_locked_test_evaluation/locked_test_predictions_and_targets.pt",
+        "sha256": "c63223bba641dc73659f781313ddee12a87261b6c303e36e4560a328d506583c",
+        "size_bytes": 282164
+      }
+    },
+    "copied_artifacts": [
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE.json",
+        "archived_copy_sha256": "f882db7a5b15c1bb1e6da63d3ecd91a6e0cab474838f5f38d2ba859260ae4750",
+        "size_bytes": 8525,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE.json",
+        "source_sha256": "f882db7a5b15c1bb1e6da63d3ecd91a6e0cab474838f5f38d2ba859260ae4750"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE_LOCK.json",
+        "archived_copy_sha256": "d6efc40006e408fd6eeeb9989a0dd5841be99ccfb453319e8d282b62e8eea0c1",
+        "size_bytes": 893,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_FREEZE_B3_CONV1D_ONLY_ARCHITECTURE_LOCK.json",
+        "source_sha256": "d6efc40006e408fd6eeeb9989a0dd5841be99ccfb453319e8d282b62e8eea0c1"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_B8_B3_CONV1D_ONLY_ARCHITECTURE_CONTRACT.json",
+        "archived_copy_sha256": "158285664c8b0ecd27b544ef0fd9338fc5d2adb29a33a1e74d328145fa9d43ac",
+        "size_bytes": 3214,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_B3_CONV1D_ONLY_ARCHITECTURE_CONTRACT.json",
+        "source_sha256": "158285664c8b0ecd27b544ef0fd9338fc5d2adb29a33a1e74d328145fa9d43ac"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_B8_ARCHITECTURE_SPEC.md",
+        "archived_copy_sha256": "82f7f26aecd26d7d80902179c603a361b6c48e57298ad3bc8ae42a1c08c5c07b",
+        "size_bytes": 904,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_b8_freeze_b3_conv1d_only_architecture/V5_P0_B8_ARCHITECTURE_SPEC.md",
+        "source_sha256": "82f7f26aecd26d7d80902179c603a361b6c48e57298ad3bc8ae42a1c08c5c07b"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C0_FINAL_B3_TRAINING_PROTOCOL_LOCK.json",
+        "archived_copy_sha256": "e8af4a9f5b0463f2108cda0ad87bbd2b3913cd3c152e77214f478b8d816e9e5a",
+        "size_bytes": 7904,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c0_final_b3_training_protocol_lock/V5_P0_C0_FINAL_B3_TRAINING_PROTOCOL_LOCK.json",
+        "source_sha256": "e8af4a9f5b0463f2108cda0ad87bbd2b3913cd3c152e77214f478b8d816e9e5a"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C0_FINAL_B3_TRAINING_PROTOCOL_LOCK_LOCK.json",
+        "archived_copy_sha256": "38cff2a5905367b546b203da7850b87afb81d87f8fca2bfe415cc1f20604f2f7",
+        "size_bytes": 840,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c0_final_b3_training_protocol_lock/V5_P0_C0_FINAL_B3_TRAINING_PROTOCOL_LOCK_LOCK.json",
+        "source_sha256": "38cff2a5905367b546b203da7850b87afb81d87f8fca2bfe415cc1f20604f2f7"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C0_FINAL_B3_PROTOCOL.json",
+        "archived_copy_sha256": "dc345753ce2cbfcb89bc460cb6b9369bd3bb50cd0bfce50d863cba5881f69dac",
+        "size_bytes": 5892,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c0_final_b3_training_protocol_lock/V5_P0_C0_FINAL_B3_PROTOCOL.json",
+        "source_sha256": "dc345753ce2cbfcb89bc460cb6b9369bd3bb50cd0bfce50d863cba5881f69dac"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C0_FINAL_B3_PROTOCOL.md",
+        "archived_copy_sha256": "6783735a636c99e7597025a8dc40e83947cdf75eadcea0e346ce9022716b08c2",
+        "size_bytes": 1529,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c0_final_b3_training_protocol_lock/V5_P0_C0_FINAL_B3_PROTOCOL.md",
+        "source_sha256": "6783735a636c99e7597025a8dc40e83947cdf75eadcea0e346ce9022716b08c2"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C1_B3_MULTI_SEED_VALIDATION_TRAINING.json",
+        "archived_copy_sha256": "ad348b09481c82932fad83ef8dc92a4aa1fdcb8b5c5aa9457e7cfb5b019246dc",
+        "size_bytes": 30932,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c1_b3_multi_seed_validation_training/V5_P0_C1_B3_MULTI_SEED_VALIDATION_TRAINING.json",
+        "source_sha256": "ad348b09481c82932fad83ef8dc92a4aa1fdcb8b5c5aa9457e7cfb5b019246dc"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C1_B3_MULTI_SEED_VALIDATION_TRAINING_LOCK.json",
+        "archived_copy_sha256": "374a3cc6cba87ae9bb7bdb383ba498b577536afd900e1ce976d8c51a521028d5",
+        "size_bytes": 1035,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c1_b3_multi_seed_validation_training/V5_P0_C1_B3_MULTI_SEED_VALIDATION_TRAINING_LOCK.json",
+        "source_sha256": "374a3cc6cba87ae9bb7bdb383ba498b577536afd900e1ce976d8c51a521028d5"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C1_SEED_SUMMARY.csv",
+        "archived_copy_sha256": "f6536a2c9dcd8e50a5ffff6fe70a5e0aa66bbb841d943c64df58bfe32dc0f6b7",
+        "size_bytes": 955,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c1_b3_multi_seed_validation_training/V5_P0_C1_SEED_SUMMARY.csv",
+        "source_sha256": "f6536a2c9dcd8e50a5ffff6fe70a5e0aa66bbb841d943c64df58bfe32dc0f6b7"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C2_FINAL_CHECKPOINT_THRESHOLD_FREEZE.json",
+        "archived_copy_sha256": "b586ef5be428c93073f930625daaa9bb7e7dad771470d990162843687eb623b4",
+        "size_bytes": 13505,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_FINAL_CHECKPOINT_THRESHOLD_FREEZE.json",
+        "source_sha256": "b586ef5be428c93073f930625daaa9bb7e7dad771470d990162843687eb623b4"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C2_FINAL_CHECKPOINT_THRESHOLD_FREEZE_LOCK.json",
+        "archived_copy_sha256": "8e5afa44301bdf9019d6bde3bcb1ea1256a9ed557dc49c223c68038dc9c95c3a",
+        "size_bytes": 1226,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_FINAL_CHECKPOINT_THRESHOLD_FREEZE_LOCK.json",
+        "source_sha256": "8e5afa44301bdf9019d6bde3bcb1ea1256a9ed557dc49c223c68038dc9c95c3a"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C2_FROZEN_CHECKPOINT_THRESHOLDS.json",
+        "archived_copy_sha256": "d8f53e6ece902737f988da893c8d6dfed51beead43a9137096588d4e36eaa5e5",
+        "size_bytes": 14372,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_FROZEN_CHECKPOINT_THRESHOLDS.json",
+        "source_sha256": "d8f53e6ece902737f988da893c8d6dfed51beead43a9137096588d4e36eaa5e5"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C2_ATTACK_THRESHOLD_SWEEP.csv",
+        "archived_copy_sha256": "9b07b671932304e3b6e0476b9116bb02973f031fb1df475050ce6f07c4ab4398",
+        "size_bytes": 3185,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_ATTACK_THRESHOLD_SWEEP.csv",
+        "source_sha256": "9b07b671932304e3b6e0476b9116bb02973f031fb1df475050ce6f07c4ab4398"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C2_ROLE_THRESHOLD_SWEEP.csv",
+        "archived_copy_sha256": "10d332954094400d8c8baabdf36b39a88b4bdd1a79bfed407e35642f2b45d539",
+        "size_bytes": 11762,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c2_final_checkpoint_threshold_freeze/V5_P0_C2_ROLE_THRESHOLD_SWEEP.csv",
+        "source_sha256": "10d332954094400d8c8baabdf36b39a88b4bdd1a79bfed407e35642f2b45d539"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C3_ONE_SHOT_LOCKED_TEST_EVALUATION.json",
+        "archived_copy_sha256": "553def688c0f8c473e2c256e5192d1096bee05b813aa2d68deb769daf01d41e5",
+        "size_bytes": 7665,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c3_one_shot_locked_test_evaluation/V5_P0_C3_ONE_SHOT_LOCKED_TEST_EVALUATION.json",
+        "source_sha256": "553def688c0f8c473e2c256e5192d1096bee05b813aa2d68deb769daf01d41e5"
+      },
+      {
+        "archived_copy": "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/archive/V5_P0_C3_ONE_SHOT_LOCKED_TEST_EVALUATION_LOCK.json",
+        "archived_copy_sha256": "b814c8a36a5b912203cce526fb4aee97fc46091622ca4eb0f556f865a1a45143",
+        "size_bytes": 951,
+        "source": "/home/zira/research/projects/GNN-2d/reports/v5/p0_c3_one_shot_locked_test_evaluation/V5_P0_C3_ONE_SHOT_LOCKED_TEST_EVALUATION_LOCK.json",
+        "source_sha256": "b814c8a36a5b912203cce526fb4aee97fc46091622ca4eb0f556f865a1a45143"
+      }
+    ]
+  },
+  "artifacts": {
+    "P2_handoff": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/V5_P0_TO_P2_HANDOFF.json",
+      "60d17da671dd3b4782fd180ef1d4824b9e12dfb4bbce6c606976792c6470b8e2"
+    ],
+    "archive_manifest": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/V5_P0_FINAL_ARCHIVE_MANIFEST.json",
+      "705143e15b064c75a153eb5f243224198d2bff9a2f75a83fed1f10ec6aaa143d"
+    ],
+    "handoff_markdown": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/V5_P0_FINAL_RESULT_AND_P2_HANDOFF.md",
+      "58f8c337b833695f09b2c47c14e2a432ec8a52fc3002dbe598a312b1b38cc8d4"
+    ],
+    "official_summary": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p0_final_results_archive_and_p2_handoff/V5_P0_FINAL_OFFICIAL_RESULT_SUMMARY.json",
+      "f738b4cca1659073e663fe701a09bd08e814d476053162de8e30610bac0a5f66"
+    ]
+  },
+  "dataset_constructed": false,
+  "decision": "ARCHIVE_P0_AND_PROCEED_DIRECTLY_TO_P2",
+  "failures": [],
+  "next_stage": "V5_P2_INDEPENDENT_DATASET_AUDIT",
+  "official_result_summary": {
+    "architecture": {
+      "architecture_contract_sha256": "86624dd842a57fe289f7d747151ad2aabf0fb5203d8fbc618f48ce3c91ef71b2",
+      "name": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY",
+      "parameter_count": 43208
+    },
+    "checkpoint": {
+      "sha256": "118c58ec6f9e62ce2a4ee81b4c4dbad75d53622ccb1f33ffa67db14230b59acc"
+    },
+    "final_training": {
+      "protocol_sha256": "337fcd031b4ad4963c9a959a1c91075bda84dc913f35113e53077b26bfcd33e7",
+      "seeds": [
+        107,
+        117,
+        127
+      ],
+      "selected_epoch": 101,
+      "selected_seed": 117
+    },
+    "frozen_thresholds": {
+      "attack": 0.1,
+      "path": 0.15,
+      "source": 0.15,
+      "transit": 0.45,
+      "victim": 0.8
+    },
+    "official_locked_test": {
+      "all_tasks_exact": 0.5973451137542725,
+      "count_macro_f1": 0.9097742590834855,
+      "graph_accuracy": 0.8997050147492626,
+      "graph_balanced_accuracy": 0.9075924075924076,
+      "graph_confusion": {
+        "fn": 12,
+        "fp": 56,
+        "tn": 336,
+        "tp": 274
+      },
+      "graph_f1": 0.8896103896103895,
+      "graph_fpr": 0.14285714285714285,
+      "graph_precision": 0.8303030303030303,
+      "graph_recall": 0.958041958041958,
+      "path_f1_attack": 0.9526462395543176,
+      "source_exact_attack": 0.8286713361740112,
+      "source_f1_attack": 0.9056047197640117,
+      "test_evaluation_count": 1,
+      "transit_f1_attack": 0.9374999999999999,
+      "victim_exact_attack": 0.8391608595848083,
+      "victim_f1_attack": 0.937669376693767,
+      "window_count": 678
+    },
+    "validation_at_frozen_thresholds": {
+      "all_tasks_exact": 0.6739766001701355,
+      "count_macro_f1": 0.9211779086779086,
+      "graph_accuracy": 0.9254385964912281,
+      "graph_balanced_accuracy": 0.9326762329339648,
+      "graph_f1": 0.9196850393700788,
+      "graph_fpr": 0.1211340206185567,
+      "graph_precision": 0.8613569321533924,
+      "graph_recall": 0.9864864864864865,
+      "path_f1_attack": 0.9407027818448023,
+      "source_f1_attack": 0.8859259259259259,
+      "transit_f1_attack": 0.941983780411728,
+      "victim_f1_attack": 0.9914821124361158
+    },
+    "validation_to_test_delta": {
+      "all_tasks_exact": -0.07663148641586304,
+      "count_macro_f1": -0.011403649594423082,
+      "graph_accuracy": -0.025733581741965494,
+      "graph_balanced_accuracy": -0.025083825341557286,
+      "graph_f1": -0.03007464975968932,
+      "graph_fpr": 0.02172312223858615,
+      "graph_precision": -0.031053901850362053,
+      "graph_recall": -0.028444528444528494,
+      "path_f1_attack": 0.011943457709515326,
+      "source_f1_attack": 0.019678793838085795,
+      "transit_f1_attack": -0.004483780411728144,
+      "victim_f1_attack": -0.053812735742348794
+    }
+  },
+  "stage": "V5_P0_FINAL_RESULTS_ARCHIVE_AND_P2_HANDOFF",
+  "status": "COMPLETE",
+  "test_evaluation_performed": false,
+  "training_performed": false,
+  "warnings": []
+}

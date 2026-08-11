@@ -1,0 +1,136 @@
+{
+  "M8G_A_report_path": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8g_a_balanced_resplit_design/V6_P0_M8G_A_BALANCED_RESPLIT_DESIGN_REPORT.json",
+  "M8G_A_report_sha256": "937075c8633552dc502e7ab188d03cd2ef13605e08346150ccdf70119aaa5403",
+  "P2_test_used": false,
+  "artifacts": {
+    "current_residual_csv": "/home/zira/research/projects/GNN-2d/reports/v6/p0_m8g_a_r1_exact_split_feasibility/V6_P0_M8G_A_R1_CURRENT_RESIDUALS.csv",
+    "current_residual_csv_sha256": "3284d2cbcf7b35602c0f23137ac52e3440d480ea284fc8958a79b16c4f2cf8e8",
+    "exact_coverage_csv": null,
+    "exact_coverage_csv_sha256": null,
+    "exact_manifest_csv": null,
+    "exact_manifest_csv_sha256": null
+  },
+  "conclusion": "STRICT_ZERO_RESIDUAL_SPLIT_IS_INFEASIBLE",
+  "created_utc": "2026-08-03T12:31:18.792573+00:00",
+  "current_m8g_a": {
+    "original_validation_overlap": 6,
+    "residual_count": 6,
+    "residuals": [
+      {
+        "dimension": "family",
+        "is_primary_dimension": true,
+        "primary_value_present_in_validation": false,
+        "split_design": "current_m8g_a",
+        "total_pairs": 4,
+        "train_pairs": 4,
+        "validation_pairs": 0,
+        "validation_value_has_at_least_3_train_pairs": true,
+        "validation_value_seen_in_train": true,
+        "value": "multi_victim"
+      },
+      {
+        "dimension": "strength",
+        "is_primary_dimension": true,
+        "primary_value_present_in_validation": false,
+        "split_design": "current_m8g_a",
+        "total_pairs": 4,
+        "train_pairs": 4,
+        "validation_pairs": 0,
+        "validation_value_has_at_least_3_train_pairs": true,
+        "validation_value_seen_in_train": true,
+        "value": "v6_stealth"
+      },
+      {
+        "dimension": "familyxattacker_count",
+        "is_primary_dimension": false,
+        "primary_value_present_in_validation": true,
+        "split_design": "current_m8g_a",
+        "total_pairs": 3,
+        "train_pairs": 2,
+        "validation_pairs": 1,
+        "validation_value_has_at_least_3_train_pairs": false,
+        "validation_value_seen_in_train": true,
+        "value": "route_overlap|4"
+      },
+      {
+        "dimension": "strengthxattacker_count",
+        "is_primary_dimension": false,
+        "primary_value_present_in_validation": true,
+        "split_design": "current_m8g_a",
+        "total_pairs": 2,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_has_at_least_3_train_pairs": false,
+        "validation_value_seen_in_train": true,
+        "value": "v6_weak|1"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "is_primary_dimension": false,
+        "primary_value_present_in_validation": true,
+        "split_design": "current_m8g_a",
+        "total_pairs": 3,
+        "train_pairs": 2,
+        "validation_pairs": 1,
+        "validation_value_has_at_least_3_train_pairs": false,
+        "validation_value_seen_in_train": true,
+        "value": "route_overlap|p2_base|4"
+      },
+      {
+        "dimension": "familyxstrengthxattacker_count",
+        "is_primary_dimension": false,
+        "primary_value_present_in_validation": true,
+        "split_design": "current_m8g_a",
+        "total_pairs": 2,
+        "train_pairs": 1,
+        "validation_pairs": 1,
+        "validation_value_has_at_least_3_train_pairs": false,
+        "validation_value_seen_in_train": true,
+        "value": "weak_stealth|v6_weak|1"
+      }
+    ],
+    "validation_pairs": 25
+  },
+  "data_copied": false,
+  "decision": {
+    "P1_generation_authorized": false,
+    "additional_full_seeds_authorized": false,
+    "balanced_split_training_authorized": false,
+    "next_stage": "M8G_A_R2_PRINCIPLED_RELAXED_SPLIT_DESIGN",
+    "normalization_preflight_status": "CLEAN_RESPLIT_RENORMALIZATION_FEASIBLE"
+  },
+  "exact_solution": {
+    "M8G_A_validation_overlap": null,
+    "available": false,
+    "changed_from_M8G_A": null,
+    "changed_from_original": null,
+    "original_validation_overlap": null,
+    "residual_count": null,
+    "strict_solution_valid": false,
+    "validation_pairs": null
+  },
+  "hard_constraints": {
+    "every_primary_value_with_at_least_2_pairs_in_validation": true,
+    "every_validation_value_retains_at_least_3_training_pairs": true,
+    "labels_used": false,
+    "metadata_only": true,
+    "model_metrics_used": false,
+    "pair_atomicity": true,
+    "train_pairs": 75,
+    "validation_pairs": 25
+  },
+  "model_trained": false,
+  "solver": {
+    "message": "The problem is infeasible. (HiGHS Status 8: model_status is Infeasible; primal_status is None)",
+    "mip_gap": null,
+    "mip_node_count": null,
+    "name": "scipy.optimize.milp",
+    "objective": null,
+    "status": "INFEASIBLE",
+    "status_code": 2
+  },
+  "source_modified": false,
+  "stage": "V6_P0_M8G_A_R1_EXACT_SPLIT_FEASIBILITY",
+  "status": "PASS_WITH_PROVEN_STRICT_INFEASIBILITY",
+  "test_split_used": false
+}

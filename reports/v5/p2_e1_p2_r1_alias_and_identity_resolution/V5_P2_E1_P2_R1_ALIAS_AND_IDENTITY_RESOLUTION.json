@@ -1,0 +1,55 @@
+{
+  "alias_semantics": {
+    "y_graph": "The loader's y_attack tensor is the frozen graph-level attack-presence target.",
+    "y_path": "The loader's y_attack_path tensor is the frozen 16-router attack-path target."
+  },
+  "append_only_correction": true,
+  "canonical_label_aliases": {
+    "y_graph": "y_attack",
+    "y_path": "y_attack_path"
+  },
+  "created_utc": "2026-07-27T22:55:56.831892+00:00",
+  "evidence_hashes": {
+    "E1_P2_json_sha256": "b51bb6bff3fa9c776522decf5de872185bc5f62083edc61330ffecdba9ff5eb7",
+    "E1_P2_marker_sha256": "3c643e0726b75244b7caede5f8f27708d356aa41b1fbfb7f8c74b36f2aa25abe",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "pair_manifest_sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5"
+  },
+  "exporter_ready": true,
+  "original_E1_P2_preserved_unchanged": true,
+  "security_boundary": {
+    "checkpoint_tensors_loaded": false,
+    "manifest_file_read": true,
+    "source_files_read": true,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false,
+    "validation_predictions_exported": false,
+    "validation_tensor_files_opened": false,
+    "validation_tensors_deserialized": false
+  },
+  "stable_item_identity": {
+    "manifest_join_key": "pair_key",
+    "metadata_jsonl_fields": [
+      "validation_item_index",
+      "manifest_row_index",
+      "stable_item_id",
+      "split",
+      "pair_key",
+      "pair_id",
+      "category",
+      "mode",
+      "start",
+      "target",
+      "common_length",
+      "file_name"
+    ],
+    "sampler_order_assertion": "The emitted item-index sequence must equal 0..12527 exactly.",
+    "source": "validation_dataset._index entries consumed in the exact PairBlockBatchSampler(shuffle=False, seed=107) order",
+    "stable_id_rule": "validation/{pair_key}/{pair_id}/{mode}/start={start}/target={target}"
+  },
+  "stage": "V5_P2_E1_P2_R1_ALIAS_AND_IDENTITY_RESOLUTION",
+  "status": "COMPLETE"
+}

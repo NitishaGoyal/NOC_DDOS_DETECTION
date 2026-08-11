@@ -1,0 +1,122 @@
+{
+  "created_utc": "2026-08-07T22:08:26.445303+00:00",
+  "governance": {
+    "decoder": false,
+    "persistence": false,
+    "sealed_test_access": false,
+    "test_access": false,
+    "threshold_tuning": false,
+    "training": false,
+    "validation_metric_computation": false
+  },
+  "neural": {
+    "batch_size": 1,
+    "cuda_synchronize": "immediately_before_and_after_each_measurement",
+    "decoder_included": false,
+    "device": "CUDA",
+    "input_residency": "GPU_resident_before_timed_region",
+    "input_transfer_included": false,
+    "measurements": 1000,
+    "model_order": [
+      "M0",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M7",
+      "D0",
+      "D1"
+    ],
+    "model_residency": "GPU_resident_before_timed_region",
+    "models": [
+      "M0",
+      "M1",
+      "M2",
+      "M3",
+      "M4",
+      "M5",
+      "M6",
+      "M7",
+      "D0",
+      "D1"
+    ],
+    "one_model_at_a_time": true,
+    "output_transfer_included": false,
+    "persistence_included": false,
+    "precision": "FP32",
+    "report_statistics": [
+      "median",
+      "p95",
+      "mean",
+      "std",
+      "min",
+      "max"
+    ],
+    "thresholding_included": false,
+    "timed_region": "forward_only",
+    "torch_mode": "eval_plus_inference_mode",
+    "warmups": 100
+  },
+  "provenance": {
+    "D2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s2_d2_xgboost_700_feature_cpu_baseline/V5_P3_MC5_S2_D2_XGBOOST_700_FEATURE_CPU_BASELINE_LOCK.json",
+    "D2_lock_sha256": "0ad429b419a9be3002b08b57101b62c31c266c130fd2e83a7e6bd71a4542db11",
+    "edge_shape": [
+      2,
+      48
+    ],
+    "edge_source": "sample.edge_index",
+    "model_zoo": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_mc_comparison_zoo.py",
+    "model_zoo_sha256": "fcc77e5ceab02394b59472514d9205c23adbf1195482cb12df4352d6f5b2322b",
+    "native_loader": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "physical_mask_shape": [
+      1,
+      16,
+      10
+    ],
+    "physical_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "validation_sample_index": 0,
+    "validation_sample_keys": [
+      "case_id",
+      "edge_index",
+      "epoch_id",
+      "epoch_tick",
+      "mode",
+      "pair_id",
+      "physical_port_mask",
+      "role_mask",
+      "run_id",
+      "source_target_router",
+      "window_start",
+      "window_target",
+      "x",
+      "y_attack",
+      "y_attack_path",
+      "y_attacker_count",
+      "y_source",
+      "y_transit",
+      "y_victim"
+    ],
+    "x_shape": [
+      1,
+      16,
+      70,
+      32
+    ]
+  },
+  "stage": "V5_P3_P6_BATCH1_MODEL_COMPLEXITY_AND_FORWARD_LATENCY",
+  "status": "FROZEN_BEFORE_BENCHMARK",
+  "xgboost": {
+    "batch_size": 1,
+    "device": "CPU",
+    "feature_transform_included": false,
+    "input": "precomputed_700D_vector",
+    "label": "D2",
+    "measurements": 1000,
+    "thresholding_included": false,
+    "timed_region": "predict_proba_only",
+    "warmups": 100
+  }
+}

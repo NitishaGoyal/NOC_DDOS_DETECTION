@@ -1,0 +1,226 @@
+{
+  "arrays": {
+    "attack_logits": {
+      "dtype": "float32",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "count_logits": {
+      "dtype": "float32",
+      "finite": true,
+      "shape": [
+        13863,
+        4
+      ]
+    },
+    "dataset_index": {
+      "dtype": "int32",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "edge_index": {
+      "dtype": "int64",
+      "finite": true,
+      "shape": [
+        2,
+        48
+      ]
+    },
+    "epoch_id": {
+      "dtype": "int32",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "epoch_tick": {
+      "dtype": "int64",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "path_logits": {
+      "dtype": "float32",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "physical_port_mask_template": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        16,
+        10
+      ]
+    },
+    "role_mask": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "source_logits": {
+      "dtype": "float32",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "source_target_router": {
+      "dtype": "int8",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "transit_logits": {
+      "dtype": "float32",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "victim_logits": {
+      "dtype": "float32",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "window_start": {
+      "dtype": "int32",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "window_target": {
+      "dtype": "int32",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "y_attack": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "y_attack_path": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "y_attacker_count": {
+      "dtype": "int8",
+      "finite": true,
+      "shape": [
+        13863
+      ]
+    },
+    "y_source": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "y_transit": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    },
+    "y_victim": {
+      "dtype": "uint8",
+      "finite": true,
+      "shape": [
+        13863,
+        16
+      ]
+    }
+  },
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic",
+  "created_utc": "2026-08-05T20:31:01.765974+00:00",
+  "decoder_executed": false,
+  "export_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z/V5_P3_D1_TRANCHE_A_VALIDATION_LOGITS_AND_LABELS.npz",
+  "export_sha256": "3602de573834327b0116a198ccd5cfd3ddf173ee0ac6ac2cd624561b7579fdbf",
+  "input_features": 70,
+  "items": 13863,
+  "metadata_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z/V5_P3_D1_TRANCHE_A_VALIDATION_ROW_METADATA.csv",
+  "metadata_sha256": "0e427b74ef85e5854b38999cec7f31124ef1ee9c440e27feb1bd69b3251b9466",
+  "metric_replay": {
+    "consistency_pass": true,
+    "count_macro_f1": 0.9973039624464042,
+    "graph_threshold_0p5": {
+      "accuracy": 0.8021351799754742,
+      "f1": 0.7011657043250901,
+      "fn": 604,
+      "fp": 2139,
+      "fpr": 0.21302659097699433,
+      "precision": 0.6007093522493934,
+      "recall": 0.8419675562532706,
+      "tn": 7902,
+      "tp": 3218
+    },
+    "maximum_absolute_delta_vs_A5": 9.687940327740563e-08,
+    "roles": {
+      "path": {
+        "average_precision": 0.6246352197648574,
+        "exact_active_at_0p5": 0.8178963893249608
+      },
+      "source": {
+        "average_precision": 0.6446929824219041,
+        "exact_active_at_0p5": 0.9209837781266352
+      },
+      "transit": {
+        "average_precision": 0.6369271265766875,
+        "exact_active_at_0p5": 0.6802721088435374
+      },
+      "victim": {
+        "average_precision": 0.624896193057987,
+        "exact_active_at_0p5": 0.9481946624803768
+      }
+    },
+    "selection_components": {
+      "count_macro_f1": 0.9973039624464042,
+      "graph_auroc": 0.8908390825246004,
+      "graph_average_precision": 0.6891211441694642,
+      "path_average_precision": 0.6246352197648574,
+      "source_average_precision": 0.6446929824219041,
+      "transit_average_precision": 0.6369271265766875,
+      "victim_average_precision": 0.624896193057987
+    },
+    "selection_score": 0.7297736729945578,
+    "tolerance": 1e-06
+  },
+  "model_checkpoint_epoch": 14,
+  "parameter_count": 60553,
+  "row_order": "guarded_validation_dataset_index_ascending",
+  "split": "validation",
+  "stage": "V5_P3_D1_IMMUTABLE_TRANCHE_A_VALIDATION_LOGIT_EXPORT",
+  "status": "FROZEN_BY_HASH",
+  "test_accessed": false,
+  "threshold_tuning_performed": false
+}

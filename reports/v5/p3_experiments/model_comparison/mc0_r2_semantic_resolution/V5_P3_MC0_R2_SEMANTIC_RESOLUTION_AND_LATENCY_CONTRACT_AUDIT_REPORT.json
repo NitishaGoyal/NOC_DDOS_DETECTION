@@ -1,0 +1,1142 @@
+{
+  "checkpoint_deserialization": false,
+  "classification": "ENGINEERING",
+  "cuda_used": false,
+  "decoder_applied": false,
+  "final_ab_lineage": {
+    "a4": {
+      "best_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_SEED107_BEST.pt",
+      "best_checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+      "best_epoch": 5,
+      "best_model_state_sha256": "f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432",
+      "model_source": null,
+      "model_source_sha256": null,
+      "parameter_count": 60553,
+      "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+      "sha256": "07979163ec1dc1be1e9ccd5e4af5f945389602b70777d67d1bdb1390d4d9c41d"
+    },
+    "d1": {
+      "frozen_model_source": null,
+      "frozen_model_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+      "frozen_model_state_sha256": "f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432",
+      "model_construction": {
+        "canonical_parameter_count": 59785,
+        "edge": {
+          "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+          "sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+          "shape": [
+            2,
+            48
+          ]
+        },
+        "final_parameter_count": 60553,
+        "route": {
+          "b3": "P2B3Conv1DOnlyCount4()",
+          "canonical": "P2TaskDGraphConvCount4(b3, base_edge_index)",
+          "dynamic": "build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)"
+        }
+      },
+      "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_REPORT.json",
+      "sha256": "4f76af3fb08aca07a1579e60d9f50d1350a9ac6dbe36bda9752c1b35d219bb46",
+      "validation_items": 27722
+    }
+  },
+  "inference_performed": false,
+  "model_class_resolution": {
+    "P2B3Conv1DOnlyCount4": [
+      {
+        "classes": [
+          "CausalDepthwiseSeparableResidualBlock",
+          "P2B3Conv1DOnlyCount4"
+        ],
+        "evidence": [
+          "54:         y = F.relu(y)\n55:         y = self.pointwise(y)\n56:         return F.relu(y + residual)\n57: \n58: \n59: class P2B3Conv1DOnlyCount4(nn.Module):\n60:     \"\"\"\n61:     P2 B3 architecture.\n62: \n63:     Inputs\n64:     ------"
+        ],
+        "relative_path": "src/models/v5_p2_b3_conv1d_only_count4.py",
+        "sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def"
+      }
+    ],
+    "P2TaskDGraphConvCount4": [
+      {
+        "classes": [
+          "P2TaskDGraphConvCount4"
+        ],
+        "evidence": [
+          "36:     if not torch.equal(source_graph, target_graph):\n37:         raise RuntimeError(\"batched edge_index contains cross-graph edges\")\n38:     return result\n39: \n40: \n41: class P2TaskDGraphConvCount4(nn.Module):\n42:     \"\"\"\n43:     B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n44: \n45:     Common B3 modules are deep-copied from a seeded reference B3 instance so\n46:     the Conv1D and GraphConv candidates begin with byte-identical common"
+        ],
+        "relative_path": "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+      }
+    ],
+    "TemporalTCNGCN": [
+      {
+        "classes": [
+          "NoCTemporalGraphDataset",
+          "GCNLayer",
+          "TemporalResidualBlock",
+          "TemporalTCNEncoder",
+          "TemporalTCNGCN"
+        ],
+        "evidence": [
+          "344:         attention_weights = torch.softmax(self.attention_score(h), dim=2)\n345:         h = torch.sum(h * attention_weights, dim=2)\n346:         return h.reshape(batch_size, num_nodes, -1)\n347: \n348: \n349: class TemporalTCNGCN(nn.Module):\n350:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n351:         super().__init__()\n352:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n353:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)\n354:         self.gcn2 = GCNLayer(gcn_hidden, gcn_out)"
+        ],
+        "relative_path": "scripts/train_temporal_tcn_gcn_v3.py",
+        "sha256": "cd218697038f2a71df9efa4bccba610e22a241117fb1fe8f97fda601bb0b99fa"
+      },
+      {
+        "classes": [
+          "NoCTemporalGraphDataset",
+          "GCNLayer",
+          "TemporalResidualBlock",
+          "TemporalTCNEncoder",
+          "TemporalTCNGCN"
+        ],
+        "evidence": [
+          "297:         attention_weights = torch.softmax(self.attention_score(h), dim=2)\n298:         h = torch.sum(h * attention_weights, dim=2)\n299:         return h.reshape(batch_size, num_nodes, -1)\n300: \n301: \n302: class TemporalTCNGCN(nn.Module):\n303:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n304:         super().__init__()\n305:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n306:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)\n307:         self.gcn2 = GCNLayer(gcn_hidden, gcn_out)"
+        ],
+        "relative_path": "scripts/train_temporal_tcn_gcn_early_stopping.py",
+        "sha256": "e971dd072c43f05ef46dce9b78c2bc5f0c00d5ad1bcf7bfcaf426ba0ec051b5e"
+      },
+      {
+        "classes": [
+          "NoCTemporalGraphDataset",
+          "GCNLayer",
+          "TemporalResidualBlock",
+          "TemporalTCNEncoder",
+          "TemporalTCNGCN"
+        ],
+        "evidence": [
+          "386: \n387:         return h.reshape(bsz, num_nodes, -1)\n388: \n389: \n390: \n391: class TemporalTCNGCN(nn.Module):\n392:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n393:         super().__init__()\n394:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n395:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)\n396:         self.gcn2 = GCNLayer(gcn_hidden, gcn_out)"
+        ],
+        "relative_path": "scripts/train_temporal_tcn_meanpool_gcn_v3.py",
+        "sha256": "97cbf5864a9f1443d0f4a7e4a737d5259aabcb18562205a46f10bb739c7ee772"
+      },
+      {
+        "classes": [
+          "NoCTemporalGraphDataset",
+          "GCNLayer",
+          "TemporalResidualBlock",
+          "TemporalTCNEncoder",
+          "TemporalTCNGCN"
+        ],
+        "evidence": [
+          "386: \n387:         return h.reshape(bsz, num_nodes, -1)\n388: \n389: \n390: \n391: class TemporalTCNGCN(nn.Module):\n392:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n393:         super().__init__()\n394:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n395:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)\n396:         self.gcn2 = GCNLayer(gcn_hidden, gcn_out)"
+        ],
+        "relative_path": "scripts/train_temporal_tcn_maxpool_gcn_v3.py",
+        "sha256": "e21a88d72efc2c8af451c51264bf968aa8e315306f84bd54a3a4208b4d7e909f"
+      }
+    ],
+    "V6P0Dynamic70GraphConvCount4": [
+      {
+        "classes": [
+          "V6P0Dynamic70GraphConvCount4"
+        ],
+        "evidence": [
+          "27:     target_graph = torch.div(result[1], num_nodes, rounding_mode='floor')\n28:     if not torch.equal(source_graph, target_graph):\n29:         raise RuntimeError('batched edge_index contains cross-graph edges')\n30:     return result\n31: \n32: class V6P0Dynamic70GraphConvCount4(nn.Module):\n33:     \"\"\"\n34:     B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n35: \n36:     Common B3 modules are deep-copied from a seeded reference B3 instance so\n37:     the Conv1D and GraphConv candidates begin with byte-identical common"
+        ],
+        "relative_path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+      }
+    ]
+  },
+  "model_import_or_execution": false,
+  "p2_contract": {
+    "json": {
+      "classification": "ENGINEERING_PROTOCOL_LOCK",
+      "outputs": [
+        "per_run_onset_latency.csv",
+        "onset_latency_summary.json",
+        "graph_first_latency_cdf.csv"
+      ],
+      "scientific_semantics": {
+        "attack_onset": "attack_onset_epoch from authoritative runtime/packet truth carried in prediction archive",
+        "attack_termination": "attack_termination_epoch from authoritative runtime/packet truth carried in prediction archive",
+        "cdf_denominator": "all eligible attack runs, so terminal CDF mass may be <1 when attacks are undetected during attack",
+        "complete_source_path_victim_rule": "source, path and victim exact-set rules all true on the same post-onset decision",
+        "cycle_conversion": "optional only when authoritative cycles_per_epoch is supplied explicitly at execution time",
+        "decision_epoch": "window_end_epoch",
+        "during_attack_rule": "attack_onset_epoch <= decision_epoch <= attack_termination_epoch",
+        "graph_positive_rule": "graph_probability >= externally supplied frozen graph threshold",
+        "latency_unit_primary": "epochs",
+        "path_correct_set_rule": "thresholded 16-router path probability vector exactly equals path truth vector",
+        "post_onset_decision_rule": "decision_epoch >= attack_onset_epoch",
+        "pre_onset_false_alarm_rule": "decision_epoch < attack_onset_epoch and graph decision positive",
+        "source_correct_set_rule": "thresholded 16-router source probability vector exactly equals source truth vector",
+        "stable_graph_detection_q": 2,
+        "stable_graph_rule": "first two consecutive post-onset archive decisions both satisfying frozen graph decision rule",
+        "undetected_policy": "never silently discard; preserve null latency and explicit undetected_during_attack flag",
+        "victim_correct_set_rule": "thresholded 16-router victim probability vector exactly equals victim truth vector"
+      },
+      "scope": "validation_prediction_archive_postprocessing_only",
+      "sealed_test_policy": {
+        "reject_split_tokens": [
+          "test",
+          "sealed"
+        ],
+        "sealed_test_access": false,
+        "test_directory_enumerated": false,
+        "test_evaluation_performed": false,
+        "test_tensor_contents_accessed": false,
+        "validation_only": true
+      },
+      "stage": "V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION",
+      "threshold_policy": {
+        "default_scientific_thresholds": null,
+        "graph_threshold_source": "must be supplied explicitly from a frozen/mainline threshold contract",
+        "role_threshold_source": "must be supplied explicitly from a frozen/mainline threshold contract",
+        "selftest_threshold": 0.5,
+        "threshold_tuning_performed_by_evaluator": false
+      }
+    },
+    "relative_path": "reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/posttrain_p2_onset_latency_contract.json",
+    "sha256": "5295799b93864628b7cb961a0edf8fe68dd40ce9fb0ab2fd75fbd673d4f89357"
+  },
+  "p2_source": {
+    "evidence": [
+      "6: import json\n7: import math\n8: from collections import defaultdict\n9: from pathlib import Path\n10: from typing import Any, Dict, Iterable, List, Optional, Sequence, Tuple\n11: \n12: FORBIDDEN_SPLIT_TOKENS = (\"test\", \"sealed\")",
+      "11: \n12: FORBIDDEN_SPLIT_TOKENS = (\"test\", \"sealed\")\n13: ROUTERS = 16\n14: Q_STABLE = 2\n15: \n16: \n17: def _assert_validation_record(r: Dict[str, Any]) -> None:",
+      "58:     return _threshold_vec(p, threshold) == t\n59: \n60: \n61: def load_jsonl(path: Path) -> List[Dict[str, Any]]:\n62:     rows = []\n63:     with path.open(\"r\", encoding=\"utf-8\") as f:\n64:         for line_no, line in enumerate(f, 1):",
+      "60: \n61: def load_jsonl(path: Path) -> List[Dict[str, Any]]:\n62:     rows = []\n63:     with path.open(\"r\", encoding=\"utf-8\") as f:\n64:         for line_no, line in enumerate(f, 1):\n65:             if not line.strip():\n66:                 continue",
+      "68:                 r = json.loads(line)\n69:                 _assert_validation_record(r)\n70:             except Exception as e:\n71:                 raise ValueError(f\"{path}:{line_no}: {e}\") from e\n72:             rows.append(r)\n73:     if not rows:\n74:         raise ValueError(\"prediction archive contains no records\")",
+      "76: \n77: \n78: def _require_run_metadata(run_key: str, rs: Sequence[Dict[str, Any]]) -> Tuple[int, int]:\n79:     onsets = {r.get(\"attack_onset_epoch\") for r in rs}\n80:     terms = {r.get(\"attack_termination_epoch\") for r in rs}\n81:     if None in onsets or len(onsets) != 1:\n82:         raise ValueError(f\"run {run_key}: attack_onset_epoch must be present and constant\")",
+      "77: \n78: def _require_run_metadata(run_key: str, rs: Sequence[Dict[str, Any]]) -> Tuple[int, int]:\n79:     onsets = {r.get(\"attack_onset_epoch\") for r in rs}\n80:     terms = {r.get(\"attack_termination_epoch\") for r in rs}\n81:     if None in onsets or len(onsets) != 1:\n82:         raise ValueError(f\"run {run_key}: attack_onset_epoch must be present and constant\")\n83:     if None in terms or len(terms) != 1:",
+      "78: def _require_run_metadata(run_key: str, rs: Sequence[Dict[str, Any]]) -> Tuple[int, int]:\n79:     onsets = {r.get(\"attack_onset_epoch\") for r in rs}\n80:     terms = {r.get(\"attack_termination_epoch\") for r in rs}\n81:     if None in onsets or len(onsets) != 1:\n82:         raise ValueError(f\"run {run_key}: attack_onset_epoch must be present and constant\")\n83:     if None in terms or len(terms) != 1:\n84:         raise ValueError(f\"run {run_key}: attack_termination_epoch must be present and constant\")",
+      "79:     onsets = {r.get(\"attack_onset_epoch\") for r in rs}\n80:     terms = {r.get(\"attack_termination_epoch\") for r in rs}\n81:     if None in onsets or len(onsets) != 1:\n82:         raise ValueError(f\"run {run_key}: attack_onset_epoch must be present and constant\")\n83:     if None in terms or len(terms) != 1:\n84:         raise ValueError(f\"run {run_key}: attack_termination_epoch must be present and constant\")\n85:     onset = int(next(iter(onsets)))",
+      "81:     if None in onsets or len(onsets) != 1:\n82:         raise ValueError(f\"run {run_key}: attack_onset_epoch must be present and constant\")\n83:     if None in terms or len(terms) != 1:\n84:         raise ValueError(f\"run {run_key}: attack_termination_epoch must be present and constant\")\n85:     onset = int(next(iter(onsets)))\n86:     term = int(next(iter(terms)))\n87:     if term < onset:",
+      "82:         raise ValueError(f\"run {run_key}: attack_onset_epoch must be present and constant\")\n83:     if None in terms or len(terms) != 1:\n84:         raise ValueError(f\"run {run_key}: attack_termination_epoch must be present and constant\")\n85:     onset = int(next(iter(onsets)))\n86:     term = int(next(iter(terms)))\n87:     if term < onset:\n88:         raise ValueError(f\"run {run_key}: attack termination precedes onset\")",
+      "84:         raise ValueError(f\"run {run_key}: attack_termination_epoch must be present and constant\")\n85:     onset = int(next(iter(onsets)))\n86:     term = int(next(iter(terms)))\n87:     if term < onset:\n88:         raise ValueError(f\"run {run_key}: attack termination precedes onset\")\n89:     return onset, term\n90: ",
+      "85:     onset = int(next(iter(onsets)))\n86:     term = int(next(iter(terms)))\n87:     if term < onset:\n88:         raise ValueError(f\"run {run_key}: attack termination precedes onset\")\n89:     return onset, term\n90: \n91: ",
+      "86:     term = int(next(iter(terms)))\n87:     if term < onset:\n88:         raise ValueError(f\"run {run_key}: attack termination precedes onset\")\n89:     return onset, term\n90: \n91: \n92: def _first_epoch(flags: Sequence[Tuple[int, bool]]) -> Optional[int]:",
+      "96:     return None\n97: \n98: \n99: def _first_stable_epoch(flags: Sequence[Tuple[int, bool]], q: int = Q_STABLE) -> Optional[int]:\n100:     streak = 0\n101:     streak_start = None\n102:     for epoch, flag in flags:",
+      "112:     return None\n113: \n114: \n115: def _latency(decision_epoch: Optional[int], onset: int) -> Optional[int]:\n116:     if decision_epoch is None:\n117:         return None\n118:     return int(decision_epoch - onset)",
+      "115: def _latency(decision_epoch: Optional[int], onset: int) -> Optional[int]:\n116:     if decision_epoch is None:\n117:         return None\n118:     return int(decision_epoch - onset)\n119: \n120: \n121: def _type7_quantile(values: Sequence[float], q: float) -> Optional[float]:",
+      "137:     run_key: str,\n138:     rs: Sequence[Dict[str, Any]],\n139:     graph_threshold: float,\n140:     source_threshold: float,\n141:     victim_threshold: float,\n142:     path_threshold: float,\n143:     cycles_per_epoch: Optional[int],",
+      "138:     rs: Sequence[Dict[str, Any]],\n139:     graph_threshold: float,\n140:     source_threshold: float,\n141:     victim_threshold: float,\n142:     path_threshold: float,\n143:     cycles_per_epoch: Optional[int],\n144: ) -> Dict[str, Any]:",
+      "139:     graph_threshold: float,\n140:     source_threshold: float,\n141:     victim_threshold: float,\n142:     path_threshold: float,\n143:     cycles_per_epoch: Optional[int],\n144: ) -> Dict[str, Any]:\n145:     onset, term = _require_run_metadata(run_key, rs)",
+      "140:     source_threshold: float,\n141:     victim_threshold: float,\n142:     path_threshold: float,\n143:     cycles_per_epoch: Optional[int],\n144: ) -> Dict[str, Any]:\n145:     onset, term = _require_run_metadata(run_key, rs)\n146:     ordered = sorted(rs, key=lambda r: (int(r[\"window_end_epoch\"]), int(r[\"window_start_epoch\"]), str(r[\"sample_key\"])))",
+      "142:     path_threshold: float,\n143:     cycles_per_epoch: Optional[int],\n144: ) -> Dict[str, Any]:\n145:     onset, term = _require_run_metadata(run_key, rs)\n146:     ordered = sorted(rs, key=lambda r: (int(r[\"window_end_epoch\"]), int(r[\"window_start_epoch\"]), str(r[\"sample_key\"])))\n147: \n148:     ends = [int(r[\"window_end_epoch\"]) for r in ordered]",
+      "143:     cycles_per_epoch: Optional[int],\n144: ) -> Dict[str, Any]:\n145:     onset, term = _require_run_metadata(run_key, rs)\n146:     ordered = sorted(rs, key=lambda r: (int(r[\"window_end_epoch\"]), int(r[\"window_start_epoch\"]), str(r[\"sample_key\"])))\n147: \n148:     ends = [int(r[\"window_end_epoch\"]) for r in ordered]\n149:     if len(ends) != len(set((int(r[\"window_end_epoch\"]), str(r[\"sample_key\"])) for r in ordered)):",
+      "145:     onset, term = _require_run_metadata(run_key, rs)\n146:     ordered = sorted(rs, key=lambda r: (int(r[\"window_end_epoch\"]), int(r[\"window_start_epoch\"]), str(r[\"sample_key\"])))\n147: \n148:     ends = [int(r[\"window_end_epoch\"]) for r in ordered]\n149:     if len(ends) != len(set((int(r[\"window_end_epoch\"]), str(r[\"sample_key\"])) for r in ordered)):\n150:         pass  # duplicate decision epochs are allowed only when sample keys differ; order remains deterministic\n151: ",
+      "146:     ordered = sorted(rs, key=lambda r: (int(r[\"window_end_epoch\"]), int(r[\"window_start_epoch\"]), str(r[\"sample_key\"])))\n147: \n148:     ends = [int(r[\"window_end_epoch\"]) for r in ordered]\n149:     if len(ends) != len(set((int(r[\"window_end_epoch\"]), str(r[\"sample_key\"])) for r in ordered)):\n150:         pass  # duplicate decision epochs are allowed only when sample keys differ; order remains deterministic\n151: \n152:     pre = [r for r in ordered if int(r[\"window_end_epoch\"]) < onset]",
+      "149:     if len(ends) != len(set((int(r[\"window_end_epoch\"]), str(r[\"sample_key\"])) for r in ordered)):\n150:         pass  # duplicate decision epochs are allowed only when sample keys differ; order remains deterministic\n151: \n152:     pre = [r for r in ordered if int(r[\"window_end_epoch\"]) < onset]\n153:     post = [r for r in ordered if int(r[\"window_end_epoch\"]) >= onset]\n154:     during = [r for r in post if int(r[\"window_end_epoch\"]) <= term]\n155: ",
+      "150:         pass  # duplicate decision epochs are allowed only when sample keys differ; order remains deterministic\n151: \n152:     pre = [r for r in ordered if int(r[\"window_end_epoch\"]) < onset]\n153:     post = [r for r in ordered if int(r[\"window_end_epoch\"]) >= onset]\n154:     during = [r for r in post if int(r[\"window_end_epoch\"]) <= term]\n155: \n156:     graph_post = [",
+      "151: \n152:     pre = [r for r in ordered if int(r[\"window_end_epoch\"]) < onset]\n153:     post = [r for r in ordered if int(r[\"window_end_epoch\"]) >= onset]\n154:     during = [r for r in post if int(r[\"window_end_epoch\"]) <= term]\n155: \n156:     graph_post = [\n157:         (int(r[\"window_end_epoch\"]), _prob(r[\"graph_probability\"], \"graph_probability\") >= graph_threshold)",
+      "154:     during = [r for r in post if int(r[\"window_end_epoch\"]) <= term]\n155: \n156:     graph_post = [\n157:         (int(r[\"window_end_epoch\"]), _prob(r[\"graph_probability\"], \"graph_probability\") >= graph_threshold)\n158:         for r in post\n159:     ]\n160:     graph_during = [(e, f) for e, f in graph_post if e <= term]",
+      "160:     graph_during = [(e, f) for e, f in graph_post if e <= term]\n161: \n162:     first_graph = _first_epoch(graph_post)\n163:     stable_graph = _first_stable_epoch(graph_post, Q_STABLE)\n164: \n165:     src_flags = [\n166:         (int(r[\"window_end_epoch\"]), _exact_set(r[\"source_probability\"], r[\"source_truth\"], source_threshold, \"source\"))",
+      "163:     stable_graph = _first_stable_epoch(graph_post, Q_STABLE)\n164: \n165:     src_flags = [\n166:         (int(r[\"window_end_epoch\"]), _exact_set(r[\"source_probability\"], r[\"source_truth\"], source_threshold, \"source\"))\n167:         for r in post\n168:     ]\n169:     vic_flags = [",
+      "167:         for r in post\n168:     ]\n169:     vic_flags = [\n170:         (int(r[\"window_end_epoch\"]), _exact_set(r[\"victim_probability\"], r[\"victim_truth\"], victim_threshold, \"victim\"))\n171:         for r in post\n172:     ]\n173:     path_flags = [",
+      "170:         (int(r[\"window_end_epoch\"]), _exact_set(r[\"victim_probability\"], r[\"victim_truth\"], victim_threshold, \"victim\"))\n171:         for r in post\n172:     ]\n173:     path_flags = [\n174:         (int(r[\"window_end_epoch\"]), _exact_set(r[\"path_probability\"], r[\"path_truth\"], path_threshold, \"path\"))\n175:         for r in post\n176:     ]",
+      "171:         for r in post\n172:     ]\n173:     path_flags = [\n174:         (int(r[\"window_end_epoch\"]), _exact_set(r[\"path_probability\"], r[\"path_truth\"], path_threshold, \"path\"))\n175:         for r in post\n176:     ]\n177: ",
+      "177: \n178:     complete_flags = []\n179:     for r in post:\n180:         epoch = int(r[\"window_end_epoch\"])\n181:         ok = (\n182:             _exact_set(r[\"source_probability\"], r[\"source_truth\"], source_threshold, \"source\")\n183:             and _exact_set(r[\"path_probability\"], r[\"path_truth\"], path_threshold, \"path\")",
+      "179:     for r in post:\n180:         epoch = int(r[\"window_end_epoch\"])\n181:         ok = (\n182:             _exact_set(r[\"source_probability\"], r[\"source_truth\"], source_threshold, \"source\")\n183:             and _exact_set(r[\"path_probability\"], r[\"path_truth\"], path_threshold, \"path\")\n184:             and _exact_set(r[\"victim_probability\"], r[\"victim_truth\"], victim_threshold, \"victim\")\n185:         )",
+      "180:         epoch = int(r[\"window_end_epoch\"])\n181:         ok = (\n182:             _exact_set(r[\"source_probability\"], r[\"source_truth\"], source_threshold, \"source\")\n183:             and _exact_set(r[\"path_probability\"], r[\"path_truth\"], path_threshold, \"path\")\n184:             and _exact_set(r[\"victim_probability\"], r[\"victim_truth\"], victim_threshold, \"victim\")\n185:         )\n186:         complete_flags.append((epoch, ok))",
+      "181:         ok = (\n182:             _exact_set(r[\"source_probability\"], r[\"source_truth\"], source_threshold, \"source\")\n183:             and _exact_set(r[\"path_probability\"], r[\"path_truth\"], path_threshold, \"path\")\n184:             and _exact_set(r[\"victim_probability\"], r[\"victim_truth\"], victim_threshold, \"victim\")\n185:         )\n186:         complete_flags.append((epoch, ok))\n187: ",
+      "185:         )\n186:         complete_flags.append((epoch, ok))\n187: \n188:     source_first = _first_epoch(src_flags)\n189:     victim_first = _first_epoch(vic_flags)\n190:     path_first = _first_epoch(path_flags)\n191:     complete_first = _first_epoch(complete_flags)",
+      "186:         complete_flags.append((epoch, ok))\n187: \n188:     source_first = _first_epoch(src_flags)\n189:     victim_first = _first_epoch(vic_flags)\n190:     path_first = _first_epoch(path_flags)\n191:     complete_first = _first_epoch(complete_flags)\n192: "
+    ],
+    "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py",
+    "sha256": "ae06da51bc895cd8def1b3da95d61f02c5d7d82d8c11f837ec12d47d209f10af"
+  },
+  "p4_contract": {
+    "json": {
+      "aggregation": {
+        "confirmation": "mean and sample standard deviation across seeds 107,117,127",
+        "missing_role_metrics_for_graph_only_models": "leave blank/NA, never impute zero",
+        "ranking_policy": "no single universal winner score is created by P4; paper may discuss accuracy-cost tradeoffs separately",
+        "screening": "report seed-107 point estimates; label SCREENING"
+      },
+      "classification": "ENGINEERING_PROTOCOL_LOCK",
+      "comparison_layers": {
+        "graph_detection_family_screen": {
+          "models": [
+            "logistic_regression",
+            "random_forest",
+            "xgboost",
+            "mlp_detection",
+            "lstm_detection",
+            "conv1d_only",
+            "conv1d_gcnconv",
+            "conv1d_graphconv",
+            "conv1d_gatconv_optional"
+          ],
+          "required_graph_metrics": [
+            "graph_auroc",
+            "graph_average_precision",
+            "graph_f1",
+            "graph_precision",
+            "graph_recall",
+            "graph_false_positive_rate"
+          ],
+          "screening_seed": [
+            107
+          ]
+        },
+        "multitask_neural_comparison": {
+          "confirmation_seed_set": [
+            107,
+            117,
+            127
+          ],
+          "models": [
+            "lstm_multitask",
+            "conv1d_only",
+            "conv1d_gcnconv",
+            "conv1d_graphconv",
+            "conv1d_gatconv_optional"
+          ],
+          "required_metrics": [
+            "graph_auroc",
+            "graph_average_precision",
+            "count_active_macro_f1",
+            "source_average_precision",
+            "transit_average_precision",
+            "victim_average_precision",
+            "path_average_precision"
+          ],
+          "screening_seed": [
+            107
+          ]
+        }
+      },
+      "cost_metrics": [
+        "parameter_count",
+        "serialized_weight_bytes",
+        "estimated_macs_or_ops",
+        "batch1_cpu_latency_ms",
+        "batch1_gpu_latency_ms"
+      ],
+      "fairness_contract": {
+        "classical_models_are_graph_detection_only": true,
+        "classical_models_must_not_be_interpreted_as_failed_localizers": true,
+        "classical_temporal_summary_transform": {
+          "description": "Apply physical-port validity masking, then for each Dynamic70 channel compute across the 32-step window: mean, standard deviation, maximum, final value, and least-squares temporal slope per router; aggregate each statistic across routers by valid-router mean and maximum.",
+          "expected_features": 700,
+          "fit_or_normalization_source": "Tranche-A train only",
+          "router_aggregations": [
+            "mean",
+            "max"
+          ],
+          "statistics_per_channel": [
+            "mean",
+            "std",
+            "max",
+            "last",
+            "slope"
+          ],
+          "status": "FROZEN_FOR_FUTURE_EXECUTION",
+          "validation_fit_forbidden": true
+        },
+        "dynamic70_required_for_neural_runs": true,
+        "observation_window_epochs": 32,
+        "same_checkpoint_selection_rule_required_for_multitask_neural_runs": true,
+        "same_loss_contract_required_for_multitask_neural_runs": true,
+        "same_split_manifest_required_within_comparison_layer": true,
+        "same_threshold_source_required_for_thresholded_reporting": true
+      },
+      "scientific_boundary": {
+        "broad_screen_dataset": "V5_P3_TRANCHE_A_DYNAMIC70",
+        "broad_screen_sealed_test_access": false,
+        "broad_screen_splits": [
+          "train",
+          "validation"
+        ],
+        "decoder_used_for_model_selection": false,
+        "final_ab_confirmation_dataset": "V5_P3_FINAL_AB_DYNAMIC70",
+        "final_ab_confirmation_scope": "selected finalists only; execution deferred",
+        "final_ab_sealed_test_access": false,
+        "threshold_tuning_on_sealed_test": false
+      },
+      "scope": "result_contract_validation_and_aggregation_only",
+      "sealed_test_policy": {
+        "reject_split_tokens": [
+          "test",
+          "sealed"
+        ],
+        "sealed_test_access": false,
+        "test_directory_enumerated": false,
+        "test_evaluation_performed": false,
+        "test_tensor_contents_accessed": false
+      },
+      "stage": "V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_HARNESS_IMPLEMENTATION"
+    },
+    "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+    "sha256": "bc50efd32cd6a5c423abc0e328ab6116feffe90d7075b305192b7d95d02bbcd5"
+  },
+  "p4_source": {
+    "evidence": [
+      "61: def validate_result(r: Dict[str, Any]) -> Dict[str, Any]:\n62:     required = (\n63:         \"experiment_id\",\n64:         \"model_id\",\n65:         \"model_family\",\n66:         \"task_scope\",\n67:         \"dataset_scope\",",
+      "63:         \"experiment_id\",\n64:         \"model_id\",\n65:         \"model_family\",\n66:         \"task_scope\",\n67:         \"dataset_scope\",\n68:         \"split\",\n69:         \"seed\",",
+      "64:         \"model_id\",\n65:         \"model_family\",\n66:         \"task_scope\",\n67:         \"dataset_scope\",\n68:         \"split\",\n69:         \"seed\",\n70:         \"screen_or_confirmation\",",
+      "66:         \"task_scope\",\n67:         \"dataset_scope\",\n68:         \"split\",\n69:         \"seed\",\n70:         \"screen_or_confirmation\",\n71:         \"metrics\",\n72:         \"provenance\",",
+      "81:     if split != \"validation\":\n82:         raise ValueError(\"P4 accepts validation result records only\")\n83: \n84:     if r[\"dataset_scope\"] not in (\"V5_P3_TRANCHE_A_DYNAMIC70\", \"V5_P3_FINAL_AB_DYNAMIC70\"):\n85:         raise ValueError(\"unsupported dataset_scope\")\n86: \n87:     if int(r[\"seed\"]) not in (107, 117, 127):",
+      "82:         raise ValueError(\"P4 accepts validation result records only\")\n83: \n84:     if r[\"dataset_scope\"] not in (\"V5_P3_TRANCHE_A_DYNAMIC70\", \"V5_P3_FINAL_AB_DYNAMIC70\"):\n85:         raise ValueError(\"unsupported dataset_scope\")\n86: \n87:     if int(r[\"seed\"]) not in (107, 117, 127):\n88:         raise ValueError(\"P4 comparison seeds are frozen to 107/117/127\")",
+      "84:     if r[\"dataset_scope\"] not in (\"V5_P3_TRANCHE_A_DYNAMIC70\", \"V5_P3_FINAL_AB_DYNAMIC70\"):\n85:         raise ValueError(\"unsupported dataset_scope\")\n86: \n87:     if int(r[\"seed\"]) not in (107, 117, 127):\n88:         raise ValueError(\"P4 comparison seeds are frozen to 107/117/127\")\n89: \n90:     if r[\"screen_or_confirmation\"] not in (\"SCREENING\", \"CONFIRMATION\"):",
+      "85:         raise ValueError(\"unsupported dataset_scope\")\n86: \n87:     if int(r[\"seed\"]) not in (107, 117, 127):\n88:         raise ValueError(\"P4 comparison seeds are frozen to 107/117/127\")\n89: \n90:     if r[\"screen_or_confirmation\"] not in (\"SCREENING\", \"CONFIRMATION\"):\n91:         raise ValueError(\"screen_or_confirmation must be SCREENING or CONFIRMATION\")",
+      "90:     if r[\"screen_or_confirmation\"] not in (\"SCREENING\", \"CONFIRMATION\"):\n91:         raise ValueError(\"screen_or_confirmation must be SCREENING or CONFIRMATION\")\n92: \n93:     if bool(r.get(\"threshold_tuning_performed\", False)):\n94:         raise ValueError(\"threshold tuning inside P4 result is forbidden\")\n95: \n96:     if bool(r.get(\"decoder_used_for_model_selection\", False)):",
+      "91:         raise ValueError(\"screen_or_confirmation must be SCREENING or CONFIRMATION\")\n92: \n93:     if bool(r.get(\"threshold_tuning_performed\", False)):\n94:         raise ValueError(\"threshold tuning inside P4 result is forbidden\")\n95: \n96:     if bool(r.get(\"decoder_used_for_model_selection\", False)):\n97:         raise ValueError(\"decoder may not be used for model selection in P4\")",
+      "93:     if bool(r.get(\"threshold_tuning_performed\", False)):\n94:         raise ValueError(\"threshold tuning inside P4 result is forbidden\")\n95: \n96:     if bool(r.get(\"decoder_used_for_model_selection\", False)):\n97:         raise ValueError(\"decoder may not be used for model selection in P4\")\n98: \n99:     metrics = r[\"metrics\"]",
+      "94:         raise ValueError(\"threshold tuning inside P4 result is forbidden\")\n95: \n96:     if bool(r.get(\"decoder_used_for_model_selection\", False)):\n97:         raise ValueError(\"decoder may not be used for model selection in P4\")\n98: \n99:     metrics = r[\"metrics\"]\n100:     if not isinstance(metrics, dict):",
+      "100:     if not isinstance(metrics, dict):\n101:         raise ValueError(\"metrics must be a dict\")\n102: \n103:     scope = r[\"task_scope\"]\n104:     if scope == \"graph_detection_only\":\n105:         for k in GRAPH_REQUIRED:\n106:             _unit_metric(metrics.get(k), f\"metrics.{k}\")",
+      "112:         for k in MULTITASK_REQUIRED:\n113:             _unit_metric(metrics.get(k), f\"metrics.{k}\")\n114:     else:\n115:         raise ValueError(\"task_scope must be graph_detection_only or multitask\")\n116: \n117:     for k in COST_FIELDS:\n118:         if k in r and r[k] not in (None, \"\"):",
+      "149: def aggregate(rows: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:\n150:     grouped: Dict[tuple, List[Dict[str, Any]]] = defaultdict(list)\n151:     for r in rows:\n152:         key = (r[\"dataset_scope\"], r[\"model_id\"], r[\"task_scope\"], r[\"screen_or_confirmation\"])\n153:         grouped[key].append(r)\n154: \n155:     out: List[Dict[str, Any]] = []",
+      "156:     metric_keys = sorted(set(GRAPH_REQUIRED + MULTITASK_REQUIRED))\n157:     for key in sorted(grouped):\n158:         ds, model, scope, phase = key\n159:         rs = sorted(grouped[key], key=lambda x: int(x[\"seed\"]))\n160:         row: Dict[str, Any] = {\n161:             \"dataset_scope\": ds,\n162:             \"model_id\": model,",
+      "158:         ds, model, scope, phase = key\n159:         rs = sorted(grouped[key], key=lambda x: int(x[\"seed\"]))\n160:         row: Dict[str, Any] = {\n161:             \"dataset_scope\": ds,\n162:             \"model_id\": model,\n163:             \"task_scope\": scope,\n164:             \"screen_or_confirmation\": phase,",
+      "159:         rs = sorted(grouped[key], key=lambda x: int(x[\"seed\"]))\n160:         row: Dict[str, Any] = {\n161:             \"dataset_scope\": ds,\n162:             \"model_id\": model,\n163:             \"task_scope\": scope,\n164:             \"screen_or_confirmation\": phase,\n165:             \"seeds\": \",\".join(str(int(r[\"seed\"])) for r in rs),",
+      "160:         row: Dict[str, Any] = {\n161:             \"dataset_scope\": ds,\n162:             \"model_id\": model,\n163:             \"task_scope\": scope,\n164:             \"screen_or_confirmation\": phase,\n165:             \"seeds\": \",\".join(str(int(r[\"seed\"])) for r in rs),\n166:             \"n_seeds\": len(rs),",
+      "162:             \"model_id\": model,\n163:             \"task_scope\": scope,\n164:             \"screen_or_confirmation\": phase,\n165:             \"seeds\": \",\".join(str(int(r[\"seed\"])) for r in rs),\n166:             \"n_seeds\": len(rs),\n167:         }\n168:         for m in metric_keys:",
+      "163:             \"task_scope\": scope,\n164:             \"screen_or_confirmation\": phase,\n165:             \"seeds\": \",\".join(str(int(r[\"seed\"])) for r in rs),\n166:             \"n_seeds\": len(rs),\n167:         }\n168:         for m in metric_keys:\n169:             vals = [r[\"metrics\"].get(m) for r in rs if r[\"metrics\"].get(m) not in (None, \"\")]",
+      "221:     multi2[\"victim_average_precision\"] = 0.63\n222:     return [\n223:         {\n224:             \"experiment_id\": \"P4_SELFTEST_LR_107\", \"model_id\": \"logistic_regression\",\n225:             \"model_family\": \"classical\", \"task_scope\": \"graph_detection_only\",\n226:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n227:             \"seed\": 107, \"screen_or_confirmation\": \"SCREENING\", \"metrics\": graph,",
+      "222:     return [\n223:         {\n224:             \"experiment_id\": \"P4_SELFTEST_LR_107\", \"model_id\": \"logistic_regression\",\n225:             \"model_family\": \"classical\", \"task_scope\": \"graph_detection_only\",\n226:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n227:             \"seed\": 107, \"screen_or_confirmation\": \"SCREENING\", \"metrics\": graph,\n228:             \"parameter_count\": 701, \"provenance\": prov,",
+      "223:         {\n224:             \"experiment_id\": \"P4_SELFTEST_LR_107\", \"model_id\": \"logistic_regression\",\n225:             \"model_family\": \"classical\", \"task_scope\": \"graph_detection_only\",\n226:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n227:             \"seed\": 107, \"screen_or_confirmation\": \"SCREENING\", \"metrics\": graph,\n228:             \"parameter_count\": 701, \"provenance\": prov,\n229:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,",
+      "224:             \"experiment_id\": \"P4_SELFTEST_LR_107\", \"model_id\": \"logistic_regression\",\n225:             \"model_family\": \"classical\", \"task_scope\": \"graph_detection_only\",\n226:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n227:             \"seed\": 107, \"screen_or_confirmation\": \"SCREENING\", \"metrics\": graph,\n228:             \"parameter_count\": 701, \"provenance\": prov,\n229:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n230:         },",
+      "226:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n227:             \"seed\": 107, \"screen_or_confirmation\": \"SCREENING\", \"metrics\": graph,\n228:             \"parameter_count\": 701, \"provenance\": prov,\n229:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n230:         },\n231:         {\n232:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",",
+      "229:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n230:         },\n231:         {\n232:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",\n233:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n234:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n235:             \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,",
+      "230:         },\n231:         {\n232:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",\n233:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n234:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n235:             \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n236:             \"parameter_count\": 60553, \"provenance\": prov,",
+      "231:         {\n232:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",\n233:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n234:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n235:             \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n236:             \"parameter_count\": 60553, \"provenance\": prov,\n237:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,",
+      "232:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",\n233:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n234:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n235:             \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n236:             \"parameter_count\": 60553, \"provenance\": prov,\n237:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n238:         },",
+      "234:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n235:             \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n236:             \"parameter_count\": 60553, \"provenance\": prov,\n237:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n238:         },\n239:         {\n240:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_117\", \"model_id\": \"conv1d_graphconv\",",
+      "237:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n238:         },\n239:         {\n240:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_117\", \"model_id\": \"conv1d_graphconv\",\n241:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n242:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n243:             \"seed\": 117, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi2,",
+      "238:         },\n239:         {\n240:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_117\", \"model_id\": \"conv1d_graphconv\",\n241:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n242:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n243:             \"seed\": 117, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi2,\n244:             \"parameter_count\": 60553, \"provenance\": prov,",
+      "239:         {\n240:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_117\", \"model_id\": \"conv1d_graphconv\",\n241:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n242:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n243:             \"seed\": 117, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi2,\n244:             \"parameter_count\": 60553, \"provenance\": prov,\n245:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,",
+      "240:             \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_117\", \"model_id\": \"conv1d_graphconv\",\n241:             \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n242:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n243:             \"seed\": 117, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi2,\n244:             \"parameter_count\": 60553, \"provenance\": prov,\n245:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n246:         },",
+      "242:             \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n243:             \"seed\": 117, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi2,\n244:             \"parameter_count\": 60553, \"provenance\": prov,\n245:             \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n246:         },\n247:     ]\n248: ",
+      "256: \n257:     rows = list(csv.DictReader(out.open()))\n258:     assert len(rows) == 2\n259:     g = next(r for r in rows if r[\"model_id\"] == \"conv1d_graphconv\")\n260:     assert g[\"n_seeds\"] == \"2\"\n261:     assert abs(float(g[\"victim_average_precision_mean\"]) - 0.62) < 1e-12\n262: ",
+      "257:     rows = list(csv.DictReader(out.open()))\n258:     assert len(rows) == 2\n259:     g = next(r for r in rows if r[\"model_id\"] == \"conv1d_graphconv\")\n260:     assert g[\"n_seeds\"] == \"2\"\n261:     assert abs(float(g[\"victim_average_precision_mean\"]) - 0.62) < 1e-12\n262: \n263:     bad = _synthetic()[0]"
+    ],
+    "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+    "sha256": "7d01ac3d21e7d47ace22e6a3b9937d97c79383c406a567ea91b00c2574c78fe7"
+  },
+  "p6_contract": {
+    "json": {
+      "benchmark_case_contract": {
+        "callable_semantics": "one complete batch-size-1 model forward producing all deployed neural outputs; no decoder and no post-hoc thresholding inside timed region",
+        "module_function": "build_benchmark_case(device: str, precision: str) -> dict",
+        "required_dict_keys": [
+          "callable",
+          "parameter_count",
+          "weight_bytes",
+          "model_sha256",
+          "checkpoint_sha256",
+          "input_contract"
+        ],
+        "setup_excluded_from_timing": [
+          "checkpoint load",
+          "model construction",
+          "device transfer",
+          "input preparation",
+          "archive writing",
+          "metric computation",
+          "decoder",
+          "thresholding"
+        ]
+      },
+      "benchmark_protocol": {
+        "actual_cuda_execution_deferred_until_mainline_gpu_idle": true,
+        "batch_size": 1,
+        "cuda_execution_requires_explicit_gpu_idle_ack": true,
+        "cuda_synchronization": "torch.cuda.synchronize immediately before and after every measured call",
+        "execution_context": "torch.inference_mode",
+        "input_reuse": "same prepared batch/case across timed iterations unless future case module explicitly freezes another policy",
+        "measured_iterations": 1000,
+        "required_device_label": true,
+        "required_precision_label": true,
+        "timing_clock": "time.perf_counter_ns",
+        "warmup_iterations": 100
+      },
+      "classification": "ENGINEERING_PROTOCOL_LOCK",
+      "reported_metrics": [
+        "median_latency_ms",
+        "mean_latency_ms",
+        "p95_latency_ms",
+        "sample_standard_deviation_ms",
+        "minimum_latency_ms",
+        "maximum_latency_ms",
+        "parameter_count",
+        "serialized_or_in_memory_weight_bytes",
+        "peak_cuda_allocated_bytes_if_cuda",
+        "device",
+        "precision",
+        "torch_version",
+        "cuda_version_if_available"
+      ],
+      "scientific_boundary": {
+        "p6_measurement": "model execution latency only",
+        "scientific_model_inference_performed_by_installer": false,
+        "sealed_test_access": false,
+        "security_response_latency_is_separate": true,
+        "security_response_latency_source": "P2 attack-onset evaluator",
+        "training_performed": false
+      },
+      "scope": "benchmark_harness_implementation_only",
+      "sealed_test_policy": {
+        "sealed_test_access": false,
+        "test_directory_enumerated": false,
+        "test_evaluation_performed": false,
+        "test_tensor_contents_accessed": false
+      },
+      "selftest": {
+        "device": "cpu",
+        "measured_iterations": 20,
+        "uses_cuda": false,
+        "uses_dataset": false,
+        "uses_final_model": false,
+        "warmup_iterations": 5
+      },
+      "stage": "V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_IMPLEMENTATION"
+    },
+    "relative_path": "reports/v5/p3_experiments/post_training_preparation/p6_inference_latency_benchmark_implementation/posttrain_p6_inference_latency_contract.json",
+    "sha256": "f0d377535a6acfca10c0dff3f3ab2b5e7ed4ac231d43cc2deae307990c2ed8db"
+  },
+  "p6_source": {
+    "evidence": [
+      "12: from pathlib import Path\n13: from typing import Any, Callable, Dict, List, Optional\n14: \n15: DEFAULT_WARMUP = 100\n16: DEFAULT_MEASURED = 1000\n17: BATCH_SIZE = 1\n18: ",
+      "13: from typing import Any, Callable, Dict, List, Optional\n14: \n15: DEFAULT_WARMUP = 100\n16: DEFAULT_MEASURED = 1000\n17: BATCH_SIZE = 1\n18: \n19: ",
+      "14: \n15: DEFAULT_WARMUP = 100\n16: DEFAULT_MEASURED = 1000\n17: BATCH_SIZE = 1\n18: \n19: \n20: def _type7(values: List[float], q: float) -> float:",
+      "92: def benchmark_callable(\n93:     fn: Callable[[], Any],\n94:     device: str,\n95:     warmup: int,\n96:     measured: int,\n97:     ack_gpu_idle: bool,\n98: ) -> Dict[str, Any]:",
+      "93:     fn: Callable[[], Any],\n94:     device: str,\n95:     warmup: int,\n96:     measured: int,\n97:     ack_gpu_idle: bool,\n98: ) -> Dict[str, Any]:\n99:     if warmup < 0 or measured <= 0:",
+      "94:     device: str,\n95:     warmup: int,\n96:     measured: int,\n97:     ack_gpu_idle: bool,\n98: ) -> Dict[str, Any]:\n99:     if warmup < 0 or measured <= 0:\n100:         raise ValueError(\"warmup must be >=0 and measured must be >0\")",
+      "96:     measured: int,\n97:     ack_gpu_idle: bool,\n98: ) -> Dict[str, Any]:\n99:     if warmup < 0 or measured <= 0:\n100:         raise ValueError(\"warmup must be >=0 and measured must be >0\")\n101: \n102:     torch = _torch_runtime()",
+      "97:     ack_gpu_idle: bool,\n98: ) -> Dict[str, Any]:\n99:     if warmup < 0 or measured <= 0:\n100:         raise ValueError(\"warmup must be >=0 and measured must be >0\")\n101: \n102:     torch = _torch_runtime()\n103:     dev = device.strip().lower()",
+      "104:     use_cuda = dev.startswith(\"cuda\")\n105: \n106:     if use_cuda:\n107:         if not ack_gpu_idle:\n108:             raise ValueError(\"CUDA benchmark requires explicit --ack-gpu-idle\")\n109:         if not torch.cuda.is_available():\n110:             raise RuntimeError(\"CUDA requested but torch.cuda.is_available() is false\")",
+      "109:         if not torch.cuda.is_available():\n110:             raise RuntimeError(\"CUDA requested but torch.cuda.is_available() is false\")\n111: \n112:     sync = torch.cuda.synchronize if use_cuda else (lambda: None)\n113: \n114:     with torch.inference_mode():\n115:         for _ in range(warmup):",
+      "111: \n112:     sync = torch.cuda.synchronize if use_cuda else (lambda: None)\n113: \n114:     with torch.inference_mode():\n115:         for _ in range(warmup):\n116:             fn()\n117:         if use_cuda:",
+      "112:     sync = torch.cuda.synchronize if use_cuda else (lambda: None)\n113: \n114:     with torch.inference_mode():\n115:         for _ in range(warmup):\n116:             fn()\n117:         if use_cuda:\n118:             sync()",
+      "121:             torch.cuda.reset_peak_memory_stats()\n122: \n123:         samples_ms: List[float] = []\n124:         for _ in range(measured):\n125:             sync()\n126:             t0 = time.perf_counter_ns()\n127:             fn()",
+      "123:         samples_ms: List[float] = []\n124:         for _ in range(measured):\n125:             sync()\n126:             t0 = time.perf_counter_ns()\n127:             fn()\n128:             sync()\n129:             t1 = time.perf_counter_ns()",
+      "126:             t0 = time.perf_counter_ns()\n127:             fn()\n128:             sync()\n129:             t1 = time.perf_counter_ns()\n130:             samples_ms.append((t1 - t0) / 1_000_000.0)\n131: \n132:     out = summarize_ms(samples_ms)",
+      "131: \n132:     out = summarize_ms(samples_ms)\n133:     out.update({\n134:         \"batch_size\": BATCH_SIZE,\n135:         \"warmup_iterations\": warmup,\n136:         \"measured_iterations\": measured,\n137:         \"device\": device,",
+      "132:     out = summarize_ms(samples_ms)\n133:     out.update({\n134:         \"batch_size\": BATCH_SIZE,\n135:         \"warmup_iterations\": warmup,\n136:         \"measured_iterations\": measured,\n137:         \"device\": device,\n138:         \"torch_version\": torch.__version__,",
+      "133:     out.update({\n134:         \"batch_size\": BATCH_SIZE,\n135:         \"warmup_iterations\": warmup,\n136:         \"measured_iterations\": measured,\n137:         \"device\": device,\n138:         \"torch_version\": torch.__version__,\n139:         \"cuda_version\": torch.version.cuda,",
+      "139:         \"cuda_version\": torch.version.cuda,\n140:         \"python_version\": platform.python_version(),\n141:         \"peak_cuda_allocated_bytes\": int(torch.cuda.max_memory_allocated()) if use_cuda else None,\n142:         \"cuda_synchronized_per_measurement\": bool(use_cuda),\n143:     })\n144:     return out\n145: ",
+      "149:     output_json: Path,\n150:     device: str,\n151:     precision: str,\n152:     warmup: int,\n153:     measured: int,\n154:     ack_gpu_idle: bool,\n155: ) -> None:",
+      "150:     device: str,\n151:     precision: str,\n152:     warmup: int,\n153:     measured: int,\n154:     ack_gpu_idle: bool,\n155: ) -> None:\n156:     mod = _load_case_module(case_module)",
+      "151:     precision: str,\n152:     warmup: int,\n153:     measured: int,\n154:     ack_gpu_idle: bool,\n155: ) -> None:\n156:     mod = _load_case_module(case_module)\n157:     case = mod.build_benchmark_case(device=device, precision=precision)",
+      "160:     result = benchmark_callable(\n161:         case[\"callable\"],\n162:         device=device,\n163:         warmup=warmup,\n164:         measured=measured,\n165:         ack_gpu_idle=ack_gpu_idle,\n166:     )",
+      "161:         case[\"callable\"],\n162:         device=device,\n163:         warmup=warmup,\n164:         measured=measured,\n165:         ack_gpu_idle=ack_gpu_idle,\n166:     )\n167:     result.update({",
+      "162:         device=device,\n163:         warmup=warmup,\n164:         measured=measured,\n165:         ack_gpu_idle=ack_gpu_idle,\n166:     )\n167:     result.update({\n168:         \"precision\": precision,",
+      "213:         output_json=out,\n214:         device=\"cpu\",\n215:         precision=\"fp32-selftest\",\n216:         warmup=5,\n217:         measured=20,\n218:         ack_gpu_idle=False,\n219:     )",
+      "214:         device=\"cpu\",\n215:         precision=\"fp32-selftest\",\n216:         warmup=5,\n217:         measured=20,\n218:         ack_gpu_idle=False,\n219:     )\n220:     result = json.loads(out.read_text())",
+      "215:         precision=\"fp32-selftest\",\n216:         warmup=5,\n217:         measured=20,\n218:         ack_gpu_idle=False,\n219:     )\n220:     result = json.loads(out.read_text())\n221:     assert result[\"batch_size\"] == 1",
+      "218:         ack_gpu_idle=False,\n219:     )\n220:     result = json.loads(out.read_text())\n221:     assert result[\"batch_size\"] == 1\n222:     assert result[\"warmup_iterations\"] == 5\n223:     assert result[\"measured_iterations\"] == 20\n224:     assert result[\"peak_cuda_allocated_bytes\"] is None",
+      "219:     )\n220:     result = json.loads(out.read_text())\n221:     assert result[\"batch_size\"] == 1\n222:     assert result[\"warmup_iterations\"] == 5\n223:     assert result[\"measured_iterations\"] == 20\n224:     assert result[\"peak_cuda_allocated_bytes\"] is None\n225:     assert result[\"security_response_latency_claimed\"] is False",
+      "220:     result = json.loads(out.read_text())\n221:     assert result[\"batch_size\"] == 1\n222:     assert result[\"warmup_iterations\"] == 5\n223:     assert result[\"measured_iterations\"] == 20\n224:     assert result[\"peak_cuda_allocated_bytes\"] is None\n225:     assert result[\"security_response_latency_claimed\"] is False\n226:     assert result[\"decoder_in_timed_region\"] is False",
+      "228:     # Negative contract test: CUDA path must require explicit idle acknowledgement\n229:     denied = False\n230:     try:\n231:         benchmark_callable(lambda: None, \"cuda\", 0, 1, ack_gpu_idle=False)\n232:     except ValueError:\n233:         denied = True\n234:     assert denied",
+      "235: \n236:     print(\"P6_SELFTEST_PASS\")\n237:     print(\"selftest_device=cpu\")\n238:     print(\"selftest_warmup_iterations=5\")\n239:     print(\"selftest_measured_iterations=20\")\n240:     print(\"cuda_idle_ack_guard_exercised=true\")\n241:     print(\"final_model_used=false\")",
+      "236:     print(\"P6_SELFTEST_PASS\")\n237:     print(\"selftest_device=cpu\")\n238:     print(\"selftest_warmup_iterations=5\")\n239:     print(\"selftest_measured_iterations=20\")\n240:     print(\"cuda_idle_ack_guard_exercised=true\")\n241:     print(\"final_model_used=false\")\n242:     print(\"dataset_used=false\")",
+      "252:     r.add_argument(\"--output-json\", type=Path, required=True)\n253:     r.add_argument(\"--device\", required=True)\n254:     r.add_argument(\"--precision\", required=True)\n255:     r.add_argument(\"--warmup\", type=int, default=DEFAULT_WARMUP)\n256:     r.add_argument(\"--measured\", type=int, default=DEFAULT_MEASURED)\n257:     r.add_argument(\"--ack-gpu-idle\", action=\"store_true\")\n258: ",
+      "253:     r.add_argument(\"--device\", required=True)\n254:     r.add_argument(\"--precision\", required=True)\n255:     r.add_argument(\"--warmup\", type=int, default=DEFAULT_WARMUP)\n256:     r.add_argument(\"--measured\", type=int, default=DEFAULT_MEASURED)\n257:     r.add_argument(\"--ack-gpu-idle\", action=\"store_true\")\n258: \n259:     s = sub.add_parser(\"selftest\")",
+      "269:         output_json=args.output_json,\n270:         device=args.device,\n271:         precision=args.precision,\n272:         warmup=args.warmup,\n273:         measured=args.measured,\n274:         ack_gpu_idle=args.ack_gpu_idle,\n275:     )",
+      "270:         device=args.device,\n271:         precision=args.precision,\n272:         warmup=args.warmup,\n273:         measured=args.measured,\n274:         ack_gpu_idle=args.ack_gpu_idle,\n275:     )\n276:     print(\"V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_COMPLETE\")",
+      "271:         precision=args.precision,\n272:         warmup=args.warmup,\n273:         measured=args.measured,\n274:         ack_gpu_idle=args.ack_gpu_idle,\n275:     )\n276:     print(\"V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_COMPLETE\")\n277:     print(\"security_response_latency_claimed=false\")"
+    ],
+    "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p6_inference_latency_benchmark.py",
+    "sha256": "ecd79162044aecbfd7e7ea856a1b7d687b05e58fb4a7b240010aeb9ba49a5c1a"
+  },
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC0_R2_SEMANTIC_RESOLUTION_AND_LATENCY_CONTRACT_AUDIT",
+  "status": "PASS",
+  "tcn_consumers": [
+    {
+      "import_evidence": [
+        "345:         h = torch.sum(h * attention_weights, dim=2)\n346:         return h.reshape(batch_size, num_nodes, -1)\n347: \n348: \n349: class TemporalTCNGCN(nn.Module):\n350:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n351:         super().__init__()\n352:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n353:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)",
+        "450: \n451:     print(\"input feature dim:\", input_feature_dim)\n452:     print(\"number of nodes:\", num_nodes)\n453: \n454:     model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)\n455:     total_params = sum(parameter.numel() for parameter in model.parameters())\n456:     print(\"\\nmodel:\")\n457:     print(model)\n458:     print(\"parameters:\", total_params)"
+      ],
+      "relative_path": "scripts/train_temporal_tcn_gcn_v3.py",
+      "sha256": "cd218697038f2a71df9efa4bccba610e22a241117fb1fe8f97fda601bb0b99fa"
+    },
+    {
+      "import_evidence": [
+        "11: SCRIPT_DIR = Path(__file__).resolve().parent\n12: sys.path.insert(0, str(SCRIPT_DIR))\n13: \n14: import train_temporal_gcn_v3 as convmod\n15: import train_temporal_tcn_gcn_v3 as tcnmod\n16: \n17: \n18: def load_graph_arrays(data_path):\n19:     data_path = Path(data_path)",
+        "90:         ).to(device)\n91:         build_adj = convmod.build_normalized_adjacency\n92: \n93:     elif kind == \"tcn\":\n94:         model = tcnmod.TemporalTCNGCN(\n95:             input_features=input_feature_dim,\n96:             temporal_dim=int(get_arg(ckpt_args, \"temporal_dim\", 8)),\n97:             gcn_hidden=int(get_arg(ckpt_args, \"gcn_hidden\", 16)),\n98:             gcn_out=int(get_arg(ckpt_args, \"gcn_out\", 8)),"
+      ],
+      "relative_path": "scripts/compare_v3_conv_vs_tcn_errors.py",
+      "sha256": "2e04bbd1bf4eab93c685eea22d90c50797cc8d503c42baa998d25e0c51db7362"
+    },
+    {
+      "import_evidence": [
+        "298:         h = torch.sum(h * attention_weights, dim=2)\n299:         return h.reshape(batch_size, num_nodes, -1)\n300: \n301: \n302: class TemporalTCNGCN(nn.Module):\n303:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n304:         super().__init__()\n305:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n306:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)",
+        "400: \n401:     print(\"input feature dim:\", input_feature_dim)\n402:     print(\"number of nodes:\", num_nodes)\n403: \n404:     model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)\n405:     total_params = sum(parameter.numel() for parameter in model.parameters())\n406:     print(\"\\nmodel:\")\n407:     print(model)\n408:     print(\"parameters:\", total_params)"
+      ],
+      "relative_path": "scripts/train_temporal_tcn_gcn_early_stopping.py",
+      "sha256": "e971dd072c43f05ef46dce9b78c2bc5f0c00d5ad1bcf7bfcaf426ba0ec051b5e"
+    },
+    {
+      "import_evidence": [
+        "387:         return h.reshape(bsz, num_nodes, -1)\n388: \n389: \n390: \n391: class TemporalTCNGCN(nn.Module):\n392:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n393:         super().__init__()\n394:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n395:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)",
+        "492: \n493:     print(\"input feature dim:\", input_feature_dim)\n494:     print(\"number of nodes:\", num_nodes)\n495: \n496:     model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)\n497:     total_params = sum(parameter.numel() for parameter in model.parameters())\n498:     print(\"\\nmodel:\")\n499:     print(model)\n500:     print(\"parameters:\", total_params)"
+      ],
+      "relative_path": "scripts/train_temporal_tcn_meanpool_gcn_v3.py",
+      "sha256": "97cbf5864a9f1443d0f4a7e4a737d5259aabcb18562205a46f10bb739c7ee772"
+    },
+    {
+      "import_evidence": [
+        "13:     load_graph_arrays,\n14:     infer,\n15:     binary_metrics,\n16: )\n17: import train_temporal_tcn_maxpool_gcn_v3 as mpmod\n18: \n19: \n20: def load_meanpool_model(model_dir, data, device):\n21:     model_dir = Path(model_dir)",
+        "30:     input_feature_dim = int(data[\"x\"].shape[-1])\n31:     num_nodes = int(data[\"x\"].shape[1])\n32:     edge_index = data[\"edge_index\"].astype(np.int64)\n33: \n34:     model = mpmod.TemporalTCNGCN(\n35:         input_features=input_feature_dim,\n36:         temporal_dim=int(get_arg(\"temporal_dim\", 8)),\n37:         gcn_hidden=int(get_arg(\"gcn_hidden\", 16)),\n38:         gcn_out=int(get_arg(\"gcn_out\", 8)),"
+      ],
+      "relative_path": "scripts/sweep_v3_graph_thresholds_maxpool.py",
+      "sha256": "b099bcc53746bcf518d9e76d45f7ad1b8f96ea6566d7a59f534698a06a9f2f4c"
+    },
+    {
+      "import_evidence": [
+        "13:     load_graph_arrays,\n14:     infer,\n15:     binary_metrics,\n16: )\n17: import train_temporal_tcn_meanpool_gcn_v3 as mpmod\n18: \n19: \n20: def load_meanpool_model(model_dir, data, device):\n21:     model_dir = Path(model_dir)",
+        "30:     input_feature_dim = int(data[\"x\"].shape[-1])\n31:     num_nodes = int(data[\"x\"].shape[1])\n32:     edge_index = data[\"edge_index\"].astype(np.int64)\n33: \n34:     model = mpmod.TemporalTCNGCN(\n35:         input_features=input_feature_dim,\n36:         temporal_dim=int(get_arg(\"temporal_dim\", 8)),\n37:         gcn_hidden=int(get_arg(\"gcn_hidden\", 16)),\n38:         gcn_out=int(get_arg(\"gcn_out\", 8)),"
+      ],
+      "relative_path": "scripts/sweep_v3_graph_thresholds_meanpool.py",
+      "sha256": "e6fb77209fbec497fe78f56e8b7d6866e7f90bd3806b4d28ac6d7e9a66bea38d"
+    },
+    {
+      "import_evidence": [
+        "11: SCRIPT_DIR = Path(__file__).resolve().parent\n12: sys.path.insert(0, str(SCRIPT_DIR))\n13: \n14: import train_temporal_gcn_v3 as convmod\n15: import train_temporal_tcn_gcn_v3 as tcnmod\n16: \n17: \n18: def load_graph_arrays(data_path):\n19:     data_path = Path(data_path)",
+        "90:         ).to(device)\n91:         build_adj = convmod.build_normalized_adjacency\n92: \n93:     elif kind == \"tcn\":\n94:         model = tcnmod.TemporalTCNGCN(\n95:             input_features=input_feature_dim,\n96:             temporal_dim=int(get_arg(ckpt_args, \"temporal_dim\", 8)),\n97:             gcn_hidden=int(get_arg(ckpt_args, \"gcn_hidden\", 16)),\n98:             gcn_out=int(get_arg(ckpt_args, \"gcn_out\", 8)),"
+      ],
+      "relative_path": "scripts/compare_v3_conv_vs_meanpool_errors.py",
+      "sha256": "2e04bbd1bf4eab93c685eea22d90c50797cc8d503c42baa998d25e0c51db7362"
+    },
+    {
+      "import_evidence": [
+        "8: from torch.utils.data import DataLoader\n9: \n10: from train_temporal_tcn_gcn_early_stopping import (\n11:     NoCTemporalGraphDataset,\n12:     TemporalTCNGCN,\n13:     build_normalized_adjacency,\n14:     make_splits,\n15: )\n16: ",
+        "97:     ckpt_args = ckpt.get(\"args\", {})\n98: \n99:     split_mode = args.split_mode or get_ckpt_arg(ckpt_args, \"split_mode\", \"placement\")\n100: \n101:     model = TemporalTCNGCN(\n102:         input_features=input_feature_dim,\n103:         temporal_dim=int(get_ckpt_arg(ckpt_args, \"temporal_dim\", 8)),\n104:         gcn_hidden=int(get_ckpt_arg(ckpt_args, \"gcn_hidden\", 16)),\n105:         gcn_out=int(get_ckpt_arg(ckpt_args, \"gcn_out\", 8)),"
+      ],
+      "relative_path": "scripts/eval_temporal_tcn_gcn.py",
+      "sha256": "bb83eb94abb95114aaf50a6990477a13cd9981a67668942cea824c953dc09cf0"
+    },
+    {
+      "import_evidence": [
+        "387:         return h.reshape(bsz, num_nodes, -1)\n388: \n389: \n390: \n391: class TemporalTCNGCN(nn.Module):\n392:     def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1):\n393:         super().__init__()\n394:         self.temporal = TemporalTCNEncoder(input_features, temporal_dim, kernel_size=3, dropout=tcn_dropout)\n395:         self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)",
+        "492: \n493:     print(\"input feature dim:\", input_feature_dim)\n494:     print(\"number of nodes:\", num_nodes)\n495: \n496:     model = TemporalTCNGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out, tcn_dropout=args.tcn_dropout).to(device)\n497:     total_params = sum(parameter.numel() for parameter in model.parameters())\n498:     print(\"\\nmodel:\")\n499:     print(model)\n500:     print(\"parameters:\", total_params)"
+      ],
+      "relative_path": "scripts/train_temporal_tcn_maxpool_gcn_v3.py",
+      "sha256": "e21a88d72efc2c8af451c51264bf968aa8e315306f84bd54a3a4208b4d7e909f"
+    },
+    {
+      "import_evidence": [
+        "52:     ),\n53:     ModelSpec(\n54:         name=\"tcn_attention_gcn\",\n55:         module_name=\"scripts.train_temporal_tcn_gcn_v3\",\n56:         class_name=\"TemporalTCNGCN\",\n57:         model_dir=Path(\n58:             \"models/v3/temporal_tcn_gcn_ports_v3_builtin_split\"\n59:         ),\n60:         output_filename=\"tcn_attention_gcn_predictions.npz\",",
+        "61:     ),\n62:     ModelSpec(\n63:         name=\"tcn_meanpool_gcn\",\n64:         module_name=\"scripts.train_temporal_tcn_meanpool_gcn_v3\",\n65:         class_name=\"TemporalTCNGCN\",\n66:         model_dir=Path(\n67:             \"models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split\"\n68:         ),\n69:         output_filename=\"tcn_meanpool_gcn_predictions.npz\",",
+        "70:     ),\n71:     ModelSpec(\n72:         name=\"tcn_maxpool_gcn\",\n73:         module_name=\"scripts.train_temporal_tcn_maxpool_gcn_v3\",\n74:         class_name=\"TemporalTCNGCN\",\n75:         model_dir=Path(\n76:             \"models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split\"\n77:         ),\n78:         output_filename=\"tcn_maxpool_gcn_predictions.npz\","
+      ],
+      "relative_path": "scripts/failure_analysis/export_stage9_a1_predictions.py",
+      "sha256": "e4b32cb3368e4cc427ab8865061559ee3b81ff465093480ec8b2ac542b2f2700"
+    },
+    {
+      "import_evidence": [
+        "52:     ),\n53:     ModelSpec(\n54:         name=\"tcn_attention_gcn\",\n55:         module_name=\"scripts.train_temporal_tcn_gcn_v3\",\n56:         class_name=\"TemporalTCNGCN\",\n57:         model_dir=Path(\n58:             \"models/v3/temporal_tcn_gcn_ports_v3_builtin_split\"\n59:         ),\n60:         output_filename=\"tcn_attention_gcn_predictions.npz\",",
+        "61:     ),\n62:     ModelSpec(\n63:         name=\"tcn_meanpool_gcn\",\n64:         module_name=\"scripts.train_temporal_tcn_meanpool_gcn_v3\",\n65:         class_name=\"TemporalTCNGCN\",\n66:         model_dir=Path(\n67:             \"models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split\"\n68:         ),\n69:         output_filename=\"tcn_meanpool_gcn_predictions.npz\",",
+        "70:     ),\n71:     ModelSpec(\n72:         name=\"tcn_maxpool_gcn\",\n73:         module_name=\"scripts.train_temporal_tcn_maxpool_gcn_v3\",\n74:         class_name=\"TemporalTCNGCN\",\n75:         model_dir=Path(\n76:             \"models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split\"\n77:         ),\n78:         output_filename=\"tcn_maxpool_gcn_predictions.npz\","
+      ],
+      "relative_path": "scripts/failure_analysis/export_stage9_chrono_a1_predictions.py",
+      "sha256": "e4b32cb3368e4cc427ab8865061559ee3b81ff465093480ec8b2ac542b2f2700"
+    },
+    {
+      "import_evidence": [
+        "52:     ),\n53:     ModelSpec(\n54:         name=\"tcn_attention_gcn\",\n55:         module_name=\"scripts.train_temporal_tcn_gcn_v3\",\n56:         class_name=\"TemporalTCNGCN\",\n57:         model_dir=Path(\n58:             \"models/v3/temporal_tcn_gcn_ports_v3_builtin_split\"\n59:         ),\n60:         output_filename=\"tcn_attention_gcn_predictions.npz\",",
+        "61:     ),\n62:     ModelSpec(\n63:         name=\"tcn_meanpool_gcn\",\n64:         module_name=\"scripts.train_temporal_tcn_meanpool_gcn_v3\",\n65:         class_name=\"TemporalTCNGCN\",\n66:         model_dir=Path(\n67:             \"models/v3/temporal_tcn_meanpool_gcn_ports_v3_builtin_split\"\n68:         ),\n69:         output_filename=\"tcn_meanpool_gcn_predictions.npz\",",
+        "70:     ),\n71:     ModelSpec(\n72:         name=\"tcn_maxpool_gcn\",\n73:         module_name=\"scripts.train_temporal_tcn_maxpool_gcn_v3\",\n74:         class_name=\"TemporalTCNGCN\",\n75:         model_dir=Path(\n76:             \"models/v3/temporal_tcn_maxpool_gcn_ports_v3_builtin_split\"\n77:         ),\n78:         output_filename=\"tcn_maxpool_gcn_predictions.npz\","
+      ],
+      "relative_path": "scripts/failure_analysis/export_v3_predictions.py",
+      "sha256": "c19218e2781c5946f08f21b9c63d7213dac59284a8cb8360baba3d8d050dd882"
+    }
+  ],
+  "test_evaluation_performed": false,
+  "threshold_tuning_performed": false,
+  "token_resolution": {
+    "GATConv": [
+      {
+        "evidence": [
+          "2: V5 P2-G1 source-only graph implementation smoke check.\n3: \n4: This is the consolidated smoke stage for Conv1D-only, GCNConv, GraphConv,\n5: and GATConv source-localization baselines. It intentionally depends only on\n6: the frozen G0 protocol, the G1A-R1 manifest resolution, the canonical 4x4\n7: topology contract, and the P2 train/validation data. Historical failed smoke\n8: revisions remain untouched but are not prerequisites.",
+          "34: from torch.utils.data import DataLoader, Dataset, Subset\n35: \n36: try:\n37:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n38:     PYG_IMPORT_ERROR: str | None = None\n39: except Exception as exc:  # Converted to a normal HOLD inside run_smoke.\n40:     GATConv = None",
+          "37:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n38:     PYG_IMPORT_ERROR: str | None = None\n39: except Exception as exc:  # Converted to a normal HOLD inside run_smoke.\n40:     GATConv = None\n41:     GCNConv = None\n42:     GraphConv = None\n43:     PYG_IMPORT_ERROR = f\"{type(exc).__name__}: {exc}\"",
+          "888:                 embedding_dim,\n889:                 aggr=\"add\",\n890:             )\n891:         elif operator == \"gatconv\":\n892:             self.graph1 = GATConv(\n893:                 embedding_dim,\n894:                 embedding_dim,"
+        ],
+        "relative_path": "scripts/v5/p2/g1_source_only_graph_smoke.py",
+        "score": 8,
+        "sha256": "2f543a9f1bf4b8a556a173dfb54626e2e35fb10dabc45337d6b4e071938785d4"
+      },
+      {
+        "evidence": [
+          "580: \n581: def graph_operator_smoke_tests() -> dict[str, Any]:\n582:     import torch_geometric\n583:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n584: \n585:     edge_index = torch.tensor(\n586:         [",
+          "594:     operator_specs = {\n595:         \"GCNConv\": lambda: GCNConv(8, 8),\n596:         \"GraphConv\": lambda: GraphConv(8, 8, aggr=\"add\"),\n597:         \"GATConv\": lambda: GATConv(8, 8, heads=1, concat=False),\n598:     }\n599: \n600:     results: dict[str, Any] = {",
+          "1086:     )\n1087:     print(\n1088:         \"graph_operator_cpu_smoke: \"\n1089:         \"GCNConv=true,GraphConv=true,GATConv=true\"\n1090:     )\n1091:     if torch.cuda.is_available():\n1092:         print(",
+          "1091:     if torch.cuda.is_available():\n1092:         print(\n1093:             \"graph_operator_cuda_smoke: \"\n1094:             \"GCNConv=true,GraphConv=true,GATConv=true\"\n1095:         )\n1096:     else:\n1097:         print(\"graph_operator_cuda_smoke: CUDA_UNAVAILABLE\")"
+        ],
+        "relative_path": "scripts/v5/p2/inspect_v5_p2_g1a_r1_source_only_graph_preflight.py",
+        "score": 8,
+        "sha256": "0e2faac654bf8560786377966951a3862d0954f5e1e304cf6f53098c8623c771"
+      },
+      {
+        "evidence": [
+          "12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: \n17: It reuses:\n18: - pair manifests resolved in G1A-R1;",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R1_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "490:                 embedding_dim,\n491:                 aggr=\"add\",\n492:             )\n493:         elif operator == \"gatconv\":\n494:             self.graph1 = GATConv(\n495:                 embedding_dim,\n496:                 embedding_dim,",
+          "491:                 aggr=\"add\",\n492:             )\n493:         elif operator == \"gatconv\":\n494:             self.graph1 = GATConv(\n495:                 embedding_dim,\n496:                 embedding_dim,\n497:                 heads=1,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r1_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "17c61c4ba2b4193519e5d18797878e605f0368c5983072fced4ebd1302cf2345"
+      },
+      {
+        "evidence": [
+          "12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: \n17: It reuses:\n18: - pair manifests resolved in G1A-R1;",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R2_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "490:                 embedding_dim,\n491:                 aggr=\"add\",\n492:             )\n493:         elif operator == \"gatconv\":\n494:             self.graph1 = GATConv(\n495:                 embedding_dim,\n496:                 embedding_dim,",
+          "491:                 aggr=\"add\",\n492:             )\n493:         elif operator == \"gatconv\":\n494:             self.graph1 = GATConv(\n495:                 embedding_dim,\n496:                 embedding_dim,\n497:                 heads=1,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r2_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "4b2c0271a22e372d1a91ca4ecbaa6db827d9b2b8de526b78bb82867c0b1cd944"
+      },
+      {
+        "evidence": [
+          "12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: \n17: It reuses:\n18: - pair manifests resolved in G1A-R1;",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R3_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "490:                 embedding_dim,\n491:                 aggr=\"add\",\n492:             )\n493:         elif operator == \"gatconv\":\n494:             self.graph1 = GATConv(\n495:                 embedding_dim,\n496:                 embedding_dim,",
+          "491:                 aggr=\"add\",\n492:             )\n493:         elif operator == \"gatconv\":\n494:             self.graph1 = GATConv(\n495:                 embedding_dim,\n496:                 embedding_dim,\n497:                 heads=1,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r3_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "c3502996262b4ec0c0db329015035d7b5148cd1a65b04f2069bf9462a41b0a9c"
+      },
+      {
+        "evidence": [
+          "22: - Conv1D-only\n23: - Conv1D + GCNConv\n24: - Conv1D + GraphConv\n25: - Conv1D + GATConv\n26: \n27: It reuses:\n28: - pair manifests resolved in G1A-R1;",
+          "62: import torch\n63: import torch.nn as nn\n64: from torch.utils.data import DataLoader, Dataset, Subset\n65: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n66: \n67: \n68: STAGE = \"V5_P2_G1B_R4_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "810:                 embedding_dim,\n811:                 aggr=\"add\",\n812:             )\n813:         elif operator == \"gatconv\":\n814:             self.graph1 = GATConv(\n815:                 embedding_dim,\n816:                 embedding_dim,",
+          "811:                 aggr=\"add\",\n812:             )\n813:         elif operator == \"gatconv\":\n814:             self.graph1 = GATConv(\n815:                 embedding_dim,\n816:                 embedding_dim,\n817:                 heads=1,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r4_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "5f9255394e7312d021bcebdd88fbc9f891319dd2d7bfd982aea13c462a3e6f9a"
+      },
+      {
+        "evidence": [
+          "29: - Conv1D-only\n30: - Conv1D + GCNConv\n31: - Conv1D + GraphConv\n32: - Conv1D + GATConv\n33: \n34: It reuses:\n35: - pair manifests resolved in G1A-R1;",
+          "69: import torch\n70: import torch.nn as nn\n71: from torch.utils.data import DataLoader, Dataset, Subset\n72: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n73: \n74: \n75: STAGE = \"V5_P2_G1B_R5_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "817:                 embedding_dim,\n818:                 aggr=\"add\",\n819:             )\n820:         elif operator == \"gatconv\":\n821:             self.graph1 = GATConv(\n822:                 embedding_dim,\n823:                 embedding_dim,",
+          "818:                 aggr=\"add\",\n819:             )\n820:         elif operator == \"gatconv\":\n821:             self.graph1 = GATConv(\n822:                 embedding_dim,\n823:                 embedding_dim,\n824:                 heads=1,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r5_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "644eae2cdc35108953e08b5335280ebd1314325ada5b493a8ac948682ba39094"
+      },
+      {
+        "evidence": [
+          "8: - Conv1D-only\n9: - Conv1D + GCNConv\n10: - Conv1D + GraphConv\n11: - Conv1D + GATConv\n12: \n13: It reuses:\n14: - pair manifests resolved in G1A-R1;",
+          "46: import torch\n47: import torch.nn as nn\n48: from torch.utils.data import DataLoader, Dataset, Subset\n49: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n50: \n51: \n52: STAGE = \"V5_P2_G1B_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "489:                 embedding_dim,\n490:                 aggr=\"add\",\n491:             )\n492:         elif operator == \"gatconv\":\n493:             self.graph1 = GATConv(\n494:                 embedding_dim,\n495:                 embedding_dim,",
+          "490:                 aggr=\"add\",\n491:             )\n492:         elif operator == \"gatconv\":\n493:             self.graph1 = GATConv(\n494:                 embedding_dim,\n495:                 embedding_dim,\n496:                 heads=1,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "65bb4df54830d60f784a5d93f45a152faadf42abb5a8a095f0091574cc4ee96f"
+      },
+      {
+        "evidence": [
+          "3: V5 P2-G1C source-only graph training: one architecture/seed run.\n4: \n5: This stage trains exactly one source-only model from:\n6:     conv1d, gcnconv, graphconv, gatconv\n7: with exactly one initial-screening seed from:\n8:     107, 117, 127\n9: ",
+          "41: from torch.utils.data import DataLoader, Sampler\n42: \n43: try:\n44:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n45: except Exception as exc:  # pragma: no cover - converted to controlled HOLD\n46:     GATConv = None\n47:     GCNConv = None",
+          "43: try:\n44:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n45: except Exception as exc:  # pragma: no cover - converted to controlled HOLD\n46:     GATConv = None\n47:     GCNConv = None\n48:     GraphConv = None\n49:     PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"",
+          "55: COMPLETE = f\"{STAGE}_COMPLETE\"\n56: HOLD = f\"{STAGE}_HOLD\"\n57: \n58: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n59: SEEDS = (107, 117, 127)\n60: EXPECTED_TRAIN_ITEMS = 70_166\n61: EXPECTED_VALIDATION_ITEMS = 12_528"
+        ],
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "score": 8,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d"
+      },
+      {
+        "evidence": [
+          "2: \"\"\"V5 P2-G2 direct graph-detection training for one operator and seed.\n3: \n4: This stage trains one clean direct graph classifier from:\n5:     conv1d, gcnconv, graphconv, gatconv\n6: with one frozen screening seed from:\n7:     107, 117, 127\n8: ",
+          "37: from torch.utils.data import DataLoader, Sampler\n38: \n39: try:\n40:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n41: except Exception as exc:  # pragma: no cover\n42:     GATConv = None\n43:     GCNConv = None",
+          "39: try:\n40:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n41: except Exception as exc:  # pragma: no cover\n42:     GATConv = None\n43:     GCNConv = None\n44:     GraphConv = None\n45:     PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"",
+          "50: STAGE = \"V5_P2_G2_DIRECT_GRAPH_SINGLE_RUN\"\n51: COMPLETE = f\"{STAGE}_COMPLETE\"\n52: HOLD = f\"{STAGE}_HOLD\"\n53: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n54: SEEDS = (107, 117, 127)\n55: EXPECTED_TRAIN_ITEMS = 70_166\n56: EXPECTED_VALIDATION_ITEMS = 12_528"
+        ],
+        "relative_path": "scripts/v5/p2/train_v5_p2_g2_direct_graph_single_run.py",
+        "score": 8,
+        "sha256": "47636bd13597d8bb5cb86ab8b8ae69ce47f05d2720ad3748440e17bb696ace18"
+      },
+      {
+        "evidence": [
+          "434: \n435:     try:\n436:         import torch_geometric\n437:         from torch_geometric.nn import GATConv, GCNConv, GraphConv\n438: \n439:         environment[\"torch_geometric_available\"] = True\n440:         environment[\"torch_geometric_version\"] = torch_geometric.__version__",
+          "438: \n439:         environment[\"torch_geometric_available\"] = True\n440:         environment[\"torch_geometric_version\"] = torch_geometric.__version__\n441:         for cls in (GCNConv, GraphConv, GATConv):\n442:             environment[\"operators\"][cls.__name__] = {\n443:                 \"signature\": str(inspect.signature(cls)),\n444:                 \"forward_signature\": str(inspect.signature(cls.forward)),"
+        ],
+        "relative_path": "scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "score": 4,
+        "sha256": "4f068b84d0861e701ccf6ecc536ccf8c92a522902acd6b61dbd992db3548b3f7"
+      },
+      {
+        "evidence": [
+          "663:     prohibited_tokens = [\n664:         \"GraphConv\",\n665:         \"GraphSAGE\",\n666:         \"GATConv\",\n667:         \"LSTM(\",\n668:         \"GRU(\",\n669:         \"node_victim_head\","
+        ],
+        "relative_path": "scripts/v4/train/train_v4_a1_conv1d_gcn_memmap.py",
+        "score": 0,
+        "sha256": "3aaab7a6626f4c237b8e234e3716ba4d117d1b725d02a605395f57aa26f33fa2"
+      },
+      {
+        "evidence": [
+          "736:     prohibited_tokens = [\n737:         \"GraphConv\",\n738:         \"GraphSAGE\",\n739:         \"GATConv\",\n740:         \"LSTM(\",\n741:         \"GRU(\",\n742:         \"node_victim_head\","
+        ],
+        "relative_path": "scripts/v4/train/train_v4_conv1d_gcn_experiment.py",
+        "score": 0,
+        "sha256": "0091ccb1fefb15d7e621ca30b18af692f86fa40ede192a1bd9dc5eb425eceffe"
+      },
+      {
+        "evidence": [
+          "12: from statistics import mean, stdev\n13: from typing import Any\n14: \n15: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n16: SEEDS = (107, 117, 127)\n17: STAGE = \"V5_P2_G1C_SOURCE_ONLY_GRAPH_MATRIX_AGGREGATION\"\n18: COMPLETE = f\"{STAGE}_COMPLETE\"",
+          "210:         )\n211: \n212:     graphconv = architecture_summary[\"graphconv\"]\n213:     gat = architecture_summary[\"gatconv\"]\n214:     source_f1_delta = gat[\"source_f1\"][\"mean\"] - graphconv[\"source_f1\"][\"mean\"]\n215:     graph_bal_delta = (\n216:         gat[\"derived_graph_balanced_accuracy\"][\"mean\"]"
+        ],
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g1c_source_only_graph_training_matrix.py",
+        "score": 0,
+        "sha256": "51300f48cd2bd1f9e6fe34039f23bdd97fee77322574a59aa9f8f5a675407a3b"
+      },
+      {
+        "evidence": [
+          "12: from statistics import mean, stdev\n13: from typing import Any\n14: \n15: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n16: SEEDS = (107, 117, 127)\n17: STAGE = \"V5_P2_G2_DIRECT_GRAPH_MATRIX_AGGREGATION\"\n18: COMPLETE = f\"{STAGE}_COMPLETE\"",
+          "199:         })\n200: \n201:     graphconv = architecture_summary[\"graphconv\"]\n202:     gat = architecture_summary[\"gatconv\"]\n203:     f1_delta = gat[\"graph_f1\"][\"mean\"] - graphconv[\"graph_f1\"][\"mean\"]\n204:     balanced_delta = gat[\"graph_balanced_accuracy\"][\"mean\"] - graphconv[\"graph_balanced_accuracy\"][\"mean\"]\n205:     explicit_gate = f1_delta >= 0.02 or balanced_delta >= 0.02"
+        ],
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g2_direct_graph_training_matrix.py",
+        "score": 0,
+        "sha256": "d23136b155141ccd7e9bf4948f4bb5ba75728ee23fb9c68aabc8cb956138938d"
+      }
+    ],
+    "GCNConv": [
+      {
+        "evidence": [
+          "1: \"\"\"\n2: V5 P2-G1 source-only graph implementation smoke check.\n3: \n4: This is the consolidated smoke stage for Conv1D-only, GCNConv, GraphConv,\n5: and GATConv source-localization baselines. It intentionally depends only on\n6: the frozen G0 protocol, the G1A-R1 manifest resolution, the canonical 4x4\n7: topology contract, and the P2 train/validation data. Historical failed smoke",
+          "34: from torch.utils.data import DataLoader, Dataset, Subset\n35: \n36: try:\n37:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n38:     PYG_IMPORT_ERROR: str | None = None\n39: except Exception as exc:  # Converted to a normal HOLD inside run_smoke.\n40:     GATConv = None",
+          "38:     PYG_IMPORT_ERROR: str | None = None\n39: except Exception as exc:  # Converted to a normal HOLD inside run_smoke.\n40:     GATConv = None\n41:     GCNConv = None\n42:     GraphConv = None\n43:     PYG_IMPORT_ERROR = f\"{type(exc).__name__}: {exc}\"\n44: ",
+          "864:         if operator == \"conv1d\":\n865:             self.graph1 = None\n866:             self.graph2 = None\n867:         elif operator == \"gcnconv\":\n868:             self.graph1 = GCNConv(\n869:                 embedding_dim,\n870:                 embedding_dim,"
+        ],
+        "relative_path": "scripts/v5/p2/g1_source_only_graph_smoke.py",
+        "score": 8,
+        "sha256": "2f543a9f1bf4b8a556a173dfb54626e2e35fb10dabc45337d6b4e071938785d4"
+      },
+      {
+        "evidence": [
+          "580: \n581: def graph_operator_smoke_tests() -> dict[str, Any]:\n582:     import torch_geometric\n583:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n584: \n585:     edge_index = torch.tensor(\n586:         [",
+          "592:     x = torch.randn(4, 8)\n593: \n594:     operator_specs = {\n595:         \"GCNConv\": lambda: GCNConv(8, 8),\n596:         \"GraphConv\": lambda: GraphConv(8, 8, aggr=\"add\"),\n597:         \"GATConv\": lambda: GATConv(8, 8, heads=1, concat=False),\n598:     }",
+          "1086:     )\n1087:     print(\n1088:         \"graph_operator_cpu_smoke: \"\n1089:         \"GCNConv=true,GraphConv=true,GATConv=true\"\n1090:     )\n1091:     if torch.cuda.is_available():\n1092:         print(",
+          "1091:     if torch.cuda.is_available():\n1092:         print(\n1093:             \"graph_operator_cuda_smoke: \"\n1094:             \"GCNConv=true,GraphConv=true,GATConv=true\"\n1095:         )\n1096:     else:\n1097:         print(\"graph_operator_cuda_smoke: CUDA_UNAVAILABLE\")"
+        ],
+        "relative_path": "scripts/v5/p2/inspect_v5_p2_g1a_r1_source_only_graph_preflight.py",
+        "score": 8,
+        "sha256": "0e2faac654bf8560786377966951a3862d0954f5e1e304cf6f53098c8623c771"
+      },
+      {
+        "evidence": [
+          "10: finite forward/backward optimizer step for each G1 architecture:\n11: \n12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: ",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R1_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "466:         if operator == \"conv1d\":\n467:             self.graph1 = None\n468:             self.graph2 = None\n469:         elif operator == \"gcnconv\":\n470:             self.graph1 = GCNConv(\n471:                 embedding_dim,\n472:                 embedding_dim,",
+          "467:             self.graph1 = None\n468:             self.graph2 = None\n469:         elif operator == \"gcnconv\":\n470:             self.graph1 = GCNConv(\n471:                 embedding_dim,\n472:                 embedding_dim,\n473:                 add_self_loops=True,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r1_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "17c61c4ba2b4193519e5d18797878e605f0368c5983072fced4ebd1302cf2345"
+      },
+      {
+        "evidence": [
+          "10: finite forward/backward optimizer step for each G1 architecture:\n11: \n12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: ",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R2_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "466:         if operator == \"conv1d\":\n467:             self.graph1 = None\n468:             self.graph2 = None\n469:         elif operator == \"gcnconv\":\n470:             self.graph1 = GCNConv(\n471:                 embedding_dim,\n472:                 embedding_dim,",
+          "467:             self.graph1 = None\n468:             self.graph2 = None\n469:         elif operator == \"gcnconv\":\n470:             self.graph1 = GCNConv(\n471:                 embedding_dim,\n472:                 embedding_dim,\n473:                 add_self_loops=True,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r2_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "4b2c0271a22e372d1a91ca4ecbaa6db827d9b2b8de526b78bb82867c0b1cd944"
+      },
+      {
+        "evidence": [
+          "10: finite forward/backward optimizer step for each G1 architecture:\n11: \n12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: ",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R3_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "466:         if operator == \"conv1d\":\n467:             self.graph1 = None\n468:             self.graph2 = None\n469:         elif operator == \"gcnconv\":\n470:             self.graph1 = GCNConv(\n471:                 embedding_dim,\n472:                 embedding_dim,",
+          "467:             self.graph1 = None\n468:             self.graph2 = None\n469:         elif operator == \"gcnconv\":\n470:             self.graph1 = GCNConv(\n471:                 embedding_dim,\n472:                 embedding_dim,\n473:                 add_self_loops=True,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r3_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "c3502996262b4ec0c0db329015035d7b5148cd1a65b04f2069bf9462a41b0a9c"
+      },
+      {
+        "evidence": [
+          "20: finite forward/backward optimizer step for each G1 architecture:\n21: \n22: - Conv1D-only\n23: - Conv1D + GCNConv\n24: - Conv1D + GraphConv\n25: - Conv1D + GATConv\n26: ",
+          "62: import torch\n63: import torch.nn as nn\n64: from torch.utils.data import DataLoader, Dataset, Subset\n65: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n66: \n67: \n68: STAGE = \"V5_P2_G1B_R4_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "786:         if operator == \"conv1d\":\n787:             self.graph1 = None\n788:             self.graph2 = None\n789:         elif operator == \"gcnconv\":\n790:             self.graph1 = GCNConv(\n791:                 embedding_dim,\n792:                 embedding_dim,",
+          "787:             self.graph1 = None\n788:             self.graph2 = None\n789:         elif operator == \"gcnconv\":\n790:             self.graph1 = GCNConv(\n791:                 embedding_dim,\n792:                 embedding_dim,\n793:                 add_self_loops=True,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r4_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "5f9255394e7312d021bcebdd88fbc9f891319dd2d7bfd982aea13c462a3e6f9a"
+      },
+      {
+        "evidence": [
+          "27: finite forward/backward optimizer step for each G1 architecture:\n28: \n29: - Conv1D-only\n30: - Conv1D + GCNConv\n31: - Conv1D + GraphConv\n32: - Conv1D + GATConv\n33: ",
+          "69: import torch\n70: import torch.nn as nn\n71: from torch.utils.data import DataLoader, Dataset, Subset\n72: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n73: \n74: \n75: STAGE = \"V5_P2_G1B_R5_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "793:         if operator == \"conv1d\":\n794:             self.graph1 = None\n795:             self.graph2 = None\n796:         elif operator == \"gcnconv\":\n797:             self.graph1 = GCNConv(\n798:                 embedding_dim,\n799:                 embedding_dim,",
+          "794:             self.graph1 = None\n795:             self.graph2 = None\n796:         elif operator == \"gcnconv\":\n797:             self.graph1 = GCNConv(\n798:                 embedding_dim,\n799:                 embedding_dim,\n800:                 add_self_loops=True,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r5_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "644eae2cdc35108953e08b5335280ebd1314325ada5b493a8ac948682ba39094"
+      },
+      {
+        "evidence": [
+          "6: finite forward/backward optimizer step for each G1 architecture:\n7: \n8: - Conv1D-only\n9: - Conv1D + GCNConv\n10: - Conv1D + GraphConv\n11: - Conv1D + GATConv\n12: ",
+          "46: import torch\n47: import torch.nn as nn\n48: from torch.utils.data import DataLoader, Dataset, Subset\n49: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n50: \n51: \n52: STAGE = \"V5_P2_G1B_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "465:         if operator == \"conv1d\":\n466:             self.graph1 = None\n467:             self.graph2 = None\n468:         elif operator == \"gcnconv\":\n469:             self.graph1 = GCNConv(\n470:                 embedding_dim,\n471:                 embedding_dim,",
+          "466:             self.graph1 = None\n467:             self.graph2 = None\n468:         elif operator == \"gcnconv\":\n469:             self.graph1 = GCNConv(\n470:                 embedding_dim,\n471:                 embedding_dim,\n472:                 add_self_loops=True,"
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "65bb4df54830d60f784a5d93f45a152faadf42abb5a8a095f0091574cc4ee96f"
+      },
+      {
+        "evidence": [
+          "3: V5 P2-G1C source-only graph training: one architecture/seed run.\n4: \n5: This stage trains exactly one source-only model from:\n6:     conv1d, gcnconv, graphconv, gatconv\n7: with exactly one initial-screening seed from:\n8:     107, 117, 127\n9: ",
+          "41: from torch.utils.data import DataLoader, Sampler\n42: \n43: try:\n44:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n45: except Exception as exc:  # pragma: no cover - converted to controlled HOLD\n46:     GATConv = None\n47:     GCNConv = None",
+          "44:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n45: except Exception as exc:  # pragma: no cover - converted to controlled HOLD\n46:     GATConv = None\n47:     GCNConv = None\n48:     GraphConv = None\n49:     PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"\n50: else:",
+          "55: COMPLETE = f\"{STAGE}_COMPLETE\"\n56: HOLD = f\"{STAGE}_HOLD\"\n57: \n58: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n59: SEEDS = (107, 117, 127)\n60: EXPECTED_TRAIN_ITEMS = 70_166\n61: EXPECTED_VALIDATION_ITEMS = 12_528"
+        ],
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "score": 8,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d"
+      },
+      {
+        "evidence": [
+          "2: \"\"\"V5 P2-G2 direct graph-detection training for one operator and seed.\n3: \n4: This stage trains one clean direct graph classifier from:\n5:     conv1d, gcnconv, graphconv, gatconv\n6: with one frozen screening seed from:\n7:     107, 117, 127\n8: ",
+          "37: from torch.utils.data import DataLoader, Sampler\n38: \n39: try:\n40:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n41: except Exception as exc:  # pragma: no cover\n42:     GATConv = None\n43:     GCNConv = None",
+          "40:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n41: except Exception as exc:  # pragma: no cover\n42:     GATConv = None\n43:     GCNConv = None\n44:     GraphConv = None\n45:     PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"\n46: else:",
+          "50: STAGE = \"V5_P2_G2_DIRECT_GRAPH_SINGLE_RUN\"\n51: COMPLETE = f\"{STAGE}_COMPLETE\"\n52: HOLD = f\"{STAGE}_HOLD\"\n53: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n54: SEEDS = (107, 117, 127)\n55: EXPECTED_TRAIN_ITEMS = 70_166\n56: EXPECTED_VALIDATION_ITEMS = 12_528"
+        ],
+        "relative_path": "scripts/v5/p2/train_v5_p2_g2_direct_graph_single_run.py",
+        "score": 8,
+        "sha256": "47636bd13597d8bb5cb86ab8b8ae69ce47f05d2720ad3748440e17bb696ace18"
+      },
+      {
+        "evidence": [
+          "3: V5 P2-G3 role-aware multilabel localization training for one operator/seed.\n4: \n5: Authorized operators:\n6:     conv1d, gcnconv, graphconv\n7: Authorized seeds:\n8:     107, 117, 127\n9: ",
+          "45: from torch.utils.data import DataLoader, Sampler\n46: \n47: try:\n48:     from torch_geometric.nn import GCNConv, GraphConv\n49: except Exception as exc:  # pragma: no cover\n50:     GCNConv = None\n51:     GraphConv = None",
+          "47: try:\n48:     from torch_geometric.nn import GCNConv, GraphConv\n49: except Exception as exc:  # pragma: no cover\n50:     GCNConv = None\n51:     GraphConv = None\n52:     PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"\n53: else:",
+          "58: COMPLETE = f\"{STAGE}_COMPLETE\"\n59: HOLD = f\"{STAGE}_HOLD\"\n60: \n61: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\n62: SEEDS = (107, 117, 127)\n63: ROLES = (\"source\", \"transit\", \"victim\", \"path\")\n64: TARGET_KEYS = {"
+        ],
+        "relative_path": "scripts/v5/p2/train_v5_p2_g3_role_aware_multilabel_single_run.py",
+        "score": 8,
+        "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d"
+      },
+      {
+        "evidence": [
+          "434: \n435:     try:\n436:         import torch_geometric\n437:         from torch_geometric.nn import GATConv, GCNConv, GraphConv\n438: \n439:         environment[\"torch_geometric_available\"] = True\n440:         environment[\"torch_geometric_version\"] = torch_geometric.__version__",
+          "438: \n439:         environment[\"torch_geometric_available\"] = True\n440:         environment[\"torch_geometric_version\"] = torch_geometric.__version__\n441:         for cls in (GCNConv, GraphConv, GATConv):\n442:             environment[\"operators\"][cls.__name__] = {\n443:                 \"signature\": str(inspect.signature(cls)),\n444:                 \"forward_signature\": str(inspect.signature(cls.forward)),"
+        ],
+        "relative_path": "scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "score": 4,
+        "sha256": "4f068b84d0861e701ccf6ecc536ccf8c92a522902acd6b61dbd992db3548b3f7"
+      },
+      {
+        "evidence": [
+          "12: from statistics import mean, stdev\n13: from typing import Any\n14: \n15: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n16: SEEDS = (107, 117, 127)\n17: STAGE = \"V5_P2_G1C_SOURCE_ONLY_GRAPH_MATRIX_AGGREGATION\"\n18: COMPLETE = f\"{STAGE}_COMPLETE\""
+        ],
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g1c_source_only_graph_training_matrix.py",
+        "score": 0,
+        "sha256": "51300f48cd2bd1f9e6fe34039f23bdd97fee77322574a59aa9f8f5a675407a3b"
+      },
+      {
+        "evidence": [
+          "12: from statistics import mean, stdev\n13: from typing import Any\n14: \n15: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n16: SEEDS = (107, 117, 127)\n17: STAGE = \"V5_P2_G2_DIRECT_GRAPH_MATRIX_AGGREGATION\"\n18: COMPLETE = f\"{STAGE}_COMPLETE\""
+        ],
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g2_direct_graph_training_matrix.py",
+        "score": 0,
+        "sha256": "d23136b155141ccd7e9bf4948f4bb5ba75728ee23fb9c68aabc8cb956138938d"
+      },
+      {
+        "evidence": [
+          "13: from typing import Any\n14: \n15: \n16: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\n17: SEEDS = (107, 117, 127)\n18: ROLES = (\"source\", \"transit\", \"victim\", \"path\")\n19: "
+        ],
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g3_role_aware_multilabel_training_matrix.py",
+        "score": 0,
+        "sha256": "08ce3ab6bcf263caf7584ee14cd718a699913b470147761550e14dedb9ef67b0"
+      }
+    ],
+    "GraphConv": [
+      {
+        "evidence": [
+          "1: #!/usr/bin/env python3\n2: \"\"\"Frozen Task-D GraphConv challenger for the complete P2 multitask interface.\"\"\"\n3: from __future__ import annotations\n4: \n5: import copy",
+          "8: import torch.nn.functional as F\n9: \n10: try:\n11:     from torch_geometric.nn import GraphConv\n12: except Exception as exc:  # pragma: no cover - validated by preflight\n13:     GraphConv = None\n14:     _PYG_IMPORT_ERROR = exc",
+          "10: try:\n11:     from torch_geometric.nn import GraphConv\n12: except Exception as exc:  # pragma: no cover - validated by preflight\n13:     GraphConv = None\n14:     _PYG_IMPORT_ERROR = exc\n15: else:\n16:     _PYG_IMPORT_ERROR = None",
+          "38:     return result\n39: \n40: \n41: class P2TaskDGraphConvCount4(nn.Module):\n42:     \"\"\"\n43:     B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n44: "
+        ],
+        "relative_path": "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "score": 38,
+        "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9"
+      },
+      {
+        "evidence": [
+          "3: # Only the input feature width and class name are changed.\n4: # The builder freshly initializes all trainable parameters.\n5: \n6: \"\"\"Frozen Task-D GraphConv challenger for the complete P2 multitask interface.\"\"\"\n7: from __future__ import annotations\n8: import copy\n9: import torch",
+          "10: import torch.nn as nn\n11: import torch.nn.functional as F\n12: try:\n13:     from torch_geometric.nn import GraphConv\n14: except Exception as exc:\n15:     GraphConv = None\n16:     _PYG_IMPORT_ERROR = exc",
+          "12: try:\n13:     from torch_geometric.nn import GraphConv\n14: except Exception as exc:\n15:     GraphConv = None\n16:     _PYG_IMPORT_ERROR = exc\n17: else:\n18:     _PYG_IMPORT_ERROR = None",
+          "29:         raise RuntimeError('batched edge_index contains cross-graph edges')\n30:     return result\n31: \n32: class V6P0Dynamic70GraphConvCount4(nn.Module):\n33:     \"\"\"\n34:     B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n35: "
+        ],
+        "relative_path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "score": 38,
+        "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+      },
+      {
+        "evidence": [
+          "1: #!/usr/bin/env python3\n2: \"\"\"\n3: G0: UofF-cited GraphConv versus Chrono-A1 GCN equivalence audit.\n4: \n5: This stage performs:\n6: - no model training;",
+          "8: - no source modification.\n9: \n10: It verifies the frozen A1 source, the V3 topology/self-loop convention,\n11: the exact algebraic difference between A1 GCN and the Morris/PyG GraphConv\n12: operator, parameter counts, and reference forward equivalence.\n13: \n14: Important:",
+          "12: operator, parameter counts, and reference forward equivalence.\n13: \n14: Important:\n15: V3 edge_index includes self-loops. PyG GraphConv already has a separate\n16: root/self transform, so self-loops must be removed from the neighbor edge set\n17: to avoid double-counting the root node.\n18: \"\"\"",
+          "62:     return module\n63: \n64: \n65: class DenseGraphConv(nn.Module):\n66:     \"\"\"Dense exact equivalent of PyG GraphConv with add aggregation.\n67: \n68:     x'_i = W_root x_i + W_neighbor sum_{j in N(i)} x_j + b_neighbor"
+        ],
+        "relative_path": "scripts/failure_analysis/audit_uof_graphconv_vs_chrono_a1.py",
+        "score": 18,
+        "sha256": "7b262678da7f2c3ef42c873c8507d7ebbcbabc689712cd0f8f9a6c4a062dd6c3"
+      },
+      {
+        "evidence": [
+          "1: #!/usr/bin/env python3\n2: \"\"\"\n3: G1.0: generate the Chrono-G1 GraphConv source and perform a structural audit.\n4: \n5: No training, no checkpoint creation, and no validation/test inference occur.\n6: Only synthetic tensors are used after source generation.",
+          "35: EXPECTED_PARAMETER_DELTA = 256\n36: \n37: A1_MODEL_NAME = \"Conv1D-TemporalGCN\"\n38: G1_MODEL_NAME = \"Conv1D-GraphConv-TemporalGNN\"\n39: \n40: NEW_ADJACENCY_FUNCTION = (\n41:     \"def build_normalized_adjacency(\\n\"",
+          "42:     \"    edge_index: np.ndarray,\\n\"\n43:     \"    num_nodes: int,\\n\"\n44:     \") -> torch.Tensor:\\n\"\n45:     \"    # Binary incoming-neighbor adjacency for GraphConv.\\n\"\n46:     \"    # Self-loops are excluded because the root transform handles self.\\n\"\n47:     \"    adjacency = torch.zeros(\\n\"\n48:     \"        (num_nodes, num_nodes),\\n\"",
+          "63: )\n64: \n65: NEW_GRAPH_LAYER_CLASS = (\n66:     \"class GraphConvLayer(nn.Module):\\n\"\n67:     \"    # Morris/PyG-style GraphConv with add aggregation:\\n\"\n68:     \"    # h_out_i = W_root h_i + W_neighbor sum(j in N(i)) h_j + b.\\n\"\n69:     \"\\n\""
+        ],
+        "relative_path": "scripts/failure_analysis/generate_and_audit_chrono_g1_source.py",
+        "score": 10,
+        "sha256": "e716abc1ed850f79c1000806b1613b8129b3c9187f03ce52c18e5f1d549bbc6e"
+      },
+      {
+        "evidence": [
+          "1: #!/usr/bin/env python3\n2: \"\"\"\n3: G1.1 real-data dry preflight for the bounded Chrono-G1 GraphConv diagnostic.\n4: \n5: This stage performs one real training-batch forward/backward check only.\n6: It performs no persistent training, writes no checkpoint, and performs no",
+          "11: - A1 and G1 source hashes match the audit;\n12: - exact A1 split reuse;\n13: - ordinary A1 shuffled training remains selected;\n14: - GraphConv uses binary non-self adjacency with 48 directed entries;\n15: - G1 has separate root and neighbor transforms;\n16: - same-seed initialization/output determinism;\n17: - real-batch graph/node losses and all gradients are finite;",
+          "281: \n282:     source_structure_checks = {\n283:         \"no_b1_c1_sampler_or_readout_tokens\": not forbidden_hits,\n284:         \"graphconv_class_present\": \"class GraphConvLayer\" in source_text,\n285:         \"separate_neighbor_transform_present\": (\n286:             \"self.lin_neighbor = nn.Linear\" in source_text\n287:         ),",
+          "303:             and \"torch.cat([graph_mean, graph_max]\" not in source_text\n304:         ),\n305:         \"g1_model_identifier_present\": (\n306:             \"Conv1D-GraphConv-TemporalGNN\" in source_text\n307:         ),\n308:     }\n309:     if not all(source_structure_checks.values()):"
+        ],
+        "relative_path": "scripts/failure_analysis/preflight_chrono_g1_graphconv.py",
+        "score": 10,
+        "sha256": "2162a393b25dc5f2d1b785f2cc0c285142a35b3db2af12564ba805d01144a40e"
+      },
+      {
+        "evidence": [
+          "180:     edge_index: np.ndarray,\n181:     num_nodes: int,\n182: ) -> torch.Tensor:\n183:     # Binary incoming-neighbor adjacency for GraphConv.\n184:     # Self-loops are excluded because the root transform handles self.\n185:     adjacency = torch.zeros(\n186:         (num_nodes, num_nodes),",
+          "200:     return adjacency\n201: \n202: \n203: class GraphConvLayer(nn.Module):\n204:     # Morris/PyG-style GraphConv with add aggregation:\n205:     # h_out_i = W_root h_i + W_neighbor sum(j in N(i)) h_j + b.\n206: ",
+          "201: \n202: \n203: class GraphConvLayer(nn.Module):\n204:     # Morris/PyG-style GraphConv with add aggregation:\n205:     # h_out_i = W_root h_i + W_neighbor sum(j in N(i)) h_j + b.\n206: \n207:     def __init__(self, in_dim: int, out_dim: int):",
+          "536:                 \"best_epoch\": best_epoch,\n537:                 \"best_val_score\": best_val_score,\n538:                 \"val_metrics\": val_metrics,\n539:                 \"model_name\": \"Conv1D-GraphConv-TemporalGNN\",\n540:             }\n541:             torch.save(checkpoint, out_dir / \"best_model.pt\")\n542:             print(f\"  validation score improved to {best_val_score:.6f}; saved best_model.pt\")"
+        ],
+        "relative_path": "scripts/train_temporal_gcn_v3_g1_graphconv.py",
+        "score": 10,
+        "sha256": "3ebe7b8d37c5104c606daf0e65b488a3f553b815b01689ce172b12b8bbbffb5e"
+      },
+      {
+        "evidence": [
+          "1: \"\"\"\n2: V5 P2-G1 source-only graph implementation smoke check.\n3: \n4: This is the consolidated smoke stage for Conv1D-only, GCNConv, GraphConv,\n5: and GATConv source-localization baselines. It intentionally depends only on\n6: the frozen G0 protocol, the G1A-R1 manifest resolution, the canonical 4x4\n7: topology contract, and the P2 train/validation data. Historical failed smoke",
+          "34: from torch.utils.data import DataLoader, Dataset, Subset\n35: \n36: try:\n37:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n38:     PYG_IMPORT_ERROR: str | None = None\n39: except Exception as exc:  # Converted to a normal HOLD inside run_smoke.\n40:     GATConv = None",
+          "39: except Exception as exc:  # Converted to a normal HOLD inside run_smoke.\n40:     GATConv = None\n41:     GCNConv = None\n42:     GraphConv = None\n43:     PYG_IMPORT_ERROR = f\"{type(exc).__name__}: {exc}\"\n44: \n45: ",
+          "877:                 add_self_loops=True,\n878:                 normalize=True,\n879:             )\n880:         elif operator == \"graphconv\":\n881:             self.graph1 = GraphConv(\n882:                 embedding_dim,\n883:                 embedding_dim,"
+        ],
+        "relative_path": "scripts/v5/p2/g1_source_only_graph_smoke.py",
+        "score": 8,
+        "sha256": "2f543a9f1bf4b8a556a173dfb54626e2e35fb10dabc45337d6b4e071938785d4"
+      },
+      {
+        "evidence": [
+          "580: \n581: def graph_operator_smoke_tests() -> dict[str, Any]:\n582:     import torch_geometric\n583:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n584: \n585:     edge_index = torch.tensor(\n586:         [",
+          "593: \n594:     operator_specs = {\n595:         \"GCNConv\": lambda: GCNConv(8, 8),\n596:         \"GraphConv\": lambda: GraphConv(8, 8, aggr=\"add\"),\n597:         \"GATConv\": lambda: GATConv(8, 8, heads=1, concat=False),\n598:     }\n599: ",
+          "1086:     )\n1087:     print(\n1088:         \"graph_operator_cpu_smoke: \"\n1089:         \"GCNConv=true,GraphConv=true,GATConv=true\"\n1090:     )\n1091:     if torch.cuda.is_available():\n1092:         print(",
+          "1091:     if torch.cuda.is_available():\n1092:         print(\n1093:             \"graph_operator_cuda_smoke: \"\n1094:             \"GCNConv=true,GraphConv=true,GATConv=true\"\n1095:         )\n1096:     else:\n1097:         print(\"graph_operator_cuda_smoke: CUDA_UNAVAILABLE\")"
+        ],
+        "relative_path": "scripts/v5/p2/inspect_v5_p2_g1a_r1_source_only_graph_preflight.py",
+        "score": 8,
+        "sha256": "0e2faac654bf8560786377966951a3862d0954f5e1e304cf6f53098c8623c771"
+      },
+      {
+        "evidence": [
+          "11: \n12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: \n17: It reuses:",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R1_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "479:                 add_self_loops=True,\n480:                 normalize=True,\n481:             )\n482:         elif operator == \"graphconv\":\n483:             self.graph1 = GraphConv(\n484:                 embedding_dim,\n485:                 embedding_dim,",
+          "480:                 normalize=True,\n481:             )\n482:         elif operator == \"graphconv\":\n483:             self.graph1 = GraphConv(\n484:                 embedding_dim,\n485:                 embedding_dim,\n486:                 aggr=\"add\","
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r1_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "17c61c4ba2b4193519e5d18797878e605f0368c5983072fced4ebd1302cf2345"
+      },
+      {
+        "evidence": [
+          "11: \n12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: \n17: It reuses:",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R2_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "479:                 add_self_loops=True,\n480:                 normalize=True,\n481:             )\n482:         elif operator == \"graphconv\":\n483:             self.graph1 = GraphConv(\n484:                 embedding_dim,\n485:                 embedding_dim,",
+          "480:                 normalize=True,\n481:             )\n482:         elif operator == \"graphconv\":\n483:             self.graph1 = GraphConv(\n484:                 embedding_dim,\n485:                 embedding_dim,\n486:                 aggr=\"add\","
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r2_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "4b2c0271a22e372d1a91ca4ecbaa6db827d9b2b8de526b78bb82867c0b1cd944"
+      },
+      {
+        "evidence": [
+          "11: \n12: - Conv1D-only\n13: - Conv1D + GCNConv\n14: - Conv1D + GraphConv\n15: - Conv1D + GATConv\n16: \n17: It reuses:",
+          "50: import torch\n51: import torch.nn as nn\n52: from torch.utils.data import DataLoader, Dataset, Subset\n53: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n54: \n55: \n56: STAGE = \"V5_P2_G1B_R3_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "479:                 add_self_loops=True,\n480:                 normalize=True,\n481:             )\n482:         elif operator == \"graphconv\":\n483:             self.graph1 = GraphConv(\n484:                 embedding_dim,\n485:                 embedding_dim,",
+          "480:                 normalize=True,\n481:             )\n482:         elif operator == \"graphconv\":\n483:             self.graph1 = GraphConv(\n484:                 embedding_dim,\n485:                 embedding_dim,\n486:                 aggr=\"add\","
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r3_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "c3502996262b4ec0c0db329015035d7b5148cd1a65b04f2069bf9462a41b0a9c"
+      },
+      {
+        "evidence": [
+          "21: \n22: - Conv1D-only\n23: - Conv1D + GCNConv\n24: - Conv1D + GraphConv\n25: - Conv1D + GATConv\n26: \n27: It reuses:",
+          "62: import torch\n63: import torch.nn as nn\n64: from torch.utils.data import DataLoader, Dataset, Subset\n65: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n66: \n67: \n68: STAGE = \"V5_P2_G1B_R4_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "799:                 add_self_loops=True,\n800:                 normalize=True,\n801:             )\n802:         elif operator == \"graphconv\":\n803:             self.graph1 = GraphConv(\n804:                 embedding_dim,\n805:                 embedding_dim,",
+          "800:                 normalize=True,\n801:             )\n802:         elif operator == \"graphconv\":\n803:             self.graph1 = GraphConv(\n804:                 embedding_dim,\n805:                 embedding_dim,\n806:                 aggr=\"add\","
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r4_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "5f9255394e7312d021bcebdd88fbc9f891319dd2d7bfd982aea13c462a3e6f9a"
+      },
+      {
+        "evidence": [
+          "28: \n29: - Conv1D-only\n30: - Conv1D + GCNConv\n31: - Conv1D + GraphConv\n32: - Conv1D + GATConv\n33: \n34: It reuses:",
+          "69: import torch\n70: import torch.nn as nn\n71: from torch.utils.data import DataLoader, Dataset, Subset\n72: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n73: \n74: \n75: STAGE = \"V5_P2_G1B_R5_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "806:                 add_self_loops=True,\n807:                 normalize=True,\n808:             )\n809:         elif operator == \"graphconv\":\n810:             self.graph1 = GraphConv(\n811:                 embedding_dim,\n812:                 embedding_dim,",
+          "807:                 normalize=True,\n808:             )\n809:         elif operator == \"graphconv\":\n810:             self.graph1 = GraphConv(\n811:                 embedding_dim,\n812:                 embedding_dim,\n813:                 aggr=\"add\","
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r5_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "644eae2cdc35108953e08b5335280ebd1314325ada5b493a8ac948682ba39094"
+      },
+      {
+        "evidence": [
+          "7: \n8: - Conv1D-only\n9: - Conv1D + GCNConv\n10: - Conv1D + GraphConv\n11: - Conv1D + GATConv\n12: \n13: It reuses:",
+          "46: import torch\n47: import torch.nn as nn\n48: from torch.utils.data import DataLoader, Dataset, Subset\n49: from torch_geometric.nn import GATConv, GCNConv, GraphConv\n50: \n51: \n52: STAGE = \"V5_P2_G1B_SOURCE_ONLY_GRAPH_IMPLEMENTATION_SMOKE\"",
+          "478:                 add_self_loops=True,\n479:                 normalize=True,\n480:             )\n481:         elif operator == \"graphconv\":\n482:             self.graph1 = GraphConv(\n483:                 embedding_dim,\n484:                 embedding_dim,",
+          "479:                 normalize=True,\n480:             )\n481:         elif operator == \"graphconv\":\n482:             self.graph1 = GraphConv(\n483:                 embedding_dim,\n484:                 embedding_dim,\n485:                 aggr=\"add\","
+        ],
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_source_only_graph_implementations.py",
+        "score": 8,
+        "sha256": "65bb4df54830d60f784a5d93f45a152faadf42abb5a8a095f0091574cc4ee96f"
+      },
+      {
+        "evidence": [
+          "3: V5 P2-G1C source-only graph training: one architecture/seed run.\n4: \n5: This stage trains exactly one source-only model from:\n6:     conv1d, gcnconv, graphconv, gatconv\n7: with exactly one initial-screening seed from:\n8:     107, 117, 127\n9: ",
+          "41: from torch.utils.data import DataLoader, Sampler\n42: \n43: try:\n44:     from torch_geometric.nn import GATConv, GCNConv, GraphConv\n45: except Exception as exc:  # pragma: no cover - converted to controlled HOLD\n46:     GATConv = None\n47:     GCNConv = None",
+          "45: except Exception as exc:  # pragma: no cover - converted to controlled HOLD\n46:     GATConv = None\n47:     GCNConv = None\n48:     GraphConv = None\n49:     PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"\n50: else:\n51:     PYG_IMPORT_ERROR = None",
+          "55: COMPLETE = f\"{STAGE}_COMPLETE\"\n56: HOLD = f\"{STAGE}_HOLD\"\n57: \n58: OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\", \"gatconv\")\n59: SEEDS = (107, 117, 127)\n60: EXPECTED_TRAIN_ITEMS = 70_166\n61: EXPECTED_VALIDATION_ITEMS = 12_528"
+        ],
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "score": 8,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d"
+      }
+    ],
+    "LSTM": [
+      {
+        "evidence": [
+          "664:         \"GraphConv\",\n665:         \"GraphSAGE\",\n666:         \"GATConv\",\n667:         \"LSTM(\",\n668:         \"GRU(\",\n669:         \"node_victim_head\",\n670:         \"mean_max\","
+        ],
+        "relative_path": "scripts/v4/train/train_v4_a1_conv1d_gcn_memmap.py",
+        "score": 4,
+        "sha256": "3aaab7a6626f4c237b8e234e3716ba4d117d1b725d02a605395f57aa26f33fa2"
+      },
+      {
+        "evidence": [
+          "737:         \"GraphConv\",\n738:         \"GraphSAGE\",\n739:         \"GATConv\",\n740:         \"LSTM(\",\n741:         \"GRU(\",\n742:         \"node_victim_head\",\n743:         \"mean_max\","
+        ],
+        "relative_path": "scripts/v4/train/train_v4_conv1d_gcn_experiment.py",
+        "score": 4,
+        "sha256": "0091ccb1fefb15d7e621ca30b18af692f86fa40ede192a1bd9dc5eb425eceffe"
+      }
+    ],
+    "XGBClassifier": [],
+    "XGBoost": []
+  },
+  "training_performed": false
+}

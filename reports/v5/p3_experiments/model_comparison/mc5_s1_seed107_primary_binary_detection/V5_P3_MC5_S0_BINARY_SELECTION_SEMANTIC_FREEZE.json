@@ -1,0 +1,19 @@
+{
+  "classification": "PROSPECTIVE_PRETRAINING_TASK_SCOPE_SEMANTIC_RESOLUTION",
+  "created_utc": "2026-08-07T20:34:29.647983+00:00",
+  "d0_d1_training_started_before_resolution": false,
+  "problem": "MC1 freezes the multitask checkpoint score but does not explicitly define the D0/D1 checkpoint score.",
+  "resolution": {
+    "early_stopping_monitor": "same score",
+    "rationale": "Task-scope projection of MC1 threshold-free graph ranking components.",
+    "scheduler_monitor": "same score",
+    "selection_score": "mean(graph_AUROC, graph_AP)",
+    "threshold": 0.5,
+    "threshold_tuning": false,
+    "tie_break": "higher score, then lower validation weighted BCE, then earlier epoch"
+  },
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC5_S0_BINARY_SELECTION_SEMANTIC_FREEZE",
+  "status": "PASS",
+  "validation_metrics_seen_before_resolution": false
+}

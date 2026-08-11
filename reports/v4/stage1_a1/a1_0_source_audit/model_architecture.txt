@@ -1,0 +1,10 @@
+V4-A1 frozen Chrono-A1 architecture
+model_name: Conv1D-TemporalGCN
+parameter_count: 882
+input: [B,16,8,24]
+temporal: Conv1d(24,8,kernel_size=3,stride=1,padding=1) -> ReLU -> max over time
+gcn1: normalized adjacency, Linear(8,16) -> ReLU
+gcn2: normalized adjacency, Linear(16,8) -> ReLU
+node_head: Linear(8,1) per node -> [B,16]
+graph_readout: mean over 16 routers
+graph_head: Linear(8,1) -> [B]

@@ -1,0 +1,81 @@
+{
+  "amendment_sha256": "09ac4d69d5e75b3839c9326260c1db6f12b3f8be36d7ba79e4457aded0ceeed4",
+  "decision": "PRESERVE_C2_AND_ADD_VALIDATION_FROZEN_LEGAL_NOC_STRUCTURED_DECODER_STUDY",
+  "decoder_scope": {
+    "attacker_count": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "normal_hypothesis_emits_empty_structure": true,
+    "one_source_targeting_multiple_victims": false,
+    "one_victim_assignment_per_source": true,
+    "overlapping_routes_allowed": true,
+    "overlapping_source_transit_victim_roles_allowed": true,
+    "position": "after B3 causal Conv1D-count4 heads",
+    "routing": "deterministic XY",
+    "shared_victims_allowed": true,
+    "topology": "4x4 2D mesh"
+  },
+  "evaluation_policy_sha256": "47daeaf48999016d23a73718674b1c7536256dfce34b46fc40cb243bc05f91c7",
+  "failures": [],
+  "frozen_decisions": {
+    "count_head_change_allowed": false,
+    "deterministic_tie_breaking_required": true,
+    "exact_reference_decoder_required": true,
+    "graph_decision": "joint graph-head plus best legal-structure evidence",
+    "graph_head_as_only_gate": false,
+    "hardware_decoder_required": true,
+    "learned_graph_message_passing_in_main_decoder": false,
+    "route_legality_by_construction": true,
+    "structure_only_graph_decision": false
+  },
+  "implementation_gate": {
+    "decoder_implementation_authorized": false,
+    "l0_must_freeze": [
+      "input logit semantics",
+      "source/transit/victim/path union semantics",
+      "route-pair hypothesis semantics",
+      "XY route legality",
+      "multi-attacker overlap semantics",
+      "count handling",
+      "structured scoring equation",
+      "normal-versus-attack decision rule",
+      "validation parameter grid",
+      "deterministic tie-breaking",
+      "exact-versus-hardware equivalence targets",
+      "P2 versus V6 reporting boundaries"
+    ],
+    "next_required_stage": "V5_P2_L0_LEGAL_XY_DECODER_CONTRACT"
+  },
+  "next_stage": "V5_P2_L0_LEGAL_XY_DECODER_CONTRACT",
+  "provenance": {
+    "c2_complete_sha256": "f57e0b2d7e11ceae831e5d8dd1bb485b948a1cbc65a76bc7e90b240c9b875ea7",
+    "c2_lock_sha256": "a755da1e03c3ced6d10ee4f60d6ccbe1fdf6a4c402db700753cd601cfc32526e",
+    "c2_report_sha256": "b0e24a74b37d39fb4d9cb1b4fbc5e2a104768960b2861283d36cc6618357cb9a"
+  },
+  "relationship_to_c2": {
+    "c2_contract_sha256": "d863a0b14d5113f283208bafa2e5804da52336f11f8ddf001e6c332c942f34b0",
+    "c2_modified": false,
+    "c2_remains_authoritative": true,
+    "decoder_study_is_orthogonal": true,
+    "hard_legitimate_dataset_plan_preserved": true,
+    "matched_pair_margin_ablation_preserved": true
+  },
+  "security_boundary": {
+    "c2_modified": false,
+    "decoder_implementation_performed": false,
+    "p2_checkpoint_loaded": false,
+    "p2_dataset_root_accessed": false,
+    "p2_model_loaded": false,
+    "p2_prediction_cache_accessed": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_inference_rerun": false,
+    "p2_test_tensor_contents_accessed": false
+  },
+  "stage": "V5_P2_C2A_LEGAL_NOC_DECODER_AMENDMENT",
+  "stage_plan_sha256": "fb991f0ed9e131cdeefa780d047bb938255bb72a33ae1f08de3150002621f211",
+  "status": "COMPLETE",
+  "warnings": []
+}

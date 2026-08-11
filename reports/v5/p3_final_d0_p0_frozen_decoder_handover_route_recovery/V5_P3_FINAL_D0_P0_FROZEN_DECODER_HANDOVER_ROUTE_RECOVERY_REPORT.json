@@ -1,0 +1,1630 @@
+{
+  "A5_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a5_final_checkpoint_model_lock/V5_P3_FINAL_A5_FINAL_CHECKPOINT_MODEL_LOCK.json",
+  "A5_lock_sha256": "c341b553f5165c3abf977e1a084b50243dadf93c4edafdc9e15eed7dbf927505",
+  "decoder_executed": false,
+  "frozen_decoder_handover": "/home/zira/research/projects/GNN-2d/artifacts/decoders/v5_p3_eplr_v2_frozen_handover/V5_P3_EPLR_V2_FROZEN_SOFTWARE_HANDOVER.zip",
+  "frozen_decoder_handover_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+  "full_D0_regression_authorized": false,
+  "likely_decoder_members": [
+    "contracts/eplr_v2_output_contract.json",
+    "contracts/eplr_v2_semantic_contract.json",
+    "dependencies/v5_p3_eplr_v1.py",
+    "dependencies/v5_xy_route_library.py",
+    "implementation/v5_p3_eplr_v2.py",
+    "implementation/v5_p3_eplr_v2_calibration.json"
+  ],
+  "likely_regression_members": [
+    "verification/d12_synthetic_test_results.json"
+  ],
+  "model_inference_performed": false,
+  "native_test_dataset_constructed": false,
+  "next_stage": "V5_P3_FINAL_D0_R1_FROZEN_DECODER_REGRESSION_AFTER_ROUTE_PIN",
+  "production_checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+  "production_model_state_sha256": "f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432",
+  "python_inventory": [
+    {
+      "classes": [
+        {
+          "line": 57,
+          "name": "EPLRDecodeError"
+        },
+        {
+          "line": 62,
+          "name": "EPLRConfig"
+        },
+        {
+          "line": 110,
+          "name": "EPLRResult"
+        }
+      ],
+      "functions": [
+        {
+          "args": [
+            "value"
+          ],
+          "line": 135,
+          "name": "stable_sigmoid"
+        },
+        {
+          "args": [
+            "values"
+          ],
+          "line": 143,
+          "name": "stable_sigmoid_array"
+        },
+        {
+          "args": [
+            "probabilities",
+            "threshold"
+          ],
+          "line": 153,
+          "name": "mask_from_probabilities"
+        },
+        {
+          "args": [
+            "mask"
+          ],
+          "line": 164,
+          "name": "indices_from_mask"
+        },
+        {
+          "args": [
+            "left",
+            "right"
+          ],
+          "line": 172,
+          "name": "hamming_distance"
+        },
+        {
+          "args": [
+            "mask",
+            "probabilities"
+          ],
+          "line": 176,
+          "name": "bernoulli_mask_log_likelihood"
+        },
+        {
+          "args": [
+            "hypothesis",
+            "transit_probabilities",
+            "path_probabilities",
+            "config"
+          ],
+          "line": 193,
+          "name": "route_support_score"
+        },
+        {
+          "args": [
+            "source_mask",
+            "victim_mask",
+            "k"
+          ],
+          "line": 213,
+          "name": "enumerate_endpoint_preserving_hypotheses"
+        },
+        {
+          "args": [],
+          "line": 254,
+          "name": "choose_endpoint_preserving_hypothesis"
+        },
+        {
+          "args": [
+            "rows",
+            "lower",
+            "upper",
+            "coefficients",
+            "lb",
+            "ub"
+          ],
+          "line": 292,
+          "name": "_append_constraint"
+        },
+        {
+          "args": [
+            "rows",
+            "lower",
+            "upper"
+          ],
+          "line": 305,
+          "name": "_rows_to_constraint"
+        },
+        {
+          "args": [
+            "k"
+          ],
+          "line": 336,
+          "name": "_base_repair_constraints"
+        },
+        {
+          "args": [
+            "probabilities",
+            "offset"
+          ],
+          "line": 490,
+          "name": "_binary_cost_coefficients"
+        },
+        {
+          "args": [
+            "raw_mask",
+            "offset"
+          ],
+          "line": 504,
+          "name": "_hamming_coefficients"
+        },
+        {
+          "args": [
+            "probabilities",
+            "offset",
+            "weight"
+          ],
+          "line": 513,
+          "name": "_negative_support_coefficients"
+        },
+        {
+          "args": [
+            "objective",
+            "constraints"
+          ],
+          "line": 531,
+          "name": "_solve_milp"
+        },
+        {
+          "args": [
+            "constraints",
+            "objective",
+            "optimum",
+            "tolerance"
+          ],
+          "line": 583,
+          "name": "_freeze_objective"
+        },
+        {
+          "args": [
+            "constraints",
+            "extra_rows",
+            "extra_lb",
+            "extra_ub"
+          ],
+          "line": 603,
+          "name": "_feasible_with_extra_rows"
+        },
+        {
+          "args": [
+            "constraints",
+            "k"
+          ],
+          "line": 620,
+          "name": "_lexicographically_smallest_route_set"
+        },
+        {
+          "args": [],
+          "line": 682,
+          "name": "repair_endpoints_with_milp"
+        },
+        {
+          "args": [],
+          "line": 760,
+          "name": "decode_eplr_v1"
+        },
+        {
+          "args": [
+            "mask"
+          ],
+          "line": 912,
+          "name": "bitmap_to_array"
+        },
+        {
+          "args": [
+            "cls",
+            "path"
+          ],
+          "line": 79,
+          "name": "from_json"
+        },
+        {
+          "args": [
+            "self"
+          ],
+          "line": 131,
+          "name": "to_dict"
+        }
+      ],
+      "imports": [
+        "__future__.annotations",
+        "dataclasses.asdict",
+        "dataclasses.dataclass",
+        "itertools.product",
+        "json",
+        "math.exp",
+        "math.log",
+        "pathlib.Path",
+        "typing.Any",
+        "typing.Iterable",
+        "typing.Sequence",
+        "numpy",
+        "scipy.optimize.Bounds",
+        "scipy.optimize.LinearConstraint",
+        "scipy.optimize.milp",
+        "scipy.sparse.csc_array",
+        "scipy.sparse.vstack",
+        "src.decoders.v5_xy_route_library"
+      ],
+      "main_guard": false,
+      "member": "dependencies/v5_p3_eplr_v1.py",
+      "parse_status": "PASS",
+      "string_markers": [
+        "exact",
+        "eplr",
+        "decoder",
+        "route",
+        "victim",
+        "source",
+        "transit",
+        "path",
+        "threshold",
+        "json"
+      ]
+    },
+    {
+      "classes": [
+        {
+          "line": 40,
+          "name": "RouteRecord"
+        },
+        {
+          "line": 80,
+          "name": "HypothesisMasks"
+        }
+      ],
+      "functions": [
+        {
+          "args": [
+            "router_id"
+          ],
+          "line": 89,
+          "name": "validate_router_id"
+        },
+        {
+          "args": [
+            "router_id"
+          ],
+          "line": 96,
+          "name": "router_to_coordinate"
+        },
+        {
+          "args": [
+            "row",
+            "column"
+          ],
+          "line": 102,
+          "name": "coordinate_to_router"
+        },
+        {
+          "args": [
+            "router_id"
+          ],
+          "line": 112,
+          "name": "coordinate_dict"
+        },
+        {
+          "args": [
+            "source",
+            "victim"
+          ],
+          "line": 117,
+          "name": "route_id_for"
+        },
+        {
+          "args": [
+            "route_id"
+          ],
+          "line": 125,
+          "name": "source_victim_for_route_id"
+        },
+        {
+          "args": [
+            "source_router",
+            "destination_router"
+          ],
+          "line": 135,
+          "name": "hop_direction"
+        },
+        {
+          "args": [],
+          "line": 156,
+          "name": "expected_directed_edges"
+        },
+        {
+          "args": [
+            "source",
+            "victim"
+          ],
+          "line": 168,
+          "name": "generate_xy_nodes"
+        },
+        {
+          "args": [
+            "nodes"
+          ],
+          "line": 193,
+          "name": "_mask_from_nodes"
+        },
+        {
+          "args": [
+            "source",
+            "victim",
+            "nodes"
+          ],
+          "line": 201,
+          "name": "validate_route_nodes"
+        },
+        {
+          "args": [
+            "source",
+            "victim"
+          ],
+          "line": 235,
+          "name": "build_route"
+        },
+        {
+          "args": [],
+          "line": 264,
+          "name": "generate_route_table"
+        },
+        {
+          "args": [
+            "route_id"
+          ],
+          "line": 281,
+          "name": "get_route"
+        },
+        {
+          "args": [],
+          "line": 289,
+          "name": "empty_hypothesis"
+        },
+        {
+          "args": [
+            "route_ids"
+          ],
+          "line": 300,
+          "name": "combine_route_ids"
+        },
+        {
+          "args": [
+            "candidates"
+          ],
+          "line": 345,
+          "name": "choose_equal_score_hypothesis"
+        },
+        {
+          "args": [
+            "self"
+          ],
+          "line": 51,
+          "name": "to_json_dict"
+        }
+      ],
+      "imports": [
+        "__future__.annotations",
+        "dataclasses.dataclass",
+        "typing.Iterable",
+        "typing.Sequence"
+      ],
+      "main_guard": false,
+      "member": "dependencies/v5_xy_route_library.py",
+      "parse_status": "PASS",
+      "string_markers": [
+        "route",
+        "victim",
+        "source",
+        "transit",
+        "path",
+        "json"
+      ]
+    },
+    {
+      "classes": [
+        {
+          "line": 31,
+          "name": "EPLRV2Result"
+        }
+      ],
+      "functions": [
+        {
+          "args": [],
+          "line": 57,
+          "name": "decode_eplr_v2"
+        },
+        {
+          "args": [
+            "mask"
+          ],
+          "line": 200,
+          "name": "bitmap_to_array"
+        },
+        {
+          "args": [
+            "self"
+          ],
+          "line": 53,
+          "name": "to_dict"
+        }
+      ],
+      "imports": [
+        "__future__.annotations",
+        "dataclasses.asdict",
+        "dataclasses.dataclass",
+        "typing.Any",
+        "typing.Sequence",
+        "numpy",
+        "src.decoders.v5_p3_eplr_v1"
+      ],
+      "main_guard": false,
+      "member": "implementation/v5_p3_eplr_v2.py",
+      "parse_status": "PASS",
+      "string_markers": [
+        "exact",
+        "eplr",
+        "decoder",
+        "route",
+        "victim",
+        "source",
+        "transit",
+        "path",
+        "threshold"
+      ]
+    }
+  ],
+  "repo_references": [
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d4_resumable_a1_exact_validation_evaluation.py",
+      "sha256": "e5548028a5043a346069f4874ea45dc50e60c05bdb0d83f8c8d33d0a48279568"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d3_resumable_a1_exact_decoder_chunk_preflight.py",
+      "sha256": "2d5443fb022d2a20dc4811dbd575c4ab6ddccc4f3e6aa6f32e4e0b6feaa1f0ad"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "frozen_software_handover"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d13_eplr_v2_handover_and_wait_state.py",
+      "sha256": "ec12b2f153391ec736aeb8d86c8bef3f22a2a0cbde024a13ad3758c3a5d14488"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d11_eplr_v2_semantic_freeze.py",
+      "sha256": "b0379c6b19ebc6531b3f10acd0dde2c00bfad7a16a810a4ef64b0e51b7a06cf3"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d10_eplr_v1_comparison_and_carry_forward.py",
+      "sha256": "b328efa5caca5194ee4980d402936667f23c9a377f93e72f6320f0d2880cb18a"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d12_eplr_v2_implementation_and_synthetic_tests.py",
+      "sha256": "087dc69074646fdf9a14356127e7976e91cca416e8651d245bb024d293f59f91"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d6_eplr_v1_design_freeze.py",
+      "sha256": "d199c9c4f40798e743f90295f946aa3a02056fdf3e85c958888588077efa6f0b"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d0_frozen_decoder_transfer_preflight.py",
+      "sha256": "1ba8d7874aca88dc898c9d64b4a8498bd8f5b82c16aa0cb2a6f450ff1b701cb0"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d4_r2_r2_hybrid_decoder_freeze.py",
+      "sha256": "57cd79ac3e9c38052fbfe2f5d359109950f287c7252796247a2b6031b2955bbd"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d2_raw_and_frozen_a0_validation_evaluation.py",
+      "sha256": "59cfaf6e22c51b4b76d386d42e6fd31e1d85e7d8b99e794dc7b391efe408bd40"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d4_r3_resume_a1_exact_validation_hybrid.py",
+      "sha256": "343ac3745aff1dc9a293004500de12ae8ec0e595587ca4870eb730278b201055"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d5_decoder_review_and_4x4_interface_freeze.py",
+      "sha256": "845202424f8b3555e2d52e85a0964b778324551c7ae68953e32ffea38f12986e"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d4_r2_r1_integrality_boundary_and_hybrid_retry_audit.py",
+      "sha256": "69b8c4162af2e9f168869326aa8c2be61abe99bdbf00f2b3c85aec66e97e6802"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit.py",
+      "sha256": "8ee4f5c614a05145b5c7e08b189233c07e12a7e5013064c9ec97c2d824e3aab1"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d4_r2_prospective_numerical_freeze_and_full_regression.py",
+      "sha256": "d90461612b5b5c925e6d0b8d76df20c726e6789eb098d27fbb27530d0834a800"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f0_f1_dynamic70_feature_study_bootstrap.py",
+      "sha256": "f9a66c49a251ddab5f36987e81b4988843fc97f217e15806ae802ba5304f0f76"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_prospective_recovery_protocol_amendment/V5_P2_PROSPECTIVE_RECOVERY_PROTOCOL_AMENDMENT.json",
+      "sha256": "e23ac8bb8f990829c3f297400b175072e07304a7a2bfc05de550f148a094b0e8"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_prospective_recovery_protocol_amendment/V5_P2_PROSPECTIVE_RECOVERY_PROTOCOL_AMENDMENT_SHA256SUMS.txt",
+      "sha256": "b911e4668fa336138218bb83bc9c83bb72e99685790a946b5921749849d7c4ce"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r2_r1_integrality_boundary_and_hybrid_retry_audit/V5_P3_D4_R2_R1_PRESOLVE_FALSE_INTEGRALITY_BOUNDARY_AND_HYBRID_RETRY_AUDIT_REPORT.json",
+      "sha256": "5347d12514cd562927bc418de57ba5a65b4603a3fce70e0d366c6979b3307a42"
+    },
+    {
+      "hits": [
+        "decoder_regression"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a5_final_checkpoint_model_lock/V5_P3_FINAL_A5_FINAL_CHECKPOINT_MODEL_LOCK.json",
+      "sha256": "c341b553f5165c3abf977e1a084b50243dadf93c4edafdc9e15eed7dbf927505"
+    },
+    {
+      "hits": [
+        "decoder_regression"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a5_final_checkpoint_model_lock/V5_P3_FINAL_A5_FINAL_CHECKPOINT_MODEL_LOCK_REPORT.json",
+      "sha256": "981ec12ee66bb22dd8c459dc69b05360df9bcf3a30999917c5e7f1e1a2853809"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p0_validation_export_interface_preflight/V5_P2_E1_P0_VALIDATION_EXPORT_INTERFACE_PREFLIGHT.json",
+      "sha256": "49aa9f8b4a231a0400523b882d11038e76c20ea626bc2c1000d54f1c27ab9a2c"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_p0_validation_export_interface_preflight/V5_P2_E1_P0_VALIDATION_EXPORT_INTERFACE_PREFLIGHT_SHA256SUMS.txt",
+      "sha256": "02bb1c364176068e3da10b3dc275545c250bbedbd89fa4e8c1c588c49d5db136"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "frozen_software_handover"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE_REPORT.json",
+      "sha256": "d739232c41901934a9852a263bc1302c6059b48abdc6a8f103a1c28679710a38"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE_LOCK.json",
+      "sha256": "7be2e37293d987f90cf6a756acfc14c93f368950ec9ddc60978b3554b089c89e"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_EPLR_V2_HANDOVER_NOTE.md",
+      "sha256": "36d76d89063ab17998ab0b84423bb0add4269b16c357637a2fda7a7df5220453"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_EPLR_V2_INDEPENDENT_VALIDATION_WAIT_STATE.json",
+      "sha256": "b49759180dfc2893b48b91debeee95457d59282c1aafe2daa8c1432a2a1e0743"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_EPLR_V2_INTEGRATION_CONTRACT.json",
+      "sha256": "580671e788fdca50b366294e706372fc7d7b6056ab96a2deafb692ea78e74056"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l0_structured_decoder_protocol_lock/V5_P2_L0_STRUCTURED_DECODER_PROTOCOL_LOCK.json",
+      "sha256": "6b9de697bb8457e07162c28ade6d57d7779515a977b933543769f1aa7f3b8dc6"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l0_structured_decoder_protocol_lock/V5_P2_L0_STRUCTURED_DECODER_PROTOCOL_LOCK_LOCK.json",
+      "sha256": "e5cbe16c7483ce727523c54a09ef60a6dc3f97859bf43b65781938fd443715fe"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e1_immutable_validation_logit_export/V5_P2_E1_IMMUTABLE_VALIDATION_LOGIT_EXPORT.json",
+      "sha256": "f848b93eeb4caffbdaef6f8cc4aee3d7d1e13c51add12e5c768d081ac380f110"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a3_p0_training_implementation_route_recovery/V5_P3_FINAL_A3_P0_TRAINING_IMPLEMENTATION_ROUTE_RECOVERY_REPORT.json",
+      "sha256": "21d6b70cdbfb64346edd2e585379677ddb5127710c8223ac14f830cc551ccc33"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r1_a1_lexicographic_infeasibility_root_cause_audit/V5_P3_D4_R1_A1_LEXICOGRAPHIC_INFEASIBILITY_ROOT_CAUSE_AUDIT_REPORT.json",
+      "sha256": "01e52e5ec0e49d17f2a1764377445fe683a0e0f9229a0875c7d0a807c9ea4894"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "frozen_software_handover",
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a2_p0_training_protocol_evidence_recovery/V5_P3_FINAL_A2_P0_TRAINING_PROTOCOL_EVIDENCE_RECOVERY_REPORT.json",
+      "sha256": "aa5b3c92d8bfa86a383e678bc2f2bd17fa6fde56d9fa41883daa1ffed38900ea"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e0a_raw_head_structured_decoder_boundary/V5_P2_E0A_RAW_HEAD_STRUCTURED_DECODER_BOUNDARY_LOCK.json",
+      "sha256": "fd2ef9d1dfa2d45857cfabbca2c19e75df4e1033dd12a1b92d59d352060056d3"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e0a_raw_head_structured_decoder_boundary/V5_P2_E0A_RAW_HEAD_STRUCTURED_DECODER_BOUNDARY.json",
+      "sha256": "12c26916d095322071acbf9363d0330700cba66bef3f6b662baf2a011583ff9b"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_e0a_raw_head_structured_decoder_boundary/V5_P2_E0A_PRETEST_SYSTEM_AND_STAGE_ORDER.json",
+      "sha256": "8049ce8171e4a41ee0d55361c824ab74572f7b695dd1f1f753a353e20066544c"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d2_raw_and_frozen_a0_validation_evaluation/V5_P3_D2_RAW_AND_FROZEN_A0_TRANCHE_A_VALIDATION_EVALUATION_REPORT.json",
+      "sha256": "63b9acbac5d1ad4d5fc81e478594a7433ddb0aca81bfb6d9b9a23766b27086c4"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_evaluator_d4_staged_raw_a0_a1_validation/V5_P2_EVALUATOR_D4_STAGED_RAW_A0_A1_VALIDATION.json",
+      "sha256": "0e5145878a40d3b1c2a4f769e895d2a3509fa0db3e8f94c8a0bc06b3d4a1e100"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_final_evaluator_source_freeze/V5_P2_PREFLIGHT_FINAL_EVALUATOR_SOURCE_FREEZE.json",
+      "sha256": "be89a3036a778d4f8887c61d33a8df75a65f4dc7573fcf879047d6dc6d7da3d1"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_final_evaluator_source_freeze/V5_P2_PREFLIGHT_FINAL_EVALUATOR_SOURCE_FREEZE_SHA256SUMS.txt",
+      "sha256": "0e0bfa4a70662a3257ab7044939e452730c2db4eae3fd9aa182062afdad922ed"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d12_eplr_v2_implementation_and_synthetic_tests/V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS_REPORT.json",
+      "sha256": "a2eed7997558efab278ea9bdf2cc1896147b153079eb66832d4b75ec71c8e135"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d12_eplr_v2_implementation_and_synthetic_tests/V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS_LOCK.json",
+      "sha256": "b508394490da4ef795df133f152bf1e0d9a3cca5a5a517988f67b9680d08f8d7"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d12_eplr_v2_implementation_and_synthetic_tests/V5_P3_D12_EPLR_V2_SYNTHETIC_TEST_RESULTS.json",
+      "sha256": "009891ac9bf83990f0110765606638383f7fbf59082fe022f25543635e200da2"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d12_eplr_v2_implementation_and_synthetic_tests/V5_P3_EPLR_V2_FROZEN_IMPLEMENTATION.py",
+      "sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_ONE_SHOT_BLIND_EVALUATION_CONTRACT.json",
+      "sha256": "a9cd7b7d437e7e362b1bb942796df9773a603c90ab95e4b6647b9049114fc078"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE_SHA256SUMS.txt",
+      "sha256": "4ab29904bfb5107402953ac6b951c1cfb6e3ce9f2c6a608677ce26e222e9b032"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE.json",
+      "sha256": "f537c1a90818c68825c1ca3732a49825bb0d8ab9ec9507e83396fc2678e83988"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l5_final_pretest_freeze/V5_P2_L5_FINAL_PRETEST_FREEZE_LOCK.json",
+      "sha256": "591ba3a3257613402f7a3ca2d7d67980f32079cd9c3d00cc52ff7a6dbcfaafca"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_r0_equivalence_operationalization/V5_P2_L4_R0_EQUIVALENCE_OPERATIONALIZATION_SHA256SUMS.txt",
+      "sha256": "a7367983dd5b99777273b98415f7eec0d358d63dbf673a593f826e1469e4c42a"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r3_resume_a1_exact_validation_hybrid/V5_P3_D4_R3_RESUME_A1_EXACT_VALIDATION_WITH_FROZEN_CERTIFIED_HYBRID_DECODER_REPORT.json",
+      "sha256": "b5c68bbeb81fa71e519b16775ae4f992bc6432aa4363c559fea40f09c5a60905"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_evaluator_source_freeze/V5_P2_RECOVERY_EVALUATOR_SOURCE_FREEZE_SHA256SUMS.txt",
+      "sha256": "7bc672a724d43f7694dd23594f119ca55ade4fb3a8ebb6b0b7745d42753bdb6f"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_decoder_d1_prospective_numerical_policy_freeze/V5_P2_D1_PROSPECTIVE_NUMERICAL_CERTIFICATION_POLICY.json",
+      "sha256": "be073b82ac7bf12b68efa9ee68ed030f7bb45458e41fa3620681b6686a2ddcb6"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_final_f1_post_inference_numerical_failure_disposition/V5_P2_FINAL_F1_POST_INFERENCE_NUMERICAL_FAILURE_DISPOSITION.json",
+      "sha256": "18e92379ee4d8625c8621acaf7b40374b9f6745d0da824151e55001b5d989166"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d0_frozen_decoder_transfer_preflight/V5_P3_D0_FROZEN_DECODER_TRANSFER_PREFLIGHT_REPORT.json",
+      "sha256": "ed948466c97d30cf267f66b1153992877d0b2c0b2148ad6f3a71bb11fa0dbc40"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l1_xy_route_library_unit_tests/V5_P2_L1_XY_ROUTE_LIBRARY_UNIT_TESTS_LOCK.json",
+      "sha256": "747c3d284a18bf1429d59e6c9bdad23441a461560819b7b1b5dfd0c2975873c8"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l1_xy_route_library_unit_tests/V5_P2_L1_XY_ROUTE_LIBRARY_UNIT_TESTS.json",
+      "sha256": "5f93ca38fd6093bace749ff543179dee1a00e4c4e31df7fd002423e4dbe99dd5"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_r1_decoder_disposition_amendment/V5_P2_L4_R1_DECODER_DISPOSITION_AMENDMENT.json",
+      "sha256": "0ac7eb269f2a3459f2d61b9b74edbf092ba013a0ac4a973676d536c14e06677d"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_r1_decoder_disposition_amendment/V5_P2_L4_R1_DECODER_DISPOSITION_AMENDMENT_SHA256SUMS.txt",
+      "sha256": "9b67f8e967ed9cdc47949b938f46b38a5ea47746ba771f5b6ecbbd103ef657cb"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_hardware_beam_decoder_implementation/V5_P2_L3_HARDWARE_BEAM_DECODER_INTERFACE.json",
+      "sha256": "24f98dc086fb7f813a3d7445b8ba81281895ffb31f94675541587eb606316419"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_hardware_beam_decoder_implementation/V5_P2_L3_HARDWARE_BEAM_DECODER_IMPLEMENTATION.json",
+      "sha256": "1366a15eda62ec32f4f82ba2dd91bd80abde6088e21faabc5e6f3e0fd2c51e88"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_hardware_beam_decoder_implementation/V5_P2_L3_HARDWARE_BEAM_DECODER_IMPLEMENTATION_SHA256SUMS.txt",
+      "sha256": "06f63b72a0369bcbbc1c343512d3824c591b04129feb5c1f5b3c6c06abe64b33"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_hardware_beam_decoder_implementation/V5_P2_L3_HARDWARE_BEAM_DECODER_IMPLEMENTATION_LOCK.json",
+      "sha256": "6e4336be564bc64bc13dd9d7769563b2ce99f213a42af23cb5554dfe90b94d0d"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION.json",
+      "sha256": "9059b2354d143cd911e32e532312c708b46cd265aa48e0a28daa9b0b4443c5e7"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l4_decoder_validation_selection/V5_P2_L4_DECODER_VALIDATION_SELECTION_SHA256SUMS.txt",
+      "sha256": "e3acd0cbf6085fe54a1a1d5ab1d5731facf318eba9a7bb8a01b05c7b9195a541"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_exact_decoder_implementation/V5_P2_L2_EXACT_DECODER_IMPLEMENTATION_SHA256SUMS.txt",
+      "sha256": "1ac2e624756697c4d9803917eae3a02b611968f722a708b363eabea36efda0e6"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_exact_decoder_implementation/V5_P2_L2_EXACT_DECODER_IMPLEMENTATION_LOCK.json",
+      "sha256": "ed0aafecf5c7527e647bea3dd91f696eb416f889c0541d48b627957a9e887ee0"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_exact_decoder_implementation/V5_P2_L2_EXACT_DECODER_IMPLEMENTATION.json",
+      "sha256": "3ff7077f360906ada21a3ae16155f73e327925b72a032c3bb8122905bd6094d0"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_decoder_d0_numerical_root_cause_audit/V5_P2_DECODER_D0_NUMERICAL_ROOT_CAUSE_AUDIT.json",
+      "sha256": "ad24ec6efed77b5d2ca5d9288a07d1789a6d5f6f53b7824fbdee826efa188ba3"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r1_optimum_face_numerical_certification/V5_P2_L2_R1_OPTIMUM_FACE_NUMERICAL_CERTIFICATION_SHA256SUMS.txt",
+      "sha256": "950465dc87079d461c481a3dafbb8d279c17648bdc110d406316b7b34aeddca5"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r1_optimum_face_numerical_certification/V5_P2_L2_R1_OPTIMUM_FACE_NUMERICAL_CERTIFICATION.json",
+      "sha256": "d6054a7a2a7c9d76fd80d1cc291ba636d2db35e01b793814e35f359ad58ee6b9"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d9_eplr_v1_one_shot_validation_replay/V5_P3_D9_EPLR_V1_ONE_SHOT_TRANCHE_A_VALIDATION_EXPLORATORY_REPLAY_REPORT.json",
+      "sha256": "761524d927a9f174cd8ee0cca5a7af998d2ebd0ab35bcaa7a6b37c5b4afb7473"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_concrete_interface_resolution/V5_P2_PREFLIGHT_CONCRETE_INTERFACE_RESOLUTION_SHA256SUMS.txt",
+      "sha256": "a5b3c090cb9d917f7256e2cbcaa56607d1dd2d85e46d7da21f9aa66890b97724"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_concrete_interface_resolution/V5_P2_PREFLIGHT_CONCRETE_INTERFACE_RESOLUTION.json",
+      "sha256": "28f7c9eb11866698e2ee438d9f347545f1316382533311ee6a75e8751f1bc234"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_final_no_data_preflight_and_authorization/V5_P2_RECOVERY_FINAL_NO_DATA_PREFLIGHT_AND_AUTHORIZATION_SHA256SUMS.txt",
+      "sha256": "2e2f6e7c6d0160883bbc763678044a59b8d9eeb413a522954a08395318e4f301"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_source_interface_discovery/V5_P2_PREFLIGHT_SOURCE_INTERFACE_DISCOVERY_SHA256SUMS.txt",
+      "sha256": "65df47a6c9d5983efc7e56eae4cb8594ff560367a3b32c60ee9144bc289ebfba"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_source_interface_discovery/V5_P2_PREFLIGHT_SOURCE_INTERFACE_DISCOVERY.json",
+      "sha256": "0279a1fa25f4a57c0d7a093cac16b2d792918dcafe559eaeb1c3772d50b7c876"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a3_p0_r1_native_loader_source_recovery/V5_P3_FINAL_A3_P0_R1_NATIVE_LOADER_SOURCE_RECOVERY_REPORT.json",
+      "sha256": "55ef9d194585749254dbd3b6536a0a02a9d4f3cbbab117a2dd74928e43441f5e"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_missing_dependency_capture/V5_P2_PREFLIGHT_MISSING_DEPENDENCY_CAPTURE.json",
+      "sha256": "21af75b5826453d40055af57569e06492ea7fbbf205ba3aeb18501040caf0766"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_preflight_missing_dependency_capture/V5_P2_PREFLIGHT_MISSING_DEPENDENCY_CAPTURE_SHA256SUMS.txt",
+      "sha256": "19ca7d6bfe55140b0d5828dd359b0c9e9703d9f0d3e6660bfc759a7fb01f629e"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_decoder_d3_full_validation_certification_proof/V5_P2_DECODER_D3_FULL_VALIDATION_CERTIFICATION_PROOF.json",
+      "sha256": "5705e0fdcbeb359a5a6e7b15c7c87de135d80ff9f3ef4d15a245bddb326f60d6"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r2_r2_hybrid_decoder_freeze/V5_P3_D4_R2_R2_CANONICAL_FIRST_CERTIFIED_PRESOLVE_FALSE_FALLBACK_FREEZE_REPORT.json",
+      "sha256": "9232fc53da0a3c9125f23f2d757c0a288afbdaec7f370efdbe6084bf1c22f50d"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r2_r2_hybrid_decoder_freeze/V5_P3_A1_HYBRID_NUMERICAL_POLICY_CONTRACT.json",
+      "sha256": "76871f76d71cc8d0b23a54658217ad5e3d7f07a837a3a33abbbff78ba2253a32"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_r2_r2_hybrid_decoder_freeze/v5_p3_a1_exact_decoder_certified_hybrid.py",
+      "sha256": "674e0ca2fce2953559ee7be7f63ddecf42e5ad883bb841c5b7004e30a1d7d1ee"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d5_tranche_a_decoder_review_and_4x4_expert_interface_freeze/V5_P3_4X4_DYNAMIC70_EXPERT_INTERFACE_CONTRACT.json",
+      "sha256": "f1595d90c5440b49e0f03a574fb06dc35c8607d314314ba8f2b8301bd7d4041d"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_final_no_data_preflight_and_authorization/V5_P2_FINAL_NO_DATA_PREFLIGHT_AND_AUTHORIZATION.json",
+      "sha256": "d9ca606b8ce6b0b0c81f4dcf67e77a65a9a2a78221dc1669b44b1a0c49cfc52a"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_final_no_data_preflight_and_authorization/V5_P2_FINAL_NO_DATA_PREFLIGHT_AND_AUTHORIZATION_SHA256SUMS.txt",
+      "sha256": "1fa9da5f1fadd3e54bf6cded03f2686eb84312d97c618969743b584606d428d7"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d11_eplr_v2_semantic_freeze/V5_P3_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_CONTRACT.json",
+      "sha256": "01dc7490afbd6c75e763577f8fc95c85e2393677e90fef90a7e3e6fe83342057"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d11_eplr_v2_semantic_freeze/V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE_REPORT.json",
+      "sha256": "8e4fc4768b3d49979253cf9ca9020d8dd63fe537b4153064bd4b99733853a3cf"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d11_eplr_v2_semantic_freeze/V5_P3_D11_EPLR_V2_PRESERVE_OR_PASSTHROUGH_SEMANTIC_FREEZE_LOCK.json",
+      "sha256": "1c57b2814f75305db8cdbf2968d93f9f739b8a79fc1aa9fc57a2d6cad1419b72"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d11_eplr_v2_semantic_freeze/V5_P3_EPLR_V2_D12_SYNTHETIC_TEST_MATRIX.json",
+      "sha256": "10ff6e7f369a7857a977d9cb9d1552ca5e8c4a41f093d35049743ac67e989c20"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d11_eplr_v2_semantic_freeze/V5_P3_EPLR_V2_FUTURE_INDEPENDENT_VALIDATION_PROTOCOL.json",
+      "sha256": "76d19c0fcba750e5575c703cbe53954d431b022c12bf3d73ebf11d1475761c21"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d11_eplr_v2_semantic_freeze/V5_P3_EPLR_V2_SOFTWARE_OUTPUT_CONTRACT.json",
+      "sha256": "578f20edda2b865998da1ebcb53db31fa9edff450cc3654abb115c1075a151c1"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/PRESERVATION_TREE.json",
+      "sha256": "aa805659b9a73a0d284c8405be90a801f57542c98866af6927f5459797bf745c"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/MANIFEST_SHA256SUMS.txt",
+      "sha256": "2c6260f2cb0bc35cb12408ab621dc01ea67a76d8baab60b64b39f91d9f9f8715"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/PRESERVATION_MANIFEST.json",
+      "sha256": "a210a9b092941d44b7456ec7a794d92a6a064abe0ab0e8bb821130130393d108"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/V5_P3_D3_A1_EXACT_PREFLIGHT_SELECTION.json",
+      "sha256": "b3adb386eebc887c0c9c7367d342525bf014b3f43c254f090a47be517773767b"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/V5_P3_D3_RESUMABLE_A1_EXACT_DECODER_CHUNK_PREFLIGHT_LOCK.json",
+      "sha256": "13d0b60baa11e86728d852258e612fee706a6a25bcbadf7f0a44bd77f4f0af01"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/V5_P3_D3_RESUMABLE_A1_EXACT_DECODER_CHUNK_PREFLIGHT_REPORT.json",
+      "sha256": "506b28f9595fb659f4e6eb66efbbe8bee26758e6477550f3df4d3f7204a2c99e"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/V5_P3_D3_A1_EXACT_PREFLIGHT_MERGED_RESULTS.json",
+      "sha256": "f6b14fd654cc8a898b70c5073d3d16ddff2146bb8fcca6d25aa3708051bd9d87"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r0_solver_gap_numerical_certification/V5_P2_L2_R0_SOLVER_GAP_NUMERICAL_CERTIFICATION_SHA256SUMS.txt",
+      "sha256": "e49c965f03ce4ed0068cac8680c145efffa087deb42aa61f011413c0ee71edd0"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r0_solver_gap_numerical_certification/V5_P2_L2_R0_SOLVER_GAP_NUMERICAL_CERTIFICATION.json",
+      "sha256": "526aad96b0f35b02c281b857b778db02a769930b9a54fe16314d18fc705b5ad3"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_recovery_raw_a0_a1_blind_evaluation/V5_P2_RECOVERY_RAW_A0_A1_BLIND_EVALUATION_IRREVERSIBLE_FAILURE.json",
+      "sha256": "21149d6a20009a729f68d29476d174f069bb3ceaa49455b7b68cbeb1fe4ce38a"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r2_high_precision_semantic_face_certification/V5_P2_L2_R2_HIGH_PRECISION_SEMANTIC_FACE_CERTIFICATION.json",
+      "sha256": "1f461f68516d8795c8391f5c5fffc9427604d22116b669b100665113cc783ad1"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l2_r2_high_precision_semantic_face_certification/V5_P2_L2_R2_HIGH_PRECISION_SEMANTIC_FACE_CERTIFICATION_SHA256SUMS.txt",
+      "sha256": "be146052252b543009313346b98d90a97828e034c2727261bc220d973658c759"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d10_eplr_v1_comparison_and_carry_forward/V5_P3_D10_RAW_A0_A1_EPLR_V1_COMPARISON_AND_CARRY_FORWARD_DECISION_REPORT.json",
+      "sha256": "9938e06808d1d8613b73045c9e8f8ec97675e206729943dca190dca7181f6648"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d10_eplr_v1_comparison_and_carry_forward/V5_P3_D10_RAW_A0_A1_EPLR_V1_COMPARISON_AND_CARRY_FORWARD_DECISION_LOCK.json",
+      "sha256": "4a3ada5be7635252ae4772ccd585b08bc31aa9d566bd86180936dc3bff56cd5b"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d10_eplr_v1_comparison_and_carry_forward/V5_P3_D10_RAW_A0_A1_EPLR_V1_COMPARISON.json",
+      "sha256": "c5dde461a49ec5717f64a88ff3adad4c3cd5769078811cd132a0fca2a8943194"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_r1_beam_completion_feasibility_guard/V5_P2_L3_R1_BEAM_COMPLETION_FEASIBILITY_GUARD_SHA256SUMS.txt",
+      "sha256": "5b9d89b813631540ea7888635250aedd0156ae67a1efa8f32c83edc1a9503ca7"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_l3_r1_beam_completion_feasibility_guard/V5_P2_L3_R1_BEAM_COMPLETION_FEASIBILITY_GUARD.json",
+      "sha256": "ae4003e535c708dcd5bc354814e8edc52c5d1c2f2d166d6f2e03e6ae2cb7fc5c"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d4_resumable_a1_exact_validation_evaluation/V5_P3_D4_A1_RESUMABLE_EXECUTION_CONTRACT.json",
+      "sha256": "58091762f55a88a893f8f0de1bba3e464bb9e4c40a4509043cdab66d62cfa520"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_decoder_d2_certified_implementation/V5_P2_DECODER_D2_CERTIFIED_IMPLEMENTATION.json",
+      "sha256": "e2e083c04c2f4ed2cf7323e8f6611a419d70c733456762997e05699cd50b8d89"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/V5_P3_F0_D70_FEATURE_STUDY_LOCK.json",
+      "sha256": "632c494b4796e55d37c6c9d6211d858c7b96e6b739285d646ecd380c8687eba2"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/V5_P3_F4M_CANONICAL_METRIC_ADAPTER_CERTIFICATION_REPORT.json",
+      "sha256": "7bcc84f1c69243552a6bf8840e5303dd36dadb46ae76bbf1ba3750ed8b6425e5"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R2_SELECTION_FORMULA_CANDIDATE_INVENTORY.json",
+      "sha256": "242c78dc6f4a1866cf76119c9370e234612aada0c57ecf3a46a40f8bb517386c"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_FROZEN_SELECTION_SCORE_FUNCTION_SPEC.json",
+      "sha256": "82c248fe643eb8d912dad0161738455bf97766904c8bcdab08bc3600b2c38906"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_R2_SELECTION_FORMULA_STATIC_AND_DYNAMIC_EVALUATION.json",
+      "sha256": "ac65e450074c4e52d1d613f5de99e40d72d93970a13a38502f03aee67159222d"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/metric_adapter/F4M_CANONICAL_METRIC_ADAPTER_CONTRACT.json",
+      "sha256": "c2de442d865e1e87e2d9b8ac7355e3d50e5915874be97acf5f64e3ed6679a4f1"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_TRANSITIVE_TRAINING_ROUTE_CANDIDATES.json",
+      "sha256": "47da844e577106430562871447c59aa1dcb1d0600f3070096dad955fbee3fe90"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_A4_AND_REPORT_ENTRYPOINT_REFERENCE_EVIDENCE.json",
+      "sha256": "9648b678e9a656e97c6d7930e5b608e0c308714dc0957946c2d6664a4751e8f6"
+    },
+    {
+      "hits": [
+        "eplr_v2",
+        "frozen_software_handover",
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P1A_CURRENT_SOURCE_AND_IMPORT_GRAPH_INVENTORY.json",
+      "sha256": "a753220e1a667d1d9ace80b0f71f2bb94b7895358ee8a2a7dda6deeb2b931d42"
+    },
+    {
+      "hits": [
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P1_MATCHED_CONTROL_CANDIDATE_EVALUATIONS.json",
+      "sha256": "d6d2b633ea54d79a9faa0f9511e3d088fbe20028f048ca0c526fa7c640cc18ba"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/integrated_gradients/F6_P2_PAIRING_SOURCE_CODE_EVIDENCE.json",
+      "sha256": "c645321c9c248eca48a1c92f9459e0d402ab5a4e46c755c1c3d49dce082ec6e3"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R_CORRECTED_F4_ADAPTER_CONTRACT.json",
+      "sha256": "ab4efa3ae68d89f9bf211f74869035af38688af81515d01f6cda407cd347bac7"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R_CORRECTED_MODEL_LOADER_EVALUATOR_LINEAGE.json",
+      "sha256": "6f71d6974bb693b74644ec8f4aee697e38a40472a0a85ed7e5d7f2b652fd591b"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R2_D1_EXPORTER_LINEAGE.json",
+      "sha256": "74535aeb7945fb68ede5d727f5854044b0eb9cc427ee230c16f834ceca7651fa"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R2_DOWNSTREAM_METRIC_EVALUATOR_LINEAGE.json",
+      "sha256": "8eb0e10457648c45c377b1006be1d9dd6339c372500fa07f732e858ad9650398"
+    },
+    {
+      "hits": [
+        "exact_decoder",
+        "beam_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1R2_IMMUTABLE_VALIDATION_ARTIFACT_LINEAGE.json",
+      "sha256": "78f5c03908058bc415dca773c6a2d229b98611467685736c99fd4af832edc1c0"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P0_EVALUATOR_AND_MODEL_CODE_SCAN.json",
+      "sha256": "e32075ac121e387bba5b988f17170f86866697391105598b141307fd7300d96c"
+    },
+    {
+      "hits": [
+        "eplr_v2"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/F4_P1_EVALUATOR_MODEL_LOADER_RANKING.json",
+      "sha256": "282d7dd49c111e412fabecae0748019b36014003be7fddfb3f6ab82d334e7261"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/evaluation/V5_P2_EVALUATOR_D4_STAGED_RAW_A0_A1_VALIDATION.json",
+      "sha256": "0be3b06a31b30fabda6e7f6f5582be9cf4bfde105a4d01bf893dd4bcc0545a3b"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/decoder/V5_P2_DECODER_D3_FULL_VALIDATION_CERTIFICATION_PROOF.json",
+      "sha256": "11339c6afcec5275a310219e05a360638121cdfabd2f02589273e2c84af56def"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/decoder/V5_P2_D1_PROSPECTIVE_NUMERICAL_CERTIFICATION_POLICY.json",
+      "sha256": "b63efbfe1272fb7f6ab922645182fba86e28d7c8f42a70e0f3ac453b88bec71f"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_canonical_preservation/decoder/V5_P2_DECODER_D2_CERTIFIED_IMPLEMENTATION.json",
+      "sha256": "fcb78ae4059f49e4c78d4e3cf603160f7d8bad72857d6ef6b777cc4de0ab7055"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_000_selected_0000_0016.json",
+      "sha256": "2b13cff06ba4edf83829179733458ce49076a7d5e09d428f9302e5cb459b0d70"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_001_selected_0016_0032.json",
+      "sha256": "e808a32cffd271b127850a787d01db1460cc444a8d1c313450e70a1f6ccc4bac"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_001_selected_0016_0032.manifest.json",
+      "sha256": "48f531dca4f6dd503258076e4fea83df07cfd378488a1b0aca7350286b254579"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_002_selected_0032_0048.manifest.json",
+      "sha256": "d10567d8e7407704d737a84189da0980d874cf968fbf7ebe203ba9aadcad8f9d"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_003_selected_0048_0064.manifest.json",
+      "sha256": "dd31cfcf41d078972e281f68bc3a979991c80271449ae60b26df980ec5e434da"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_003_selected_0048_0064.json",
+      "sha256": "3be1656934faf23bd2235d3aa5ac225200a5ff5065da26282544fe72ccf52af1"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_000_selected_0000_0016.manifest.json",
+      "sha256": "a100d96461753f523a186302384fddd64c569d811f1209fa43d644448fab02aa"
+    },
+    {
+      "hits": [
+        "exact_decoder"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d3_resumable_a1_exact_decoder_chunk_preflight/A1_PREFLIGHT_WORKING/chunk_002_selected_0032_0048.json",
+      "sha256": "2dd691604d94d75391a10b4d3b7c3bbc2b9a380da22bd41902dc6b26d3029880"
+    }
+  ],
+  "scope": "read_only_decoder_handover_inventory_and_regression_route_recovery",
+  "sealed_test_access": false,
+  "stage": "V5_P3_FINAL_D0_P0_FROZEN_DECODER_HANDOVER_ROUTE_RECOVERY",
+  "status": "PASS",
+  "test_tensor_deserialization": false,
+  "training_performed": false,
+  "validation_logits_generated": false,
+  "zip_members": [
+    {
+      "is_dir": false,
+      "name": "README.md",
+      "sha256": "36d76d89063ab17998ab0b84423bb0add4269b16c357637a2fda7a7df5220453",
+      "size": 1152
+    },
+    {
+      "is_dir": false,
+      "name": "WAIT_STATE.json",
+      "sha256": "b49759180dfc2893b48b91debeee95457d59282c1aafe2daa8c1432a2a1e0743",
+      "size": 1032
+    },
+    {
+      "is_dir": false,
+      "name": "contracts/eplr_v2_output_contract.json",
+      "sha256": "578f20edda2b865998da1ebcb53db31fa9edff450cc3654abb115c1075a151c1",
+      "size": 1322
+    },
+    {
+      "is_dir": false,
+      "name": "contracts/eplr_v2_semantic_contract.json",
+      "sha256": "01dc7490afbd6c75e763577f8fc95c85e2393677e90fef90a7e3e6fe83342057",
+      "size": 3145
+    },
+    {
+      "is_dir": false,
+      "name": "contracts/future_independent_validation_protocol.json",
+      "sha256": "76d19c0fcba750e5575c703cbe53954d431b022c12bf3d73ebf11d1475761c21",
+      "size": 1305
+    },
+    {
+      "is_dir": false,
+      "name": "contracts/integration_contract.json",
+      "sha256": "580671e788fdca50b366294e706372fc7d7b6056ab96a2deafb692ea78e74056",
+      "size": 1690
+    },
+    {
+      "is_dir": false,
+      "name": "dependencies/v5_p3_eplr_v1.py",
+      "sha256": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35",
+      "size": 27484
+    },
+    {
+      "is_dir": false,
+      "name": "dependencies/v5_xy_route_library.py",
+      "sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7",
+      "size": 11569
+    },
+    {
+      "is_dir": false,
+      "name": "implementation/v5_p3_eplr_v2.py",
+      "sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+      "size": 6688
+    },
+    {
+      "is_dir": false,
+      "name": "implementation/v5_p3_eplr_v2_calibration.json",
+      "sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+      "size": 646
+    },
+    {
+      "is_dir": false,
+      "name": "provenance/d10_carry_forward_decision.md",
+      "sha256": "8340ed239293170779b999175ef5bb01367d1b630f9cc4ad2368131887ef24ed",
+      "size": 1811
+    },
+    {
+      "is_dir": false,
+      "name": "provenance/d10_root_cause_audit.json",
+      "sha256": "497d21a702341ad6f0c6174c3e896de4db052ed4254bbddddc1c1dfc99a20eeb",
+      "size": 6710
+    },
+    {
+      "is_dir": false,
+      "name": "verification/d12_lock.json",
+      "sha256": "b508394490da4ef795df133f152bf1e0d9a3cca5a5a517988f67b9680d08f8d7",
+      "size": 608
+    },
+    {
+      "is_dir": false,
+      "name": "verification/d12_report.json",
+      "sha256": "a2eed7997558efab278ea9bdf2cc1896147b153079eb66832d4b75ec71c8e135",
+      "size": 3657
+    },
+    {
+      "is_dir": false,
+      "name": "verification/d12_synthetic_test_results.json",
+      "sha256": "009891ac9bf83990f0110765606638383f7fbf59082fe022f25543635e200da2",
+      "size": 2679
+    }
+  ]
+}

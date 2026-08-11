@@ -1,0 +1,124 @@
+{
+  "batch512_resource_probe_decision": "batch512_primary_authorized",
+  "dataset_accessed": false,
+  "designation": "V4-A4a-2A Primary Trainer Source Audit",
+  "development_test_accessed": false,
+  "device": "cuda",
+  "frozen_gradient_violations": [],
+  "loss_contract": {
+    "derived_cardinality_cross_entropy_weight": 0.5,
+    "derived_union_membership_bce_weight": 0.5,
+    "duplicate_slot_penalty_weight": 0.1,
+    "matching_implementation": "vectorized exact enumeration, cross-checked against the audited reference implementation",
+    "null_target_weight": 0.514585764294049,
+    "null_target_weight_report_sha256": "95e2e34321c827937d5d363192f36e38f06f74a9376e35af7332fd928c031e54",
+    "null_target_weight_source": "A4a-1B training-split prevalence only",
+    "permutation_invariant_matching_weight": 1.0
+  },
+  "missing_trainable_gradients": [],
+  "nonfinite_trainable_gradients": [],
+  "parameter_count": {
+    "frozen": 2113,
+    "total": 3189,
+    "trainable": 1076
+  },
+  "provenance": {
+    "base_checkpoint_sha256": "f61c1add6c057f7f53dd34fb1f9f4e95b01cefd5053e0e42bc100c76dac7f923",
+    "contract_freeze_script_sha256": "b5b05b2200a41484949a3a813323d80a08bce6c6957999679890ef4cd3dbbfab",
+    "full_training_contract_lock_sha256": "c825f5adbfbfa6634e11601355958f0dd85b6aab021a6a3d2a5e0e287dcafe23",
+    "full_training_contract_sha256": "59e9ef31814acbacb7601c11f83d92ed7926cb888a4862881ebc5b39c18dc853",
+    "model_source_sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+    "primary_trainer_sha256": "c424a4877c39cdbf1df54dba89d152913c7aef3d7a265930f21c9af4ec52f42d",
+    "resource_probe_lock_sha256": "cdf92e2a0874d22148430e4a3d05533de991a63575c0627bd6c2de8c98516d28",
+    "resource_probe_report_sha256": "dd49cf39b2f2fc1f3288a8c9347019f8dad43ddb80f30ad88cb31f61a82e53ae",
+    "resource_probe_script_sha256": "479b290ad97b0d1ceb4424c6e343f319bc31ff64e53981f98a5ce23f5e34dbb4",
+    "slot_module_sha256": "97b56aabb3239dfc7543c241665cacf998eb6b1a1f5f67f931cdeb70e75c111c",
+    "smoke_script_sha256": "a1c93ed64198c0bd946e64da116b3438012d742c0c5fafc092e8517b4761a35d",
+    "trainer_sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+  },
+  "ready_for_a4a_2a_primary_training": true,
+  "runtime_contract": {
+    "automatic_mixed_precision": false,
+    "batch_size_fallback": 256,
+    "batch_size_primary": 512,
+    "development_test_loader_constructed": false,
+    "early_stopping_patience_epochs": 10,
+    "fallback_requires_authorized_resource_probe_failure": true,
+    "full_validation_every_epochs": 3,
+    "gradient_clip_norm": 5.0,
+    "learning_rate": 0.001,
+    "maximum_epochs": 75,
+    "minimum_delta": 0.0001,
+    "num_workers": 2,
+    "optimizer": "AdamW",
+    "persistent_workers": true,
+    "pin_memory": true,
+    "prefetch_factor": 2,
+    "seed": 7,
+    "training_split_only_for_optimizer_steps": true,
+    "validation_split_only_for_checkpointing_and_selection": true,
+    "weight_decay": 0.0001
+  },
+  "status": "PASS",
+  "synthetic_losses": {
+    "cardinality": 9.238727569580078,
+    "duplicate": 0.15597213804721832,
+    "matching": 4.607244968414307,
+    "membership": 0.6084854602813721,
+    "total": 9.546448707580566
+  },
+  "synthetic_output_shapes": {
+    "cardinality_probabilities": [
+      4,
+      5
+    ],
+    "graph_logits": [
+      4
+    ],
+    "h_graph": [
+      4,
+      16,
+      16
+    ],
+    "h_local": [
+      4,
+      16,
+      16
+    ],
+    "h_node": [
+      4,
+      16,
+      32
+    ],
+    "membership_probabilities": [
+      4,
+      16
+    ],
+    "regional_embedding": [
+      4,
+      64
+    ],
+    "slot_logits": [
+      4,
+      4,
+      17
+    ],
+    "slot_probabilities": [
+      4,
+      4,
+      17
+    ]
+  },
+  "test_loader_constructed": false,
+  "trainable_parameter_names": [
+    "slot_decoder.slot_identity_embeddings",
+    "slot_decoder.router_key_projection.weight",
+    "slot_decoder.router_key_projection.bias",
+    "slot_decoder.global_context_projection.weight",
+    "slot_decoder.global_context_projection.bias",
+    "slot_decoder.slot_null_head.weight",
+    "slot_decoder.slot_null_head.bias"
+  ],
+  "training_performed": false,
+  "validation_accessed": false
+}

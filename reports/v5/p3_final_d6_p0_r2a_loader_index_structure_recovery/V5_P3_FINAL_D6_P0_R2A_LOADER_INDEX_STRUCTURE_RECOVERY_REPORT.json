@@ -1,0 +1,3411 @@
+{
+  "authority": {
+    "D1_manifest_sha256": "7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c",
+    "D1_npz_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+    "R1_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_p0_r1_native_loader_route_recovery/V5_P3_FINAL_D6_P0_R1_NATIVE_LOADER_ROUTE_RECOVERY_LOCK.json",
+    "R1_lock_sha256": "59ac8c84331b998fc0cd5ee5413d98cb5af36f6d5976391468610009d8a41296",
+    "R2_HOLD_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_p0_r2_exact_validation_row_provenance_freeze/V5_P3_FINAL_D6_P0_R2_EXACT_VALIDATION_ROW_PROVENANCE_FREEZE_REPORT.json",
+    "R2_HOLD_report_sha256": "7282f40334eaf2a85a8e86fcf44a6c7804aca4ee2c6cdaa3499e243db7997118",
+    "loader_path": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6"
+  },
+  "dataset_recursive_inventory": [
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset",
+      "length": 27722,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "{'x': tensor([[[ 0.5787, -1.0966, -1.0966,  ..., -1.0966,  0.1552,  0.1552],\n         [-0.3993, -0.9242, -0.9242,  ..., -0.9242, -0.3993, -0.9242],\n         [ 0.5409,  0.5409,  0.7314,  ..., -0.9334, -0.9334, -0.4082],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[-1.0966, -1.0966, -1.0966,  ..., -1.0966, -1.0966,  0.3562],\n         [-0.9242, -0.9242, -0.9242,  ..., -0.9242, -0.9242, -0.9242],\n         [ 0.6421,  0.5409,  0.7314,  ..., -0.9334,  0.1170,  0.1170],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 0.1552,  1.1523,  1.2560,  ...,  1.4630,  1.3672,  1.3672],\n         [ 1.6764,  1.4167,  1.4167,  ...,  1.4504,  1.2648,  0.9577],\n         [ 0.4242,  0.4242,  0.4242,  ..., -0.9334, -0.9334, -0.9334],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 1,
+          "repr_prefix": "{'x': tensor([[[ 0.1552,  0.1552, -0.3290,  ...,  0.1552,  0.1552,  0.1552],\n         [-0.3993, -0.3993, -0.9242,  ..., -0.3993, -0.9242, -0.3993],\n         [-0.9334, -0.9334,  0.8834,  ..., -0.9334,  0.8112, -0.9334],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[-1.0966, -1.0966, -1.0966,  ..., -1.0966,  0.3562, -1.0966],\n         [-0.9242, -0.9242, -0.9242,  ..., -0.9242, -0.9242, -0.9242],\n         [ 0.1170, -0.1010,  0.9493,  ...,  0.1170,  0.9493,  0.1170],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 1.3874,  1.2061,  1.3672,  ...,  1.3874,  1.0305,  1.3672],\n         [ 1.4504,  1.4504,  1.2215,  ...,  1.2648,  0.9577,  1.2648],\n         [-0.9334, -0.9334,  0.4242,  ..., -0.9334,  0.4242, -0.9334],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 2,
+          "repr_prefix": "{'x': tensor([[[ 0.6954,  0.1552, -1.0966,  ..., -1.0966,  0.3562, -1.0966],\n         [-0.3993, -0.3993, -0.9242,  ..., -0.9242, -0.9242, -0.9242],\n         [ 0.7314,  0.7314, -0.9334,  ...,  0.7314,  0.8112, -0.9334],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[-1.0966, -1.0966, -1.0966,  ..., -1.0966, -1.0966, -1.0966],\n         [-0.9242, -0.9242, -0.9242,  ..., -0.9242, -0.9242, -0.9242],\n         [ 0.9493,  0.8834, -0.4082,  ...,  0.7314,  0.8112, -0.9334],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 1.3874,  1.0630,  1.3463,  ...,  1.3874,  1.3672,  1.4630],\n         [ 1.2215,  1.0744,  1.4167,  ...,  1.0183,  0.4327,  1.4504],\n         [ 0.4242,  0.4242, -0.9334,  ...,  0.4242,  1.0100, -0.9334],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 13861,
+          "repr_prefix": "{'x': tensor([[[-1.0966,  1.1797,  0.9606,  ...,  1.0305,  1.1797,  1.2315],\n         [-0.9242,  0.2947,  1.0744,  ..., -0.3993,  0.1257,  0.1257],\n         [ 1.5054,  1.3364,  1.0661,  ...,  1.6684,  1.1673,  1.5054],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 0.7954,  0.3562, -1.0966,  ...,  0.3562,  0.3562, -1.0966],\n         [ 1.5135,  0.6506, -0.9242,  ...,  1.0183,  0.6506, -0.9242],\n         [ 1.2565,  1.4745,  1.5637,  ...,  1.4422,  1.1184,  1.8025],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 0.9606,  0.9228,  0.3562,  ...,  0.6954, -1.0966, -1.0966],\n         [ 1.4504,  1.3445,  1.0183,  ...,  1.1267, -0.9242, -0.9242],\n         [ 1.7384,  1.6684,  2.0456,  ...,  1.7384,  1.4086,  2.0306],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 27720,
+          "repr_prefix": "{'x': tensor([[[ 1.0630,  0.9228,  0.2629,  ...,  0.5787,  0.8829,  1.1797],\n         [ 1.1267, -0.3993, -0.0922,  ..., -0.0922,  0.6506,  0.8918],\n         [ 1.4086,  2.1028,  0.6421,  ...,  1.2975,  1.5637,  1.3364],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[-1.0966,  0.3562,  0.3562,  ..., -1.0966, -1.0966,  0.2629],\n         [-0.9242,  0.5495,  0.6506,  ..., -0.9242, -0.9242,  0.6506],\n         [ 1.4086,  2.0889,  1.6684,  ...,  1.6684,  1.5637,  1.3364],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 1.5473,  1.6225,  1.2560,  ...,  1.2797,  1.5148,  1.5148],\n         [ 1.3445,  2.0682,  1.5432,  ...,  1.5432,  1.9242,  1.2648],\n         [ 1.0100,  1.5351,  1.1673,  ...,  1.1673,  1.0661,  0.5409],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 27721,
+          "repr_prefix": "{'x': tensor([[[ 1.3026,  0.9228,  1.3463,  ...,  0.6954,  0.8405,  0.1552],\n         [ 0.2947,  1.1756,  1.2215,  ...,  1.1267,  0.1257, -0.9242],\n         [ 1.4086,  1.0661,  0.7314,  ...,  0.5409,  1.6684,  1.4745],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 0.7472,  0.2629,  0.7954,  ...,  0.4385,  0.7472,  1.0630],\n         [ 1.2648,  0.2947,  1.2648,  ...,  0.4327,  1.1267,  1.6516],\n         [ 1.3364,  0.6421,  0.7314,  ...,  1.2975,  1.5054,  1.4086],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000]],\n\n        [[ 1.3672,  1.0630,  1.2560,  ...,  1.2560,  1.3672,  1.1238],\n         [ 1.8503,  1.0183,  1.0183,  ...,  1.5135,  1.5135,  1.0183],\n         [ 0.8834,  0.9493,  0.6421,  ...,  1.1673,  0.8834,  0.9493],\n         ...,\n         [ 0.0000,  0.0000,  0.0000,  ...,  0.0000,  0.0000,  0.0000],\n         [ 0",
+          "type": "dict"
+        }
+      ],
+      "repr_prefix": "<v5_p3_final_d6_p0_r2a_certified_loader.V5P3Dynamic70WindowDataset object at 0x7d58bba40050>",
+      "shape": null,
+      "type": "V5P3Dynamic70WindowDataset"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.root",
+      "length": null,
+      "repr_prefix": "PosixPath('/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70')",
+      "shape": null,
+      "type": "PosixPath"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.split",
+      "length": null,
+      "repr_prefix": "'validation'",
+      "shape": null,
+      "type": "str"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.window",
+      "length": null,
+      "repr_prefix": "32",
+      "shape": null,
+      "type": "int"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.stride",
+      "length": null,
+      "repr_prefix": "8",
+      "shape": null,
+      "type": "int"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.active_only",
+      "length": null,
+      "repr_prefix": "False",
+      "shape": null,
+      "type": "bool"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [
+        "P3AVA-K1-001_ATTACK",
+        "P3AVA-K1-001_CONTROL",
+        "P3AVA-K1-002_ATTACK",
+        "P3AVA-K1-002_CONTROL",
+        "P3AVA-K1-003_ATTACK",
+        "P3AVA-K1-003_CONTROL",
+        "P3AVA-K1-004_ATTACK",
+        "P3AVA-K1-004_CONTROL",
+        "P3AVA-K1-005_ATTACK",
+        "P3AVA-K1-005_CONTROL"
+      ],
+      "label": "dataset.records",
+      "length": 300,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [
+            "P3AVA-K1-001_ATTACK"
+          ],
+          "index": 0,
+          "repr_prefix": "{'active_attack_epochs': 773, 'case_id': 'P3AVA-K1-001', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', 'relative_path': 'runs/validation/P3AVA-K1-001_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-ATTACK', 'sha256': 'f4c24339451b5a2833fd55730dd54145e697377352df06ec2761005ee7d35848', 'split': 'validation', 'target_attack_flags': {'103': True, '111': True, '119': True, '127': True, '135': True, '143': True, '151': True, '159': True, '167': True, '175': True, '183': True, '191': True, '199': True, '207': True, '215': True, '223': True, '231': True, '239': True, '247': True, '255': True, '263': True, '271': True, '279': True, '287': True, '295': True, '303': True, '31': True, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': True, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': True, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': True, '551': True, '559': True, '567': True, '575",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3AVA-K1-001_CONTROL"
+          ],
+          "index": 1,
+          "repr_prefix": "{'active_attack_epochs': 0, 'case_id': 'P3AVA-K1-001', 'mode': 'control', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', 'relative_path': 'runs/validation/P3AVA-K1-001_CONTROL.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-CONTROL', 'sha256': '46d8f3247081c017ad2f5a8ba720e575f792f6641196262b9105a5936b5f3436', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': False, '279': False, '287': False, '295': False, '303': False, '31': False, '311': False, '319': False, '327': False, '335': False, '343': False, '351': False, '359': False, '367': False, '375': False, '383': False, '39': False, '391': False, '399': False, '407': False, '415': False, '423': False, '431': False, '439': False, '447': False, '455': False, '463': False, '47': False, '471': False, '479': False, '487': False, '495': False, '503': False, '511': False, '519': False, '527': False, '535': False, '543': Fa",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3AVA-K1-002_ATTACK"
+          ],
+          "index": 2,
+          "repr_prefix": "{'active_attack_epochs': 650, 'case_id': 'P3AVA-K1-002', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-002-S0T1-SEED740602', 'relative_path': 'runs/validation/P3AVA-K1-002_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-002-S0T1-SEED740602-ATTACK', 'sha256': 'bfd844b11f1fd3a8e9a00106e2dd01553147b79341c43482c09580f476fc155e', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': True, '135': True, '143': True, '151': True, '159': True, '167': True, '175': True, '183': True, '191': True, '199': True, '207': True, '215': True, '223': True, '231': True, '239': True, '247': True, '255': True, '263': True, '271': True, '279': True, '287': True, '295': True, '303': True, '31': False, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': False, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': False, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': False, '551': True, '559': True, '567': Tru",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3BVA-K1-001_ATTACK"
+          ],
+          "index": 150,
+          "repr_prefix": "{'active_attack_epochs': 350, 'case_id': 'P3BVA-K1-001', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3BVA-K1-001-S12T12-SEED741351', 'relative_path': 'runs/validation/P3BVA-K1-001_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3BVA-K1-001-S12T12-SEED741351-ATTACK', 'sha256': '25c0ef31944603dfd6d9bd231fd43ddadf0b8a12988a56d976571f9729ea60fc', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': False, '279': False, '287': False, '295': False, '303': False, '31': False, '311': False, '319': False, '327': False, '335': False, '343': False, '351': False, '359': False, '367': False, '375': False, '383': False, '39': False, '391': False, '399': False, '407': False, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': False, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': Fal",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3BVA-K4-019_ATTACK"
+          ],
+          "index": 298,
+          "repr_prefix": "{'active_attack_epochs': 250, 'case_id': 'P3BVA-K4-019', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425', 'relative_path': 'runs/validation/P3BVA-K4-019_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425-ATTACK', 'sha256': '2e7d579b01891eeb7fd3373d2174f2c60cebc070bcb21ed8001a0bce61fce05c', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': True, '279': True, '287': True, '295': True, '303': True, '31': False, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': False, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': False, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': False, '527': False, '535': False, '543'",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3BVA-K4-019_CONTROL"
+          ],
+          "index": 299,
+          "repr_prefix": "{'active_attack_epochs': 0, 'case_id': 'P3BVA-K4-019', 'mode': 'control', 'pair_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425', 'relative_path': 'runs/validation/P3BVA-K4-019_CONTROL.pt', 'run_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425-CONTROL', 'sha256': '3d67fba150619770a66f1e3bcea6b35c2696f29182cb943ecd87f2b07551d172', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': False, '279': False, '287': False, '295': False, '303': False, '31': False, '311': False, '319': False, '327': False, '335': False, '343': False, '351': False, '359': False, '367': False, '375': False, '383': False, '39': False, '391': False, '399': False, '407': False, '415': False, '423': False, '431': False, '439': False, '447': False, '455': False, '463': False, '47': False, '471': False, '479': False, '487': False, '495': False, '503': False, '511': False, '519': False, '",
+          "type": "dict"
+        }
+      ],
+      "repr_prefix": "[{'active_attack_epochs': 773, 'case_id': 'P3AVA-K1-001', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', 'relative_path': 'runs/validation/P3AVA-K1-001_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-ATTACK', 'sha256': 'f4c24339451b5a2833fd55730dd54145e697377352df06ec2761005ee7d35848', 'split': 'validation', 'target_attack_flags': {'103': True, '111': True, '119': True, '127': True, '135': True, '143': True, '151': True, '159': True, '167': True, '175': True, '183': True, '191': True, '199': True, '207': True, '215': True, '223': True, '231': True, '239': True, '247': True, '255': True, '263': True, '271': True, '279': True, '287': True, '295': True, '303': True, '31': True, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': True, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': True, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': True, '551': True, '559': True, '567': True, '575': True, '583': True, '591': True, '599': True, '607': True, '615': True, '623': True, '63': True, '631': True, '639': True, '647': True, '655': True, '663': True, '671': True, '679': True, '687': True, '695': True, '703': True, '71': True, '711': True, '719': True, '727': True, '735': True, '743': True, '751': True, '759': True, '767': True, '79': True, '87': True, '95': True}, 'tranche': 'A', '",
+      "shape": null,
+      "type": "list"
+    },
+    {
+      "dtype": "torch.float32",
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.mean",
+      "length": 1,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "tensor([[1.5696e+00, 1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00, 1.5426e+00,\n         1.2187e+00, 1.2347e+00, 1.2203e+00, 1.2319e+00, 4.1669e+00, 3.6437e+00,\n         3.6587e+00, 3.6388e+00, 3.6640e+00, 1.5696e+00, 1.2203e+00, 1.2319e+00,\n         1.2188e+00, 1.2347e+00, 4.1934e+00, 3.6388e+00, 3.6640e+00, 3.6437e+00,\n         3.6587e+00, 1.5426e+00, 1.2187e+00, 1.2347e+00, 1.2203e+00, 1.2319e+00,\n         1.5696e+00, 1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00, 1.5696e+00,\n         1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00, 1.9509e+00, 1.5418e+00,\n         1.5561e+00, 1.5398e+00, 1.5596e+00, 7.9035e-01, 6.3367e-01, 6.5179e-01,\n         6.3269e-01, 6.5248e-01, 1.3404e-02, 8.8486e-03, 8.9104e-03, 8.8046e-03,\n         8.9018e-03, 1.0264e-04, 5.8273e-05, 1.1694e-06, 5.2780e-05, 1.6026e-06,\n         0.0000e+00, 9.5887e-05, 5.8952e-05, 1.0524e-04, 6.5029e-05, 0.0000e+00,\n         0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00]])",
+          "type": "Tensor"
+        }
+      ],
+      "repr_prefix": "tensor([[[1.5696e+00, 1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00,\n          1.5426e+00, 1.2187e+00, 1.2347e+00, 1.2203e+00, 1.2319e+00,\n          4.1669e+00, 3.6437e+00, 3.6587e+00, 3.6388e+00, 3.6640e+00,\n          1.5696e+00, 1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00,\n          4.1934e+00, 3.6388e+00, 3.6640e+00, 3.6437e+00, 3.6587e+00,\n          1.5426e+00, 1.2187e+00, 1.2347e+00, 1.2203e+00, 1.2319e+00,\n          1.5696e+00, 1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00,\n          1.5696e+00, 1.2203e+00, 1.2319e+00, 1.2188e+00, 1.2347e+00,\n          1.9509e+00, 1.5418e+00, 1.5561e+00, 1.5398e+00, 1.5596e+00,\n          7.9035e-01, 6.3367e-01, 6.5179e-01, 6.3269e-01, 6.5248e-01,\n          1.3404e-02, 8.8486e-03, 8.9104e-03, 8.8046e-03, 8.9018e-03,\n          1.0264e-04, 5.8273e-05, 1.1694e-06, 5.2780e-05, 1.6026e-06,\n          0.0000e+00, 9.5887e-05, 5.8952e-05, 1.0524e-04, 6.5029e-05,\n          0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00, 0.0000e+00]]])",
+      "shape": [
+        1,
+        1,
+        70
+      ],
+      "type": "Tensor"
+    },
+    {
+      "dtype": "torch.float32",
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.std",
+      "length": 1,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "tensor([[1.4313e+00, 1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00, 1.4521e+00,\n         1.3202e+00, 1.3197e+00, 1.3204e+00, 1.3199e+00, 3.5477e+00, 3.5413e+00,\n         3.5452e+00, 3.5414e+00, 3.5443e+00, 1.4313e+00, 1.3204e+00, 1.3199e+00,\n         1.3202e+00, 1.3197e+00, 3.5342e+00, 3.5415e+00, 3.5443e+00, 3.5413e+00,\n         3.5452e+00, 1.4521e+00, 1.3202e+00, 1.3197e+00, 1.3204e+00, 1.3199e+00,\n         1.4313e+00, 1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00, 1.4313e+00,\n         1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00, 1.7382e+00, 1.6222e+00,\n         1.6233e+00, 1.6220e+00, 1.6233e+00, 6.7154e-01, 6.3684e-01, 6.4807e-01,\n         6.3669e-01, 6.4757e-01, 1.0418e-01, 8.4795e-02, 8.5266e-02, 8.4536e-02,\n         8.5183e-02, 1.2609e-02, 9.8072e-03, 1.1935e-03, 9.1491e-03, 1.4302e-03,\n         1.0000e-06, 1.0167e-02, 7.6839e-03, 1.0659e-02, 8.0555e-03, 1.0000e-06,\n         1.0000e-06, 1.0000e-06, 1.0000e-06, 1.0000e-06]])",
+          "type": "Tensor"
+        }
+      ],
+      "repr_prefix": "tensor([[[1.4313e+00, 1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00,\n          1.4521e+00, 1.3202e+00, 1.3197e+00, 1.3204e+00, 1.3199e+00,\n          3.5477e+00, 3.5413e+00, 3.5452e+00, 3.5414e+00, 3.5443e+00,\n          1.4313e+00, 1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00,\n          3.5342e+00, 3.5415e+00, 3.5443e+00, 3.5413e+00, 3.5452e+00,\n          1.4521e+00, 1.3202e+00, 1.3197e+00, 1.3204e+00, 1.3199e+00,\n          1.4313e+00, 1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00,\n          1.4313e+00, 1.3204e+00, 1.3199e+00, 1.3202e+00, 1.3197e+00,\n          1.7382e+00, 1.6222e+00, 1.6233e+00, 1.6220e+00, 1.6233e+00,\n          6.7154e-01, 6.3684e-01, 6.4807e-01, 6.3669e-01, 6.4757e-01,\n          1.0418e-01, 8.4795e-02, 8.5266e-02, 8.4536e-02, 8.5183e-02,\n          1.2609e-02, 9.8072e-03, 1.1935e-03, 9.1491e-03, 1.4302e-03,\n          1.0000e-06, 1.0167e-02, 7.6839e-03, 1.0659e-02, 8.0555e-03,\n          1.0000e-06, 1.0000e-06, 1.0000e-06, 1.0000e-06, 1.0000e-06]]])",
+      "shape": [
+        1,
+        1,
+        70
+      ],
+      "type": "Tensor"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.topology",
+      "length": 10,
+      "mapping_key_count": 10,
+      "mapping_key_repr_first": [
+        "'format_name'",
+        "'version'",
+        "'num_nodes'",
+        "'mesh_rows'",
+        "'mesh_cols'",
+        "'edge_index'",
+        "'directed_edge_count'",
+        "'undirected_edge_count'",
+        "'router_coordinates'",
+        "'physical_port_mask'"
+      ],
+      "repr_prefix": "{'format_name': 'V5_P3_FIXED_4X4_MESH_TOPOLOGY', 'version': 'V5-P3-1500-D70-AB-FINALIZER-V1', 'num_nodes': 16, 'mesh_rows': 4, 'mesh_cols': 4, 'edge_index': tensor([[ 0,  0,  1,  1,  1,  2,  2,  2,  3,  3,  4,  4,  4,  5,  5,  5,  5,  6,\n          6,  6,  6,  7,  7,  7,  8,  8,  8,  9,  9,  9,  9, 10, 10, 10, 10, 11,\n         11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15],\n        [ 1,  4,  2,  5,  0,  3,  6,  1,  7,  2,  0,  5,  8,  1,  6,  9,  4,  2,\n          7, 10,  5,  3, 11,  6,  4,  9, 12,  5, 10, 13,  8,  6, 11, 14,  9,  7,\n         15, 10,  8, 13,  9, 14, 12, 10, 15, 13, 11, 14]]), 'directed_edge_count': 48, 'undirected_edge_count': 24, 'router_coordinates': tensor([[0, 0],\n        [0, 1],\n        [0, 2],\n        [0, 3],\n        [1, 0],\n        [1, 1],\n        [1, 2],\n        [1, 3],\n        [2, 0],\n        [2, 1],\n        [2, 2],\n        [2, 3],\n        [3, 0],\n        [3, 1],\n        [3, 2],\n        [3, 3]]), 'physical_port_mask': tensor([[1, 1, 1, 0, 0, 1, 1, 1, 0, 0],\n        [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],\n        [1, 1, 1, 0, 1, 1, 1, 1, 0, 1],\n        [1, 1, 0, 0, 1, 1, 1, 0, 0, 1],\n        [1, 1, 1, 1, 0, 1, 1, 1, 1, 0],\n        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],\n        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],\n        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],\n        [1, 1, 1, 1, 0, 1, 1, 1, 1, 0],\n        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],\n        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],\n        [1, 1, 0, 1, 1, 1, 1, 0, 1, 1],\n        [1, 0, 1, 1, 0, 1, 0, 1, 1, 0],\n        [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],\n        [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],\n        [1, 0, 0, 1, 1, 1, 0, 0, 1, 1]], dt",
+      "shape": null,
+      "type": "dict"
+    },
+    {
+      "dtype": "torch.int64",
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.topology['edge_index']",
+      "length": 2,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "tensor([ 0,  0,  1,  1,  1,  2,  2,  2,  3,  3,  4,  4,  4,  5,  5,  5,  5,  6,\n         6,  6,  6,  7,  7,  7,  8,  8,  8,  9,  9,  9,  9, 10, 10, 10, 10, 11,\n        11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15])",
+          "type": "Tensor"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 1,
+          "repr_prefix": "tensor([ 1,  4,  2,  5,  0,  3,  6,  1,  7,  2,  0,  5,  8,  1,  6,  9,  4,  2,\n         7, 10,  5,  3, 11,  6,  4,  9, 12,  5, 10, 13,  8,  6, 11, 14,  9,  7,\n        15, 10,  8, 13,  9, 14, 12, 10, 15, 13, 11, 14])",
+          "type": "Tensor"
+        }
+      ],
+      "repr_prefix": "tensor([[ 0,  0,  1,  1,  1,  2,  2,  2,  3,  3,  4,  4,  4,  5,  5,  5,  5,  6,\n          6,  6,  6,  7,  7,  7,  8,  8,  8,  9,  9,  9,  9, 10, 10, 10, 10, 11,\n         11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15],\n        [ 1,  4,  2,  5,  0,  3,  6,  1,  7,  2,  0,  5,  8,  1,  6,  9,  4,  2,\n          7, 10,  5,  3, 11,  6,  4,  9, 12,  5, 10, 13,  8,  6, 11, 14,  9,  7,\n         15, 10,  8, 13,  9, 14, 12, 10, 15, 13, 11, 14]])",
+      "shape": [
+        2,
+        48
+      ],
+      "type": "Tensor"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.index",
+      "length": 27722,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "(0, 0, 31)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 1,
+          "repr_prefix": "(0, 8, 39)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 2,
+          "repr_prefix": "(0, 16, 47)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 13861,
+          "repr_prefix": "(149, 728, 759)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 27720,
+          "repr_prefix": "(299, 720, 751)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 27721,
+          "repr_prefix": "(299, 728, 759)",
+          "type": "tuple"
+        }
+      ],
+      "repr_prefix": "[(0, 0, 31), (0, 8, 39), (0, 16, 47), (0, 24, 55), (0, 32, 63), (0, 40, 71), (0, 48, 79), (0, 56, 87), (0, 64, 95), (0, 72, 103), (0, 80, 111), (0, 88, 119), (0, 96, 127), (0, 104, 135), (0, 112, 143), (0, 120, 151), (0, 128, 159), (0, 136, 167), (0, 144, 175), (0, 152, 183), (0, 160, 191), (0, 168, 199), (0, 176, 207), (0, 184, 215), (0, 192, 223), (0, 200, 231), (0, 208, 239), (0, 216, 247), (0, 224, 255), (0, 232, 263), (0, 240, 271), (0, 248, 279), (0, 256, 287), (0, 264, 295), (0, 272, 303), (0, 280, 311), (0, 288, 319), (0, 296, 327), (0, 304, 335), (0, 312, 343), (0, 320, 351), (0, 328, 359), (0, 336, 367), (0, 344, 375), (0, 352, 383), (0, 360, 391), (0, 368, 399), (0, 376, 407), (0, 384, 415), (0, 392, 423), (0, 400, 431), (0, 408, 439), (0, 416, 447), (0, 424, 455), (0, 432, 463), (0, 440, 471), (0, 448, 479), (0, 456, 487), (0, 464, 495), (0, 472, 503), (0, 480, 511), (0, 488, 519), (0, 496, 527), (0, 504, 535), (0, 512, 543), (0, 520, 551), (0, 528, 559), (0, 536, 567), (0, 544, 575), (0, 552, 583), (0, 560, 591), (0, 568, 599), (0, 576, 607), (0, 584, 615), (0, 592, 623), (0, 600, 631), (0, 608, 639), (0, 616, 647), (0, 624, 655), (0, 632, 663), (0, 640, 671), (0, 648, 679), (0, 656, 687), (0, 664, 695), (0, 672, 703), (0, 680, 711), (0, 688, 719), (0, 696, 727), (0, 704, 735), (0, 712, 743), (0, 720, 751), (0, 728, 759), (0, 736, 767), (1, 0, 31), (1, 8, 39), (1, 16, 47), (1, 24, 55), (1, 32, 63), (1, 40, 71), (1, 48, 79), (1, 56, 87), (1, 64, 95), (1, 72, 103), (1, 80, 111), (1, 88, 119), (1, 96, 127), (1, 104, 135), (1, 112, 143), (1, 120, 151), (1, 128, 159",
+      "shape": null,
+      "type": "list"
+    }
+  ],
+  "decision": {
+    "D6_R1_authorized": false,
+    "automatic_provenance_inference_performed": false,
+    "next_stage": "V5_P3_FINAL_D6_P0_R2B_EXACT_INDEX_SEMANTICS_RECONSTRUCTION",
+    "sealed_test_evaluation_authorized": false
+  },
+  "loader_constructor": {
+    "kwargs": {
+      "root": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70",
+      "split": "validation"
+    },
+    "signature": "(root, split, window=32, stride=8, active_only=False)"
+  },
+  "loader_source_analysis": {
+    "class_methods": [
+      {
+        "args": [
+          "self",
+          "root",
+          "split",
+          "window",
+          "stride",
+          "active_only"
+        ],
+        "end_lineno": 49,
+        "lineno": 18,
+        "name": "__init__"
+      },
+      {
+        "args": [
+          "path"
+        ],
+        "end_lineno": 54,
+        "lineno": 53,
+        "name": "_load"
+      },
+      {
+        "args": [
+          "self"
+        ],
+        "end_lineno": 57,
+        "lineno": 56,
+        "name": "__len__"
+      },
+      {
+        "args": [
+          "self",
+          "index"
+        ],
+        "end_lineno": 89,
+        "lineno": 59,
+        "name": "__getitem__"
+      }
+    ],
+    "keyword_lines": [
+      "0004: from pathlib import Path",
+      "0010: class V5P3Dynamic70WindowDataset(Dataset):",
+      "0011:     \"\"\"Final V5-P3 Dynamic70 windows for temporal CNN + GCN training.",
+      "0015:     to the final epoch of each window. Windows never cross run boundaries.",
+      "0018:     def __init__(self, root, split, window=32, stride=8, active_only=False):",
+      "0019:         self.root = Path(root).resolve()",
+      "0020:         self.split = \"test\" if str(split) in {\"sealed_test\", \"sealed-test\"} else str(split)",
+      "0021:         self.window = int(window)",
+      "0024:         if self.window <= 0 or self.stride <= 0:",
+      "0025:             raise ValueError(\"window and stride must be positive\")",
+      "0026:         manifest = json.loads((self.root / \"tensor_manifest.json\").read_text())",
+      "0027:         self.records = [item for item in manifest[\"runs\"] if item[\"split\"] == self.split]",
+      "0028:         if not self.records:",
+      "0029:             raise FileNotFoundError(f\"No runs for split {self.split!r}\")",
+      "0032:             map_location=\"cpu\",",
+      "0039:             map_location=\"cpu\",",
+      "0042:         self.index = []",
+      "0043:         for file_index, record in enumerate(self.records):",
+      "0044:             length = int(record[\"valid_epochs\"])",
+      "0045:             for start in range(0, length - self.window + 1, self.stride):",
+      "0046:                 target = start + self.window - 1",
+      "0047:                 if self.active_only and not bool(record[\"target_attack_flags\"].get(str(target), False)):",
+      "0049:                 self.index.append((file_index, start, target))",
+      "0053:     def _load(path):",
+      "0054:         return torch.load(path, map_location=\"cpu\", weights_only=False)",
+      "0057:         return len(self.index)",
+      "0059:     def __getitem__(self, index):",
+      "0060:         file_index, start, target = self.index[index]",
+      "0061:         record = self.records[file_index]",
+      "0062:         run = self._load(str(self.root / record[\"relative_path\"]))",
+      "0063:         stop = start + self.window",
+      "0064:         normalized = (run[\"x_log1p\"][start:stop] - self.mean) / self.std",
+      "0068:             \"physical_port_mask\": run[\"physical_port_mask\"],",
+      "0069:             \"edge_index\": self.topology[\"edge_index\"],",
+      "0070:             \"y_attack\": run[\"y_attack\"][target],",
+      "0071:             \"y_attacker_count\": run[\"y_attacker_count\"][target],",
+      "0072:             \"y_source\": run[\"y_source\"][target],",
+      "0073:             \"y_transit\": run[\"y_transit\"][target],",
+      "0074:             \"y_victim\": run[\"y_victim\"][target],",
+      "0075:             \"y_attack_path\": run[\"y_attack_path\"][target],",
+      "0076:             \"role_mask\": run[\"role_mask\"][target],",
+      "0077:             \"source_target_router\": run[\"source_target_router\"][target],",
+      "0078:             \"epoch_id\": run[\"epoch_id\"][target],",
+      "0079:             \"epoch_tick\": run.get(\"epoch_tick\", torch.full_like(run[\"epoch_id\"], -1))[target],",
+      "0080:             # Run identity belongs to tensor_manifest.json.  The stored",
+      "0082:             # does not require duplicating mode metadata inside every .pt.",
+      "0083:             \"case_id\": record[\"case_id\"],",
+      "0084:             \"pair_id\": record[\"pair_id\"],",
+      "0085:             \"run_id\": record[\"run_id\"],",
+      "0086:             \"mode\": record[\"mode\"],",
+      "0087:             \"window_start\": start,",
+      "0088:             \"window_target\": target,"
+    ],
+    "method_source_excerpts": {
+      "__getitem__": [
+        "0059:     def __getitem__(self, index):",
+        "0060:         file_index, start, target = self.index[index]",
+        "0061:         record = self.records[file_index]",
+        "0062:         run = self._load(str(self.root / record[\"relative_path\"]))",
+        "0063:         stop = start + self.window",
+        "0064:         normalized = (run[\"x_log1p\"][start:stop] - self.mean) / self.std",
+        "0065:         x = normalized.permute(1, 2, 0).contiguous()",
+        "0066:         return {",
+        "0067:             \"x\": x,",
+        "0068:             \"physical_port_mask\": run[\"physical_port_mask\"],",
+        "0069:             \"edge_index\": self.topology[\"edge_index\"],",
+        "0070:             \"y_attack\": run[\"y_attack\"][target],",
+        "0071:             \"y_attacker_count\": run[\"y_attacker_count\"][target],",
+        "0072:             \"y_source\": run[\"y_source\"][target],",
+        "0073:             \"y_transit\": run[\"y_transit\"][target],",
+        "0074:             \"y_victim\": run[\"y_victim\"][target],",
+        "0075:             \"y_attack_path\": run[\"y_attack_path\"][target],",
+        "0076:             \"role_mask\": run[\"role_mask\"][target],",
+        "0077:             \"source_target_router\": run[\"source_target_router\"][target],",
+        "0078:             \"epoch_id\": run[\"epoch_id\"][target],",
+        "0079:             \"epoch_tick\": run.get(\"epoch_tick\", torch.full_like(run[\"epoch_id\"], -1))[target],",
+        "0080:             # Run identity belongs to tensor_manifest.json.  The stored",
+        "0081:             # tensor contract intentionally contains model inputs/labels and",
+        "0082:             # does not require duplicating mode metadata inside every .pt.",
+        "0083:             \"case_id\": record[\"case_id\"],",
+        "0084:             \"pair_id\": record[\"pair_id\"],",
+        "0085:             \"run_id\": record[\"run_id\"],",
+        "0086:             \"mode\": record[\"mode\"],",
+        "0087:             \"window_start\": start,",
+        "0088:             \"window_target\": target,",
+        "0089:         }"
+      ],
+      "__init__": [
+        "0018:     def __init__(self, root, split, window=32, stride=8, active_only=False):",
+        "0019:         self.root = Path(root).resolve()",
+        "0020:         self.split = \"test\" if str(split) in {\"sealed_test\", \"sealed-test\"} else str(split)",
+        "0021:         self.window = int(window)",
+        "0022:         self.stride = int(stride)",
+        "0023:         self.active_only = bool(active_only)",
+        "0024:         if self.window <= 0 or self.stride <= 0:",
+        "0025:             raise ValueError(\"window and stride must be positive\")",
+        "0026:         manifest = json.loads((self.root / \"tensor_manifest.json\").read_text())",
+        "0027:         self.records = [item for item in manifest[\"runs\"] if item[\"split\"] == self.split]",
+        "0028:         if not self.records:",
+        "0029:             raise FileNotFoundError(f\"No runs for split {self.split!r}\")",
+        "0030:         normalization = torch.load(",
+        "0031:             self.root / \"normalization.pt\",",
+        "0032:             map_location=\"cpu\",",
+        "0033:             weights_only=False,",
+        "0034:         )",
+        "0035:         self.mean = normalization[\"mean\"].view(1, 1, 70)",
+        "0036:         self.std = normalization[\"std\"].view(1, 1, 70)",
+        "0037:         self.topology = torch.load(",
+        "0038:             self.root / \"topology.pt\",",
+        "0039:             map_location=\"cpu\",",
+        "0040:             weights_only=False,",
+        "0041:         )",
+        "0042:         self.index = []",
+        "0043:         for file_index, record in enumerate(self.records):",
+        "0044:             length = int(record[\"valid_epochs\"])",
+        "0045:             for start in range(0, length - self.window + 1, self.stride):",
+        "0046:                 target = start + self.window - 1",
+        "0047:                 if self.active_only and not bool(record[\"target_attack_flags\"].get(str(target), False)):",
+        "0048:                     continue",
+        "0049:                 self.index.append((file_index, start, target))"
+      ],
+      "__len__": [
+        "0056:     def __len__(self):",
+        "0057:         return len(self.index)"
+      ]
+    },
+    "source_line_count": 89
+  },
+  "scientific_boundary": {
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "row_provenance_frozen": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "diagnostic recovery of certified validation-loader indexing semantics; no provenance mapping is frozen here",
+  "stage": "V5_P3_FINAL_D6_P0_R2A_LOADER_INDEX_STRUCTURE_RECOVERY",
+  "status": "PASS",
+  "strong_index_provenance_clues": [
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.split",
+      "length": null,
+      "repr_prefix": "'validation'",
+      "shape": null,
+      "type": "str"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.window",
+      "length": null,
+      "repr_prefix": "32",
+      "shape": null,
+      "type": "int"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [
+        "P3AVA-K1-001_ATTACK",
+        "P3AVA-K1-001_CONTROL",
+        "P3AVA-K1-002_ATTACK",
+        "P3AVA-K1-002_CONTROL",
+        "P3AVA-K1-003_ATTACK",
+        "P3AVA-K1-003_CONTROL",
+        "P3AVA-K1-004_ATTACK",
+        "P3AVA-K1-004_CONTROL",
+        "P3AVA-K1-005_ATTACK",
+        "P3AVA-K1-005_CONTROL"
+      ],
+      "label": "dataset.records",
+      "length": 300,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [
+            "P3AVA-K1-001_ATTACK"
+          ],
+          "index": 0,
+          "repr_prefix": "{'active_attack_epochs': 773, 'case_id': 'P3AVA-K1-001', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', 'relative_path': 'runs/validation/P3AVA-K1-001_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-ATTACK', 'sha256': 'f4c24339451b5a2833fd55730dd54145e697377352df06ec2761005ee7d35848', 'split': 'validation', 'target_attack_flags': {'103': True, '111': True, '119': True, '127': True, '135': True, '143': True, '151': True, '159': True, '167': True, '175': True, '183': True, '191': True, '199': True, '207': True, '215': True, '223': True, '231': True, '239': True, '247': True, '255': True, '263': True, '271': True, '279': True, '287': True, '295': True, '303': True, '31': True, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': True, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': True, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': True, '551': True, '559': True, '567': True, '575",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3AVA-K1-001_CONTROL"
+          ],
+          "index": 1,
+          "repr_prefix": "{'active_attack_epochs': 0, 'case_id': 'P3AVA-K1-001', 'mode': 'control', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', 'relative_path': 'runs/validation/P3AVA-K1-001_CONTROL.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-CONTROL', 'sha256': '46d8f3247081c017ad2f5a8ba720e575f792f6641196262b9105a5936b5f3436', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': False, '279': False, '287': False, '295': False, '303': False, '31': False, '311': False, '319': False, '327': False, '335': False, '343': False, '351': False, '359': False, '367': False, '375': False, '383': False, '39': False, '391': False, '399': False, '407': False, '415': False, '423': False, '431': False, '439': False, '447': False, '455': False, '463': False, '47': False, '471': False, '479': False, '487': False, '495': False, '503': False, '511': False, '519': False, '527': False, '535': False, '543': Fa",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3AVA-K1-002_ATTACK"
+          ],
+          "index": 2,
+          "repr_prefix": "{'active_attack_epochs': 650, 'case_id': 'P3AVA-K1-002', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-002-S0T1-SEED740602', 'relative_path': 'runs/validation/P3AVA-K1-002_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-002-S0T1-SEED740602-ATTACK', 'sha256': 'bfd844b11f1fd3a8e9a00106e2dd01553147b79341c43482c09580f476fc155e', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': True, '135': True, '143': True, '151': True, '159': True, '167': True, '175': True, '183': True, '191': True, '199': True, '207': True, '215': True, '223': True, '231': True, '239': True, '247': True, '255': True, '263': True, '271': True, '279': True, '287': True, '295': True, '303': True, '31': False, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': False, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': False, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': False, '551': True, '559': True, '567': Tru",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3BVA-K1-001_ATTACK"
+          ],
+          "index": 150,
+          "repr_prefix": "{'active_attack_epochs': 350, 'case_id': 'P3BVA-K1-001', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3BVA-K1-001-S12T12-SEED741351', 'relative_path': 'runs/validation/P3BVA-K1-001_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3BVA-K1-001-S12T12-SEED741351-ATTACK', 'sha256': '25c0ef31944603dfd6d9bd231fd43ddadf0b8a12988a56d976571f9729ea60fc', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': False, '279': False, '287': False, '295': False, '303': False, '31': False, '311': False, '319': False, '327': False, '335': False, '343': False, '351': False, '359': False, '367': False, '375': False, '383': False, '39': False, '391': False, '399': False, '407': False, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': False, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': Fal",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3BVA-K4-019_ATTACK"
+          ],
+          "index": 298,
+          "repr_prefix": "{'active_attack_epochs': 250, 'case_id': 'P3BVA-K4-019', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425', 'relative_path': 'runs/validation/P3BVA-K4-019_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425-ATTACK', 'sha256': '2e7d579b01891eeb7fd3373d2174f2c60cebc070bcb21ed8001a0bce61fce05c', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': True, '279': True, '287': True, '295': True, '303': True, '31': False, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': False, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': False, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': False, '527': False, '535': False, '543'",
+          "type": "dict"
+        },
+        {
+          "explicit_validation_run_ids": [
+            "P3BVA-K4-019_CONTROL"
+          ],
+          "index": 299,
+          "repr_prefix": "{'active_attack_epochs': 0, 'case_id': 'P3BVA-K4-019', 'mode': 'control', 'pair_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425', 'relative_path': 'runs/validation/P3BVA-K4-019_CONTROL.pt', 'run_id': 'V5-P3-1500-D70-P3BVA-K4-019-S8T11-S11T8-S2T6-S12T0-SEED741425-CONTROL', 'sha256': '3d67fba150619770a66f1e3bcea6b35c2696f29182cb943ecd87f2b07551d172', 'split': 'validation', 'target_attack_flags': {'103': False, '111': False, '119': False, '127': False, '135': False, '143': False, '151': False, '159': False, '167': False, '175': False, '183': False, '191': False, '199': False, '207': False, '215': False, '223': False, '231': False, '239': False, '247': False, '255': False, '263': False, '271': False, '279': False, '287': False, '295': False, '303': False, '31': False, '311': False, '319': False, '327': False, '335': False, '343': False, '351': False, '359': False, '367': False, '375': False, '383': False, '39': False, '391': False, '399': False, '407': False, '415': False, '423': False, '431': False, '439': False, '447': False, '455': False, '463': False, '47': False, '471': False, '479': False, '487': False, '495': False, '503': False, '511': False, '519': False, '",
+          "type": "dict"
+        }
+      ],
+      "repr_prefix": "[{'active_attack_epochs': 773, 'case_id': 'P3AVA-K1-001', 'mode': 'attack', 'pair_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601', 'relative_path': 'runs/validation/P3AVA-K1-001_ATTACK.pt', 'run_id': 'V5-P3-1500-D70-P3AVA-K1-001-S2T2-SEED740601-ATTACK', 'sha256': 'f4c24339451b5a2833fd55730dd54145e697377352df06ec2761005ee7d35848', 'split': 'validation', 'target_attack_flags': {'103': True, '111': True, '119': True, '127': True, '135': True, '143': True, '151': True, '159': True, '167': True, '175': True, '183': True, '191': True, '199': True, '207': True, '215': True, '223': True, '231': True, '239': True, '247': True, '255': True, '263': True, '271': True, '279': True, '287': True, '295': True, '303': True, '31': True, '311': True, '319': True, '327': True, '335': True, '343': True, '351': True, '359': True, '367': True, '375': True, '383': True, '39': True, '391': True, '399': True, '407': True, '415': True, '423': True, '431': True, '439': True, '447': True, '455': True, '463': True, '47': True, '471': True, '479': True, '487': True, '495': True, '503': True, '511': True, '519': True, '527': True, '535': True, '543': True, '55': True, '551': True, '559': True, '567': True, '575': True, '583': True, '591': True, '599': True, '607': True, '615': True, '623': True, '63': True, '631': True, '639': True, '647': True, '655': True, '663': True, '671': True, '679': True, '687': True, '695': True, '703': True, '71': True, '711': True, '719': True, '727': True, '735': True, '743': True, '751': True, '759': True, '767': True, '79': True, '87': True, '95': True}, 'tranche': 'A', '",
+      "shape": null,
+      "type": "list"
+    },
+    {
+      "dtype": "torch.int64",
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.topology['edge_index']",
+      "length": 2,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "tensor([ 0,  0,  1,  1,  1,  2,  2,  2,  3,  3,  4,  4,  4,  5,  5,  5,  5,  6,\n         6,  6,  6,  7,  7,  7,  8,  8,  8,  9,  9,  9,  9, 10, 10, 10, 10, 11,\n        11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15])",
+          "type": "Tensor"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 1,
+          "repr_prefix": "tensor([ 1,  4,  2,  5,  0,  3,  6,  1,  7,  2,  0,  5,  8,  1,  6,  9,  4,  2,\n         7, 10,  5,  3, 11,  6,  4,  9, 12,  5, 10, 13,  8,  6, 11, 14,  9,  7,\n        15, 10,  8, 13,  9, 14, 12, 10, 15, 13, 11, 14])",
+          "type": "Tensor"
+        }
+      ],
+      "repr_prefix": "tensor([[ 0,  0,  1,  1,  1,  2,  2,  2,  3,  3,  4,  4,  4,  5,  5,  5,  5,  6,\n          6,  6,  6,  7,  7,  7,  8,  8,  8,  9,  9,  9,  9, 10, 10, 10, 10, 11,\n         11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15],\n        [ 1,  4,  2,  5,  0,  3,  6,  1,  7,  2,  0,  5,  8,  1,  6,  9,  4,  2,\n          7, 10,  5,  3, 11,  6,  4,  9, 12,  5, 10, 13,  8,  6, 11, 14,  9,  7,\n         15, 10,  8, 13,  9, 14, 12, 10, 15, 13, 11, 14]])",
+      "shape": [
+        2,
+        48
+      ],
+      "type": "Tensor"
+    },
+    {
+      "dtype": null,
+      "explicit_validation_run_ids_in_repr": [],
+      "label": "dataset.index",
+      "length": 27722,
+      "positional_samples": [
+        {
+          "explicit_validation_run_ids": [],
+          "index": 0,
+          "repr_prefix": "(0, 0, 31)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 1,
+          "repr_prefix": "(0, 8, 39)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 2,
+          "repr_prefix": "(0, 16, 47)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 13861,
+          "repr_prefix": "(149, 728, 759)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 27720,
+          "repr_prefix": "(299, 720, 751)",
+          "type": "tuple"
+        },
+        {
+          "explicit_validation_run_ids": [],
+          "index": 27721,
+          "repr_prefix": "(299, 728, 759)",
+          "type": "tuple"
+        }
+      ],
+      "repr_prefix": "[(0, 0, 31), (0, 8, 39), (0, 16, 47), (0, 24, 55), (0, 32, 63), (0, 40, 71), (0, 48, 79), (0, 56, 87), (0, 64, 95), (0, 72, 103), (0, 80, 111), (0, 88, 119), (0, 96, 127), (0, 104, 135), (0, 112, 143), (0, 120, 151), (0, 128, 159), (0, 136, 167), (0, 144, 175), (0, 152, 183), (0, 160, 191), (0, 168, 199), (0, 176, 207), (0, 184, 215), (0, 192, 223), (0, 200, 231), (0, 208, 239), (0, 216, 247), (0, 224, 255), (0, 232, 263), (0, 240, 271), (0, 248, 279), (0, 256, 287), (0, 264, 295), (0, 272, 303), (0, 280, 311), (0, 288, 319), (0, 296, 327), (0, 304, 335), (0, 312, 343), (0, 320, 351), (0, 328, 359), (0, 336, 367), (0, 344, 375), (0, 352, 383), (0, 360, 391), (0, 368, 399), (0, 376, 407), (0, 384, 415), (0, 392, 423), (0, 400, 431), (0, 408, 439), (0, 416, 447), (0, 424, 455), (0, 432, 463), (0, 440, 471), (0, 448, 479), (0, 456, 487), (0, 464, 495), (0, 472, 503), (0, 480, 511), (0, 488, 519), (0, 496, 527), (0, 504, 535), (0, 512, 543), (0, 520, 551), (0, 528, 559), (0, 536, 567), (0, 544, 575), (0, 552, 583), (0, 560, 591), (0, 568, 599), (0, 576, 607), (0, 584, 615), (0, 592, 623), (0, 600, 631), (0, 608, 639), (0, 616, 647), (0, 624, 655), (0, 632, 663), (0, 640, 671), (0, 648, 679), (0, 656, 687), (0, 664, 695), (0, 672, 703), (0, 680, 711), (0, 688, 719), (0, 696, 727), (0, 704, 735), (0, 712, 743), (0, 720, 751), (0, 728, 759), (0, 736, 767), (1, 0, 31), (1, 8, 39), (1, 16, 47), (1, 24, 55), (1, 32, 63), (1, 40, 71), (1, 48, 79), (1, 56, 87), (1, 64, 95), (1, 72, 103), (1, 80, 111), (1, 88, 119), (1, 96, 127), (1, 104, 135), (1, 112, 143), (1, 120, 151), (1, 128, 159",
+      "shape": null,
+      "type": "list"
+    }
+  ],
+  "validation_items": 27722,
+  "validation_named_filesystem_inventory": [
+    {
+      "bytes": 7617365,
+      "explicit_validation_run_ids_in_name": [],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/tensor_manifest.json"
+    },
+    {
+      "bytes": 898509,
+      "explicit_validation_run_ids_in_name": [],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/campaign_manifest.json"
+    },
+    {
+      "bytes": 30316,
+      "explicit_validation_run_ids_in_name": [],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/split_manifest.json"
+    },
+    {
+      "bytes": null,
+      "explicit_validation_run_ids_in_name": [],
+      "is_dir": true,
+      "is_file": false,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs"
+    },
+    {
+      "bytes": null,
+      "explicit_validation_run_ids_in_name": [],
+      "is_dir": true,
+      "is_file": false,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3730461,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3723691,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3672797,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3672797,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3742955,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3701833,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3737921,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3694507,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3713707,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3699179,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3704235,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3677533,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3730441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-019_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-019_ATTACK.pt"
+    },
+    {
+      "bytes": 3728427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3708971,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3689707,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-019_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-019_ATTACK.pt"
+    },
+    {
+      "bytes": 3776641,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3682441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3742977,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3699201,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3694507,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3675051,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3699243,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3720969,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3694465,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3752427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3694507,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3709035,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3747777,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3672797,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3694465,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3728449,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3728449,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3677597,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3682505,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3699243,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3708993,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3742955,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3711305,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3687325,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3728513,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3682441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3682525,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3781697,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3704299,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3730525,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3687241,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3713707,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3677533,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3759517,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3747713,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3713729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3733163,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3704257,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3704321,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3771905,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3730441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3687305,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3692041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3687305,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3747713,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3749789,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3728427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3677513,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3687241,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3713707,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-019_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-019_ATTACK.pt"
+    },
+    {
+      "bytes": 3742977,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3684971,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3716041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3687305,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3747713,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3687241,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3708971,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3701833,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3699243,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3737899,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3706653,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3725725,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3708993,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3680001,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3742977,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3696925,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3720969,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3728449,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3682505,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3771883,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3687325,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3749789,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3696989,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3713729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3728513,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3730461,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3730441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3699201,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3709035,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3706633,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3685035,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3716105,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3718721,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3737899,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3687325,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3687241,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3696905,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3771883,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3668041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3668041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3682441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3713793,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3694507,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3701833,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3696925,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3713771,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3711369,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3694443,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3677597,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3725769,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3677533,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3682441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-019_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-019_ATTACK.pt"
+    },
+    {
+      "bytes": 3733185,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3720989,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3713729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3709057,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3696905,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3668041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3668105,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3689729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-019_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-019_CONTROL.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3720989,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3689793,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3733163,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3725705,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3749769,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3706633,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3696925,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3689729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3713707,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3699179,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3706589,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3689793,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3711389,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-008_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-008_CONTROL.pt"
+    },
+    {
+      "bytes": 3776641,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3716041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3672777,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3754525,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3685057,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3689793,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3728427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3677513,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3687261,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3682441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3672777,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3728427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3747691,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3672777,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3711389,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3713729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-005_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-005_ATTACK.pt"
+    },
+    {
+      "bytes": 3793097,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3742955,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3687241,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3718721,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3718699,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-019_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-019_ATTACK.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3672777,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3682525,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3677533,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3776619,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3711389,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3742955,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3679979,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-018_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-018_ATTACK.pt"
+    },
+    {
+      "bytes": 3692061,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3694529,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3754505,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3696905,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3720989,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3682589,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3709057,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3706653,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3704321,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3694443,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3798045,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3677533,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3716061,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3687261,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3672797,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3672841,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3733163,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3742955,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-012_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-012_ATTACK.pt"
+    },
+    {
+      "bytes": 3704299,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3730441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3728513,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-016_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-016_CONTROL.pt"
+    },
+    {
+      "bytes": 3696905,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-019_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-019_ATTACK.pt"
+    },
+    {
+      "bytes": 3737921,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-012_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-012_CONTROL.pt"
+    },
+    {
+      "bytes": 3771883,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3682525,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3733185,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3658377,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-015_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-015_ATTACK.pt"
+    },
+    {
+      "bytes": 3704171,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3728427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3696969,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3737921,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3716125,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3742977,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3706653,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3692061,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3699265,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3728491,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-016_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-016_ATTACK.pt"
+    },
+    {
+      "bytes": 3696925,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-019_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-019_CONTROL.pt"
+    },
+    {
+      "bytes": 3716125,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3709057,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-004_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-004_CONTROL.pt"
+    },
+    {
+      "bytes": 3682441,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3704299,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3718721,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-019_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-019_CONTROL.pt"
+    },
+    {
+      "bytes": 3747713,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-002_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-002_CONTROL.pt"
+    },
+    {
+      "bytes": 3691997,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3696925,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-018_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-018_CONTROL.pt"
+    },
+    {
+      "bytes": 3687261,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-017_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-017_CONTROL.pt"
+    },
+    {
+      "bytes": 3699243,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3677513,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3737921,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3704299,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3725789,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3718657,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-019_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-019_CONTROL.pt"
+    },
+    {
+      "bytes": 3708971,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3716125,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3691977,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3723713,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3706653,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-019_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-019_CONTROL.pt"
+    },
+    {
+      "bytes": 3752449,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-009_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-009_CONTROL.pt"
+    },
+    {
+      "bytes": 3706589,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-005_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-005_CONTROL.pt"
+    },
+    {
+      "bytes": 3728449,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3728427,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-006_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-006_ATTACK.pt"
+    },
+    {
+      "bytes": 3677513,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3696925,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3711369,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3672797,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-013_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-013_CONTROL.pt"
+    },
+    {
+      "bytes": 3820417,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3723691,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3709057,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-014_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-014_CONTROL.pt"
+    },
+    {
+      "bytes": 3728449,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-011_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-011_CONTROL.pt"
+    },
+    {
+      "bytes": 3694443,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-010_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-010_ATTACK.pt"
+    },
+    {
+      "bytes": 3718635,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3725705,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3668125,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-015_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-015_CONTROL.pt"
+    },
+    {
+      "bytes": 3720989,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-006_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-006_CONTROL.pt"
+    },
+    {
+      "bytes": 3687261,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-003_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-003_CONTROL.pt"
+    },
+    {
+      "bytes": 3723713,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3689771,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3749769,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3716105,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-004_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-004_ATTACK.pt"
+    },
+    {
+      "bytes": 3668041,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-009_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-009_ATTACK.pt"
+    },
+    {
+      "bytes": 3672777,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3713729,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3704235,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-017_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-017_ATTACK.pt"
+    },
+    {
+      "bytes": 3684971,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3677533,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-007_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-007_CONTROL.pt"
+    },
+    {
+      "bytes": 3685035,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K4-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K4-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3677597,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-010_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-010_CONTROL.pt"
+    },
+    {
+      "bytes": 3749769,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-014_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-014_ATTACK.pt"
+    },
+    {
+      "bytes": 3677513,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K2-008_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K2-008_ATTACK.pt"
+    },
+    {
+      "bytes": 3742955,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K3-002_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K3-002_ATTACK.pt"
+    },
+    {
+      "bytes": 3687241,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K3-013_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K3-013_ATTACK.pt"
+    },
+    {
+      "bytes": 3815339,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-011_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-011_ATTACK.pt"
+    },
+    {
+      "bytes": 3677513,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K4-007_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K4-007_ATTACK.pt"
+    },
+    {
+      "bytes": 3737899,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K2-003_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K2-003_ATTACK.pt"
+    },
+    {
+      "bytes": 3708971,
+      "explicit_validation_run_ids_in_name": [
+        "P3BVA-K1-001_ATTACK"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3BVA-K1-001_ATTACK.pt"
+    },
+    {
+      "bytes": 3730461,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-001_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-001_CONTROL.pt"
+    },
+    {
+      "bytes": 3730461,
+      "explicit_validation_run_ids_in_name": [
+        "P3AVA-K1-019_CONTROL"
+      ],
+      "is_dir": false,
+      "is_file": true,
+      "path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70/runs/validation/P3AVA-K1-019_CONTROL.pt"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "decision": {
+    "alignment_policy_selected_and_frozen": true,
+    "next_stage": "V5_P3_FINAL_F0_TOTAL_SYSTEM_AND_ONE_SHOT_EVALUATOR_FREEZE",
+    "sealed_test_evaluation_authorized": false,
+    "selected_alignment_policy": "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+    "total_system_evaluator_freeze_authorized": true
+  },
+  "final_alignment_policy": {
+    "P2_suppressed_current_Raw_case": {
+      "behavior": "no confirmed system alarm and therefore no externally-actionable structured localization payload, even though current EPLR-V2 may be nonempty",
+      "condition": "P2_t == 0 AND Raw_t == 1"
+    },
+    "alignment_gap_case": {
+      "behavior": "copy the complete frozen same-run t-1 EPLR-V2 structured payload without rerunning or modifying the decoder",
+      "carried_fields": [
+        "effective_count",
+        "selected_source",
+        "selected_transit",
+        "selected_victim",
+        "selected_path",
+        "decoder_status",
+        "route_certified",
+        "route_count",
+        "selected_route_ids"
+      ],
+      "carry_horizon_windows": 1,
+      "certified_history": "Raw_(t-2),Raw_(t-1),Raw_t = 1,1,0",
+      "condition": "P2_t == 1 AND Raw_t == 0",
+      "cross_run_carry": false,
+      "future_information_used": false
+    },
+    "inactive_case": {
+      "condition": "P2_t == 0",
+      "externally_actionable_alarm": false,
+      "externally_actionable_localization": false
+    },
+    "normal_case": {
+      "behavior": "use current-window frozen EPLR-V2 structured payload",
+      "condition": "P2_t == 1 AND Raw_t == 1"
+    },
+    "policy_id": "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+    "status": "FROZEN"
+  },
+  "frozen_system_stack_after_D8_P3": {
+    "alarm_to_localization_alignment": "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+    "base_neural_graph_threshold": 0.5,
+    "cross_run_history_forbidden": true,
+    "run_boundary_reset": true,
+    "runtime_structured_decoder": "EPLR_V2",
+    "temporal_graph_alarm": "P2_2_OF_3_RAW_POSITIVES"
+  },
+  "independent_B_evidence": {
+    "L0_all_true_P2_alarm_all_count_role_exact": 0.8193047974719908,
+    "L0_true_gap_all_count_role_exact": 0.0,
+    "L1_all_true_P2_alarm_all_count_role_exact": 0.8273484630853203,
+    "L1_false_gap_nonempty_endpoint_payload_rate": 1.0,
+    "L1_false_gap_route_certified_payload_rate": 0.9285714285714286,
+    "L1_true_gap_all_count_role_exact": 0.8235294117647058,
+    "L1_true_gap_source_exact": 0.9411764705882353,
+    "L1_true_gap_victim_exact": 1.0,
+    "L2_all_true_P2_alarm_all_count_role_exact": 0.8273484630853203,
+    "L2_true_gap_all_count_role_exact": 0.8235294117647058,
+    "false_positive_gap_items": 42,
+    "gap_items": 76,
+    "interpretation": "L1 wins the prospectively frozen lexicographic rule because it ties L2 on true-gap all-count-and-role exactness and all-true-P2 structured exactness, ties on source exactness, then exceeds L2 on victim exactness. False-positive-gap exposure is reported transparently but enters later in the frozen ranking.",
+    "true_positive_gap_items": 34
+  },
+  "provenance": {
+    "D6_R2_lock_sha256": "7406c59a946b2a2e3d56fdc31f2ed22e258e955910f3f5821597e54c80788447",
+    "D7_R2_lock_sha256": "3389e99ff837d2b44e68025b0c8383deb711291a29e92ddf546c1e926ee29061",
+    "D8_P1_protocol_sha256": "e47df66da805241dcaf50af8e1c696a70cafd73f7e29724abe3c448f2c4165d6",
+    "D8_P2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d8_p2_b_only_p2_alarm_to_localization_alignment_candidate_evaluation/V5_P3_FINAL_D8_P2_B_ONLY_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_CANDIDATE_EVALUATION_LOCK.json",
+    "D8_P2_lock_sha256": "0eba92c9c37bb2c2c458b9b9ee73a92a47b69d3bc336b5fcf2c2e46b03c890f8",
+    "D8_P2_outputs": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d8_p2_b_only_p2_alarm_to_localization_alignment_candidate_evaluation/V5_P3_FINAL_D8_P2_B_ONLY_ALIGNMENT_CANDIDATE_OUTPUTS.npz",
+    "D8_P2_outputs_sha256": "8ff2055c2b7defdced6b7be9139c54d78f789726474a157263e236a274eccb11",
+    "D8_P2_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d8_p2_b_only_p2_alarm_to_localization_alignment_candidate_evaluation/V5_P3_FINAL_D8_P2_B_ONLY_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_CANDIDATE_EVALUATION_REPORT.json",
+    "D8_P2_report_sha256": "61abd5e12de1074e4d6af5a4249d46fb7e782985107f57424e34da8c6c3918af"
+  },
+  "remaining_before_sealed_test": {
+    "latency_accounting_contract_must_include": [
+      "observation window of 32 epochs",
+      "neural inference",
+      "P2 confirmation delay",
+      "EPLR-V2 software decode",
+      "one-window carry alignment when applicable",
+      "attack-onset first correct detection",
+      "stable correct detection"
+    ],
+    "one_shot_sealed_test_protocol_freeze_required": true,
+    "test_still_sealed": true,
+    "total_system_evaluator_freeze_required": true
+  },
+  "scientific_boundary": {
+    "alignment_candidate_re_evaluated": false,
+    "calibration_retuning_performed": false,
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "formal freeze of prospectively-selected B-only alarm-to-localization alignment winner",
+  "selection_governance": {
+    "candidate_protocol_frozen_before_B_results": true,
+    "design_audit": "A_only",
+    "eligible_candidates": [
+      "L0_CURRENT_WINDOW_ONLY",
+      "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+      "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW"
+    ],
+    "predeclared_rule_ranking": [
+      "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+      "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW",
+      "L0_CURRENT_WINDOW_ONLY"
+    ],
+    "predeclared_rule_winner": "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW",
+    "selection_authority": "B_only",
+    "selection_performed_by_this_review_stage": true
+  },
+  "stage": "V5_P3_FINAL_D8_P3_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_REVIEW_AND_FREEZE",
+  "status": "PASS"
+}

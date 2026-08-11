@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-08-08T00:30:50.698116+00:00",
+  "factors": {
+    "attacker_count": "ground-truth run-level K in {1,2,3,4}",
+    "onset_phase": "first post-onset decision epoch minus onset epoch; exact integer levels",
+    "path_complexity": {
+      "binning": "empirical tertile cutpoints using covariate distribution only; no latency outcomes",
+      "low_max": 5,
+      "measure": "constant ground-truth active-window path-mask cardinality per run",
+      "medium_max": 8
+    },
+    "victim_count": "constant ground-truth active-window victim-set cardinality per run"
+  },
+  "governance": {
+    "decoder": false,
+    "new_model_inference": false,
+    "sealed_test_access": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "models": {
+    "D1": "K robustness alarm-only comparator",
+    "M2": "K robustness structured comparator",
+    "M6": "K robustness structured comparator",
+    "M7": "all factors/all structured metrics"
+  },
+  "population": {
+    "left_censored_onset_excluded": 19,
+    "primary_onset_observed_runs": 131,
+    "sealed_test_access": false,
+    "split": "validation"
+  },
+  "response_semantics": {
+    "alarm_confirmation": "second decision in first 2-consecutive-positive streak",
+    "decision_unit": "1-based post-onset decision opportunity",
+    "epoch_unit": "dataset epoch; never called NoC cycle",
+    "q2_excess": "alarm decision number minus 2; event-only diagnostic",
+    "q_stable": 2,
+    "structured_response": "first exact set at/after confirmed q2 alarm",
+    "threshold": 0.5
+  },
+  "source_mc6_r2_lock": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r2_censor_aware_onset_response_latency/V5_P3_MC6_R2_CENSOR_AWARE_RESPONSE_LATENCY_LOCK.json",
+  "source_mc6_r2_lock_sha256": "11056f02eb79e9ad9f82ca8408e3225c391b25c9574343dba781becc7ceb2a11",
+  "stage": "V5_P3_MC6_R3_STRATIFIED_RESPONSE_ROBUSTNESS",
+  "statistics": {
+    "KM_median_bootstrap_CI": true,
+    "KM_p95": "report point estimate or NR; no forced finite value",
+    "Kaplan_Meier": true,
+    "RMST": true,
+    "RMST_common_tau_epochs": 128,
+    "Wilson_95CI_for_event_fraction": true,
+    "bootstrap_seed": 107,
+    "bootstrap_unit": "whole attack run",
+    "observed_event_fraction": "descriptive only",
+    "run_level_bootstrap_reps": 2000
+  },
+  "status": "PROSPECTIVE_FREEZE_BEFORE_STRATIFIED_RESULTS"
+}

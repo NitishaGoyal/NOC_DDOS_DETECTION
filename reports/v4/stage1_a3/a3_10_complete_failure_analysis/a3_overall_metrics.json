@@ -1,0 +1,282 @@
+{
+  "test": {
+    "corner_interior_gap": 0.19735080311586894,
+    "count": {
+      "attack_accuracy": 0.5532827209231703,
+      "attack_empty_prediction_fraction": 0.12144549043425448,
+      "attack_mae": 0.6622897054357728,
+      "mean_predicted_count_attack": 1.4677801396902521,
+      "mean_true_count_attack": 1.8666666666666667,
+      "overall_accuracy": 0.6628985727300334,
+      "predicted_histogram": [
+        155298,
+        164063,
+        19771,
+        37604,
+        18424
+      ],
+      "true_histogram": [
+        148185,
+        131720,
+        42809,
+        46102,
+        26344
+      ]
+    },
+    "fp_distance": {
+      "distance_histogram": {
+        "1": 25158,
+        "2": 22654,
+        "3": 13803,
+        "4": 5436,
+        "5": 2223,
+        "6": 652
+      },
+      "false_positive_instances": 69926,
+      "one_hop_fraction": 0.3597803392157424,
+      "within_two_hops_fraction": 0.6837513943311501
+    },
+    "graph": {
+      "accuracy": 0.8711888855147282,
+      "f1": 0.8932255120984236,
+      "fn": 34068,
+      "fp": 16833,
+      "fpr": 0.11359449336977427,
+      "precision": 0.9267302167667798,
+      "recall": 0.8620589128454297,
+      "threshold": 0.4599999999999999,
+      "tn": 131352,
+      "tp": 212907
+    },
+    "graph_probability": {
+      "auroc": 0.9457430932093904,
+      "average_precision": 0.9697151904100042,
+      "brier": 0.09532831609249115,
+      "ece": 0.056111579707794755
+    },
+    "learned_attack": {
+      "exact_localization": 0.47379694301042613,
+      "node_accuracy": 0.9396783581334143,
+      "node_f1": 0.7105528065328921,
+      "node_fn": 168441,
+      "node_fp": 69926,
+      "node_precision": 0.8071033502986166,
+      "node_recall": 0.6346340722745217,
+      "node_tn": 3420654,
+      "node_tp": 292579
+    },
+    "learned_overall": {
+      "exact_localization": 0.6132199615345683,
+      "node_accuracy": 0.9579323881465736,
+      "node_f1": 0.6875047730495705,
+      "node_fn": 168441,
+      "node_fp": 97534,
+      "node_precision": 0.7499852606808797,
+      "node_recall": 0.6346340722745217,
+      "node_tn": 5764006,
+      "node_tp": 292579
+    },
+    "oracle_attack": {
+      "exact_localization": 0.6910213584370888,
+      "node_accuracy": 0.948238182002227,
+      "node_f1": 0.7781636371524012,
+      "node_fn": 102271,
+      "node_fp": 102271,
+      "node_precision": 0.7781636371524012,
+      "node_recall": 0.7781636371524012,
+      "node_tn": 3388309,
+      "node_tp": 358749
+    },
+    "ranks": {
+      "all_attackers_top1_fraction": 0.4587549347099909,
+      "all_attackers_top2_fraction": 0.565045045045045,
+      "all_attackers_top4_fraction": 0.7718190100212572,
+      "attack_samples": 246975,
+      "attacker_instances": 461020,
+      "mean_rank": 2.9768578369701966,
+      "median_rank": 2.0,
+      "p90_rank": 8.0
+    },
+    "topology": {
+      "corner": {
+        "exact_localization": 0.7855248506933901,
+        "node_accuracy": 0.9341121317947161,
+        "node_f1": 0.5326152810501514,
+        "node_fn": 55915,
+        "node_fp": 48230,
+        "node_precision": 0.551640792042391,
+        "node_recall": 0.5148583575549868,
+        "node_tn": 1417155,
+        "node_tp": 59340,
+        "router_count": 4,
+        "topology": "corner"
+      },
+      "edge": {
+        "exact_localization": 0.7914439720619496,
+        "node_accuracy": 0.965657898066606,
+        "node_f1": 0.7481411884794283,
+        "node_fn": 75851,
+        "node_fp": 32714,
+        "node_precision": 0.8313354884279668,
+        "node_recall": 0.6800831730607011,
+        "node_tn": 2891470,
+        "node_tp": 161245,
+        "router_count": 8,
+        "topology": "edge"
+      },
+      "interior": {
+        "exact_localization": 0.8798967506832676,
+        "node_accuracy": 0.9663016246583662,
+        "node_f1": 0.7299660841660204,
+        "node_fn": 36675,
+        "node_fp": 16590,
+        "node_precision": 0.812720130046058,
+        "node_recall": 0.6625072467769098,
+        "node_tn": 1455381,
+        "node_tp": 71994,
+        "router_count": 4,
+        "topology": "interior"
+      }
+    }
+  },
+  "validation": {
+    "corner_interior_gap": 0.23774852442886507,
+    "count": {
+      "attack_accuracy": 0.5173094442757364,
+      "attack_empty_prediction_fraction": 0.11533491416350608,
+      "attack_mae": 0.7086308158505147,
+      "mean_predicted_count_attack": 1.5968398472582073,
+      "mean_true_count_attack": 1.9787234042553192,
+      "overall_accuracy": 0.6244770354381541,
+      "predicted_histogram": [
+        161412,
+        186377,
+        29862,
+        44646,
+        35430
+      ],
+      "true_histogram": [
+        148185,
+        154771,
+        52688,
+        55981,
+        46102
+      ]
+    },
+    "fp_distance": {
+      "distance_histogram": {
+        "1": 37504,
+        "2": 31748,
+        "3": 16435,
+        "4": 7950,
+        "5": 2305,
+        "6": 503
+      },
+      "false_positive_instances": 96445,
+      "one_hop_fraction": 0.38886411944631655,
+      "within_two_hops_fraction": 0.718046555031365
+    },
+    "graph": {
+      "accuracy": 0.8777502747270753,
+      "f1": 0.9054954408732176,
+      "fn": 41466,
+      "fp": 14491,
+      "fpr": 0.0977899247562169,
+      "precision": 0.9487165875703816,
+      "recall": 0.866040795756311,
+      "threshold": 0.4599999999999999,
+      "tn": 133694,
+      "tp": 268076
+    },
+    "graph_probability": {
+      "auroc": 0.949287882550759,
+      "average_precision": 0.9774712464256041,
+      "brier": 0.09281020611524582,
+      "ece": 0.07302708974735905
+    },
+    "learned_attack": {
+      "exact_localization": 0.43932002765375944,
+      "node_accuracy": 0.9371856242448521,
+      "node_f1": 0.7189170093251909,
+      "node_fn": 214654,
+      "node_fp": 96445,
+      "node_precision": 0.8048813548349245,
+      "node_recall": 0.6495433454476586,
+      "node_tn": 4243729,
+      "node_tp": 397844
+    },
+    "learned_overall": {
+      "exact_localization": 0.5717359911038676,
+      "node_accuracy": 0.953770342365646,
+      "node_f1": 0.7015059197342401,
+      "node_fn": 214654,
+      "node_fp": 123915,
+      "node_precision": 0.762505294590031,
+      "node_recall": 0.6495433454476586,
+      "node_tn": 6587219,
+      "node_tp": 397844
+    },
+    "oracle_attack": {
+      "exact_localization": 0.6960444786167951,
+      "node_accuracy": 0.9486879001880197,
+      "node_f1": 0.792544628717155,
+      "node_fn": 127066,
+      "node_fp": 127066,
+      "node_precision": 0.792544628717155,
+      "node_recall": 0.792544628717155,
+      "node_tn": 4213108,
+      "node_tp": 485432
+    },
+    "ranks": {
+      "all_attackers_top1_fraction": 0.43187677278043046,
+      "all_attackers_top2_fraction": 0.5639590104089267,
+      "all_attackers_top4_fraction": 0.7680153258685413,
+      "attack_samples": 309542,
+      "attacker_instances": 612498,
+      "mean_rank": 2.987268529856424,
+      "median_rank": 2.0,
+      "p90_rank": 8.0
+    },
+    "topology": {
+      "corner": {
+        "exact_localization": 0.7500759186152445,
+        "node_accuracy": 0.9257346628011893,
+        "node_f1": 0.536236975391804,
+        "node_fn": 72867,
+        "node_fp": 63106,
+        "node_precision": 0.5547040933691795,
+        "node_recall": 0.5189598489549637,
+        "node_tn": 1616324,
+        "node_tp": 78611,
+        "router_count": 4,
+        "topology": "corner"
+      },
+      "edge": {
+        "exact_localization": 0.7743436589932426,
+        "node_accuracy": 0.9639473965922919,
+        "node_f1": 0.750339454225685,
+        "node_fn": 91398,
+        "node_fp": 40620,
+        "node_precision": 0.8300461076290971,
+        "node_recall": 0.684599563813047,
+        "node_tn": 3331412,
+        "node_tp": 198386,
+        "router_count": 8,
+        "topology": "edge"
+      },
+      "interior": {
+        "exact_localization": 0.8655137232455153,
+        "node_accuracy": 0.9614519134768104,
+        "node_f1": 0.7739854998206691,
+        "node_fn": 50389,
+        "node_fp": 20189,
+        "node_precision": 0.856852151223801,
+        "node_recall": 0.7057336074190007,
+        "node_tn": 1639483,
+        "node_tp": 120847,
+        "router_count": 4,
+        "topology": "interior"
+      }
+    }
+  }
+}

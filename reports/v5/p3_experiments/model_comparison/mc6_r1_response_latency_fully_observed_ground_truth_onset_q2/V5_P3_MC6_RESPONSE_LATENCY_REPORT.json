@@ -1,0 +1,2414 @@
+{
+  "by_K_table": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/MC6_RESPONSE_LATENCY_BY_K_TABLE.csv",
+  "by_K_table_sha256": "4a2789d78109c6765c8bf4c512544b136506b36d0634d8b2bd880249361f88f6",
+  "classification": "validation_only_frozen_checkpoint_security_response_latency",
+  "completed_utc": "2026-08-07T22:23:48.004960+00:00",
+  "governance": {
+    "checkpoint_selection": false,
+    "decoder": false,
+    "persistence_other_than_frozen_q2_alarm": false,
+    "sealed_test_access": false,
+    "split": "validation",
+    "test_access": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "model_summaries": [
+    {
+      "eligible_attack_runs": 56,
+      "label": "M0",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 66.5,
+          "successful_runs": 56
+        },
+        "path": {
+          "coverage": 0.9107142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 71.5,
+          "successful_runs": 51
+        },
+        "source": {
+          "coverage": 0.9821428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 66.99999999999997,
+          "successful_runs": 55
+        },
+        "source_path_victim": {
+          "coverage": 0.9107142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 71.5,
+          "successful_runs": 51
+        },
+        "source_victim": {
+          "coverage": 0.9821428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 66.99999999999997,
+          "successful_runs": 55
+        },
+        "transit": {
+          "coverage": 0.8392857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 79.1,
+          "successful_runs": 47
+        },
+        "victim": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 66.5,
+          "successful_runs": 56
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.94999999999999,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 38.199999999999974,
+            "successful_runs": 15
+          },
+          "path": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 52.4,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 52.199999999999996,
+            "successful_runs": 15
+          },
+          "source_path_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 52.4,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 52.199999999999996,
+            "successful_runs": 15
+          },
+          "transit": {
+            "coverage": 0.8,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 92.34999999999994,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 38.199999999999974,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 12.0,
+            "p95_epochs": 27.199999999999974,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 15.5,
+            "p95_epochs": 47.899999999999984,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 12.0,
+            "p95_epochs": 28.99999999999998,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 16.5,
+            "p95_epochs": 47.899999999999984,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 12.0,
+            "p95_epochs": 28.99999999999998,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 14.0,
+            "p95_epochs": 59.14999999999999,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 12.0,
+            "p95_epochs": 27.199999999999974,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 14.0,
+            "p95_epochs": 121.74999999999994,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.7857142857142857,
+            "eligible_runs": 14,
+            "median_epochs": 15.0,
+            "p95_epochs": 71.5,
+            "successful_runs": 11
+          },
+          "source": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 15.0,
+            "p95_epochs": 73.99999999999997,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.7857142857142857,
+            "eligible_runs": 14,
+            "median_epochs": 15.0,
+            "p95_epochs": 71.5,
+            "successful_runs": 11
+          },
+          "source_victim": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 15.0,
+            "p95_epochs": 73.99999999999997,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 0.6428571428571429,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 78.8,
+            "successful_runs": 9
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 14.0,
+            "p95_epochs": 121.74999999999994,
+            "successful_runs": 14
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M1",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 0.9464285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 128.2,
+          "successful_runs": 53
+        },
+        "path": {
+          "coverage": 0.9285714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 20.5,
+          "p95_epochs": 188.39999999999995,
+          "successful_runs": 52
+        },
+        "source": {
+          "coverage": 0.9464285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 130.0,
+          "successful_runs": 53
+        },
+        "source_path_victim": {
+          "coverage": 0.9285714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 22.0,
+          "p95_epochs": 188.39999999999995,
+          "successful_runs": 52
+        },
+        "source_victim": {
+          "coverage": 0.9464285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 146.0,
+          "successful_runs": 53
+        },
+        "transit": {
+          "coverage": 0.8214285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 19.0,
+          "p95_epochs": 159.75,
+          "successful_runs": 46
+        },
+        "victim": {
+          "coverage": 0.9464285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 134.59999999999997,
+          "successful_runs": 53
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 86.1,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 138.69999999999996,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 86.1,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 138.69999999999996,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 86.1,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 86.1,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 86.1,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 11.0,
+            "p95_epochs": 30.35,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 13.0,
+            "p95_epochs": 99.79999999999995,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 11.0,
+            "p95_epochs": 30.35,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 99.79999999999995,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 13.0,
+            "p95_epochs": 30.35,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 0.8,
+            "eligible_runs": 15,
+            "median_epochs": 13.0,
+            "p95_epochs": 81.74999999999994,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 13.0,
+            "p95_epochs": 30.35,
+            "successful_runs": 14
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 144.79999999999984,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 24.0,
+            "p95_epochs": 168.59999999999997,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 26.0,
+            "p95_epochs": 144.79999999999984,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 33.0,
+            "p95_epochs": 168.59999999999997,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 26.0,
+            "p95_epochs": 144.79999999999984,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 0.6923076923076923,
+            "eligible_runs": 13,
+            "median_epochs": 27.0,
+            "p95_epochs": 165.19999999999996,
+            "successful_runs": 9
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 144.79999999999984,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 26.0,
+            "p95_epochs": 160.89999999999995,
+            "successful_runs": 12
+          },
+          "path": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 49.5,
+            "p95_epochs": 160.89999999999995,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 40.5,
+            "p95_epochs": 160.89999999999995,
+            "successful_runs": 12
+          },
+          "source_path_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 54.5,
+            "p95_epochs": 169.69999999999996,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 51.0,
+            "p95_epochs": 169.69999999999996,
+            "successful_runs": 12
+          },
+          "transit": {
+            "coverage": 0.7857142857142857,
+            "eligible_runs": 14,
+            "median_epochs": 85.0,
+            "p95_epochs": 192.0,
+            "successful_runs": 11
+          },
+          "victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 48.0,
+            "p95_epochs": 169.69999999999996,
+            "successful_runs": 12
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M2",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 12.0,
+          "p95_epochs": 46.75,
+          "successful_runs": 56
+        },
+        "path": {
+          "coverage": 0.9285714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 13.5,
+          "p95_epochs": 78.19999999999993,
+          "successful_runs": 52
+        },
+        "source": {
+          "coverage": 0.9642857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 12.0,
+          "p95_epochs": 56.699999999999875,
+          "successful_runs": 54
+        },
+        "source_path_victim": {
+          "coverage": 0.9107142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 79.0,
+          "successful_runs": 51
+        },
+        "source_victim": {
+          "coverage": 0.9642857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 12.0,
+          "p95_epochs": 56.699999999999875,
+          "successful_runs": 54
+        },
+        "transit": {
+          "coverage": 0.8571428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 76.85,
+          "successful_runs": 48
+        },
+        "victim": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 12.0,
+          "p95_epochs": 46.75,
+          "successful_runs": 56
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 53.19999999999998,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 38.09999999999995,
+            "successful_runs": 15
+          },
+          "path": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 42.399999999999984,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 38.09999999999995,
+            "successful_runs": 15
+          },
+          "source_path_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 44.999999999999986,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 42.99999999999996,
+            "successful_runs": 15
+          },
+          "transit": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 57.99999999999999,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 42.99999999999996,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 15.0,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 13.0,
+            "p95_epochs": 31.649999999999988,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 10.5,
+            "p95_epochs": 14.45,
+            "successful_runs": 12
+          },
+          "source_path_victim": {
+            "coverage": 0.8461538461538461,
+            "eligible_runs": 13,
+            "median_epochs": 12.0,
+            "p95_epochs": 32.5,
+            "successful_runs": 11
+          },
+          "source_victim": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 10.5,
+            "p95_epochs": 14.45,
+            "successful_runs": 12
+          },
+          "transit": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 14.0,
+            "p95_epochs": 77.84999999999998,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 15.0,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 12.5,
+            "p95_epochs": 49.44999999999999,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 16.5,
+            "p95_epochs": 113.14999999999996,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 62.59999999999995,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 18.0,
+            "p95_epochs": 113.14999999999996,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 62.59999999999995,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 0.5714285714285714,
+            "eligible_runs": 14,
+            "median_epochs": 12.5,
+            "p95_epochs": 75.44999999999999,
+            "successful_runs": 8
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 12.5,
+            "p95_epochs": 49.44999999999999,
+            "successful_runs": 14
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M3",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 0.8392857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 24.0,
+          "p95_epochs": 201.49999999999997,
+          "successful_runs": 47
+        },
+        "path": {
+          "coverage": 0.75,
+          "eligible_runs": 56,
+          "median_epochs": 36.5,
+          "p95_epochs": 207.0,
+          "successful_runs": 42
+        },
+        "source": {
+          "coverage": 0.8035714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 33.0,
+          "p95_epochs": 206.2,
+          "successful_runs": 45
+        },
+        "source_path_victim": {
+          "coverage": 0.6964285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 43.0,
+          "p95_epochs": 208.50000000000003,
+          "successful_runs": 39
+        },
+        "source_victim": {
+          "coverage": 0.7678571428571429,
+          "eligible_runs": 56,
+          "median_epochs": 33.0,
+          "p95_epochs": 206.6,
+          "successful_runs": 43
+        },
+        "transit": {
+          "coverage": 0.7321428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 40.0,
+          "p95_epochs": 203.0,
+          "successful_runs": 41
+        },
+        "victim": {
+          "coverage": 0.8035714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 24.0,
+          "p95_epochs": 202.0,
+          "successful_runs": 45
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          },
+          "path": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          },
+          "source_path_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          },
+          "transit": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 34.0,
+            "p95_epochs": 211.54999999999998,
+            "successful_runs": 12
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 36.5,
+            "p95_epochs": 194.0,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 36.5,
+            "p95_epochs": 209.8,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 36.5,
+            "p95_epochs": 215.39999999999998,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 36.5,
+            "p95_epochs": 215.39999999999998,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 36.5,
+            "p95_epochs": 215.39999999999998,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 0.8666666666666667,
+            "eligible_runs": 15,
+            "median_epochs": 40.0,
+            "p95_epochs": 202.2,
+            "successful_runs": 13
+          },
+          "victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 36.5,
+            "p95_epochs": 194.0,
+            "successful_runs": 14
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 0.8461538461538461,
+            "eligible_runs": 13,
+            "median_epochs": 24.0,
+            "p95_epochs": 97.0,
+            "successful_runs": 11
+          },
+          "path": {
+            "coverage": 0.7692307692307693,
+            "eligible_runs": 13,
+            "median_epochs": 33.0,
+            "p95_epochs": 118.69999999999996,
+            "successful_runs": 10
+          },
+          "source": {
+            "coverage": 0.7692307692307693,
+            "eligible_runs": 13,
+            "median_epochs": 32.5,
+            "p95_epochs": 97.3,
+            "successful_runs": 10
+          },
+          "source_path_victim": {
+            "coverage": 0.6153846153846154,
+            "eligible_runs": 13,
+            "median_epochs": 41.5,
+            "p95_epochs": 122.09999999999998,
+            "successful_runs": 8
+          },
+          "source_victim": {
+            "coverage": 0.7692307692307693,
+            "eligible_runs": 13,
+            "median_epochs": 32.5,
+            "p95_epochs": 97.3,
+            "successful_runs": 10
+          },
+          "transit": {
+            "coverage": 0.7692307692307693,
+            "eligible_runs": 13,
+            "median_epochs": 36.5,
+            "p95_epochs": 97.3,
+            "successful_runs": 10
+          },
+          "victim": {
+            "coverage": 0.8461538461538461,
+            "eligible_runs": 13,
+            "median_epochs": 24.0,
+            "p95_epochs": 97.0,
+            "successful_runs": 11
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 0.7142857142857143,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 121.34999999999998,
+            "successful_runs": 10
+          },
+          "path": {
+            "coverage": 0.42857142857142855,
+            "eligible_runs": 14,
+            "median_epochs": 30.5,
+            "p95_epochs": 105.0,
+            "successful_runs": 6
+          },
+          "source": {
+            "coverage": 0.6428571428571429,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 125.39999999999999,
+            "successful_runs": 9
+          },
+          "source_path_victim": {
+            "coverage": 0.35714285714285715,
+            "eligible_runs": 14,
+            "median_epochs": 93.0,
+            "p95_epochs": 141.0,
+            "successful_runs": 5
+          },
+          "source_victim": {
+            "coverage": 0.5,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 144.79999999999998,
+            "successful_runs": 7
+          },
+          "transit": {
+            "coverage": 0.42857142857142855,
+            "eligible_runs": 14,
+            "median_epochs": 41.5,
+            "p95_epochs": 101.0,
+            "successful_runs": 6
+          },
+          "victim": {
+            "coverage": 0.5714285714285714,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 138.49999999999997,
+            "successful_runs": 8
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M4",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 0.9821428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 170.09999999999997,
+          "successful_runs": 55
+        },
+        "path": {
+          "coverage": 0.8035714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 190.99999999999994,
+          "successful_runs": 45
+        },
+        "source": {
+          "coverage": 0.9107142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 153.5,
+          "successful_runs": 51
+        },
+        "source_path_victim": {
+          "coverage": 0.7142857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 118.99999999999977,
+          "successful_runs": 40
+        },
+        "source_victim": {
+          "coverage": 0.7857142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 110.00000000000003,
+          "successful_runs": 44
+        },
+        "transit": {
+          "coverage": 0.7142857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 14.5,
+          "p95_epochs": 199.7499999999999,
+          "successful_runs": 40
+        },
+        "victim": {
+          "coverage": 0.8392857142857143,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 157.19999999999987,
+          "successful_runs": 47
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 129.74999999999997,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 144.04999999999995,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 129.74999999999997,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 144.04999999999995,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 129.74999999999997,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 133.64999999999998,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 129.74999999999997,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 120.79999999999998,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.7333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 125.5,
+            "successful_runs": 11
+          },
+          "source": {
+            "coverage": 0.8666666666666667,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 89.19999999999987,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.7333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 125.5,
+            "successful_runs": 11
+          },
+          "source_victim": {
+            "coverage": 0.8666666666666667,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 89.19999999999987,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 0.8,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 123.59999999999998,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 120.79999999999998,
+            "successful_runs": 14
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 13.0,
+            "p95_epochs": 78.39999999999995,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 0.7692307692307693,
+            "eligible_runs": 13,
+            "median_epochs": 21.5,
+            "p95_epochs": 105.04999999999993,
+            "successful_runs": 10
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 85.99999999999994,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.6923076923076923,
+            "eligible_runs": 13,
+            "median_epochs": 23.0,
+            "p95_epochs": 67.2,
+            "successful_runs": 9
+          },
+          "source_victim": {
+            "coverage": 0.8461538461538461,
+            "eligible_runs": 13,
+            "median_epochs": 23.0,
+            "p95_epochs": 90.5,
+            "successful_runs": 11
+          },
+          "transit": {
+            "coverage": 0.6923076923076923,
+            "eligible_runs": 13,
+            "median_epochs": 56.0,
+            "p95_epochs": 180.59999999999997,
+            "successful_runs": 9
+          },
+          "victim": {
+            "coverage": 0.8461538461538461,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 81.5,
+            "successful_runs": 11
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 19.5,
+            "p95_epochs": 187.6,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.7142857142857143,
+            "eligible_runs": 14,
+            "median_epochs": 23.5,
+            "p95_epochs": 194.79999999999995,
+            "successful_runs": 10
+          },
+          "source": {
+            "coverage": 0.7857142857142857,
+            "eligible_runs": 14,
+            "median_epochs": 16.0,
+            "p95_epochs": 189.5,
+            "successful_runs": 11
+          },
+          "source_path_victim": {
+            "coverage": 0.42857142857142855,
+            "eligible_runs": 14,
+            "median_epochs": 26.5,
+            "p95_epochs": 71.75,
+            "successful_runs": 6
+          },
+          "source_victim": {
+            "coverage": 0.42857142857142855,
+            "eligible_runs": 14,
+            "median_epochs": 19.5,
+            "p95_epochs": 65.75,
+            "successful_runs": 6
+          },
+          "transit": {
+            "coverage": 0.35714285714285715,
+            "eligible_runs": 14,
+            "median_epochs": 26.0,
+            "p95_epochs": 227.0,
+            "successful_runs": 5
+          },
+          "victim": {
+            "coverage": 0.5714285714285714,
+            "eligible_runs": 14,
+            "median_epochs": 29.0,
+            "p95_epochs": 171.5,
+            "successful_runs": 8
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M5",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 0.9107142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 175.0,
+          "successful_runs": 51
+        },
+        "path": {
+          "coverage": 0.75,
+          "eligible_runs": 56,
+          "median_epochs": 29.0,
+          "p95_epochs": 177.7,
+          "successful_runs": 42
+        },
+        "source": {
+          "coverage": 0.7678571428571429,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 170.2,
+          "successful_runs": 43
+        },
+        "source_path_victim": {
+          "coverage": 0.5714285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 24.0,
+          "p95_epochs": 174.7,
+          "successful_runs": 32
+        },
+        "source_victim": {
+          "coverage": 0.6964285714285714,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 172.60000000000002,
+          "successful_runs": 39
+        },
+        "transit": {
+          "coverage": 0.5357142857142857,
+          "eligible_runs": 56,
+          "median_epochs": 16.5,
+          "p95_epochs": 175.29999999999998,
+          "successful_runs": 30
+        },
+        "victim": {
+          "coverage": 0.8035714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 176.79999999999998,
+          "successful_runs": 45
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          },
+          "path": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          },
+          "source_path_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          },
+          "transit": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          },
+          "victim": {
+            "coverage": 0.8571428571428571,
+            "eligible_runs": 14,
+            "median_epochs": 15.5,
+            "p95_epochs": 160.95,
+            "successful_runs": 12
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 12.5,
+            "p95_epochs": 60.79999999999999,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.8,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 63.59999999999998,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 12.5,
+            "p95_epochs": 60.79999999999999,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 0.8,
+            "eligible_runs": 15,
+            "median_epochs": 14.5,
+            "p95_epochs": 63.59999999999998,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 12.5,
+            "p95_epochs": 60.79999999999999,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 0.7333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 71.0,
+            "successful_runs": 11
+          },
+          "victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 12.5,
+            "p95_epochs": 60.79999999999999,
+            "successful_runs": 14
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 44.0,
+            "p95_epochs": 204.84999999999997,
+            "successful_runs": 12
+          },
+          "path": {
+            "coverage": 0.7692307692307693,
+            "eligible_runs": 13,
+            "median_epochs": 85.5,
+            "p95_epochs": 212.14999999999992,
+            "successful_runs": 10
+          },
+          "source": {
+            "coverage": 0.6153846153846154,
+            "eligible_runs": 13,
+            "median_epochs": 44.0,
+            "p95_epochs": 146.79999999999995,
+            "successful_runs": 8
+          },
+          "source_path_victim": {
+            "coverage": 0.38461538461538464,
+            "eligible_runs": 13,
+            "median_epochs": 82.0,
+            "p95_epochs": 157.6,
+            "successful_runs": 5
+          },
+          "source_victim": {
+            "coverage": 0.46153846153846156,
+            "eligible_runs": 13,
+            "median_epochs": 56.0,
+            "p95_epochs": 154.0,
+            "successful_runs": 6
+          },
+          "transit": {
+            "coverage": 0.38461538461538464,
+            "eligible_runs": 13,
+            "median_epochs": 74.0,
+            "p95_epochs": 158.6,
+            "successful_runs": 5
+          },
+          "victim": {
+            "coverage": 0.6923076923076923,
+            "eligible_runs": 13,
+            "median_epochs": 46.0,
+            "p95_epochs": 215.79999999999998,
+            "successful_runs": 9
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 44.0,
+            "p95_epochs": 191.59999999999985,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 0.5714285714285714,
+            "eligible_runs": 14,
+            "median_epochs": 40.5,
+            "p95_epochs": 215.09999999999997,
+            "successful_runs": 8
+          },
+          "source": {
+            "coverage": 0.6428571428571429,
+            "eligible_runs": 14,
+            "median_epochs": 44.0,
+            "p95_epochs": 210.39999999999998,
+            "successful_runs": 9
+          },
+          "source_path_victim": {
+            "coverage": 0.21428571428571427,
+            "eligible_runs": 14,
+            "median_epochs": 52.0,
+            "p95_epochs": 228.39999999999998,
+            "successful_runs": 3
+          },
+          "source_victim": {
+            "coverage": 0.5,
+            "eligible_runs": 14,
+            "median_epochs": 44.0,
+            "p95_epochs": 205.0999999999999,
+            "successful_runs": 7
+          },
+          "transit": {
+            "coverage": 0.14285714285714285,
+            "eligible_runs": 14,
+            "median_epochs": 130.5,
+            "p95_epochs": 236.25,
+            "successful_runs": 2
+          },
+          "victim": {
+            "coverage": 0.7142857142857143,
+            "eligible_runs": 14,
+            "median_epochs": 50.0,
+            "p95_epochs": 184.54999999999984,
+            "successful_runs": 10
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M6",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 79.25,
+          "successful_runs": 56
+        },
+        "path": {
+          "coverage": 0.9821428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 105.39999999999998,
+          "successful_runs": 55
+        },
+        "source": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 97.75,
+          "successful_runs": 56
+        },
+        "source_path_victim": {
+          "coverage": 0.9821428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 114.29999999999997,
+          "successful_runs": 55
+        },
+        "source_victim": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 97.75,
+          "successful_runs": 56
+        },
+        "transit": {
+          "coverage": 0.9285714285714286,
+          "eligible_runs": 56,
+          "median_epochs": 15.0,
+          "p95_epochs": 103.54999999999993,
+          "successful_runs": 52
+        },
+        "victim": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 79.25,
+          "successful_runs": 56
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 118.79999999999998,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 123.54999999999998,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 118.79999999999998,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 123.54999999999998,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 118.79999999999998,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 118.79999999999998,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 118.79999999999998,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 65.49999999999993,
+            "successful_runs": 15
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 96.99999999999997,
+            "successful_runs": 15
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 65.49999999999993,
+            "successful_runs": 15
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 96.99999999999997,
+            "successful_runs": 15
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 65.49999999999993,
+            "successful_runs": 15
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 93.79999999999995,
+            "successful_runs": 15
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 65.49999999999993,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 23.19999999999999,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 16.0,
+            "p95_epochs": 92.79999999999998,
+            "successful_runs": 13
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 32.399999999999984,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 20.0,
+            "p95_epochs": 110.59999999999997,
+            "successful_runs": 13
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 32.399999999999984,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 16.0,
+            "p95_epochs": 92.99999999999994,
+            "successful_runs": 13
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 23.19999999999999,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 65.05,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 23.0,
+            "p95_epochs": 106.19999999999986,
+            "successful_runs": 13
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 81.94999999999999,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 29.0,
+            "p95_epochs": 132.7999999999999,
+            "successful_runs": 13
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 81.94999999999999,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 0.7142857142857143,
+            "eligible_runs": 14,
+            "median_epochs": 26.0,
+            "p95_epochs": 62.65,
+            "successful_runs": 10
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 65.05,
+            "successful_runs": 14
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "M7",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 74.0,
+          "successful_runs": 56
+        },
+        "path": {
+          "coverage": 0.8928571428571429,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 92.84999999999998,
+          "successful_runs": 50
+        },
+        "source": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 74.0,
+          "successful_runs": 56
+        },
+        "source_path_victim": {
+          "coverage": 0.8928571428571429,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 92.84999999999998,
+          "successful_runs": 50
+        },
+        "source_victim": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 74.0,
+          "successful_runs": 56
+        },
+        "transit": {
+          "coverage": 0.8571428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 13.5,
+          "p95_epochs": 97.94999999999999,
+          "successful_runs": 48
+        },
+        "victim": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 13.0,
+          "p95_epochs": 74.0,
+          "successful_runs": 56
+        }
+      },
+      "scope": "multitask",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 79.49999999999999,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 50.09999999999991,
+            "successful_runs": 15
+          },
+          "path": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 54.44999999999997,
+            "successful_runs": 14
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 50.09999999999991,
+            "successful_runs": 15
+          },
+          "source_path_victim": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 54.44999999999997,
+            "successful_runs": 14
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 50.09999999999991,
+            "successful_runs": 15
+          },
+          "transit": {
+            "coverage": 0.9333333333333333,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 60.29999999999997,
+            "successful_runs": 14
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 14.0,
+            "p95_epochs": 50.09999999999991,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 14.0,
+            "p95_epochs": 75.19999999999996,
+            "successful_runs": 13
+          },
+          "path": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 76.34999999999998,
+            "successful_runs": 12
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 14.0,
+            "p95_epochs": 75.19999999999996,
+            "successful_runs": 13
+          },
+          "source_path_victim": {
+            "coverage": 0.9230769230769231,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 76.34999999999998,
+            "successful_runs": 12
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 14.0,
+            "p95_epochs": 75.19999999999996,
+            "successful_runs": 13
+          },
+          "transit": {
+            "coverage": 0.8461538461538461,
+            "eligible_runs": 13,
+            "median_epochs": 15.0,
+            "p95_epochs": 77.5,
+            "successful_runs": 11
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 14.0,
+            "p95_epochs": 75.19999999999996,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 54.64999999999999,
+            "successful_runs": 14
+          },
+          "path": {
+            "coverage": 0.7142857142857143,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 82.94999999999997,
+            "successful_runs": 10
+          },
+          "source": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 54.64999999999999,
+            "successful_runs": 14
+          },
+          "source_path_victim": {
+            "coverage": 0.7142857142857143,
+            "eligible_runs": 14,
+            "median_epochs": 16.0,
+            "p95_epochs": 82.94999999999997,
+            "successful_runs": 10
+          },
+          "source_victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 54.64999999999999,
+            "successful_runs": 14
+          },
+          "transit": {
+            "coverage": 0.6428571428571429,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 131.99999999999997,
+            "successful_runs": 9
+          },
+          "victim": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 54.64999999999999,
+            "successful_runs": 14
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "D0",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 14.0,
+          "p95_epochs": 114.0,
+          "successful_runs": 56
+        }
+      },
+      "scope": "graph_only",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 11.0,
+            "p95_epochs": 21.15,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 15.0,
+            "p95_epochs": 114.6,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 13.0,
+            "p95_epochs": 59.99999999999994,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 24.5,
+            "p95_epochs": 214.5,
+            "successful_runs": 14
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "D1",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 1.0,
+          "eligible_runs": 56,
+          "median_epochs": 11.5,
+          "p95_epochs": 28.25,
+          "successful_runs": 56
+        }
+      },
+      "scope": "graph_only",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 10.0,
+            "p95_epochs": 14.35,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 11.0,
+            "p95_epochs": 17.39999999999999,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 11.0,
+            "p95_epochs": 20.19999999999998,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 13.0,
+            "p95_epochs": 44.75,
+            "successful_runs": 14
+          }
+        }
+      }
+    },
+    {
+      "eligible_attack_runs": 56,
+      "label": "D2",
+      "metrics": {
+        "alarm_q2": {
+          "coverage": 0.9821428571428571,
+          "eligible_runs": 56,
+          "median_epochs": 23.0,
+          "p95_epochs": 224.3,
+          "successful_runs": 55
+        }
+      },
+      "scope": "graph_only",
+      "stratified_by_attacker_count": {
+        "1": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 14,
+            "median_epochs": 36.5,
+            "p95_epochs": 186.09999999999997,
+            "successful_runs": 14
+          }
+        },
+        "2": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 15,
+            "median_epochs": 31.0,
+            "p95_epochs": 212.39999999999998,
+            "successful_runs": 15
+          }
+        },
+        "3": {
+          "alarm_q2": {
+            "coverage": 1.0,
+            "eligible_runs": 13,
+            "median_epochs": 23.0,
+            "p95_epochs": 102.3999999999999,
+            "successful_runs": 13
+          }
+        },
+        "4": {
+          "alarm_q2": {
+            "coverage": 0.9285714285714286,
+            "eligible_runs": 14,
+            "median_epochs": 15.0,
+            "p95_epochs": 225.2,
+            "successful_runs": 13
+          }
+        }
+      }
+    }
+  ],
+  "onset_certification": {
+    "all_attack_runs_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/MC6_R1_ONSET_TERMINATION_CERTIFICATION_ALL_ATTACK_RUNS.csv",
+    "all_attack_runs_csv_sha256": "74023e794bc47bfbe68b5424d000bd0cba369b4712133a815ddf7aa080f3b52c",
+    "campaign_attack_start_tick_used": false,
+    "eligible_fraction": 0.37333333333333335,
+    "eligible_fully_observed_runs": 56,
+    "excluded_runs": 94,
+    "excluded_runs_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/MC6_R1_EXCLUDED_CENSORED_OR_DISCONTINUOUS_RUNS.csv",
+    "excluded_runs_csv_sha256": "42e2cbaee4e2bdb3b53e0faf250c27f42737a777c82db656a0d682e739cd9d6c",
+    "exclusion_policy": "left-censored, right-censored, discontinuous, or invalid-K runs excluded from primary observed-onset cohort and reported explicitly",
+    "source": "raw stored per-epoch y_attack ground truth",
+    "total_attack_runs": 150
+  },
+  "overall_table": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/MC6_RESPONSE_LATENCY_OVERALL_TABLE.csv",
+  "overall_table_sha256": "06ec19e220fbe1831e5f8e5d612e2e10d6b34f08a2a5f7cb91890790a3c480f0",
+  "paper_use": {
+    "do_not_call_epoch_latency_GPU_inference_latency": true,
+    "do_not_compare_directly_to_external_cycles_without_timebase_mapping": true,
+    "primary_alarm": "alarm_q2 operational confirmation",
+    "primary_structured": "exact set at/after q2-confirmed alarm",
+    "report_coverage_with_median_p95": true
+  },
+  "per_run_artifacts": {
+    "D0": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/D0_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "ab8201fd970ea5be4edb311b62039532e48ef0b334fd1e3302fe42f9fd85bb4b",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/D0_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "7e090b63ffd207e93bacddf8d54ff7d052d98d323e0c950e64479c9154706570"
+    },
+    "D1": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/D1_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "6a04b6e5638d623cc99768780b5d52b8af14dceef40c586dc811f75797b9c3ec",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/D1_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "5d416acf2fe439c84958f21315dbfd800dab6e1b96105d6d669b5cf8d1a212b3"
+    },
+    "D2": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/D2_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "50eba2078197fb232e947d80dcbb054d30b8ce7ee9cf7538bd680ef195ae08b0",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/D2_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "1e9f4a5e06ec0b0dab79641a7493f0545f3398c529a99b0e19d0bdfb41ced233"
+    },
+    "M0": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M0_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "2f18461b227899df5ee9be06df5ee210440e091c31cc5995e8065bda81d196a6",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M0_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "44e8d3693cdfcc565c6fef2b8bccae3773d6d9dac41c2b000ccc4190f8438807"
+    },
+    "M1": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M1_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "6bda607cdacb517ea1ad85053e272c6c8da0b25279ac13dfeff7718126e28dab",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M1_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "5d743ae616c85e0f96d902397022b62ffe9e6580a17e963daa210dc54e14d724"
+    },
+    "M2": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M2_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "658c687e7863966a256070916fe50aaa43d3f3af8e728fed21e48bba1622ce6e",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M2_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "a79d9290d9c868bb328494397debb78bd3778c8e8441fa7f609211507461d5b7"
+    },
+    "M3": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M3_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "bfbaa0fa670ce15ae007cadce4a34fc1aa4005cd79edd8bb1d0a2a9641aca3b1",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M3_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "2c6e334d1e3fe5ecaa8de52972ca08092bc234d2e1efb062b80a1771adc97619"
+    },
+    "M4": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M4_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "b02863f1a2d1130db4a108e2e014b8c6066a114a9989654dffcce8c0099adf88",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M4_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "2a4186b1998a2f803c13b5c7587d1c696c084e74cdd91b2fe69c348996856459"
+    },
+    "M5": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M5_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "f8a8dc66508eb7c06b346c67407eed340607292a8dcc95680d0e8d7d8bd7ec5f",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M5_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "33f3981ac6c3a5a02f40ccd9a5e0fcb03e18313e258e9ad6134d688bfac8a50f"
+    },
+    "M6": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M6_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "377302d718e01a128d08eb98c1ca2d5232af357ed3de3343ac3ec4df7f1d785d",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M6_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "5c831c418531dd9a57fdb9d72f6e6053af6fe3fd8cbc684ac8945e9623ab8194"
+    },
+    "M7": {
+      "per_run_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M7_PER_RUN_RESPONSE_LATENCY.csv",
+      "per_run_sha256": "a566f802b3a562021dbaec932d7e4301578c0e8655e96a4bee9de37fb94fb37b",
+      "summary_json": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/M7_RESPONSE_LATENCY_SUMMARY.json",
+      "summary_sha256": "b3b20707a572ab0e7f75b8ec352b34fdee089a7a7fdf4b83519821b002effb53"
+    }
+  },
+  "prediction_archives": {
+    "D0_binary_conv1d_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 18315,
+      "sha256": "f42d23412e1a0207db63a89988dbaaf3d28f9abbbb040b6ce227b8d0a0a67885"
+    },
+    "D1_binary_conv1d_graphconv_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 18018,
+      "sha256": "89f51adeb18224458e3a6bcb48ed417ce83c5c35897a2a39baa3e0e2d047209a"
+    },
+    "D2_xgboost_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 18673,
+      "sha256": "8869a50224948f239e3cc437bddcfc889d6489865b6d0373256d39bec144fea4"
+    },
+    "M0_conv1d_only_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1276629,
+      "sha256": "a53140e407118fa1c9ae9273b5f42f05f30947822426b39ee7cdb6103306c151"
+    },
+    "M1_gcn_only_temporal_mean_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1135434,
+      "sha256": "542d57922e88c93355f51b504de7186793e9c818ad0d9784912e1911e23f613b"
+    },
+    "M2_graphconv_only_temporal_mean_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1284628,
+      "sha256": "85796a3f345a4f3e59c15e4226a582debfca291ff84b6d8eecd76cce4bc3a02e"
+    },
+    "M3_conv1d_gcnconv_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1258882,
+      "sha256": "d06e418fdf9787ab7ff90ed3e2c62cf1074b24669765167515ac9493eb3e86d1"
+    },
+    "M4_conv1d_gatconv_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1294522,
+      "sha256": "52ef05ff701109523327a08135cd666f8f6a2fa3534c612c9e474be6d4663f39"
+    },
+    "M5_tcn_attention_gcn_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1274099,
+      "sha256": "958e60faeef8e838d938d154b00492ebee04aabb1ffb2c0f7ed057ca5ed66513"
+    },
+    "M6_lstm_graphconv_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1272644,
+      "sha256": "b388233717b2fb4ae06c1e48b0f165ce08bb1602bb824afdfcf58c206ae71438"
+    },
+    "M7_conv1d_graphconv_ATTACK_WINDOW_PROBABILITIES.npz": {
+      "bytes": 1271755,
+      "sha256": "cc8ca351dce3786b5041355e6c8e4ca86d766fbff9da0c6f106f7a787dfa448b"
+    },
+    "MC6_ATTACK_WINDOW_TRUTH_AND_METADATA.npz": {
+      "bytes": 50726,
+      "sha256": "9f144867116c508b49c615e2b8ae7f3e4db8ce215a8a910a9bfa81f609cb78c7"
+    }
+  },
+  "protocol_freeze": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc6_r1_response_latency_fully_observed_ground_truth_onset_q2/V5_P3_MC6_RESPONSE_LATENCY_PROTOCOL_FREEZE.json",
+  "protocol_freeze_sha256": "dcb00e786521d79e64f4a3e8d5de78c06ab96c61cb92491bbd06f1dc1a1e6032",
+  "stage": "V5_P3_MC6_R1_RESPONSE_LATENCY_FULLY_OBSERVED_COHORT",
+  "status": "PASS"
+}

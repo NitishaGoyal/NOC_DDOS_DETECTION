@@ -1,0 +1,65 @@
+{
+  "created_utc": "2026-08-05T16:06:44.567826+00:00",
+  "data_access": {
+    "A_test_data_loaded": false,
+    "A_validation_data_loaded": false,
+    "D1_validation_logits_loaded": false,
+    "D9_validation_outputs_loaded": false,
+    "model_loaded": false,
+    "training_data_loaded": false
+  },
+  "decision": {
+    "A_test_evaluation_authorized": false,
+    "A_validation_replay_authorized": false,
+    "EPLR_V2_implementation_frozen": true,
+    "H1_parallel_work_unaffected": true,
+    "Tranche_B_parallel_work_unaffected": true,
+    "independent_future_validation_required": true,
+    "next_stage": "V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE"
+  },
+  "implementation": {
+    "calibration_identical_to_D8": true,
+    "calibration_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_p3_eplr_v2_calibration.json",
+    "calibration_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+    "frozen_source_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d12_eplr_v2_implementation_and_synthetic_tests/V5_P3_EPLR_V2_FROZEN_IMPLEMENTATION.py",
+    "frozen_source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+    "installed_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_p3_eplr_v2.py",
+    "installed_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de"
+  },
+  "provenance": {
+    "D11_D12_test_matrix_sha256": "10ff6e7f369a7857a977d9cb9d1552ca5e8c4a41f093d35049743ac67e989c20",
+    "D11_future_protocol_sha256": "76d19c0fcba750e5575c703cbe53954d431b022c12bf3d73ebf11d1475761c21",
+    "D11_lock_sha256": "1c57b2814f75305db8cdbf2968d93f9f739b8a79fc1aa9fc57a2d6cad1419b72",
+    "D11_output_contract_sha256": "578f20edda2b865998da1ebcb53db31fa9edff450cc3654abb115c1075a151c1",
+    "D11_report_sha256": "8e4fc4768b3d49979253cf9ca9020d8dd63fe537b4153064bd4b99733853a3cf",
+    "D11_semantic_sha256": "01dc7490afbd6c75e763577f8fc95c85e2393677e90fef90a7e3e6fe83342057",
+    "D8_calibration_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+    "D8_lock_sha256": "193dd9b51d207bcc90f7ba466fb4c878342634684e0db878df4c48b7ca237ec2",
+    "EPLR_V1_source_sha256": "205e851dbdcd8939143568b164d1bd757152a44a5939d7674b10861a1bdd2d35",
+    "candidate_source_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+    "installed_script_sha256": "087dc69074646fdf9a14356127e7976e91cca416e8651d245bb024d293f59f91",
+    "route_library_sha256": "3ae860817ddef7cdbc0360057c51dc86908337b40b1df4c7df8fc2c8b82ea0d7"
+  },
+  "scope": "Implement and synthetic-test EPLR-V2 preserve-or-passthrough without loading any neural model, training split, Tranche-A validation artifact, or sealed test artifact.",
+  "stage": "V5_P3_D12_EPLR_V2_DETERMINISTIC_IMPLEMENTATION_AND_SYNTHETIC_TESTS",
+  "status": "PASS",
+  "tests": {
+    "failed": 0,
+    "passed": 9,
+    "results_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d12_eplr_v2_implementation_and_synthetic_tests/V5_P3_D12_EPLR_V2_SYNTHETIC_TEST_RESULTS.json",
+    "results_sha256": "009891ac9bf83990f0110765606638383f7fbf59082fe022f25543635e200da2",
+    "total": 9
+  },
+  "verified_invariants": {
+    "count_candidate_equals_Raw": true,
+    "cross_route_role_overlap_supported": true,
+    "deterministic": true,
+    "endpoint_repair_solver_called": false,
+    "graph_equals_Raw": true,
+    "shared_victims_supported": true,
+    "source_equals_Raw_on_all_active_rows": true,
+    "unresolved_all_role_masks_passthrough": true,
+    "unresolved_route_certificate_false": true,
+    "victim_equals_Raw_on_all_active_rows": true
+  }
+}

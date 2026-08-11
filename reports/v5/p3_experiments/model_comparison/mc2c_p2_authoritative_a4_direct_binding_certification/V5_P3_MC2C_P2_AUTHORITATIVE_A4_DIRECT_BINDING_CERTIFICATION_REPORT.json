@@ -1,0 +1,885 @@
+{
+  "a4_assignments": {
+    "COUNT_CLASS_VALUES": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "EXPECTED_PARAMETER_COUNT": 60553,
+    "EXPECTED_TRAIN_ITEMS": 110855,
+    "EXPECTED_VALIDATION_ITEMS": 13863,
+    "GuardedDataset": "wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset",
+    "SEED": 107,
+    "active_count_logits": "count_logits[active_mask]",
+    "active_count_targets": "count_targets[active_mask]",
+    "batch_size": "int(moved['x'].shape[0])",
+    "best_checkpoint_path": "output_dir / f'{STAGE}_BEST.pt'",
+    "best_checkpoint_sha256": "sha256_file(best_checkpoint_path)",
+    "best_epoch": "epoch",
+    "best_validation": "validation",
+    "canonical_model": "canonical_mod.P2TaskDGraphConvCount4(reference_b3, edge)",
+    "checkpoint": "torch.load(last_checkpoint_path, map_location=device, weights_only=False)",
+    "completed_epoch": "history[-1]['epoch']",
+    "count_accuracy": "float(np.mean(count_predictions == active_count_targets))",
+    "count_logits": "np.concatenate(accum['count_logits'])",
+    "count_loss": "F.cross_entropy(outputs['count_logits'][active], active_targets)",
+    "count_macro_f1": "multiclass_macro_f1(count_predictions, active_count_targets, COUNT_CLASS_VALUES)",
+    "count_predictions": "np.argmax(active_count_logits, axis=1) + 1",
+    "count_targets": "np.concatenate(accum['count_targets']).astype(np.int64)",
+    "current_lr": "float(optimizer.param_groups[0]['lr'])",
+    "epoch_start": "time.time()",
+    "first_train_sample": "train_dataset[0]",
+    "gradient_clip": "float(optimization['gradient_clip_norm'])",
+    "graph_pos_weight": "torch.tensor(float(loss_protocol['graph_positive_weight']), dtype=torch.float32, device=device)",
+    "item_count": 0,
+    "last_checkpoint_path": "output_dir / f'{STAGE}_LAST.pt'",
+    "maximum_epochs": "int(optimization['maximum_epochs'])",
+    "model": "model.to(device)",
+    "normalization_path": "data_root / 'normalization_tranche_a_provisional.pt'",
+    "optimizer": "torch.optim.AdamW(model.parameters(), lr=float(optimization['learning_rate']), betas=tuple(optimization['betas']), eps=float(optimization['epsilon']), weight_decay=float(optimization['weight_decay']))",
+    "parameter_count": "sum((parameter.numel() for parameter in model.parameters()))",
+    "patience_counter": 0,
+    "positive_count": "int((targets == 1).sum())",
+    "role_pos_weights": "{role: torch.tensor(float(loss_protocol['role_positive_weights'][role]), dtype=torch.float32, device=device) for role in ('source', 'transit', 'victim', 'path')}",
+    "sampler": "EpochShuffleSampler(len(train_dataset), SEED)",
+    "scheduler": "torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=scheduler_cfg['mode'], factor=float(scheduler_cfg['factor']), patience=int(scheduler_cfg['patience']), threshold=float(scheduler_cfg['threshold']), threshold_mode='abs', cooldown=0, min_lr=float(scheduler_cfg['minimum_lr']))",
+    "scheduler_cfg": "optimization['scheduler']",
+    "start_epoch": "int(checkpoint['epoch']) + 1",
+    "train_dataset": "GuardedDataset(data_root, 'train', active_only=False)",
+    "train_loader": "DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+    "train_metrics": "train_one_epoch(model, train_loader, optimizer, device, graph_pos_weight, role_pos_weights, gradient_clip)",
+    "validation": "validate(model, validation_loader, device, graph_pos_weight, role_pos_weights)",
+    "validation_dataset": "GuardedDataset(data_root, 'validation', active_only=False)",
+    "validation_loader": "DataLoader(validation_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+    "validation_loss": "float(validation['loss']['total'])"
+  },
+  "a4_calls": [
+    {
+      "call": "F.cross_entropy(outputs['count_logits'][active], active_targets)",
+      "function": "F.cross_entropy",
+      "line": 222
+    },
+    {
+      "call": "F.binary_cross_entropy_with_logits(outputs['attack_logits'], batch['graph'], pos_weight=graph_pos_weight)",
+      "function": "F.binary_cross_entropy_with_logits",
+      "line": 228
+    },
+    {
+      "call": "F.binary_cross_entropy_with_logits(outputs['source_logits'], batch['source'], pos_weight=role_pos_weights['source'])",
+      "function": "F.binary_cross_entropy_with_logits",
+      "line": 234
+    },
+    {
+      "call": "F.binary_cross_entropy_with_logits(outputs['transit_logits'], batch['transit'], pos_weight=role_pos_weights['transit'])",
+      "function": "F.binary_cross_entropy_with_logits",
+      "line": 239
+    },
+    {
+      "call": "F.binary_cross_entropy_with_logits(outputs['victim_logits'], batch['victim'], pos_weight=role_pos_weights['victim'])",
+      "function": "F.binary_cross_entropy_with_logits",
+      "line": 244
+    },
+    {
+      "call": "F.binary_cross_entropy_with_logits(outputs['path_logits'], batch['path'], pos_weight=role_pos_weights['path'])",
+      "function": "F.binary_cross_entropy_with_logits",
+      "line": 249
+    },
+    {
+      "call": "losses.values()",
+      "function": "losses.values",
+      "line": 255
+    },
+    {
+      "call": "losses.values()",
+      "function": "losses.values",
+      "line": 256
+    },
+    {
+      "call": "loss_totals.items()",
+      "function": "loss_totals.items",
+      "line": 495
+    },
+    {
+      "call": "model.train()",
+      "function": "model.train",
+      "line": 541
+    },
+    {
+      "call": "optimizer.zero_grad(set_to_none=True)",
+      "function": "optimizer.zero_grad",
+      "line": 547
+    },
+    {
+      "call": "model(moved['x'], moved['mask'])",
+      "function": "model",
+      "line": 548
+    },
+    {
+      "call": "compute_losses(outputs, moved, graph_pos_weight, role_pos_weights)",
+      "function": "compute_losses",
+      "line": 549
+    },
+    {
+      "call": "model.parameters()",
+      "function": "model.parameters",
+      "line": 557
+    },
+    {
+      "call": "optimizer.step()",
+      "function": "optimizer.step",
+      "line": 560
+    },
+    {
+      "call": "losses.items()",
+      "function": "losses.items",
+      "line": 564
+    },
+    {
+      "call": "loss_totals.items()",
+      "function": "loss_totals.items",
+      "line": 576
+    },
+    {
+      "call": "model.eval()",
+      "function": "model.eval",
+      "line": 587
+    },
+    {
+      "call": "model(moved['x'], moved['mask'])",
+      "function": "model",
+      "line": 608
+    },
+    {
+      "call": "compute_losses(outputs, moved, graph_pos_weight, role_pos_weights)",
+      "function": "compute_losses",
+      "line": 609
+    },
+    {
+      "call": "losses.items()",
+      "function": "losses.items",
+      "line": 617
+    },
+    {
+      "call": "GuardedDataset(data_root, 'test')",
+      "function": "GuardedDataset",
+      "line": 884
+    },
+    {
+      "call": "GuardedDataset(data_root, 'train', active_only=False)",
+      "function": "GuardedDataset",
+      "line": 892
+    },
+    {
+      "call": "GuardedDataset(data_root, 'validation', active_only=False)",
+      "function": "GuardedDataset",
+      "line": 897
+    },
+    {
+      "call": "EpochShuffleSampler(len(train_dataset), SEED)",
+      "function": "EpochShuffleSampler",
+      "line": 919
+    },
+    {
+      "call": "DataLoader(train_dataset, batch_size=batch_size, sampler=sampler, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+      "function": "DataLoader",
+      "line": 928
+    },
+    {
+      "call": "DataLoader(validation_dataset, batch_size=batch_size, shuffle=False, num_workers=num_workers, pin_memory=pin_memory, drop_last=False)",
+      "function": "DataLoader",
+      "line": 936
+    },
+    {
+      "call": "dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(canonical_model, seed=SEED)",
+      "function": "dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure",
+      "line": 961
+    },
+    {
+      "call": "model.parameters()",
+      "function": "model.parameters",
+      "line": 967
+    },
+    {
+      "call": "model.parameters()",
+      "function": "model.parameters",
+      "line": 976
+    },
+    {
+      "call": "model.to(device)",
+      "function": "model.to",
+      "line": 979
+    },
+    {
+      "call": "torch.optim.AdamW(model.parameters(), lr=float(optimization['learning_rate']), betas=tuple(optimization['betas']), eps=float(optimization['epsilon']), weight_decay=float(optimization['weight_decay']))",
+      "function": "torch.optim.AdamW",
+      "line": 1003
+    },
+    {
+      "call": "model.parameters()",
+      "function": "model.parameters",
+      "line": 1004
+    },
+    {
+      "call": "torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode=scheduler_cfg['mode'], factor=float(scheduler_cfg['factor']), patience=int(scheduler_cfg['patience']), threshold=float(scheduler_cfg['threshold']), threshold_mode='abs', cooldown=0, min_lr=float(scheduler_cfg['minimum_lr']))",
+      "function": "torch.optim.lr_scheduler.ReduceLROnPlateau",
+      "line": 1013
+    },
+    {
+      "call": "model.load_state_dict(checkpoint['model_state_dict'])",
+      "function": "model.load_state_dict",
+      "line": 1058
+    },
+    {
+      "call": "optimizer.load_state_dict(checkpoint['optimizer_state_dict'])",
+      "function": "optimizer.load_state_dict",
+      "line": 1061
+    },
+    {
+      "call": "scheduler.load_state_dict(checkpoint['scheduler_state_dict'])",
+      "function": "scheduler.load_state_dict",
+      "line": 1064
+    },
+    {
+      "call": "sampler.set_epoch(epoch)",
+      "function": "sampler.set_epoch",
+      "line": 1093
+    },
+    {
+      "call": "model.state_dict()",
+      "function": "model.state_dict",
+      "line": 1135
+    },
+    {
+      "call": "optimizer.state_dict()",
+      "function": "optimizer.state_dict",
+      "line": 1136
+    },
+    {
+      "call": "scheduler.state_dict()",
+      "function": "scheduler.state_dict",
+      "line": 1137
+    },
+    {
+      "call": "scheduler.step(score)",
+      "function": "scheduler.step",
+      "line": 1176
+    },
+    {
+      "call": "model.state_dict()",
+      "function": "model.state_dict",
+      "line": 1196
+    },
+    {
+      "call": "optimizer.state_dict()",
+      "function": "optimizer.state_dict",
+      "line": 1197
+    },
+    {
+      "call": "scheduler.state_dict()",
+      "function": "scheduler.state_dict",
+      "line": 1198
+    },
+    {
+      "call": "model.load_state_dict(checkpoint['model_state_dict'])",
+      "function": "model.load_state_dict",
+      "line": 1300
+    },
+    {
+      "call": "model.eval()",
+      "function": "model.eval",
+      "line": 1303
+    }
+  ],
+  "a4_functions": {
+    "binary_metrics": "def binary_metrics(\n    scores: np.ndarray,\n    targets: np.ndarray,\n    threshold: float = 0.5,\n) -> dict[str, float]:\n    scores = np.asarray(scores, dtype=np.float64).reshape(-1)\n    targets = np.asarray(targets, dtype=np.int64).reshape(-1)\n    predictions = (scores >= threshold).astype(np.int64)\n    tp = int(np.sum((predictions == 1) & (targets == 1)))\n    fp = int(np.sum((predictions == 1) & (targets == 0)))\n    fn = int(np.sum((predictions == 0) & (targets == 1)))\n    tn = int(np.sum((predictions == 0) & (targets == 0)))\n    precision = tp / (tp + fp) if tp + fp else 0.0\n    recall = tp / (tp + fn) if tp + fn else 0.0\n    f1 = (\n        2.0 * precision * recall / (precision + recall)\n        if precision + recall\n        else 0.0\n    )\n    accuracy = (tp + tn) / max(1, tp + fp + fn + tn)\n    fpr = fp / (fp + tn) if fp + tn else 0.0\n    return {\n        \"accuracy\": accuracy,\n        \"precision\": precision,\n        \"recall\": recall,\n        \"f1\": f1,\n        \"fpr\": fpr,\n        \"tp\": tp,\n        \"fp\": fp,\n        \"fn\": fn,\n        \"tn\": tn,\n    }",
+    "compute_losses": "def compute_losses(\n    outputs: dict[str, torch.Tensor],\n    batch: dict[str, torch.Tensor],\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, torch.Tensor]:\n    active = batch[\"graph\"] > 0.5\n    if not bool(active.any()):\n        count_loss = outputs[\"count_logits\"].sum() * 0.0\n    else:\n        active_targets = batch[\"count\"][active] - 1\n        if not bool(\n            ((active_targets >= 0) & (active_targets <= 3)).all()\n        ):\n            raise RuntimeError(\n                \"active Count4 targets are outside 0..3\"\n            )\n        count_loss = F.cross_entropy(\n            outputs[\"count_logits\"][active],\n            active_targets,\n        )\n\n    losses = {\n        \"graph\": F.binary_cross_entropy_with_logits(\n            outputs[\"attack_logits\"],\n            batch[\"graph\"],\n            pos_weight=graph_pos_weight,\n        ),\n        \"count\": count_loss,\n        \"source\": F.binary_cross_entropy_with_logits(\n            outputs[\"source_logits\"],\n            batch[\"source\"],\n            pos_weight=role_pos_weights[\"source\"],\n        ),\n        \"transit\": F.binary_cross_entropy_with_logits(\n            outputs[\"transit_logits\"],\n            batch[\"transit\"],\n            pos_weight=role_pos_weights[\"transit\"],\n        ),\n        \"victim\": F.binary_cross_entropy_with_logits(\n            outputs[\"victim_logits\"],\n            batch[\"victim\"],\n            pos_weight=role_pos_weights[\"victim\"],\n        ),\n        \"path\": F.binary_cross_entropy_with_logits(\n            outputs[\"path_logits\"],\n            batch[\"path\"],\n            pos_weight=role_pos_weights[\"path\"],\n        ),\n    }\n    losses[\"total\"] = sum(losses.values())\n    if not all(torch.isfinite(value) for value in losses.values()):\n        raise RuntimeError(\"non-finite multitask loss\")\n    return losses",
+    "main": "def main() -> int:\n    args = parse_args()\n    set_seed(SEED)\n\n    repo = Path(args.repo).expanduser().resolve()\n    data_link = Path(args.data_link).expanduser()\n    data_root = data_link.resolve()\n    output_dir = Path(args.output_dir).expanduser().resolve()\n    installed_script = Path(\n        args.installed_script\n    ).expanduser().resolve()\n    output_dir.mkdir(parents=True, exist_ok=True)\n\n    report_path = output_dir / f\"{STAGE}_REPORT.json\"\n    lock_path = output_dir / f\"{STAGE}_LOCK.json\"\n    history_path = output_dir / f\"{STAGE}_EPOCHS.csv\"\n    progress_path = output_dir / f\"{STAGE}_PROGRESS.json\"\n    best_checkpoint_path = output_dir / f\"{STAGE}_BEST.pt\"\n    last_checkpoint_path = output_dir / f\"{STAGE}_LAST.pt\"\n    complete_path = output_dir / f\"{STAGE}_COMPLETE\"\n    hold_path = output_dir / f\"{STAGE}_HOLD\"\n\n    a3_dir = (\n        repo\n        / \"reports/v5/p3_a3_preliminary_baseline_preflight\"\n    )\n    a3_report_path = (\n        a3_dir\n        / \"V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT_REPORT.json\"\n    )\n    a3_lock_path = (\n        a3_dir\n        / \"V5_P3_A3_PRELIMINARY_BASELINE_PREFLIGHT_LOCK.json\"\n    )\n    protocol_path = (\n        a3_dir\n        / \"V5_P3_TRANCHE_A_PRELIMINARY_BASELINE_PROTOCOL.json\"\n    )\n    wrapper_path = (\n        repo / \"src/data/v5_p3_tranche_a_guarded_loader.py\"\n    )\n    b3_path = (\n        repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"\n    )\n    canonical_path = (\n        repo / \"src/models/v5_p2_task_d_full_multitask_count4.py\"\n    )\n    dynamic_path = (\n        repo\n        / \"src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py\"\n    )\n    normalization_path = (\n        data_root / \"normalization_tranche_a_provisional.pt\"\n    )\n\n    required = [\n        a3_report_path,\n        a3_lock_path,\n        protocol_path,\n        wrapper_path,\n        b3_path,\n        canonical_path,\n        dynamic_path,\n        normalization_path,\n    ]\n    missing = [str(path) for path in required if not path.is_file()]\n    if missing:\n        raise RuntimeError(f\"required files missing: {missing}\")\n    if not data_link.is_symlink():\n        raise RuntimeError(\n            f\"dataset path is not canonical symlink: {data_link}\"\n        )\n\n    a3_report = json.loads(\n        a3_report_path.read_text(encoding=\"utf-8\")\n    )\n    a3_lock = json.loads(\n        a3_lock_path.read_text(encoding=\"utf-8\")\n    )\n    protocol = json.loads(\n        protocol_path.read_text(encoding=\"utf-8\")\n    )\n\n    if a3_report.get(\"status\") != \"PASS\":\n        raise RuntimeError(\"A3 report is not PASS\")\n    if not a3_report.get(\"decision\", {}).get(\n        \"preliminary_baseline_training_authorized\"\n    ):\n        raise RuntimeError(\n            \"A3 did not authorize preliminary training\"\n        )\n    if a3_report.get(\"sealed_test\", {}).get(\n        \"test_tensor_loaded\"\n    ):\n        raise RuntimeError(\n            \"A3 reports sealed-test tensor access\"\n        )\n    if a3_lock.get(\"report_sha256\") != sha256_file(\n        a3_report_path\n    ):\n        raise RuntimeError(\"A3 report/lock SHA mismatch\")\n    if a3_lock.get(\"protocol_sha256\") != sha256_file(\n        protocol_path\n    ):\n        raise RuntimeError(\"A3 protocol/lock SHA mismatch\")\n\n    # Process-wide guard against any test-run deserialization.\n    original_torch_load = torch.load\n    loaded_paths: list[str] = []\n\n    def guarded_torch_load(file, *load_args, **load_kwargs):\n        try:\n            candidate = Path(\n                os.fspath(file)\n            ).expanduser().resolve()\n        except TypeError:\n            candidate = None\n        if candidate is not None:\n            candidate_text = str(candidate)\n            loaded_paths.append(candidate_text)\n            if \"/runs/test/\" in candidate_text:\n                raise PermissionError(\n                    \"A4 sealed-test guard blocked \"\n                    f\"{candidate_text}\"\n                )\n        return original_torch_load(\n            file,\n            *load_args,\n            **load_kwargs,\n        )\n\n    torch.load = guarded_torch_load\n\n    wrapper_mod = import_module(\n        wrapper_path,\n        \"_v5_p3_a4_guarded_loader\",\n    )\n    b3_mod = import_module(b3_path, \"_v5_p3_a4_b3\")\n    canonical_mod = import_module(\n        canonical_path,\n        \"_v5_p3_a4_canonical\",\n    )\n    dynamic_mod = import_module(\n        dynamic_path,\n        \"_v5_p3_a4_dynamic70\",\n    )\n\n    GuardedDataset = (\n        wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset\n    )\n    SealedTestAccessError = (\n        wrapper_mod.SealedTestAccessError\n    )\n    try:\n        GuardedDataset(data_root, \"test\")\n    except SealedTestAccessError:\n        test_negative_check = True\n    else:\n        test_negative_check = False\n    if not test_negative_check:\n        raise RuntimeError(\"guard failed to reject A_test\")\n\n    train_dataset = GuardedDataset(\n        data_root,\n        \"train\",\n        active_only=False,\n    )\n    validation_dataset = GuardedDataset(\n        data_root,\n        \"validation\",\n        active_only=False,\n    )\n    if len(train_dataset) != EXPECTED_TRAIN_ITEMS:\n        raise RuntimeError(\n            f\"train length={len(train_dataset)}\"\n        )\n    if len(validation_dataset) != EXPECTED_VALIDATION_ITEMS:\n        raise RuntimeError(\n            f\"validation length={len(validation_dataset)}\"\n        )\n\n    optimization = protocol[\"optimization\"]\n    batch_size = int(optimization[\"batch_size\"])\n    num_workers = int(optimization[\"num_workers\"])\n    maximum_epochs = int(optimization[\"maximum_epochs\"])\n    gradient_clip = float(\n        optimization[\"gradient_clip_norm\"]\n    )\n\n    sampler = EpochShuffleSampler(\n        len(train_dataset),\n        SEED,\n    )\n    device = torch.device(\n        \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    )\n    pin_memory = device.type == \"cuda\"\n\n    train_loader = DataLoader(\n        train_dataset,\n        batch_size=batch_size,\n        sampler=sampler,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )\n    validation_loader = DataLoader(\n        validation_dataset,\n        batch_size=batch_size,\n        shuffle=False,\n        num_workers=num_workers,\n        pin_memory=pin_memory,\n        drop_last=False,\n    )\n\n    first_train_sample = train_dataset[0]\n    edge = torch.as_tensor(\n        first_train_sample[\"edge_index\"]\n    ).long()\n    if tuple(edge.shape) != (2, 48):\n        raise RuntimeError(\n            f\"edge shape={tuple(edge.shape)}\"\n        )\n\n    reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()\n    canonical_model = (\n        canonical_mod.P2TaskDGraphConvCount4(\n            reference_b3,\n            edge,\n        )\n    )\n    model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(\n        canonical_model,\n        seed=SEED,\n    )\n    parameter_count = sum(\n        parameter.numel()\n        for parameter in model.parameters()\n    )\n    if parameter_count != EXPECTED_PARAMETER_COUNT:\n        raise RuntimeError(\n            f\"parameter count={parameter_count}, \"\n            f\"expected={EXPECTED_PARAMETER_COUNT}\"\n        )\n    if not all(\n        parameter.requires_grad\n        for parameter in model.parameters()\n    ):\n        raise RuntimeError(\"some model parameters are frozen\")\n    model = model.to(device)\n\n    loss_protocol = protocol[\"loss\"]\n    graph_pos_weight = torch.tensor(\n        float(loss_protocol[\"graph_positive_weight\"]),\n        dtype=torch.float32,\n        device=device,\n    )\n    role_pos_weights = {\n        role: torch.tensor(\n            float(\n                loss_protocol[\"role_positive_weights\"][role]\n            ),\n            dtype=torch.float32,\n            device=device,\n        )\n        for role in (\n            \"source\",\n            \"transit\",\n            \"victim\",\n            \"path\",\n        )\n    }\n\n    optimizer = torch.optim.AdamW(\n        model.parameters(),\n        lr=float(optimization[\"learning_rate\"]),\n        betas=tuple(optimization[\"betas\"]),\n        eps=float(optimization[\"epsilon\"]),\n        weight_decay=float(\n            optimization[\"weight_decay\"]\n        ),\n    )\n    scheduler_cfg = optimization[\"scheduler\"]\n    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(\n        optimizer,\n        mode=scheduler_cfg[\"mode\"],\n        factor=float(scheduler_cfg[\"factor\"]),\n        patience=int(scheduler_cfg[\"patience\"]),\n        threshold=float(scheduler_cfg[\"threshold\"]),\n        threshold_mode=\"abs\",\n        cooldown=0,\n        min_lr=float(scheduler_cfg[\"minimum_lr\"]),\n    )\n\n    history: list[dict[str, Any]] = []\n    start_epoch = 1\n    best_rank = None\n    best_epoch = None\n    best_validation = None\n    best_checkpoint_sha256 = None\n    best_early_stop_score = float(\"-inf\")\n    patience_counter = 0\n    stopped_early = False\n    resumed = False\n\n    if last_checkpoint_path.is_file():\n        checkpoint = torch.load(\n            last_checkpoint_path,\n            map_location=device,\n            weights_only=False,\n        )\n        expected_provenance = {\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n        }\n        for key, expected in expected_provenance.items():\n            if checkpoint.get(key) != expected:\n                raise RuntimeError(\n                    f\"resume provenance mismatch for {key}\"\n                )\n        model.load_state_dict(\n            checkpoint[\"model_state_dict\"]\n        )\n        optimizer.load_state_dict(\n            checkpoint[\"optimizer_state_dict\"]\n        )\n        scheduler.load_state_dict(\n            checkpoint[\"scheduler_state_dict\"]\n        )\n        start_epoch = int(checkpoint[\"epoch\"]) + 1\n        best_rank = checkpoint[\"best_rank\"]\n        best_epoch = checkpoint[\"best_epoch\"]\n        best_validation = checkpoint[\"best_validation\"]\n        best_checkpoint_sha256 = checkpoint[\n            \"best_checkpoint_sha256\"\n        ]\n        best_early_stop_score = float(\n            checkpoint[\"best_early_stop_score\"]\n        )\n        patience_counter = int(\n            checkpoint[\"patience_counter\"]\n        )\n        history = checkpoint[\"history\"]\n        resumed = True\n        print(\n            f\"resume_from_epoch={start_epoch - 1}; \"\n            f\"next_epoch={start_epoch}\"\n        )\n\n    run_start = time.time()\n    if device.type == \"cuda\":\n        torch.cuda.reset_peak_memory_stats(device)\n\n    for epoch in range(start_epoch, maximum_epochs + 1):\n        epoch_start = time.time()\n        sampler.set_epoch(epoch)\n        current_lr = float(\n            optimizer.param_groups[0][\"lr\"]\n        )\n\n        train_metrics = train_one_epoch(\n            model,\n            train_loader,\n            optimizer,\n            device,\n            graph_pos_weight,\n            role_pos_weights,\n            gradient_clip,\n        )\n        validation = validate(\n            model,\n            validation_loader,\n            device,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n\n        score = float(validation[\"selection_score\"])\n        validation_loss = float(\n            validation[\"loss\"][\"total\"]\n        )\n        rank = (\n            score,\n            -validation_loss,\n            -epoch,\n        )\n        is_best = best_rank is None or rank > tuple(best_rank)\n\n        if is_best:\n            best_rank = list(rank)\n            best_epoch = epoch\n            best_validation = validation\n            best_payload = {\n                \"stage\": STAGE,\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"epoch\": epoch,\n                \"model_state_dict\": model.state_dict(),\n                \"optimizer_state_dict\": optimizer.state_dict(),\n                \"scheduler_state_dict\": scheduler.state_dict(),\n                \"validation_metrics\": validation,\n                \"parameter_count\": parameter_count,\n                \"protocol_sha256\": sha256_file(\n                    protocol_path\n                ),\n                \"a3_report_sha256\": sha256_file(\n                    a3_report_path\n                ),\n                \"dynamic70_model_sha256\": sha256_file(\n                    dynamic_path\n                ),\n                \"guarded_loader_sha256\": sha256_file(\n                    wrapper_path\n                ),\n                \"normalization_sha256\": sha256_file(\n                    normalization_path\n                ),\n                \"threshold_tuning_performed\": False,\n                \"test_tensor_loaded\": False,\n            }\n            atomic_torch_save(\n                best_payload,\n                best_checkpoint_path,\n            )\n            best_checkpoint_sha256 = sha256_file(\n                best_checkpoint_path\n            )\n\n        if score > best_early_stop_score + float(\n            optimization[\"early_stopping\"][\n                \"minimum_improvement\"\n            ]\n        ):\n            best_early_stop_score = score\n            patience_counter = 0\n        else:\n            patience_counter += 1\n\n        scheduler.step(score)\n\n        row = flatten_history_row(\n            epoch=epoch,\n            learning_rate=current_lr,\n            train_metrics=train_metrics,\n            validation=validation,\n            elapsed_seconds=time.time() - epoch_start,\n            best_epoch=best_epoch,\n            patience_counter=patience_counter,\n            is_best=is_best,\n        )\n        history.append(row)\n        write_csv(history_path, history)\n\n        last_payload = {\n            \"stage\": STAGE,\n            \"campaign_label\": CAMPAIGN_LABEL,\n            \"seed\": SEED,\n            \"epoch\": epoch,\n            \"model_state_dict\": model.state_dict(),\n            \"optimizer_state_dict\": optimizer.state_dict(),\n            \"scheduler_state_dict\": scheduler.state_dict(),\n            \"best_rank\": best_rank,\n            \"best_epoch\": best_epoch,\n            \"best_validation\": best_validation,\n            \"best_checkpoint_sha256\": (\n                best_checkpoint_sha256\n            ),\n            \"best_early_stop_score\": (\n                best_early_stop_score\n            ),\n            \"patience_counter\": patience_counter,\n            \"history\": history,\n            \"protocol_sha256\": sha256_file(protocol_path),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"threshold_tuning_performed\": False,\n            \"test_tensor_loaded\": False,\n        }\n        atomic_torch_save(\n            last_payload,\n            last_checkpoint_path,\n        )\n\n        atomic_json(\n            progress_path,\n            {\n                \"stage\": STAGE,\n                \"status\": \"RUNNING\",\n                \"campaign_label\": CAMPAIGN_LABEL,\n                \"seed\": SEED,\n                \"completed_epoch\": epoch,\n                \"best_epoch\": best_epoch,\n                \"best_checkpoint_sha256\": (\n                    best_checkpoint_sha256\n                ),\n                \"best_validation_metrics\": (\n                    best_validation\n                ),\n                \"current_validation_metrics\": validation,\n                \"current_learning_rate_after_scheduler\": (\n                    float(optimizer.param_groups[0][\"lr\"])\n                ),\n                \"early_stop_patience_counter\": (\n                    patience_counter\n                ),\n                \"resumed\": resumed,\n                \"threshold_tuning_performed\": False,\n                \"test_dataset_instantiated\": False,\n                \"test_tensor_loaded\": False,\n            },\n        )\n\n        print(\n            f\"epoch={epoch:03d} \"\n            f\"train_loss={train_metrics['total']:.6f} \"\n            f\"val_loss={validation_loss:.6f} \"\n            f\"score={score:.6f} \"\n            f\"g_auc={validation['graph']['auroc']:.6f} \"\n            f\"g_ap={validation['graph']['average_precision']:.6f} \"\n            f\"g_fpr={validation['graph']['fpr']:.6f} \"\n            f\"count_f1={validation['count_active']['macro_f1']:.6f} \"\n            f\"src_ap={validation['roles']['source']['average_precision']:.6f} \"\n            f\"tr_ap={validation['roles']['transit']['average_precision']:.6f} \"\n            f\"vic_ap={validation['roles']['victim']['average_precision']:.6f} \"\n            f\"path_ap={validation['roles']['path']['average_precision']:.6f} \"\n            f\"lr={current_lr:.8g} \"\n            f\"best_epoch={best_epoch} \"\n            f\"patience={patience_counter}\"\n        )\n\n        early_cfg = optimization[\"early_stopping\"]\n        if (\n            epoch >= int(early_cfg[\"minimum_epochs\"])\n            and patience_counter\n            >= int(early_cfg[\"patience\"])\n        ):\n            stopped_early = True\n            print(\n                f\"early_stopping_epoch={epoch}; \"\n                f\"patience={patience_counter}\"\n            )\n            break\n\n    if (\n        best_epoch is None\n        or best_validation is None\n        or not best_checkpoint_path.is_file()\n    ):\n        raise RuntimeError(\"no best checkpoint was produced\")\n\n    checkpoint = torch.load(\n        best_checkpoint_path,\n        map_location=device,\n        weights_only=False,\n    )\n    model.load_state_dict(\n        checkpoint[\"model_state_dict\"]\n    )\n    model.eval()\n\n    test_loaded_paths = [\n        path\n        for path in loaded_paths\n        if \"/runs/test/\" in path\n    ]\n    if test_loaded_paths:\n        raise RuntimeError(\n            f\"sealed-test paths loaded: {test_loaded_paths}\"\n        )\n\n    completed_epoch = history[-1][\"epoch\"]\n    peak_memory = (\n        int(torch.cuda.max_memory_allocated(device))\n        if device.type == \"cuda\"\n        else 0\n    )\n    elapsed = time.time() - run_start\n\n    report = {\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"created_utc\": datetime.now(\n            timezone.utc\n        ).isoformat(),\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"interpretation\": (\n            \"Tranche-A train/validation preliminary diagnostic. \"\n            \"Not a sealed-test or final 1500-pair result.\"\n        ),\n        \"seed\": SEED,\n        \"device\": str(device),\n        \"resumed\": resumed,\n        \"model\": {\n            \"class\": model.__class__.__name__,\n            \"builder\": (\n                \"build_v6_p0_dynamic70_from_\"\n                \"canonical_structure\"\n            ),\n            \"input_shape\": [16, 70, 32],\n            \"parameter_count\": parameter_count,\n            \"all_parameters_trainable\": True,\n            \"fresh_initialization_at_original_start\": True,\n            \"historical_checkpoint_reused\": False,\n        },\n        \"data\": {\n            \"representation\": \"Dynamic70\",\n            \"train_items\": len(train_dataset),\n            \"validation_items\": len(\n                validation_dataset\n            ),\n            \"train_pairs\": 600,\n            \"validation_pairs\": 75,\n            \"normalization_scope\": (\n                \"Tranche-A provisional A_train-only\"\n            ),\n            \"test_dataset_instantiated\": False,\n            \"test_tensor_loaded\": False,\n        },\n        \"training\": {\n            \"epochs_completed\": completed_epoch,\n            \"best_epoch\": best_epoch,\n            \"stopped_early\": stopped_early,\n            \"optimizer\": \"AdamW\",\n            \"scheduler\": \"ReduceLROnPlateau\",\n            \"batch_size\": batch_size,\n            \"elapsed_seconds_this_invocation\": elapsed,\n            \"peak_cuda_memory_bytes\": peak_memory,\n        },\n        \"selection\": {\n            \"formula\": (\n                \"mean(graph_AUROC, graph_AP, \"\n                \"count_active_macro_F1, source_AP, \"\n                \"transit_AP, victim_AP, path_AP)\"\n            ),\n            \"threshold_tuning_performed\": False,\n            \"best_validation_selection_score\": (\n                best_validation[\"selection_score\"]\n            ),\n            \"best_validation_metrics\": best_validation,\n        },\n        \"artifacts\": {\n            \"best_checkpoint\": str(\n                best_checkpoint_path\n            ),\n            \"best_checkpoint_sha256\": sha256_file(\n                best_checkpoint_path\n            ),\n            \"last_checkpoint\": str(\n                last_checkpoint_path\n            ),\n            \"last_checkpoint_sha256\": sha256_file(\n                last_checkpoint_path\n            ),\n            \"history_csv\": str(history_path),\n            \"history_csv_sha256\": sha256_file(\n                history_path\n            ),\n            \"progress_json\": str(progress_path),\n            \"progress_json_sha256\": sha256_file(\n                progress_path\n            ),\n        },\n        \"sealed_test\": {\n            \"negative_guard_check\": test_negative_check,\n            \"test_dataset_instantiated\": False,\n            \"test_length_computed\": False,\n            \"test_tensor_loaded\": False,\n            \"test_loaded_paths\": test_loaded_paths,\n            \"evaluation_authorized\": False,\n        },\n        \"decision\": {\n            \"tranche_a_preliminary_diagnostic_complete\": True,\n            \"result_label\": CAMPAIGN_LABEL,\n            \"architecture_change_authorized\": False,\n            \"additional_tranche_a_seed_sweep_authorized\": False,\n            \"sealed_test_evaluation_authorized\": False,\n            \"next_stage\": (\n                \"V5_P3_A5_TRANCHE_A_PRELIMINARY_\"\n                \"DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS\"\n            ),\n        },\n        \"provenance\": {\n            \"a3_report_sha256\": sha256_file(\n                a3_report_path\n            ),\n            \"a3_lock_sha256\": sha256_file(\n                a3_lock_path\n            ),\n            \"protocol_sha256\": sha256_file(\n                protocol_path\n            ),\n            \"guarded_loader_sha256\": sha256_file(\n                wrapper_path\n            ),\n            \"b3_source_sha256\": sha256_file(b3_path),\n            \"canonical_model_sha256\": sha256_file(\n                canonical_path\n            ),\n            \"dynamic70_model_sha256\": sha256_file(\n                dynamic_path\n            ),\n            \"normalization_sha256\": sha256_file(\n                normalization_path\n            ),\n            \"installed_script_sha256\": sha256_file(\n                installed_script\n            ),\n        },\n        \"source_modified\": True,\n        \"certified_dataset_modified\": False,\n        \"generalization_claim_authorized\": (\n            \"A_validation preliminary only\"\n        ),\n        \"final_1500_pair_claim_authorized\": False,\n    }\n    atomic_json(report_path, report)\n\n    lock = {\n        \"stage\": STAGE,\n        \"status\": \"PASS\",\n        \"campaign_label\": CAMPAIGN_LABEL,\n        \"seed\": SEED,\n        \"report_sha256\": sha256_file(report_path),\n        \"best_checkpoint_sha256\": sha256_file(\n            best_checkpoint_path\n        ),\n        \"last_checkpoint_sha256\": sha256_file(\n            last_checkpoint_path\n        ),\n        \"history_csv_sha256\": sha256_file(\n            history_path\n        ),\n        \"progress_json_sha256\": sha256_file(\n            progress_path\n        ),\n        \"protocol_sha256\": sha256_file(\n            protocol_path\n        ),\n        \"dynamic70_model_sha256\": sha256_file(\n            dynamic_path\n        ),\n        \"guarded_loader_sha256\": sha256_file(\n            wrapper_path\n        ),\n        \"normalization_sha256\": sha256_file(\n            normalization_path\n        ),\n        \"best_epoch\": best_epoch,\n        \"best_validation_selection_score\": (\n            best_validation[\"selection_score\"]\n        ),\n        \"parameter_count\": parameter_count,\n        \"input_features\": 70,\n        \"test_tensor_loaded\": False,\n        \"certified_dataset_modified\": False,\n    }\n    atomic_json(lock_path, lock)\n\n    complete_path.write_text(\n        f\"{STAGE}_COMPLETE\\n\",\n        encoding=\"utf-8\",\n    )\n    if hold_path.exists():\n        hold_path.unlink()\n\n    print(f\"{STAGE}_COMPLETE\")\n    print(\"status=PASS\")\n    print(f\"campaign_label={CAMPAIGN_LABEL}\")\n    print(f\"seed={SEED}\")\n    print(f\"device={device}\")\n    print(\"representation=Dynamic70\")\n    print(\"input_features=70\")\n    print(f\"parameter_count={parameter_count}\")\n    print(f\"epochs_completed={completed_epoch}\")\n    print(f\"best_epoch={best_epoch}\")\n    print(\n        \"best_validation_selection_score=\"\n        f\"{best_validation['selection_score']:.8f}\"\n    )\n    print(\n        \"best_graph_auroc=\"\n        f\"{best_validation['graph']['auroc']:.8f}\"\n    )\n    print(\n        \"best_graph_average_precision=\"\n        f\"{best_validation['graph']['average_precision']:.8f}\"\n    )\n    print(\n        \"best_graph_f1_at_0p5=\"\n        f\"{best_validation['graph']['f1']:.8f}\"\n    )\n    print(\n        \"best_graph_fpr_at_0p5=\"\n        f\"{best_validation['graph']['fpr']:.8f}\"\n    )\n    print(\n        \"best_count_active_macro_f1=\"\n        f\"{best_validation['count_active']['macro_f1']:.8f}\"\n    )\n    for role in (\n        \"source\",\n        \"transit\",\n        \"victim\",\n        \"path\",\n    ):\n        print(\n            f\"best_{role}_average_precision=\"\n            f\"{best_validation['roles'][role]['average_precision']:.8f}\"\n        )\n        print(\n            f\"best_{role}_exact_active_at_0p5=\"\n            f\"{best_validation['roles'][role]['exact_active']:.8f}\"\n        )\n    print(\"threshold_tuning_performed=false\")\n    print(\"test_dataset_instantiated=false\")\n    print(\"test_length_computed=false\")\n    print(\"test_tensor_loaded=false\")\n    print(\"sealed_test_evaluation_authorized=false\")\n    print(\n        \"next_stage=\"\n        \"V5_P3_A5_TRANCHE_A_PRELIMINARY_\"\n        \"DIAGNOSTIC_REVIEW_AND_B_HANDOVER_READINESS\"\n    )\n    print(f\"report={report_path}\")\n    print(f\"lock={lock_path}\")\n    print(f\"best_checkpoint={best_checkpoint_path}\")\n    print(f\"last_checkpoint={last_checkpoint_path}\")\n    print(f\"history_csv={history_path}\")\n    return 0",
+    "move_batch": "def move_batch(\n    batch: dict[str, Any],\n    device: torch.device,\n) -> dict[str, torch.Tensor]:\n    required = {\n        \"x\",\n        \"physical_port_mask\",\n        \"y_attack\",\n        \"y_attacker_count\",\n        \"y_source\",\n        \"y_transit\",\n        \"y_victim\",\n        \"y_attack_path\",\n    }\n    missing = sorted(required - set(batch))\n    if missing:\n        raise RuntimeError(\n            f\"batch missing certified keys: {missing}; \"\n            f\"keys={sorted(batch)}\"\n        )\n\n    result = {\n        \"x\": batch[\"x\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"mask\": batch[\"physical_port_mask\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"graph\": batch[\"y_attack\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ).reshape(-1),\n        \"count\": batch[\"y_attacker_count\"].to(\n            device=device,\n            dtype=torch.long,\n            non_blocking=(device.type == \"cuda\"),\n        ).reshape(-1),\n        \"source\": batch[\"y_source\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"transit\": batch[\"y_transit\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"victim\": batch[\"y_victim\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n        \"path\": batch[\"y_attack_path\"].to(\n            device=device,\n            dtype=torch.float32,\n            non_blocking=(device.type == \"cuda\"),\n        ),\n    }\n\n    batch_size = result[\"x\"].shape[0]\n    expected_shapes = {\n        \"x\": (batch_size, 16, 70, 32),\n        \"mask\": (batch_size, 16, 10),\n        \"graph\": (batch_size,),\n        \"count\": (batch_size,),\n        \"source\": (batch_size, 16),\n        \"transit\": (batch_size, 16),\n        \"victim\": (batch_size, 16),\n        \"path\": (batch_size, 16),\n    }\n    for key, expected in expected_shapes.items():\n        if tuple(result[key].shape) != expected:\n            raise RuntimeError(\n                f\"{key} shape={tuple(result[key].shape)}, \"\n                f\"expected={expected}\"\n            )\n    return result",
+    "train_one_epoch": "def train_one_epoch(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    optimizer: torch.optim.Optimizer,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n    gradient_clip: float,\n) -> dict[str, float]:\n    model.train()\n    loss_totals = Counter()\n    item_count = 0\n\n    for batch in loader:\n        moved = move_batch(batch, device)\n        optimizer.zero_grad(set_to_none=True)\n        outputs = model(moved[\"x\"], moved[\"mask\"])\n        losses = compute_losses(\n            outputs,\n            moved,\n            graph_pos_weight,\n            role_pos_weights,\n        )\n        losses[\"total\"].backward()\n        torch.nn.utils.clip_grad_norm_(\n            model.parameters(),\n            gradient_clip,\n        )\n        optimizer.step()\n\n        batch_size = int(moved[\"x\"].shape[0])\n        item_count += batch_size\n        for key, value in losses.items():\n            loss_totals[key] += (\n                float(value.detach().item()) * batch_size\n            )\n\n    if item_count != EXPECTED_TRAIN_ITEMS:\n        raise RuntimeError(\n            f\"train epoch saw {item_count} items, \"\n            f\"expected={EXPECTED_TRAIN_ITEMS}\"\n        )\n    return {\n        key: value / item_count\n        for key, value in loss_totals.items()\n    }",
+    "validate": "def validate(\n    model: torch.nn.Module,\n    loader: DataLoader,\n    device: torch.device,\n    graph_pos_weight: torch.Tensor,\n    role_pos_weights: dict[str, torch.Tensor],\n) -> dict[str, Any]:\n    model.eval()\n    loss_totals = Counter()\n    item_count = 0\n    accum = {\n        \"attack_logits\": [],\n        \"graph_targets\": [],\n        \"count_logits\": [],\n        \"count_targets\": [],\n        \"source_logits\": [],\n        \"source_targets\": [],\n        \"transit_logits\": [],\n        \"transit_targets\": [],\n        \"victim_logits\": [],\n        \"victim_targets\": [],\n        \"path_logits\": [],\n        \"path_targets\": [],\n    }\n\n    with torch.no_grad():\n        for batch in loader:\n            moved = move_batch(batch, device)\n            outputs = model(moved[\"x\"], moved[\"mask\"])\n            losses = compute_losses(\n                outputs,\n                moved,\n                graph_pos_weight,\n                role_pos_weights,\n            )\n            batch_size = int(moved[\"x\"].shape[0])\n            item_count += batch_size\n            for key, value in losses.items():\n                loss_totals[key] += (\n                    float(value.detach().item()) * batch_size\n                )\n\n            accum[\"attack_logits\"].append(\n                outputs[\"attack_logits\"].detach().cpu().numpy()\n            )\n            accum[\"graph_targets\"].append(\n                moved[\"graph\"].detach().cpu().numpy()\n            )\n            accum[\"count_logits\"].append(\n                outputs[\"count_logits\"].detach().cpu().numpy()\n            )\n            accum[\"count_targets\"].append(\n                moved[\"count\"].detach().cpu().numpy()\n            )\n            for role in (\n                \"source\",\n                \"transit\",\n                \"victim\",\n                \"path\",\n            ):\n                accum[f\"{role}_logits\"].append(\n                    outputs[f\"{role}_logits\"]\n                    .detach()\n                    .cpu()\n                    .numpy()\n                )\n                accum[f\"{role}_targets\"].append(\n                    moved[role].detach().cpu().numpy()\n                )\n\n    if item_count != EXPECTED_VALIDATION_ITEMS:\n        raise RuntimeError(\n            f\"validation saw {item_count} items, \"\n            f\"expected={EXPECTED_VALIDATION_ITEMS}\"\n        )\n    return validation_metrics(\n        accum,\n        dict(loss_totals),\n        item_count,\n    )",
+    "validation_metrics": "def validation_metrics(\n    accum: dict[str, list[np.ndarray]],\n    loss_totals: dict[str, float],\n    item_count: int,\n) -> dict[str, Any]:\n    graph_logits = np.concatenate(accum[\"attack_logits\"])\n    graph_scores = 1.0 / (1.0 + np.exp(-graph_logits))\n    graph_targets = np.concatenate(accum[\"graph_targets\"]).astype(\n        np.int64\n    )\n    active_mask = graph_targets == 1\n\n    graph = binary_metrics(graph_scores, graph_targets)\n    graph[\"auroc\"] = binary_auroc(\n        graph_scores,\n        graph_targets,\n    )\n    graph[\"average_precision\"] = binary_average_precision(\n        graph_scores,\n        graph_targets,\n    )\n\n    count_logits = np.concatenate(accum[\"count_logits\"])\n    count_targets = np.concatenate(accum[\"count_targets\"]).astype(\n        np.int64\n    )\n    active_count_logits = count_logits[active_mask]\n    active_count_targets = count_targets[active_mask]\n    count_predictions = (\n        np.argmax(active_count_logits, axis=1) + 1\n    )\n    count_accuracy = float(\n        np.mean(count_predictions == active_count_targets)\n    )\n    count_macro_f1 = multiclass_macro_f1(\n        count_predictions,\n        active_count_targets,\n        COUNT_CLASS_VALUES,\n    )\n\n    roles = {}\n    for role in (\"source\", \"transit\", \"victim\", \"path\"):\n        logits = np.concatenate(accum[f\"{role}_logits\"])\n        scores = 1.0 / (1.0 + np.exp(-logits))\n        targets = np.concatenate(\n            accum[f\"{role}_targets\"]\n        ).astype(np.int64)\n        flattened = binary_metrics(\n            scores.reshape(-1),\n            targets.reshape(-1),\n        )\n        flattened[\"auroc\"] = binary_auroc(\n            scores.reshape(-1),\n            targets.reshape(-1),\n        )\n        flattened[\"average_precision\"] = (\n            binary_average_precision(\n                scores.reshape(-1),\n                targets.reshape(-1),\n            )\n        )\n        flattened.update(\n            exact_multilabel(\n                scores,\n                targets,\n                active_mask,\n            )\n        )\n        roles[role] = flattened\n\n    components = [\n        graph[\"auroc\"],\n        graph[\"average_precision\"],\n        count_macro_f1,\n        roles[\"source\"][\"average_precision\"],\n        roles[\"transit\"][\"average_precision\"],\n        roles[\"victim\"][\"average_precision\"],\n        roles[\"path\"][\"average_precision\"],\n    ]\n    if not all(math.isfinite(value) for value in components):\n        raise RuntimeError(\n            f\"non-finite validation selection component: \"\n            f\"{components}\"\n        )\n    selection_score = float(np.mean(components))\n\n    return {\n        \"loss\": {\n            key: value / item_count\n            for key, value in loss_totals.items()\n        },\n        \"selection_score\": selection_score,\n        \"selection_components\": {\n            \"graph_auroc\": graph[\"auroc\"],\n            \"graph_average_precision\": (\n                graph[\"average_precision\"]\n            ),\n            \"count_active_macro_f1\": count_macro_f1,\n            \"source_average_precision\": (\n                roles[\"source\"][\"average_precision\"]\n            ),\n            \"transit_average_precision\": (\n                roles[\"transit\"][\"average_precision\"]\n            ),\n            \"victim_average_precision\": (\n                roles[\"victim\"][\"average_precision\"]\n            ),\n            \"path_average_precision\": (\n                roles[\"path\"][\"average_precision\"]\n            ),\n        },\n        \"graph\": graph,\n        \"count_active\": {\n            \"accuracy\": count_accuracy,\n            \"macro_f1\": count_macro_f1,\n            \"items\": int(active_mask.sum()),\n        },\n        \"roles\": roles,\n        \"threshold_policy\": {\n            \"reporting_threshold\": 0.5,\n            \"threshold_tuning_performed\": False,\n            \"selection_metrics_are_threshold_free_except_count_macro_f1\": True,\n        },\n    }"
+  },
+  "a4_imports": [
+    {
+      "as": null,
+      "kind": "from",
+      "module": "__future__",
+      "name": "annotations"
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "argparse",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "csv",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "hashlib",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "importlib.util",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "json",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "math",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "os",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "random",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "sys",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "time",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "collections",
+      "name": "Counter"
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "datetime",
+      "name": "datetime"
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "datetime",
+      "name": "timezone"
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "pathlib",
+      "name": "Path"
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "typing",
+      "name": "Any"
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "typing",
+      "name": "Iterator"
+    },
+    {
+      "as": "np",
+      "kind": "import",
+      "module": "numpy",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "import",
+      "module": "torch",
+      "name": null
+    },
+    {
+      "as": "F",
+      "kind": "import",
+      "module": "torch.nn.functional",
+      "name": null
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "torch.utils.data",
+      "name": "DataLoader"
+    },
+    {
+      "as": null,
+      "kind": "from",
+      "module": "torch.utils.data",
+      "name": "Sampler"
+    }
+  ],
+  "a4_keyword_evidence": {
+    "adapter": [
+      "127:         \"physical_port_mask\",",
+      "148:         \"mask\": batch[\"physical_port_mask\"].to("
+    ],
+    "count": [
+      "30: COUNT_CLASS_VALUES = (1, 2, 3, 4)",
+      "129:         \"y_attacker_count\",",
+      "158:         \"count\": batch[\"y_attacker_count\"].to(",
+      "213:         count_loss = outputs[\"count_logits\"].sum() * 0.0",
+      "223:             outputs[\"count_logits\"][active],",
+      "428:     count_logits = np.concatenate(accum[\"count_logits\"])",
+      "432:     active_count_logits = count_logits[active_mask]",
+      "435:         np.argmax(active_count_logits, axis=1) + 1",
+      "443:         COUNT_CLASS_VALUES,",
+      "593:         \"count_logits\": [],",
+      "628:             accum[\"count_logits\"].append(",
+      "629:                 outputs[\"count_logits\"].detach().cpu().numpy()"
+    ],
+    "dataset": [
+      "800:             f\"dataset path is not canonical symlink: {data_link}\"",
+      "877:     GuardedDataset = (",
+      "878:         wrapper_mod.GuardedV5P3TrancheAPreliminaryDataset",
+      "884:         GuardedDataset(data_root, \"test\")",
+      "892:     train_dataset = GuardedDataset(",
+      "897:     validation_dataset = GuardedDataset(",
+      "902:     if len(train_dataset) != EXPECTED_TRAIN_ITEMS:",
+      "904:             f\"train length={len(train_dataset)}\"",
+      "906:     if len(validation_dataset) != EXPECTED_VALIDATION_ITEMS:",
+      "908:             f\"validation length={len(validation_dataset)}\"",
+      "920:         len(train_dataset),",
+      "929:         train_dataset,",
+      "937:         validation_dataset,",
+      "945:     first_train_sample = train_dataset[0]",
+      "1252:                 \"test_dataset_instantiated\": False,",
+      "1351:             \"train_items\": len(train_dataset),",
+      "1353:                 validation_dataset",
+      "1360:             \"test_dataset_instantiated\": False,",
+      "1409:             \"test_dataset_instantiated\": False,",
+      "1454:         \"certified_dataset_modified\": False,",
+      "1499:         \"certified_dataset_modified\": False,",
+      "1559:     print(\"test_dataset_instantiated=false\")"
+    ],
+    "loader": [
+      "21: from torch.utils.data import DataLoader, Sampler",
+      "97: class EpochShuffleSampler(Sampler[int]):",
+      "185:     batch_size = result[\"x\"].shape[0]",
+      "187:         \"x\": (batch_size, 16, 70, 32),",
+      "188:         \"mask\": (batch_size, 16, 10),",
+      "189:         \"graph\": (batch_size,),",
+      "190:         \"count\": (batch_size,),",
+      "191:         \"source\": (batch_size, 16),",
+      "192:         \"transit\": (batch_size, 16),",
+      "193:         \"victim\": (batch_size, 16),",
+      "194:         \"path\": (batch_size, 16),",
+      "534:     loader: DataLoader,",
+      "562:         batch_size = int(moved[\"x\"].shape[0])",
+      "563:         item_count += batch_size",
+      "566:                 float(value.detach().item()) * batch_size",
+      "582:     loader: DataLoader,",
+      "615:             batch_size = int(moved[\"x\"].shape[0])",
+      "616:             item_count += batch_size",
+      "619:                     float(value.detach().item()) * batch_size",
+      "912:     batch_size = int(optimization[\"batch_size\"])",
+      "919:     sampler = EpochShuffleSampler(",
+      "928:     train_loader = DataLoader(",
+      "930:         batch_size=batch_size,",
+      "931:         sampler=sampler,",
+      "936:     validation_loader = DataLoader(",
+      "938:         batch_size=batch_size,",
+      "939:         shuffle=False,",
+      "1093:         sampler.set_epoch(epoch)",
+      "1369:             \"batch_size\": batch_size,"
+    ],
+    "loss": [
+      "205: def compute_losses(",
+      "208:     graph_pos_weight: torch.Tensor,",
+      "209:     role_pos_weights: dict[str, torch.Tensor],",
+      "222:         count_loss = F.cross_entropy(",
+      "228:         \"graph\": F.binary_cross_entropy_with_logits(",
+      "231:             pos_weight=graph_pos_weight,",
+      "234:         \"source\": F.binary_cross_entropy_with_logits(",
+      "237:             pos_weight=role_pos_weights[\"source\"],",
+      "239:         \"transit\": F.binary_cross_entropy_with_logits(",
+      "242:             pos_weight=role_pos_weights[\"transit\"],",
+      "244:         \"victim\": F.binary_cross_entropy_with_logits(",
+      "247:             pos_weight=role_pos_weights[\"victim\"],",
+      "249:         \"path\": F.binary_cross_entropy_with_logits(",
+      "252:             pos_weight=role_pos_weights[\"path\"],",
+      "537:     graph_pos_weight: torch.Tensor,",
+      "538:     role_pos_weights: dict[str, torch.Tensor],",
+      "549:         losses = compute_losses(",
+      "552:             graph_pos_weight,",
+      "553:             role_pos_weights,",
+      "584:     graph_pos_weight: torch.Tensor,",
+      "585:     role_pos_weights: dict[str, torch.Tensor],",
+      "609:             losses = compute_losses(",
+      "612:                 graph_pos_weight,",
+      "613:                 role_pos_weights,",
+      "982:     graph_pos_weight = torch.tensor(",
+      "987:     role_pos_weights = {",
+      "1103:             graph_pos_weight,",
+      "1104:             role_pos_weights,",
+      "1111:             graph_pos_weight,",
+      "1112:             role_pos_weights,"
+    ],
+    "model": [
+      "533:     model: torch.nn.Module,",
+      "541:     model.train()",
+      "548:         outputs = model(moved[\"x\"], moved[\"mask\"])",
+      "557:             model.parameters(),",
+      "581:     model: torch.nn.Module,",
+      "587:     model.eval()",
+      "608:             outputs = model(moved[\"x\"], moved[\"mask\"])",
+      "772:         repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"",
+      "775:         repo / \"src/models/v5_p2_task_d_full_multitask_count4.py\"",
+      "779:         / \"src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py\"",
+      "874:         \"_v5_p3_a4_dynamic70\",",
+      "955:     canonical_model = (",
+      "961:     model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(",
+      "962:         canonical_model,",
+      "967:         for parameter in model.parameters()",
+      "976:         for parameter in model.parameters()",
+      "978:         raise RuntimeError(\"some model parameters are frozen\")",
+      "979:     model = model.to(device)",
+      "1004:         model.parameters(),",
+      "1043:             \"dynamic70_model_sha256\": sha256_file(",
+      "1058:         model.load_state_dict(",
+      "1059:             checkpoint[\"model_state_dict\"]",
+      "1099:             model,",
+      "1108:             model,",
+      "1135:                 \"model_state_dict\": model.state_dict(),",
+      "1146:                 \"dynamic70_model_sha256\": sha256_file(",
+      "1196:             \"model_state_dict\": model.state_dict(),",
+      "1211:             \"dynamic70_model_sha256\": sha256_file(",
+      "1300:     model.load_state_dict(",
+      "1301:         checkpoint[\"model_state_dict\"]",
+      "1303:     model.eval()",
+      "1337:         \"model\": {",
+      "1338:             \"class\": model.__class__.__name__,",
+      "1340:                 \"build_v6_p0_dynamic70_from_\"",
+      "1350:             \"representation\": \"Dynamic70\",",
+      "1440:             \"canonical_model_sha256\": sha256_file(",
+      "1443:             \"dynamic70_model_sha256\": sha256_file(",
+      "1483:         \"dynamic70_model_sha256\": sha256_file(",
+      "1515:     print(\"representation=Dynamic70\")"
+    ],
+    "optimizer": [
+      "535:     optimizer: torch.optim.Optimizer,",
+      "539:     gradient_clip: float,",
+      "547:         optimizer.zero_grad(set_to_none=True)",
+      "558:             gradient_clip,",
+      "560:         optimizer.step()",
+      "664:     learning_rate: float,",
+      "674:         \"learning_rate\": learning_rate,",
+      "915:     gradient_clip = float(",
+      "916:         optimization[\"gradient_clip_norm\"]",
+      "1003:     optimizer = torch.optim.AdamW(",
+      "1005:         lr=float(optimization[\"learning_rate\"]),",
+      "1008:         weight_decay=float(",
+      "1009:             optimization[\"weight_decay\"]",
+      "1014:         optimizer,",
+      "1061:         optimizer.load_state_dict(",
+      "1062:             checkpoint[\"optimizer_state_dict\"]",
+      "1095:             optimizer.param_groups[0][\"lr\"]",
+      "1101:             optimizer,",
+      "1105:             gradient_clip,",
+      "1136:                 \"optimizer_state_dict\": optimizer.state_dict(),",
+      "1180:             learning_rate=current_lr,",
+      "1197:             \"optimizer_state_dict\": optimizer.state_dict(),",
+      "1244:                 \"current_learning_rate_after_scheduler\": (",
+      "1245:                     float(optimizer.param_groups[0][\"lr\"])",
+      "1367:             \"optimizer\": \"AdamW\","
+    ]
+  },
+  "a4_report_references": {
+    "A4_P0_R2_sampler_report_sha256": "c4ff7db4471f843119a6a84cbaf08bc17ad219af534847cacf26a87a1b42625e",
+    "authoritative_A4_source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2",
+    "best_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_SEED107_BEST.pt",
+    "best_checkpoint_sha256": "4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea",
+    "best_epoch": 5,
+    "best_model_state_sha256": "f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432",
+    "best_validation_loss": 1.358584355825958,
+    "best_validation_metrics.count_active.macro_f1": 1.0,
+    "best_validation_metrics.count_active.support": 7524,
+    "best_validation_metrics.graph.auroc": 0.8884460145726895,
+    "best_validation_metrics.graph.average_precision": 0.627859108757914,
+    "best_validation_metrics.graph.fixed_0_5.accuracy": 0.8138301709833345,
+    "best_validation_metrics.graph.fixed_0_5.f1": 0.7318543149581752,
+    "best_validation_metrics.graph.fixed_0_5.fn": 481,
+    "best_validation_metrics.graph.fixed_0_5.fp": 4680,
+    "best_validation_metrics.graph.fixed_0_5.fpr": 0.23170610951579365,
+    "best_validation_metrics.graph.fixed_0_5.precision": 0.6007847820523756,
+    "best_validation_metrics.graph.fixed_0_5.recall": 0.9360712387028176,
+    "best_validation_metrics.graph.fixed_0_5.threshold": 0.5,
+    "best_validation_metrics.graph.fixed_0_5.tn": 15518,
+    "best_validation_metrics.graph.fixed_0_5.tp": 7043,
+    "best_validation_metrics.graph.negative_items": 20198,
+    "best_validation_metrics.graph.positive_items": 7524,
+    "best_validation_metrics.loss": 1.358584355825958,
+    "best_validation_metrics.roles.path.auroc": 0.9564685046113905,
+    "best_validation_metrics.roles.path.average_precision": 0.6108814814901175,
+    "best_validation_metrics.roles.path.fixed_0_5.accuracy": 0.9020407979222278,
+    "best_validation_metrics.roles.path.fixed_0_5.f1": 0.6925330465057035,
+    "best_validation_metrics.roles.path.fixed_0_5.fn": 243,
+    "best_validation_metrics.roles.path.fixed_0_5.fp": 43207,
+    "best_validation_metrics.roles.path.fixed_0_5.fpr": 0.10955788384688724,
+    "best_validation_metrics.roles.path.fixed_0_5.precision": 0.5310722813110484,
+    "best_validation_metrics.roles.path.fixed_0_5.recall": 0.9950585651537335,
+    "best_validation_metrics.roles.path.fixed_0_5.threshold": 0.5,
+    "best_validation_metrics.roles.path.fixed_0_5.tn": 351169,
+    "best_validation_metrics.roles.path.fixed_0_5.tp": 48933,
+    "best_validation_metrics.roles.path.negative_entries": 394376,
+    "best_validation_metrics.roles.path.positive_entries": 49176,
+    "best_validation_metrics.roles.source.auroc": 0.9855731633566195,
+    "best_validation_metrics.roles.source.average_precision": 0.6210286449109202,
+    "best_validation_metrics.roles.source.fixed_0_5.accuracy": 0.9631903361950798,
+    "best_validation_metrics.roles.source.fixed_0_5.f1": 0.694850948509485,
+    "best_validation_metrics.roles.source.fixed_0_5.fn": 95,
+    "best_validation_metrics.roles.source.fixed_0_5.fp": 16232,
+    "best_validation_metrics.roles.source.fixed_0_5.fpr": 0.03820480714009998,
+    "best_validation_metrics.roles.source.fixed_0_5.precision": 0.5338445191120301,
+    "best_validation_metrics.roles.source.fixed_0_5.recall": 0.9949154356668808,
+    "best_validation_metrics.roles.source.fixed_0_5.threshold": 0.5,
+    "best_validation_metrics.roles.source.fixed_0_5.tn": 408636,
+    "best_validation_metrics.roles.source.fixed_0_5.tp": 18589,
+    "best_validation_metrics.roles.source.negative_entries": 424868,
+    "best_validation_metrics.roles.source.positive_entries": 18684,
+    "best_validation_metrics.roles.transit.auroc": 0.978025746916855,
+    "best_validation_metrics.roles.transit.average_precision": 0.6134788729982882,
+    "best_validation_metrics.roles.transit.fixed_0_5.accuracy": 0.9395606377606234,
+    "best_validation_metrics.roles.transit.fixed_0_5.f1": 0.6554241645244215,
+    "best_validation_metrics.roles.transit.fixed_0_5.fn": 263,
+    "best_validation_metrics.roles.transit.fixed_0_5.fp": 26545,
+    "best_validation_metrics.roles.transit.fixed_0_5.fpr": 0.06353624881221083,
+    "best_validation_metrics.roles.transit.fixed_0_5.precision": 0.4899214081205204,
+    "best_validation_metrics.roles.transit.fixed_0_5.recall": 0.9897899763189565,
+    "best_validation_metrics.roles.transit.fixed_0_5.threshold": 0.5,
+    "best_validation_metrics.roles.transit.fixed_0_5.tn": 391248,
+    "best_validation_metrics.roles.transit.fixed_0_5.tp": 25496,
+    "best_validation_metrics.roles.transit.negative_entries": 417793,
+    "best_validation_metrics.roles.transit.positive_entries": 25759,
+    "best_validation_metrics.roles.victim.auroc": 0.9874701867948477,
+    "best_validation_metrics.roles.victim.average_precision": 0.6231066849003555,
+    "best_validation_metrics.roles.victim.fixed_0_5.accuracy": 0.9702943510569223,
+    "best_validation_metrics.roles.victim.fixed_0_5.f1": 0.6995896032831737,
+    "best_validation_metrics.roles.victim.fixed_0_5.fn": 36,
+    "best_validation_metrics.roles.victim.fixed_0_5.fp": 13140,
+    "best_validation_metrics.roles.victim.fixed_0_5.fpr": 0.030688458430451173,
+    "best_validation_metrics.roles.victim.fixed_0_5.precision": 0.5386559932589003,
+    "best_validation_metrics.roles.victim.fixed_0_5.recall": 0.9976589933671479,
+    "best_validation_metrics.roles.victim.fixed_0_5.threshold": 0.5,
+    "best_validation_metrics.roles.victim.fixed_0_5.tn": 415034,
+    "best_validation_metrics.roles.victim.fixed_0_5.tp": 15342,
+    "best_validation_metrics.roles.victim.negative_entries": 428174,
+    "best_validation_metrics.roles.victim.positive_entries": 15378,
+    "best_validation_metrics.selection_components.count_active_macro_f1": 1.0,
+    "best_validation_metrics.selection_components.graph_auroc": 0.8884460145726895,
+    "best_validation_metrics.selection_components.graph_average_precision": 0.627859108757914,
+    "best_validation_metrics.selection_components.path_average_precision": 0.6108814814901175,
+    "best_validation_metrics.selection_components.source_average_precision": 0.6210286449109202,
+    "best_validation_metrics.selection_components.transit_average_precision": 0.6134788729982882,
+    "best_validation_metrics.selection_components.victim_average_precision": 0.6231066849003555,
+    "best_validation_metrics.selection_score": 0.7121144010900406,
+    "best_validation_selection_score": 0.7121144010900406,
+    "completed_epoch": 17,
+    "five_seed_reproducibility_declaration.executed_in_this_stage": [
+      107
+    ],
+    "five_seed_reproducibility_declaration.production_mainline_seed": 107,
+    "five_seed_reproducibility_declaration.secondary_validation_reproducibility_seeds": [
+      117,
+      127,
+      137,
+      147
+    ],
+    "five_seed_reproducibility_declaration.seeds": [
+      107,
+      117,
+      127,
+      137,
+      147
+    ],
+    "five_seed_reproducibility_declaration.test_evaluation_for_reproducibility_seeds_authorized": false,
+    "loss.count_class_weights_applied": false,
+    "loss.count_semantics.active_mapping": "target_minus_one",
+    "loss.count_semantics.class_values": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "loss.count_semantics.inactive_target_zero": "masked",
+    "loss.positive_weight_source": "V5-P3 final A+B train windows only",
+    "loss.role_positive_weights.source": 20.0,
+    "loss.role_positive_weights.transit": 17.186033877456886,
+    "loss.role_positive_weights.victim": 20.0,
+    "loss.task_coefficients.count": 1.0,
+    "loss.task_coefficients.source": 1.0,
+    "loss.task_coefficients.transit": 1.0,
+    "loss.task_coefficients.victim": 1.0,
+    "loss_target_dtype_bridge.count_runtime_dtype": "torch.int64",
+    "model_construction.canonical_parameter_count": 59785,
+    "model_construction.edge.path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy",
+    "model_construction.edge.sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "model_construction.edge.shape": [
+      2,
+      48
+    ],
+    "model_construction.final_parameter_count": 60553,
+    "model_construction.route.b3": "P2B3Conv1DOnlyCount4()",
+    "model_construction.route.canonical": "P2TaskDGraphConvCount4(b3, base_edge_index)",
+    "model_construction.route.dynamic": "build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)",
+    "native_loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "native_test_dataset_constructed": false,
+    "optimization.batch_size": 256,
+    "optimization.early_stopping.minimum_epochs": 15,
+    "optimization.gradient_clip_norm": 1.0,
+    "optimization.learning_rate": 0.001,
+    "optimization.maximum_epochs": 100,
+    "optimization.optimizer": "AdamW",
+    "optimization.scheduler.factor": 0.5,
+    "optimization.scheduler.minimum_lr": 1e-05,
+    "optimization.scheduler.mode": "max",
+    "optimization.scheduler.name": "ReduceLROnPlateau",
+    "optimization.scheduler.patience": 4,
+    "optimization.scheduler.threshold": 0.0001,
+    "optimization.weight_decay": 0.0001,
+    "parameter_count": 60553,
+    "production_seed": 107,
+    "sampler_contract.P0_R2_report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_p0_r2_epoch_shuffle_sampler_semantics_recovery/V5_P3_FINAL_A4_P0_R2_EPOCH_SHUFFLE_SAMPLER_SEMANTICS_RECOVERY_REPORT.json",
+    "sampler_contract.P0_R2_report_sha256": "c4ff7db4471f843119a6a84cbaf08bc17ad219af534847cacf26a87a1b42625e",
+    "sampler_contract.constructor": "EpochShuffleSampler(len(train_dataset), SEED)",
+    "sampler_contract.drop_last": false,
+    "sampler_contract.epoch_binding": "sampler.set_epoch(epoch)",
+    "sampler_contract.epoch_seed_formula": "seed + epoch",
+    "sampler_contract.first_training_epoch": 1,
+    "sampler_contract.first_training_epoch_rng_seed": 108,
+    "sampler_contract.permutation": "torch.randperm(length, generator=torch.Generator().manual_seed(seed+epoch))",
+    "sampler_contract.sampler_class": "EpochShuffleSampler",
+    "sampler_contract.source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2",
+    "sampler_contract.train_dataloader_sampler": true,
+    "sampler_contract.train_shuffle_keyword": false,
+    "sampler_contract.validation_shuffle": false,
+    "selection.checkpoint_selection_uses_validation": true,
+    "selection.threshold_tuning_during_training": false,
+    "train_batches": 867,
+    "train_items": 221773,
+    "validation_batches": 109,
+    "validation_boundary_dtype_inventory.0.count": "torch.int64",
+    "validation_boundary_dtype_inventory.0.graph": "torch.float32",
+    "validation_boundary_dtype_inventory.0.path": "torch.float32",
+    "validation_boundary_dtype_inventory.0.source": "torch.float32",
+    "validation_boundary_dtype_inventory.0.transit": "torch.float32",
+    "validation_boundary_dtype_inventory.0.victim": "torch.float32",
+    "validation_boundary_dtype_inventory.12799.count": "torch.int64",
+    "validation_boundary_dtype_inventory.12799.graph": "torch.float32",
+    "validation_boundary_dtype_inventory.12799.path": "torch.float32",
+    "validation_boundary_dtype_inventory.12799.source": "torch.float32",
+    "validation_boundary_dtype_inventory.12799.transit": "torch.float32",
+    "validation_boundary_dtype_inventory.12799.victim": "torch.float32",
+    "validation_boundary_dtype_inventory.12800.count": "torch.int64",
+    "validation_boundary_dtype_inventory.12800.graph": "torch.float32",
+    "validation_boundary_dtype_inventory.12800.path": "torch.float32",
+    "validation_boundary_dtype_inventory.12800.source": "torch.float32",
+    "validation_boundary_dtype_inventory.12800.transit": "torch.float32",
+    "validation_boundary_dtype_inventory.12800.victim": "torch.float32",
+    "validation_boundary_dtype_inventory.13055.count": "torch.int64",
+    "validation_boundary_dtype_inventory.13055.graph": "torch.float32",
+    "validation_boundary_dtype_inventory.13055.path": "torch.float32",
+    "validation_boundary_dtype_inventory.13055.source": "torch.float32",
+    "validation_boundary_dtype_inventory.13055.transit": "torch.float32",
+    "validation_boundary_dtype_inventory.13055.victim": "torch.float32",
+    "validation_boundary_dtype_inventory.27721.count": "torch.int64",
+    "validation_boundary_dtype_inventory.27721.graph": "torch.uint8",
+    "validation_boundary_dtype_inventory.27721.path": "torch.uint8",
+    "validation_boundary_dtype_inventory.27721.source": "torch.uint8",
+    "validation_boundary_dtype_inventory.27721.transit": "torch.uint8",
+    "validation_boundary_dtype_inventory.27721.victim": "torch.uint8",
+    "validation_items": 27722
+  },
+  "authoritative_a4": {
+    "report": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+    "report_sha256": "07979163ec1dc1be1e9ccd5e4af5f945389602b70777d67d1bdb1390d4d9c41d",
+    "source": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_a4_tranche_a_preliminary_diagnostic_seed107.py",
+    "source_sha256": "de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2"
+  },
+  "classification": "ENGINEERING",
+  "created_utc": "2026-08-07T12:54:33.470917+00:00",
+  "imported_source_evidence": [],
+  "model_zoo": {
+    "classes": [
+      "_IdentityGraph",
+      "_CommonSixHeadMixin",
+      "SpatialOnlyMultitask",
+      "TCNAttentionGCNMultitask",
+      "LSTMGraphConvMultitask",
+      "BinaryFromTemporalBackbone"
+    ],
+    "functions": [
+      "_repo_root",
+      "_import_source",
+      "_sources",
+      "build_authoritative_m7",
+      "_replace_graph_operator",
+      "_batch_edges",
+      "_common_modules",
+      "_historical_tcn_embedding",
+      "_historical_normalized_adjacency",
+      "build_model",
+      "trainable_parameter_count"
+    ],
+    "m7_seed107_retrain_forbidden_expected": true,
+    "path": "/home/zira/research/projects/GNN-2d/src/models/v5_p3_mc_comparison_zoo.py",
+    "required_model_tokens_present": {
+      "binary_conv1d": true,
+      "binary_conv1d_graphconv": true,
+      "conv1d_gatconv": true,
+      "conv1d_gcnconv": true,
+      "conv1d_graphconv": true,
+      "conv1d_only": true,
+      "gcn_only_temporal_mean": true,
+      "graphconv_only_temporal_mean": true,
+      "lstm_graphconv": true,
+      "tcn_attention_gcn": true
+    },
+    "sha256": "fcc77e5ceab02394b59472514d9205c23adbf1195482cb12df4352d6f5b2322b"
+  },
+  "repo": "/home/zira/research/projects/GNN-2d",
+  "safety": {
+    "checkpoint_deserialization": false,
+    "cuda_used": false,
+    "dataset_constructed": false,
+    "decoder_applied": false,
+    "model_construction": false,
+    "model_inference": false,
+    "module_import_or_execution": false,
+    "optimizer_step": false,
+    "sealed_test_access": false,
+    "test_evaluation": false,
+    "threshold_tuning": false,
+    "train_tensor_access": false,
+    "training_performed": false,
+    "validation_tensor_access": false
+  },
+  "stage": "V5_P3_MC2C_P2_AUTHORITATIVE_A4_DIRECT_BINDING_CERTIFICATION",
+  "status": "PASS",
+  "unresolved": []
+}

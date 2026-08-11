@@ -1,0 +1,867 @@
+{
+  "checkpoint_deserialization": false,
+  "classification": "ENGINEERING",
+  "cuda_used": false,
+  "dataset_constructed": false,
+  "decoder_applied": false,
+  "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+  "edge_index_shape": [
+    2,
+    48
+  ],
+  "m7_runtime_structure": {
+    "checkpoint_loaded": false,
+    "class": "V6P0Dynamic70GraphConvCount4",
+    "module_tree": [
+      {
+        "class": "V6P0Dynamic70GraphConvCount4",
+        "direct_parameters": 0,
+        "name": "<root>",
+        "repr": "V6P0Dynamic70GraphConvCount4(\n  (input_projection): Conv1d(70, 64, kernel_size=(1,), stride=(1,))\n  (temporal_blocks): ModuleList(\n    (0): CausalDepthwiseSeparableResidualBlock(\n      (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), groups=64)\n      (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n    )\n    (1): CausalDepthwiseSeparableResidualBlock(\n      (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(2,), groups=64)\n      (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n    )\n    (2): CausalDepthwiseSeparableResidualBlock(\n      (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(4,), groups=64)\n      (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n    )\n    (3): CausalDepthwiseSeparableResidualBlock(\n      (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(8,), groups=64)\n      (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n    )\n  )\n  (node_projection): Linear(in_features=74, out_features=64, bias=True)\n  (source_head): Sequential(\n    (0): Linear(in_features=64, out_features=32, bias=True)\n    (1): ReLU()\n    (2): Linear(in_features=32, out_features=1, bias=True)\n  )\n  (transit_head): Sequential(\n    (0): Linear(in_features=64, out_features=32, bias=True)\n    (1): ReLU()\n    (2): Linear(in_features=32, out_features=1, bias=True)\n  )\n  (victim_head): Sequential(\n    (0): Linear(in_features=64, out_features=32, bias=True)\n    (1): ReLU()\n    (2): Linear(in_features=32, out_features=1, bias=True)\n  )\n  (path_head): Sequential(\n    (0): Linear(in_features=64, out_features=32, bias=True)\n    (1): ReLU()\n    (2): Linear(in_features=32, out_features=1, bias=True)\n  )\n  (graph_projection): Sequential(\n    (0): Linear(in_features=128, out_features=64, bias=True)\n    (1): ReLU()\n  )\n  (attack_head): Linear(in_features=64, out_features=1, bias=True)\n  (count_head): Linear(in_features=64, out_features=4, bias=True)\n  (graph1): GraphConv(64, 64)\n  (graph2): GraphConv(64, 64)\n  (activation): ReLU()\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 4544,
+        "name": "input_projection",
+        "repr": "Conv1d(70, 64, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "ModuleList",
+        "direct_parameters": 0,
+        "name": "temporal_blocks",
+        "repr": "ModuleList(\n  (0): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n  (1): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(2,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n  (2): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(4,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n  (3): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(8,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n)"
+      },
+      {
+        "class": "CausalDepthwiseSeparableResidualBlock",
+        "direct_parameters": 0,
+        "name": "temporal_blocks.0",
+        "repr": "CausalDepthwiseSeparableResidualBlock(\n  (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), groups=64)\n  (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 256,
+        "name": "temporal_blocks.0.depthwise",
+        "repr": "Conv1d(64, 64, kernel_size=(3,), stride=(1,), groups=64)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 4160,
+        "name": "temporal_blocks.0.pointwise",
+        "repr": "Conv1d(64, 64, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "CausalDepthwiseSeparableResidualBlock",
+        "direct_parameters": 0,
+        "name": "temporal_blocks.1",
+        "repr": "CausalDepthwiseSeparableResidualBlock(\n  (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(2,), groups=64)\n  (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 256,
+        "name": "temporal_blocks.1.depthwise",
+        "repr": "Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(2,), groups=64)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 4160,
+        "name": "temporal_blocks.1.pointwise",
+        "repr": "Conv1d(64, 64, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "CausalDepthwiseSeparableResidualBlock",
+        "direct_parameters": 0,
+        "name": "temporal_blocks.2",
+        "repr": "CausalDepthwiseSeparableResidualBlock(\n  (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(4,), groups=64)\n  (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 256,
+        "name": "temporal_blocks.2.depthwise",
+        "repr": "Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(4,), groups=64)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 4160,
+        "name": "temporal_blocks.2.pointwise",
+        "repr": "Conv1d(64, 64, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "CausalDepthwiseSeparableResidualBlock",
+        "direct_parameters": 0,
+        "name": "temporal_blocks.3",
+        "repr": "CausalDepthwiseSeparableResidualBlock(\n  (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(8,), groups=64)\n  (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 256,
+        "name": "temporal_blocks.3.depthwise",
+        "repr": "Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(8,), groups=64)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 4160,
+        "name": "temporal_blocks.3.pointwise",
+        "repr": "Conv1d(64, 64, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 4800,
+        "name": "node_projection",
+        "repr": "Linear(in_features=74, out_features=64, bias=True)"
+      },
+      {
+        "class": "Sequential",
+        "direct_parameters": 0,
+        "name": "source_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 2080,
+        "name": "source_head.0",
+        "repr": "Linear(in_features=64, out_features=32, bias=True)"
+      },
+      {
+        "class": "ReLU",
+        "direct_parameters": 0,
+        "name": "source_head.1",
+        "repr": "ReLU()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 33,
+        "name": "source_head.2",
+        "repr": "Linear(in_features=32, out_features=1, bias=True)"
+      },
+      {
+        "class": "Sequential",
+        "direct_parameters": 0,
+        "name": "transit_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 2080,
+        "name": "transit_head.0",
+        "repr": "Linear(in_features=64, out_features=32, bias=True)"
+      },
+      {
+        "class": "ReLU",
+        "direct_parameters": 0,
+        "name": "transit_head.1",
+        "repr": "ReLU()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 33,
+        "name": "transit_head.2",
+        "repr": "Linear(in_features=32, out_features=1, bias=True)"
+      },
+      {
+        "class": "Sequential",
+        "direct_parameters": 0,
+        "name": "victim_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 2080,
+        "name": "victim_head.0",
+        "repr": "Linear(in_features=64, out_features=32, bias=True)"
+      },
+      {
+        "class": "ReLU",
+        "direct_parameters": 0,
+        "name": "victim_head.1",
+        "repr": "ReLU()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 33,
+        "name": "victim_head.2",
+        "repr": "Linear(in_features=32, out_features=1, bias=True)"
+      },
+      {
+        "class": "Sequential",
+        "direct_parameters": 0,
+        "name": "path_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 2080,
+        "name": "path_head.0",
+        "repr": "Linear(in_features=64, out_features=32, bias=True)"
+      },
+      {
+        "class": "ReLU",
+        "direct_parameters": 0,
+        "name": "path_head.1",
+        "repr": "ReLU()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 33,
+        "name": "path_head.2",
+        "repr": "Linear(in_features=32, out_features=1, bias=True)"
+      },
+      {
+        "class": "Sequential",
+        "direct_parameters": 0,
+        "name": "graph_projection",
+        "repr": "Sequential(\n  (0): Linear(in_features=128, out_features=64, bias=True)\n  (1): ReLU()\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 8256,
+        "name": "graph_projection.0",
+        "repr": "Linear(in_features=128, out_features=64, bias=True)"
+      },
+      {
+        "class": "ReLU",
+        "direct_parameters": 0,
+        "name": "graph_projection.1",
+        "repr": "ReLU()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 65,
+        "name": "attack_head",
+        "repr": "Linear(in_features=64, out_features=1, bias=True)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 260,
+        "name": "count_head",
+        "repr": "Linear(in_features=64, out_features=4, bias=True)"
+      },
+      {
+        "class": "GraphConv",
+        "direct_parameters": 0,
+        "name": "graph1",
+        "repr": "GraphConv(64, 64)"
+      },
+      {
+        "class": "SumAggregation",
+        "direct_parameters": 0,
+        "name": "graph1.aggr_module",
+        "repr": "SumAggregation()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 4160,
+        "name": "graph1.lin_rel",
+        "repr": "Linear(64, 64, bias=True)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 4096,
+        "name": "graph1.lin_root",
+        "repr": "Linear(64, 64, bias=False)"
+      },
+      {
+        "class": "GraphConv",
+        "direct_parameters": 0,
+        "name": "graph2",
+        "repr": "GraphConv(64, 64)"
+      },
+      {
+        "class": "SumAggregation",
+        "direct_parameters": 0,
+        "name": "graph2.aggr_module",
+        "repr": "SumAggregation()"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 4160,
+        "name": "graph2.lin_rel",
+        "repr": "Linear(64, 64, bias=True)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 4096,
+        "name": "graph2.lin_root",
+        "repr": "Linear(64, 64, bias=False)"
+      },
+      {
+        "class": "ReLU",
+        "direct_parameters": 0,
+        "name": "activation",
+        "repr": "ReLU()"
+      }
+    ],
+    "named_children": [
+      {
+        "class": "Conv1d",
+        "name": "input_projection",
+        "repr": "Conv1d(70, 64, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "ModuleList",
+        "name": "temporal_blocks",
+        "repr": "ModuleList(\n  (0): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n  (1): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(2,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n  (2): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(4,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n  (3): CausalDepthwiseSeparableResidualBlock(\n    (depthwise): Conv1d(64, 64, kernel_size=(3,), stride=(1,), dilation=(8,), groups=64)\n    (pointwise): Conv1d(64, 64, kernel_size=(1,), stride=(1,))\n  )\n)"
+      },
+      {
+        "class": "Linear",
+        "name": "node_projection",
+        "repr": "Linear(in_features=74, out_features=64, bias=True)"
+      },
+      {
+        "class": "Sequential",
+        "name": "source_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Sequential",
+        "name": "transit_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Sequential",
+        "name": "victim_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Sequential",
+        "name": "path_head",
+        "repr": "Sequential(\n  (0): Linear(in_features=64, out_features=32, bias=True)\n  (1): ReLU()\n  (2): Linear(in_features=32, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "Sequential",
+        "name": "graph_projection",
+        "repr": "Sequential(\n  (0): Linear(in_features=128, out_features=64, bias=True)\n  (1): ReLU()\n)"
+      },
+      {
+        "class": "Linear",
+        "name": "attack_head",
+        "repr": "Linear(in_features=64, out_features=1, bias=True)"
+      },
+      {
+        "class": "Linear",
+        "name": "count_head",
+        "repr": "Linear(in_features=64, out_features=4, bias=True)"
+      },
+      {
+        "class": "GraphConv",
+        "name": "graph1",
+        "repr": "GraphConv(64, 64)"
+      },
+      {
+        "class": "GraphConv",
+        "name": "graph2",
+        "repr": "GraphConv(64, 64)"
+      },
+      {
+        "class": "ReLU",
+        "name": "activation",
+        "repr": "ReLU()"
+      }
+    ],
+    "output_shapes": {
+      "attack_logits": [
+        2
+      ],
+      "count_logits": [
+        2,
+        4
+      ],
+      "path_logits": [
+        2,
+        16
+      ],
+      "source_logits": [
+        2,
+        16
+      ],
+      "transit_logits": [
+        2,
+        16
+      ],
+      "victim_logits": [
+        2,
+        16
+      ]
+    },
+    "parameter_count": 60553,
+    "state_dict_shapes": {
+      "attack_head.bias": [
+        1
+      ],
+      "attack_head.weight": [
+        1,
+        64
+      ],
+      "base_edge_index": [
+        2,
+        48
+      ],
+      "count_head.bias": [
+        4
+      ],
+      "count_head.weight": [
+        4,
+        64
+      ],
+      "graph1.lin_rel.bias": [
+        64
+      ],
+      "graph1.lin_rel.weight": [
+        64,
+        64
+      ],
+      "graph1.lin_root.weight": [
+        64,
+        64
+      ],
+      "graph2.lin_rel.bias": [
+        64
+      ],
+      "graph2.lin_rel.weight": [
+        64,
+        64
+      ],
+      "graph2.lin_root.weight": [
+        64,
+        64
+      ],
+      "graph_projection.0.bias": [
+        64
+      ],
+      "graph_projection.0.weight": [
+        64,
+        128
+      ],
+      "input_projection.bias": [
+        64
+      ],
+      "input_projection.weight": [
+        64,
+        70,
+        1
+      ],
+      "node_projection.bias": [
+        64
+      ],
+      "node_projection.weight": [
+        64,
+        74
+      ],
+      "path_head.0.bias": [
+        32
+      ],
+      "path_head.0.weight": [
+        32,
+        64
+      ],
+      "path_head.2.bias": [
+        1
+      ],
+      "path_head.2.weight": [
+        1,
+        32
+      ],
+      "source_head.0.bias": [
+        32
+      ],
+      "source_head.0.weight": [
+        32,
+        64
+      ],
+      "source_head.2.bias": [
+        1
+      ],
+      "source_head.2.weight": [
+        1,
+        32
+      ],
+      "temporal_blocks.0.depthwise.bias": [
+        64
+      ],
+      "temporal_blocks.0.depthwise.weight": [
+        64,
+        1,
+        3
+      ],
+      "temporal_blocks.0.pointwise.bias": [
+        64
+      ],
+      "temporal_blocks.0.pointwise.weight": [
+        64,
+        64,
+        1
+      ],
+      "temporal_blocks.1.depthwise.bias": [
+        64
+      ],
+      "temporal_blocks.1.depthwise.weight": [
+        64,
+        1,
+        3
+      ],
+      "temporal_blocks.1.pointwise.bias": [
+        64
+      ],
+      "temporal_blocks.1.pointwise.weight": [
+        64,
+        64,
+        1
+      ],
+      "temporal_blocks.2.depthwise.bias": [
+        64
+      ],
+      "temporal_blocks.2.depthwise.weight": [
+        64,
+        1,
+        3
+      ],
+      "temporal_blocks.2.pointwise.bias": [
+        64
+      ],
+      "temporal_blocks.2.pointwise.weight": [
+        64,
+        64,
+        1
+      ],
+      "temporal_blocks.3.depthwise.bias": [
+        64
+      ],
+      "temporal_blocks.3.depthwise.weight": [
+        64,
+        1,
+        3
+      ],
+      "temporal_blocks.3.pointwise.bias": [
+        64
+      ],
+      "temporal_blocks.3.pointwise.weight": [
+        64,
+        64,
+        1
+      ],
+      "transit_head.0.bias": [
+        32
+      ],
+      "transit_head.0.weight": [
+        32,
+        64
+      ],
+      "transit_head.2.bias": [
+        1
+      ],
+      "transit_head.2.weight": [
+        1,
+        32
+      ],
+      "victim_head.0.bias": [
+        32
+      ],
+      "victim_head.0.weight": [
+        32,
+        64
+      ],
+      "victim_head.2.bias": [
+        1
+      ],
+      "victim_head.2.weight": [
+        1,
+        32
+      ]
+    },
+    "synthetic_forward_only": true,
+    "top_level_attributes": [
+      "training"
+    ]
+  },
+  "operator_source_classes": [
+    {
+      "class_name": "CleanSourceOnlyBaseline",
+      "line_end": 666,
+      "line_start": 552,
+      "source": "class CleanSourceOnlyBaseline(nn.Module):\n    \"\"\"Clean source-only model extracted from a seeded frozen B3 reference.\"\"\"\n\n    def __init__(\n        self,\n        reference_b3: nn.Module,\n        operator: str,\n        base_edge_index: torch.Tensor,\n    ) -> None:\n        super().__init__()\n        if operator not in OPERATORS:\n            raise ValueError(f\"unsupported operator: {operator}\")\n\n        self.operator = operator\n        self.input_projection = copy.deepcopy(reference_b3.input_projection)\n        self.temporal_blocks = copy.deepcopy(reference_b3.temporal_blocks)\n        self.node_projection = copy.deepcopy(reference_b3.node_projection)\n        self.source_head = copy.deepcopy(reference_b3.source_head)\n        self.register_buffer(\n            \"base_edge_index\",\n            base_edge_index.detach().cpu().long().contiguous(),\n        )\n\n        if operator == \"conv1d\":\n            self.graph1 = None\n            self.graph2 = None\n        elif operator == \"gcnconv\":\n            self.graph1 = GCNConv(64, 64, add_self_loops=True, normalize=True)\n            self.graph2 = GCNConv(64, 64, add_self_loops=True, normalize=True)\n        elif operator == \"graphconv\":\n            self.graph1 = GraphConv(64, 64, aggr=\"add\")\n            self.graph2 = GraphConv(64, 64, aggr=\"add\")\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                64,\n                64,\n                heads=1,\n                concat=False,\n                negative_slope=0.2,\n                dropout=0.0,\n                add_self_loops=True,\n                bias=True,\n            )\n            self.graph2 = GATConv(\n                64,\n                64,\n                heads=1,\n                concat=False,\n                negative_slope=0.2,\n                dropout=0.0,\n                add_self_loops=True,\n                bias=True,\n            )\n        self.activation = nn.ReLU()\n\n    def encode_nodes(\n        self,\n        x: torch.Tensor,\n        physical_port_mask: torch.Tensor,\n    ) -> torch.Tensor:\n        if x.ndim != 4 or tuple(x.shape[1:]) != (16, 58, 32):\n            raise ValueError(f\"x shape={tuple(x.shape)}, expected [B,16,58,32]\")\n        if (\n            physical_port_mask.ndim != 3\n            or tuple(physical_port_mask.shape[1:]) != (16, 10)\n            or physical_port_mask.shape[0] != x.shape[0]\n        ):\n            raise ValueError(\"physical_port_mask must have shape [B,16,10]\")\n\n        batch_size, num_nodes, num_features, time_steps = x.shape\n        y = x.reshape(batch_size * num_nodes, num_features, time_steps)\n        y = F.relu(self.input_projection(y))\n        for block in self.temporal_blocks:\n            y = block(y)\n        temporal_embedding = y[:, :, -1].reshape(batch_size, num_nodes, 64)\n        node_input = torch.cat(\n            (\n                temporal_embedding,\n                physical_port_mask.to(dtype=temporal_embedding.dtype),\n            ),\n            dim=-1,\n        )\n        return F.relu(self.node_projection(node_input))\n\n    def source_logits_without_graph(\n        self,\n        x: torch.Tensor,\n        physical_port_mask: torch.Tensor,\n    ) -> torch.Tensor:\n        return self.source_head(\n            self.encode_nodes(x, physical_port_mask)\n        ).squeeze(-1)\n\n    def forward(\n        self,\n        x: torch.Tensor,\n        physical_port_mask: torch.Tensor,\n    ) -> torch.Tensor:\n        node_embedding = self.encode_nodes(x, physical_port_mask)\n        batch_size, num_nodes, embedding_dim = node_embedding.shape\n        if self.operator != \"conv1d\":\n            flat = node_embedding.reshape(batch_size * num_nodes, embedding_dim)\n            edges = batched_edge_index(\n                self.base_edge_index,\n                batch_size,\n                num_nodes,\n                flat.device,\n            )\n            flat = self.activation(self.graph1(flat, edges))\n            flat = self.activation(self.graph2(flat, edges))\n            node_embedding = flat.reshape(batch_size, num_nodes, embedding_dim)\n        logits = self.source_head(node_embedding)\n        if logits.ndim != 3 or logits.shape[-1] != 1:\n            raise RuntimeError(f\"source head returned unexpected shape {tuple(logits.shape)}\")\n        return logits.squeeze(-1)"
+    }
+  ],
+  "optimizer_step": false,
+  "production_checkpoint_loaded": false,
+  "scientific_model_inference": false,
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC2B_P0_AUTHORITATIVE_RUNTIME_STRUCTURE_CAPTURE",
+  "status": "PASS",
+  "synthetic_inputs_only": true,
+  "tcn_runtime_structure": {
+    "class": "TemporalTCNGCN",
+    "constructor_signature": "(input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8, tcn_dropout: float = 0.1)",
+    "forward_signature": "(x: torch.Tensor, a_hat: torch.Tensor)",
+    "gcn_layer_signature": "(in_dim: int, out_dim: int)",
+    "module_tree": [
+      {
+        "class": "TemporalTCNGCN",
+        "direct_parameters": 0,
+        "name": "<root>",
+        "repr": "TemporalTCNGCN(\n  (temporal): TemporalTCNEncoder(\n    (input_projection): Conv1d(70, 8, kernel_size=(1,), stride=(1,))\n    (block1): TemporalResidualBlock(\n      (conv1): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))\n      (norm1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n      (conv2): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))\n      (norm2): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n      (dropout): Dropout(p=0.1, inplace=False)\n    )\n    (block2): TemporalResidualBlock(\n      (conv1): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))\n      (norm1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n      (conv2): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))\n      (norm2): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n      (dropout): Dropout(p=0.1, inplace=False)\n    )\n    (attention_score): Conv1d(8, 1, kernel_size=(1,), stride=(1,))\n  )\n  (gcn1): GCNLayer(\n    (linear): Linear(in_features=8, out_features=16, bias=True)\n  )\n  (gcn2): GCNLayer(\n    (linear): Linear(in_features=16, out_features=8, bias=True)\n  )\n  (node_head): Linear(in_features=8, out_features=1, bias=True)\n  (graph_head): Linear(in_features=8, out_features=1, bias=True)\n)"
+      },
+      {
+        "class": "TemporalTCNEncoder",
+        "direct_parameters": 0,
+        "name": "temporal",
+        "repr": "TemporalTCNEncoder(\n  (input_projection): Conv1d(70, 8, kernel_size=(1,), stride=(1,))\n  (block1): TemporalResidualBlock(\n    (conv1): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))\n    (norm1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n    (conv2): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))\n    (norm2): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n    (dropout): Dropout(p=0.1, inplace=False)\n  )\n  (block2): TemporalResidualBlock(\n    (conv1): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))\n    (norm1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n    (conv2): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))\n    (norm2): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n    (dropout): Dropout(p=0.1, inplace=False)\n  )\n  (attention_score): Conv1d(8, 1, kernel_size=(1,), stride=(1,))\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 568,
+        "name": "temporal.input_projection",
+        "repr": "Conv1d(70, 8, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "TemporalResidualBlock",
+        "direct_parameters": 0,
+        "name": "temporal.block1",
+        "repr": "TemporalResidualBlock(\n  (conv1): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))\n  (norm1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n  (conv2): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))\n  (norm2): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n  (dropout): Dropout(p=0.1, inplace=False)\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 200,
+        "name": "temporal.block1.conv1",
+        "repr": "Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))"
+      },
+      {
+        "class": "BatchNorm1d",
+        "direct_parameters": 16,
+        "name": "temporal.block1.norm1",
+        "repr": "BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 200,
+        "name": "temporal.block1.conv2",
+        "repr": "Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(1,))"
+      },
+      {
+        "class": "BatchNorm1d",
+        "direct_parameters": 16,
+        "name": "temporal.block1.norm2",
+        "repr": "BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)"
+      },
+      {
+        "class": "Dropout",
+        "direct_parameters": 0,
+        "name": "temporal.block1.dropout",
+        "repr": "Dropout(p=0.1, inplace=False)"
+      },
+      {
+        "class": "TemporalResidualBlock",
+        "direct_parameters": 0,
+        "name": "temporal.block2",
+        "repr": "TemporalResidualBlock(\n  (conv1): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))\n  (norm1): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n  (conv2): Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))\n  (norm2): BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)\n  (dropout): Dropout(p=0.1, inplace=False)\n)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 200,
+        "name": "temporal.block2.conv1",
+        "repr": "Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))"
+      },
+      {
+        "class": "BatchNorm1d",
+        "direct_parameters": 16,
+        "name": "temporal.block2.norm1",
+        "repr": "BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 200,
+        "name": "temporal.block2.conv2",
+        "repr": "Conv1d(8, 8, kernel_size=(3,), stride=(1,), padding=(2,), dilation=(2,))"
+      },
+      {
+        "class": "BatchNorm1d",
+        "direct_parameters": 16,
+        "name": "temporal.block2.norm2",
+        "repr": "BatchNorm1d(8, eps=1e-05, momentum=0.1, affine=True, bias=True, track_running_stats=True)"
+      },
+      {
+        "class": "Dropout",
+        "direct_parameters": 0,
+        "name": "temporal.block2.dropout",
+        "repr": "Dropout(p=0.1, inplace=False)"
+      },
+      {
+        "class": "Conv1d",
+        "direct_parameters": 9,
+        "name": "temporal.attention_score",
+        "repr": "Conv1d(8, 1, kernel_size=(1,), stride=(1,))"
+      },
+      {
+        "class": "GCNLayer",
+        "direct_parameters": 0,
+        "name": "gcn1",
+        "repr": "GCNLayer(\n  (linear): Linear(in_features=8, out_features=16, bias=True)\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 144,
+        "name": "gcn1.linear",
+        "repr": "Linear(in_features=8, out_features=16, bias=True)"
+      },
+      {
+        "class": "GCNLayer",
+        "direct_parameters": 0,
+        "name": "gcn2",
+        "repr": "GCNLayer(\n  (linear): Linear(in_features=16, out_features=8, bias=True)\n)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 136,
+        "name": "gcn2.linear",
+        "repr": "Linear(in_features=16, out_features=8, bias=True)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 9,
+        "name": "node_head",
+        "repr": "Linear(in_features=8, out_features=1, bias=True)"
+      },
+      {
+        "class": "Linear",
+        "direct_parameters": 9,
+        "name": "graph_head",
+        "repr": "Linear(in_features=8, out_features=1, bias=True)"
+      }
+    ],
+    "parameter_count_original_width_with_70_inputs": 1739,
+    "state_dict_shapes": {
+      "gcn1.linear.bias": [
+        16
+      ],
+      "gcn1.linear.weight": [
+        16,
+        8
+      ],
+      "gcn2.linear.bias": [
+        8
+      ],
+      "gcn2.linear.weight": [
+        8,
+        16
+      ],
+      "graph_head.bias": [
+        1
+      ],
+      "graph_head.weight": [
+        1,
+        8
+      ],
+      "node_head.bias": [
+        1
+      ],
+      "node_head.weight": [
+        1,
+        8
+      ],
+      "temporal.attention_score.bias": [
+        1
+      ],
+      "temporal.attention_score.weight": [
+        1,
+        8,
+        1
+      ],
+      "temporal.block1.conv1.bias": [
+        8
+      ],
+      "temporal.block1.conv1.weight": [
+        8,
+        8,
+        3
+      ],
+      "temporal.block1.conv2.bias": [
+        8
+      ],
+      "temporal.block1.conv2.weight": [
+        8,
+        8,
+        3
+      ],
+      "temporal.block1.norm1.bias": [
+        8
+      ],
+      "temporal.block1.norm1.num_batches_tracked": [],
+      "temporal.block1.norm1.running_mean": [
+        8
+      ],
+      "temporal.block1.norm1.running_var": [
+        8
+      ],
+      "temporal.block1.norm1.weight": [
+        8
+      ],
+      "temporal.block1.norm2.bias": [
+        8
+      ],
+      "temporal.block1.norm2.num_batches_tracked": [],
+      "temporal.block1.norm2.running_mean": [
+        8
+      ],
+      "temporal.block1.norm2.running_var": [
+        8
+      ],
+      "temporal.block1.norm2.weight": [
+        8
+      ],
+      "temporal.block2.conv1.bias": [
+        8
+      ],
+      "temporal.block2.conv1.weight": [
+        8,
+        8,
+        3
+      ],
+      "temporal.block2.conv2.bias": [
+        8
+      ],
+      "temporal.block2.conv2.weight": [
+        8,
+        8,
+        3
+      ],
+      "temporal.block2.norm1.bias": [
+        8
+      ],
+      "temporal.block2.norm1.num_batches_tracked": [],
+      "temporal.block2.norm1.running_mean": [
+        8
+      ],
+      "temporal.block2.norm1.running_var": [
+        8
+      ],
+      "temporal.block2.norm1.weight": [
+        8
+      ],
+      "temporal.block2.norm2.bias": [
+        8
+      ],
+      "temporal.block2.norm2.num_batches_tracked": [],
+      "temporal.block2.norm2.running_mean": [
+        8
+      ],
+      "temporal.block2.norm2.running_var": [
+        8
+      ],
+      "temporal.block2.norm2.weight": [
+        8
+      ],
+      "temporal.input_projection.bias": [
+        8
+      ],
+      "temporal.input_projection.weight": [
+        8,
+        70,
+        1
+      ]
+    },
+    "temporal_encoder_signature": "(in_features: int = 2, embedding_dim: int = 8, kernel_size: int = 3, dropout: float = 0.1)"
+  },
+  "test_evaluation": false,
+  "thresholding_performed": false,
+  "train_tensor_access": false,
+  "training_performed": false,
+  "validation_tensor_access": false
+}

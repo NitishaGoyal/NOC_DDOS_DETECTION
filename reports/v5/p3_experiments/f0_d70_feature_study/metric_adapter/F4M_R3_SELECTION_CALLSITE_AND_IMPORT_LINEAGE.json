@@ -1,0 +1,163 @@
+{
+  "calls": {
+    "select_graph_threshold_fpr_cap": [
+      {
+        "context": {
+          "line_end": 588,
+          "line_start": 570,
+          "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+          "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+          "source": "        \"rank_computation_skipped\": bool(rank_skipped_batches > 0 and rank_pairs == 0),\n        \"rank_skipped_batches\": rank_skipped_batches,\n        \"topk_metrics_computed\": bool(compute_topk_metrics),\n    }\n    if collect_graph_scores:\n        if not compute_topk_metrics:\n            raise RuntimeError(\"Full graph-score collection requires top-k metrics for checkpointing\")\n        graph_truth, graph_prob = metric.graph_arrays()\n        constrained, sweep = select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )\n        extra[\"constrained_graph\"] = constrained\n        extra[\"graph_threshold_sweep\"] = sweep\n        extra[\"checkpoint_score\"] = selection_score(metrics, constrained)\n    return losses, metrics, extra\n\n\ndef one_batch(args: argparse.Namespace) -> int:\n    validate_primary_args(args)"
+        },
+        "line": 578,
+        "source": "select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )"
+      }
+    ],
+    "selection_score": [
+      {
+        "context": {
+          "line_end": 591,
+          "line_start": 575,
+          "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+          "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525",
+          "source": "        if not compute_topk_metrics:\n            raise RuntimeError(\"Full graph-score collection requires top-k metrics for checkpointing\")\n        graph_truth, graph_prob = metric.graph_arrays()\n        constrained, sweep = select_graph_threshold_fpr_cap(\n            graph_truth, graph_prob, fpr_cap=args.graph_fpr_cap\n        )\n        extra[\"constrained_graph\"] = constrained\n        extra[\"graph_threshold_sweep\"] = sweep\n        extra[\"checkpoint_score\"] = selection_score(metrics, constrained)\n    return losses, metrics, extra\n\n\ndef one_batch(args: argparse.Namespace) -> int:\n    validate_primary_args(args)\n    out = Path(args.out_dir).resolve()\n    out.mkdir(parents=True, exist_ok=True)\n    report_path = out / \"one_batch_preflight.json\""
+        },
+        "line": 583,
+        "source": "selection_score(metrics, constrained)"
+      }
+    ]
+  },
+  "imports": [
+    {
+      "kind": "from",
+      "level": 0,
+      "line": 34,
+      "module": "v4_a3_sourcepreserve",
+      "names": [
+        {
+          "asname": null,
+          "name": "A3SourcePreserveModel"
+        },
+        {
+          "asname": null,
+          "name": "COUNT_CLASSES"
+        },
+        {
+          "asname": null,
+          "name": "EXPECTED_PARAMETER_COUNT"
+        },
+        {
+          "asname": null,
+          "name": "EXPERIMENT_DESIGNATION"
+        },
+        {
+          "asname": null,
+          "name": "MODEL_NAME"
+        },
+        {
+          "asname": null,
+          "name": "PRIMARY_SEED"
+        },
+        {
+          "asname": null,
+          "name": "STAGE_LABEL"
+        },
+        {
+          "asname": null,
+          "name": "V4A3MemmapDataset"
+        },
+        {
+          "asname": null,
+          "name": "EpochMetrics"
+        },
+        {
+          "asname": null,
+          "name": "architecture_contract"
+        },
+        {
+          "asname": null,
+          "name": "atomic_csv_dump"
+        },
+        {
+          "asname": null,
+          "name": "atomic_json_dump"
+        },
+        {
+          "asname": null,
+          "name": "atomic_torch_save"
+        },
+        {
+          "asname": null,
+          "name": "build_loader"
+        },
+        {
+          "asname": null,
+          "name": "build_normalized_adjacency"
+        },
+        {
+          "asname": null,
+          "name": "build_physical_valid_port_mask"
+        },
+        {
+          "asname": null,
+          "name": "compute_training_class_weights"
+        },
+        {
+          "asname": null,
+          "name": "hard_negative_ranking_loss"
+        },
+        {
+          "asname": null,
+          "name": "load_metadata"
+        },
+        {
+          "asname": null,
+          "name": "load_split_indices"
+        },
+        {
+          "asname": null,
+          "name": "manhattan_distance_matrix"
+        },
+        {
+          "asname": null,
+          "name": "model_signature"
+        },
+        {
+          "asname": null,
+          "name": "rank_weight_for_epoch"
+        },
+        {
+          "asname": null,
+          "name": "select_graph_threshold_fpr_cap"
+        },
+        {
+          "asname": null,
+          "name": "selection_score"
+        },
+        {
+          "asname": null,
+          "name": "set_seed"
+        },
+        {
+          "asname": null,
+          "name": "sha256_file"
+        },
+        {
+          "asname": null,
+          "name": "validate_dataset_headers"
+        },
+        {
+          "asname": null,
+          "name": "validate_port_mask"
+        }
+      ],
+      "source": "from v4_a3_sourcepreserve import (  # noqa: E402\n    A3SourcePreserveModel,\n    COUNT_CLASSES,\n    EXPECTED_PARAMETER_COUNT,\n    EXPERIMENT_DESIGNATION,\n    MODEL_NAME,\n    PRIMARY_SEED,\n    STAGE_LABEL,\n    V4A3MemmapDataset,\n    EpochMetrics,\n    architecture_contract,\n    atomic_csv_dump,\n    atomic_json_dump,\n    atomic_torch_save,\n    build_loader,\n    build_normalized_adjacency,\n    build_physical_valid_port_mask,\n    compute_training_class_weights,\n    hard_negative_ranking_loss,\n    load_metadata,\n    load_split_indices,\n    manhattan_distance_matrix,\n    model_signature,\n    rank_weight_for_epoch,\n    select_graph_threshold_fpr_cap,\n    selection_score,\n    set_seed,\n    sha256_file,\n    validate_dataset_headers,\n    validate_port_mask,\n)",
+      "target_hits": {
+        "select_graph_threshold_fpr_cap": "select_graph_threshold_fpr_cap",
+        "selection_score": "selection_score"
+      }
+    }
+  ],
+  "path": "/home/zira/research/projects/GNN-2d/scripts/v4/train/train_v4_a3_sourcepreserve.py",
+  "sha256": "e5f9a48e9f7ca873c351743df92e3bb00d00a893333434c7fd0e04734e010525"
+}

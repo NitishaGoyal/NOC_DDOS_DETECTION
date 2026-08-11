@@ -1,0 +1,1775 @@
+{
+  "audit_boundary": {
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_performance_evaluated": false,
+    "test_tensors_read": false,
+    "threshold_search_performed": false,
+    "train_used_for_fitting": true,
+    "validation_used_for_checkpoint_selection": false,
+    "validation_used_for_evaluation": true
+  },
+  "decision": {
+    "critical_hold_reasons": [
+      "identifier/serialization probe predicts validation labels"
+    ],
+    "direct_metadata_policy": "mode and identifier leakage are documented, but become a dataset failure only if they enter learned inputs; A2/A3 forbid them",
+    "fixed_thresholds": {
+      "epoch_count_macro_f1": 0.75,
+      "epoch_graph_balanced_accuracy": 0.85,
+      "epoch_role_exact": 0.7,
+      "identifier_count_macro_f1": 0.75,
+      "identifier_graph_balanced_accuracy": 0.85,
+      "identifier_role_exact": 0.7,
+      "label_shuffle_all_tasks_exact": 0.2,
+      "label_shuffle_count_macro_f1": 0.55,
+      "label_shuffle_graph_balanced_accuracy": 0.7,
+      "label_shuffle_role_f1": 0.5,
+      "mask_graph_balanced_accuracy": 0.7,
+      "mask_role_exact": 0.5,
+      "mask_role_f1": 0.6,
+      "router_prior_role_exact": 0.5,
+      "router_prior_role_f1": 0.6
+    },
+    "next_stage": "HOLD_REMEDIATE_B0_SHORTCUTS",
+    "pair_integrity": {
+      "pair_overlap": [],
+      "run_overlap": [],
+      "train_pair_count": 16,
+      "validation_pair_count": 4
+    },
+    "status": "HOLD",
+    "time_diagnostic": {
+      "ordered_graph_balanced_accuracy": 0.9407216494845361,
+      "ordered_minus_shuffled": 0.0,
+      "shuffled_time_graph_balanced_accuracy": 0.9407216494845361,
+      "time_permutation": [
+        6,
+        30,
+        28,
+        27,
+        12,
+        24,
+        16,
+        17,
+        5,
+        26,
+        8,
+        18,
+        11,
+        14,
+        23,
+        1,
+        4,
+        25,
+        13,
+        19,
+        3,
+        29,
+        22,
+        9,
+        7,
+        21,
+        2,
+        31,
+        15,
+        20,
+        0,
+        10
+      ]
+    },
+    "warnings": [
+      "ordered and retrained shuffled-time probes differ by at most 0.02; temporal order may not be necessary for this summary probe"
+    ]
+  },
+  "details": {
+    "direct_metadata_audit": {
+      "case_id_parser": {
+        "active_parsed_window_count": 0,
+        "count_accuracy_active_parsed": 0.0,
+        "pattern": "S(\\d+)T(\\d+)",
+        "source_exact_active_parsed": 0.0,
+        "victim_exact_active_parsed": 0.0
+      },
+      "mode_as_attack_baseline": {
+        "all_tasks_exact": 0.5,
+        "count": {
+          "accuracy": 0.567251443862915,
+          "confusion_matrix": [
+            [
+              388,
+              0,
+              0
+            ],
+            [
+              221,
+              0,
+              0
+            ],
+            [
+              75,
+              0,
+              0
+            ]
+          ],
+          "macro_f1": 0.24129353233830844,
+          "per_class": {
+            "0": {
+              "f1": 0.7238805970149254,
+              "precision": 0.5672514619883041,
+              "recall": 1.0,
+              "support": 388
+            },
+            "1": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 221
+            },
+            "2": {
+              "f1": 0.0,
+              "precision": 0.0,
+              "recall": 0.0,
+              "support": 75
+            }
+          }
+        },
+        "graph": {
+          "accuracy": 0.9327485380116959,
+          "balanced_accuracy": 0.9407216494845361,
+          "f1": 0.9278996865203761,
+          "fn": 0,
+          "fp": 46,
+          "fpr": 0.11855670103092783,
+          "precision": 0.8654970760233918,
+          "recall": 1.0,
+          "support_negative": 388,
+          "support_positive": 296,
+          "tn": 342,
+          "tnr": 0.8814432989690721,
+          "tp": 296
+        },
+        "roles": {
+          "path": {
+            "all_windows": {
+              "exact_set": 0.567251443862915,
+              "fn": 1400,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 1400,
+              "tp": 0,
+              "window_count": 684
+            },
+            "attack_windows": {
+              "exact_set": 0.0,
+              "fn": 1400,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 1400,
+              "tp": 0,
+              "window_count": 296
+            }
+          },
+          "source": {
+            "all_windows": {
+              "exact_set": 0.567251443862915,
+              "fn": 371,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 371,
+              "tp": 0,
+              "window_count": 684
+            },
+            "attack_windows": {
+              "exact_set": 0.0,
+              "fn": 371,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 371,
+              "tp": 0,
+              "window_count": 296
+            }
+          },
+          "transit": {
+            "all_windows": {
+              "exact_set": 0.6944444179534912,
+              "fn": 820,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 820,
+              "tp": 0,
+              "window_count": 684
+            },
+            "attack_windows": {
+              "exact_set": 0.2939189076423645,
+              "fn": 820,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 820,
+              "tp": 0,
+              "window_count": 296
+            }
+          },
+          "victim": {
+            "all_windows": {
+              "exact_set": 0.567251443862915,
+              "fn": 296,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 296,
+              "tp": 0,
+              "window_count": 684
+            },
+            "attack_windows": {
+              "exact_set": 0.0,
+              "fn": 296,
+              "fp": 0,
+              "node_f1": 0.0,
+              "node_precision": 0.0,
+              "node_recall": 0.0,
+              "positive_entries": 296,
+              "tp": 0,
+              "window_count": 296
+            }
+          }
+        }
+      },
+      "policy": "all provenance strings and mode are forbidden model inputs"
+    },
+    "epoch_router_probe": {
+      "checkpoint_sha256": "636cb6518b64516454db84ce381d79ae55c4fbda73c8ed34d3ac227b1cc5f710",
+      "epochs": 200,
+      "final_train_loss": 4.0567055812479165,
+      "parameter_count": 26564,
+      "router_specific_node_output_weights": true,
+      "source": "window_target_only",
+      "train_max": 719.0,
+      "train_min": 31.0
+    },
+    "identifier_serialization_probe": {
+      "checkpoint_sha256": "8e366477c6c9c992d6f3ac8c7ebc50e274963fc8ff82b6a4e8bc3661edcfb451",
+      "epochs": 200,
+      "explicit_source_target_parser_included": false,
+      "final_train_loss": 0.003787084696432531,
+      "hash": "signed_sha256_character_ngrams_2_3_4_128_buckets",
+      "identifier_fields": [
+        "run_id",
+        "case_id",
+        "file_stem"
+      ],
+      "mode_included": false,
+      "numeric_fields": [
+        "window_start",
+        "window_target",
+        "epoch_id",
+        "run_length",
+        "run_window_count",
+        "target_fraction",
+        "start_fraction",
+        "serialization_fraction"
+      ],
+      "parameter_count": 42820
+    },
+    "label_shuffle_probe": {
+      "checkpoint_sha256": "b559693a160349f720db67c448b3cbdcdca70e88b26c3f3f181788ec19dafeb5",
+      "epochs": 30,
+      "final_train_loss": 3.977266445607332,
+      "parameter_count": 41736,
+      "permutation_sha256": "dfb071bc00a85eef2444df52df2f126ab8918d12816650ac8fbfb5e00eccab4c",
+      "whole_multitask_bundle_shuffled": true
+    },
+    "majority_all_zero": {
+      "attack_majority": 0,
+      "count_majority": 0,
+      "node_policy": "all_zero"
+    },
+    "mask_only_probe": {
+      "checkpoint_sha256": "b9f45a778c7aebdeb097e6629f8ca1fae16b9809dff147a26f1d5e9c92676401",
+      "epochs": 200,
+      "final_train_loss": 4.3857269287109375,
+      "parameter_count": 5640
+    },
+    "ordered_time_probe": {
+      "checkpoint_sha256": "0ef01508872432996ca65fd05da3d9eb0fbbc198faca34cc4977a4154aca1693",
+      "epochs": 30,
+      "final_train_loss": 0.1150356289185102,
+      "parameter_count": 41736
+    },
+    "router_frequency_prior": {
+      "always_attack": false,
+      "positive_count_mode": 1,
+      "roles": {
+        "path": {
+          "cardinality": 6,
+          "frequencies": [
+            0.5129179358482361,
+            0.44224923849105835,
+            0.5068389177322388,
+            0.22720365226268768,
+            0.38525834679603577,
+            0.4513677954673767,
+            0.5151975750923157,
+            0.4202127754688263,
+            0.1930091232061386,
+            0.12917932868003845,
+            0.4513677954673767,
+            0.292553186416626,
+            0.1702127605676651,
+            0.29939210414886475,
+            0.4916413426399231,
+            0.4270516633987427
+          ],
+          "predicted_indices": []
+        },
+        "source": {
+          "cardinality": 1,
+          "frequencies": [
+            0.31990882754325867,
+            0.12234042584896088,
+            0.06458966434001923,
+            0.06382978707551956,
+            0.12841945886611938,
+            0.13145896792411804,
+            0.0,
+            0.06382978707551956,
+            0.0,
+            0.0,
+            0.06534954160451889,
+            0.0,
+            0.10638298094272614,
+            0.06534954160451889,
+            0.06382978707551956,
+            0.19148936867713928
+          ],
+          "predicted_indices": []
+        },
+        "transit": {
+          "cardinality": 4,
+          "frequencies": [
+            0.06382978707551956,
+            0.31990882754325867,
+            0.3784194588661194,
+            0.12082067131996155,
+            0.1930091232061386,
+            0.19224923849105835,
+            0.5151975750923157,
+            0.292553186416626,
+            0.1930091232061386,
+            0.12917932868003845,
+            0.19376899302005768,
+            0.2355623096227646,
+            0.06382978707551956,
+            0.23404255509376526,
+            0.3632218837738037,
+            0.10638298094272614
+          ],
+          "predicted_indices": []
+        },
+        "victim": {
+          "cardinality": 1,
+          "frequencies": [
+            0.1930091232061386,
+            0.0,
+            0.12917932868003845,
+            0.10638298094272614,
+            0.06382978707551956,
+            0.19376899302005768,
+            0.0,
+            0.06382978707551956,
+            0.0,
+            0.0,
+            0.19224923849105835,
+            0.05699088051915169,
+            0.06382978707551956,
+            0.0,
+            0.1299392133951187,
+            0.12917932868003845
+          ],
+          "predicted_indices": []
+        }
+      },
+      "train_attack_prevalence": 0.48614701628685
+    },
+    "shuffled_time_probe": {
+      "checkpoint_sha256": "6aff8716ca973ce89c3a5600e1131ac231368f883142e1b1714ffdd9b412b2d4",
+      "epochs": 30,
+      "final_train_loss": 0.11457039766484273,
+      "parameter_count": 41736,
+      "time_permutation": [
+        6,
+        30,
+        28,
+        27,
+        12,
+        24,
+        16,
+        17,
+        5,
+        26,
+        8,
+        18,
+        11,
+        14,
+        23,
+        1,
+        4,
+        25,
+        13,
+        19,
+        3,
+        29,
+        22,
+        9,
+        7,
+        21,
+        2,
+        31,
+        15,
+        20,
+        0,
+        10
+      ]
+    }
+  },
+  "device": "cuda",
+  "failures": [],
+  "feature_variant": "PRIMARY58",
+  "learning_rate": 0.001,
+  "metric_contract": {
+    "binary_threshold": 0.5,
+    "checkpoint_selection": "none_fixed_epochs",
+    "count_metrics": [
+      "accuracy",
+      "macro_f1",
+      "3x3_confusion_matrix"
+    ],
+    "evaluation_split": "validation",
+    "fit_split": "train",
+    "graph_metrics": [
+      "accuracy",
+      "balanced_accuracy",
+      "precision",
+      "recall",
+      "f1",
+      "fpr",
+      "tnr",
+      "confusion_counts"
+    ],
+    "node_metrics": {
+      "all_windows": [
+        "precision",
+        "recall",
+        "f1",
+        "exact_set"
+      ],
+      "attack_windows": [
+        "precision",
+        "recall",
+        "f1",
+        "exact_set"
+      ]
+    },
+    "reason_for_attack_window_metrics": "prevents all-zero control windows from inflating localization",
+    "test_split_accessed": false,
+    "version": "V5_P0_B0_METRICS_D0"
+  },
+  "next_stage": "HOLD_REMEDIATE_B0_SHORTCUTS",
+  "probe_epochs": 200,
+  "provenance": {
+    "a3": {
+      "lock_sha256": "829b8c96f5cab1d2463ef1dc7640400c57b89b71dbf737144da7d9547e8abc3a",
+      "report_sha256": "18e1059aeceaf32d51900afa74e3676ff995cb56d26640e2e4f6a9f667d7bd3f"
+    },
+    "a4": {
+      "lock_sha256": "39c63543b2b6126b4af2329a937ebd212fd38963fe52dc155a2726c93d5157db",
+      "report_sha256": "461f5ad9dfa5548321ed105bc05a53f44576d880db0600f1d78b87cb2aeb45e3"
+    },
+    "mask_sha256": "4f3a86c03636b36fb79bbd0990ec061a2ab1887c9fbf02b908d3832b0b6519c8",
+    "script_sha256": "431f226a5bf686ccc32abcf6a8d8fdad0bea9f0e7eb87206022904effe6e870e",
+    "wrapper_sha256": "1dc9953682afdc5b743e9e6005a00bc9bdf41a73bd2a80bbebd9d8ebb7783d67"
+  },
+  "results": {
+    "epoch_router_probe": {
+      "all_tasks_exact": 0.0,
+      "count": {
+        "accuracy": 0.567251443862915,
+        "confusion_matrix": [
+          [
+            388,
+            0,
+            0
+          ],
+          [
+            221,
+            0,
+            0
+          ],
+          [
+            75,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.24129353233830844,
+        "per_class": {
+          "0": {
+            "f1": 0.7238805970149254,
+            "precision": 0.5672514619883041,
+            "recall": 1.0,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.5409356725146199,
+        "balanced_accuracy": 0.5657216494845361,
+        "f1": 0.5857519788918205,
+        "fn": 74,
+        "fp": 240,
+        "fpr": 0.6185567010309279,
+        "precision": 0.4805194805194805,
+        "recall": 0.75,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 148,
+        "tnr": 0.38144329896907214,
+        "tp": 222
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 309,
+            "fp": 5593,
+            "node_f1": 0.2699158832261257,
+            "node_precision": 0.16322561340514663,
+            "node_recall": 0.7792857142857142,
+            "positive_entries": 1400,
+            "tp": 1091,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 309,
+            "fp": 1813,
+            "node_f1": 0.5069702602230483,
+            "node_precision": 0.37568870523415976,
+            "node_recall": 0.7792857142857142,
+            "positive_entries": 1400,
+            "tp": 1091,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 219,
+            "fp": 3630,
+            "node_f1": 0.07320009631591622,
+            "node_precision": 0.04019037546271814,
+            "node_recall": 0.40970350404312667,
+            "positive_entries": 371,
+            "tp": 152,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 219,
+            "fp": 1520,
+            "node_f1": 0.14880078316201664,
+            "node_precision": 0.09090909090909091,
+            "node_recall": 0.40970350404312667,
+            "positive_entries": 371,
+            "tp": 152,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 331,
+            "fp": 3755,
+            "node_f1": 0.19312796208530808,
+            "node_precision": 0.11522148916116871,
+            "node_recall": 0.5963414634146341,
+            "positive_entries": 820,
+            "tp": 489,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 331,
+            "fp": 1403,
+            "node_f1": 0.3606194690265487,
+            "node_precision": 0.2584566596194503,
+            "node_recall": 0.5963414634146341,
+            "positive_entries": 820,
+            "tp": 489,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 88,
+            "fp": 4332,
+            "node_f1": 0.08602150537634409,
+            "node_precision": 0.04581497797356828,
+            "node_recall": 0.7027027027027027,
+            "positive_entries": 296,
+            "tp": 208,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 88,
+            "fp": 1777,
+            "node_f1": 0.18237615081104777,
+            "node_precision": 0.10478589420654912,
+            "node_recall": 0.7027027027027027,
+            "positive_entries": 296,
+            "tp": 208,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "identifier_serialization_probe": {
+      "all_tasks_exact": 0.5,
+      "count": {
+        "accuracy": 0.8084795475006104,
+        "confusion_matrix": [
+          [
+            342,
+            36,
+            10
+          ],
+          [
+            0,
+            136,
+            85
+          ],
+          [
+            0,
+            0,
+            75
+          ]
+        ],
+        "macro_f1": 0.7471143862055262,
+        "per_class": {
+          "0": {
+            "f1": 0.936986301369863,
+            "precision": 1.0,
+            "recall": 0.8814432989690721,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.6921119592875318,
+            "precision": 0.7906976744186046,
+            "recall": 0.6153846153846154,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.6122448979591837,
+            "precision": 0.4411764705882353,
+            "recall": 1.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.9327485380116959,
+        "balanced_accuracy": 0.9407216494845361,
+        "f1": 0.9278996865203761,
+        "fn": 0,
+        "fp": 46,
+        "fpr": 0.11855670103092783,
+        "precision": 0.8654970760233918,
+        "recall": 1.0,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 342,
+        "tnr": 0.8814432989690721,
+        "tp": 296
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.5,
+            "fn": 310,
+            "fp": 1210,
+            "node_f1": 0.5891891891891892,
+            "node_precision": 0.47391304347826085,
+            "node_recall": 0.7785714285714286,
+            "positive_entries": 1400,
+            "tp": 1090,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 310,
+            "fp": 1007,
+            "node_f1": 0.6233914784100659,
+            "node_precision": 0.519790176442537,
+            "node_recall": 0.7785714285714286,
+            "positive_entries": 1400,
+            "tp": 1090,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.5,
+            "fn": 296,
+            "fp": 190,
+            "node_f1": 0.2358490566037736,
+            "node_precision": 0.2830188679245283,
+            "node_recall": 0.20215633423180593,
+            "positive_entries": 371,
+            "tp": 75,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 296,
+            "fp": 134,
+            "node_f1": 0.25862068965517243,
+            "node_precision": 0.3588516746411483,
+            "node_recall": 0.20215633423180593,
+            "positive_entries": 371,
+            "tp": 75,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.5,
+            "fn": 315,
+            "fp": 607,
+            "node_f1": 0.5227743271221532,
+            "node_precision": 0.454136690647482,
+            "node_recall": 0.6158536585365854,
+            "positive_entries": 820,
+            "tp": 505,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 315,
+            "fp": 507,
+            "node_f1": 0.5513100436681222,
+            "node_precision": 0.4990118577075099,
+            "node_recall": 0.6158536585365854,
+            "positive_entries": 820,
+            "tp": 505,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.597953200340271,
+            "fn": 171,
+            "fp": 201,
+            "node_f1": 0.40192926045016075,
+            "node_precision": 0.3834355828220859,
+            "node_recall": 0.4222972972972973,
+            "positive_entries": 296,
+            "tp": 125,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.1689189225435257,
+            "fn": 171,
+            "fp": 162,
+            "node_f1": 0.4288164665523156,
+            "node_precision": 0.4355400696864111,
+            "node_recall": 0.4222972972972973,
+            "positive_entries": 296,
+            "tp": 125,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "label_shuffle_probe": {
+      "all_tasks_exact": 0.0,
+      "count": {
+        "accuracy": 0.5,
+        "confusion_matrix": [
+          [
+            241,
+            125,
+            22
+          ],
+          [
+            137,
+            77,
+            7
+          ],
+          [
+            50,
+            1,
+            24
+          ]
+        ],
+        "macro_f1": 0.44296460722653846,
+        "per_class": {
+          "0": {
+            "f1": 0.5906862745098039,
+            "precision": 0.5630841121495327,
+            "recall": 0.6211340206185567,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.36320754716981124,
+            "precision": 0.3793103448275862,
+            "recall": 0.34841628959276016,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.37500000000000006,
+            "precision": 0.4528301886792453,
+            "recall": 0.32,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.4780701754385965,
+        "balanced_accuracy": 0.5055029256060184,
+        "f1": 0.5405405405405406,
+        "fn": 86,
+        "fp": 271,
+        "fpr": 0.6984536082474226,
+        "precision": 0.4365904365904366,
+        "recall": 0.7094594594594594,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 117,
+        "tnr": 0.3015463917525773,
+        "tp": 210
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.001461988314986229,
+            "fn": 521,
+            "fp": 4046,
+            "node_f1": 0.2779446640316206,
+            "node_precision": 0.1784771573604061,
+            "node_recall": 0.6278571428571429,
+            "positive_entries": 1400,
+            "tp": 879,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0033783784601837397,
+            "fn": 521,
+            "fp": 1177,
+            "node_f1": 0.5086805555555555,
+            "node_precision": 0.4275291828793774,
+            "node_recall": 0.6278571428571429,
+            "positive_entries": 1400,
+            "tp": 879,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 147,
+            "fp": 3454,
+            "node_f1": 0.11064460360582859,
+            "node_precision": 0.06090266449157151,
+            "node_recall": 0.6037735849056604,
+            "positive_entries": 371,
+            "tp": 224,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 147,
+            "fp": 1380,
+            "node_f1": 0.2268354430379747,
+            "node_precision": 0.1396508728179551,
+            "node_recall": 0.6037735849056604,
+            "positive_entries": 371,
+            "tp": 224,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.001461988314986229,
+            "fn": 311,
+            "fp": 3136,
+            "node_f1": 0.22799552071668533,
+            "node_precision": 0.13964334705075446,
+            "node_recall": 0.6207317073170732,
+            "positive_entries": 820,
+            "tp": 509,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0033783784601837397,
+            "fn": 311,
+            "fp": 909,
+            "node_f1": 0.45487042001787314,
+            "node_precision": 0.35895627644569816,
+            "node_recall": 0.6207317073170732,
+            "positive_entries": 820,
+            "tp": 509,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 137,
+            "fp": 2934,
+            "node_f1": 0.09383298908232518,
+            "node_precision": 0.05140640155189137,
+            "node_recall": 0.5371621621621622,
+            "positive_entries": 296,
+            "tp": 159,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 137,
+            "fp": 1207,
+            "node_f1": 0.19133574007220217,
+            "node_precision": 0.116398243045388,
+            "node_recall": 0.5371621621621622,
+            "positive_entries": 296,
+            "tp": 159,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "majority_all_zero": {
+      "all_tasks_exact": 0.567251443862915,
+      "count": {
+        "accuracy": 0.567251443862915,
+        "confusion_matrix": [
+          [
+            388,
+            0,
+            0
+          ],
+          [
+            221,
+            0,
+            0
+          ],
+          [
+            75,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.24129353233830844,
+        "per_class": {
+          "0": {
+            "f1": 0.7238805970149254,
+            "precision": 0.5672514619883041,
+            "recall": 1.0,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.5672514619883041,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "fn": 296,
+        "fp": 0,
+        "fpr": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 388,
+        "tnr": 1.0,
+        "tp": 0
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.567251443862915,
+            "fn": 1400,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 1400,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 1400,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 1400,
+            "tp": 0,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.567251443862915,
+            "fn": 371,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 371,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 371,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 371,
+            "tp": 0,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.6944444179534912,
+            "fn": 820,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 820,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.2939189076423645,
+            "fn": 820,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 820,
+            "tp": 0,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.567251443862915,
+            "fn": 296,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 296,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 296,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 296,
+            "tp": 0,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "mask_only_probe": {
+      "all_tasks_exact": 0.0,
+      "count": {
+        "accuracy": 0.567251443862915,
+        "confusion_matrix": [
+          [
+            388,
+            0,
+            0
+          ],
+          [
+            221,
+            0,
+            0
+          ],
+          [
+            75,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.24129353233830844,
+        "per_class": {
+          "0": {
+            "f1": 0.7238805970149254,
+            "precision": 0.5672514619883041,
+            "recall": 1.0,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.5672514619883041,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "fn": 296,
+        "fp": 0,
+        "fpr": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 388,
+        "tnr": 1.0,
+        "tp": 0
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 511,
+            "fp": 5951,
+            "node_f1": 0.2157766990291262,
+            "node_precision": 0.12997076023391813,
+            "node_recall": 0.635,
+            "positive_entries": 1400,
+            "tp": 889,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 511,
+            "fp": 2071,
+            "node_f1": 0.4077981651376147,
+            "node_precision": 0.30033783783783785,
+            "node_recall": 0.635,
+            "positive_entries": 1400,
+            "tp": 889,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 296,
+            "fp": 1977,
+            "node_f1": 0.061906727197688804,
+            "node_precision": 0.03654970760233918,
+            "node_recall": 0.20215633423180593,
+            "positive_entries": 371,
+            "tp": 75,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 296,
+            "fp": 813,
+            "node_f1": 0.11914217633042097,
+            "node_precision": 0.08445945945945946,
+            "node_recall": 0.20215633423180593,
+            "positive_entries": 371,
+            "tp": 75,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 252,
+            "fp": 6272,
+            "node_f1": 0.1483028720626632,
+            "node_precision": 0.08304093567251462,
+            "node_recall": 0.6926829268292682,
+            "positive_entries": 820,
+            "tp": 568,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 252,
+            "fp": 2392,
+            "node_f1": 0.30052910052910053,
+            "node_precision": 0.1918918918918919,
+            "node_recall": 0.6926829268292682,
+            "positive_entries": 820,
+            "tp": 568,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.0,
+            "fn": 246,
+            "fp": 2002,
+            "node_f1": 0.04258943781942078,
+            "node_precision": 0.024366471734892786,
+            "node_recall": 0.16891891891891891,
+            "positive_entries": 296,
+            "tp": 50,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 246,
+            "fp": 838,
+            "node_f1": 0.08445945945945946,
+            "node_precision": 0.05630630630630631,
+            "node_recall": 0.16891891891891891,
+            "positive_entries": 296,
+            "tp": 50,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "ordered_time_probe": {
+      "all_tasks_exact": 0.6491228342056274,
+      "count": {
+        "accuracy": 0.932748556137085,
+        "confusion_matrix": [
+          [
+            342,
+            36,
+            10
+          ],
+          [
+            0,
+            221,
+            0
+          ],
+          [
+            0,
+            0,
+            75
+          ]
+        ],
+        "macro_f1": 0.9330574979461609,
+        "per_class": {
+          "0": {
+            "f1": 0.936986301369863,
+            "precision": 1.0,
+            "recall": 0.8814432989690721,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.9246861924686193,
+            "precision": 0.8599221789883269,
+            "recall": 1.0,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.9375,
+            "precision": 0.8823529411764706,
+            "recall": 1.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.9327485380116959,
+        "balanced_accuracy": 0.9407216494845361,
+        "f1": 0.9278996865203761,
+        "fn": 0,
+        "fp": 46,
+        "fpr": 0.11855670103092783,
+        "precision": 0.8654970760233918,
+        "recall": 1.0,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 342,
+        "tnr": 0.8814432989690721,
+        "tp": 296
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.7353801131248474,
+            "fn": 203,
+            "fp": 255,
+            "node_f1": 0.8394109396914445,
+            "node_precision": 0.8243801652892562,
+            "node_recall": 0.855,
+            "positive_entries": 1400,
+            "tp": 1197,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.6486486196517944,
+            "fn": 203,
+            "fp": 26,
+            "node_f1": 0.9126953869614944,
+            "node_precision": 0.9787408013082584,
+            "node_recall": 0.855,
+            "positive_entries": 1400,
+            "tp": 1197,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.7324561476707458,
+            "fn": 78,
+            "fp": 118,
+            "node_f1": 0.7493606138107417,
+            "node_precision": 0.7128953771289538,
+            "node_recall": 0.7897574123989218,
+            "positive_entries": 371,
+            "tp": 293,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.7195945978164673,
+            "fn": 78,
+            "fp": 5,
+            "node_f1": 0.8759342301943199,
+            "node_precision": 0.9832214765100671,
+            "node_recall": 0.7897574123989218,
+            "positive_entries": 371,
+            "tp": 293,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.8114035129547119,
+            "fn": 92,
+            "fp": 162,
+            "node_f1": 0.8514619883040935,
+            "node_precision": 0.8179775280898877,
+            "node_recall": 0.8878048780487805,
+            "positive_entries": 820,
+            "tp": 728,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.7736486196517944,
+            "fn": 92,
+            "fp": 32,
+            "node_f1": 0.9215189873417722,
+            "node_precision": 0.9578947368421052,
+            "node_recall": 0.8878048780487805,
+            "positive_entries": 820,
+            "tp": 728,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.8040935397148132,
+            "fn": 1,
+            "fp": 150,
+            "node_f1": 0.796221322537112,
+            "node_precision": 0.6629213483146067,
+            "node_recall": 0.9966216216216216,
+            "positive_entries": 296,
+            "tp": 295,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.7195945978164673,
+            "fn": 1,
+            "fp": 82,
+            "node_f1": 0.8766716196136701,
+            "node_precision": 0.7824933687002652,
+            "node_recall": 0.9966216216216216,
+            "positive_entries": 296,
+            "tp": 295,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "router_frequency_prior": {
+      "all_tasks_exact": 0.567251443862915,
+      "count": {
+        "accuracy": 0.567251443862915,
+        "confusion_matrix": [
+          [
+            388,
+            0,
+            0
+          ],
+          [
+            221,
+            0,
+            0
+          ],
+          [
+            75,
+            0,
+            0
+          ]
+        ],
+        "macro_f1": 0.24129353233830844,
+        "per_class": {
+          "0": {
+            "f1": 0.7238805970149254,
+            "precision": 0.5672514619883041,
+            "recall": 1.0,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.5672514619883041,
+        "balanced_accuracy": 0.5,
+        "f1": 0.0,
+        "fn": 296,
+        "fp": 0,
+        "fpr": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 388,
+        "tnr": 1.0,
+        "tp": 0
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.567251443862915,
+            "fn": 1400,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 1400,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 1400,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 1400,
+            "tp": 0,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.567251443862915,
+            "fn": 371,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 371,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 371,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 371,
+            "tp": 0,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.6944444179534912,
+            "fn": 820,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 820,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.2939189076423645,
+            "fn": 820,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 820,
+            "tp": 0,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.567251443862915,
+            "fn": 296,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 296,
+            "tp": 0,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.0,
+            "fn": 296,
+            "fp": 0,
+            "node_f1": 0.0,
+            "node_precision": 0.0,
+            "node_recall": 0.0,
+            "positive_entries": 296,
+            "tp": 0,
+            "window_count": 296
+          }
+        }
+      }
+    },
+    "shuffled_time_probe": {
+      "all_tasks_exact": 0.5467836260795593,
+      "count": {
+        "accuracy": 0.932748556137085,
+        "confusion_matrix": [
+          [
+            342,
+            36,
+            10
+          ],
+          [
+            0,
+            221,
+            0
+          ],
+          [
+            0,
+            0,
+            75
+          ]
+        ],
+        "macro_f1": 0.9330574979461609,
+        "per_class": {
+          "0": {
+            "f1": 0.936986301369863,
+            "precision": 1.0,
+            "recall": 0.8814432989690721,
+            "support": 388
+          },
+          "1": {
+            "f1": 0.9246861924686193,
+            "precision": 0.8599221789883269,
+            "recall": 1.0,
+            "support": 221
+          },
+          "2": {
+            "f1": 0.9375,
+            "precision": 0.8823529411764706,
+            "recall": 1.0,
+            "support": 75
+          }
+        }
+      },
+      "graph": {
+        "accuracy": 0.9327485380116959,
+        "balanced_accuracy": 0.9407216494845361,
+        "f1": 0.9278996865203761,
+        "fn": 0,
+        "fp": 46,
+        "fpr": 0.11855670103092783,
+        "precision": 0.8654970760233918,
+        "recall": 1.0,
+        "support_negative": 388,
+        "support_positive": 296,
+        "tn": 342,
+        "tnr": 0.8814432989690721,
+        "tp": 296
+      },
+      "roles": {
+        "path": {
+          "all_windows": {
+            "exact_set": 0.7353801131248474,
+            "fn": 68,
+            "fp": 315,
+            "node_f1": 0.874302592714145,
+            "node_precision": 0.8087431693989071,
+            "node_recall": 0.9514285714285714,
+            "positive_entries": 1400,
+            "tp": 1332,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.7466216087341309,
+            "fn": 68,
+            "fp": 43,
+            "node_f1": 0.96,
+            "node_precision": 0.9687272727272728,
+            "node_recall": 0.9514285714285714,
+            "positive_entries": 1400,
+            "tp": 1332,
+            "window_count": 296
+          }
+        },
+        "source": {
+          "all_windows": {
+            "exact_set": 0.6856725215911865,
+            "fn": 74,
+            "fp": 154,
+            "node_f1": 0.7226277372262774,
+            "node_precision": 0.6585365853658537,
+            "node_recall": 0.8005390835579514,
+            "positive_entries": 371,
+            "tp": 297,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.6925675868988037,
+            "fn": 74,
+            "fp": 17,
+            "node_f1": 0.8671532846715329,
+            "node_precision": 0.945859872611465,
+            "node_recall": 0.8005390835579514,
+            "positive_entries": 371,
+            "tp": 297,
+            "window_count": 296
+          }
+        },
+        "transit": {
+          "all_windows": {
+            "exact_set": 0.792397677898407,
+            "fn": 14,
+            "fp": 220,
+            "node_f1": 0.8732394366197183,
+            "node_precision": 0.7855750487329435,
+            "node_recall": 0.9829268292682927,
+            "positive_entries": 820,
+            "tp": 806,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.8344594836235046,
+            "fn": 14,
+            "fp": 50,
+            "node_f1": 0.9618138424821002,
+            "node_precision": 0.9415887850467289,
+            "node_recall": 0.9829268292682927,
+            "positive_entries": 820,
+            "tp": 806,
+            "window_count": 296
+          }
+        },
+        "victim": {
+          "all_windows": {
+            "exact_set": 0.7456140518188477,
+            "fn": 1,
+            "fp": 192,
+            "node_f1": 0.7535121328224776,
+            "node_precision": 0.6057494866529775,
+            "node_recall": 0.9966216216216216,
+            "positive_entries": 296,
+            "tp": 295,
+            "window_count": 684
+          },
+          "attack_windows": {
+            "exact_set": 0.7094594836235046,
+            "fn": 1,
+            "fp": 85,
+            "node_f1": 0.8727810650887574,
+            "node_precision": 0.7763157894736842,
+            "node_recall": 0.9966216216216216,
+            "positive_entries": 296,
+            "tp": 295,
+            "window_count": 296
+          }
+        }
+      }
+    }
+  },
+  "seed": 11,
+  "stage": "V5_P0_B0_SHORTCUT_AUDIT_SUITE",
+  "status": "HOLD",
+  "stride": 8,
+  "test_split_accessed": false,
+  "traffic_probe_epochs": 30,
+  "train_window_count": 2707,
+  "validation_window_count": 684,
+  "warnings": [
+    "ordered and retrained shuffled-time probes differ by at most 0.02; temporal order may not be necessary for this summary probe"
+  ],
+  "window": 32
+}

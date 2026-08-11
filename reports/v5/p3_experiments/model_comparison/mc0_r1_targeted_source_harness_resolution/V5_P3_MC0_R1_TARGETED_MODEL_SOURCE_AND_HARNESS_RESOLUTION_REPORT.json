@@ -1,0 +1,1608 @@
+{
+  "blocked_paths_not_opened": 15,
+  "checkpoint_deserialization": false,
+  "classification": "ENGINEERING",
+  "cuda_used": false,
+  "harness_resolution": {
+    "FINAL_AB_D1_EXPORTER": [
+      {
+        "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_LOCK.json",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 35,
+        "sha256": "abdcafcb0d1e4db3f590e926d94b8e08f09c1b3cbf9e31f231531c80d64e4331",
+        "snippets": [
+          "\"sealed_test_access\": false,\n  \"sealed_test_evaluation_authorized\": false,\n  \"stage\": \"V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT\",\n  \"status\": \"PASS\",\n  \"test_tensor_deserialization\": false,\n  \"thresholding_performed\": false,\n  \"validation_items\": 27722,\n  \"validation_npz_sha256\": \"9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e\"",
+          "\"manifest_sha256\": \"7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c\",\n  \"native_test_dataset_constructed\": false,\n  \"next_stage\": \"V5_P3_FINAL_D2_RAW_A0_A1_COMBINED_AB_VALIDATION_EVALUATION\",\n  \"production_seed\": 107,\n  \"raw_logits_69_shape\": [\n    27722,\n    69\n  ],"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_REPORT.json",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 35,
+        "sha256": "4f76af3fb08aca07a1579e60d9f50d1350a9ac6dbe36bda9752c1b35d219bb46",
+        "snippets": [
+          "\"sealed_test_access\": false,\n  \"sealed_test_evaluation_authorized\": false,\n  \"stage\": \"V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT\",\n  \"status\": \"FROZEN\",\n  \"test_tensor_deserialization\": false,\n  \"thresholding_performed\": false,\n  \"training_performed\": false,\n  \"validation_batches\": 109,",
+          "\"frozen_model_source_sha256\": \"ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150\",\n  \"frozen_model_state_sha256\": \"f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432\",\n  \"manifest_path\": \"/home/zira/research/projects/GNN-2d/artifacts/evaluation/v5_p3_final_d1_combined_ab_validation_logits/V5_P3_FINAL_D1_COMBINED_AB_VALIDATION_RAW_LOGITS_MANIFEST.json\",\n  \"manifest_sha256\": \"7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c\",\n  \"model_construction\": {\n    \"canonical_parameter_count\": 59785,\n    \"edge\": {\n      \"path\": \"/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy\","
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f5_r3_official_d1_batch_forward_route_replay.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 33,
+        "sha256": "a92ca7e97a68af44e1bbf8edbcdd3ba2b6980e92476c4b56da2e463098e971c1",
+        "snippets": [
+          "except SystemExit as exc:\n            observation = f\"system_exit_before_capture:{exc.code}\"\n    finally:\n        sys.settrace(old_trace)\n        sys.argv = old_argv\n        for handle in handles:\n            try:\n                handle.remove()"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/run_v5_p3_d10_eplr_v1_comparison_and_carry_forward.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 33,
+        "sha256": "b328efa5caca5194ee4980d402936667f23c9a377f93e72f6320f0d2880cb18a",
+        "snippets": [
+          "A future confirmatory evaluation must use an independent future validation\nboundary such as frozen Tranche-B validation or the final A+B protocol.\n\"\"\"\n    atomic_text(decision_note_path, decision_note)\n\n    v2_note = \"\"\"# EPLR-V2 Preserve-or-Passthrough design input"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_r2_fresh_vs_immutable_mismatch_diagnostic.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 28,
+        "sha256": "89be23fe8fd66df92a4a171f0fc8e2914c9165c56f33955619f81a23876128cb",
+        "snippets": [
+          "STAGE = \"V5_P3_F4_R2_FRESH_VS_IMMUTABLE_MISMATCH_DIAGNOSTIC\"\nCAMPAIGN = \"V5-P3-F0-D70-FEATURE-STUDY\"\n\nMAX_LOGIT_ABS_DIFF = 1e-6\nMAX_LOGIT_MEAN_ABS_DIFF = 1e-8\nEXPECTED_VALIDATION_ITEMS = 13863",
+          "\"baseline_reproduction\"\n    )\n    final_contract_path = baseline_dir / \"F4_P1R4_FINAL_F4_REPLAY_CONTRACT.json\"\n    p1r3_contract_path = baseline_dir / (\n        \"F4_P1R3_ACTUAL_F4_REPRODUCTION_CONTRACT.json\"\n    )\n    require(final_contract_path.is_file(), \"final F4 contract missing\")\n    require(p1r3_contract_path.is_file(), \"F4-P1R3 contract missing\")"
+        ]
+      },
+      {
+        "relative_path": "scripts/failure_analysis/close_and_freeze_chrono_b1.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "5f370bb4b44d8ba6c0c0ddd07f84d554b4a7ea2a6e19ace00dec9a3c094c8c0f",
+        "snippets": [
+          "This script does not train, evaluate, move, delete, or modify existing artifacts.\nIt verifies the final B1 verdict, inventories the experiment, hashes the relevant\nsources/checkpoints/reports, records repository/environment provenance, and\nwrites a closure package in a new output directory.\n\"\"\"\n\nfrom __future__ import annotations"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_frozen_checkpoint_validation_baseline_reproduction.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "68fefef670f480c30abdfd87d278ec5c2fde083f68d9a42f983e54d44481859c",
+        "snippets": [
+          "\"V5_P3_F4_P1R4_A4_A5_METRIC_PROVENANCE_RECOVERY_LOCK.json\"\n    )\n    final_contract_path = baseline_dir / \"F4_P1R4_FINAL_F4_REPLAY_CONTRACT.json\"\n    p1r3_contract_path = baseline_dir / (\n        \"F4_P1R3_ACTUAL_F4_REPRODUCTION_CONTRACT.json\"\n    )\n    p1r_report_path = baseline_dir / (\n        \"V5_P3_F4_P1R_OFFICIAL_LINEAGE_RECOVERY_\""
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p1r4_a4_a5_metric_provenance_recovery.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "b3a2ab5fcd7041f6caf267aa9212cc5572fefa9eeeca5ef34f62871060ba125e",
+        "snippets": [
+          "source_inventory_path = output_dir / \"F4_P1R4_A4_A5_SOURCE_INVENTORY.json\"\n    boundary_path = output_dir / \"F4_P1R4_F4_VS_F5_AUTHORIZATION_BOUNDARY.json\"\n    contract_path = output_dir / \"F4_P1R4_FINAL_F4_REPLAY_CONTRACT.json\"\n\n    atomic_json(\n        provenance_path,\n        {\n            \"expected_metrics\": EXPECTED_METRICS,"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_r1_installed_script_cli_recovery.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "1a4d7c8c80db41aa91b93116669e1f7fbfa810519097eddbd80b533408bb1651",
+        "snippets": [
+          "\"V5_P3_F4_P1R4_A4_A5_METRIC_PROVENANCE_RECOVERY_LOCK.json\"\n    )\n    final_contract_path = baseline_dir / \"F4_P1R4_FINAL_F4_REPLAY_CONTRACT.json\"\n    p1r3_contract_path = baseline_dir / (\n        \"F4_P1R3_ACTUAL_F4_REPRODUCTION_CONTRACT.json\"\n    )\n    p1r_report_path = baseline_dir / (\n        \"V5_P3_F4_P1R_OFFICIAL_LINEAGE_RECOVERY_\""
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_r3_runtime_determinism_device_match_review.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "7c601fd0a51e99156e283a0fc1153aea9e7aa870df3f57eb8d161f8b953d1fa1",
+        "snippets": [
+          "\"F4_R2_RUNTIME_AND_REFERENCE_PROVENANCE.json\"\n    )\n    final_contract_path = baseline_dir / \"F4_P1R4_FINAL_F4_REPLAY_CONTRACT.json\"\n\n    required = [\n        r2_report_path,\n        r2_lock_path,\n        r2_runtime_path,"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_r5_targeted_metric_delta_reconstruction.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "514b9db49871bbe981aa2ecc90e25b5c95acbaf7497e42e4dd0ffd2a441648ae",
+        "snippets": [
+          "if (\n            (path / \"F4_D1_INVOCATION_CONTRACT.json\").is_file()\n            and (path / \"F4_FRESH_VS_IMMUTABLE_NPZ_COMPARISON.json\").is_file()\n        ):\n            candidates.append(path)\n    require(candidates, f\"no failed F4 replay run found under {workspace}\")\n    candidates.sort(key=lambda path: path.stat().st_mtime_ns, reverse=True)\n    return candidates[0]"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f5_dynamic70_group_block_permutation.py",
+        "role": "FINAL_AB_D1_EXPORTER",
+        "score": 18,
+        "sha256": "ddd04eec802330b493c5d22ea042786287da0979ada7c203304eb9aa9c86c653",
+        "snippets": [
+          "except SystemExit as exc:\n            exit_observation = f\"system_exit_before_capture:{exc.code}\"\n    finally:\n        sys.settrace(old_trace)\n        sys.argv = old_argv\n\n    require(\n        \"model\" in captured,"
+        ]
+      }
+    ],
+    "FINAL_AB_TRAINER_MODEL": [
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 38,
+        "sha256": "7d01ac3d21e7d47ace22e6a3b9937d97c79383c406a567ea91b00c2574c78fe7",
+        "snippets": [
+          "raise ValueError(\"P4 accepts validation result records only\")\n\n    if r[\"dataset_scope\"] not in (\"V5_P3_TRANCHE_A_DYNAMIC70\", \"V5_P3_FINAL_AB_DYNAMIC70\"):\n        raise ValueError(\"unsupported dataset_scope\")\n\n    if int(r[\"seed\"]) not in (107, 117, 127):\n        raise ValueError(\"P4 comparison seeds are frozen to 107/117/127\")",
+          "\"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n            \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n            \"parameter_count\": 60553, \"provenance\": prov,\n            \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,\n        },\n        {\n            \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_117\", \"model_id\": \"conv1d_graphconv\",\n            \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\","
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_FULL_TRAINING_REPORT.json",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 30,
+        "sha256": "07979163ec1dc1be1e9ccd5e4af5f945389602b70777d67d1bdb1390d4d9c41d",
+        "snippets": [
+          "\"A4_P0_R2_sampler_report_sha256\": \"c4ff7db4471f843119a6a84cbaf08bc17ad219af534847cacf26a87a1b42625e\",\n  \"authoritative_A4_source_sha256\": \"de88186e697a722fd4993d41871770dcc00de3d140397877c25ead66d2bc9ab2\",\n  \"best_checkpoint\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_final_a4_r2_fresh_ab_full_training_seed107_dtype_bridge/V5_P3_FINAL_A4_R2_FRESH_AB_SEED107_BEST.pt\",\n  \"best_checkpoint_sha256\": \"4864908176217bc991804aa51ea02e692f5aa6fef2e070e143fccdf75385eaea\",\n  \"best_epoch\": 5,\n  \"best_model_state_sha256\": \"f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432\",\n  \"best_validation_loss\": 1.358584355825958,\n  \"best_validation_metrics\": {",
+          "]\n    },\n    \"final_parameter_count\": 60553,\n    \"route\": {\n      \"b3\": \"P2B3Conv1DOnlyCount4()\",\n      \"canonical\": \"P2TaskDGraphConvCount4(b3, base_edge_index)\",\n      \"dynamic\": \"build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)\"\n    }"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_final_d1_immutable_combined_ab_validation_logit_export/V5_P3_FINAL_D1_IMMUTABLE_COMBINED_AB_VALIDATION_LOGIT_EXPORT_REPORT.json",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 30,
+        "sha256": "4f76af3fb08aca07a1579e60d9f50d1350a9ac6dbe36bda9752c1b35d219bb46",
+        "snippets": [
+          "\"frozen_model_source_sha256\": \"ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150\",\n  \"frozen_model_state_sha256\": \"f804d4560894bc2ee22320329fa0292063b108ca9cdf7f56e029f25ee812d432\",\n  \"manifest_path\": \"/home/zira/research/projects/GNN-2d/artifacts/evaluation/v5_p3_final_d1_combined_ab_validation_logits/V5_P3_FINAL_D1_COMBINED_AB_VALIDATION_RAW_LOGITS_MANIFEST.json\",\n  \"manifest_sha256\": \"7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c\",\n  \"model_construction\": {\n    \"canonical_parameter_count\": 59785,\n    \"edge\": {\n      \"path\": \"/home/zira/research/projects/GNN-2d/reports/v5/p2_g1a_r2a_canonical_static_topology_contract/V5_P2_G1A_R2A_CANONICAL_STATIC_EDGE_INDEX.npy\",",
+          "]\n    },\n    \"final_parameter_count\": 60553,\n    \"route\": {\n      \"b3\": \"P2B3Conv1DOnlyCount4()\",\n      \"canonical\": \"P2TaskDGraphConvCount4(b3, base_edge_index)\",\n      \"dynamic\": \"build_v6_p0_dynamic70_from_canonical_structure(canonical, seed=107)\"\n    }"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f5_dynamic70_group_block_permutation.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "ddd04eec802330b493c5d22ea042786287da0979ada7c203304eb9aa9c86c653",
+        "snippets": [
+          "except SystemExit as exc:\n            exit_observation = f\"system_exit_before_capture:{exc.code}\"\n    finally:\n        sys.settrace(old_trace)\n        sys.argv = old_argv\n\n    require(\n        \"model\" in captured,",
+          "EXPECTED_X_SHAPE = (16, 70, 32)\nEXPECTED_MASK_SHAPE = (16, 10)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_EDGE_BUFFER_ELEMENTS = 96\n\nGROUPS = {\n    \"directional_traffic_volume\": (0, 10),\n    \"inter_flit_timing\": (10, 30),"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f5_p0_group_block_permutation_preflight.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "de2516e9c5e1450f13e7b499cea475b74a02779ea50f4f46ce5bec02631e0e93",
+        "snippets": [
+          "f4m_report_path = metric_dir / (\n        \"V5_P3_F4M_CANONICAL_METRIC_ADAPTER_\"\n        \"CERTIFICATION_FINAL_REPORT.json\"\n    )\n    f4m_lock_path = metric_dir / (\n        \"V5_P3_F4M_CANONICAL_METRIC_ADAPTER_\"\n        \"CERTIFICATION_FINAL_LOCK.json\"\n    )",
+          "CAMPAIGN = \"V5-P3-F0-D70-FEATURE-STUDY\"\n\nEXPECTED_MODEL_PARAMETER_COUNT = 60553\nEXPECTED_VALIDATION_ITEMS = 13863\nEXPECTED_INPUT_SHAPE = [16, 70, 32]\nEXPECTED_MASK_SHAPE = [16, 10]\nEXPECTED_EDGE_COUNT = 48\nEXPECTED_LOGIT_WIDTH = 69"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e1_r1_constructor_callsite_patch_recovery.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "fa7d0c8dce33b5da4e7962342402596ffd0b5b9f9acb5daa47571f1f9f4f42db",
+        "snippets": [
+          "\"V5_P3_F7_E0D_R1_EXACT_EARLY_STOP_POLICY_PIN_LOCK.json\"\n    )\n    final_recipe_path = f7_root / (\n        \"F7_E0D_R1_FINAL_RECONSTRUCTED_EXECUTION_RECIPE.json\"\n    )\n    p2_lock_path = f7_root / (\n        \"V5_P3_F7_P2_RECONSTRUCTED_TRAINER_ADAPTER_AND_DRY_RUN_PREFLIGHT_LOCK.json\"\n    )",
+          "\"epoch >= 15 and early_stop_patience_counter >= 12\"\n)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\n\nGROUPS = {"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e1_r2_environment_data_route_recovery.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "52d3dd0cbc894ea417c105b5fd5c5f6f41001abe28b41fa55bbab9026dc5b717",
+        "snippets": [
+          "\"V5_P3_F7_E0D_R1_EXACT_EARLY_STOP_POLICY_PIN_LOCK.json\"\n    )\n    final_recipe_path = f7_root / (\n        \"F7_E0D_R1_FINAL_RECONSTRUCTED_EXECUTION_RECIPE.json\"\n    )\n    p2_lock_path = f7_root / (\n        \"V5_P3_F7_P2_RECONSTRUCTED_TRAINER_ADAPTER_AND_DRY_RUN_PREFLIGHT_LOCK.json\"\n    )",
+          "\"epoch >= 15 and early_stop_patience_counter >= 12\"\n)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\n\nGROUPS = {"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e1_r3_required_legacy_cli_binding.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "9b574f4156fbd47a9461da713c7c5d4a97956fcee8fa27be01868cdd76d7f83b",
+        "snippets": [
+          "\"V5_P3_F7_E0D_R1_EXACT_EARLY_STOP_POLICY_PIN_LOCK.json\"\n    )\n    final_recipe_path = f7_root / (\n        \"F7_E0D_R1_FINAL_RECONSTRUCTED_EXECUTION_RECIPE.json\"\n    )\n    p2_lock_path = f7_root / (\n        \"V5_P3_F7_P2_RECONSTRUCTED_TRAINER_ADAPTER_AND_DRY_RUN_PREFLIGHT_LOCK.json\"\n    )",
+          "\"epoch >= 15 and early_stop_patience_counter >= 12\"\n)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\n\nGROUPS = {"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e1_r5_runtime_import_patch_and_trainer_recovery.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "f1870389257cc533e7a8a8f7e24a0507dd8b1248e9f994a04efd7b28930ed1d2",
+        "snippets": [
+          "\"V5_P3_F7_SEED_{seed}_LOCK.json\"\n        ),\n        \"V5_P2_B2_MULTI_SEED_FINALIZATION\": (\n            \"V5_P3_F7_PRIMARY_MATRIX_AGGREGATION\"\n        ),\n    }\n    for old, new in literal_replacements.items():\n        generated_text = generated_text.replace(old, new)",
+          "\"epoch >= 15 and early_stop_patience_counter >= 12\"\n)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\n\nGROUPS = {"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e1_reconstructed_trainer_generation.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "7a0810920ceef3c0497518010b311f01be4d15262d8dece72b76c481bc2de012",
+        "snippets": [
+          "\"V5_P3_F7_E0D_R1_EXACT_EARLY_STOP_POLICY_PIN_LOCK.json\"\n    )\n    final_recipe_path = f7_root / (\n        \"F7_E0D_R1_FINAL_RECONSTRUCTED_EXECUTION_RECIPE.json\"\n    )\n    p2_lock_path = f7_root / (\n        \"V5_P3_F7_P2_RECONSTRUCTED_TRAINER_ADAPTER_AND_DRY_RUN_PREFLIGHT_LOCK.json\"\n    )",
+          ")\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\n\nGROUPS = {"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e2_r4_pairblock_to_itembatch_route_recovery.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "cde0d4284071f85f9a9b1946211ddca37cb03c5cb102e851fda1826ec6e02a1f",
+        "snippets": [
+          "def create_item_batch_route_trainer(\n    cardinality_corrected_path: Path,\n    final_path: Path,\n    expected_cardinality_sha256: str,\n) -> dict[str, Any]:\n    \"\"\"Replace the inherited pair-block sampler with item-level batching.\n\n    The legacy V5-P2 dataset stored adjacent CONTROL/ATTACK members in pairs.",
+          "\"epoch >= 15 and early_stop_patience_counter >= 12\"\n)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\nINTERCEPT_EXIT_CODE = 86\nEXPECTED_EFFECTIVE_ITEM_BATCH_SIZE = 256"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e2_r4_r1_frozen_batch_geometry_recovery.py",
+        "role": "FINAL_AB_TRAINER_MODEL",
+        "score": 28,
+        "sha256": "2306e786b87a807d9853d3a52728abb1a783ae20d9cade24f5ec69889fdc778c",
+        "snippets": [
+          "def create_item_batch_route_trainer(\n    cardinality_corrected_path: Path,\n    final_path: Path,\n    expected_cardinality_sha256: str,\n) -> dict[str, Any]:\n    \"\"\"Replace pair-block batching using frozen batch geometry.\n\n    R4 failed because it assumed that the pair-count constructor parameter",
+          "\"epoch >= 15 and early_stop_patience_counter >= 12\"\n)\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\nINTERCEPT_EXIT_CODE = 86\nEXPECTED_EFFECTIVE_ITEM_BATCH_SIZE = 256"
+        ]
+      }
+    ],
+    "P2_RESPONSE_LATENCY": [
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 78,
+        "sha256": "ae06da51bc895cd8def1b3da95d61f02c5d7d82d8c11f837ec12d47d209f10af",
+        "snippets": [
+          "args.cycles_per_epoch,\n    )\n    print(\"V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATION_COMPLETE\")\n    print(\"validation_only=true\")\n    print(\"threshold_tuning_performed=false\")\n    print(\"sealed_test_access=false\")",
+          ")\n    out_dir.mkdir(parents=True, exist_ok=True)\n    write_csv(out_dir / \"per_run_onset_latency.csv\", per_run)\n    summary = build_summary(per_run)\n    summary[\"thresholds_consumed\"] = {\n        \"graph\": graph_threshold,\n        \"source\": source_threshold,\n        \"victim\": victim_threshold,",
+          ") -> Dict[str, Any]:\n    onset, term = _require_run_metadata(run_key, rs)\n    ordered = sorted(rs, key=lambda r: (int(r[\"window_end_epoch\"]), int(r[\"window_start_epoch\"]), str(r[\"sample_key\"])))\n\n    ends = [int(r[\"window_end_epoch\"]) for r in ordered]\n    if len(ends) != len(set((int(r[\"window_end_epoch\"]), str(r[\"sample_key\"])) for r in ordered)):\n        pass  # duplicate decision epochs are allowed only when sample keys differ; order remains deterministic",
+          "def _first_stable_epoch(flags: Sequence[Tuple[int, bool]], q: int = Q_STABLE) -> Optional[int]:\n    streak = 0\n    streak_start = None\n    for epoch, flag in flags:\n        if flag:\n            if streak == 0:"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION_LOCK.json",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 60,
+        "sha256": "9de3484818033cfc497249d654dbe86f9f54b9485c6a8f1ab20ef338cf52e3c6",
+        "snippets": [
+          "\"actual_prediction_archive_evaluated\": false,\n  \"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/posttrain_p2_onset_latency_contract.json\",\n  \"contract_sha256\": \"5295799b93864628b7cb961a0edf8fe68dd40ce9fb0ab2fd75fbd673d4f89357\",\n  \"decision_epoch\": \"window_end_epoch\",\n  \"decoder_applied\": false,\n  \"installed_evaluator\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py\",\n  \"installed_evaluator_sha256\": \"ae06da51bc895cd8def1b3da95d61f02c5d7d82d8c11f837ec12d47d209f10af\",",
+          "\"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/posttrain_p2_onset_latency_contract.json\",\n  \"contract_sha256\": \"5295799b93864628b7cb961a0edf8fe68dd40ce9fb0ab2fd75fbd673d4f89357\",\n  \"decision_epoch\": \"window_end_epoch\",\n  \"decoder_applied\": false,\n  \"installed_evaluator\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p2_onset_latency_evaluator.py\",\n  \"installed_evaluator_sha256\": \"ae06da51bc895cd8def1b3da95d61f02c5d7d82d8c11f837ec12d47d209f10af\",\n  \"model_inference_performed\": false,\n  \"next_stage\": \"V5_P3_POSTTRAIN_P3_VICTIM_ROLE_PATH_EVALUATOR_IMPLEMENTATION\",",
+          "\"detected_during_attack_runs=1\",\n    \"pre_onset_false_alarm_rate=0.5\",\n    \"stable_detection_q=2\",\n    \"sealed_test_alias_rejected=true\"\n  ],\n  \"stable_detection_q\": 2,\n  \"stage\": \"V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION\",\n  \"status\": \"PASS\","
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/posttrain_p2_onset_latency_contract.json",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 60,
+        "sha256": "5295799b93864628b7cb961a0edf8fe68dd40ce9fb0ab2fd75fbd673d4f89357",
+        "snippets": [
+          "\"validation_only\": true\n  },\n  \"stage\": \"V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION\",\n  \"threshold_policy\": {\n    \"default_scientific_thresholds\": null,\n    \"graph_threshold_source\": \"must be supplied explicitly from a frozen/mainline threshold contract\",\n    \"role_threshold_source\": \"must be supplied explicitly from a frozen/mainline threshold contract\",\n    \"selftest_threshold\": 0.5,",
+          "\"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"outputs\": [\n    \"per_run_onset_latency.csv\",\n    \"onset_latency_summary.json\",\n    \"graph_first_latency_cdf.csv\"\n  ],\n  \"scientific_semantics\": {\n    \"attack_onset\": \"attack_onset_epoch from authoritative runtime/packet truth carried in prediction archive\",",
+          "\"complete_source_path_victim_rule\": \"source, path and victim exact-set rules all true on the same post-onset decision\",\n    \"cycle_conversion\": \"optional only when authoritative cycles_per_epoch is supplied explicitly at execution time\",\n    \"decision_epoch\": \"window_end_epoch\",\n    \"during_attack_rule\": \"attack_onset_epoch <= decision_epoch <= attack_termination_epoch\",\n    \"graph_positive_rule\": \"graph_probability >= externally supplied frozen graph threshold\",\n    \"latency_unit_primary\": \"epochs\",\n    \"path_correct_set_rule\": \"thresholded 16-router path probability vector exactly equals path truth vector\",\n    \"post_onset_decision_rule\": \"decision_epoch >= attack_onset_epoch\",",
+          "\"pre_onset_false_alarm_rule\": \"decision_epoch < attack_onset_epoch and graph decision positive\",\n    \"source_correct_set_rule\": \"thresholded 16-router source probability vector exactly equals source truth vector\",\n    \"stable_graph_detection_q\": 2,\n    \"stable_graph_rule\": \"first two consecutive post-onset archive decisions both satisfying frozen graph decision rule\",\n    \"undetected_policy\": \"never silently discard; preserve null latency and explicit undetected_during_attack flag\",\n    \"victim_correct_set_rule\": \"thresholded 16-router victim probability vector exactly equals victim truth vector\"\n  },\n  \"scope\": \"validation_prediction_archive_postprocessing_only\","
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/SELFTEST/out/onset_latency_summary.json",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 40,
+        "sha256": "b2c269df48ea509d30e736c4979ebf1de2cd787badab6b7f9e9ef464ab0cd3c2",
+        "snippets": [
+          "\"cdf_denominator\": \"all eligible attack runs\",\n  \"cycles_per_epoch\": 1000,\n  \"decision_epoch_semantics\": \"window_end_epoch\",\n  \"detected_during_attack_fraction\": 0.5,\n  \"detected_during_attack_runs\": 1,\n  \"eligible_attack_runs\": 2,\n  \"false_alarm_windows_per_run\": 0.5,\n  \"false_alarm_windows_total\": 1,",
+          "\"pre_onset_false_alarm_runs\": 1,\n  \"sealed_test_access\": false,\n  \"stable_detection_consecutive_decisions_q\": 2,\n  \"test_directory_enumerated\": false,\n  \"test_evaluation_performed\": false,\n  \"test_tensor_contents_accessed\": false,\n  \"threshold_tuning_performed\": false,\n  \"thresholds_consumed\": {"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p7_result_aggregator.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 38,
+        "sha256": "087b1f2867cb49d79d454959771ce0e8f44312de375d4a25e68e393d7394d98d",
+        "snippets": [
+          "def build_response_latency(p2_dir: Path) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:\n    summary = read_json(p2_dir / \"onset_latency_summary.json\")\n    table = [{\n        \"Eligible attack runs\": summary.get(\"eligible_attack_runs\"),\n        \"Detected during attack\": summary.get(\"detected_during_attack_runs\"),\n        \"Undetected during attack\": summary.get(\"undetected_during_attack_runs\"),\n        \"Detected fraction\": summary.get(\"detected_during_attack_fraction\"),",
+          "\"Median graph latency (epochs)\": summary.get(\"graph_first_latency_epochs_median_detected_during_attack\"),\n        \"P95 graph latency (epochs)\": summary.get(\"graph_first_latency_epochs_p95_detected_during_attack\"),\n        \"Stable detection q\": summary.get(\"stable_detection_consecutive_decisions_q\"),\n        \"Evidence class\": \"VALIDATION-EXPLORATORY\",\n    }]\n    cdf = read_csv(p2_dir / \"graph_first_latency_cdf.csv\")\n    return table, cdf, summary"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 30,
+        "sha256": "8e69ac987b583b4ab1d6adaad799f92d084b9e02063ccde400ca4a6d3c8afc85",
+        "snippets": [
+          "\"consume_mainline_frozen_thresholds_only\": true\n  },\n  \"onset_latency\": {\n    \"onset_definition\": \"first epoch containing verified active malicious behaviour from authoritative runtime/packet truth\",\n    \"first_graph_detection\": \"first post-onset decision satisfying frozen graph decision rule\",\n    \"stable_detection_consecutive_decisions_q\": 2,\n    \"latencies\": [\n      \"graph_first\", \"graph_stable\", \"source_first_correct_set\",",
+          "\"split_allowed_during_development\": [\"train\", \"validation\"],\n    \"required_fields\": [\n      \"sample_key\", \"pair_key\", \"window_start_epoch\", \"window_end_epoch\",\n      \"graph_truth\", \"graph_probability\",\n      \"count_truth\", \"count_logits\",\n      \"source_truth_16\", \"source_probability_16\",\n      \"transit_truth_16\", \"transit_probability_16\",\n      \"victim_truth_16\", \"victim_probability_16\",",
+          "\"onset_definition\": \"first epoch containing verified active malicious behaviour from authoritative runtime/packet truth\",\n    \"first_graph_detection\": \"first post-onset decision satisfying frozen graph decision rule\",\n    \"stable_detection_consecutive_decisions_q\": 2,\n    \"latencies\": [\n      \"graph_first\", \"graph_stable\", \"source_first_correct_set\",\n      \"victim_first_correct_set\", \"path_first_correct_set\",\n      \"complete_source_path_victim_first_correct\"\n    ],"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p7_result_aggregation_and_paper_artifact_implementation/SELFTEST/inputs/p2/onset_latency_summary.json",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 30,
+        "sha256": "6082feba125a9c5824568288427d0b6a1aa8a93d8ea628e0f73ba20cd3c4427d",
+        "snippets": [
+          "\"graph_first_latency_epochs_median_detected_during_attack\": 8.0,\n  \"graph_first_latency_epochs_p95_detected_during_attack\": 15.2,\n  \"stable_detection_consecutive_decisions_q\": 2,\n  \"sealed_test_access\": false\n}"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p1b_model_to_archive_adapter.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 28,
+        "sha256": "667ae04f1c14b378fbf32e897b6411f69d3e4f5b0ae548c676a1a495da7fe103",
+        "snippets": [
+          "FORBIDDEN_SPLIT_TOKENS = (\"test\", \"sealed\")\nREQUIRED_SCIENTIFIC_FIELDS = (\n    \"sample_key\", \"pair_key\", \"window_start_epoch\", \"window_end_epoch\",\n    \"graph_truth\", \"graph_probability\", \"count_truth\",\n    \"source_truth_16\", \"source_probability_16\",\n    \"transit_truth_16\", \"transit_probability_16\",\n    \"victim_truth_16\", \"victim_probability_16\",\n    \"path_truth_16\", \"path_probability_16\","
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p1b_r1_model_to_archive_adapter.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 28,
+        "sha256": "4f96731c6466c3dcd321904bb9ebba010f5bba3a39bc0fbd1669809720ea3afe",
+        "snippets": [
+          "FORBIDDEN_SPLIT_TOKENS = (\"test\", \"sealed\")\nREQUIRED_SCIENTIFIC_FIELDS = (\n    \"sample_key\", \"pair_key\", \"window_start_epoch\", \"window_end_epoch\",\n    \"graph_truth\", \"graph_probability\", \"count_truth\",\n    \"source_truth_16\", \"source_probability_16\",\n    \"transit_truth_16\", \"transit_probability_16\",\n    \"victim_truth_16\", \"victim_probability_16\",\n    \"path_truth_16\", \"path_probability_16\","
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p3_victim_role_path_evaluator.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 28,
+        "sha256": "73fb42853914357174ccea12112a6c8238cefb14ad49344178d3189b64e79812",
+        "snippets": [
+          "\"pair_key\": r.get(\"pair_key\"),\n            \"run_key\": r.get(\"run_key\"),\n            \"window_end_epoch\": r.get(\"window_end_epoch\"),\n            \"source_exact\": exacts[\"source\"],\n            \"transit_exact\": exacts[\"transit\"],\n            \"victim_exact\": exacts[\"victim\"],\n            \"path_exact\": exacts[\"path\"],\n            \"joint_source_victim_exact\": exacts[\"source\"] and exacts[\"victim\"],"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p5_robustness_subgroup_evaluator.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 28,
+        "sha256": "685427573519bed0b88d3c007ea0dbaedfe4493e7a569e76d106d586bf598eb5",
+        "snippets": [
+          "rows.append({\n            \"split\":\"validation\",\"sample_key\":f\"R1_{end}\",\"pair_key\":\"P1\",\"run_key\":\"R1\",\n            \"window_end_epoch\":end,\"graph_truth\":gt,\"graph_probability\":gp,\n            \"source_truth\":s,\"source_probability\":prob(s),\n            \"transit_truth\":tr,\"transit_probability\":prob(tr),\n            \"victim_truth\":v,\"victim_probability\":prob(v),\n            \"path_truth\":p,\"path_probability\":prob(p),\n            \"attacker_count\":1,\"attack_strength\":\"S20\","
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_prediction_archive.py",
+        "role": "P2_RESPONSE_LATENCY",
+        "score": 28,
+        "sha256": "eddecd016a5ebbd53cf5c949f8e995ffe8368e73af426df60b461cec60b0479e",
+        "snippets": [
+          "REQUIRED_SCALARS = (\n    \"sample_key\", \"pair_key\", \"window_start_epoch\", \"window_end_epoch\",\n    \"graph_truth\", \"graph_probability\", \"count_truth\",\n)\n\n\ndef sha256_file(path: Path) -> str:"
+        ]
+      }
+    ],
+    "P4_MODEL_COMPARISON": [
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+        "role": "P4_MODEL_COMPARISON",
+        "score": 48,
+        "sha256": "7d01ac3d21e7d47ace22e6a3b9937d97c79383c406a567ea91b00c2574c78fe7",
+        "snippets": [
+          "return\n    execute(args.results_json, args.output_csv)\n    print(\"V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_AGGREGATION_COMPLETE\")\n    print(\"sealed_test_access=false\")\n\n\nif __name__ == \"__main__\":\n    main()"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_HARNESS_IMPLEMENTATION_LOCK.json",
+        "role": "P4_MODEL_COMPARISON",
+        "score": 40,
+        "sha256": "41ecb2c157cdc05f7d6a08943947be1f583382d63cafd6edb21d1f7ad29c3757",
+        "snippets": [
+          "127\n  ],\n  \"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json\",\n  \"contract_sha256\": \"bc50efd32cd6a5c423abc0e328ab6116feffe90d7075b305192b7d95d02bbcd5\",\n  \"installed_harness\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py\",\n  \"installed_harness_sha256\": \"7d01ac3d21e7d47ace22e6a3b9937d97c79383c406a567ea91b00c2574c78fe7\",\n  \"model_inference_performed\": false,\n  \"next_stage\": \"V5_P3_POSTTRAIN_P5_ROBUSTNESS_SUBGROUP_EVALUATOR_IMPLEMENTATION\","
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/posttrain_p4_model_comparison_contract.json",
+        "role": "P4_MODEL_COMPARISON",
+        "score": 40,
+        "sha256": "bc50efd32cd6a5c423abc0e328ab6116feffe90d7075b305192b7d95d02bbcd5",
+        "snippets": [
+          "\"test_tensor_contents_accessed\": false\n  },\n  \"stage\": \"V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_HARNESS_IMPLEMENTATION\"\n}"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p3_victim_role_path_evaluator_implementation/V5_P3_POSTTRAIN_P3_VICTIM_ROLE_PATH_EVALUATOR_IMPLEMENTATION_LOCK.json",
+        "role": "P4_MODEL_COMPARISON",
+        "score": 20,
+        "sha256": "a2fda303de43ceb7782e357539ba20bd66ec5f51b9e88afe49b9b04b451e9652",
+        "snippets": [
+          "\"actual_prediction_archive_evaluated\": false,\n  \"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p3_victim_role_path_evaluator_implementation/posttrain_p3_victim_role_path_contract.json\",\n  \"contract_sha256\": \"838976b514079da917d6554c3c727cbb226436727d64310e5fb5311e564b6f77\",\n  \"control_false_alarm_population\": \"graph_truth==0\",\n  \"decoder_applied\": false,\n  \"installed_evaluator\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p3_victim_role_path_evaluator.py\",\n  \"installed_evaluator_sha256\": \"73fb42853914357174ccea12112a6c8238cefb14ad49344178d3189b64e79812\",",
+          "\"installed_evaluator_sha256\": \"73fb42853914357174ccea12112a6c8238cefb14ad49344178d3189b64e79812\",\n  \"model_inference_performed\": false,\n  \"next_stage\": \"V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_HARNESS_IMPLEMENTATION\",\n  \"p0_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_PROTOCOL_FREEZE_LOCK.json\",\n  \"p1a_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p1_prediction_archive_implementation/V5_P3_POSTTRAIN_P1_PREDICTION_ARCHIVE_IMPLEMENTATION_LOCK.json\",\n  \"p1b_r1_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p1b_r1_importlib_dataclass_recovery/V5_P3_POSTTRAIN_P1B_R1_IMPORTLIB_DATACLASS_RECOVERY_LOCK.json\",\n  \"p2_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION_LOCK.json\",\n  \"primary_role_population\": \"graph_truth==1\","
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p5_robustness_subgroup_evaluator_implementation/V5_P3_POSTTRAIN_P5_ROBUSTNESS_SUBGROUP_EVALUATOR_IMPLEMENTATION_LOCK.json",
+        "role": "P4_MODEL_COMPARISON",
+        "score": 20,
+        "sha256": "fca2492c1ef0fc7894eb629b8402a5b4537c7af28e008fc6e28a3c8277e36fa9",
+        "snippets": [
+          "\"actual_prediction_archive_evaluated\": false,\n  \"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p5_robustness_subgroup_evaluator_implementation/posttrain_p5_robustness_subgroup_contract.json\",\n  \"contract_sha256\": \"c1760ac2306381013264826fe3fd110b46aba146ea64ba5e4a77f6e3199990f7\",\n  \"decoder_applied\": false,\n  \"installed_evaluator\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p5_robustness_subgroup_evaluator.py\",\n  \"installed_evaluator_sha256\": \"685427573519bed0b88d3c007ea0dbaedfe4493e7a569e76d106d586bf598eb5\",\n  \"model_inference_performed\": false,",
+          "\"p2_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION_LOCK.json\",\n  \"p3_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p3_victim_role_path_evaluator_implementation/V5_P3_POSTTRAIN_P3_VICTIM_ROLE_PATH_EVALUATOR_IMPLEMENTATION_LOCK.json\",\n  \"p4_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p4_model_comparison_harness_implementation/V5_P3_POSTTRAIN_P4_MODEL_COMPARISON_HARNESS_IMPLEMENTATION_LOCK.json\",\n  \"route_overlap_inferred_from_union_mask\": false,\n  \"sealed_test_access\": false,\n  \"selftest_stdout\": [\n    \"P5_SELFTEST_PASS\",\n    \"singleton_distance_short_group_present=true\","
+        ]
+      }
+    ],
+    "P6_EXECUTION_LATENCY": [
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p6_inference_latency_benchmark.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 78,
+        "sha256": "ecd79162044aecbfd7e7ea856a1b7d687b05e58fb4a7b240010aeb9ba49a5c1a",
+        "snippets": [
+          "ack_gpu_idle=args.ack_gpu_idle,\n    )\n    print(\"V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_COMPLETE\")\n    print(\"security_response_latency_claimed=false\")\n    print(\"sealed_test_access=false\")\n\n\nif __name__ == \"__main__\":",
+          "from typing import Any, Callable, Dict, List, Optional\n\nDEFAULT_WARMUP = 100\nDEFAULT_MEASURED = 1000\nBATCH_SIZE = 1\n\n\ndef _type7(values: List[float], q: float) -> float:"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p6_inference_latency_benchmark_implementation/V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_IMPLEMENTATION_LOCK.json",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 60,
+        "sha256": "a87803edadf3eae6b76b44fa8c6b3c6e96e8ed8d901d7b7cb73a4f7f15beb410",
+        "snippets": [
+          "\"batch_size\": 1,\n  \"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p6_inference_latency_benchmark_implementation/posttrain_p6_inference_latency_contract.json\",\n  \"contract_sha256\": \"f0d377535a6acfca10c0dff3f3ab2b5e7ed4ac231d43cc2deae307990c2ed8db\",\n  \"cuda_sync_before_after_each_measurement\": true,\n  \"decoder_applied\": false,\n  \"gpu_idle_ack_required_for_cuda\": true,\n  \"installed_benchmark\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p6_inference_latency_benchmark.py\",",
+          "\"timing_clock\": \"time.perf_counter_ns\",\n  \"training_performed\": false,\n  \"warmup_iterations\": 100\n}"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p6_inference_latency_benchmark_implementation/posttrain_p6_inference_latency_contract.json",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 60,
+        "sha256": "f0d377535a6acfca10c0dff3f3ab2b5e7ed4ac231d43cc2deae307990c2ed8db",
+        "snippets": [
+          "\"warmup_iterations\": 5\n  },\n  \"stage\": \"V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_IMPLEMENTATION\"\n}",
+          "\"required_precision_label\": true,\n    \"timing_clock\": \"time.perf_counter_ns\",\n    \"warmup_iterations\": 100\n  },\n  \"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"reported_metrics\": [\n    \"median_latency_ms\",\n    \"mean_latency_ms\","
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p7_result_aggregator.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 38,
+        "sha256": "087b1f2867cb49d79d454959771ce0e8f44312de375d4a25e68e393d7394d98d",
+        "snippets": [
+          "\"victim_role_path\": p3_summary,\n        \"robustness\": p5_summary,\n        \"inference_latency\": p6_summary,\n        \"model_comparison_rows\": len(model_table),\n        \"f7_supplied\": f7_file is not None and f7_file.is_file(),\n    }\n    (output_dir / \"manuscript_numbers.json\").write_text(\n        json.dumps(manuscript, indent=2, sort_keys=True) + \"\\n\", encoding=\"utf-8\"",
+          "p6 = root / \"inference_latency_result.json\"\n    p6.write_text(json.dumps({\n        \"device\":\"cpu\",\"precision\":\"fp32\",\"batch_size\":1,\"warmup_iterations\":100,\"measured_iterations\":1000,\n        \"median_latency_ms\":0.2,\"mean_latency_ms\":0.21,\"p95_latency_ms\":0.25,\n        \"sample_standard_deviation_ms\":0.03,\"minimum_latency_ms\":0.18,\"maximum_latency_ms\":0.40,\n        \"parameter_count\":60553,\"weight_bytes\":242212,\"peak_cuda_allocated_bytes\":None,\n        \"sealed_test_access\":False\n    }, indent=2) + \"\\n\")"
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p5_robustness_subgroup_evaluator_implementation/V5_P3_POSTTRAIN_P5_ROBUSTNESS_SUBGROUP_EVALUATOR_IMPLEMENTATION_LOCK.json",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 30,
+        "sha256": "fca2492c1ef0fc7894eb629b8402a5b4537c7af28e008fc6e28a3c8277e36fa9",
+        "snippets": [
+          "\"actual_prediction_archive_evaluated\": false,\n  \"classification\": \"ENGINEERING_PROTOCOL_LOCK\",\n  \"contract\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p5_robustness_subgroup_evaluator_implementation/posttrain_p5_robustness_subgroup_contract.json\",\n  \"contract_sha256\": \"c1760ac2306381013264826fe3fd110b46aba146ea64ba5e4a77f6e3199990f7\",\n  \"decoder_applied\": false,\n  \"installed_evaluator\": \"/home/zira/research/projects/GNN-2d/scripts/v5/p3/post_training/v5_p3_posttrain_p5_robustness_subgroup_evaluator.py\",\n  \"installed_evaluator_sha256\": \"685427573519bed0b88d3c007ea0dbaedfe4493e7a569e76d106d586bf598eb5\",\n  \"model_inference_performed\": false,",
+          "\"model_inference_performed\": false,\n  \"multi_endpoint_pairing_inferred\": false,\n  \"next_stage\": \"V5_P3_POSTTRAIN_P6_INFERENCE_LATENCY_BENCHMARK_IMPLEMENTATION\",\n  \"p0_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_PROTOCOL_FREEZE_LOCK.json\",\n  \"p1a_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p1_prediction_archive_implementation/V5_P3_POSTTRAIN_P1_PREDICTION_ARCHIVE_IMPLEMENTATION_LOCK.json\",\n  \"p1b_r1_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p1b_r1_importlib_dataclass_recovery/V5_P3_POSTTRAIN_P1B_R1_IMPORTLIB_DATACLASS_RECOVERY_LOCK.json\",\n  \"p2_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p2_onset_latency_evaluator_implementation/V5_P3_POSTTRAIN_P2_ONSET_LATENCY_EVALUATOR_IMPLEMENTATION_LOCK.json\",\n  \"p3_lock\": \"/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/post_training_preparation/p3_victim_role_path_evaluator_implementation/V5_P3_POSTTRAIN_P3_VICTIM_ROLE_PATH_EVALUATOR_IMPLEMENTATION_LOCK.json\","
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p0_protocol_freeze/V5_P3_POSTTRAIN_P0_METRIC_CONTRACT.json",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 20,
+        "sha256": "8e69ac987b583b4ab1d6adaad799f92d084b9e02063ccde400ca4a6d3c8afc85",
+        "snippets": [
+          "\"confirmed_models_report_mean_and_std_across_frozen_seeds\": true\n  },\n  \"inference_latency\": {\n    \"batch_size\": 1,\n    \"warmup_iterations\": 100,\n    \"measured_iterations\": 1000,\n    \"cuda_synchronize_required\": true,\n    \"gpu_must_be_exclusive\": true,",
+          "\"inference_latency\": {\n    \"batch_size\": 1,\n    \"warmup_iterations\": 100,\n    \"measured_iterations\": 1000,\n    \"cuda_synchronize_required\": true,\n    \"gpu_must_be_exclusive\": true,\n    \"report\": [\"median\", \"mean\", \"p95\", \"standard_deviation\"],\n    \"cost_metrics\": ["
+        ]
+      },
+      {
+        "relative_path": "reports/v5/p3_experiments/post_training_preparation/p7_result_aggregation_and_paper_artifact_implementation/SELFTEST/out/manuscript_numbers.json",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 20,
+        "sha256": "7a62e2379e649cc0e67322bf099991c63cd4db69cc458147f6f09d6c9f0be8f5",
+        "snippets": [
+          "\"f7_supplied\": true,\n  \"feature_removal_authorized_from_f7\": false,\n  \"inference_latency\": {\n    \"batch_size\": 1,\n    \"device\": \"cpu\",\n    \"maximum_latency_ms\": 0.4,\n    \"mean_latency_ms\": 0.21,\n    \"measured_iterations\": 1000,",
+          "\"sample_standard_deviation_ms\": 0.03,\n    \"sealed_test_access\": false,\n    \"warmup_iterations\": 100,\n    \"weight_bytes\": 242212\n  },\n  \"model_comparison_rows\": 1,\n  \"response_latency\": {\n    \"detected_during_attack_fraction\": 0.75,"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g1c_source_only_graph_training_matrix.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 18,
+        "sha256": "51300f48cd2bd1f9e6fe34039f23bdd97fee77322574a59aa9f8f5a675407a3b",
+        "snippets": [
+          "selected = report[\"post_checkpoint_validation\"][\"threshold_selection\"][\"selected\"]\n    metrics = selected[\"metrics\"]\n    latency = report[\"cost\"][\"inference_latency_proxy\"]\n    return {\n        \"operator\": report[\"operator\"],\n        \"seed\": report[\"seed\"],\n        \"best_epoch\": report[\"best_checkpoint\"][\"epoch\"],\n        \"selection_score\": report[\"best_checkpoint\"][\"validation_metrics_at_selection\"]["
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g2_direct_graph_training_matrix.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 18,
+        "sha256": "d23136b155141ccd7e9bf4948f4bb5ba75728ee23fb9c68aabc8cb956138938d",
+        "snippets": [
+          "graph = selected[\"metrics\"]\n    thresholded = graph[\"thresholded\"]\n    latency = report[\"cost\"][\"inference_latency_proxy\"]\n    operation = report[\"cost\"][\"operation_count\"]\n    best = report[\"best_checkpoint\"][\"validation_metrics_at_selection\"]\n    return {\n        \"operator\": report[\"operator\"],\n        \"seed\": report[\"seed\"],"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g3_role_aware_multilabel_training_matrix.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 18,
+        "sha256": "08ce3ab6bcf263caf7584ee14cd718a699913b470147761550e14dedb9ef67b0",
+        "snippets": [
+          "selected_metrics = report[\"post_checkpoint_validation\"][\"selected_metrics\"]\n    threshold_results = report[\"post_checkpoint_validation\"][\"threshold_selection\"]\n    latency = report[\"cost\"][\"inference_latency_proxy\"]\n    operation = report[\"cost\"][\"operation_count\"]\n    row: dict[str, Any] = {\n        \"operator\": report[\"operator\"],\n        \"seed\": report[\"seed\"],\n        \"best_epoch\": best[\"epoch\"],"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g0_graph_baseline_rtl_handoff_protocol.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 18,
+        "sha256": "d9442205c372a275314ab5cc1872b439d293d600bffbb9f456394d00dc9aaf61",
+        "snippets": [
+          "\"operation_count_required\": True,\n            \"peak_memory_estimate_required\": True,\n            \"inference_latency_proxy_required\": True,\n        },\n    }\n    training_policy = {\n        **training_policy_core,\n        \"policy_sha256\": canonical_sha256(training_policy_core),"
+        ]
+      },
+      {
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "role": "P6_EXECUTION_LATENCY",
+        "score": 18,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d",
+        "snippets": [
+          "def measure_inference_latency(\n    model: CleanSourceOnlyBaseline,\n    batch: dict[str, torch.Tensor],\n    device: torch.device,\n    warmup: int = 10,\n    repetitions: int = 50,"
+        ]
+      }
+    ]
+  },
+  "model_import_or_execution": false,
+  "model_inference": false,
+  "model_resolution": {
+    "D0_BINARY_CONV1D": [
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g0_graph_baseline_rtl_handoff_protocol.py",
+        "score": 41,
+        "sha256": "d9442205c372a275314ab5cc1872b439d293d600bffbb9f456394d00dc9aaf61",
+        "snippets": [
+          "\"task_id\": \"A_SOURCE_ONLY_LOCALIZATION\",\n                \"purpose\": (\n                    \"UofF-equivalent binary malicious-source localization\"\n                ),\n                \"targets\": [\"source[16]\"],\n                \"participating_losses\": [\"source_weighted_bce\"],\n                \"excluded_losses\": [\n                    \"graph\",",
+          "),\n                \"models\": [\n                    \"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },",
+          "\"path\",\n                ],\n                \"graph_score\": \"direct learned graph logit\",\n                \"graph_readout\": (\n                    \"identical pooling and graph head across operators\"\n                ),\n                \"models\": [\n                    \"CONV1D_ONLY\","
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b3_conv1d_only.py",
+        "score": 36,
+        "sha256": "27bda802362849d801e7720bad1485b06a54fae3620b62751dadd793dc4a5054",
+        "snippets": [
+          "\"physical_port_mask_used\": True,\n            \"metadata_used_as_model_input\": False,\n            \"binary_threshold\": 0.5,\n            \"train_metrics\": train_metrics,\n            \"validation_metrics\": validation_metrics,\n            \"model_config\": {\n                \"feature_count\": 58,\n                \"temporal_channels\": 64,",
+          "torch.save(\n        {\n            \"stage\": \"V5_P0_B3_CONV1D_ONLY\",\n            \"model_class\": \"Conv1DOnlyModel\",\n            \"model_state_dict\": model.state_dict(),\n            \"optimizer_state_dict\": optimizer.state_dict(),\n            \"training_epoch\": args.epochs,\n            \"seed\": args.seed,"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "score": 36,
+        "sha256": "22f8314a75e6bd2d7c7bcd675f454949c79362b1e4a15b916e560fbb22fe109d",
+        "snippets": [
+          "\"learning_rate\": 0.001,\n        \"weight_decay\": 0.0001,\n        \"binary_threshold\": 0.5,\n        \"early_stopping\": False,\n        \"validation_checkpoint_selection\": False,\n    }\n    for stage, report in reports.items():\n        protocol = report.get(\"protocol\", {})",
+          "{\n            \"stage\": \"V5_P0_B5_CONV1D_GCN\",\n            \"model_class\": \"Conv1DGCNModel\",\n            \"model_state_dict\": model.state_dict(),\n            \"optimizer_state_dict\": optimizer.state_dict(),\n            \"training_epoch\": args.epochs,\n            \"seed\": args.seed,\n            \"feature_variant\": \"PRIMARY58\","
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/v5/freeze/freeze_v5_p0_b8_b3_architecture.py",
+        "score": 36,
+        "sha256": "c6b8a3add27e74f17b11348de47771f40794f5b5be5ee922d1f7a9da146b8cde",
+        "snippets": [
+          "\"physical_port_mask_shape\": [\"B\", 16, 10],\n            \"physical_port_mask_dtype\": \"bool\",\n            \"physical_port_mask_source\": \"topology-derived recovered binary mask\",\n            \"stored_standardized_mask_channels_forbidden\": True,\n            \"active_only\": False,\n        },\n        \"temporal_encoder\": {\n            \"input_projection\": \"Conv1d(58,64,kernel_size=1)\",",
+          "\"selected_checkpoint_as_final\": False,\n        \"selected_architecture\": {\n            \"name\": \"B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY\",\n            \"single_stage\": True,\n            \"parameter_count\": 43208,\n            \"graph_message_passing\": False,\n            \"edge_index_as_model_input\": False,\n            \"metadata_as_model_input\": False,"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b6_dual_temporal_fusion_no_gcn.py",
+        "score": 26,
+        "sha256": "8490d40acea35ee971cc23b17442c2d12832749878c6be491df131e915442740",
+        "snippets": [
+          "\"stride\": 8,\n            \"mean_branch\": \"mean_over_32_epochs_then_linear_58_to_64\",\n            \"temporal_encoder\": \"causal_depthwise_separable_conv1d\",\n            \"temporal_dilations\": [1, 2, 4, 8],\n            \"temporal_receptive_field\": 31,\n            \"conv_readout\": \"final_causal_encoded_timestep\",\n            \"physical_port_mask_source\": \"topology_derived_boolean\",\n            \"temporal_order_used\": True,"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g3_role_aware_multilabel_single_run.py",
+        "score": 21,
+        "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d",
+        "snippets": [
+          "Authorized operators:\n    conv1d, gcnconv, graphconv\nAuthorized seeds:\n    107, 117, 127\n\nAuthorized data:\n    P2 train and validation only."
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/failure_analysis/analyze_stage7e_graph_node_interaction.py",
+        "score": 16,
+        "sha256": "66a0dfe44197be69c683b838de015bf43b4b7009c512c889efe8436bb663f9ec",
+        "snippets": [
+          "\"true_attacker_mask\",\n    \"true_attacker_count\",\n    \"graph_logit\",\n    \"graph_probability\",\n    \"pred_graph_at_0_50\",\n    \"graph_threshold\",\n    \"node_logits\",\n    \"node_probabilities\","
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/failure_analysis/analyze_v3_graph_failures.py",
+        "score": 16,
+        "sha256": "61c25af1edec07934015133e52cc156ebcda647423f019dc3e988015cabbdd5a",
+        "snippets": [
+          "f\"- All four models wrong: {int(test_agreement['all_four_wrong'].sum())} test windows.\",\n        f\"- Conv1D correct while all TCN models are wrong: \"\n        f\"{int(test_agreement['conv1d_correct_all_tcns_wrong'].sum())} windows.\",\n        f\"- All TCN models correct while Conv1D is wrong: \"\n        f\"{int(test_agreement['all_tcns_correct_conv1d_wrong'].sum())} windows.\",\n        f\"- Attention uniquely fails: {int(test_agreement['attention_only_failure'].sum())} windows.\",\n        f\"- MaxPool uniquely succeeds: {int(test_agreement['maxpool_only_success'].sum())} windows.\",\n    ]"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/failure_analysis/create_v3_a1_rtl_h1a_golden_vectors.py",
+        "score": 16,
+        "sha256": "567504d5da0431e2301b845b677a6465558dc4880074b0cfa640ce5607512e0b",
+        "snippets": [
+          "node_prob,\n                graph_embedding,\n                graph_logits,\n                graph_prob,\n            )\n        ),\n    }\n    if not all(forward_checks.values()):"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/failure_analysis/create_v3_a1_rtl_h1a_golden_vectors_v2.py",
+        "score": 16,
+        "sha256": "c9b36157091a013df382a194e6b836f9a7a9de2546ad2e1a043189edf47c5f3f",
+        "snippets": [
+          "node_prob,\n                graph_embedding,\n                graph_logits,\n                graph_prob,\n            )\n        ),\n    }\n    if not all(forward_checks.values()):"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/failure_analysis/create_v3_a1_rtl_h1a_golden_vectors_v3.py",
+        "score": 16,
+        "sha256": "9d7f613e27afc27b5c5a11d1ebf326b301f040a4ff175ab503baa8bcabcd9a2a",
+        "snippets": [
+          "\"node_probabilities\",\n        \"graph_embedding\",\n        \"graph_logits\",\n        \"graph_probabilities\",\n    )\n    canonical_slots: dict[str, list[np.ndarray | None]] = {\n        name: [None] * args.vector_count for name in tensor_names\n    }"
+        ]
+      },
+      {
+        "model": "D0_BINARY_CONV1D",
+        "relative_path": "scripts/failure_analysis/generate_and_audit_chrono_g1_source.py",
+        "score": 16,
+        "sha256": "e716abc1ed850f79c1000806b1613b8129b3c9187f03ce52c18e5f1d549bbc6e",
+        "snippets": [
+          "EXPECTED_PARAMETER_DELTA = 256\n\nA1_MODEL_NAME = \"Conv1D-TemporalGCN\"\nG1_MODEL_NAME = \"Conv1D-GraphConv-TemporalGNN\"\n\nNEW_ADJACENCY_FUNCTION = (\n    \"def build_normalized_adjacency(\\n\"\n    \"    edge_index: np.ndarray,\\n\""
+        ]
+      }
+    ],
+    "D1_BINARY_CONV1D_GRAPHCONV": [
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g0_graph_baseline_rtl_handoff_protocol.py",
+        "score": 31,
+        "sha256": "d9442205c372a275314ab5cc1872b439d293d600bffbb9f456394d00dc9aaf61",
+        "snippets": [
+          "\"task_id\": \"A_SOURCE_ONLY_LOCALIZATION\",\n                \"purpose\": (\n                    \"UofF-equivalent binary malicious-source localization\"\n                ),\n                \"targets\": [\"source[16]\"],\n                \"participating_losses\": [\"source_weighted_bce\"],\n                \"excluded_losses\": [\n                    \"graph\",",
+          "\"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },\n            {\n                \"task_id\": \"C_ROLE_AWARE_MULTILABEL_LOCALIZATION\","
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g3_role_aware_multilabel_single_run.py",
+        "score": 31,
+        "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d",
+        "snippets": [
+          "path_logits    [B,16]\n\nThe four roles are independent binary multilabel targets and may overlap.\nNo graph, count, test, quantization, or RTL work is performed in this stage.\n\"\"\"\n\nfrom __future__ import annotations",
+          "Authorized operators:\n    conv1d, gcnconv, graphconv\nAuthorized seeds:\n    107, 117, 127\n\nAuthorized data:\n    P2 train and validation only."
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p3/run_v5_p3_a3_preliminary_baseline_preflight.py",
+        "score": 31,
+        "sha256": "8c8b270b5070ce5c13290fa9cb0a091ef890c4378700a1fad2702bfe9b463379",
+        "snippets": [
+          "reference_b3 = b3_mod.P2B3Conv1DOnlyCount4()\n    canonical_model = (\n        canonical_mod.P2TaskDGraphConvCount4(\n            reference_b3,\n            edge,\n        )\n    )\n    model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure("
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/failure_analysis/generate_and_audit_chrono_g1_source.py",
+        "score": 26,
+        "sha256": "e716abc1ed850f79c1000806b1613b8129b3c9187f03ce52c18e5f1d549bbc6e",
+        "snippets": [
+          "\"    num_nodes: int,\\n\"\n    \") -> torch.Tensor:\\n\"\n    \"    # Binary incoming-neighbor adjacency for GraphConv.\\n\"\n    \"    # Self-loops are excluded because the root transform handles self.\\n\"\n    \"    adjacency = torch.zeros(\\n\"\n    \"        (num_nodes, num_nodes),\\n\"\n    \"        dtype=torch.float32,\\n\"\n    \"    )\\n\"",
+          "#!/usr/bin/env python3\n\"\"\"\nG1.0: generate the Chrono-G1 GraphConv source and perform a structural audit.\n\nNo training, no checkpoint creation, and no validation/test inference occur.\nOnly synthetic tensors are used after source generation.\n\"\"\""
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/failure_analysis/preflight_chrono_g1_graphconv.py",
+        "score": 26,
+        "sha256": "2162a393b25dc5f2d1b785f2cc0c285142a35b3db2af12564ba805d01144a40e",
+        "snippets": [
+          "\"self.lin_root = nn.Linear\" in source_text\n        ),\n        \"binary_adjacency_assignment_present\": (\n            \"adjacency[target_i, source_i] = 1.0\" in source_text\n        ),\n        \"self_loop_exclusion_present\": (\n            \"if source_i == target_i:\" in source_text\n            and \"continue\" in source_text",
+          "#!/usr/bin/env python3\n\"\"\"\nG1.1 real-data dry preflight for the bounded Chrono-G1 GraphConv diagnostic.\n\nThis stage performs one real training-batch forward/backward check only.\nIt performs no persistent training, writes no checkpoint, and performs no\nvalidation or test inference."
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/train_temporal_gcn_v3_g1_graphconv.py",
+        "score": 26,
+        "sha256": "3ebe7b8d37c5104c606daf0e65b488a3f553b815b01689ce172b12b8bbbffb5e",
+        "snippets": [
+          "num_nodes: int,\n) -> torch.Tensor:\n    # Binary incoming-neighbor adjacency for GraphConv.\n    # Self-loops are excluded because the root transform handles self.\n    adjacency = torch.zeros(\n        (num_nodes, num_nodes),\n        dtype=torch.float32,\n    )"
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e0_reconstructed_execution_recipe_source_map.py",
+        "score": 21,
+        "sha256": "c1185603178b70ac8404644421f5f5d7d3002d5fc036a1ea9c8329c5d55efaf6",
+        "snippets": [
+          "CLASSIFICATION = \"TRAIN-DERIVED\"\n\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863"
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e0a_exact_hyperparameter_and_loss_route_pin.py",
+        "score": 21,
+        "sha256": "cb45082ff014b2af0f32d6dd3482128973dd7b260cd6149eb639f4611a751ff1",
+        "snippets": [
+          ")\n\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_PRIMARY_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863"
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_e0b_remaining_recipe_semantic_pin.py",
+        "score": 21,
+        "sha256": "1ffb141d3ac60716cfe25bb59d18bfce050487003d5d25d7757c4f1c38342a43",
+        "snippets": [
+          ")\n\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_PRIMARY_SEED = 107\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863"
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/failure_analysis/close_and_analyze_chrono_g1.py",
+        "score": 16,
+        "sha256": "45b778db5bc14738e4f4126d56973e6c417fc6e886425e64fabb9daebb9acfc1",
+        "snippets": [
+          "Outputs:\n- targeted GraphConv postmortem;\n- per-run graph delta table;\n- router-degree node-activation table;\n- artifact hash manifest;\n- formal G1 closure manifest.\n\"\"\""
+        ]
+      },
+      {
+        "model": "D1_BINARY_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/g1_source_only_graph_smoke.py",
+        "score": 16,
+        "sha256": "2f543a9f1bf4b8a556a173dfb54626e2e35fb10dabc45337d6b4e071938785d4",
+        "snippets": [
+          "\"source_target_shape\": [\"items\", 16],\n                \"source_target_semantics\": (\n                    \"16 independent binary attacker/source labels\"\n                ),\n                \"temporal_backbone\": interface_probe[\"b3_class\"],\n                \"temporal_backbone_parameters\": (\n                    interface_probe[\"b3_parameter_count\"]\n                ),"
+        ]
+      }
+    ],
+    "D2_XGBOOST": [],
+    "M0_CONV1D_ONLY": [
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "src/models/v5_p2_b3_conv1d_only_count4.py",
+        "score": 51,
+        "sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+        "snippets": [
+          "class P2B3Conv1DOnlyCount4(nn.Module):\n    \"\"\"\n    P2 B3 architecture.\n\n    Inputs\n    ------",
+          "#!/usr/bin/env python3\n\"\"\"\nP2-specific B3 Conv1D-only model with four active attacker-count logits.\n\nThis preserves the frozen P0/B3 temporal encoder, node projection, graph\ndetector, and four localization heads. The only architectural change is:\n\n    count_head: Linear(64,3) -> Linear(64,4)",
+          "P2-specific B3 Conv1D-only model with four active attacker-count logits.\n\nThis preserves the frozen P0/B3 temporal encoder, node projection, graph\ndetector, and four localization heads. The only architectural change is:\n\n    count_head: Linear(64,3) -> Linear(64,4)\n\nThe graph head continues to represent attack presence versus normal. The"
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "score": 50,
+        "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+        "snippets": [
+          "Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common\n    parameters for every matched seed.\n    \"\"\"\n    architecture_name = 'TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4'\n    expected_parameter_count = 59785\n    count_class_values = (1, 2, 3, 4)",
+          "class V6P0Dynamic70GraphConvCount4(nn.Module):\n    \"\"\"\n    B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n\n    Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common\n    parameters for every matched seed.\n    \"\"\""
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/baselines/run_v5_p0_b7b_multi_seed.py",
+        "score": 46,
+        "sha256": "e28511cd929be54ad8c9cf5d5ee53a0ba9719a231fd0f092f5ee084fffa9df37",
+        "snippets": [
+          "class B3Conv1DOnlyModel(nn.Module):\n    \"\"\"Exact B3 architecture with an evaluation-compatible interface.\"\"\"\n\n    def __init__(\n        self,\n        frozen_module,",
+          "expected_edge_index: torch.Tensor,\n        feature_count: int = 58,\n        temporal_channels: int = 64,\n        mask_count: int = 10,\n        graph_hidden: int = 64,\n        role_hidden: int = 32,\n    ) -> None:\n        super().__init__()"
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b3_conv1d_only.py",
+        "score": 46,
+        "sha256": "27bda802362849d801e7720bad1485b06a54fae3620b62751dadd793dc4a5054",
+        "snippets": [
+          "class Conv1DOnlyModel(nn.Module):\n    def __init__(\n        self,\n        feature_count: int = 58,\n        temporal_channels: int = 64,\n        mask_count: int = 10,",
+          "#!/usr/bin/env python3\n\"\"\"\nV5 P0-B3 Conv1D-Only Baseline\n\nScientific question\n-------------------\nDoes learned temporal order improve over:\n- B1: final epoch only;",
+          "Scientific question\n-------------------\nDoes learned temporal order improve over:\n- B1: final epoch only;\n- B2: order-free temporal mean;\n\nwhen graph message passing is still forbidden?"
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "score": 46,
+        "sha256": "22f8314a75e6bd2d7c7bcd675f454949c79362b1e4a15b916e560fbb22fe109d",
+        "snippets": [
+          "class Conv1DGCNModel(nn.Module):\n    def __init__(\n        self,\n        expected_edge_index: torch.Tensor,\n        feature_count: int = 58,\n        temporal_channels: int = 64,",
+          "#!/usr/bin/env python3\n\"\"\"\nV5 P0-B5 Conv1D + GCN Baseline\n\nScientific question\n-------------------\nDoes one-hop NoC topology-aware message passing add value after a learned\ncausal Conv1D temporal encoder?",
+          "-------------------\nDoes one-hop NoC topology-aware message passing add value after a learned\ncausal Conv1D temporal encoder?\n\nControlled comparison\n---------------------\nB3:\n    causal depthwise-separable Conv1D"
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "src/models/v5_frozen_b3_conv1d_only.py",
+        "score": 46,
+        "sha256": "f826f4880e4fbef3d3cd0ee05cd9ba47ce6f0f2aaab444032919b2378c2900ad",
+        "snippets": [
+          "class FrozenB3Conv1DOnly(nn.Module):\n    \"\"\"\n    Frozen V5 B3 architecture.\n\n    Inputs\n    ------",
+          "#!/usr/bin/env python3\n\"\"\"Frozen B3 causal depthwise-separable Conv1D-only architecture.\"\"\"\n\nfrom __future__ import annotations\n\nimport torch\nimport torch.nn as nn"
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/p3/run_v5_p3_h0_current_4x4_dynamic70_rtl_handoff.py",
+        "score": 45,
+        "sha256": "1452da2ecc19cf349c4521027c268dde1f72da314bbd37b0641b812c911707fe",
+        "snippets": [
+          "wrapper_path = repo / \"src/data/v5_p3_tranche_a_guarded_loader.py\"\n    b3_path = repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"\n    canonical_path = repo / \"src/models/v5_p2_task_d_full_multitask_count4.py\"\n    dynamic_path = repo / \"src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py\"\n    checkpoint_path = (\n        repo\n        / \"reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/\"",
+          "architecture_contract = {\n        \"model_identity\": (\n            \"Causal Depthwise-Separable Conv1D Temporal Encoder \"\n            \"+ Two-Layer GraphConv, Dynamic70 adaptation\"\n        ),\n        \"temporal_frontend_reference\": \"B3\",\n        \"full_neural_architecture\": (\n            \"B3 temporal frontend + two-layer GraphConv\""
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/p3/run_v5_p3_a3_preliminary_baseline_preflight.py",
+        "score": 41,
+        "sha256": "8c8b270b5070ce5c13290fa9cb0a091ef890c4378700a1fad2702bfe9b463379",
+        "snippets": [
+          ")\n    b3_path = (\n        repo / \"src/models/v5_p2_b3_conv1d_only_count4.py\"\n    )\n    canonical_path = (\n        repo / \"src/models/v5_p2_task_d_full_multitask_count4.py\"\n    )\n    dynamic_path = (",
+          "\"parameter_count\": EXPECTED_PARAMETER_COUNT,\n            \"architecture\": (\n                \"Causal Depthwise-Separable Conv1D Temporal \"\n                \"Encoder + Two-Layer GraphConv\"\n            ),\n            \"graph_readout\": \"mean_plus_max\",\n            \"outputs\": [\n                \"attack_logits\","
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/p3/run_v5_p3_d5_decoder_review_and_4x4_interface_freeze.py",
+        "score": 41,
+        "sha256": "845202424f8b3555e2d52e85a0964b778324551c7ae68953e32ffea38f12986e",
+        "snippets": [
+          "),\n        \"model_identity\": (\n            \"Causal Depthwise-Separable Conv1D Temporal Encoder \"\n            \"+ Two-Layer GraphConv, Dynamic70 adaptation\"\n        ),\n        \"temporal_frontend_reference\": \"B3\",\n        \"full_neural_architecture\": (\n            \"B3 temporal frontend + two-layer GraphConv\""
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "score": 41,
+        "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+        "snippets": [
+          "Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common\n    parameters for every matched seed.\n    \"\"\"\n\n    architecture_name = \"TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4\"\n    expected_parameter_count = 59_785",
+          "class P2TaskDGraphConvCount4(nn.Module):\n    \"\"\"\n    B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n\n    Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common\n    parameters for every matched seed.\n    \"\"\""
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/final/train_v5_p0_c1_b3_multi_seed_validation.py",
+        "score": 40,
+        "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4",
+        "snippets": [
+          "super().__init__()\n        self.left_padding = (kernel_size - 1) * dilation\n        self.depthwise = nn.Conv1d(\n            channels,\n            channels,\n            kernel_size=kernel_size,\n            dilation=dilation,\n            padding=self.left_padding,",
+          "self,\n        feature_count: int = 58,\n        temporal_channels: int = 64,\n        mask_count: int = 10,\n        graph_hidden: int = 64,\n        role_hidden: int = 32,\n    ) -> None:\n        super().__init__()"
+        ]
+      },
+      {
+        "model": "M0_CONV1D_ONLY",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b2_temporal_mean_pooling.py",
+        "score": 36,
+        "sha256": "f778385b6f082b74a2a78cf346f2471c6c734dc1ee44a3d33a6a188b398b16ca",
+        "snippets": [
+          "\"script_sha256\": sha256_file(Path(__file__)),\n        },\n        \"next_stage\": \"V5_P0_B3_CONV1D_ONLY\",\n    }\n\n    report_path = (\n        output_dir / \"V5_P0_B2_TEMPORAL_MEAN_POOLING.json\"\n    )",
+          "#!/usr/bin/env python3\n\"\"\"\nV5 P0-B2 Temporal Mean-Pooling MLP Baseline\n\nScientific question\n-------------------\nDoes averaging PRIMARY58 over all 32 epochs improve generalization relative to\nthe B1 static final-epoch baseline, while still using no temporal order and no"
+        ]
+      }
+    ],
+    "M1_GCN_ONLY": [
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b4_gcn_only.py",
+        "score": 26,
+        "sha256": "ff2fadd15d2d8468cf289fec2756493d820e6172e7eeb5accd6d90a26a22901c",
+        "snippets": [
+          "class DenseGCNLayer(nn.Module):\n    def __init__(self, channels: int) -> None:\n        super().__init__()\n        self.weight = nn.Parameter(torch.empty(channels, channels))\n        self.bias = nn.Parameter(torch.zeros(channels))\n        nn.init.xavier_uniform_(self.weight)"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/baselines/train_v5_p0_b5_conv1d_gcn.py",
+        "score": 26,
+        "sha256": "22f8314a75e6bd2d7c7bcd675f454949c79362b1e4a15b916e560fbb22fe109d",
+        "snippets": [
+          "class DenseGCNLayer(nn.Module):\n    def __init__(self, channels: int) -> None:\n        super().__init__()\n        self.weight = nn.Parameter(\n            torch.empty(channels, channels)\n        )"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g3_role_aware_multilabel_training_matrix.py",
+        "score": 21,
+        "sha256": "08ce3ab6bcf263caf7584ee14cd718a699913b470147761550e14dedb9ef67b0",
+        "snippets": [
+          "OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\nSEEDS = (107, 117, 127)\nROLES = (\"source\", \"transit\", \"victim\", \"path\")\n\nSTAGE = \"V5_P2_G3_ROLE_AWARE_MULTILABEL_MATRIX_AGGREGATION\"\nCOMPLETE = f\"{STAGE}_COMPLETE\""
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g0_graph_baseline_rtl_handoff_protocol.py",
+        "score": 21,
+        "sha256": "d9442205c372a275314ab5cc1872b439d293d600bffbb9f456394d00dc9aaf61",
+        "snippets": [
+          "\"models\": [\n                    \"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },\n            {"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g123_graph_operator_promotion.py",
+        "score": 21,
+        "sha256": "ea746e61265afb5328fd68e76ccf8a840ef4e6f24d8d53e1ab62355cff188954",
+        "snippets": [
+          "g3_rows = read_csv_by_operator(paths[\"g3_summary\"])\n    for rows in (g1_rows, g2_rows, g3_rows):\n        if not {\"conv1d\", \"gcnconv\", \"graphconv\"}.issubset(rows):\n            raise RuntimeError(\"required operators missing from aggregate summary\")\n\n    c1, gr1 = g1_rows[\"conv1d\"], g1_rows[\"graphconv\"]\n    c2, gr2 = g2_rows[\"conv1d\"], g2_rows[\"graphconv\"]\n    c3, gr3 = g3_rows[\"conv1d\"], g3_rows[\"graphconv\"]"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/preflight_v5_p2_g3_clean_training_implementation.py",
+        "score": 21,
+        "sha256": "41638b8cad2c70bcfeda74d41176b1dd492838a14fdec6d692d282a67770e15d",
+        "snippets": [
+          "STAGE = \"V5_P2_G3_CLEAN_TRAINING_IMPLEMENTATION_PREFLIGHT\"\nCOMPLETE = f\"{STAGE}_COMPLETE\"\nOPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\nEXPECTED_PARAMETERS = {\n    \"conv1d\": 34_692,\n    \"gcnconv\": 43_012,\n    \"graphconv\": 51_204,\n}"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r4_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "5f9255394e7312d021bcebdd88fbc9f891319dd2d7bfd982aea13c462a3e6f9a",
+        "snippets": [
+          "- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:\n- pair manifests resolved in G1A-R1;"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r5_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "644eae2cdc35108953e08b5335280ebd1314325ada5b493a8ac948682ba39094",
+        "snippets": [
+          "- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:\n- pair manifests resolved in G1A-R1;"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "score": 21,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d",
+        "snippets": [
+          "This stage trains exactly one source-only model from:\n    conv1d, gcnconv, graphconv, gatconv\nwith exactly one initial-screening seed from:\n    107, 117, 127\n\nAuthorized data are P2 train and validation only. The script never lists,\nopens, constructs, or evaluates the P2 test split. Threshold selection is"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g3_role_aware_multilabel_single_run.py",
+        "score": 21,
+        "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d",
+        "snippets": [
+          "Authorized operators:\n    conv1d, gcnconv, graphconv\nAuthorized seeds:\n    107, 117, 127\n\nAuthorized data:\n    P2 train and validation only."
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/train_temporal_gcn.py",
+        "score": 16,
+        "sha256": "c042ffc6e100c32e2560f1de70ec9f2550245a75113db6e5b1d332196879d5b4",
+        "snippets": [
+          "class GCNLayer(nn.Module):\n    def __init__(self, in_dim, out_dim):\n        super().__init__()\n        self.linear = nn.Linear(in_dim, out_dim)\n\n    def forward(self, h, A_hat):"
+        ]
+      },
+      {
+        "model": "M1_GCN_ONLY",
+        "relative_path": "scripts/train_temporal_gcn_early_stopping.py",
+        "score": 16,
+        "sha256": "667d48be3cf04b53065ab9060ab01ac93848174f11a688deda2f347821ee1286",
+        "snippets": [
+          "class GCNLayer(nn.Module):\n    def __init__(self, in_dim: int, out_dim: int):\n        super().__init__()\n        self.linear = nn.Linear(in_dim, out_dim)\n\n    def forward(self, h: torch.Tensor, a_hat: torch.Tensor) -> torch.Tensor:"
+        ]
+      }
+    ],
+    "M2_GRAPHCONV_ONLY": [
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "score": 50,
+        "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+        "snippets": [
+          "return result\n\nclass V6P0Dynamic70GraphConvCount4(nn.Module):\n    \"\"\"\n    B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n\n    Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common",
+          "# The builder freshly initializes all trainable parameters.\n\n\"\"\"Frozen Task-D GraphConv challenger for the complete P2 multitask interface.\"\"\"\nfrom __future__ import annotations\nimport copy\nimport torch\nimport torch.nn as nn\nimport torch.nn.functional as F"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "score": 41,
+        "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+        "snippets": [
+          "class P2TaskDGraphConvCount4(nn.Module):\n    \"\"\"\n    B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n\n    Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common",
+          "#!/usr/bin/env python3\n\"\"\"Frozen Task-D GraphConv challenger for the complete P2 multitask interface.\"\"\"\nfrom __future__ import annotations\n\nimport copy\nimport torch\nimport torch.nn as nn"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f5_dynamic70_group_block_permutation.py",
+        "score": 35,
+        "sha256": "ddd04eec802330b493c5d22ea042786287da0979ada7c203304eb9aa9c86c653",
+        "snippets": [
+          "checkpoint_state_dict: dict[str, torch.Tensor],\n) -> tuple[torch.nn.Module, str, dict[str, Any]]:\n    class_name = \"V6P0Dynamic70GraphConvCount4\"\n    direct_failure = None\n\n    if hasattr(model_module, class_name):\n        candidate = getattr(model_module, class_name)\n        require(inspect.isclass(candidate), f\"{class_name} is not a class\")"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/run_v5_p3_h0_current_4x4_dynamic70_rtl_handoff.py",
+        "score": 35,
+        "sha256": "1452da2ecc19cf349c4521027c268dde1f72da314bbd37b0641b812c911707fe",
+        "snippets": [
+          "reference = b3_mod.P2B3Conv1DOnlyCount4()\n    canonical_model = canonical_mod.P2TaskDGraphConvCount4(\n        reference,\n        edge_index,\n    )\n    model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure(\n        canonical_model,"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p0_frozen_baseline_reproduction_preflight.py",
+        "score": 31,
+        "sha256": "7f9853868dcf585cb05c95f73597b49d4d4febd753c4c94b57b4d1e4d61151f4",
+        "snippets": [
+          "\"checkpoint\",\n    \"dynamic70\",\n    \"graphconv\",\n    \"v6p0\",\n    \"multitask\",\n    \"selection_score\",\n    \"average_precision\",\n    \"auroc\","
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p1_official_evaluator_route_freeze.py",
+        "score": 31,
+        "sha256": "010253de2f7858f18455127ebc6337bfc3dd0ee297ca7398a3c73a0026d81983",
+        "snippets": [
+          "MODEL_TOKENS = (\n    \"dynamic70\",\n    \"graphconv\",\n    \"v6p0\",\n    \"count4\",\n    \"multitask\",\n)"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p1r2_immutable_logit_metric_lineage_review.py",
+        "score": 31,
+        "sha256": "721a43c1f4483909d1b2495dd2cf1146b6a868ece9ab5c214d2bf1e9794c4324",
+        "snippets": [
+          "score += 50\n            reasons.append(\"immutable validation logit export path\")\n        if \"v6p0dynamic70graphconvcount4\" in low_text:\n            score += 20\n            reasons.append(\"exact model class\")\n        if \"guardedv5p3trancheapreliminarydataset\" in low_text:\n            score += 20\n            reasons.append(\"exact guarded loader\")"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f4_p1r_official_lineage_recovery.py",
+        "score": 31,
+        "sha256": "f3b5aa314a3c3c0153b764c702c73b1ab40ee79e722a6c4123c1e9ea7c8c9dda",
+        "snippets": [
+          "EXPECTED_EDGE_INDEX_ELEMENTS = 96\nEXPECTED_VALIDATION_ITEMS = 13863\nMODEL_CLASS_NAME = \"V6P0Dynamic70GraphConvCount4\"\n\nMETRIC_ALIASES = {\n    \"selection_score\": (\n        \"selection_score\",\n        \"selected_score\","
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_p0_same_width_retrained_group_ablation_preflight.py",
+        "score": 31,
+        "sha256": "39863e02e9733a918b394445faafd705810092b3f33ccb5d7b78c4ea12a31849",
+        "snippets": [
+          "CLASSIFICATION = \"TRAIN-DERIVED\"\n\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\nEXPECTED_MAPPING_FINGERPRINT = (\n    \"8b6657a8287c899d97437ed3531f6d43b3cce327f0c45f743a9ae324365d5ae8\""
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_p1b_reconstructed_training_recipe_pin.py",
+        "score": 31,
+        "sha256": "2f2ec0eab8704760657a8feb1e9fe7c5fcb2374517009a5d99486b2fb34830cf",
+        "snippets": [
+          "CLASSIFICATION = \"TRAIN-DERIVED\"\n\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\nEXPECTED_SEED = 107"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/experiments/run_v5_p3_f7_p2_reconstructed_trainer_adapter_dry_run_preflight.py",
+        "score": 31,
+        "sha256": "e3c5bfb86f5c5a2e821a93c9ff20f6af7c31619864fc3001630da149865da698",
+        "snippets": [
+          "CLASSIFICATION = \"TRAIN-DERIVED\"\n\nEXPECTED_MODEL_CLASS = \"V6P0Dynamic70GraphConvCount4\"\nEXPECTED_PARAMETER_COUNT = 60553\nEXPECTED_TRAIN_ITEMS = 110855\nEXPECTED_VALIDATION_ITEMS = 13863\nEXPECTED_X_TRAILING_SHAPE = (16, 70, 32)\nEXPECTED_MASK_TRAILING_SHAPE = (16, 10)"
+        ]
+      },
+      {
+        "model": "M2_GRAPHCONV_ONLY",
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+        "score": 31,
+        "sha256": "7d01ac3d21e7d47ace22e6a3b9937d97c79383c406a567ea91b00c2574c78fe7",
+        "snippets": [
+          "},\n        {\n            \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",\n            \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n            \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n            \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n            \"parameter_count\": 60553, \"provenance\": prov,\n            \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,"
+        ]
+      }
+    ],
+    "M3_CONV1D_GCN": [
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g0_graph_baseline_rtl_handoff_protocol.py",
+        "score": 31,
+        "sha256": "d9442205c372a275314ab5cc1872b439d293d600bffbb9f456394d00dc9aaf61",
+        "snippets": [
+          "),\n                \"models\": [\n                    \"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },",
+          "\"models\": [\n                    \"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },\n            {"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g123_graph_operator_promotion.py",
+        "score": 31,
+        "sha256": "ea746e61265afb5328fd68e76ccf8a840ef4e6f24d8d53e1ab62355cff188954",
+        "snippets": [
+          "task_d = next(task for task in task_matrix[\"tasks\"] if task[\"task_id\"] == \"D_FULL_MULTITASK_SYSTEM\")\n    if task_d[\"models\"] != [\n        \"EXISTING_B3_CONV1D_COUNT4\",\n        \"CONV1D_PLUS_ONE_PROMOTED_GRAPH_OPERATOR_COUNT4\",\n    ]:\n        raise RuntimeError(\"Task-D candidate contract changed\")\n    if seed_policy[\"training_base\"][\"finalist_stability_seeds\"] != [107, 117, 127, 137, 147]:\n        raise RuntimeError(\"Task-D finalist seed contract changed\")",
+          "g3_rows = read_csv_by_operator(paths[\"g3_summary\"])\n    for rows in (g1_rows, g2_rows, g3_rows):\n        if not {\"conv1d\", \"gcnconv\", \"graphconv\"}.issubset(rows):\n            raise RuntimeError(\"required operators missing from aggregate summary\")\n\n    c1, gr1 = g1_rows[\"conv1d\"], g1_rows[\"graphconv\"]\n    c2, gr2 = g2_rows[\"conv1d\"], g2_rows[\"graphconv\"]\n    c3, gr3 = g3_rows[\"conv1d\"], g3_rows[\"graphconv\"]"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/preflight_v5_p2_g3_clean_training_implementation.py",
+        "score": 31,
+        "sha256": "41638b8cad2c70bcfeda74d41176b1dd492838a14fdec6d692d282a67770e15d",
+        "snippets": [
+          "STAGE = \"V5_P2_G3_CLEAN_TRAINING_IMPLEMENTATION_PREFLIGHT\"\nCOMPLETE = f\"{STAGE}_COMPLETE\"\nOPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\nEXPECTED_PARAMETERS = {\n    \"conv1d\": 34_692,\n    \"gcnconv\": 43_012,\n    \"graphconv\": 51_204,\n}"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r4_source_only_graph_implementations.py",
+        "score": 31,
+        "sha256": "5f9255394e7312d021bcebdd88fbc9f891319dd2d7bfd982aea13c462a3e6f9a",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:\n- pair manifests resolved in G1A-R1;"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r5_source_only_graph_implementations.py",
+        "score": 31,
+        "sha256": "644eae2cdc35108953e08b5335280ebd1314325ada5b493a8ac948682ba39094",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:\n- pair manifests resolved in G1A-R1;"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "score": 31,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d",
+        "snippets": [
+          "This stage trains exactly one source-only model from:\n    conv1d, gcnconv, graphconv, gatconv\nwith exactly one initial-screening seed from:\n    107, 117, 127\n\nAuthorized data are P2 train and validation only. The script never lists,\nopens, constructs, or evaluates the P2 test split. Threshold selection is",
+          "try:\n    from torch_geometric.nn import GATConv, GCNConv, GraphConv\nexcept Exception as exc:  # pragma: no cover - converted to controlled HOLD\n    GATConv = None\n    GCNConv = None\n    GraphConv = None\n    PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\""
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g3_role_aware_multilabel_single_run.py",
+        "score": 31,
+        "sha256": "4d63bc9fcaee8d01a5a9dd40833e6f0b9c6ea44dff14392ad2251c7cbd16370d",
+        "snippets": [
+          "Authorized operators:\n    conv1d, gcnconv, graphconv\nAuthorized seeds:\n    107, 117, 127\n\nAuthorized data:\n    P2 train and validation only.",
+          "try:\n    from torch_geometric.nn import GCNConv, GraphConv\nexcept Exception as exc:  # pragma: no cover\n    GCNConv = None\n    GraphConv = None\n    PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\"\nelse:"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/run_v5_p2_g3_role_aware_multilabel_one_run.sh",
+        "score": 25,
+        "sha256": "4a63612ae9f0131bbd63903214dd8c870d40a454a20bf77623529d66e490062e",
+        "snippets": [
+          "SEED=\"${2:-}\"\ncase \"$OPERATOR\" in\n    conv1d|gcnconv|graphconv) ;;\n    *) echo \"Usage: $0 {conv1d|gcnconv|graphconv} {107|117|127}\"; exit 2 ;;\nesac\ncase \"$SEED\" in\n    107|117|127) ;;\n    *) echo \"Usage: $0 {conv1d|gcnconv|graphconv} {107|117|127}\"; exit 2 ;;"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_g3_role_aware_multilabel_training_matrix.py",
+        "score": 21,
+        "sha256": "08ce3ab6bcf263caf7584ee14cd718a699913b470147761550e14dedb9ef67b0",
+        "snippets": [
+          "OPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\nSEEDS = (107, 117, 127)\nROLES = (\"source\", \"transit\", \"victim\", \"path\")\n\nSTAGE = \"V5_P2_G3_ROLE_AWARE_MULTILABEL_MATRIX_AGGREGATION\"\nCOMPLETE = f\"{STAGE}_COMPLETE\""
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/inspect_v5_p2_g1a_source_only_graph_preflight.py",
+        "score": 21,
+        "sha256": "4f068b84d0861e701ccf6ecc536ccf8c92a522902acd6b61dbd992db3548b3f7",
+        "snippets": [
+          "\"graph_layer_count\": 2,\n            \"mandatory_models\": [\n                \"CONV1D_ONLY\",\n                \"CONV1D_PLUS_GCNCONV\",\n                \"CONV1D_PLUS_GRAPHCONV\",\n            ],\n            \"screening_model\": \"CONV1D_PLUS_GAT\",\n            \"initial_seeds\": [107, 117, 127],",
+          "\"mandatory_models\": [\n                \"CONV1D_ONLY\",\n                \"CONV1D_PLUS_GCNCONV\",\n                \"CONV1D_PLUS_GRAPHCONV\",\n            ],\n            \"screening_model\": \"CONV1D_PLUS_GAT\",\n            \"initial_seeds\": [107, 117, 127],\n            \"test_access\": False,"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r1_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "17c61c4ba2b4193519e5d18797878e605f0368c5983072fced4ebd1302cf2345",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:\n- pair manifests resolved in G1A-R1;"
+        ]
+      },
+      {
+        "model": "M3_CONV1D_GCN",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r2_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "4b2c0271a22e372d1a91ca4ecbaa6db827d9b2b8de526b78bb82867c0b1cd944",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:\n- pair manifests resolved in G1A-R1;"
+        ]
+      }
+    ],
+    "M4_CONV1D_GAT": [
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r4_source_only_graph_implementations.py",
+        "score": 31,
+        "sha256": "5f9255394e7312d021bcebdd88fbc9f891319dd2d7bfd982aea13c462a3e6f9a",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r5_source_only_graph_implementations.py",
+        "score": 31,
+        "sha256": "644eae2cdc35108953e08b5335280ebd1314325ada5b493a8ac948682ba39094",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g1c_source_only_graph_single_run.py",
+        "score": 31,
+        "sha256": "b5590cf4d237908cec658a270521020470b21d8d3b96d14c755a132a5c845c6d",
+        "snippets": [
+          "This stage trains exactly one source-only model from:\n    conv1d, gcnconv, graphconv, gatconv\nwith exactly one initial-screening seed from:\n    107, 117, 127\n\nAuthorized data are P2 train and validation only. The script never lists,\nopens, constructs, or evaluates the P2 test split. Threshold selection is",
+          "try:\n    from torch_geometric.nn import GATConv, GCNConv, GraphConv\nexcept Exception as exc:  # pragma: no cover - converted to controlled HOLD\n    GATConv = None\n    GCNConv = None\n    GraphConv = None\n    PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\""
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/g1_source_only_graph_smoke.py",
+        "score": 26,
+        "sha256": "2f543a9f1bf4b8a556a173dfb54626e2e35fb10dabc45337d6b4e071938785d4",
+        "snippets": [
+          "V5 P2-G1 source-only graph implementation smoke check.\n\nThis is the consolidated smoke stage for Conv1D-only, GCNConv, GraphConv,\nand GATConv source-localization baselines. It intentionally depends only on\nthe frozen G0 protocol, the G1A-R1 manifest resolution, the canonical 4x4\ntopology contract, and the P2 train/validation data. Historical failed smoke\nrevisions remain untouched but are not prerequisites.",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r1_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "17c61c4ba2b4193519e5d18797878e605f0368c5983072fced4ebd1302cf2345",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r2_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "4b2c0271a22e372d1a91ca4ecbaa6db827d9b2b8de526b78bb82867c0b1cd944",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_r3_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "c3502996262b4ec0c0db329015035d7b5148cd1a65b04f2069bf9462a41b0a9c",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/smoke_v5_p2_g1b_source_only_graph_implementations.py",
+        "score": 21,
+        "sha256": "65bb4df54830d60f784a5d93f45a152faadf42abb5a8a095f0091574cc4ee96f",
+        "snippets": [
+          "finite forward/backward optimizer step for each G1 architecture:\n\n- Conv1D-only\n- Conv1D + GCNConv\n- Conv1D + GraphConv\n- Conv1D + GATConv\n\nIt reuses:",
+          "aggr=\"add\",\n            )\n        elif operator == \"gatconv\":\n            self.graph1 = GATConv(\n                embedding_dim,\n                embedding_dim,\n                heads=1,\n                concat=False,"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/train_v5_p2_g2_direct_graph_single_run.py",
+        "score": 21,
+        "sha256": "47636bd13597d8bb5cb86ab8b8ae69ce47f05d2720ad3748440e17bb696ace18",
+        "snippets": [
+          "This stage trains one clean direct graph classifier from:\n    conv1d, gcnconv, graphconv, gatconv\nwith one frozen screening seed from:\n    107, 117, 127\n\nOnly P2 train and validation are authorized. The script never constructs,\nlists, opens, or evaluates the P2 test split. The best checkpoint is selected",
+          "try:\n    from torch_geometric.nn import GATConv, GCNConv, GraphConv\nexcept Exception as exc:  # pragma: no cover\n    GATConv = None\n    GCNConv = None\n    GraphConv = None\n    PYG_IMPORT_ERROR: str | None = f\"{type(exc).__name__}: {exc}\""
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/run_v5_p2_g1c_source_only_graph_one_run.sh",
+        "score": 15,
+        "sha256": "96599f291f1b5c442c17540e2bf6d8b8a0bde79158d68598b1308ea3d7c43f7e",
+        "snippets": [
+          "case \"$OPERATOR\" in\n    conv1d|gcnconv|graphconv|gatconv) ;;\n    *)\n        echo \"Usage: $0 {conv1d|gcnconv|graphconv|gatconv} {107|117|127}\"\n        exit 2\n        ;;\nesac"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/run_v5_p2_g1c_source_only_graph_training_matrix.sh",
+        "score": 15,
+        "sha256": "1014fcfa6a6e745473ff137398290f936b21df3f601d2160f164e2a0ee1a0ee0",
+        "snippets": [
+          "echo \"order=seed-major\"\necho \"seeds=107,117,127\"\necho \"operators=conv1d,gcnconv,graphconv,gatconv\"\necho \"concurrent_gpu_processes=1\"\necho \"test_directory_enumerated=false\"\necho \"test_tensors_deserialized=false\"\necho"
+        ]
+      },
+      {
+        "model": "M4_CONV1D_GAT",
+        "relative_path": "scripts/v5/p2/run_v5_p2_g2_direct_graph_one_run.sh",
+        "score": 15,
+        "sha256": "fb169a49eb82ced49de43ad17d2d9d38fc945878a3453e59dc2130a7ccd81b13",
+        "snippets": [
+          "SEED=\"${2:-}\"\ncase \"$OPERATOR\" in\n    conv1d|gcnconv|graphconv|gatconv) ;;\n    *) echo \"Usage: $0 {conv1d|gcnconv|graphconv|gatconv} {107|117|127}\"; exit 2 ;;\nesac\ncase \"$SEED\" in\n    107|117|127) ;;\n    *) echo \"Usage: $0 {conv1d|gcnconv|graphconv|gatconv} {107|117|127}\"; exit 2 ;;"
+        ]
+      }
+    ],
+    "M5_TCN_GCN": [
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/compare_v3_conv_vs_meanpool_errors.py",
+        "score": 26,
+        "sha256": "2e04bbd1bf4eab93c685eea22d90c50797cc8d503c42baa998d25e0c51db7362",
+        "snippets": [
+          "build_adj = convmod.build_normalized_adjacency\n\n    elif kind == \"tcn\":\n        model = tcnmod.TemporalTCNGCN(\n            input_features=input_feature_dim,\n            temporal_dim=int(get_arg(ckpt_args, \"temporal_dim\", 8)),\n            gcn_hidden=int(get_arg(ckpt_args, \"gcn_hidden\", 16)),\n            gcn_out=int(get_arg(ckpt_args, \"gcn_out\", 8)),",
+          "if kind == \"conv\":\n        model = convmod.TemporalGCN(\n            input_features=input_feature_dim,\n            temporal_dim=int(get_arg(ckpt_args, \"temporal_dim\", 8)),\n            gcn_hidden=int(get_arg(ckpt_args, \"gcn_hidden\", 16)),\n            gcn_out=int(get_arg(ckpt_args, \"gcn_out\", 8)),\n        ).to(device)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/compare_v3_conv_vs_tcn_errors.py",
+        "score": 26,
+        "sha256": "2e04bbd1bf4eab93c685eea22d90c50797cc8d503c42baa998d25e0c51db7362",
+        "snippets": [
+          "build_adj = convmod.build_normalized_adjacency\n\n    elif kind == \"tcn\":\n        model = tcnmod.TemporalTCNGCN(\n            input_features=input_feature_dim,\n            temporal_dim=int(get_arg(ckpt_args, \"temporal_dim\", 8)),\n            gcn_hidden=int(get_arg(ckpt_args, \"gcn_hidden\", 16)),\n            gcn_out=int(get_arg(ckpt_args, \"gcn_out\", 8)),",
+          "if kind == \"conv\":\n        model = convmod.TemporalGCN(\n            input_features=input_feature_dim,\n            temporal_dim=int(get_arg(ckpt_args, \"temporal_dim\", 8)),\n            gcn_hidden=int(get_arg(ckpt_args, \"gcn_hidden\", 16)),\n            gcn_out=int(get_arg(ckpt_args, \"gcn_out\", 8)),\n        ).to(device)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/failure_analysis/analyze_v3_graph_failures.py",
+        "score": 26,
+        "sha256": "61c25af1edec07934015133e52cc156ebcda647423f019dc3e988015cabbdd5a",
+        "snippets": [
+          "MODEL_LABELS = {\n    \"conv1d_gcn\": \"Conv1D-GCN\",\n    \"tcn_attention_gcn\": \"TCN-Attention-GCN\",\n    \"tcn_meanpool_gcn\": \"TCN-MeanPool-GCN\",\n    \"tcn_maxpool_gcn\": \"TCN-MaxPool-GCN\",\n}",
+          "MODEL_FILES = {\n    \"conv1d_gcn\": \"conv1d_gcn_predictions.npz\",\n    \"tcn_attention_gcn\": \"tcn_attention_gcn_predictions.npz\",\n    \"tcn_meanpool_gcn\": \"tcn_meanpool_gcn_predictions.npz\",\n    \"tcn_maxpool_gcn\": \"tcn_maxpool_gcn_predictions.npz\",\n}\nMODEL_ORDER = list(MODEL_FILES)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/failure_analysis/analyze_v3_graph_failures.truncated.20260718_163642.py",
+        "score": 26,
+        "sha256": "7bacf87a7f7c510aed57dce72bc6569cb6e2bbba7ecc0db766de42c7904e7dd4",
+        "snippets": [
+          "MODEL_LABELS = {\n    \"conv1d_gcn\": \"Conv1D-GCN\",\n    \"tcn_attention_gcn\": \"TCN-Attention-GCN\",\n    \"tcn_meanpool_gcn\": \"TCN-MeanPool-GCN\",\n    \"tcn_maxpool_gcn\": \"TCN-MaxPool-GCN\",\n}",
+          "MODEL_FILES = {\n    \"conv1d_gcn\": \"conv1d_gcn_predictions.npz\",\n    \"tcn_attention_gcn\": \"tcn_attention_gcn_predictions.npz\",\n    \"tcn_meanpool_gcn\": \"tcn_meanpool_gcn_predictions.npz\",\n    \"tcn_maxpool_gcn\": \"tcn_maxpool_gcn_predictions.npz\",\n}"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/failure_analysis/analyze_v3_graph_threshold_transfer.py",
+        "score": 26,
+        "sha256": "a88053eda6fb6897fd448454f30760935a7c1feb40802288a8eb429af5bb2f0a",
+        "snippets": [
+          "MODEL_LABELS = {\n    \"conv1d_gcn\": \"Conv1D-GCN\",\n    \"tcn_attention_gcn\": \"TCN-Attention-GCN\",\n    \"tcn_meanpool_gcn\": \"TCN-MeanPool-GCN\",\n    \"tcn_maxpool_gcn\": \"TCN-MaxPool-GCN\",\n}\n\nHARD_NORMAL_RUN = \"N-3-7-8-12-Pmixed-R18-V3\"",
+          "MODEL_FILES = {\n    \"conv1d_gcn\": \"conv1d_gcn_predictions.npz\",\n    \"tcn_attention_gcn\": \"tcn_attention_gcn_predictions.npz\",\n    \"tcn_meanpool_gcn\": \"tcn_meanpool_gcn_predictions.npz\",\n    \"tcn_maxpool_gcn\": \"tcn_maxpool_gcn_predictions.npz\",\n}\nMODEL_ORDER = list(MODEL_FILES)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/failure_analysis/analyze_v3_matched_runs.py",
+        "score": 26,
+        "sha256": "46d453dbae9191785d03d09e7d96056aafbcf34d61e53b3af1adbe4615e1375b",
+        "snippets": [
+          "MODEL_LABELS = {\n    \"conv1d_gcn\": \"Conv1D-GCN\",\n    \"tcn_attention_gcn\": \"TCN-Attention-GCN\",\n    \"tcn_meanpool_gcn\": \"TCN-MeanPool-GCN\",\n    \"tcn_maxpool_gcn\": \"TCN-MaxPool-GCN\",\n}\n\nHARD_NORMAL_RUN = \"N-3-7-8-12-Pmixed-R18-V3\"",
+          "MODEL_FILES = {\n    \"conv1d_gcn\": \"conv1d_gcn_predictions.npz\",\n    \"tcn_attention_gcn\": \"tcn_attention_gcn_predictions.npz\",\n    \"tcn_meanpool_gcn\": \"tcn_meanpool_gcn_predictions.npz\",\n    \"tcn_maxpool_gcn\": \"tcn_maxpool_gcn_predictions.npz\",\n}\nMODEL_ORDER = list(MODEL_FILES)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/sweep_v3_graph_thresholds.py",
+        "score": 26,
+        "sha256": "7f2285b5eb75d994acc48cc76d7febbe33c60545c81a4b58465e1f7e5945f469",
+        "snippets": [
+          "ap.add_argument(\"--data\", required=True)\n    ap.add_argument(\"--conv-dir\", required=True)\n    ap.add_argument(\"--tcn-dir\", required=True)\n    ap.add_argument(\"--batch-size\", type=int, default=512)\n    ap.add_argument(\"--out\", required=True)\n    ap.add_argument(\"--cpu\", action=\"store_true\")\n    args = ap.parse_args()",
+          "tcn_pred = infer(data, idx, tcn_model, tcn_a, device, args.batch_size)\n\n        lines.extend(sweep_one(f\"{split_name} Conv1D-GCN\", conv_pred))\n        lines.extend(sweep_one(f\"{split_name} TCN-GCN\", tcn_pred))\n\n    text = \"\\n\".join(lines)\n    print(text)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/train_temporal_tcn_gcn_early_stopping.py",
+        "score": 26,
+        "sha256": "e971dd072c43f05ef46dce9b78c2bc5f0c00d5ad1bcf7bfcaf426ba0ec051b5e",
+        "snippets": [
+          "\"best_val_score\": best_val_score,\n                \"val_metrics\": val_metrics,\n                \"model_name\": \"TCN-TemporalGCN\",\n            }\n            torch.save(checkpoint, out_dir / \"best_model.pt\")\n            print(f\"  validation score improved to {best_val_score:.6f}; saved best_model.pt\")\n        else:\n            epochs_without_improvement += 1",
+          "parser = argparse.ArgumentParser()\n    parser.add_argument(\"--data\", default=\"graph_dataset/paper1_temporal_graphs_full.npz\")\n    parser.add_argument(\"--out-dir\", default=\"models/temporal_tcn_gcn_early_stop\")\n    parser.add_argument(\"--split-mode\", choices=[\"prototype\", \"placement\"], default=\"prototype\")\n    parser.add_argument(\"--splits-file\", default=None, help=\"Optional .npz file containing train_idx, val_idx, test_idx.\")\n    parser.add_argument(\"--epochs\", type=int, default=25)\n    parser.add_argument(\"--patience\", type=int, default=5)\n    parser.add_argument(\"--min-delta\", type=float, default=1e-4)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/train_temporal_tcn_gcn_v3.py",
+        "score": 26,
+        "sha256": "cd218697038f2a71df9efa4bccba610e22a241117fb1fe8f97fda601bb0b99fa",
+        "snippets": [
+          "\"best_val_score\": best_val_score,\n                \"val_metrics\": val_metrics,\n                \"model_name\": \"TCN-TemporalGCN\",\n            }\n            torch.save(checkpoint, out_dir / \"best_model.pt\")\n            print(f\"  validation score improved to {best_val_score:.6f}; saved best_model.pt\")\n        else:\n            epochs_without_improvement += 1",
+          "parser = argparse.ArgumentParser()\n    parser.add_argument(\"--data\", default=\"graph_dataset/paper1_temporal_graphs_full.npz\")\n    parser.add_argument(\"--out-dir\", default=\"models/temporal_tcn_gcn_early_stop\")\n    parser.add_argument(\"--split-mode\", choices=[\"prototype\", \"placement\", \"v3\"], default=\"prototype\")\n    parser.add_argument(\"--splits-file\", default=None, help=\"Optional .npz file containing train_idx, val_idx, test_idx.\")\n    parser.add_argument(\"--epochs\", type=int, default=25)\n    parser.add_argument(\"--patience\", type=int, default=5)\n    parser.add_argument(\"--min-delta\", type=float, default=1e-4)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/train_temporal_tcn_maxpool_gcn_v3.py",
+        "score": 26,
+        "sha256": "e21a88d72efc2c8af451c51264bf968aa8e315306f84bd54a3a4208b4d7e909f",
+        "snippets": [
+          "\"best_val_score\": best_val_score,\n                \"val_metrics\": val_metrics,\n                \"model_name\": \"TCN-MaxPool-TemporalGCN\",\n            }\n            torch.save(checkpoint, out_dir / \"best_model.pt\")\n            print(f\"  validation score improved to {best_val_score:.6f}; saved best_model.pt\")\n        else:\n            epochs_without_improvement += 1",
+          "parser = argparse.ArgumentParser()\n    parser.add_argument(\"--data\", default=\"graph_dataset/paper1_temporal_graphs_full.npz\")\n    parser.add_argument(\"--out-dir\", default=\"models/temporal_tcn_gcn_early_stop\")\n    parser.add_argument(\"--split-mode\", choices=[\"prototype\", \"placement\", \"v3\"], default=\"prototype\")\n    parser.add_argument(\"--splits-file\", default=None, help=\"Optional .npz file containing train_idx, val_idx, test_idx.\")\n    parser.add_argument(\"--epochs\", type=int, default=25)\n    parser.add_argument(\"--patience\", type=int, default=5)\n    parser.add_argument(\"--min-delta\", type=float, default=1e-4)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/train_temporal_tcn_meanpool_gcn_v3.py",
+        "score": 26,
+        "sha256": "97cbf5864a9f1443d0f4a7e4a737d5259aabcb18562205a46f10bb739c7ee772",
+        "snippets": [
+          "\"best_val_score\": best_val_score,\n                \"val_metrics\": val_metrics,\n                \"model_name\": \"TCN-MeanPool-TemporalGCN\",\n            }\n            torch.save(checkpoint, out_dir / \"best_model.pt\")\n            print(f\"  validation score improved to {best_val_score:.6f}; saved best_model.pt\")\n        else:\n            epochs_without_improvement += 1",
+          "parser = argparse.ArgumentParser()\n    parser.add_argument(\"--data\", default=\"graph_dataset/paper1_temporal_graphs_full.npz\")\n    parser.add_argument(\"--out-dir\", default=\"models/temporal_tcn_gcn_early_stop\")\n    parser.add_argument(\"--split-mode\", choices=[\"prototype\", \"placement\", \"v3\"], default=\"prototype\")\n    parser.add_argument(\"--splits-file\", default=None, help=\"Optional .npz file containing train_idx, val_idx, test_idx.\")\n    parser.add_argument(\"--epochs\", type=int, default=25)\n    parser.add_argument(\"--patience\", type=int, default=5)\n    parser.add_argument(\"--min-delta\", type=float, default=1e-4)"
+        ]
+      },
+      {
+        "model": "M5_TCN_GCN",
+        "relative_path": "scripts/sweep_v3_graph_thresholds_maxpool.py",
+        "score": 16,
+        "sha256": "b099bcc53746bcf518d9e76d45f7ad1b8f96ea6566d7a59f534698a06a9f2f4c",
+        "snippets": [
+          "pred = infer(data, idx, model, a_hat, device, args.batch_size)\n\n        lines.extend(sweep_one(f\"{split_name} TCN-MaxPool-GCN\", pred))\n\n    text = \"\\n\".join(lines)\n    print(text)\n\n    out = Path(args.out)"
+        ]
+      }
+    ],
+    "M6_LSTM_GRAPHCONV": [
+      {
+        "model": "M6_LSTM_GRAPHCONV",
+        "relative_path": "scripts/v4/train/train_v4_a1_conv1d_gcn_memmap.py",
+        "score": 11,
+        "sha256": "3aaab7a6626f4c237b8e234e3716ba4d117d1b725d02a605395f57aa26f33fa2",
+        "snippets": [
+          "current_model_text = \"\\n\".join(v4_classes.values())\n    prohibited_tokens = [\n        \"GraphConv\",\n        \"GraphSAGE\",\n        \"GATConv\",\n        \"LSTM(\",\n        \"GRU(\",\n        \"node_victim_head\","
+        ]
+      },
+      {
+        "model": "M6_LSTM_GRAPHCONV",
+        "relative_path": "scripts/v4/train/train_v4_conv1d_gcn_experiment.py",
+        "score": 11,
+        "sha256": "0091ccb1fefb15d7e621ca30b18af692f86fa40ede192a1bd9dc5eb425eceffe",
+        "snippets": [
+          "current_model_text = \"\\n\".join(v4_classes.values())\n    prohibited_tokens = [\n        \"GraphConv\",\n        \"GraphSAGE\",\n        \"GATConv\",\n        \"LSTM(\",\n        \"GRU(\",\n        \"node_victim_head\","
+        ]
+      }
+    ],
+    "M7_CONV1D_GRAPHCONV": [
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+        "score": 50,
+        "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+        "snippets": [
+          "Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common\n    parameters for every matched seed.\n    \"\"\"\n    architecture_name = 'TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4'\n    expected_parameter_count = 59785\n    count_class_values = (1, 2, 3, 4)",
+          "return result\n\nclass V6P0Dynamic70GraphConvCount4(nn.Module):\n    \"\"\"\n    B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n\n    Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p3/post_training/v5_p3_posttrain_p4_model_comparison_harness.py",
+        "score": 41,
+        "sha256": "7d01ac3d21e7d47ace22e6a3b9937d97c79383c406a567ea91b00c2574c78fe7",
+        "snippets": [
+          "},\n        {\n            \"experiment_id\": \"P4_SELFTEST_GRAPHCONV_107\", \"model_id\": \"conv1d_graphconv\",\n            \"model_family\": \"neural_graph\", \"task_scope\": \"multitask\",\n            \"dataset_scope\": \"V5_P3_TRANCHE_A_DYNAMIC70\", \"split\": \"validation\",\n            \"seed\": 107, \"screen_or_confirmation\": \"CONFIRMATION\", \"metrics\": multi1,\n            \"parameter_count\": 60553, \"provenance\": prov,\n            \"threshold_tuning_performed\": False, \"decoder_used_for_model_selection\": False,"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "src/models/v5_p2_task_d_full_multitask_count4.py",
+        "score": 41,
+        "sha256": "ccdfcb74c1ddab7f20b98c922444873ad76c204ec4b5fd6827d52fb716f11fd9",
+        "snippets": [
+          "Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common\n    parameters for every matched seed.\n    \"\"\"\n\n    architecture_name = \"TASK_D_B3_TEMPORAL_PLUS_2X_GRAPHCONV_COUNT4\"\n    expected_parameter_count = 59_785",
+          "class P2TaskDGraphConvCount4(nn.Module):\n    \"\"\"\n    B3 temporal encoder + two frozen-width GraphConv layers + unchanged B3 heads.\n\n    Common B3 modules are deep-copied from a seeded reference B3 instance so\n    the Conv1D and GraphConv candidates begin with byte-identical common"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/evaluate_v5_p2_final_raw_a0_a1_one_shot.py",
+        "score": 35,
+        "sha256": "f6f061177b1621e3e7d8b3cbb32a401f83cdbf0488235125c62f3be17501ee44",
+        "snippets": [
+          "task_module = import_source(paths[\"task_d_model\"], \"v5_p2_final_task_d\")\n    edge = load_edge_index(paths[\"edge_index\"])\n    reference = b3_module.P2B3Conv1DOnlyCount4()\n    model = task_module.P2TaskDGraphConvCount4(reference, edge).to(device)\n    parameter_count = sum(parameter.numel() for parameter in model.parameters())\n    if parameter_count != EXPECTED_PARAMETER_COUNT:\n        raise RuntimeError(\n            f\"parameter count={parameter_count}, expected={EXPECTED_PARAMETER_COUNT}\"",
+          "reports\n            / \"p2_task_d_checkpoint_selection_freeze\"\n            / \"selected_graphconv_checkpoint.pt\"\n        ),\n        \"task_d_model\": root / \"src/models/v5_p2_task_d_full_multitask_count4.py\",\n        \"b3_model\": root / \"src/models/v5_p2_b3_conv1d_only_count4.py\",\n        \"edge_index\": (\n            reports"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p3/run_v5_p3_h0_current_4x4_dynamic70_rtl_handoff.py",
+        "score": 35,
+        "sha256": "1452da2ecc19cf349c4521027c268dde1f72da314bbd37b0641b812c911707fe",
+        "snippets": [
+          ")\n\n    reference = b3_mod.P2B3Conv1DOnlyCount4()\n    canonical_model = canonical_mod.P2TaskDGraphConvCount4(\n        reference,\n        edge_index,\n    )\n    model = dynamic_mod.build_v6_p0_dynamic70_from_canonical_structure("
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/aggregate_v5_p2_task_d_full_multitask_matrix.py",
+        "score": 31,
+        "sha256": "660288f0b1ce47fece4406410bec7ada922970da18dbdbca879bff745ce78c79",
+        "snippets": [
+          "STAGE = \"V5_P2_TASK_D_FULL_MULTITASK_MATRIX_AGGREGATION\"\nCOMPLETE = f\"{STAGE}_COMPLETE\"\nCANDIDATES = [\"conv1d\", \"graphconv\"]\nSEEDS = [107, 117, 127, 137, 147]\n\n\ndef sha256_file(path: Path) -> str:\n    h = hashlib.sha256()",
+          "for seed in SEEDS:\n        conv = next(row for row in per_seed if row[\"candidate\"] == \"conv1d\" and row[\"seed\"] == seed)\n        graph = next(row for row in per_seed if row[\"candidate\"] == \"graphconv\" and row[\"seed\"] == seed)\n        row: dict[str, Any] = {\"seed\": seed}\n        for metric in paired_metrics:\n            row[f\"graphconv_minus_conv1d_{metric}\"] = float(graph[metric]) - float(conv[metric])\n        paired.append(row)"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/evaluate_v5_p2_recovery_raw_a0_a1.py",
+        "score": 31,
+        "sha256": "770ad8937427c32680c1cced7b3040bf6055662615c88edbf544e8805d9fe7c9",
+        "snippets": [
+          "task_module = import_source(paths[\"task_d_model\"], \"v5_p2_final_task_d\")\n    edge = load_edge_index(paths[\"edge_index\"])\n    reference = b3_module.P2B3Conv1DOnlyCount4()\n    model = task_module.P2TaskDGraphConvCount4(reference, edge).to(device)\n    parameter_count = sum(parameter.numel() for parameter in model.parameters())\n    if parameter_count != EXPECTED_PARAMETER_COUNT:\n        raise RuntimeError(\n            f\"parameter count={parameter_count}, expected={EXPECTED_PARAMETER_COUNT}\"",
+          "reports\n            / \"p2_task_d_checkpoint_selection_freeze\"\n            / \"selected_graphconv_checkpoint.pt\"\n        ),\n        \"task_d_model\": root / \"src/models/v5_p2_task_d_full_multitask_count4.py\",\n        \"b3_model\": root / \"src/models/v5_p2_b3_conv1d_only_count4.py\",\n        \"edge_index\": (\n            reports"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_e0a_raw_head_structured_decoder_boundary.py",
+        "score": 31,
+        "sha256": "00dc660a4bdf01b0a58f8ec6865ae35065d03247581cc65d94575cbdc4df1e88",
+        "snippets": [
+          "TECHNICAL_NAME = (\n    \"Causal Depthwise-Separable Conv1D Temporal Encoder \"\n    \"+ Two-Layer GraphConv\"\n)\nPAPER_SHORT_NAME = \"Temporal Conv1D-GraphConv\"\nTEMPORAL_FRONTEND_REFERENCE = \"B3\"\nSELECTED_SEED = 107",
+          "TECHNICAL_NAME = (\n    \"Causal Depthwise-Separable Conv1D Temporal Encoder \"\n    \"+ Two-Layer GraphConv\"\n)\nPAPER_SHORT_NAME = \"Temporal Conv1D-GraphConv\"\nTEMPORAL_FRONTEND_REFERENCE = \"B3\"\nSELECTED_SEED = 107\nSELECTED_EPOCH = 25"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g0_graph_baseline_rtl_handoff_protocol.py",
+        "score": 31,
+        "sha256": "d9442205c372a275314ab5cc1872b439d293d600bffbb9f456394d00dc9aaf61",
+        "snippets": [
+          "),\n                \"models\": [\n                    \"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },",
+          "\"CONV1D_ONLY\",\n                    \"CONV1D_PLUS_GCNCONV\",\n                    \"CONV1D_PLUS_GRAPHCONV\",\n                    \"CONV1D_PLUS_GAT_SCREENING\",\n                ],\n            },\n            {\n                \"task_id\": \"B_DIRECT_GRAPH_DETECTION\","
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/freeze_v5_p2_g123_graph_operator_promotion.py",
+        "score": 31,
+        "sha256": "ea746e61265afb5328fd68e76ccf8a840ef4e6f24d8d53e1ab62355cff188954",
+        "snippets": [
+          "task_d = next(task for task in task_matrix[\"tasks\"] if task[\"task_id\"] == \"D_FULL_MULTITASK_SYSTEM\")\n    if task_d[\"models\"] != [\n        \"EXISTING_B3_CONV1D_COUNT4\",\n        \"CONV1D_PLUS_ONE_PROMOTED_GRAPH_OPERATOR_COUNT4\",\n    ]:\n        raise RuntimeError(\"Task-D candidate contract changed\")\n    if seed_policy[\"training_base\"][\"finalist_stability_seeds\"] != [107, 117, 127, 137, 147]:\n        raise RuntimeError(\"Task-D finalist seed contract changed\")",
+          "g3_rows = read_csv_by_operator(paths[\"g3_summary\"])\n    for rows in (g1_rows, g2_rows, g3_rows):\n        if not {\"conv1d\", \"gcnconv\", \"graphconv\"}.issubset(rows):\n            raise RuntimeError(\"required operators missing from aggregate summary\")\n\n    c1, gr1 = g1_rows[\"conv1d\"], g1_rows[\"graphconv\"]\n    c2, gr2 = g2_rows[\"conv1d\"], g2_rows[\"graphconv\"]\n    c3, gr3 = g3_rows[\"conv1d\"], g3_rows[\"graphconv\"]"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/preflight_v5_p2_g3_clean_training_implementation.py",
+        "score": 31,
+        "sha256": "41638b8cad2c70bcfeda74d41176b1dd492838a14fdec6d692d282a67770e15d",
+        "snippets": [
+          "STAGE = \"V5_P2_G3_CLEAN_TRAINING_IMPLEMENTATION_PREFLIGHT\"\nCOMPLETE = f\"{STAGE}_COMPLETE\"\nOPERATORS = (\"conv1d\", \"gcnconv\", \"graphconv\")\nEXPECTED_PARAMETERS = {\n    \"conv1d\": 34_692,\n    \"gcnconv\": 43_012,\n    \"graphconv\": 51_204,\n}"
+        ]
+      },
+      {
+        "model": "M7_CONV1D_GRAPHCONV",
+        "relative_path": "scripts/v5/p2/preflight_v5_p2_task_d_full_multitask.py",
+        "score": 31,
+        "sha256": "b7ef6c9a522ec6fd122b16fc17f220cc413f6e7e24333778d3a6885dbc347a42",
+        "snippets": [
+          "COMPLETE = f\"{STAGE}_COMPLETE\"\nSEEDS = [107, 117, 127, 137, 147]\nEXPECTED_PARAMS = {\"conv1d\": 43_273, \"graphconv\": 59_785}\nEXPECTED_B1_PROTOCOL_SHA = \"0817ae7812f91e3c75260589acaf52bd8a74b07b2114a451b4773578efde4b60\"\n\n\ndef sha256_file(path: Path) -> str:\n    h = hashlib.sha256()",
+          "set_seed(107)\n        graph_reference = b3_mod.P2B3Conv1DOnlyCount4()\n        graph_model = td_mod.P2TaskDGraphConvCount4(graph_reference, edge)\n        conv_hash = sha256_state_dict(conv_reference.state_dict())\n        graph_common_hash = sha256_state_dict(td_mod.common_state_dict(graph_model))\n        if conv_hash != graph_common_hash:\n            raise RuntimeError(\"matched-seed common initialization is not identical\")"
+        ]
+      }
+    ]
+  },
+  "model_training": false,
+  "sealed_test_access": false,
+  "selected_report_files_scanned": 45,
+  "source_files_scanned": 443,
+  "stage": "V5_P3_MC0_R1_TARGETED_MODEL_SOURCE_AND_HARNESS_RESOLUTION",
+  "status": "PASS",
+  "test_evaluation": false,
+  "threshold_tuning": false
+}

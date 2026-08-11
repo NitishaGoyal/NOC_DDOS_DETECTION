@@ -1,0 +1,134 @@
+{
+  "definition_inventory": [
+    {
+      "defined_symbols": [
+        "select_graph_threshold_fpr_cap",
+        "selection_score"
+      ],
+      "defines_all_targets": true,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+      "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704"
+    },
+    {
+      "defined_symbols": [
+        "selection_score"
+      ],
+      "defines_all_targets": false,
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/final/train_v5_p0_c1_b3_multi_seed_validation.py",
+      "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4"
+    },
+    {
+      "defined_symbols": [
+        "selection_score"
+      ],
+      "defines_all_targets": false,
+      "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_preflight_concrete_interface_resolution/source_snapshots/18_train_v5_p0_c1_b3_multi_seed_validation.py",
+      "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4"
+    }
+  ],
+  "same_source_file": true,
+  "selection_score": {
+    "candidate_count": 3,
+    "candidates": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "reason": "repository symbol search",
+        "reasons": [
+          "V4 training lineage",
+          "defines both target helpers"
+        ],
+        "score": 40,
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704"
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v5/final/train_v5_p0_c1_b3_multi_seed_validation.py",
+        "reason": "repository symbol search",
+        "reasons": [],
+        "score": 0,
+        "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4"
+      },
+      {
+        "path": "/home/zira/research/projects/GNN-2d/artifacts/v5/p2_preflight_concrete_interface_resolution/source_snapshots/18_train_v5_p0_c1_b3_multi_seed_validation.py",
+        "reason": "repository symbol search",
+        "reasons": [],
+        "score": 0,
+        "sha256": "2865a70c42a5cb745b5cae3fee1d58c854392f49b773e1bafae8ec5b7ffbb0c4"
+      }
+    ],
+    "selected": {
+      "function": {
+        "line_end": 994,
+        "line_start": 984,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+        "source": "\n\ndef selection_score(validation_metrics: Mapping[str, Any], constrained_graph: Mapping[str, Any]) -> float:\n    return float(\n        constrained_graph[\"f1\"]\n        + validation_metrics[\"attack_topk_exact_localization\"]\n        + validation_metrics[\"attack_node_topk\"][\"f1\"]\n        + 0.5 * validation_metrics[\"attack_count_accuracy\"]\n    )\n\n"
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+      "reason": "repository symbol search",
+      "reasons": [
+        "V4 training lineage",
+        "defines both target helpers"
+      ],
+      "score": 40,
+      "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+      "signature": {
+        "kwarg": null,
+        "kwonly": [],
+        "positional": [
+          "validation_metrics",
+          "constrained_graph"
+        ],
+        "vararg": null
+      }
+    },
+    "symbol": "selection_score",
+    "unique": true
+  },
+  "threshold_helper": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "reason": "repository symbol search",
+        "reasons": [
+          "V4 training lineage",
+          "defines both target helpers"
+        ],
+        "score": 40,
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704"
+      }
+    ],
+    "selected": {
+      "function": {
+        "line_end": 985,
+        "line_start": 957,
+        "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+        "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+        "source": "\n\ndef select_graph_threshold_fpr_cap(\n    y_true: np.ndarray,\n    y_prob: np.ndarray,\n    fpr_cap: float = 0.10,\n    start: float = 0.05,\n    end: float = 0.95,\n    step: float = 0.01,\n) -> tuple[dict[str, Any], list[dict[str, Any]]]:\n    rows = [\n        binary_metrics_numpy(y_true, y_prob, float(threshold))\n        for threshold in threshold_values(start, end, step)\n    ]\n    feasible = [row for row in rows if float(row[\"fpr\"]) <= fpr_cap + 1e-12]\n    if not feasible:\n        raise RuntimeError(f\"No validation graph threshold satisfies FPR<={fpr_cap}\")\n    selected = max(\n        feasible,\n        key=lambda row: (\n            row[\"f1\"],\n            row[\"recall\"],\n            -row[\"fpr\"],\n            -abs(row[\"threshold\"] - 0.5),\n        ),\n    )\n    return selected, rows\n\n"
+      },
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v4/common/v4_a3_sourcepreserve.py",
+      "reason": "repository symbol search",
+      "reasons": [
+        "V4 training lineage",
+        "defines both target helpers"
+      ],
+      "score": 40,
+      "sha256": "5ebcf80385b95f329faf935cad8039b64afd79f464903308eb07e674d78a1704",
+      "signature": {
+        "kwarg": null,
+        "kwonly": [],
+        "positional": [
+          "y_true",
+          "y_prob",
+          "fpr_cap",
+          "start",
+          "end",
+          "step"
+        ],
+        "vararg": null
+      }
+    },
+    "symbol": "select_graph_threshold_fpr_cap",
+    "unique": true
+  }
+}

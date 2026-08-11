@@ -1,0 +1,1757 @@
+{
+  "A_alignment_gap_structure": {
+    "all_current_gap_decoder_status_INACTIVE_RAW": true,
+    "all_current_gap_selected_role_masks_zero": true,
+    "all_gaps_have_run_local_history_1_1_0": true,
+    "anchor_decoder_status_counts": {
+      "RAW_ENDPOINTS_LEGAL": 60,
+      "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT": 11,
+      "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH": 5
+    },
+    "anchor_route_certified_rate": 0.9342105263157895,
+    "most_recent_Raw_positive_anchor_offset_windows": -1,
+    "run_context_counts": {
+      "IN_EPISODE_POSITIVE": 40,
+      "POST_EPISODE_NEGATIVE": 3,
+      "PRE_EPISODE_NEGATIVE": 33
+    },
+    "truth_graph_counts": {
+      "0": 36,
+      "1": 40
+    }
+  },
+  "A_counts": {
+    "P2_alarm_items": 5755,
+    "Raw_alarm_items": 5807,
+    "alignment_gap_P2_1_Raw_0_items": 76,
+    "alignment_gap_rate_among_P2_alarm_items": 0.01320590790616855,
+    "categories": {
+      "P2_0_RAW_0": 7980,
+      "P2_0_RAW_1": 128,
+      "P2_1_RAW_0": 76,
+      "P2_1_RAW_1": 5679
+    },
+    "items": 13863,
+    "max_consecutive_alignment_gap_windows_within_run": 1,
+    "runs_with_alignment_gap": 37,
+    "suppressed_current_Raw_P2_0_Raw_1_items": 128
+  },
+  "A_only_descriptive_latest_active_anchor_audit": {
+    "anchor_t_minus_1_selected_role_exact_against_current_t_truth_rates": {
+      "path": 0.4868421052631579,
+      "source": 0.5263157894736842,
+      "transit": 0.4342105263157895,
+      "victim": 0.5263157894736842
+    },
+    "candidate_definition_for_audit_only": "when P2_t=1 and Raw_t=0, inspect frozen EPLR-V2 selected localization at t-1",
+    "candidate_not_selected": true,
+    "current_t_zero_selected_role_exact_against_current_t_truth_rates": {
+      "path": 0.47368421052631576,
+      "source": 0.47368421052631576,
+      "transit": 0.4868421052631579,
+      "victim": 0.47368421052631576
+    },
+    "truth_role_unchanged_t_minus_1_to_t_rates": {
+      "path": 0.9868421052631579,
+      "source": 0.9868421052631579,
+      "transit": 0.9868421052631579,
+      "victim": 0.9868421052631579
+    }
+  },
+  "A_suppressed_current_Raw_structure": {
+    "interpretation": "Raw_t=1 but P2_t=0: current EPLR-V2 localization exists while confirmed graph alarm remains suppressed.",
+    "items": 128,
+    "truth_graph_counts": {
+      "0": 79,
+      "1": 49
+    }
+  },
+  "evidence_boundary": {
+    "B_alignment_candidate_evaluation_performed": false,
+    "B_alignment_metrics_computed": false,
+    "B_alignment_selection_authority_preserved": true,
+    "alignment_design_audit_tranche": "A_only"
+  },
+  "frozen_system_inputs": {
+    "cross_run_history_forbidden": true,
+    "graph_alarm_policy": "P2_2_OF_3_RAW_POSITIVES",
+    "run_boundary_reset": true,
+    "runtime_structured_decoder": "EPLR_V2"
+  },
+  "gap_records": [
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 749,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        748,
+        749,
+        750
+      ],
+      "ordinal": 8,
+      "row": 750,
+      "run_id": "P3AVA-K1-005_ATTACK",
+      "temporal_value": 64,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 755,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        754,
+        755,
+        756
+      ],
+      "ordinal": 14,
+      "row": 756,
+      "run_id": "P3AVA-K1-005_ATTACK",
+      "temporal_value": 112,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 1327,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        1326,
+        1327,
+        1328
+      ],
+      "ordinal": 23,
+      "row": 1328,
+      "run_id": "P3AVA-K1-008_ATTACK",
+      "temporal_value": 184,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+      "anchor_route_certified": false,
+      "anchor_row": 2809,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        2808,
+        2809,
+        2810
+      ],
+      "ordinal": 18,
+      "row": 2810,
+      "run_id": "P3AVA-K1-016_ATTACK",
+      "temporal_value": 144,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+      "anchor_route_certified": false,
+      "anchor_row": 3192,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        3191,
+        3192,
+        3193
+      ],
+      "ordinal": 33,
+      "row": 3193,
+      "run_id": "P3AVA-K1-018_ATTACK",
+      "temporal_value": 264,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 3367,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        3366,
+        3367,
+        3368
+      ],
+      "ordinal": 22,
+      "row": 3368,
+      "run_id": "P3AVA-K1-019_ATTACK",
+      "temporal_value": 176,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 4289,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        4288,
+        4289,
+        4290
+      ],
+      "ordinal": 20,
+      "row": 4290,
+      "run_id": "P3AVA-K2-005_ATTACK",
+      "temporal_value": 160,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 4301,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        4300,
+        4301,
+        4302
+      ],
+      "ordinal": 32,
+      "row": 4302,
+      "run_id": "P3AVA-K2-005_ATTACK",
+      "temporal_value": 256,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 4471,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        4470,
+        4471,
+        4472
+      ],
+      "ordinal": 18,
+      "row": 4472,
+      "run_id": "P3AVA-K2-006_ATTACK",
+      "temporal_value": 144,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 4474,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        4473,
+        4474,
+        4475
+      ],
+      "ordinal": 21,
+      "row": 4475,
+      "run_id": "P3AVA-K2-006_ATTACK",
+      "temporal_value": 168,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 4654,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        4653,
+        4654,
+        4655
+      ],
+      "ordinal": 15,
+      "row": 4655,
+      "run_id": "P3AVA-K2-007_ATTACK",
+      "temporal_value": 120,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+      "anchor_route_certified": false,
+      "anchor_row": 5771,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        5770,
+        5771,
+        5772
+      ],
+      "ordinal": 24,
+      "row": 5772,
+      "run_id": "P3AVA-K2-013_ATTACK",
+      "temporal_value": 192,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 5948,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        5947,
+        5948,
+        5949
+      ],
+      "ordinal": 17,
+      "row": 5949,
+      "run_id": "P3AVA-K2-014_ATTACK",
+      "temporal_value": 136,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 6131,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        6130,
+        6131,
+        6132
+      ],
+      "ordinal": 15,
+      "row": 6132,
+      "run_id": "P3AVA-K2-015_ATTACK",
+      "temporal_value": 120,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 6699,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        6698,
+        6699,
+        6700
+      ],
+      "ordinal": 29,
+      "row": 6700,
+      "run_id": "P3AVA-K2-018_ATTACK",
+      "temporal_value": 232,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 6704,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        6703,
+        6704,
+        6705
+      ],
+      "ordinal": 34,
+      "row": 6705,
+      "run_id": "P3AVA-K2-018_ATTACK",
+      "temporal_value": 272,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 6720,
+      "context": "POST_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        6719,
+        6720,
+        6721
+      ],
+      "ordinal": 50,
+      "row": 6721,
+      "run_id": "P3AVA-K2-018_ATTACK",
+      "temporal_value": 400,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 6734,
+      "context": "POST_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        6733,
+        6734,
+        6735
+      ],
+      "ordinal": 64,
+      "row": 6735,
+      "run_id": "P3AVA-K2-018_ATTACK",
+      "temporal_value": 512,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 6872,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        6871,
+        6872,
+        6873
+      ],
+      "ordinal": 16,
+      "row": 6873,
+      "run_id": "P3AVA-K2-019_ATTACK",
+      "temporal_value": 128,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 7082,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        7081,
+        7082,
+        7083
+      ],
+      "ordinal": 42,
+      "row": 7083,
+      "run_id": "P3AVA-K3-001_ATTACK",
+      "temporal_value": 336,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 7104,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        7103,
+        7104,
+        7105
+      ],
+      "ordinal": 64,
+      "row": 7105,
+      "run_id": "P3AVA-K3-001_ATTACK",
+      "temporal_value": 512,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 7835,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        7834,
+        7835,
+        7836
+      ],
+      "ordinal": 57,
+      "row": 7836,
+      "run_id": "P3AVA-K3-005_ATTACK",
+      "temporal_value": 456,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 7838,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        7837,
+        7838,
+        7839
+      ],
+      "ordinal": 60,
+      "row": 7839,
+      "run_id": "P3AVA-K3-005_ATTACK",
+      "temporal_value": 480,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 7845,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        7844,
+        7845,
+        7846
+      ],
+      "ordinal": 67,
+      "row": 7846,
+      "run_id": "P3AVA-K3-005_ATTACK",
+      "temporal_value": 536,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 7854,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        7853,
+        7854,
+        7855
+      ],
+      "ordinal": 76,
+      "row": 7855,
+      "run_id": "P3AVA-K3-005_ATTACK",
+      "temporal_value": 608,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 8361,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8360,
+        8361,
+        8362
+      ],
+      "ordinal": 29,
+      "row": 8362,
+      "run_id": "P3AVA-K3-008_ATTACK",
+      "temporal_value": 232,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 8369,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8368,
+        8369,
+        8370
+      ],
+      "ordinal": 37,
+      "row": 8370,
+      "run_id": "P3AVA-K3-008_ATTACK",
+      "temporal_value": 296,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 8374,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8373,
+        8374,
+        8375
+      ],
+      "ordinal": 42,
+      "row": 8375,
+      "run_id": "P3AVA-K3-008_ATTACK",
+      "temporal_value": 336,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 8381,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8380,
+        8381,
+        8382
+      ],
+      "ordinal": 49,
+      "row": 8382,
+      "run_id": "P3AVA-K3-008_ATTACK",
+      "temporal_value": 392,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 8398,
+      "context": "POST_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8397,
+        8398,
+        8399
+      ],
+      "ordinal": 66,
+      "row": 8399,
+      "run_id": "P3AVA-K3-008_ATTACK",
+      "temporal_value": 528,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 8560,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8559,
+        8560,
+        8561
+      ],
+      "ordinal": 42,
+      "row": 8561,
+      "run_id": "P3AVA-K3-009_ATTACK",
+      "temporal_value": 336,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 8571,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8570,
+        8571,
+        8572
+      ],
+      "ordinal": 53,
+      "row": 8572,
+      "run_id": "P3AVA-K3-009_ATTACK",
+      "temporal_value": 424,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 8581,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8580,
+        8581,
+        8582
+      ],
+      "ordinal": 63,
+      "row": 8582,
+      "run_id": "P3AVA-K3-009_ATTACK",
+      "temporal_value": 504,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 8594,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8593,
+        8594,
+        8595
+      ],
+      "ordinal": 76,
+      "row": 8595,
+      "run_id": "P3AVA-K3-009_ATTACK",
+      "temporal_value": 608,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 8597,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        8596,
+        8597,
+        8598
+      ],
+      "ordinal": 79,
+      "row": 8598,
+      "run_id": "P3AVA-K3-009_ATTACK",
+      "temporal_value": 632,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 9098,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9097,
+        9098,
+        9099
+      ],
+      "ordinal": 28,
+      "row": 9099,
+      "run_id": "P3AVA-K3-012_ATTACK",
+      "temporal_value": 224,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 9104,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9103,
+        9104,
+        9105
+      ],
+      "ordinal": 34,
+      "row": 9105,
+      "run_id": "P3AVA-K3-012_ATTACK",
+      "temporal_value": 272,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 9110,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9109,
+        9110,
+        9111
+      ],
+      "ordinal": 40,
+      "row": 9111,
+      "run_id": "P3AVA-K3-012_ATTACK",
+      "temporal_value": 320,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 9137,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9136,
+        9137,
+        9138
+      ],
+      "ordinal": 67,
+      "row": 9138,
+      "run_id": "P3AVA-K3-012_ATTACK",
+      "temporal_value": 536,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 9447,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9446,
+        9447,
+        9448
+      ],
+      "ordinal": 9,
+      "row": 9448,
+      "run_id": "P3AVA-K3-014_ATTACK",
+      "temporal_value": 72,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 9458,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9457,
+        9458,
+        9459
+      ],
+      "ordinal": 20,
+      "row": 9459,
+      "run_id": "P3AVA-K3-014_ATTACK",
+      "temporal_value": 160,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 9631,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9630,
+        9631,
+        9632
+      ],
+      "ordinal": 9,
+      "row": 9632,
+      "run_id": "P3AVA-K3-015_ATTACK",
+      "temporal_value": 72,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 9850,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9849,
+        9850,
+        9851
+      ],
+      "ordinal": 44,
+      "row": 9851,
+      "run_id": "P3AVA-K3-016_ATTACK",
+      "temporal_value": 352,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 9853,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9852,
+        9853,
+        9854
+      ],
+      "ordinal": 47,
+      "row": 9854,
+      "run_id": "P3AVA-K3-016_ATTACK",
+      "temporal_value": 376,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 9865,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        9864,
+        9865,
+        9866
+      ],
+      "ordinal": 59,
+      "row": 9866,
+      "run_id": "P3AVA-K3-016_ATTACK",
+      "temporal_value": 472,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10007,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10006,
+        10007,
+        10008
+      ],
+      "ordinal": 17,
+      "row": 10008,
+      "run_id": "P3AVA-K3-017_ATTACK",
+      "temporal_value": 136,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10195,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10194,
+        10195,
+        10196
+      ],
+      "ordinal": 21,
+      "row": 10196,
+      "run_id": "P3AVA-K3-018_ATTACK",
+      "temporal_value": 168,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10201,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10200,
+        10201,
+        10202
+      ],
+      "ordinal": 27,
+      "row": 10202,
+      "run_id": "P3AVA-K3-018_ATTACK",
+      "temporal_value": 216,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10218,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10217,
+        10218,
+        10219
+      ],
+      "ordinal": 44,
+      "row": 10219,
+      "run_id": "P3AVA-K3-018_ATTACK",
+      "temporal_value": 352,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10738,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10737,
+        10738,
+        10739
+      ],
+      "ordinal": 11,
+      "row": 10739,
+      "run_id": "P3AVA-K4-002_ATTACK",
+      "temporal_value": 88,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10755,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10754,
+        10755,
+        10756
+      ],
+      "ordinal": 28,
+      "row": 10756,
+      "run_id": "P3AVA-K4-002_ATTACK",
+      "temporal_value": 224,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 10929,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        10928,
+        10929,
+        10930
+      ],
+      "ordinal": 16,
+      "row": 10930,
+      "run_id": "P3AVA-K4-003_ATTACK",
+      "temporal_value": 128,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11114,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11113,
+        11114,
+        11115
+      ],
+      "ordinal": 17,
+      "row": 11115,
+      "run_id": "P3AVA-K4-004_ATTACK",
+      "temporal_value": 136,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 11129,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11128,
+        11129,
+        11130
+      ],
+      "ordinal": 32,
+      "row": 11130,
+      "run_id": "P3AVA-K4-004_ATTACK",
+      "temporal_value": 256,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11299,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11298,
+        11299,
+        11300
+      ],
+      "ordinal": 18,
+      "row": 11300,
+      "run_id": "P3AVA-K4-005_ATTACK",
+      "temporal_value": 144,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11311,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11310,
+        11311,
+        11312
+      ],
+      "ordinal": 30,
+      "row": 11312,
+      "run_id": "P3AVA-K4-005_ATTACK",
+      "temporal_value": 240,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11318,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11317,
+        11318,
+        11319
+      ],
+      "ordinal": 37,
+      "row": 11319,
+      "run_id": "P3AVA-K4-005_ATTACK",
+      "temporal_value": 296,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11486,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11485,
+        11486,
+        11487
+      ],
+      "ordinal": 21,
+      "row": 11487,
+      "run_id": "P3AVA-K4-006_ATTACK",
+      "temporal_value": 168,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11515,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11514,
+        11515,
+        11516
+      ],
+      "ordinal": 50,
+      "row": 11516,
+      "run_id": "P3AVA-K4-006_ATTACK",
+      "temporal_value": 400,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 11548,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11547,
+        11548,
+        11549
+      ],
+      "ordinal": 83,
+      "row": 11549,
+      "run_id": "P3AVA-K4-006_ATTACK",
+      "temporal_value": 664,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+      "anchor_route_certified": false,
+      "anchor_row": 11658,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11657,
+        11658,
+        11659
+      ],
+      "ordinal": 7,
+      "row": 11659,
+      "run_id": "P3AVA-K4-007_ATTACK",
+      "temporal_value": 56,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL_LOW_ROUTE_SUPPORT",
+      "anchor_route_certified": true,
+      "anchor_row": 11665,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11664,
+        11665,
+        11666
+      ],
+      "ordinal": 14,
+      "row": 11666,
+      "run_id": "P3AVA-K4-007_ATTACK",
+      "temporal_value": 112,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_UNRESOLVED_PASSTHROUGH",
+      "anchor_route_certified": false,
+      "anchor_row": 11853,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        11852,
+        11853,
+        11854
+      ],
+      "ordinal": 18,
+      "row": 11854,
+      "run_id": "P3AVA-K4-008_ATTACK",
+      "temporal_value": 144,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 12405,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        12404,
+        12405,
+        12406
+      ],
+      "ordinal": 18,
+      "row": 12406,
+      "run_id": "P3AVA-K4-011_ATTACK",
+      "temporal_value": 144,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 12594,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        12593,
+        12594,
+        12595
+      ],
+      "ordinal": 23,
+      "row": 12595,
+      "run_id": "P3AVA-K4-012_ATTACK",
+      "temporal_value": 184,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 12773,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        12772,
+        12773,
+        12774
+      ],
+      "ordinal": 18,
+      "row": 12774,
+      "run_id": "P3AVA-K4-013_ATTACK",
+      "temporal_value": 144,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13136,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13135,
+        13136,
+        13137
+      ],
+      "ordinal": 12,
+      "row": 13137,
+      "run_id": "P3AVA-K4-015_ATTACK",
+      "temporal_value": 96,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13141,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13140,
+        13141,
+        13142
+      ],
+      "ordinal": 17,
+      "row": 13142,
+      "run_id": "P3AVA-K4-015_ATTACK",
+      "temporal_value": 136,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13164,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13163,
+        13164,
+        13165
+      ],
+      "ordinal": 40,
+      "row": 13165,
+      "run_id": "P3AVA-K4-015_ATTACK",
+      "temporal_value": 320,
+      "truth_graph": 0
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13328,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13327,
+        13328,
+        13329
+      ],
+      "ordinal": 21,
+      "row": 13329,
+      "run_id": "P3AVA-K4-016_ATTACK",
+      "temporal_value": 168,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13331,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13330,
+        13331,
+        13332
+      ],
+      "ordinal": 24,
+      "row": 13332,
+      "run_id": "P3AVA-K4-016_ATTACK",
+      "temporal_value": 192,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13516,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13515,
+        13516,
+        13517
+      ],
+      "ordinal": 25,
+      "row": 13517,
+      "run_id": "P3AVA-K4-017_ATTACK",
+      "temporal_value": 200,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13529,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13528,
+        13529,
+        13530
+      ],
+      "ordinal": 38,
+      "row": 13530,
+      "run_id": "P3AVA-K4-017_ATTACK",
+      "temporal_value": 304,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13538,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13537,
+        13538,
+        13539
+      ],
+      "ordinal": 47,
+      "row": 13539,
+      "run_id": "P3AVA-K4-017_ATTACK",
+      "temporal_value": 376,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13545,
+      "context": "IN_EPISODE_POSITIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13544,
+        13545,
+        13546
+      ],
+      "ordinal": 54,
+      "row": 13546,
+      "run_id": "P3AVA-K4-017_ATTACK",
+      "temporal_value": 432,
+      "truth_graph": 1
+    },
+    {
+      "anchor_decoder_status": "RAW_ENDPOINTS_LEGAL",
+      "anchor_route_certified": true,
+      "anchor_row": 13693,
+      "context": "PRE_EPISODE_NEGATIVE",
+      "current_decoder_status": "INACTIVE_RAW",
+      "history_raw": [
+        1,
+        1,
+        0
+      ],
+      "history_rows": [
+        13692,
+        13693,
+        13694
+      ],
+      "ordinal": 17,
+      "row": 13694,
+      "run_id": "P3AVA-K4-018_ATTACK",
+      "temporal_value": 136,
+      "truth_graph": 0
+    }
+  ],
+  "stage": "V5_P3_FINAL_D8_P0_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_AUDIT",
+  "status": "A_ONLY_DESIGN_AUDIT_COMPLETE"
+}

@@ -1,0 +1,290 @@
+{
+  "binary_conv1d_attack_logit_max_abs_diff": 0.0,
+  "binary_conv1d_graphconv_attack_logit_max_abs_diff": 0.0,
+  "checkpoint_deserialization": false,
+  "classification": "ENGINEERING",
+  "cuda_used": false,
+  "dataset_constructed": false,
+  "decoder_applied": false,
+  "failed_source_backup": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc2b_r1c_pregraph_relu_patch_and_strict_recertification/v5_p3_mc_comparison_zoo.FAILED_R1_BACKUP.py",
+  "failed_source_backup_sha256": "30c38e54eaf775755995a9c0002517608eb105a17bc9de5a80da929962fa5637",
+  "failed_source_sha256": "30c38e54eaf775755995a9c0002517608eb105a17bc9de5a80da929962fa5637",
+  "m7_parameter_count": 60553,
+  "m7_seeded_state_max_abs_diff": 0.0,
+  "models": [
+    {
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "model_id": "conv1d_only",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 44041
+    },
+    {
+      "class": "SpatialOnlyMultitask",
+      "model_id": "gcn_only_temporal_mean",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 34697
+    },
+    {
+      "class": "SpatialOnlyMultitask",
+      "model_id": "graphconv_only_temporal_mean",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 42889
+    },
+    {
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "model_id": "conv1d_gcnconv",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 52361
+    },
+    {
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "model_id": "conv1d_gatconv",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 52617
+    },
+    {
+      "class": "TCNAttentionGCNMultitask",
+      "model_id": "tcn_attention_gcn",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 24506
+    },
+    {
+      "class": "LSTMGraphConvMultitask",
+      "model_id": "lstm_graphconv",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 73161
+    },
+    {
+      "class": "V6P0Dynamic70GraphConvCount4",
+      "model_id": "conv1d_graphconv",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ],
+        "count_logits": [
+          2,
+          4
+        ],
+        "path_logits": [
+          2,
+          16
+        ],
+        "source_logits": [
+          2,
+          16
+        ],
+        "transit_logits": [
+          2,
+          16
+        ],
+        "victim_logits": [
+          2,
+          16
+        ]
+      },
+      "parameter_count": 60553
+    },
+    {
+      "class": "BinaryFromTemporalBackbone",
+      "model_id": "binary_conv1d",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ]
+      },
+      "parameter_count": 35329
+    },
+    {
+      "class": "BinaryFromTemporalBackbone",
+      "model_id": "binary_conv1d_graphconv",
+      "output_shapes": {
+        "attack_logits": [
+          2
+        ]
+      },
+      "parameter_count": 51841
+    }
+  ],
+  "optimizer_step": false,
+  "patched_source_sha256": "fcc77e5ceab02394b59472514d9205c23adbf1195482cb12df4352d6f5b2322b",
+  "production_checkpoint_loaded": false,
+  "root_cause": "BinaryFromTemporalBackbone.forward omitted the authoritative F.relu immediately after input_projection before temporal_blocks.",
+  "scientific_model_inference": false,
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC2B_R1C_PREGRAPH_RELU_PATCH_AND_STRICT_RECERTIFICATION",
+  "status": "PASS",
+  "strict_equivalence_tolerance_relaxed": false,
+  "synthetic_inputs_only": true,
+  "test_evaluation": false,
+  "threshold_tuning": false,
+  "training_performed": false,
+  "validation_evaluation": false
+}

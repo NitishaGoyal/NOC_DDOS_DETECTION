@@ -1,0 +1,78 @@
+{
+  "D1": {
+    "manifest": "/home/zira/research/projects/GNN-2d/artifacts/evaluation/v5_p3_final_d1_combined_ab_validation_logits/V5_P3_FINAL_D1_COMBINED_AB_VALIDATION_RAW_LOGITS_MANIFEST.json",
+    "manifest_sha256": "7f85c9bebb5b3cd34dfdf74235e9f43789f7c0931cf74f47a64cc1926aa43b7c",
+    "npz": "/home/zira/research/projects/GNN-2d/artifacts/evaluation/v5_p3_final_d1_combined_ab_validation_logits/V5_P3_FINAL_D1_COMBINED_AB_VALIDATION_RAW_LOGITS_AND_LABELS.npz",
+    "npz_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+    "sample_index_exact_arange": true
+  },
+  "certified_index_semantics": {
+    "getitem_source": "def __getitem__(self, index):\n    file_index, start, target = self.index[index]\n    record = self.records[file_index]\n    run = self._load(str(self.root / record[\"relative_path\"]))\n    stop = start + self.window\n    normalized = (run[\"x_log1p\"][start:stop] - self.mean) / self.std\n    x = normalized.permute(1, 2, 0).contiguous()\n    return {\n        \"x\": x,\n        \"physical_port_mask\": run[\"physical_port_mask\"],\n        \"edge_index\": self.topology[\"edge_index\"],\n        \"y_attack\": run[\"y_attack\"][target],\n        \"y_attacker_count\": run[\"y_attacker_count\"][target],\n        \"y_source\": run[\"y_source\"][target],\n        \"y_transit\": run[\"y_transit\"][target],\n        \"y_victim\": run[\"y_victim\"][target],\n        \"y_attack_path\": run[\"y_attack_path\"][target],\n        \"role_mask\": run[\"role_mask\"][target],\n        \"source_target_router\": run[\"source_target_router\"][target],\n        \"epoch_id\": run[\"epoch_id\"][target],\n        \"epoch_tick\": run.get(\"epoch_tick\", torch.full_like(run[\"epoch_id\"], -1))[target],\n        # Run identity belongs to tensor_manifest.json.  The stored\n        # tensor contract intentionally contains model inputs/labels and\n        # does not require duplicating mode metadata inside every .pt.\n        \"case_id\": record[\"case_id\"],\n        \"pair_id\": record[\"pair_id\"],\n        \"run_id\": record[\"run_id\"],\n        \"mode\": record[\"mode\"],\n        \"window_start\": start,\n        \"window_target\": target,\n    }\n",
+    "patterns": [
+      {
+        "assignment_target_names": [
+          "file_index",
+          "start",
+          "target"
+        ],
+        "pattern": "tuple_assignment_from_self.index",
+        "record_position": 0,
+        "record_variable": "file_index"
+      }
+    ],
+    "record_position": 0,
+    "record_variables": [
+      "file_index"
+    ]
+  },
+  "decision": {
+    "B_only_is_decoder_selection_authority": true,
+    "D6_R1_EPLR_V2_A_B_stratified_validation_authorized": true,
+    "next_stage": "V5_P3_FINAL_D6_R1_EPLR_V2_A_B_STRATIFIED_VALIDATION_EVALUATION",
+    "sealed_test_evaluation_authorized": false
+  },
+  "loader": {
+    "constructor": {
+      "kwargs": {
+        "root": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_final_dynamic70",
+        "split": "validation"
+      },
+      "signature": "(root, split, window=32, stride=8, active_only=False)"
+    },
+    "index_items": 27722,
+    "records": 300,
+    "sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "source": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70/dataset_loader.py",
+    "validation_items": 27722
+  },
+  "partition": {
+    "A_items": 13863,
+    "A_unique_runs": 150,
+    "B_items": 13859,
+    "B_unique_runs": 150,
+    "coverage_exact": true,
+    "overlap_zero": true,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d6_p0_r2b_exact_index_semantics_reconstruction/V5_P3_FINAL_D6_P0_R2B_VALIDATION_ROW_PROVENANCE_PARTITION.json",
+    "sha256": "bcac36c1f051d68d589b4a8a229e8675e89350f517b9d4bbd1e71ced746b61bd"
+  },
+  "predeclared_EPLR_V2_evidence_roles": {
+    "A_only": "DESCRIPTIVE_SUPPORTING_RESULT",
+    "B_only": "INDEPENDENT_DECODER_SELECTION_AUTHORITY",
+    "combined_AB": "DESCRIPTIVE_COMPLETE_VALIDATION_REPLAY",
+    "roles_frozen_before_EPLR_V2_final_validation_execution": true
+  },
+  "scientific_boundary": {
+    "decoder_executed": false,
+    "decoder_imported": false,
+    "model_inference_performed": false,
+    "model_loaded": false,
+    "native_test_dataset_constructed": false,
+    "persistence_candidate_selection_performed": false,
+    "sealed_test_access": false,
+    "test_tensor_deserialization": false,
+    "threshold_tuning_performed": false
+  },
+  "scope": "exact validation-row provenance reconstruction using certified loader __getitem__ dataflow and native records/index only",
+  "stage": "V5_P3_FINAL_D6_P0_R2B_EXACT_INDEX_SEMANTICS_RECONSTRUCTION",
+  "status": "PASS"
+}

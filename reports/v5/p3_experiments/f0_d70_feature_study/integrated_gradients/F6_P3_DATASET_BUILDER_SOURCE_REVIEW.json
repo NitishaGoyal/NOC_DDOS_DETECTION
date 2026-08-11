@@ -1,0 +1,101 @@
+{
+  "class_source": "class V5P3TrancheAPreliminaryDataset(Dataset):\n    \"\"\"Preliminary Tranche-A Dynamic70 windows.\n\n    Returned x shape: [16,70,32]. The underlying run tensor stores log1p\n    Dynamic70. Provisional A-only train normalization is applied at read time.\n    Physical topology is returned separately as [16,10].\n    \"\"\"\n\n    def __init__(self, root, split, active_only=False):\n        self.root = Path(root).resolve()\n        self.split = str(split)\n        self.active_only = bool(active_only)\n        manifest = json.loads((self.root / \"tensor_manifest.json\").read_text())\n        self.window = int(manifest[\"window\"])\n        self.records = [item for item in manifest[\"runs\"] if item[\"split\"] == self.split]\n        if not self.records:\n            raise FileNotFoundError(f\"No processed runs for split {self.split!r}\")\n        self.topology = torch.load(self.root / \"topology.pt\", map_location=\"cpu\", weights_only=False)\n        self.normalization = torch.load(\n            self.root / \"normalization_tranche_a_provisional.pt\",\n            map_location=\"cpu\",\n            weights_only=False,\n        )\n        self.mean = self.normalization[\"mean\"].to(torch.float32)\n        self.std = self.normalization[\"std\"].to(torch.float32)\n        self.index = []\n        for file_index, record in enumerate(self.records):\n            flags = record[\"target_attack_flags\"]\n            for start in record[\"valid_window_starts\"]:\n                target = int(start) + self.window - 1\n                if self.active_only and not bool(flags[str(target)]):\n                    continue\n                self.index.append((file_index, int(start), target))\n\n    @staticmethod\n    @lru_cache(maxsize=8)\n    def _load(path):\n        return torch.load(path, map_location=\"cpu\", weights_only=False)\n\n    def __len__(self):\n        return len(self.index)\n\n    def __getitem__(self, index):\n        file_index, start, target = self.index[index]\n        record = self.records[file_index]\n        run = self._load(str(self.root / record[\"relative_path\"]))\n        stop = start + self.window\n        x = (run[\"x_log1p\"][start:stop] - self.mean) / self.std\n        x = x.permute(1, 2, 0).contiguous()\n        return {\n            \"x\": x,\n            \"physical_port_mask\": run[\"physical_port_mask\"],\n            \"edge_index\": self.topology[\"edge_index\"],\n            \"y_attack\": run[\"y_attack\"][target],\n            \"y_attacker_count\": run[\"y_attacker_count\"][target],\n            \"y_source\": run[\"y_source\"][target],\n            \"y_transit\": run[\"y_transit\"][target],\n            \"y_victim\": run[\"y_victim\"][target],\n            \"y_attack_path\": run[\"y_attack_path\"][target],\n            \"role_mask\": run[\"role_mask\"][target],\n            \"source_target_router\": run[\"source_target_router\"][target],\n            \"epoch_id\": run[\"epoch_id\"][target],\n            \"epoch_tick\": run[\"epoch_tick\"][target],\n            \"pair_id\": run[\"pair_id\"],\n            \"case_id\": run[\"case_id\"],\n            \"run_id\": run[\"run_id\"],\n            \"pair_member\": run[\"pair_member\"],\n            \"family\": run[\"family\"],\n            \"strength_profile\": run[\"strength_profile\"],\n            \"window_start\": start,\n            \"window_target\": target,\n            \"normalization_scope\": \"provisional_tranche_a_train_only\",\n        }\n",
+  "dataset_class": "_v5_p3_tranche_a_certified_loader_5109198408965427230.V5P3TrancheAPreliminaryDataset",
+  "keyword_lines": [
+    {
+      "line": 2,
+      "text": "    \"\"\"Preliminary Tranche-A Dynamic70 windows."
+    },
+    {
+      "line": 9,
+      "text": "    def __init__(self, root, split, active_only=False):"
+    },
+    {
+      "line": 11,
+      "text": "        self.split = str(split)"
+    },
+    {
+      "line": 13,
+      "text": "        manifest = json.loads((self.root / \"tensor_manifest.json\").read_text())"
+    },
+    {
+      "line": 14,
+      "text": "        self.window = int(manifest[\"window\"])"
+    },
+    {
+      "line": 15,
+      "text": "        self.records = [item for item in manifest[\"runs\"] if item[\"split\"] == self.split]"
+    },
+    {
+      "line": 17,
+      "text": "            raise FileNotFoundError(f\"No processed runs for split {self.split!r}\")"
+    },
+    {
+      "line": 28,
+      "text": "            flags = record[\"target_attack_flags\"]"
+    },
+    {
+      "line": 29,
+      "text": "            for start in record[\"valid_window_starts\"]:"
+    },
+    {
+      "line": 30,
+      "text": "                target = int(start) + self.window - 1"
+    },
+    {
+      "line": 47,
+      "text": "        stop = start + self.window"
+    },
+    {
+      "line": 54,
+      "text": "            \"y_attack\": run[\"y_attack\"][target],"
+    },
+    {
+      "line": 55,
+      "text": "            \"y_attacker_count\": run[\"y_attacker_count\"][target],"
+    },
+    {
+      "line": 59,
+      "text": "            \"y_attack_path\": run[\"y_attack_path\"][target],"
+    },
+    {
+      "line": 64,
+      "text": "            \"pair_id\": run[\"pair_id\"],"
+    },
+    {
+      "line": 66,
+      "text": "            \"run_id\": run[\"run_id\"],"
+    },
+    {
+      "line": 67,
+      "text": "            \"pair_member\": run[\"pair_member\"],"
+    },
+    {
+      "line": 70,
+      "text": "            \"window_start\": start,"
+    },
+    {
+      "line": 71,
+      "text": "            \"window_target\": target,"
+    }
+  ],
+  "methods": {
+    "__getitem__": {
+      "signature": "(self, index)",
+      "source": "    def __getitem__(self, index):\n        file_index, start, target = self.index[index]\n        record = self.records[file_index]\n        run = self._load(str(self.root / record[\"relative_path\"]))\n        stop = start + self.window\n        x = (run[\"x_log1p\"][start:stop] - self.mean) / self.std\n        x = x.permute(1, 2, 0).contiguous()\n        return {\n            \"x\": x,\n            \"physical_port_mask\": run[\"physical_port_mask\"],\n            \"edge_index\": self.topology[\"edge_index\"],\n            \"y_attack\": run[\"y_attack\"][target],\n            \"y_attacker_count\": run[\"y_attacker_count\"][target],\n            \"y_source\": run[\"y_source\"][target],\n            \"y_transit\": run[\"y_transit\"][target],\n            \"y_victim\": run[\"y_victim\"][target],\n            \"y_attack_path\": run[\"y_attack_path\"][target],\n            \"role_mask\": run[\"role_mask\"][target],\n            \"source_target_router\": run[\"source_target_router\"][target],\n            \"epoch_id\": run[\"epoch_id\"][target],\n            \"epoch_tick\": run[\"epoch_tick\"][target],\n            \"pair_id\": run[\"pair_id\"],\n            \"case_id\": run[\"case_id\"],\n            \"run_id\": run[\"run_id\"],\n            \"pair_member\": run[\"pair_member\"],\n            \"family\": run[\"family\"],\n            \"strength_profile\": run[\"strength_profile\"],\n            \"window_start\": start,\n            \"window_target\": target,\n            \"normalization_scope\": \"provisional_tranche_a_train_only\",\n        }\n"
+    },
+    "__init__": {
+      "signature": "(self, root, split, active_only=False)",
+      "source": "    def __init__(self, root, split, active_only=False):\n        self.root = Path(root).resolve()\n        self.split = str(split)\n        self.active_only = bool(active_only)\n        manifest = json.loads((self.root / \"tensor_manifest.json\").read_text())\n        self.window = int(manifest[\"window\"])\n        self.records = [item for item in manifest[\"runs\"] if item[\"split\"] == self.split]\n        if not self.records:\n            raise FileNotFoundError(f\"No processed runs for split {self.split!r}\")\n        self.topology = torch.load(self.root / \"topology.pt\", map_location=\"cpu\", weights_only=False)\n        self.normalization = torch.load(\n            self.root / \"normalization_tranche_a_provisional.pt\",\n            map_location=\"cpu\",\n            weights_only=False,\n        )\n        self.mean = self.normalization[\"mean\"].to(torch.float32)\n        self.std = self.normalization[\"std\"].to(torch.float32)\n        self.index = []\n        for file_index, record in enumerate(self.records):\n            flags = record[\"target_attack_flags\"]\n            for start in record[\"valid_window_starts\"]:\n                target = int(start) + self.window - 1\n                if self.active_only and not bool(flags[str(target)]):\n                    continue\n                self.index.append((file_index, int(start), target))\n"
+    },
+    "__len__": {
+      "signature": "(self)",
+      "source": "    def __len__(self):\n        return len(self.index)\n"
+    }
+  },
+  "referenced_path_literals": [
+    "tensor_manifest.json"
+  ],
+  "source_file": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY/dataset_loader.py",
+  "source_file_sha256": "54cf94060748563c6d7e56415f448548da282c08f215bd96a35c50730c33463e"
+}

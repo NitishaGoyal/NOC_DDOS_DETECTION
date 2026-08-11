@@ -1,0 +1,57 @@
+{
+  "campaign_label": "V5-P3-1500-D70 Tranche-A Preliminary Diagnostic \u2014 EPLR-V2 Frozen Software Handover",
+  "created_utc": "2026-08-05T16:18:44.877237+00:00",
+  "data_access": {
+    "A_test_loaded": false,
+    "Tranche_A_validation_loaded": false,
+    "model_loaded": false,
+    "training_data_loaded": false
+  },
+  "decision": {
+    "D13_complete": true,
+    "H1_may_continue": true,
+    "Tranche_B_governance_may_continue": true,
+    "decoder_branch_closed_until_independent_boundary": true,
+    "next_dataset_governance_stage": "resume existing A6 Tranche-B pre-frozen specification review",
+    "next_decoder_stage": "none until frozen Tranche-B or future A+B validation exists",
+    "next_hardware_stage": "V5_P3_H1_DYNAMIC70_QUANTIZATION_AND_ACCUMULATOR_WIDTH_FREEZE",
+    "shared_8x8_wrapper_engineering_may_continue": true
+  },
+  "handover": {
+    "archive_items": 15,
+    "archive_path": "/home/zira/research/projects/GNN-2d/artifacts/decoders/v5_p3_eplr_v2_frozen_handover/V5_P3_EPLR_V2_FROZEN_SOFTWARE_HANDOVER.zip",
+    "archive_sha256": "6960d28e6f7c342cba1287a3d96717c4d8fc5e7f8dba7367366f88c0467e01cc",
+    "handover_note_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_EPLR_V2_HANDOVER_NOTE.md",
+    "handover_note_sha256": "36d76d89063ab17998ab0b84423bb0add4269b16c357637a2fda7a7df5220453",
+    "integration_contract_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_EPLR_V2_INTEGRATION_CONTRACT.json",
+    "integration_contract_sha256": "580671e788fdca50b366294e706372fc7d7b6056ab96a2deafb692ea78e74056"
+  },
+  "implementation": {
+    "calibration_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_p3_eplr_v2_calibration.json",
+    "calibration_sha256": "452ba56acfbb1c0a74b8d2f87f48652760c32932bad42a1aab6d02be075799db",
+    "decoder_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_p3_eplr_v2.py",
+    "decoder_sha256": "f918efb7b57d2ea358d3e52753d2019b0fdc2d5bdd15ab5ce8fdedf0aefcb3de",
+    "synthetic_tests": 9,
+    "synthetic_tests_passed": 9
+  },
+  "provenance": {
+    "D10_decision_sha256": "8340ed239293170779b999175ef5bb01367d1b630f9cc4ad2368131887ef24ed",
+    "D10_root_cause_sha256": "497d21a702341ad6f0c6174c3e896de4db052ed4254bbddddc1c1dfc99a20eeb",
+    "D11_lock_sha256": "1c57b2814f75305db8cdbf2968d93f9f739b8a79fc1aa9fc57a2d6cad1419b72",
+    "D11_report_sha256": "8e4fc4768b3d49979253cf9ca9020d8dd63fe537b4153064bd4b99733853a3cf",
+    "D12_lock_sha256": "b508394490da4ef795df133f152bf1e0d9a3cca5a5a517988f67b9680d08f8d7",
+    "D12_report_sha256": "a2eed7997558efab278ea9bdf2cc1896147b153079eb66832d4b75ec71c8e135",
+    "D12_test_results_sha256": "009891ac9bf83990f0110765606638383f7fbf59082fe022f25543635e200da2",
+    "installed_script_sha256": "ec12b2f153391ec736aeb8d86c8bef3f22a2a0cbde024a13ad3758c3a5d14488"
+  },
+  "scope": "Create a frozen EPLR-V2 software handover archive and place the decoder in an explicit independent-validation wait state.",
+  "stage": "V5_P3_D13_EPLR_V2_FROZEN_IMPLEMENTATION_HANDOVER_AND_INDEPENDENT_VALIDATION_WAIT_STATE",
+  "status": "PASS",
+  "wait_state": {
+    "A_test_evaluation_authorized": false,
+    "Tranche_A_validation_replay_authorized": false,
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_d13_eplr_v2_handover_and_wait_state/V5_P3_EPLR_V2_INDEPENDENT_VALIDATION_WAIT_STATE.json",
+    "sha256": "b49759180dfc2893b48b91debeee95457d59282c1aafe2daa8c1432a2a1e0743",
+    "status": "WAITING_FOR_INDEPENDENT_VALIDATION_BOUNDARY"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "A0_frozen_P2_transfer": {
+    "count_active": {
+      "accuracy": 1.0,
+      "items": 7524,
+      "macro_f1": 1.0,
+      "per_class": {
+        "1": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1941
+        },
+        "2": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1852
+        },
+        "3": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1885
+        },
+        "4": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1846
+        }
+      }
+    },
+    "count_source_consistency_enforced": false,
+    "cross_head_consistency": {
+      "fully_consistent_on_predicted_active": 0.1787504176411627,
+      "path_equals_source_union_transit_union_victim_on_predicted_active": 0.5113598396257936,
+      "predicted_active_items": 11972,
+      "source_and_victim_inside_path_on_predicted_active": 0.8229201470096893,
+      "source_count_equals_predicted_count_on_predicted_active": 0.43551620447711326,
+      "source_victim_disjoint_on_predicted_active": 0.7012195121951219,
+      "transit_endpoint_disjoint_on_predicted_active": 0.6698128967591046,
+      "transit_inside_path_on_predicted_active": 0.7278650183762112
+    },
+    "graph": {
+      "accuracy": 0.8113411730755357,
+      "auroc_raw_logits": 0.8884460145726895,
+      "average_precision_raw_logits": 0.6278590799419057,
+      "f1": 0.7317398440705786,
+      "fn": 391,
+      "fp": 4839,
+      "fpr": 0.23957817605703535,
+      "precision": 0.5958068827263615,
+      "recall": 0.9480329611908559,
+      "tn": 15359,
+      "tp": 7133
+    },
+    "graph_gating_applied": false,
+    "policy": "Frozen P2 A0 threshold transfer",
+    "roles": {
+      "path": {
+        "auroc_raw_logits": 0.9564685046113905,
+        "average_precision_raw_logits": 0.6108815136773526,
+        "exact_active": 0.5677830940988836,
+        "exact_all": 0.670297958300267,
+        "exact_inactive": 0.7084859887117536,
+        "flattened": {
+          "accuracy": 0.914632331722098,
+          "f1": 0.6930155255583931,
+          "fn": 6436,
+          "fp": 31429,
+          "fpr": 0.07969298334584254,
+          "precision": 0.5762515336596152,
+          "recall": 0.869123149503823,
+          "tn": 362947,
+          "tp": 42740
+        },
+        "mean_predicted_cardinality_active": 5.732721956406167,
+        "mean_predicted_cardinality_all": 2.6754563162830967,
+        "mean_true_cardinality_active": 6.535885167464115
+      },
+      "source": {
+        "auroc_raw_logits": 0.9855731633566195,
+        "average_precision_raw_logits": 0.6210286515687758,
+        "exact_active": 0.42145135566188197,
+        "exact_all": 0.686927350119039,
+        "exact_inactive": 0.7858203782552728,
+        "flattened": {
+          "accuracy": 0.9669982324507611,
+          "f1": 0.6164850136239781,
+          "fn": 6919,
+          "fp": 7719,
+          "fpr": 0.018167995706901908,
+          "precision": 0.6038287825908437,
+          "recall": 0.629683151359452,
+          "tn": 417149,
+          "tp": 11765
+        },
+        "mean_predicted_cardinality_active": 1.5637958532695375,
+        "mean_predicted_cardinality_all": 0.7028352932688839,
+        "mean_true_cardinality_active": 2.4832535885167464
+      },
+      "transit": {
+        "auroc_raw_logits": 0.978025746916855,
+        "average_precision_raw_logits": 0.6134789016286909,
+        "exact_active": 0.7780435938330675,
+        "exact_all": 0.7557535531346945,
+        "exact_inactive": 0.7474502425982771,
+        "flattened": {
+          "accuracy": 0.9510113808527523,
+          "f1": 0.6896433519489238,
+          "fn": 1617,
+          "fp": 20112,
+          "fpr": 0.04813867154308473,
+          "precision": 0.5455326072219461,
+          "recall": 0.9372258239838503,
+          "tn": 397681,
+          "tp": 24142
+        },
+        "mean_predicted_cardinality_active": 3.3535353535353534,
+        "mean_predicted_cardinality_all": 1.5963494697352283,
+        "mean_true_cardinality_active": 3.4235778841042
+      },
+      "victim": {
+        "auroc_raw_logits": 0.9874701867948477,
+        "average_precision_raw_logits": 0.6231067011411079,
+        "exact_active": 0.9576023391812866,
+        "exact_all": 0.767224586970637,
+        "exact_inactive": 0.6963065650064363,
+        "flattened": {
+          "accuracy": 0.9717237212322343,
+          "f1": 0.7064825649426631,
+          "fn": 284,
+          "fp": 12258,
+          "fpr": 0.028628548207037325,
+          "precision": 0.5518426440479672,
+          "recall": 0.9815320587852777,
+          "tn": 415916,
+          "tp": 15094
+        },
+        "mean_predicted_cardinality_active": 2.0150186071238703,
+        "mean_predicted_cardinality_all": 0.9866531996248467,
+        "mean_true_cardinality_active": 2.043859649122807
+      }
+    },
+    "route_legality_enforced": false,
+    "strict": {
+      "graph_and_count_exact_active": 0.9480329611908559,
+      "strict_active_exact_items": 2486,
+      "strict_active_exactness": 0.3304093567251462,
+      "strict_all_task_exactness": 0.592706153957146,
+      "strict_exact_items": 16431,
+      "strict_inactive_exact_items": 13945,
+      "strict_inactive_exactness": 0.6904148925636202
+    },
+    "thresholds": {
+      "graph": 0.47174675035328983,
+      "path": 0.8339347466090468,
+      "source": 0.9496054929928593,
+      "transit": 0.8570333248835911,
+      "victim": 0.8260114802699812
+    }
+  },
+  "classification": "final combined A+B validation; frozen policy transfer without tuning",
+  "deltas_A0_minus_Raw": {
+    "graph_accuracy": -0.0024889979077988844,
+    "graph_f1": -0.00011447088759664048,
+    "graph_fpr": 0.007872066541241701,
+    "path_exact_active": -0.2970494417862839,
+    "source_exact_active": -0.5350877192982456,
+    "strict_active_exactness": -0.3264221158958001,
+    "strict_all_task_exactness": -0.0684654786811918,
+    "strict_inactive_exactness": 0.02762649767303693,
+    "transit_exact_active": 0.059941520467836296,
+    "victim_exact_active": -0.016613503455608747
+  },
+  "interpretation_boundary": {
+    "A0_does_not_enforce_cross_head_consistency": true,
+    "A0_is_not_route_legal_decoder": true,
+    "A0_means_frozen_P2_threshold_transfer": true,
+    "A0_thresholds_transferred_without_tuning": true,
+    "A1_exact_not_executed_in_D2_R1": true,
+    "A1_exact_requires_preflight_before_full_validation": true,
+    "Raw_means_independent_threshold_0p5_heads": true,
+    "beam_decoder_selected": false,
+    "sealed_test_not_accessed": true
+  },
+  "raw": {
+    "count_active": {
+      "accuracy": 1.0,
+      "items": 7524,
+      "macro_f1": 1.0,
+      "per_class": {
+        "1": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1941
+        },
+        "2": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1852
+        },
+        "3": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1885
+        },
+        "4": {
+          "f1": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 1846
+        }
+      }
+    },
+    "count_source_consistency_enforced": false,
+    "cross_head_consistency": {
+      "fully_consistent_on_predicted_active": 0.27748869743239785,
+      "path_equals_source_union_transit_union_victim_on_predicted_active": 0.956325172737354,
+      "predicted_active_items": 11723,
+      "source_and_victim_inside_path_on_predicted_active": 0.9970144161050926,
+      "source_count_equals_predicted_count_on_predicted_active": 0.9698882538599335,
+      "source_victim_disjoint_on_predicted_active": 0.5196622025078905,
+      "transit_endpoint_disjoint_on_predicted_active": 0.529130768574597,
+      "transit_inside_path_on_predicted_active": 0.9607608973812164
+    },
+    "graph": {
+      "accuracy": 0.8138301709833345,
+      "auroc_raw_logits": 0.8884460145726895,
+      "average_precision_raw_logits": 0.6278590799419057,
+      "f1": 0.7318543149581752,
+      "fn": 481,
+      "fp": 4680,
+      "fpr": 0.23170610951579365,
+      "precision": 0.6007847820523756,
+      "recall": 0.9360712387028176,
+      "tn": 15518,
+      "tp": 7043
+    },
+    "graph_gating_applied": false,
+    "policy": "Raw neural threshold-0.5 heads",
+    "roles": {
+      "path": {
+        "auroc_raw_logits": 0.9564685046113905,
+        "average_precision_raw_logits": 0.6108815136773526,
+        "exact_active": 0.8648325358851675,
+        "exact_all": 0.7272202582786235,
+        "exact_inactive": 0.6759580156451134,
+        "flattened": {
+          "accuracy": 0.9020407979222278,
+          "f1": 0.6925330465057035,
+          "fn": 243,
+          "fp": 43207,
+          "fpr": 0.10955788384688724,
+          "precision": 0.5310722813110484,
+          "recall": 0.9950585651537335,
+          "tn": 351169,
+          "tp": 48933
+        },
+        "mean_predicted_cardinality_active": 6.665869218500798,
+        "mean_predicted_cardinality_all": 3.3237140177476374,
+        "mean_true_cardinality_active": 6.535885167464115
+      },
+      "source": {
+        "auroc_raw_logits": 0.9855731633566195,
+        "average_precision_raw_logits": 0.6210286515687758,
+        "exact_active": 0.9565390749601276,
+        "exact_all": 0.7462304307048554,
+        "exact_inactive": 0.6678879096940291,
+        "flattened": {
+          "accuracy": 0.9631903361950798,
+          "f1": 0.694850948509485,
+          "fn": 95,
+          "fp": 16232,
+          "fpr": 0.03820480714009998,
+          "precision": 0.5338445191120301,
+          "recall": 0.9949154356668808,
+          "tn": 408636,
+          "tp": 18589
+        },
+        "mean_predicted_cardinality_active": 2.5023923444976077,
+        "mean_predicted_cardinality_all": 1.2560782050357118,
+        "mean_true_cardinality_active": 2.4832535885167464
+      },
+      "transit": {
+        "auroc_raw_logits": 0.978025746916855,
+        "average_precision_raw_logits": 0.6134789016286909,
+        "exact_active": 0.7181020733652312,
+        "exact_all": 0.7294928215857441,
+        "exact_inactive": 0.7337360134666798,
+        "flattened": {
+          "accuracy": 0.9395606377606234,
+          "f1": 0.6554241645244215,
+          "fn": 263,
+          "fp": 26545,
+          "fpr": 0.06353624881221083,
+          "precision": 0.4899214081205204,
+          "recall": 0.9897899763189565,
+          "tn": 391248,
+          "tp": 25496
+        },
+        "mean_predicted_cardinality_active": 3.785885167464115,
+        "mean_predicted_cardinality_all": 1.877245508982036,
+        "mean_true_cardinality_active": 3.4235778841042
+      },
+      "victim": {
+        "auroc_raw_logits": 0.9874701867948477,
+        "average_precision_raw_logits": 0.6231067011411079,
+        "exact_active": 0.9742158426368953,
+        "exact_all": 0.7648798787966237,
+        "exact_inactive": 0.6868996930389147,
+        "flattened": {
+          "accuracy": 0.9702943510569223,
+          "f1": 0.6995896032831737,
+          "fn": 36,
+          "fp": 13140,
+          "fpr": 0.030688458430451173,
+          "precision": 0.5386559932589003,
+          "recall": 0.9976589933671479,
+          "tn": 415034,
+          "tp": 15342
+        },
+        "mean_predicted_cardinality_active": 2.06140350877193,
+        "mean_predicted_cardinality_all": 1.0274150494192338,
+        "mean_true_cardinality_active": 2.043859649122807
+      }
+    },
+    "route_legality_enforced": false,
+    "strict": {
+      "graph_and_count_exact_active": 0.9360712387028176,
+      "strict_active_exact_items": 4942,
+      "strict_active_exactness": 0.6568314726209463,
+      "strict_all_task_exactness": 0.6611716326383378,
+      "strict_exact_items": 18329,
+      "strict_inactive_exact_items": 13387,
+      "strict_inactive_exactness": 0.6627883948905833
+    },
+    "thresholds": {
+      "graph": 0.5,
+      "path": 0.5,
+      "source": 0.5,
+      "transit": 0.5,
+      "victim": 0.5
+    }
+  },
+  "stage": "V5_P3_FINAL_D2_R1_RAW_AND_FROZEN_A0_COMBINED_AB_VALIDATION_EVALUATION",
+  "status": "PASS"
+}

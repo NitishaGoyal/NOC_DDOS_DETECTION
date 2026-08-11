@@ -1,0 +1,47 @@
+Balanced Placement Seed7 Conv1D-GCN Evaluation Summary
+
+Dataset:
+data/processed/graph_dataset/paper1_temporal_graphs_ds2_4x4_portfeat.npz
+
+Split file:
+splits/balanced_placement_ds2_4x4_seed7.npz
+
+Model:
+Conv1D-TemporalGCN
+
+Model folder:
+models/temporal_gcn_float_balancedplacement_ds2_4x4_portfeat_es_seed7
+
+Best epoch:
+46
+
+Best validation node threshold:
+0.60
+
+Test result using validation-selected threshold 0.60:
+graph F1            = 0.8665
+graph FPR           = 0.0222
+node precision      = 0.8118
+node recall         = 0.8436
+node F1             = 0.8274
+exact localization  = 0.4168
+
+Fixed threshold 0.50 result from training summary:
+graph F1            = 0.8665
+node precision      = 0.7967
+node recall         = 0.8517
+node F1             = 0.8232
+exact localization  = 0.3976
+
+Top-k test result:
+top1_any            = 0.9163
+topK_exact          = 0.8733
+top2_all            = 0.6211
+top3_all            = 0.9345
+top4_all            = 0.9939
+avg_worst_rank      = 2.19
+
+Per-attacker-count topK_exact:
+1 attacker          = 0.7947
+2 attackers         = 0.9505
+3 attackers         = 0.8746

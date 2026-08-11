@@ -1,0 +1,67 @@
+{
+  "attribute_inspection": [],
+  "dataset": {
+    "class": "V5P2PairAlignedPrimary58Dataset",
+    "edge_index_expected_per_sample": false,
+    "edge_index_is_static_graph_input": true,
+    "train_length": 70166,
+    "train_sample_keys": [
+      "x",
+      "physical_port_mask",
+      "y_attack",
+      "y_attacker_count",
+      "y_source",
+      "y_transit",
+      "y_victim",
+      "y_attack_path",
+      "role_mask"
+    ],
+    "validation_length": 12528,
+    "validation_sample_keys": [
+      "x",
+      "physical_port_mask",
+      "y_attack",
+      "y_attacker_count",
+      "y_source",
+      "y_transit",
+      "y_victim",
+      "y_attack_path",
+      "role_mask"
+    ]
+  },
+  "decision": "HOLD_G1_IMPLEMENTATION_PENDING_STATIC_EDGE_INDEX_RESOLUTION",
+  "edge_contract": {},
+  "failures": [
+    "no validated static 4x4 physical edge_index was resolved"
+  ],
+  "file_inspection": [],
+  "historical_g1a_hold_preserved": true,
+  "historical_g1a_r1_hold_preserved": true,
+  "next_stage": "V5_P2_G1A_R2A_STATIC_TOPOLOGY_SOURCE_AUDIT",
+  "pair_manifests": {
+    "train": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv",
+    "validation": "/home/zira/research/projects/GNN-2d/reports/v5/p2_a1_r2_pair_aligned_window_contract/V5_P2_A1_R2_PAIR_ALIGNED_WINDOW_MANIFEST.csv"
+  },
+  "r1_resolved_pair_manifest_reused": true,
+  "security_boundary": {
+    "architecture_selected": false,
+    "b4_validation_cache_accessed": false,
+    "b6_test_cache_accessed": false,
+    "checkpoint_loaded": false,
+    "legal_decoder_implemented": false,
+    "optimization_steps": 0,
+    "quantization_performed": false,
+    "rtl_generated": false,
+    "test_directory_enumerated": false,
+    "test_tensors_deserialized": false,
+    "threshold_tuning_performed": false,
+    "train_samples_deserialized": 1,
+    "training_performed": false,
+    "validation_samples_deserialized": 1
+  },
+  "selected_topology_source": null,
+  "stage": "V5_P2_G1A_R2_STATIC_EDGE_INDEX_RESOLUTION",
+  "status": "HOLD",
+  "topology_candidate_sources": [],
+  "warnings": []
+}

@@ -1,0 +1,25 @@
+{
+  "certified_loader_route": {
+    "num_workers": 8,
+    "persistent_workers": true,
+    "prefetch_factor": 2,
+    "worker_torch_threads": 1
+  },
+  "decoder": false,
+  "models": [
+    "binary_conv1d",
+    "binary_conv1d_graphconv"
+  ],
+  "persistence": false,
+  "sealed_test_access": false,
+  "seed": 107,
+  "selection_rule": "mean(graph_AUROC, graph_AP)",
+  "stage": "V5_P3_MC5_S1_SEED107_PRIMARY_BINARY_DETECTION",
+  "status": "RUNNING",
+  "strictly_sequential": true,
+  "test_evaluation": false,
+  "threshold": 0.5,
+  "threshold_tuning": false,
+  "train_items": 221773,
+  "validation_items": 27722
+}

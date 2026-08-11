@@ -1,0 +1,13 @@
+{
+  "canonical_source_modified": false,
+  "classification": "SOURCE_LITERAL_COUNT_ASSUMPTION_ABORT",
+  "created_utc": "2026-08-03T04:38:15.675634+00:00",
+  "dataset_failure": false,
+  "failed_run_created_versioned_source": false,
+  "model_failure": false,
+  "original_failure": "The failed M8A script expected two integer literals equal to 58 inside P2TaskDGraphConvCount4. The canonical class contains only one such source literal: the encode_pre_graph input-shape guard.",
+  "recovery": "M8A-R1 changes that single source literal from 58 to 70. The second required adaptation is not a source literal: the canonical input_projection is inherited through reference_b3 and is replaced explicitly by the generated builder from Conv1d(58,64,k=1) to Conv1d(70,64,k=1).",
+  "scientific_result": false,
+  "stage": "V6_P0_M8A_SOURCE_LITERAL_COUNT_ABORT_DISPOSITION",
+  "status": "RECOVERED"
+}

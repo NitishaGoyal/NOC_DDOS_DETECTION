@@ -1,0 +1,346 @@
+===== V3 SPLIT FUNCTION =====
+     1	#!/usr/bin/env python3
+     2	
+     3	import argparse
+     4	import json
+     5	import random
+     6	from pathlib import Path
+     7	
+     8	import numpy as np
+     9	
+    10	def load_graph_arrays(data_path):
+    11	    data_path = Path(data_path)
+    12	
+    13	    if data_path.is_dir():
+    14	        print("loading dataset folder:", data_path)
+    15	        out = {
+    16	            "x": np.load(data_path / "x.npy", mmap_mode="r"),
+    17	            "y_graph": np.load(data_path / "y_graph.npy", mmap_mode="r"),
+    18	            "y_node": np.load(data_path / "y_node.npy", mmap_mode="r"),
+    19	            "edge_index": np.load(data_path / "edge_index.npy"),
+    20	            "run_id": np.load(data_path / "run_id.npy", allow_pickle=True),
+    21	            "end_epoch": np.load(data_path / "end_epoch.npy", mmap_mode="r"),
+    22	        }
+    23	
+    24	        for name in ["attackers", "split", "feature_cols", "profile", "active_cores", "strength", "seed"]:
+    25	            f = data_path / f"{name}.npy"
+    26	            out[name] = np.load(f, allow_pickle=True) if f.exists() else None
+    27	
+    28	        return out
+    29	
+    30	    print("loading npz dataset:", data_path)
+    31	    d = np.load(data_path, allow_pickle=True)
+    32	    return {k: d[k] for k in d.files}
+    33	
+    34	
+    35	def make_v3_splits(data_path):
+    36	    d = load_graph_arrays(data_path)
+    37	
+    38	    if d.get("split") is None:
+    39	        raise RuntimeError("V3 split requested, but dataset has no split.npy / split field.")
+    40	
+    41	    split = d["split"].astype(str)
+    42	
+    43	    train_idx = np.where(split == "train")[0].astype(np.int64)
+    44	    val_idx = np.where(split == "val")[0].astype(np.int64)
+    45	    test_idx = np.where(split == "test")[0].astype(np.int64)
+    46	
+    47	    print()
+    48	    print("using internal V3 split")
+    49	    print("train:", len(train_idx))
+    50	    print("val:  ", len(val_idx))
+    51	    print("test: ", len(test_idx))
+    52	
+    53	    return train_idx, val_idx, test_idx
+    54	
+    55	
+    56	import torch
+    57	import torch.nn as nn
+    58	import torch.nn.functional as F
+    59	from sklearn.metrics import (
+    60	    accuracy_score,
+    61	    precision_recall_fscore_support,
+    62	    confusion_matrix,
+    63	)
+    64	from torch.utils.data import Dataset, DataLoader
+    65	from tqdm import tqdm
+    66	
+    67	
+    68	def set_seed(seed: int) -> None:
+    69	    random.seed(seed)
+    70	    np.random.seed(seed)
+    71	    torch.manual_seed(seed)
+    72	    torch.cuda.manual_seed_all(seed)
+    73	
+    74	
+    75	class NoCTemporalGraphDataset(Dataset):
+
+===== TEMPORAL ENCODER AND MODEL FORWARD =====
+   300	        f"g_acc={metrics['acc']:.4f} "
+   301	        f"g_prec={metrics['precision']:.4f} "
+   302	        f"g_rec={metrics['recall']:.4f} "
+   303	        f"g_f1={metrics['f1']:.4f} "
+   304	        f"g_fpr={metrics['fpr']:.4f} "
+   305	        f"node_prec={metrics['node_precision']:.4f} "
+   306	        f"node_rec={metrics['node_recall']:.4f} "
+   307	        f"node_f1={metrics['node_f1']:.4f} "
+   308	        f"exact_loc={metrics['exact_localization']:.4f}"
+   309	    )
+   310	
+   311	
+   312	class TemporalEncoder(nn.Module):
+   313	    def __init__(self, in_features: int = 2, embedding_dim: int = 8, kernel_size: int = 3):
+   314	        super().__init__()
+   315	        padding = kernel_size // 2
+   316	        self.conv = nn.Conv1d(
+   317	            in_channels=in_features,
+   318	            out_channels=embedding_dim,
+   319	            kernel_size=kernel_size,
+   320	            padding=padding,
+   321	        )
+   322	
+   323	    def forward(self, x: torch.Tensor) -> torch.Tensor:
+   324	        batch_size, num_nodes, time_steps, feature_dim = x.shape
+   325	        x = x.reshape(batch_size * num_nodes, time_steps, feature_dim)
+   326	        x = x.permute(0, 2, 1)
+   327	        h = F.relu(self.conv(x))
+   328	        h = torch.max(h, dim=2).values
+   329	        return h.reshape(batch_size, num_nodes, -1)
+   330	
+   331	
+   332	class TemporalGCN(nn.Module):
+   333	    def __init__(self, input_features: int, temporal_dim: int = 8, gcn_hidden: int = 16, gcn_out: int = 8):
+   334	        super().__init__()
+   335	        self.temporal = TemporalEncoder(input_features, temporal_dim, kernel_size=3)
+   336	        self.gcn1 = GCNLayer(temporal_dim, gcn_hidden)
+   337	        self.gcn2 = GCNLayer(gcn_hidden, gcn_out)
+   338	        self.node_head = nn.Linear(gcn_out, 1)
+   339	        self.graph_head = nn.Linear(gcn_out, 1)
+   340	
+   341	    def forward(self, x: torch.Tensor, a_hat: torch.Tensor):
+   342	        h = self.temporal(x)
+   343	        h = F.relu(self.gcn1(h, a_hat))
+   344	        h = F.relu(self.gcn2(h, a_hat))
+   345	        node_logits = self.node_head(h).squeeze(-1)
+   346	        graph_embedding = h.mean(dim=1)
+   347	        graph_logits = self.graph_head(graph_embedding).squeeze(-1)
+   348	        return graph_logits, node_logits
+   349	
+   350	
+   351	def main():
+   352	    parser = argparse.ArgumentParser()
+
+===== ARGUMENTS AND SPLIT SELECTION =====
+   351	def main():
+   352	    parser = argparse.ArgumentParser()
+   353	    parser.add_argument("--data", default="graph_dataset/paper1_temporal_graphs_full.npz")
+   354	    parser.add_argument("--out-dir", default="models/temporal_gcn_conv1d_early_stop")
+   355	    parser.add_argument("--split-mode", choices=["prototype", "placement", "v3"], default="prototype")
+   356	    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+   357	    parser.add_argument("--epochs", type=int, default=25)
+   358	    parser.add_argument("--patience", type=int, default=5)
+   359	    parser.add_argument("--min-delta", type=float, default=1e-4)
+   360	    parser.add_argument("--batch-size", type=int, default=256)
+   361	    parser.add_argument("--lr", type=float, default=1e-3)
+   362	    parser.add_argument("--weight-decay", type=float, default=1e-4)
+   363	    parser.add_argument("--temporal-dim", type=int, default=8)
+   364	    parser.add_argument("--gcn-hidden", type=int, default=16)
+   365	    parser.add_argument("--gcn-out", type=int, default=8)
+   366	    parser.add_argument("--node-loss-weight", type=float, default=1.0)
+   367	    parser.add_argument("--graph-threshold", type=float, default=0.5)
+   368	    parser.add_argument("--node-threshold", type=float, default=0.5)
+   369	    parser.add_argument("--seed", type=int, default=7)
+   370	    
+   371	    args = parser.parse_args()
+   372	
+   373	    if args.epochs <= 0:
+   374	        raise ValueError("--epochs must be positive.")
+   375	    if args.patience <= 0:
+   376	        raise ValueError("--patience must be positive.")
+   377	    if args.min_delta < 0:
+   378	        raise ValueError("--min-delta cannot be negative.")
+   379	
+   380	    set_seed(args.seed)
+   381	    out_dir = Path(args.out_dir)
+   382	    out_dir.mkdir(parents=True, exist_ok=True)
+   383	
+   384	    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+   385	    print("device:", device)
+   386	
+   387	    data = load_graph_arrays(args.data)
+   388	    x_shape = data["x"].shape
+   389	    if len(x_shape) != 4:
+   390	        raise ValueError(f"Expected x shape [samples, nodes, time, features], received {x_shape}.")
+   391	
+   392	    num_nodes = int(x_shape[1])
+   393	    input_feature_dim = int(x_shape[-1])
+   394	    edge_index = data["edge_index"].astype(np.int64)
+   395	    a_hat = build_normalized_adjacency(edge_index, num_nodes).to(device)
+   396	
+   397	    if args.split_mode == "v3":
+   398	        train_idx, val_idx, test_idx = make_v3_splits(args.data)
+   399	    elif args.splits_file is not None:
+   400	        split_data = np.load(args.splits_file)
+   401	        train_idx = split_data["train_idx"].astype(np.int64)
+   402	        val_idx = split_data["val_idx"].astype(np.int64)
+   403	        test_idx = split_data["test_idx"].astype(np.int64)
+   404	        print("\nloaded external splits:", args.splits_file)
+   405	    else:
+   406	        train_idx, val_idx, test_idx = make_splits(args.data, args.split_mode)
+   407	
+   408	    print("\nsplit sizes:")
+   409	    print("  train:", len(train_idx))
+   410	    print("  val:  ", len(val_idx))
+   411	    print("  test: ", len(test_idx))
+   412	
+   413	    y_graph_train = data["y_graph"][train_idx].astype(np.float32)
+   414	    y_node_train = data["y_node"][train_idx].astype(np.float32)
+   415	    graph_pos = float(y_graph_train.sum())
+   416	    graph_neg = float(len(y_graph_train) - graph_pos)
+   417	    graph_pos_weight = graph_neg / max(graph_pos, 1.0)
+   418	    node_pos = float(y_node_train.sum())
+   419	    node_neg = float(y_node_train.size - node_pos)
+   420	    node_pos_weight = node_neg / max(node_pos, 1.0)
+   421	
+   422	    print("\nclass weights:")
+   423	    print("  graph pos weight:", graph_pos_weight)
+   424	    print("  node pos weight: ", node_pos_weight)
+   425	
+   426	    train_dataset = NoCTemporalGraphDataset(args.data, train_idx)
+   427	    val_dataset = NoCTemporalGraphDataset(args.data, val_idx)
+   428	    test_dataset = NoCTemporalGraphDataset(args.data, test_idx)
+   429	
+   430	    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+   431	    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+   432	    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+   433	
+   434	    print("input feature dim:", input_feature_dim)
+   435	    print("number of nodes:", num_nodes)
+   436	
+   437	    model = TemporalGCN(input_features=input_feature_dim, temporal_dim=args.temporal_dim, gcn_hidden=args.gcn_hidden, gcn_out=args.gcn_out).to(device)
+   438	    total_params = sum(parameter.numel() for parameter in model.parameters())
+   439	    print("\nmodel:")
+   440	    print(model)
+   441	    print("parameters:", total_params)
+   442	
+   443	    graph_loss_fn = nn.BCEWithLogitsLoss(
+   444	        pos_weight=torch.tensor(graph_pos_weight, dtype=torch.float32, device=device)
+   445	    )
+   446	    node_loss_fn = nn.BCEWithLogitsLoss(
+   447	        pos_weight=torch.tensor(node_pos_weight, dtype=torch.float32, device=device)
+   448	    )
+   449	    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+   450	
+   451	    best_val_score = -float("inf")
+   452	    best_epoch = -1
+   453	    epochs_without_improvement = 0
+   454	    stopped_early = False
+   455	    stopped_epoch = None
+
+===== TRAINING AND CHECKPOINT SCORE =====
+   450	
+   451	    best_val_score = -float("inf")
+   452	    best_epoch = -1
+   453	    epochs_without_improvement = 0
+   454	    stopped_early = False
+   455	    stopped_epoch = None
+   456	    history = []
+   457	
+   458	    for epoch in range(1, args.epochs + 1):
+   459	        model.train()
+   460	        total_loss = 0.0
+   461	        batches = 0
+   462	        progress = tqdm(train_loader, desc=f"epoch {epoch:03d}", leave=False)
+   463	
+   464	        for batch in progress:
+   465	            x = batch["x"].to(device)
+   466	            y_graph = batch["y_graph"].to(device)
+   467	            y_node = batch["y_node"].to(device)
+   468	            graph_logits, node_logits = model(x, a_hat)
+   469	            graph_loss = graph_loss_fn(graph_logits, y_graph)
+   470	            node_loss = node_loss_fn(node_logits, y_node)
+   471	            loss = graph_loss + args.node_loss_weight * node_loss
+   472	
+   473	            optimizer.zero_grad(set_to_none=True)
+   474	            loss.backward()
+   475	            optimizer.step()
+   476	
+   477	            total_loss += float(loss.item())
+   478	            batches += 1
+   479	            progress.set_postfix(loss=f"{loss.item():.4f}")
+   480	
+   481	        train_step_loss = total_loss / max(1, batches)
+   482	        eval_kwargs = {
+   483	            "a_hat": a_hat,
+   484	            "device": device,
+   485	            "graph_loss_fn": graph_loss_fn,
+   486	            "node_loss_fn": node_loss_fn,
+   487	            "node_loss_weight": args.node_loss_weight,
+   488	            "graph_threshold": args.graph_threshold,
+   489	            "node_threshold": args.node_threshold,
+   490	        }
+   491	        train_metrics = evaluate(model, train_loader, **eval_kwargs)
+   492	        val_metrics = evaluate(model, val_loader, **eval_kwargs)
+   493	
+   494	        print(f"\nepoch {epoch:03d} train_step_loss={train_step_loss:.4f}")
+   495	        print_metrics("  train", train_metrics)
+   496	        print_metrics("  val  ", val_metrics)
+   497	
+   498	        val_score = val_metrics["f1"] + val_metrics["node_f1"]
+   499	        previous_best = None if best_val_score == -float("inf") else float(best_val_score)
+   500	        improvement = val_score - best_val_score
+   501	
+   502	        if improvement > args.min_delta:
+   503	            best_val_score = float(val_score)
+   504	            best_epoch = int(epoch)
+   505	            epochs_without_improvement = 0
+   506	            checkpoint = {
+   507	                "model_state_dict": model.state_dict(),
+   508	                "optimizer_state_dict": optimizer.state_dict(),
+   509	                "args": vars(args),
+   510	                "A_hat": a_hat.detach().cpu(),
+   511	                "best_epoch": best_epoch,
+   512	                "best_val_score": best_val_score,
+   513	                "val_metrics": val_metrics,
+   514	                "model_name": "Conv1D-TemporalGCN",
+   515	            }
+   516	            torch.save(checkpoint, out_dir / "best_model.pt")
+   517	            print(f"  validation score improved to {best_val_score:.6f}; saved best_model.pt")
+   518	        else:
+   519	            epochs_without_improvement += 1
+   520	            print(f"  no meaningful validation improvement ({epochs_without_improvement}/{args.patience})")
+   521	
+   522	        history.append({
+   523	            "epoch": int(epoch),
+   524	            "train_loss_step": float(train_step_loss),
+   525	            "train": train_metrics,
+   526	            "val": val_metrics,
+   527	            "val_score": float(val_score),
+   528	            "best_val_score_before_epoch": previous_best,
+   529	            "best_val_score_after_epoch": float(best_val_score),
+   530	            "epochs_without_improvement": int(epochs_without_improvement),
+   531	        })
+   532	
+   533	        with (out_dir / "history.json").open("w") as file:
+   534	            json.dump(history, file, indent=2)
+   535	
+   536	        if epochs_without_improvement >= args.patience:
+   537	            stopped_early = True
+   538	            stopped_epoch = int(epoch)
+   539	            print(
+   540	                f"\nearly stopping triggered at epoch {stopped_epoch}. "
+   541	                f"Best epoch was {best_epoch} with validation score {best_val_score:.6f}."
+   542	            )
+   543	            break
+   544	
+   545	    print("\nloading best checkpoint...")
+   546	    checkpoint = torch.load(out_dir / "best_model.pt", map_location=device, weights_only=False)
+   547	    model.load_state_dict(checkpoint["model_state_dict"])
+   548	
+   549	    eval_kwargs = {
+   550	        "a_hat": a_hat,
+   551	        "device": device,
+   552	        "graph_loss_fn": graph_loss_fn,
+   553	        "node_loss_fn": node_loss_fn,
+   554	        "node_loss_weight": args.node_loss_weight,
+   555	        "graph_threshold": args.graph_threshold,

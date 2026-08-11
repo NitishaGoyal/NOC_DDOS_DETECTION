@@ -1,0 +1,127 @@
+{
+  "A_only_design_basis": {
+    "alignment_gap_items": 76,
+    "gap_max_streak_windows": 1,
+    "gap_rate_among_P2_alarms": 0.01320590790616855,
+    "gap_truth_negative_items": 36,
+    "gap_truth_positive_items": 40,
+    "latest_anchor_route_certified_rate": 0.9342105263157895,
+    "note": "A-only findings justify evaluating empty-current, unconditional one-window carry, and route-certified one-window carry. They do not select among them.",
+    "truth_source_same_tminus1_to_t_rate": 0.9868421052631579,
+    "truth_victim_same_tminus1_to_t_rate": 0.9868421052631579
+  },
+  "candidate_order": [
+    "L0_CURRENT_WINDOW_ONLY",
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW",
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW"
+  ],
+  "candidate_scope": {
+    "alignment_gap_definition": "P2_t == 1 AND Raw_t == 0",
+    "candidate_may_change_EPLR_V2_decoder": false,
+    "candidate_may_change_graph_alarm": false,
+    "candidate_may_modify_non_gap_rows": false,
+    "candidate_may_rerun_decoder": false,
+    "carried_object": "complete immutable frozen EPLR-V2 structured payload from anchor row: effective_count, selected source/transit/victim/path, decoder status, route certificate and selected route metadata",
+    "only_allowed_anchor": "same-run t-1, proven Raw-positive by fixed P2 gap history 1,1,0"
+  },
+  "candidates": {
+    "L0_CURRENT_WINDOW_ONLY": {
+      "carry_offset_windows": null,
+      "changes_decoder": false,
+      "description": "Use the frozen current-window EPLR-V2 payload whenever P2_t=1. If Raw_t=0, current EPLR-V2 is INACTIVE_RAW, so payload remains empty.",
+      "gap_behavior": "CURRENT_INACTIVE_RAW_EMPTY",
+      "requires_anchor_route_certified": false
+    },
+    "L1_CARRY_LATEST_ACTIVE_ONE_WINDOW": {
+      "carry_offset_windows": -1,
+      "changes_decoder": false,
+      "description": "If P2_t=1 and Raw_t=0, carry the complete already-frozen structured payload from t-1; otherwise use the current-window frozen EPLR-V2 payload.",
+      "gap_behavior": "CARRY_T_MINUS_1_FULL_FROZEN_PAYLOAD",
+      "requires_anchor_route_certified": false
+    },
+    "L2_CARRY_LATEST_CERTIFIED_ONE_WINDOW": {
+      "carry_offset_windows": -1,
+      "changes_decoder": false,
+      "description": "If P2_t=1 and Raw_t=0, carry the complete frozen payload from t-1 only when that t-1 payload is route-certified; otherwise keep the current INACTIVE_RAW empty payload. All non-gap rows use current EPLR-V2.",
+      "gap_behavior": "CARRY_T_MINUS_1_ONLY_IF_ROUTE_CERTIFIED_ELSE_EMPTY",
+      "requires_anchor_route_certified": true
+    }
+  },
+  "forbidden": [
+    "B alignment evaluation before this protocol freeze",
+    "changing candidate definitions after B results",
+    "changing P2",
+    "changing Raw threshold",
+    "changing/re-running EPLR-V2",
+    "neural inference",
+    "sealed-test construction/deserialization/access"
+  ],
+  "frozen_system_inputs": {
+    "P2_run_boundary_reset": true,
+    "base_graph_threshold": 0.5,
+    "cross_run_history_forbidden": true,
+    "runtime_structured_decoder": "EPLR_V2",
+    "temporal_graph_alarm": "P2_2_OF_3_RAW_POSITIVES"
+  },
+  "independent_B_evaluation": {
+    "A_results_may_not_select": true,
+    "B_alignment_results_not_seen_when_protocol_frozen": true,
+    "combined_AB_may_not_select": true,
+    "eligibility_rule": {
+      "B_all_true_positive_P2_alarm_all_count_and_role_exactness": "must not be below L0_CURRENT_WINDOW_ONLY",
+      "B_true_positive_gap_all_count_and_role_exactness": "must not be below L0_CURRENT_WINDOW_ONLY",
+      "B_true_positive_gap_source_exactness": "must not be below L0_CURRENT_WINDOW_ONLY",
+      "B_true_positive_gap_victim_exactness": "must not be below L0_CURRENT_WINDOW_ONLY",
+      "hard_invariants": [
+        "P2 graph alarm bits identical for all candidates",
+        "candidate changes only P2=1 Raw=0 rows",
+        "no cross-run carry",
+        "no decoder rerun or new logits",
+        "any carried payload is byte-for-byte/array-for-array copied from same-run t-1 frozen output"
+      ]
+    },
+    "evaluation_stage_only_computes_predeclared_rule_winner": true,
+    "formal_freeze_reserved_for_following_review_stage": true,
+    "formal_selection_in_evaluation_stage": false,
+    "metrics": {
+      "all_true_positive_P2_alarm_payload": [
+        "attacker-count exactness",
+        "source/transit/victim/path exactness",
+        "all-count-and-role exactness"
+      ],
+      "false_positive_gap_action_exposure": [
+        "nonempty structured payload rate",
+        "route-certified structured payload rate",
+        "nonempty source/victim endpoint payload rate"
+      ],
+      "gap_partition": [
+        "B P2=1 Raw=0 gap count",
+        "truth-positive gap count",
+        "truth-negative gap count"
+      ],
+      "true_positive_gap_payload": [
+        "attacker-count exactness",
+        "source exactness",
+        "transit exactness",
+        "victim exactness",
+        "path exactness",
+        "all-count-and-role exactness",
+        "route-certified payload rate",
+        "nonempty payload rate"
+      ]
+    },
+    "ranking_among_eligible": [
+      "highest B true-positive-gap all-count-and-role exactness",
+      "highest B all-true-positive-P2-alarm all-count-and-role exactness",
+      "highest B true-positive-gap source exactness",
+      "highest B true-positive-gap victim exactness",
+      "lowest B false-positive-gap nonempty endpoint-payload rate",
+      "lowest B false-positive-gap route-certified payload rate",
+      "prefer route-certified-only carry over unconditional carry when all preceding metrics tie",
+      "fixed candidate order L0,L2,L1 as final deterministic tie-break"
+    ],
+    "selection_authority": "B_only"
+  },
+  "stage": "V5_P3_FINAL_D8_P1_P2_ALARM_TO_LOCALIZATION_ALIGNMENT_CANDIDATE_PROTOCOL_FREEZE",
+  "status": "FROZEN_BEFORE_B_ALIGNMENT_RESULTS"
+}

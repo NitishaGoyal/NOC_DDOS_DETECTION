@@ -1,0 +1,71 @@
+35:def make_v3_splits(data_path):
+43:    train_idx = np.where(split == "train")[0].astype(np.int64)
+44:    val_idx = np.where(split == "val")[0].astype(np.int64)
+45:    test_idx = np.where(split == "test")[0].astype(np.int64)
+49:    print("train:", len(train_idx))
+50:    print("val:  ", len(val_idx))
+51:    print("test: ", len(test_idx))
+53:    return train_idx, val_idx, test_idx
+64:from torch.utils.data import Dataset, DataLoader
+75:class NoCTemporalGraphDataset(Dataset):
+86:    def __len__(self) -> int:
+89:    def __getitem__(self, idx: int):
+115:        train_idx, val_idx, test_idx = [], [], []
+121:            train_idx.extend(idx[:n_train])
+122:            val_idx.extend(idx[n_train:n_train + n_val])
+123:            test_idx.extend(idx[n_train + n_val:])
+126:            np.asarray(train_idx, dtype=np.int64),
+127:            np.asarray(val_idx, dtype=np.int64),
+128:            np.asarray(test_idx, dtype=np.int64),
+151:        train_idx, val_idx, test_idx = [], [], []
+158:                train_idx.extend(idx[:n_train])
+159:                val_idx.extend(idx[n_train:n_train + n_val])
+160:                test_idx.extend(idx[n_train + n_val:])
+162:                train_idx.extend(idx)
+164:                val_idx.extend(idx)
+166:                test_idx.extend(idx)
+171:            np.asarray(train_idx, dtype=np.int64),
+172:            np.asarray(val_idx, dtype=np.int64),
+173:            np.asarray(test_idx, dtype=np.int64),
+250:    loader: DataLoader,
+324:        batch_size, num_nodes, time_steps, feature_dim = x.shape
+325:        x = x.reshape(batch_size * num_nodes, time_steps, feature_dim)
+329:        return h.reshape(batch_size, num_nodes, -1)
+356:    parser.add_argument("--splits-file", default=None, help="Optional .npz file containing train_idx, val_idx, test_idx.")
+398:        train_idx, val_idx, test_idx = make_v3_splits(args.data)
+401:        train_idx = split_data["train_idx"].astype(np.int64)
+402:        val_idx = split_data["val_idx"].astype(np.int64)
+403:        test_idx = split_data["test_idx"].astype(np.int64)
+406:        train_idx, val_idx, test_idx = make_splits(args.data, args.split_mode)
+409:    print("  train:", len(train_idx))
+410:    print("  val:  ", len(val_idx))
+411:    print("  test: ", len(test_idx))
+413:    y_graph_train = data["y_graph"][train_idx].astype(np.float32)
+414:    y_node_train = data["y_node"][train_idx].astype(np.float32)
+417:    graph_pos_weight = graph_neg / max(graph_pos, 1.0)
+420:    node_pos_weight = node_neg / max(node_pos, 1.0)
+423:    print("  graph pos weight:", graph_pos_weight)
+424:    print("  node pos weight: ", node_pos_weight)
+426:    train_dataset = NoCTemporalGraphDataset(args.data, train_idx)
+427:    val_dataset = NoCTemporalGraphDataset(args.data, val_idx)
+428:    test_dataset = NoCTemporalGraphDataset(args.data, test_idx)
+430:    train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, num_workers=0)
+431:    val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+432:    test_loader = DataLoader(test_dataset, batch_size=args.batch_size, shuffle=False, num_workers=0)
+443:    graph_loss_fn = nn.BCEWithLogitsLoss(
+444:        pos_weight=torch.tensor(graph_pos_weight, dtype=torch.float32, device=device)
+446:    node_loss_fn = nn.BCEWithLogitsLoss(
+447:        pos_weight=torch.tensor(node_pos_weight, dtype=torch.float32, device=device)
+449:    optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
+458:    for epoch in range(1, args.epochs + 1):
+473:            optimizer.zero_grad(set_to_none=True)
+475:            optimizer.step()
+508:                "optimizer_state_dict": optimizer.state_dict(),
+590:            "train": int(len(train_idx)),
+591:            "val": int(len(val_idx)),
+592:            "test": int(len(test_idx)),
+595:            "graph_pos_weight": float(graph_pos_weight),
+596:            "node_pos_weight": float(node_pos_weight),
+612:        train_idx=train_idx,
+613:        val_idx=val_idx,
+614:        test_idx=test_idx,

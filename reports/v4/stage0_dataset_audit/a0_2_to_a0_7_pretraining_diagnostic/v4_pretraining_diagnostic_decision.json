@@ -1,0 +1,135 @@
+{
+  "verdict": "V4_READY_ONLY_FOR_DIAGNOSTIC_BASELINE",
+  "training_authorized": true,
+  "authorization_level": "diagnostic_only",
+  "allowed_tasks": [
+    "Create the frozen V4-A1 Conv1D-TemporalGCN memmap training script.",
+    "Run loader, one-batch, and short training preflights.",
+    "Train seed 7 within the stated authorization level."
+  ],
+  "blocked_tasks": [
+    "Treat diagnostic metrics as formal evidence.",
+    "Use the development test for architecture or threshold tuning.",
+    "Call the current test split an independent publication holdout.",
+    "Train a victim head when victim metadata is blocked."
+  ],
+  "required_remediation": [],
+  "documented_limitations": [
+    "Potential active-core or feature shortcut prevents formal scientific claims."
+  ],
+  "development_test_status": "development blind test",
+  "publication_holdout_status": "not established; independent family pool required",
+  "stage": "V4-A0.2-to-A0.7",
+  "script_version": "1.0.1",
+  "started_utc": "2026-07-23T03:59:13.114827+00:00",
+  "completed_utc": "2026-07-23T03:59:43.779609+00:00",
+  "dataset": "/home/zira/tools/architecture/gem5/experiments/paper1_temporal_graphs_ports_v4_all16_chrono_memmap",
+  "a00_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage0_dataset_audit/a0_0_inventory",
+  "a01_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage0_dataset_audit/a0_1_memmap_integrity",
+  "output_dir": "/home/zira/research/projects/GNN-2d/reports/v4/stage0_dataset_audit/a0_2_to_a0_7_pretraining_diagnostic",
+  "prior_stages": {
+    "a00_pass": true,
+    "a01_pass": true,
+    "a00_report_sha256": "a4eed2cf555da810e8a5e5bd140b20427b028d052ae8403943f2792bb64b3866",
+    "a01_manifest_sha256": "adce4d02b80eb675213119b854565e322b747d9d72625406018281343316d627"
+  },
+  "embedded_metadata_alignment": {
+    "hard_pass": true,
+    "mismatch_count": 0
+  },
+  "family_leakage": {
+    "hard_counts": {
+      "background_family_cross_split_count": 0,
+      "pair_cross_split_count": 0,
+      "matched_normal_cross_split_count": 0,
+      "near_duplicate_signature_cross_split_count": 0
+    },
+    "hard_pass": true,
+    "scenario_family_cross_split_count_report_only": 5,
+    "near_duplicate_fields": [
+      "background_id",
+      "profile",
+      "placement_family",
+      "active_cores",
+      "seed",
+      "timing_family",
+      "route_family",
+      "victims"
+    ]
+  },
+  "matched_controls": {
+    "attack_run_count": 608,
+    "valid_matched_control_count": 608,
+    "hard_failure_count": 0,
+    "semantic_control_mismatch_count": 0,
+    "reference_or_split_failure_count": 0,
+    "active_core_shortcut_case_count": 608,
+    "active_core_shortcut_rate": 1.0,
+    "hard_pass": true,
+    "shortcut_free": false,
+    "idle_background_note": "Idle normals are not failures by themselves; they are shortcut risks only when used as attack controls whose attackers are absent from the normal active set."
+  },
+  "feature_semantics": {
+    "verdict": "FEATURE_AMBIGUITY_PRESENT_NO_LABEL_SEPARATION",
+    "maximum_graph_label_rate_difference": {
+      "feature_index": 20,
+      "feature_name": "ifd_out_norm_north",
+      "direction": "north",
+      "metric": "one_rate",
+      "difference": 0.10081662897478072,
+      "normal_rate": 0.20747395833333335,
+      "attack_rate": 0.10665732935855263
+    },
+    "maximum_split_rate_difference": {
+      "difference": 0.08802023144581408,
+      "feature_index": 18,
+      "router": 9,
+      "metric": "one_rate",
+      "groups": [
+        "test",
+        "train"
+      ]
+    }
+  },
+  "attack_kind_metadata": {
+    "attack_run_count": 608,
+    "attack_kind_counts": {
+      "flood": 224,
+      "intermittent": 80,
+      "low_slow": 80,
+      "pulsed": 224
+    },
+    "timing_family_counts": {
+      "early": 152,
+      "late": 152,
+      "middle": 152,
+      "whole_run": 152
+    },
+    "route_family_counts": {
+      "far_victim": 30,
+      "medium_victim": 337,
+      "near_victim": 241
+    },
+    "burst_ops_nonempty": 608,
+    "pause_iters_nonempty": 608,
+    "implementation_signature_count": 96,
+    "cross_label_alias_count": 0,
+    "internal_attack_metadata_consistent": true
+  },
+  "victim_metadata": {
+    "attack_run_count": 608,
+    "victim_metadata_unparseable_count": 0,
+    "victim_count_mismatch_count": 0,
+    "invalid_victim_router_count": 0,
+    "route_family_missing_count": 0,
+    "victim_metadata_blocks_attacker_only_a1": false,
+    "victim_metadata_blocks_victim_head": false
+  },
+  "model_training_performed": false,
+  "model_inference_performed": false,
+  "threshold_selection_performed": false,
+  "test_predictions_accessed": false,
+  "complete_x_loaded_into_ram": false,
+  "dataset_directory_modified": false,
+  "embedded_manifest_export_sha256": "aa64e6f8f9d830f41d65817b1b2c1073d8cf6599a6446cab6d53202831f9c153"
+}

@@ -1,0 +1,115 @@
+{
+  "artifacts": {
+    "A4_training_protocol_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P0_A4_TRAINING_PROTOCOL_EVIDENCE.json",
+    "execution_authorization": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P0_EXECUTION_AUTHORIZATION.json",
+    "frozen_protocol": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P0_FROZEN_SAME_WIDTH_ABLATION_PROTOCOL.json",
+    "primary_run_matrix": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P0_PRIMARY_RUN_MATRIX.csv",
+    "trainer_route_inventory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P0_TRAINER_ROUTE_INVENTORY.json",
+    "training_count_evidence": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/retrained_group_ablation/F7_P0_TRAINING_COUNT_EVIDENCE.json"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "TRAIN-DERIVED",
+  "created_utc": "2026-08-05T23:21:36.817332+00:00",
+  "decision": {
+    "F7_P0_complete": true,
+    "F7_protocol_frozen": true,
+    "F8_multi_seed_authorized": false,
+    "actual_F7_retraining_authorized": false,
+    "compact_interface_equivalence_authorized": false,
+    "feature_removal_authorized": false,
+    "hardware_reduction_claim_authorized": false,
+    "next_stage": "V5_P3_F7_P1_OFFICIAL_TRAINING_ROUTE_RECOVERY",
+    "sealed_test_access_authorized": false
+  },
+  "finding": {
+    "F6R_complete": true,
+    "flow_control_evidence": {
+      "F2R_constant_channel_count": 6,
+      "F5_overall_rank": 5,
+      "F6_task_last_count": 6
+    },
+    "flow_control_reduction_hypothesis_supported": true,
+    "primary_run_count": 6,
+    "selected_trainer": {
+      "class_names": [],
+      "function_names": [
+        "atomic_json",
+        "atomic_text",
+        "check_training_counts",
+        "collect_a4_protocol_evidence",
+        "load_json",
+        "main",
+        "normalize",
+        "parse_args",
+        "recursive_find",
+        "require",
+        "safe_python_parse",
+        "select_trainer",
+        "sha256_file",
+        "trainer_candidates",
+        "verify_report_lock",
+        "write_csv"
+      ],
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/experiments/run_v5_p3_f7_p0_same_width_retrained_group_ablation_preflight.py",
+      "required_hits": {
+        "DataLoader": true,
+        "V6P0Dynamic70GraphConvCount4": true,
+        "backward": true,
+        "optimizer": true
+      },
+      "score": 53,
+      "sha256": "39863e02e9733a918b394445faafd705810092b3f33ccb5d7b78c4ea12a31849",
+      "support_hits": {
+        "checkpoint": true,
+        "count": true,
+        "early": true,
+        "path": true,
+        "selection": true,
+        "source": true,
+        "transit": true,
+        "validation": true,
+        "victim": true
+      },
+      "syntax_ok": true
+    },
+    "trainer_candidate_count": 2,
+    "trainer_selection_decision": "unique_strict_training_entrypoint",
+    "training_item_count_certified": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "checkpoint_loaded": false,
+    "feature_removal_authorized": false,
+    "model_loaded": false,
+    "saved_F6_outputs_loaded": false,
+    "scientific_metrics_changed": false,
+    "sealed_test_tensors_loaded": false,
+    "training_feature_tensors_loaded": false,
+    "training_source_scanned": true,
+    "validation_feature_tensors_loaded": false
+  },
+  "provenance": {
+    "A4_evidence_sha256": "d065604166517a3cd9d96962d63b0dbb3bb2b05f61e01386038fe35e99dbdf0f",
+    "F4M_lock_sha256": "1a0e5268d7d4f3d13238762e0a0382275a47e4011960cd4816de325f1af1f59a",
+    "F4M_report_sha256": "e7dc2dbafee80d96f156fb08f65abfd8781fe9cb04288cec8539ede9a0adf348",
+    "F4_lock_sha256": "8e406761413ca0f68351ec3d55ebb997f1a511a839c749cdfabdc007993e682b",
+    "F4_report_sha256": "8ab88718e1dfdd5b27f77d4eebf5581df414ff767672cb054646e0c35a7cef76",
+    "F5R_lock_sha256": "fbe9b9b38619d2d6f3b91c40b24fa03c34bab5cb5ba3589044cf3fd0c9f9f365",
+    "F5R_report_sha256": "d19a17b411472d58c5c467f59563b0cf034f2932a84c8418674ae755842876d6",
+    "F6R_cross_method_csv_sha256": "62a65c7e68ac009ff205c3c43edc5e88570f46f7252289136be0b10358927b11",
+    "F6R_interpretation_sha256": "c9add291e797fda169ef8123ff3bd1b5e7d6e9dfda16120b1bc7aa2085b56316",
+    "F6R_lock_sha256": "ab3573c845beab2aaa8c7120f0f7b9206fe061f559c78ad3e3799623accf0012",
+    "F6R_report_sha256": "020b01b78f57d843a9914729d1a4b4c2d0b866a9bc96df5752133a41d0029065",
+    "authorization_sha256": "b59671a39c765a30f6d38d24bc978224f21a99b25379f9cee936633426728960",
+    "frozen_protocol_sha256": "2555dcf44e8ed6352d28f38961336c6f714d93892e2fe780c1bbadea9be62dcc",
+    "installed_script_sha256": "39863e02e9733a918b394445faafd705810092b3f33ccb5d7b78c4ea12a31849",
+    "route_inventory_sha256": "9f1c13125d754c896e0eb12664cecc8ebac9a053e333955a03fc2f22101f39ca",
+    "run_matrix_sha256": "ec9fd7c723e7315198ee9cd7edc3cd420b52a71e94d2ab407ba4638a76eb9a22",
+    "selected_trainer_sha256": "39863e02e9733a918b394445faafd705810092b3f33ccb5d7b78c4ea12a31849",
+    "trainer_inventory_sha256": "925aa37a0f86b825896fc50105006fbc4f8dcd19aabf8d11cd16701fa0ccc4fd",
+    "training_count_evidence_sha256": "990a0e5348aaf2fd9d552d07c34b6dd5bce89793b44ff233eff45e530f2c18f8"
+  },
+  "scope": "Verify F4/F4M/F5R/F6R lineage, freeze the five Dynamic70 macro-group ranges, define same-width post-loader zero masking, freeze a six-run seed-107 control/ablation matrix, preserve the official A4 optimization and checkpoint-selection recipe, recover and hash a unique official training entrypoint, freeze comparison metrics and reduction-candidate gates, and decide whether actual F7 execution may begin.",
+  "stage": "V5_P3_F7_P0_SAME_WIDTH_RETRAINED_GROUP_ABLATION_PREFLIGHT",
+  "status": "PASS"
+}

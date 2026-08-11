@@ -1,0 +1,70 @@
+{
+  "contract": {
+    "loader_sha256": "ad243c61bd746291d7fd5f0a4dad3ddfb9639fd57df075de2a84b5e3e5d4e2e6",
+    "native_label_key_map": {
+      "y_attack": "y_attack",
+      "y_attacker_count": "y_attacker_count",
+      "y_path": "y_attack_path",
+      "y_source": "y_source",
+      "y_transit": "y_transit",
+      "y_victim": "y_victim"
+    },
+    "normalization_sha256": "56776097cc08c5f367287335c6e3122a08ec5697a16c8081f03807633426ae49",
+    "physical_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_FINAL_DYNAMIC70",
+    "train_items": 221773,
+    "weight_formula": "min(negative_entries / positive_entries, 20.0)"
+  },
+  "generated_at_utc": "2026-08-07T00:52:29.576077+00:00",
+  "scientific_scope": "final A+B training labels only",
+  "stage": "V5_P3_FINAL_A2_R1_R2",
+  "statistics": {
+    "active_count_distribution": {
+      "1": 15054,
+      "2": 15022,
+      "3": 14938,
+      "4": 14791
+    },
+    "attack_zero_count_targets": 0,
+    "control_nonzero_count_targets": 0,
+    "count_class_weights_applied": false,
+    "elapsed_seconds": 31.64223289489746,
+    "graph_negative": 161968,
+    "graph_positive": 59805,
+    "graph_positive_weight": 2.7082685394197807,
+    "items": 221773,
+    "positive_weight_formula": "min(negative_entries / positive_entries, 20.0)",
+    "role_statistics": {
+      "path": {
+        "canonical_clamped_positive_weight": 8.208121405883452,
+        "negative_entries": 3163016,
+        "positive_entries": 385352,
+        "raw_positive_weight": 8.208121405883452,
+        "windows_with_positive_label": 59805
+      },
+      "source": {
+        "canonical_clamped_positive_weight": 20.0,
+        "negative_entries": 3399292,
+        "positive_entries": 149076,
+        "raw_positive_weight": 22.802409509243606,
+        "windows_with_positive_label": 59805
+      },
+      "transit": {
+        "canonical_clamped_positive_weight": 17.186033877456886,
+        "negative_entries": 3353253,
+        "positive_entries": 195115,
+        "raw_positive_weight": 17.186033877456886,
+        "windows_with_positive_label": 51654
+      },
+      "victim": {
+        "canonical_clamped_positive_weight": 20.0,
+        "negative_entries": 3427625,
+        "positive_entries": 120743,
+        "raw_positive_weight": 28.387774032449087,
+        "windows_with_positive_label": 59805
+      }
+    },
+    "scan_batch_size": 512,
+    "scan_num_workers": 0
+  },
+  "test_tensor_deserialized": false
+}

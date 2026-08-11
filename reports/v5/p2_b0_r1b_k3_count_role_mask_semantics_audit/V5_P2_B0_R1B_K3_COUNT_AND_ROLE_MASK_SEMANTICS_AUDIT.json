@@ -1,0 +1,527 @@
+{
+  "artifacts": {
+    "diagnosis_json": [
+      "/home/zira/research/projects/GNN-2d/reports/v5/p2_b0_r1b_k3_count_role_mask_semantics_audit/V5_P2_B0_R1B_K3_COUNT_AND_ROLE_MASK_DIAGNOSIS.json",
+      "cc8428120d5a71d96d17c33aa41ee16f7f6ed78f0ddca1e11a2edb15319cde02"
+    ]
+  },
+  "dataset": {
+    "link_path": "/home/zira/research/projects/GNN-2d/data/processed/v5/p2_complete558_dynamic_graph",
+    "resolved_root": "/home/zira/tools/architecture/gem5/experiments/v5_p2_complete558_dynamic_graph_tensors/p2_complete558_dynamic_graph"
+  },
+  "decision": "RESOLVE_B0_HOLD_AS_K3_OMISSION_AND_ROLE_MASK_SEMANTIC_MISCLASSIFICATION_REQUIRE_COUNT_HEAD_3_TO_4_AND_REPEAT_A4",
+  "diagnosis": {
+    "count_semantics": {
+      "active_count_by_category": {
+        "1": {
+          "1": 6776
+        },
+        "2": {
+          "2": 6285
+        },
+        "3": {
+          "3": 5703
+        },
+        "4": {
+          "4": 5228
+        }
+      },
+      "active_count_by_split": {
+        "train": {
+          "1": 5855,
+          "2": 5441,
+          "3": 4728,
+          "4": 4294
+        },
+        "validation": {
+          "1": 921,
+          "2": 844,
+          "3": 975,
+          "4": 934
+        }
+      },
+      "active_count_distribution": {
+        "1": 6776,
+        "2": 6285,
+        "3": 5703,
+        "4": 5228
+      },
+      "category_pair_counts": {
+        "1": 140,
+        "2": 129,
+        "3": 115,
+        "4": 105
+      },
+      "category_split_pair_counts": {
+        "1": {
+          "train": 120,
+          "validation": 20
+        },
+        "2": {
+          "train": 111,
+          "validation": 18
+        },
+        "3": {
+          "train": 97,
+          "validation": 18
+        },
+        "4": {
+          "train": 87,
+          "validation": 18
+        }
+      },
+      "first_example_by_category": {
+        "1": {
+          "active_window_count": 87,
+          "category": 1,
+          "common_length": 722,
+          "inactive_window_count": 0,
+          "pair_key": "P2TR-K1-001",
+          "split": "train",
+          "unique_active_counts": [
+            1
+          ],
+          "window_count_per_member": 87
+        },
+        "2": {
+          "active_window_count": 31,
+          "category": 2,
+          "common_length": 707,
+          "inactive_window_count": 54,
+          "pair_key": "P2TR-K2-123",
+          "split": "train",
+          "unique_active_counts": [
+            2
+          ],
+          "window_count_per_member": 85
+        },
+        "3": {
+          "active_window_count": 31,
+          "category": 3,
+          "common_length": 698,
+          "inactive_window_count": 53,
+          "pair_key": "P2TR-K3-241",
+          "split": "train",
+          "unique_active_counts": [
+            3
+          ],
+          "window_count_per_member": 84
+        },
+        "4": {
+          "active_window_count": 31,
+          "category": 4,
+          "common_length": 697,
+          "inactive_window_count": 53,
+          "pair_key": "P2TR-K4-361",
+          "split": "train",
+          "unique_active_counts": [
+            4
+          ],
+          "window_count_per_member": 84
+        }
+      },
+      "observed_active_counts": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "observed_categories": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "coverage": {
+      "total_aligned_items": 82694,
+      "total_pairs": 489,
+      "total_runs": 978,
+      "train_aligned_items": 70166,
+      "train_pairs": 415,
+      "train_runs": 830,
+      "validation_aligned_items": 12528,
+      "validation_pairs": 74,
+      "validation_runs": 148
+    },
+    "historical_a4": {
+      "audit_weights_saved": false,
+      "incomplete_for": [
+        "K3 attacker-count class",
+        "full four-class count-head coverage"
+      ],
+      "still_valid_for": [
+        "A3 loader integration",
+        "PRIMARY58 data path",
+        "physical-port mask path",
+        "graph head",
+        "source head",
+        "transit head",
+        "victim head",
+        "path head",
+        "gradient flow",
+        "optimizer operation"
+      ]
+    },
+    "historical_b0_resolution": {
+      "derivative_coverage_failures": [
+        "train processed aligned items=53878, expected 70166",
+        "train processed pair count=318",
+        "train processed run count=636",
+        "validation processed aligned items=9496, expected 12528",
+        "validation processed pair count=56",
+        "validation processed run count=112"
+      ],
+      "direct_k3_omission_failures": 115,
+      "interpretation": "K3 omission caused the six coverage failures; role_mask binary assumption requires independent semantic resolution. B0-R1A stopped before data audit because it expected a nested security-boundary field in an early-stop report that stored the explicit false flag at top level.",
+      "role_mask_failure": "label integrity violation nonbinary_role_mask=374"
+    },
+    "model_compatibility": {
+      "architecture": "B3_CAUSAL_DEPTHWISE_SEPARABLE_CONV1D_ONLY",
+      "count_head_compatible": false,
+      "current_count_logits": 3,
+      "current_parameter_count": 43208,
+      "graph_head_change_required": false,
+      "parameter_delta": 65,
+      "projected_parameter_count": 43273,
+      "required_change": "Linear(64,3) -> Linear(64,4)",
+      "required_count_logits": 4,
+      "role_head_change_required": false,
+      "temporal_encoder_change_required": false
+    },
+    "role_mask_semantics": {
+      "binary_target_assumption_valid": false,
+      "candidate_scores": [
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield3_source_transit_victim",
+          "mismatch_count": 0,
+          "mismatch_rate": 0.0,
+          "name": "bitfield3_source1_transit2_victim4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield3_source_transit_victim",
+          "mismatch_count": 85078,
+          "mismatch_rate": 0.06430182359058699,
+          "name": "bitfield3_source4_transit2_victim1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "role_count",
+          "mismatch_count": 86923,
+          "mismatch_rate": 0.06569627179722834,
+          "name": "role_count_source_transit_victim_path"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield3_source_transit_victim",
+          "mismatch_count": 112644,
+          "mismatch_rate": 0.08513616465523496,
+          "name": "bitfield3_source1_transit4_victim2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield3_source_transit_victim",
+          "mismatch_count": 117228,
+          "mismatch_rate": 0.08860074491498779,
+          "name": "bitfield3_source2_transit1_victim4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "binary",
+          "mismatch_count": 120972,
+          "mismatch_rate": 0.09143045444651365,
+          "name": "binary_path"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "binary",
+          "mismatch_count": 120972,
+          "mismatch_rate": 0.09143045444651365,
+          "name": "binary_union_source_transit_victim"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "binary",
+          "mismatch_count": 120972,
+          "mismatch_rate": 0.09143045444651365,
+          "name": "binary_union_source_transit_victim_path"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "role_count",
+          "mismatch_count": 120972,
+          "mismatch_rate": 0.09143045444651365,
+          "name": "role_count_source_transit_victim"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield3_source_transit_victim",
+          "mismatch_count": 157475,
+          "mismatch_rate": 0.11901936658040486,
+          "name": "bitfield3_source2_transit4_victim1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield3_source_transit_victim",
+          "mismatch_count": 157475,
+          "mismatch_rate": 0.11901936658040486,
+          "name": "bitfield3_source4_transit1_victim2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source1_transit2_victim4_path8"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source1_transit2_victim8_path4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source1_transit4_victim2_path8"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source1_transit4_victim8_path2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source1_transit8_victim2_path4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source1_transit8_victim4_path2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source2_transit1_victim4_path8"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source2_transit1_victim8_path4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source2_transit4_victim1_path8"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source2_transit4_victim8_path1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source2_transit8_victim1_path4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source2_transit8_victim4_path1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source4_transit1_victim2_path8"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source4_transit1_victim8_path2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source4_transit2_victim1_path8"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source4_transit2_victim8_path1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source4_transit8_victim1_path2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source4_transit8_victim2_path1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source8_transit1_victim2_path4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source8_transit1_victim4_path2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source8_transit2_victim1_path4"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source8_transit2_victim4_path1"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source8_transit4_victim1_path2"
+        },
+        {
+          "compared_entries": 1323104,
+          "family": "bitfield4_source_transit_victim_path",
+          "mismatch_count": 158888,
+          "mismatch_rate": 0.12008730984110093,
+          "name": "bitfield4_source8_transit4_victim2_path1"
+        }
+      ],
+      "compared_entries": 1323104,
+      "role_mask_is_model_target": false,
+      "role_mask_training_role": "auxiliary target/loss bookkeeping only; not a learned model input",
+      "selected_semantics": {
+        "compared_entries": 1323104,
+        "family": "bitfield3_source_transit_victim",
+        "mismatch_count": 0,
+        "mismatch_rate": 0.0,
+        "name": "bitfield3_source1_transit2_victim4"
+      },
+      "unique_values": {
+        "0": 1164216,
+        "1": 37916,
+        "2": 63162,
+        "3": 8803,
+        "4": 31444,
+        "5": 9235,
+        "6": 6915,
+        "7": 1413
+      },
+      "unique_values_by_mode": {
+        "attack_active": {
+          "0": 224984,
+          "1": 37916,
+          "2": 63162,
+          "3": 8803,
+          "4": 31444,
+          "5": 9235,
+          "6": 6915,
+          "7": 1413
+        },
+        "attack_inactive": {
+          "0": 277680
+        },
+        "control": {
+          "0": 661552
+        }
+      },
+      "zero_error_candidate_count": 1
+    },
+    "semantic_violation_counts": {
+      "attack_active_count_not_equal_category": 0,
+      "attack_count_source_count_mismatch": 0,
+      "attack_graph_count_activity_mismatch": 0,
+      "attack_inactive_count_nonzero": 0,
+      "control_nonzero_count": 0,
+      "control_positive_graph": 0,
+      "control_positive_path": 0,
+      "control_positive_source": 0,
+      "control_positive_transit": 0,
+      "control_positive_victim": 0
+    }
+  },
+  "failures": [],
+  "next_stage": "V5_P2_B0_R2_COUNT_HEAD_EXPANSION_AND_A4_REPEAT",
+  "provenance": {
+    "a1_r2_lock_sha256": "9f3630da32b621a0b766113eb9797289b8321ad3778bb33b5f4d7ec17c1263a4",
+    "a1_r2_report_sha256": "3762529be85efba13eff00dc6953f7e4474abfb8373084bb7e15dca9f23e9dc0",
+    "a3_lock_sha256": "dd4546f4a68043f8dea8cc797ac3ec62962dfab5b55a1b2d43ea72f84e483786",
+    "a3_report_sha256": "5c94e1bd36eb91aff3644a2c96698137d9fa7d2b375b93c34ce30e44a09ebc02",
+    "a4_lock_sha256": "63b91a1eff7d75f8af1c383cea40328fdc25742acaeb50cd7cf8fa7722a3af46",
+    "a4_report_sha256": "16741461461f0c1f202823e40cc400423570483a311cca5578e3aa903e1e7476",
+    "historical_b0_hold_sha256": "21caf52496f6e717c21382ce50815e1c4c32aa5c997cf335a7cc4b0bdddd4783",
+    "historical_b0_r1_hold_sha256": "4ccbc1d1e929b651dfc87f4d81df580f2fdfe13319dcd1421752e994854a5371",
+    "historical_b0_r1_report_sha256": "451ce94432334c7e3ab64e2b5e52b43edf9430e39e00a712afdbe94e2c32901a",
+    "historical_b0_r1a_hold_sha256": "36ef9264164864d9b2fdbd29475dc5add929787de08a5850e7925ec74c15bda1",
+    "historical_b0_r1a_report_sha256": "2bcb5ab0983dada1e1690fda738b54675f4e602ccc7b7dff623b74788c28c42f",
+    "historical_b0_report_sha256": "1035a887ee914878bdb2eba4cb843d9ff745796ce4a024ce4fe48b3665ccafe3",
+    "model_sha256": "f826f4880e4fbef3d3cd0ee05cd9ba47ce6f0f2aaab444032919b2378c2900ad",
+    "pair_manifest_sha256": "f42f40446d03161a6932ee060f6d8c859f894cb5075d1fc926ea161461413ab5"
+  },
+  "security_boundary": {
+    "test_dataset_constructed": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_labels_read": false,
+    "test_tensor_bytes_read": false,
+    "test_tensor_contents_accessed": false,
+    "test_tensor_files_opened": false,
+    "test_windows_constructed": false,
+    "train_tensor_contents_accessed": true,
+    "validation_tensor_contents_accessed": true
+  },
+  "stage": "V5_P2_B0_R1B_K3_COUNT_AND_ROLE_MASK_SEMANTICS_AUDIT",
+  "status": "COMPLETE",
+  "warnings": []
+}

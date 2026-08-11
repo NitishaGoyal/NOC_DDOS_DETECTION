@@ -1,0 +1,235 @@
+{
+  "classes": [],
+  "controls": {
+    "allow_tf32": [],
+    "batch_size": [
+      {
+        "line": 227,
+        "text": "batch_size: int,"
+      },
+      {
+        "line": 232,
+        "text": "return list(range(fallback_start, fallback_start + batch_size))"
+      },
+      {
+        "line": 233,
+        "text": "return [\"\"] * batch_size"
+      },
+      {
+        "line": 237,
+        "text": "flattened = value.detach().cpu().reshape(batch_size, -1)"
+      },
+      {
+        "line": 242,
+        "text": "array = value.reshape(batch_size, -1)"
+      },
+      {
+        "line": 247,
+        "text": "if len(value) == batch_size:"
+      },
+      {
+        "line": 249,
+        "text": "return [str(value)] * batch_size"
+      },
+      {
+        "line": 379,
+        "text": "batch_size=256,"
+      },
+      {
+        "line": 489,
+        "text": "batch_size = int(x.shape[0])"
+      },
+      {
+        "line": 490,
+        "text": "stop = offset + batch_size"
+      },
+      {
+        "line": 493,
+        "text": "\"attack_logits\": (batch_size,),"
+      },
+      {
+        "line": 494,
+        "text": "\"count_logits\": (batch_size, 4),"
+      },
+      {
+        "line": 495,
+        "text": "\"source_logits\": (batch_size, 16),"
+      },
+      {
+        "line": 496,
+        "text": "\"transit_logits\": (batch_size, 16),"
+      },
+      {
+        "line": 497,
+        "text": "\"victim_logits\": (batch_size, 16),"
+      },
+      {
+        "line": 498,
+        "text": "\"path_logits\": (batch_size, 16),"
+      },
+      {
+        "line": 574,
+        "text": "batch_size,"
+      },
+      {
+        "line": 580,
+        "text": "batch_size,"
+      },
+      {
+        "line": 586,
+        "text": "batch_size,"
+      },
+      {
+        "line": 592,
+        "text": "batch_size,"
+      },
+      {
+        "line": 596,
+        "text": "for local_index in range(batch_size):"
+      }
+    ],
+    "cuda.manual_seed_all": [
+      {
+        "line": 43,
+        "text": "torch.cuda.manual_seed_all(seed)"
+      }
+    ],
+    "cudnn.benchmark": [
+      {
+        "line": 46,
+        "text": "torch.backends.cudnn.benchmark = False"
+      }
+    ],
+    "cudnn.deterministic": [
+      {
+        "line": 45,
+        "text": "torch.backends.cudnn.deterministic = True"
+      }
+    ],
+    "inference_mode": [],
+    "manual_seed": [
+      {
+        "line": 42,
+        "text": "torch.manual_seed(seed)"
+      },
+      {
+        "line": 43,
+        "text": "torch.cuda.manual_seed_all(seed)"
+      }
+    ],
+    "map_location": [
+      {
+        "line": 420,
+        "text": "map_location=device,"
+      }
+    ],
+    "model.eval": [
+      {
+        "line": 434,
+        "text": "model.eval()"
+      }
+    ],
+    "no_grad": [
+      {
+        "line": 476,
+        "text": "with torch.no_grad():"
+      }
+    ],
+    "num_workers": [
+      {
+        "line": 381,
+        "text": "num_workers=0,"
+      }
+    ],
+    "set_float32_matmul_precision": [],
+    "shuffle=": [
+      {
+        "line": 380,
+        "text": "shuffle=False,"
+      }
+    ],
+    "torch.load": [
+      {
+        "line": 331,
+        "text": "original_torch_load = torch.load"
+      },
+      {
+        "line": 348,
+        "text": "torch.load = guarded_torch_load"
+      },
+      {
+        "line": 418,
+        "text": "checkpoint = torch.load("
+      }
+    ],
+    "use_deterministic_algorithms": []
+  },
+  "functions": [
+    {
+      "line": 30,
+      "name": "parse_args"
+    },
+    {
+      "line": 39,
+      "name": "set_seed"
+    },
+    {
+      "line": 49,
+      "name": "sha256_file"
+    },
+    {
+      "line": 57,
+      "name": "atomic_json"
+    },
+    {
+      "line": 66,
+      "name": "atomic_npz"
+    },
+    {
+      "line": 73,
+      "name": "atomic_csv"
+    },
+    {
+      "line": 83,
+      "name": "import_source"
+    },
+    {
+      "line": 93,
+      "name": "average_ranks"
+    },
+    {
+      "line": 110,
+      "name": "binary_auroc"
+    },
+    {
+      "line": 127,
+      "name": "binary_average_precision"
+    },
+    {
+      "line": 147,
+      "name": "binary_threshold_metrics"
+    },
+    {
+      "line": 184,
+      "name": "multiclass_macro_f1"
+    },
+    {
+      "line": 205,
+      "name": "exact_active"
+    },
+    {
+      "line": 224,
+      "name": "scalar_batch_values"
+    },
+    {
+      "line": 252,
+      "name": "main"
+    },
+    {
+      "line": 334,
+      "name": "guarded_torch_load"
+    }
+  ],
+  "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+  "sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+}

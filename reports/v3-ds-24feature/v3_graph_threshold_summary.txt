@@ -1,0 +1,30 @@
+V3 Graph Threshold Sweep Summary
+
+Dataset:
+paper1_temporal_graphs_ports_v3
+
+Conv1D-GCN test:
+Best F1 threshold = 0.15
+F1 = 0.8777
+FPR = 0.2809
+Recall = 0.9704
+No threshold achieved FPR <= 0.10 on test.
+
+TCN-GCN test:
+Default threshold 0.50:
+F1 = 0.8578
+FPR = 0.2468
+Recall = 0.9099
+
+Best F1 threshold 0.70:
+F1 = 0.8632
+FPR = 0.1685
+Recall = 0.8689
+
+Low-FPR threshold 0.90:
+F1 = 0.8562
+FPR = 0.0965
+Recall = 0.8104
+
+Interpretation:
+TCN-GCN is over-sensitive at threshold 0.50, but it can be calibrated to a lower false-positive operating point. Conv1D-GCN has higher best-F1 performance under test threshold sweep, but cannot reach FPR <= 0.10 in this sweep. The large validation-to-test threshold shift suggests distribution shift between validation and test benign traffic.

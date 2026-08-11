@@ -1,0 +1,23 @@
+{
+  "F6_integrated_gradients_authorized": true,
+  "F7_retraining_ablation_authorized": false,
+  "feature_removal_authorized": false,
+  "flow_control_stalls_low_effect": true,
+  "flow_control_stalls_note": "The full 15-channel stall group has a very small permutation effect. Combined with the prior F2R observation that six stall channels are constant zero, this makes the stall group the leading candidate for F6/F7 scrutiny. It does not authorize removing all stall channels because nine channels remain training-observed and permutation importance can be suppressed by correlated or redundant inputs.",
+  "hardware_reduction_claim_authorized": false,
+  "next_evidence_required": [
+    "F6 task-specific integrated gradients",
+    "F7 same-width retrained group ablation",
+    "later compact reduced-input retraining"
+  ],
+  "permutation_scope_note": "This is a grouped validation permutation-contribution result, not a causal proof and not a compact-interface result.",
+  "selection_score_order": [
+    "inter_flit_timing",
+    "buffer_pressure",
+    "queue_activity",
+    "directional_traffic_volume",
+    "flow_control_stalls"
+  ],
+  "strongest_group": "inter_flit_timing",
+  "weakest_group": "flow_control_stalls"
+}

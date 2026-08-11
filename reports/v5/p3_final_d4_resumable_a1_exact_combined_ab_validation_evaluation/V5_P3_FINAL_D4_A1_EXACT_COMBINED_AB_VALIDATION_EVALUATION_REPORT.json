@@ -1,0 +1,238 @@
+{
+  "audit_script_revision": "historical_v2_union_role_semantics_legality_correction_reused_exactly",
+  "classification": "final combined A+B validation frozen exact-decoder transfer diagnostic",
+  "comparison": {
+    "A0_frozen_P2_transfer": {
+      "graph_accuracy": 0.8113411730755357,
+      "graph_f1": 0.7317398440705786,
+      "graph_fpr": 0.23957817605703535,
+      "strict_all_task_exactness": 0.592706153957146
+    },
+    "A1_frozen_P2_exact_transfer": {
+      "graph_accuracy": 0.7817617776495203,
+      "graph_f1": 0.6827810402684563,
+      "graph_fpr": 0.249381126844242,
+      "strict_all_task_exactness": 0.7476372556092634
+    },
+    "A1_minus_Raw": {
+      "graph_accuracy": -0.03206839333381428,
+      "graph_f1": -0.04907327468971889,
+      "graph_fpr": 0.01767501732844834,
+      "strict_all_task_exactness": 0.08646562297092564
+    },
+    "Raw": {
+      "graph_accuracy": 0.8138301709833345,
+      "graph_f1": 0.7318543149581752,
+      "graph_fpr": 0.23170610951579365,
+      "strict_all_task_exactness": 0.6611716326383378
+    }
+  },
+  "decision": {
+    "A1_exact_combined_AB_validation_complete": true,
+    "A1_route_legality_certified": true,
+    "A1_selected_as_final_operating_policy": false,
+    "next_stage": "V5_P3_FINAL_D5_RAW_A0_A1_DECODER_REVIEW_AND_OPERATING_POLICY_FREEZE",
+    "operating_policy_selection_deferred": true,
+    "sealed_test_evaluation_authorized": false,
+    "threshold_tuning_authorized": false
+  },
+  "execution": {
+    "all_chunks_hash_valid": true,
+    "chunk_count": 278,
+    "chunk_size": 100,
+    "decoded_chunks_this_run": 278,
+    "execution_contract_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d4_resumable_a1_exact_combined_ab_validation_evaluation/V5_P3_FINAL_D4_A1_RESUMABLE_EXECUTION_CONTRACT.json",
+    "execution_contract_sha256": "e956cf1480f7391da2264330fd8c86055753e6082e7899372824e23b816242cc",
+    "items": 27722,
+    "reused_chunks_this_run": 0,
+    "schema_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d4_resumable_a1_exact_combined_ab_validation_evaluation/V5_P3_FINAL_D4_A1_DECODED_OUTPUT_SCHEMA.json",
+    "schema_sha256": "4a7797e82fb11b1c0603f56ec8583a8747fff176f9177b35c08d95b730f894f4",
+    "second_pass_reused_chunks": 278
+  },
+  "metrics": {
+    "count_active": {
+      "accuracy": 0.8629718234981393,
+      "items": 7524,
+      "macro_f1": 0.916359143778321,
+      "per_class": {
+        "1": {
+          "f1": 0.7193961273383657,
+          "precision": 0.9909584086799277,
+          "recall": 0.5646573930963421,
+          "support": 1941
+        },
+        "2": {
+          "f1": 0.9562289562289562,
+          "precision": 0.9953271028037384,
+          "recall": 0.9200863930885529,
+          "support": 1852
+        },
+        "3": {
+          "f1": 0.9914392723381487,
+          "precision": 1.0,
+          "recall": 0.9830238726790451,
+          "support": 1885
+        },
+        "4": {
+          "f1": 0.9983722192078134,
+          "precision": 1.0,
+          "recall": 0.9967497291440953,
+          "support": 1846
+        }
+      },
+      "predicted_zero_rate": 0.13463583200425305
+    },
+    "graph": {
+      "accuracy": 0.7817617776495203,
+      "f1": 0.6827810402684563,
+      "fn": 1013,
+      "fp": 5037,
+      "fpr": 0.249381126844242,
+      "margin_auroc": 0.868497363870147,
+      "margin_average_precision": 0.602126034706637,
+      "precision": 0.5638205749913405,
+      "recall": 0.8653641679957469,
+      "tn": 15161,
+      "tp": 6511
+    },
+    "legality": {
+      "audit_semantics": "route legality certified by exact decoder; evaluator checks union-valid structural invariants",
+      "certification_exceptions": 0,
+      "certified_decoder_items": 27722,
+      "route_legal_by_certified_decoder": true,
+      "source_victim_overlap_items": 4815,
+      "structural_legal_items": 27722,
+      "structural_legality_rate": 1.0,
+      "transit_endpoint_overlap_items": 5752
+    },
+    "margin": {
+      "finite": true,
+      "maximum": 55.935748609143815,
+      "median": -18.311389864532256,
+      "minimum": -121.28730869293213
+    },
+    "policy": "Frozen P2 exact decoder transfer on final combined A+B validation",
+    "roles": {
+      "path": {
+        "exact_active": 0.8047581073896863,
+        "exact_all": 0.76531274799798,
+        "exact_inactive": 0.750618873155758,
+        "flattened": {
+          "accuracy": 0.9092192121780536,
+          "f1": 0.7004953809077521,
+          "fn": 2088,
+          "fp": 38178,
+          "fpr": 0.09680609367710002,
+          "precision": 0.5522482583913869,
+          "recall": 0.9575402635431918,
+          "tn": 356198,
+          "tp": 47088
+        },
+        "mean_predicted_cardinality_active": 6.334662413609782,
+        "mean_true_cardinality_active": 6.535885167464115
+      },
+      "source": {
+        "exact_active": 0.8615098351940457,
+        "exact_all": 0.7807156770795758,
+        "exact_inactive": 0.750618873155758,
+        "flattened": {
+          "accuracy": 0.9664796912199697,
+          "f1": 0.7011096815696365,
+          "fn": 1246,
+          "fp": 13622,
+          "fpr": 0.03206172269975616,
+          "precision": 0.5614294913071475,
+          "recall": 0.9333119246414044,
+          "tn": 411246,
+          "tp": 17438
+        },
+        "mean_predicted_cardinality_active": 2.3191121743753325,
+        "mean_true_cardinality_active": 2.4832535885167464
+      },
+      "transit": {
+        "exact_active": 0.8801169590643275,
+        "exact_all": 0.7952167953250127,
+        "exact_inactive": 0.7635904545004456,
+        "flattened": {
+          "accuracy": 0.9508738547002381,
+          "f1": 0.6991162662247998,
+          "fn": 444,
+          "fp": 21346,
+          "fpr": 0.05109228732889254,
+          "precision": 0.5425301643771029,
+          "recall": 0.9827633060289608,
+          "tn": 396447,
+          "tp": 25315
+        },
+        "mean_predicted_cardinality_active": 3.4954811270600743,
+        "mean_true_cardinality_active": 3.4235778841042
+      },
+      "victim": {
+        "exact_active": 0.8098086124401914,
+        "exact_all": 0.7666835004689416,
+        "exact_inactive": 0.750618873155758,
+        "flattened": {
+          "accuracy": 0.9712389979077989,
+          "f1": 0.6862904217385958,
+          "fn": 1424,
+          "fp": 11333,
+          "fpr": 0.026468211521484257,
+          "precision": 0.5518250484438645,
+          "recall": 0.9074001820782936,
+          "tn": 416841,
+          "tp": 13954
+        },
+        "mean_predicted_cardinality_active": 1.881578947368421,
+        "mean_true_cardinality_active": 2.043859649122807
+      }
+    },
+    "strict": {
+      "strict_active_exact_items": 5565,
+      "strict_active_exactness": 0.7396331738437002,
+      "strict_all_task_exactness": 0.7476372556092634,
+      "strict_exact_items": 20726,
+      "strict_inactive_exact_items": 15161,
+      "strict_inactive_exactness": 0.750618873155758
+    },
+    "timing": {
+      "maximum_seconds": 3.52414823500294,
+      "mean_seconds": 0.5994709127615775,
+      "median_seconds": 0.4764639589993749,
+      "p95_seconds": 1.2701178393537698,
+      "p99_seconds": 1.9156774606616094,
+      "total_recorded_decode_seconds": 16618.53264357645
+    }
+  },
+  "model_replayed": false,
+  "model_trained": false,
+  "native_test_dataset_constructed": false,
+  "outputs": {
+    "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_final_d4_resumable_a1_exact_combined_ab_validation_evaluation/V5_P3_FINAL_D4_A1_EXACT_VALIDATION_OUTPUTS.npz",
+    "sha256": "dd13e9f572d84241b149b884c1c1a9ab4eab17b51a996d324ed48ede032c9da7",
+    "size_bytes": 413372
+  },
+  "policy": {
+    "A1_margin_threshold": 8.720532088239842,
+    "beam_decoder_selected": false,
+    "decoder": "frozen certified P2 exact XY legal decoder",
+    "decoder_path": "/home/zira/research/projects/GNN-2d/src/decoders/v5_legal_xy_exact_decoder_certified.py",
+    "decoder_sha256": "30309376cb0990a0f482045e2dac413d4370729cf94f9e556f895af2c5c8c71d",
+    "margin_retuned": false,
+    "working_matches_canonical_preservation": true
+  },
+  "provenance": {
+    "D1_export_sha256": "9f7fb4c06eed7be3f4ae98bcf5db7d5b52e6e4e59079ec7ce18a0c91e9d51f8e",
+    "D2_R1_lock_sha256": "0f65535becdb3d6cb599f4d1e71cd4881d1d9787aaa2c26a8848581370b93c78",
+    "D2_R1_report_sha256": "2da340737a3d9d042d700293776b1ca020397cc35a2e29a9946c17466be1e100",
+    "D3_R4_lock_sha256": "a25e1f105925f0f52c80b9dcfa5fb0573d09cd0854e9f3adfcbbe409d7ce8c91",
+    "D3_R4_report_sha256": "700655065ea8a0fb40feb517b1cd043a9c6659fd48277425ca567d9a8e7f64f8",
+    "historical_D4_source_sha256": "e5548028a5043a346069f4874ea45dc50e60c05bdb0d83f8c8d33d0a48279568"
+  },
+  "scope": "Full resumable certified exact-A1 decoding of all 27,722 immutable combined-A+B validation outputs using the unchanged exact decoder and margin.",
+  "sealed_test_access": false,
+  "stage": "V5_P3_FINAL_D4_RESUMABLE_A1_EXACT_COMBINED_AB_VALIDATION_EVALUATION",
+  "status": "PASS",
+  "test_tensor_deserialization": false,
+  "threshold_tuning_performed": false,
+  "wall_seconds_this_invocation": 17161.066936969757
+}

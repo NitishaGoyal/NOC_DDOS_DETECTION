@@ -1,0 +1,116 @@
+{
+  "contracts": {
+    "b3_model_sha256": "56ee3207d039b60e8e3a898a689cd8e361247c86b7450a3a5e95f423ebe30def",
+    "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "g1_aggregation_report_sha256": "299f33cfbc55d82075a6992793540bdc3d237846b1315caab8361efeee8c2e7a",
+    "g1_decision_sha256": "aede27f98706c0252536f7f79d1e397df2d8a65e3dc7d36e2e6dd9dcd6e7f50d",
+    "loader_sha256": "2725ff993f4f03ebee3d5ffb775b1fedd6b131a9c4c89ed8049f45b249c24ac2",
+    "trainer_sha256": "47636bd13597d8bb5cb86ab8b8ae69ce47f05d2720ad3748440e17bb696ace18"
+  },
+  "device": "cuda",
+  "next_stage": "V5_P2_G2_DIRECT_GRAPH_TRAINING_MATRIX",
+  "operator_pass_count": 4,
+  "operator_results": {
+    "conv1d": {
+      "attack_head_initial_state_sha256": "3f83f30c388981057fe2b27d8bba930b10776c1ac4bd510a811e68750a71d32c",
+      "clean_equivalence_max_abs_error": 0.0,
+      "common_encoder_initial_state_sha256": "4dda73c6a9e25fa29181f3abf3c950dab6d138760b403f35b6a9fe324c5381f9",
+      "finite_gradient_parameter_tensors": 24,
+      "gradient_parameter_tensors": 24,
+      "graph_projection_initial_state_sha256": "e6efa7131df99177099feb0fb5606f71ea4b546740959bc0213ab9c3975216ee",
+      "parameter_count": 34561,
+      "peak_cuda_memory_allocated_bytes": 36925952,
+      "reference_b3_initial_state_sha256": "966de3d5a09cbe6b3fb4dd68a2ffc64e55f0b1fa61a76c1681d2c0950335a87f",
+      "status": "PASS",
+      "total_absolute_gradient": 9.268062479794025,
+      "train_logits_shape": [
+        8
+      ],
+      "train_loss_before_step": 0.6906658411026001,
+      "trainable_parameter_tensors": 24,
+      "validation_logits_shape": [
+        8
+      ],
+      "validation_loss_after_step": 0.6793279647827148
+    },
+    "gatconv": {
+      "attack_head_initial_state_sha256": "3f83f30c388981057fe2b27d8bba930b10776c1ac4bd510a811e68750a71d32c",
+      "clean_equivalence_max_abs_error": 0.0,
+      "common_encoder_initial_state_sha256": "4dda73c6a9e25fa29181f3abf3c950dab6d138760b403f35b6a9fe324c5381f9",
+      "finite_gradient_parameter_tensors": 32,
+      "gradient_parameter_tensors": 32,
+      "graph_projection_initial_state_sha256": "e6efa7131df99177099feb0fb5606f71ea4b546740959bc0213ab9c3975216ee",
+      "parameter_count": 43137,
+      "peak_cuda_memory_allocated_bytes": 37031936,
+      "reference_b3_initial_state_sha256": "966de3d5a09cbe6b3fb4dd68a2ffc64e55f0b1fa61a76c1681d2c0950335a87f",
+      "status": "PASS",
+      "total_absolute_gradient": 6.283525193737921,
+      "train_logits_shape": [
+        8
+      ],
+      "train_loss_before_step": 0.6931107044219971,
+      "trainable_parameter_tensors": 32,
+      "validation_logits_shape": [
+        8
+      ],
+      "validation_loss_after_step": 0.7017742991447449
+    },
+    "gcnconv": {
+      "attack_head_initial_state_sha256": "3f83f30c388981057fe2b27d8bba930b10776c1ac4bd510a811e68750a71d32c",
+      "clean_equivalence_max_abs_error": 0.0,
+      "common_encoder_initial_state_sha256": "4dda73c6a9e25fa29181f3abf3c950dab6d138760b403f35b6a9fe324c5381f9",
+      "finite_gradient_parameter_tensors": 28,
+      "gradient_parameter_tensors": 28,
+      "graph_projection_initial_state_sha256": "e6efa7131df99177099feb0fb5606f71ea4b546740959bc0213ab9c3975216ee",
+      "parameter_count": 42881,
+      "peak_cuda_memory_allocated_bytes": 36996096,
+      "reference_b3_initial_state_sha256": "966de3d5a09cbe6b3fb4dd68a2ffc64e55f0b1fa61a76c1681d2c0950335a87f",
+      "status": "PASS",
+      "total_absolute_gradient": 5.922436939552426,
+      "train_logits_shape": [
+        8
+      ],
+      "train_loss_before_step": 0.692131757736206,
+      "trainable_parameter_tensors": 28,
+      "validation_logits_shape": [
+        8
+      ],
+      "validation_loss_after_step": 0.7039839625358582
+    },
+    "graphconv": {
+      "attack_head_initial_state_sha256": "3f83f30c388981057fe2b27d8bba930b10776c1ac4bd510a811e68750a71d32c",
+      "clean_equivalence_max_abs_error": 0.0,
+      "common_encoder_initial_state_sha256": "4dda73c6a9e25fa29181f3abf3c950dab6d138760b403f35b6a9fe324c5381f9",
+      "finite_gradient_parameter_tensors": 30,
+      "gradient_parameter_tensors": 30,
+      "graph_projection_initial_state_sha256": "e6efa7131df99177099feb0fb5606f71ea4b546740959bc0213ab9c3975216ee",
+      "parameter_count": 51073,
+      "peak_cuda_memory_allocated_bytes": 37093376,
+      "reference_b3_initial_state_sha256": "966de3d5a09cbe6b3fb4dd68a2ffc64e55f0b1fa61a76c1681d2c0950335a87f",
+      "status": "PASS",
+      "total_absolute_gradient": 25.331131914630532,
+      "train_logits_shape": [
+        8
+      ],
+      "train_loss_before_step": 0.7024919986724854,
+      "trainable_parameter_tensors": 30,
+      "validation_logits_shape": [
+        8
+      ],
+      "validation_loss_after_step": 0.6995340585708618
+    }
+  },
+  "scientific_training_authorized": true,
+  "security_boundary": {
+    "architecture_selected": false,
+    "p2_test_directory_enumerated": false,
+    "p2_test_directory_existence_checked": false,
+    "p2_test_evaluation_performed": false,
+    "p2_test_tensor_files_opened": false,
+    "p2_test_tensors_deserialized": false,
+    "p2_train_used": true,
+    "p2_validation_used": true
+  },
+  "stage": "V5_P2_G2_CLEAN_TRAINING_IMPLEMENTATION_PREFLIGHT",
+  "status": "COMPLETE"
+}

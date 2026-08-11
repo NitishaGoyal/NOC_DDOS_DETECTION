@@ -1,0 +1,742 @@
+#!/usr/bin/env python3
+"""
+V4-A4a-1B2
+Deterministic Validation Label-Coverage Audit for the two-epoch smoke model.
+
+Why this stage exists
+---------------------
+The bounded A4a-1B validation loader evaluated its first four chronological
+batches, which happened to contain only normal samples. That smoke still proved
+training integrity, but its attack-set metrics were not exercised.
+
+This read-only audit evaluates the saved smoke checkpoint on a deterministic,
+label-stratified validation subset covering attacker counts 0,1,2,3,4.
+
+It performs:
+  * no optimizer step
+  * no model/threshold selection
+  * no test/development-test access
+  * no performance gate
+
+Pass means all label paths, losses and decoders execute correctly on real V4
+validation samples. The reported metrics are diagnostic only.
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import importlib.util
+import json
+import math
+import sys
+from collections import defaultdict
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import torch
+
+from v4_a4a_slot_model import (
+    A4aFrozenSlotModel,
+    NULL_CLASS,
+    NUM_SLOTS,
+    count_parameters,
+    derived_cardinality_probabilities,
+    exact_unique_constrained_decode,
+    greedy_unique_decode,
+)
+
+
+EXPECTED_TRAINER_SHA = (
+    "e5f9a48e9f7ca873c351743df92e3bb0"
+    "0d00a893333434c7fd0e04734e010525"
+)
+EXPECTED_MODEL_SOURCE_SHA = (
+    "5ebcf80385b95f329faf935cad8039b64"
+    "afd79f464903308eb07e674d78a1704"
+)
+EXPECTED_BASE_CHECKPOINT_SHA = (
+    "f61c1add6c057f7f53dd34fb1f9f4e95"
+    "b01cefd5053e0e42bc100c76dac7f923"
+)
+EXPECTED_SLOT_MODULE_SHA = (
+    "97b56aabb3239dfc7543c241665cacf99"
+    "8eb6b1a1f5f67f931cdeb70e75c111c"
+)
+EXPECTED_SMOKE_SCRIPT_SHA = (
+    "a1c93ed64198c0bd946e64da116b3438"
+    "012d742c0c5fafc092e8517b4761a35d"
+)
+EXPECTED_TOTAL_PARAMETERS = 3189
+EXPECTED_TRAINABLE_PARAMETERS = 1076
+
+
+def sha256_file(path: Path, chunk_size: int = 1024 * 1024) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(chunk_size)
+            if not chunk:
+                break
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_module(path: Path, name: str):
+    spec = importlib.util.spec_from_file_location(name, path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"could not import {path}")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
+    spec.loader.exec_module(module)
+    return module
+
+
+def extract_state_dict(checkpoint: Any) -> dict[str, torch.Tensor]:
+    if isinstance(checkpoint, dict):
+        for key in ("model_state_dict", "state_dict", "model"):
+            value = checkpoint.get(key)
+            if (
+                isinstance(value, dict)
+                and value
+                and all(isinstance(v, torch.Tensor) for v in value.values())
+            ):
+                return value
+    raise RuntimeError("checkpoint model_state_dict not found")
+
+
+def deterministic_even_sample(
+    values: np.ndarray,
+    count: int,
+) -> np.ndarray:
+    array = np.asarray(values, dtype=np.int64)
+    if array.size < count:
+        raise RuntimeError(
+            f"requested {count} samples, only {array.size} available"
+        )
+    if array.size == count:
+        return array.copy()
+    positions = np.linspace(
+        0,
+        array.size - 1,
+        num=count,
+        dtype=np.int64,
+    )
+    return array[positions]
+
+
+def set_counts(
+    predicted: set[int],
+    truth: set[int],
+) -> tuple[int, int, int]:
+    return (
+        len(predicted & truth),
+        len(predicted - truth),
+        len(truth - predicted),
+    )
+
+
+def finalize_metrics(row: dict[str, Any]) -> dict[str, Any]:
+    samples = int(row["samples"])
+    tp = int(row["tp"])
+    fp = int(row["fp"])
+    fn = int(row["fn"])
+
+    precision = tp / (tp + fp) if tp + fp else 1.0
+    recall = tp / (tp + fn) if tp + fn else 0.0
+    f1 = (
+        2.0 * precision * recall / (precision + recall)
+        if precision + recall
+        else 0.0
+    )
+
+    return {
+        **row,
+        "exact_set_fraction": row["exact"] / samples,
+        "nonempty_prediction_fraction": row["nonempty"] / samples,
+        "raw_duplicate_fraction": row["raw_duplicate"] / samples,
+        "raw_all_null_fraction": row["raw_all_null"] / samples,
+        "greedy_disagreement_fraction": (
+            row["greedy_disagreement"] / samples
+        ),
+        "set_precision": precision,
+        "set_recall": recall,
+        "set_f1": f1,
+        "mean_predicted_count": (
+            row["predicted_count_sum"] / samples
+        ),
+        "derived_count_accuracy": (
+            row["derived_count_correct"] / samples
+        ),
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--repo", type=Path, required=True)
+    parser.add_argument("--data-dir", type=Path, required=True)
+    parser.add_argument("--trainer", type=Path, required=True)
+    parser.add_argument("--model-source", type=Path, required=True)
+    parser.add_argument("--base-checkpoint", type=Path, required=True)
+    parser.add_argument("--slot-module", type=Path, required=True)
+    parser.add_argument("--smoke-script", type=Path, required=True)
+    parser.add_argument("--smoke-dir", type=Path, required=True)
+    parser.add_argument("--contract", type=Path, required=True)
+    parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--samples-per-count", type=int, default=128)
+    parser.add_argument("--batch-size", type=int, default=256)
+    parser.add_argument("--num-workers", type=int, default=2)
+    parser.add_argument(
+        "--pin-memory",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
+    parser.add_argument(
+        "--persistent-workers",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+    )
+    parser.add_argument("--prefetch-factor", type=int, default=2)
+    parser.add_argument(
+        "--device",
+        choices=("auto", "cpu", "cuda"),
+        default="auto",
+    )
+    args = parser.parse_args()
+
+    if args.samples_per_count <= 0:
+        raise ValueError("samples-per-count must be positive")
+    if args.num_workers == 0 and args.persistent_workers:
+        raise ValueError(
+            "persistent workers require num_workers > 0"
+        )
+
+    required = [
+        args.repo,
+        args.data_dir,
+        args.trainer,
+        args.model_source,
+        args.base_checkpoint,
+        args.slot_module,
+        args.smoke_script,
+        args.smoke_dir / "V4_A4A_1B_TWO_EPOCH_SMOKE_PASS",
+        args.smoke_dir / "A4A_1B_LOCK.json",
+        args.smoke_dir / "smoke_report.json",
+        args.smoke_dir / "smoke_last_model.pt",
+        args.contract,
+    ]
+    missing = [str(path) for path in required if not path.exists()]
+    if missing:
+        print("A4a-1B2 FAIL: missing paths", file=sys.stderr)
+        for path in missing:
+            print(f"  {path}", file=sys.stderr)
+        return 2
+
+    if args.output_dir.exists():
+        print(
+            f"A4a-1B2 FAIL: output exists: {args.output_dir}",
+            file=sys.stderr,
+        )
+        return 2
+    args.output_dir.mkdir(parents=True)
+
+    provenance = {
+        "trainer_sha256": sha256_file(args.trainer),
+        "model_source_sha256": sha256_file(args.model_source),
+        "base_checkpoint_sha256": sha256_file(args.base_checkpoint),
+        "slot_module_sha256": sha256_file(args.slot_module),
+        "smoke_script_sha256": sha256_file(args.smoke_script),
+        "smoke_checkpoint_sha256": sha256_file(
+            args.smoke_dir / "smoke_last_model.pt"
+        ),
+        "smoke_report_sha256": sha256_file(
+            args.smoke_dir / "smoke_report.json"
+        ),
+        "contract_sha256": sha256_file(args.contract),
+        "audit_script_sha256": sha256_file(Path(__file__)),
+    }
+
+    expected = {
+        "trainer_sha256": EXPECTED_TRAINER_SHA,
+        "model_source_sha256": EXPECTED_MODEL_SOURCE_SHA,
+        "base_checkpoint_sha256": EXPECTED_BASE_CHECKPOINT_SHA,
+        "slot_module_sha256": EXPECTED_SLOT_MODULE_SHA,
+        "smoke_script_sha256": EXPECTED_SMOKE_SCRIPT_SHA,
+    }
+    failures = [
+        f"{key} mismatch"
+        for key, expected_value in expected.items()
+        if provenance[key] != expected_value
+    ]
+
+    smoke_lock = load_json(args.smoke_dir / "A4A_1B_LOCK.json")
+    smoke_report = load_json(args.smoke_dir / "smoke_report.json")
+    contract = load_json(args.contract)
+
+    if smoke_lock.get("status") != "A4A_1B_TWO_EPOCH_SMOKE_COMPLETE":
+        failures.append("smoke lock is not complete")
+    if smoke_lock.get("smoke_checkpoint_sha256") != provenance[
+        "smoke_checkpoint_sha256"
+    ]:
+        failures.append("smoke checkpoint hash differs from lock")
+    if smoke_lock.get("smoke_report_sha256") != provenance[
+        "smoke_report_sha256"
+    ]:
+        failures.append("smoke report hash differs from lock")
+    if smoke_report.get("status") != "PASS":
+        failures.append("smoke report is not PASS")
+    if smoke_report.get("development_test_accessed") is not False:
+        failures.append("smoke report indicates development-test access")
+    if contract.get("status") != "PASS":
+        failures.append("slot contract is not PASS")
+
+    if failures:
+        payload = {"status": "FAIL", "failures": failures}
+        (args.output_dir / "coverage_failure.json").write_text(
+            json.dumps(payload, indent=2, sort_keys=True),
+            encoding="utf-8",
+        )
+        print(json.dumps(payload, indent=2), file=sys.stderr)
+        return 1
+
+    for import_root in (
+        args.repo,
+        args.repo / "scripts",
+        args.trainer.parent,
+        args.model_source.parent,
+        args.slot_module.parent,
+        args.smoke_script.parent,
+    ):
+        text = str(import_root.resolve())
+        if text not in sys.path:
+            sys.path.insert(0, text)
+
+    trainer_module = load_module(
+        args.trainer,
+        "resolved_original_v4_a3_trainer_for_a4a_1b2",
+    )
+    a3_module = load_module(
+        args.model_source,
+        "resolved_v4_a3_model_for_a4a_1b2",
+    )
+    smoke_module = load_module(
+        args.smoke_script,
+        "resolved_a4a_1b_smoke_for_a4a_1b2",
+    )
+
+    metadata = trainer_module.load_metadata(args.data_dir)
+    splits = trainer_module.load_split_indices(
+        args.data_dir,
+        metadata,
+    )
+    validation_indices = np.asarray(
+        splits["val"],
+        dtype=np.int64,
+    )
+
+    attacker_count = np.load(
+        args.data_dir / "attacker_count.npy",
+        mmap_mode="r",
+    )
+    validation_counts = np.asarray(
+        attacker_count[validation_indices],
+        dtype=np.int64,
+    )
+
+    selected_parts = []
+    selection_inventory: dict[str, Any] = {}
+
+    for count in range(NUM_SLOTS + 1):
+        matching = validation_indices[validation_counts == count]
+        selected = deterministic_even_sample(
+            matching,
+            args.samples_per_count,
+        )
+        selected_parts.append(selected)
+        selection_inventory[str(count)] = {
+            "available_validation_samples": int(matching.size),
+            "selected_samples": int(selected.size),
+            "first_selected_global_index": int(selected[0]),
+            "last_selected_global_index": int(selected[-1]),
+        }
+
+    selected_indices = np.concatenate(selected_parts)
+    # Deterministic global-index order prevents label-blocked batches.
+    selected_indices.sort()
+
+    dataset = trainer_module.V4A3MemmapDataset(
+        args.data_dir,
+        selected_indices,
+    )
+    loader = trainer_module.build_loader(
+        dataset,
+        args.batch_size,
+        False,
+        args.num_workers,
+        args.pin_memory,
+        args.persistent_workers,
+        args.prefetch_factor,
+        7,
+    )
+
+    if args.device == "cuda":
+        if not torch.cuda.is_available():
+            raise RuntimeError("CUDA requested but unavailable")
+        device = torch.device("cuda")
+    elif args.device == "cpu":
+        device = torch.device("cpu")
+    else:
+        device = torch.device(
+            "cuda" if torch.cuda.is_available() else "cpu"
+        )
+
+    base_checkpoint = torch.load(
+        args.base_checkpoint,
+        map_location="cpu",
+        weights_only=False,
+    )
+    smoke_checkpoint = torch.load(
+        args.smoke_dir / "smoke_last_model.pt",
+        map_location="cpu",
+        weights_only=False,
+    )
+
+    base_model = a3_module.A3SourcePreserveModel()
+    base_model.load_state_dict(
+        extract_state_dict(base_checkpoint),
+        strict=True,
+    )
+    model = A4aFrozenSlotModel(base_model).to(device)
+    model.load_state_dict(
+        smoke_checkpoint["model_state_dict"],
+        strict=True,
+    )
+    model.eval()
+
+    parameters = count_parameters(model)
+    if parameters["total"] != EXPECTED_TOTAL_PARAMETERS:
+        raise RuntimeError(f"unexpected total parameters: {parameters}")
+    if parameters["trainable"] != EXPECTED_TRAINABLE_PARAMETERS:
+        raise RuntimeError(f"unexpected trainable parameters: {parameters}")
+
+    adjacency = smoke_checkpoint["A_hat"].to(
+        device=device,
+        dtype=torch.float32,
+    )
+    physical_mask = smoke_checkpoint[
+        "physical_valid_port_mask"
+    ].to(
+        device=device,
+        dtype=torch.float32,
+    )
+    graph_threshold = float(
+        contract["evaluation_contract"]["graph_threshold"]
+    )
+
+    per_count: dict[int, dict[str, Any]] = {
+        count: {
+            "true_count": count,
+            "samples": 0,
+            "exact": 0,
+            "nonempty": 0,
+            "raw_duplicate": 0,
+            "raw_all_null": 0,
+            "greedy_disagreement": 0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "predicted_count_sum": 0,
+            "derived_count_correct": 0,
+        }
+        for count in range(NUM_SLOTS + 1)
+    }
+
+    matching_losses: dict[int, list[float]] = defaultdict(list)
+    logit_min = float("inf")
+    logit_max = -float("inf")
+    probability_sum_max_diff = 0.0
+    exact_uniqueness_violations = 0
+    finite_batches = 0
+
+    with torch.no_grad():
+        for batch in loader:
+            x = batch["x"].to(
+                device,
+                non_blocking=True,
+                dtype=torch.float32,
+            )
+            y_node = batch["y_node"].to(
+                device,
+                non_blocking=True,
+                dtype=torch.float32,
+            )
+            true_count_tensor = batch["attacker_count"].to(
+                device,
+                non_blocking=True,
+                dtype=torch.long,
+            )
+
+            output = model(x, adjacency, physical_mask)
+            slot_logits = output["slot_logits"]
+            slot_probabilities = output["slot_probabilities"]
+
+            if not torch.isfinite(slot_logits).all():
+                raise FloatingPointError("non-finite slot logits")
+            if not torch.isfinite(slot_probabilities).all():
+                raise FloatingPointError("non-finite slot probabilities")
+
+            finite_batches += 1
+            logit_min = min(logit_min, float(slot_logits.min().cpu()))
+            logit_max = max(logit_max, float(slot_logits.max().cpu()))
+            probability_sum_max_diff = max(
+                probability_sum_max_diff,
+                float(
+                    torch.max(
+                        torch.abs(
+                            slot_probabilities.sum(dim=-1) - 1.0
+                        )
+                    ).cpu()
+                ),
+            )
+
+            exact = exact_unique_constrained_decode(slot_logits)
+            greedy = greedy_unique_decode(slot_logits)
+            graph_probability = torch.sigmoid(
+                output["graph_logits"]
+            ).detach().cpu().numpy()
+            raw_argmax = slot_logits.argmax(
+                dim=-1
+            ).detach().cpu().numpy()
+            derived_count = derived_cardinality_probabilities(
+                slot_probabilities
+            ).argmax(dim=1).detach().cpu().numpy()
+
+            truth_array = y_node.detach().cpu().numpy() > 0.5
+            true_counts = true_count_tensor.detach().cpu().numpy()
+
+            # Exercise every matching branch on real samples.
+            for count in range(NUM_SLOTS + 1):
+                mask = true_count_tensor == count
+                if not bool(mask.any()):
+                    continue
+                loss = smoke_module.vectorized_matching_loss(
+                    slot_logits[mask],
+                    y_node[mask],
+                    null_weight=float(
+                        smoke_report["null_weight"][
+                            "applied_null_weight"
+                        ]
+                    ),
+                )
+                if not torch.isfinite(loss):
+                    raise FloatingPointError(
+                        f"non-finite matching loss for count {count}"
+                    )
+                matching_losses[count].append(
+                    float(loss.detach().cpu())
+                )
+
+            for sample in range(int(x.shape[0])):
+                count = int(true_counts[sample])
+                row = per_count[count]
+                truth = set(
+                    np.flatnonzero(truth_array[sample])
+                    .astype(int)
+                    .tolist()
+                )
+                predicted = (
+                    set(exact["predicted_sets"][sample])
+                    if graph_probability[sample] >= graph_threshold
+                    else set()
+                )
+                greedy_set = (
+                    set(greedy["predicted_sets"][sample])
+                    if graph_probability[sample] >= graph_threshold
+                    else set()
+                )
+
+                exact_list = exact["predicted_sets"][sample]
+                if len(exact_list) != len(set(exact_list)):
+                    exact_uniqueness_violations += 1
+
+                raw_real = [
+                    int(value)
+                    for value in raw_argmax[sample]
+                    if int(value) != NULL_CLASS
+                ]
+
+                tp, fp, fn = set_counts(predicted, truth)
+                row["samples"] += 1
+                row["exact"] += int(predicted == truth)
+                row["nonempty"] += int(bool(predicted))
+                row["raw_duplicate"] += int(
+                    len(raw_real) != len(set(raw_real))
+                )
+                row["raw_all_null"] += int(not raw_real)
+                row["greedy_disagreement"] += int(
+                    greedy_set != predicted
+                )
+                row["tp"] += tp
+                row["fp"] += fp
+                row["fn"] += fn
+                row["predicted_count_sum"] += len(predicted)
+                row["derived_count_correct"] += int(
+                    int(derived_count[sample]) == count
+                )
+
+    finalized = {
+        str(count): finalize_metrics(row)
+        for count, row in per_count.items()
+    }
+
+    coverage_checks = {
+        "all_counts_present": all(
+            finalized[str(count)]["samples"]
+            == args.samples_per_count
+            for count in range(NUM_SLOTS + 1)
+        ),
+        "matching_loss_exercised_for_all_counts": all(
+            bool(matching_losses[count])
+            for count in range(NUM_SLOTS + 1)
+        ),
+        "all_outputs_finite": finite_batches > 0,
+        "slot_probabilities_normalized": (
+            probability_sum_max_diff <= 1e-6
+        ),
+        "exact_decode_unique": exact_uniqueness_violations == 0,
+        "parameter_count_pass": (
+            parameters["total"] == EXPECTED_TOTAL_PARAMETERS
+            and parameters["trainable"]
+            == EXPECTED_TRAINABLE_PARAMETERS
+        ),
+        "test_loader_constructed": False,
+        "development_test_accessed": False,
+    }
+
+    positive_checks = {
+        key: coverage_checks[key]
+        for key in (
+            "all_counts_present",
+            "matching_loss_exercised_for_all_counts",
+            "all_outputs_finite",
+            "slot_probabilities_normalized",
+            "exact_decode_unique",
+            "parameter_count_pass",
+        )
+    }
+    prohibited_access_checks = {
+        key: coverage_checks[key]
+        for key in (
+            "test_loader_constructed",
+            "development_test_accessed",
+        )
+    }
+
+    coverage_integrity_pass = (
+        all(value is True for value in positive_checks.values())
+        and all(
+            value is False
+            for value in prohibited_access_checks.values()
+        )
+    )
+
+    if not coverage_integrity_pass:
+        raise RuntimeError(
+            "label-coverage integrity check failed: "
+            f"positive={positive_checks}, "
+            f"prohibited_access={prohibited_access_checks}"
+        )
+
+    report = {
+        "status": "PASS",
+        "designation": (
+            "V4-A4a-1B2 Deterministic Validation Label-Coverage Audit"
+        ),
+        "purpose": (
+            "Exercise counts 0-4 after the original bounded smoke validation "
+            "happened to contain only normal samples."
+        ),
+        "device": str(device),
+        "selection_inventory": selection_inventory,
+        "selected_sample_count": int(selected_indices.size),
+        "parameter_count": parameters,
+        "graph_threshold": graph_threshold,
+        "per_true_count_diagnostics": finalized,
+        "matching_loss_by_true_count": {
+            str(count): {
+                "batch_values": matching_losses[count],
+                "mean": float(np.mean(matching_losses[count])),
+            }
+            for count in range(NUM_SLOTS + 1)
+        },
+        "numerical_diagnostics": {
+            "finite_batches": finite_batches,
+            "slot_logit_min": logit_min,
+            "slot_logit_max": logit_max,
+            "slot_probability_sum_max_abs_diff": (
+                probability_sum_max_diff
+            ),
+            "exact_uniqueness_violations": (
+                exact_uniqueness_violations
+            ),
+        },
+        "coverage_checks": coverage_checks,
+        "coverage_integrity_pass": coverage_integrity_pass,
+        "positive_integrity_checks": positive_checks,
+        "prohibited_access_checks": prohibited_access_checks,
+        "interpretation_boundary": (
+            "Metrics are diagnostic only. This subset was label-stratified "
+            "to exercise all cardinalities and must not be used for model, "
+            "threshold, loss-weight or policy selection."
+        ),
+        "provenance": provenance,
+        "training_performed": False,
+        "optimizer_constructed": False,
+        "validation_selection_performed": False,
+        "threshold_search_performed": False,
+        "test_loader_constructed": False,
+        "test_evaluated": False,
+        "development_test_accessed": False,
+        "ready_for_a4a_1c_training_contract_freeze": True,
+    }
+
+    report_path = args.output_dir / "label_coverage_audit.json"
+    trainer_module.atomic_json_dump(report_path, report)
+
+    lock = {
+        "status": "A4A_1B2_LABEL_COVERAGE_AUDIT_COMPLETE",
+        "smoke_checkpoint_sha256": provenance[
+            "smoke_checkpoint_sha256"
+        ],
+        "smoke_report_sha256": provenance["smoke_report_sha256"],
+        "label_coverage_audit_sha256": sha256_file(report_path),
+        "training_performed": False,
+        "validation_selection_performed": False,
+        "threshold_search_performed": False,
+        "test_loader_constructed": False,
+        "development_test_accessed": False,
+    }
+    trainer_module.atomic_json_dump(
+        args.output_dir / "A4A_1B2_LOCK.json",
+        lock,
+    )
+    (
+        args.output_dir
+        / "V4_A4A_1B2_LABEL_COVERAGE_AUDIT_PASS"
+    ).write_text(
+        "V4_A4A_1B2_LABEL_COVERAGE_AUDIT_PASS\n",
+        encoding="utf-8",
+    )
+
+    print(json.dumps(report, indent=2, sort_keys=True))
+    print("V4_A4A_1B2_LABEL_COVERAGE_AUDIT_PASS")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

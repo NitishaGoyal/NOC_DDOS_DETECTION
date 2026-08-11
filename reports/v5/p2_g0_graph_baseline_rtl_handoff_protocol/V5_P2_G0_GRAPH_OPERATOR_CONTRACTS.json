@@ -1,0 +1,45 @@
+{
+  "common_architecture": {
+    "activation": "same activation for every graph operator",
+    "dropout": "same probability and placement for every graph operator",
+    "edge_index": "fixed 4x4 bidirectional physical mesh with 48 directed edges; no learned or scenario-dependent edges",
+    "graph_layer_count": 2,
+    "graph_width": "equal to the B3 temporal encoder output width; G1 preflight must resolve and record the numeric width from frozen model source before training",
+    "heads": "identical task-specific heads",
+    "operator_specific_hyperparameter_search": false,
+    "residual_policy": "same residual policy for every graph operator",
+    "temporal_encoder": "unchanged B3 causal depthwise-separable Conv1D encoder"
+  },
+  "contracts_sha256": "2e9c81967b0737bd06b9636bd2e00412ffaf1388de89e1dd78e14e4ec395243f",
+  "gat": {
+    "attention_normalization": "softmax over incoming neighbors including self",
+    "head_count": "single common head configuration frozen in G1 preflight",
+    "negative_slope": 0.2,
+    "promotion_required_for_later_tasks": true,
+    "self_loops": true,
+    "status": "screening_only"
+  },
+  "gcnconv": {
+    "bias": true,
+    "edge_weights": "unit",
+    "equation": "H' = D_hat^(-1/2) A_hat D_hat^(-1/2) H W + b",
+    "normalization": "symmetric",
+    "self_loops": true
+  },
+  "graphconv": {
+    "bias": true,
+    "edge_weights": "unit",
+    "equation": "h'_i = W_root h_i + W_neigh sum_{j in N(i)} h_j + b",
+    "neighbor_aggregation": "unnormalized sum",
+    "rtl_preference_reason": "fixed neighbor lists, degree <= 4, additions plus two linear transforms, no attention softmax",
+    "self_feature": "explicit root transform"
+  },
+  "hardware_reference_rule": {
+    "float_equivalence_max_abs_error": 1e-06,
+    "pytorch_geometric_is_not_rtl_specification": true,
+    "ranking_and_decision_equivalence": true,
+    "selected_operator_must_be_rewritten_explicitly": true
+  },
+  "name": "V5_P2_G0_GRAPH_OPERATOR_CONTRACTS",
+  "version": 1
+}

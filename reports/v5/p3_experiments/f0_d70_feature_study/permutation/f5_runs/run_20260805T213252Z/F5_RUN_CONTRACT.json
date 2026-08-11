@@ -1,0 +1,86 @@
+{
+  "batch_size": 256,
+  "batch_size_source": "official_D1_exporter",
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "VALIDATION-EXPLORATORY",
+  "created_utc": "2026-08-05T21:32:55.805654+00:00",
+  "data_link": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+  "data_root": "/home/zira/tools/architecture/gem5/experiments/V5_P3_1500_D70_TRANCHE_A_PRELIMINARY",
+  "device": "cuda",
+  "groups": {
+    "buffer_pressure": [
+      40,
+      55
+    ],
+    "directional_traffic_volume": [
+      0,
+      10
+    ],
+    "flow_control_stalls": [
+      55,
+      70
+    ],
+    "inter_flit_timing": [
+      10,
+      30
+    ],
+    "queue_activity": [
+      30,
+      40
+    ]
+  },
+  "metric_formula_change": false,
+  "model_or_checkpoint_change": false,
+  "run_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/permutation/f5_runs/run_20260805T213252Z",
+  "runtime": {
+    "cuda_available": true,
+    "cuda_device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": false,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": true,
+    "cudnn_version": 92000,
+    "deterministic_algorithms_enabled": true,
+    "device": "cuda",
+    "float32_matmul_precision": "highest",
+    "torch_cuda_version": "13.0",
+    "torch_version": "2.12.1+cu130"
+  },
+  "sealed_test_access": false,
+  "seeds": [
+    5101,
+    5102,
+    5103,
+    5104,
+    5105,
+    5106,
+    5107,
+    5108,
+    5109,
+    5110
+  ],
+  "source_files": {
+    "adapter": {
+      "path": "/home/zira/research/projects/GNN-2d/src/evaluation/v5_p3_f4m_canonical_metric_adapter.py",
+      "sha256": "9e2a9f36339550b86dee6d19e3b0403a9f70c06c8ad9afcf20c0c4797eba4384"
+    },
+    "checkpoint": {
+      "path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+      "sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979"
+    },
+    "exporter": {
+      "path": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+      "sha256": "edf1d5bebf9c21cd8d242b1f64afcecdb538a7b2b91d828b0b1340f06c065204"
+    },
+    "loader": {
+      "path": "/home/zira/research/projects/GNN-2d/src/data/v5_p3_tranche_a_guarded_loader.py",
+      "sha256": "32e232c6c3a7abda04f9de1c39c5e8e178021f1e5f3cce943938994a0b32c9de"
+    },
+    "model": {
+      "path": "/home/zira/research/projects/GNN-2d/src/models/v6_p0_dynamic70_task_d_full_multitask_count4.py",
+      "sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150"
+    }
+  },
+  "stage": "V5_P3_F5_DYNAMIC70_GROUP_BLOCK_PERMUTATION",
+  "threshold_change": false
+}

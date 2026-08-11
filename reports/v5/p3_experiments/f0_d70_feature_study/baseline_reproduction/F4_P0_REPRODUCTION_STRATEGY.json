@@ -1,0 +1,16 @@
+{
+  "actual_F4_evaluation_authorized": true,
+  "baseline_reproduction_tolerance": 1e-06,
+  "frozen_checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p3_a4_tranche_a_preliminary_diagnostic_seed107/V5_P3_A4_TRANCHE_A_PRELIMINARY_DIAGNOSTIC_SEED107_BEST.pt",
+  "frozen_checkpoint_sha256": "e0eb05e7a9357033bc233bad146754766e6b7efd390f90035accfbd3fd3f8979",
+  "recommended_strategy": "reuse_official_evaluator_with_frozen_checkpoint_and_guarded_validation_loader",
+  "requirements_for_actual_F4": [
+    "use the frozen A4 seed-107 checkpoint",
+    "use the guarded Tranche-A validation split",
+    "use the official A4/A5 metric implementation",
+    "load no sealed-test or A-test tensor",
+    "compare every frozen metric within 1e-6",
+    "write raw metric vector before any perturbation"
+  ],
+  "validation_item_expectation": 13863
+}

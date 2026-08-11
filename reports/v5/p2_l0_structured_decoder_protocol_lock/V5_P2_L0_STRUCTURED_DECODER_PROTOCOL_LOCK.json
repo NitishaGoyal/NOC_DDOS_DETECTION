@@ -1,0 +1,380 @@
+{
+  "authorization": {
+    "E1_must_precede_E2_and_L4": true,
+    "E2_and_L4_must_complete_before_L5": true,
+    "L0_authorizes_L1_route_library_generation": true,
+    "L0_authorizes_test_access": false,
+    "L0_authorizes_validation_prediction_export": false,
+    "L1_must_pass_before_L2_and_L3": true,
+    "L2_and_L3_must_freeze_implementations_before_E1": true
+  },
+  "beam_decoder_policy": {
+    "beam_search": {
+      "K_values_evaluated": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "beam_width_grid": [
+        4,
+        8,
+        16
+      ],
+      "deterministic_state_ordering": true,
+      "distinct_source_mask_enforced": true,
+      "incremental_union_scoring": "add role-logit contributions only for newly introduced role bits"
+    },
+    "candidate_generation": {
+      "all_16_sources_considered": true,
+      "per_source_top_B_grid": [
+        1,
+        2,
+        4
+      ],
+      "route_ties_resolved_by_lower_route_id": true
+    },
+    "eligible_configuration_selection": [
+      "lowest per-source B",
+      "lowest beam width",
+      "higher structured-hypothesis agreement",
+      "higher graph-decision agreement"
+    ],
+    "fixed_point_quantization": "not part of L0 or the P2 neural/decoder accuracy claim; a separate post-P2 hardware quantization contract must freeze word lengths before RTL",
+    "name": "Hardware-Oriented Deterministic Beam Decoder",
+    "same_route_library_as_A1": true,
+    "same_score_as_A1": true,
+    "single_route_candidate_score": "role-logit contribution of that route's source, transit, victim, and path masks; graph and count terms are added at complete-state scoring",
+    "system_id": "A2",
+    "validation_equivalence_requirements": {
+      "failure_policy": "If no grid configuration satisfies every requirement, L4 is HOLD; A2 is not authorized for blind test without a prospective amendment.",
+      "graph_decision_agreement_minimum": 0.999,
+      "maximum_metric_loss_percentage_points": 0.1,
+      "structured_hypothesis_agreement_minimum": 0.99
+    }
+  },
+  "checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+  "created_utc": "2026-07-27T20:26:05.362886+00:00",
+  "decoder_inputs_allowed": [
+    "graph_logit",
+    "count_logits_K1_to_K4",
+    "source_logits_16",
+    "transit_logits_16",
+    "victim_logits_16",
+    "path_logits_16",
+    "frozen_router_coordinates",
+    "frozen_physical_adjacency",
+    "frozen_directional_port_legality",
+    "frozen_240_route_table"
+  ],
+  "decoder_inputs_forbidden": [
+    "run_id",
+    "workload_name",
+    "profile",
+    "attack_strength",
+    "simulation_seed",
+    "split_id",
+    "mapping_id",
+    "scenario_id",
+    "category_metadata",
+    "ground_truth_labels"
+  ],
+  "evidence_hashes": {
+    "adjacency_sha256": "a0deaedb2d92398154be3e6a62f03615e5fc15dfc1b48590a031b940ad6eda84",
+    "checkpoint_json_sha256": "b5483ef18342e6ee21e35fbb2241e5ab40eef5bf1725999314c6685d8e4848b2",
+    "checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+    "coordinates_sha256": "b0cc6b9e894f2b076f02ae2cf15541f2786c37930ed1facccb2574ea4feec2e1",
+    "e0_json_sha256": "caff30754e6371427834a577f454200393f0f43d4aacb867fd83842492fa191d",
+    "e0_marker_sha256": "f2be6e1c2b6eb98697dd0a55a357e8d935d9964525ae01d9783874309923aec6",
+    "e0a_json_sha256": "12c26916d095322071acbf9363d0330700cba66bef3f6b662baf2a011583ff9b",
+    "e0a_lock_sha256": "fd2ef9d1dfa2d45857cfabbca2c19e75df4e1033dd12a1b92d59d352060056d3",
+    "e0a_marker_sha256": "39186e78f4e4a2dc5c01f1fe1779a0f78ab918b62bc83075d89ba12494544361",
+    "e0a_r1_json_sha256": "740f720c7fc98ea9a0b89b7af71bddea8e4c5f327fcf37ca7e57397f32951701",
+    "e0a_r1_marker_sha256": "339b47a6de717f959071d5ea7b70851ac398256191fd6cd9ca96a9fdaa66a4ff",
+    "edge_index_sha256": "f6b8050bc158de509b0ff1c5d1d7cb1ffe32c08b0f2287398270b1b891b57aff",
+    "r0_json_sha256": "5adddbb472567c9258fcdb7d149cd0ae0052dffbd944af5bdd29b78fe290fde3",
+    "r0_marker_sha256": "79025cc8f860454e5854c35327e3cb0077e05592b0982c4600a5198eedbff9e5",
+    "topology_json_sha256": "2adbf1c99065bb36d9e063c098709e23f410c8882a8112d917979cee7266ea34"
+  },
+  "exact_decoder_policy": {
+    "K_values_evaluated": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "approximate_solution_allowed": false,
+    "backend_policy": "L2 must freeze one exact backend, implementation version, solver version, numeric tolerances, source hash, and deterministic settings before E1. Changing the backend after E1 is forbidden.",
+    "beam_search_allowed": false,
+    "candidate_routes": "all 240 ordered legal XY routes",
+    "equal_optimum_policy": "apply the frozen hypothesis tie-break exactly",
+    "incomplete_solution_policy": "fail_hard_and_do_not_authorize_E1_or_test",
+    "name": "Exact Deterministic Legal-Route Decoder",
+    "optimality_gap": 0,
+    "optimality_required": true,
+    "source_candidate_pruning_allowed": false,
+    "system_id": "A1",
+    "threading": "single_thread_deterministic",
+    "time_limit_allowed": false,
+    "timeout_fallback_allowed": false,
+    "victim_candidate_pruning_allowed": false
+  },
+  "hypothesis_contract": {
+    "attack_hypothesis": {
+      "K_values": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "all_routes_must_be_legal_XY_routes": true,
+      "duplicate_source_routes_allowed": false,
+      "exactly_K_distinct_sources": true,
+      "exactly_K_routes": true,
+      "one_source_targeting_multiple_victims_allowed": false,
+      "one_victim_per_selected_source": true,
+      "overlapping_paths_allowed": true,
+      "shared_victim_across_sources_allowed": true,
+      "symbol": "H"
+    },
+    "normal_hypothesis": {
+      "attacker_count": 0,
+      "path_mask": 0,
+      "route_set": [],
+      "score": 0.0,
+      "source_mask": 0,
+      "symbol": "H0",
+      "transit_mask": 0,
+      "victim_mask": 0
+    }
+  },
+  "required_L1_tests": [
+    "route_count_is_240",
+    "route_ids_are_contiguous_0_to_239",
+    "router_coordinate_round_trip",
+    "all_hops_are_cardinal_and_adjacent",
+    "all_hops_use_valid_physical_ports",
+    "all_routes_follow_X_then_Y",
+    "one_hop_K1",
+    "corner_to_corner_K1",
+    "reverse_direction",
+    "edge_source",
+    "normal_empty_output",
+    "K2_disjoint_paths",
+    "K2_shared_victim",
+    "K2_overlapping_paths",
+    "K4_distinct_sources",
+    "source_also_transit",
+    "source_also_victim",
+    "diagonal_hop_rejected",
+    "nonadjacent_hop_rejected",
+    "wrong_dimension_order_rejected",
+    "invalid_physical_port_rejected",
+    "duplicate_source_routes_rejected",
+    "count_source_mismatch_rejected",
+    "equal_score_tie_break_deterministic"
+  ],
+  "route_semantics": {
+    "contract_name": "V5_P2_L0_ROUTE_AND_LABEL_SEMANTICS",
+    "multi_route_union_semantics": {
+      "each_router_counted_once_per_role_union": true,
+      "overlapping_paths_allowed": true,
+      "path_union": "bitwise OR of all selected path masks",
+      "role_overlap_across_routes_allowed": true,
+      "shared_transit_routers_allowed": true,
+      "shared_victims_allowed": true,
+      "source_may_be_transit_on_another_route": true,
+      "source_may_be_victim_on_another_route": true,
+      "source_union": "bitwise OR of all selected source masks",
+      "transit_union": "bitwise OR of all selected transit masks",
+      "victim_union": "bitwise OR of all selected victim masks"
+    },
+    "ports": {
+      "inter_router_hop_directions": {
+        "east": "same row, next_column = current_column + 1",
+        "north": "next_row = current_row - 1, same column",
+        "south": "next_row = current_row + 1, same column",
+        "west": "same row, next_column = current_column - 1"
+      },
+      "local_ports_used_for_inter_router_legality": false,
+      "model_physical_port_mask_order": [
+        "input_local",
+        "input_north",
+        "input_east",
+        "input_south",
+        "input_west",
+        "output_local",
+        "output_north",
+        "output_east",
+        "output_south",
+        "output_west"
+      ],
+      "route_legality_uses": "canonical static adjacency and valid inter-router directional ports"
+    },
+    "routing": {
+      "algorithm": "deterministic_XY",
+      "dimension_order": "X_then_Y",
+      "one_route_per_ordered_source_victim_pair": true,
+      "ordered_route_count": 240,
+      "route_id_equation": "route_id = 15 * source_router + (victim_router if victim_router < source_router else victim_router - 1)",
+      "route_order": "lexicographic ascending by (source_router, victim_router), excluding source_router == victim_router",
+      "source_equals_victim_allowed": false,
+      "x_phase": "change column one hop at a time until destination column",
+      "y_phase": "change row one hop at a time until destination row"
+    },
+    "single_route_masks": {
+      "path_identity": "path = source union transit union victim",
+      "path_mask": "contains source, every transit router, and victim",
+      "source_mask": "contains only the route source",
+      "transit_mask": "contains route nodes excluding source and victim",
+      "victim_mask": "contains only the route victim"
+    },
+    "topology": {
+      "coordinate_definition": {
+        "column": "x coordinate",
+        "row": "y coordinate",
+        "valid_columns": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "valid_rows": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "x": "column",
+        "y": "row"
+      },
+      "diagonal_hops_allowed": false,
+      "directed_physical_edges": 48,
+      "edge_order": "lexicographic ascending by (source_router, destination_router)",
+      "kind": "4x4_2D_cardinal_mesh",
+      "router_count": 16,
+      "router_id_equation": "router_id = row * 4 + column",
+      "router_numbering": "row_major",
+      "undirected_physical_links": 24,
+      "wraparound_links_allowed": false
+    }
+  },
+  "score_contract": {
+    "aggregation": {
+      "extra_route_length_penalty_used": false,
+      "length_normalization_used": false,
+      "path": "sum once over path union",
+      "per_route_duplicate_counting_allowed": false,
+      "source": "sum once over source union",
+      "transit": "sum once over transit union",
+      "victim": "sum once over victim union"
+    },
+    "attack_score_formula": "Q(H) = 1.0*g + 0.5*log_softmax(c)[K-1] + 1.0*sum(s_i for i in source_union) + 0.5*sum(t_i for i in transit_union) + 0.75*sum(v_i for i in victim_union) + 0.5*sum(p_i for i in path_union)",
+    "best_attack_hypothesis": "H_star = argmax over all legal H of Q(H)",
+    "continuous_margin": "M = Q(H_star) - Q(H0) = Q(H_star)",
+    "contract_name": "V5_P2_L0_STRUCTURED_SCORE",
+    "count_evidence": "log_softmax(c)[K-1]",
+    "count_logits": "c[4] corresponding to K1,K2,K3,K4",
+    "decision": "attack iff M >= tau; otherwise emit H0",
+    "graph_logit": "g",
+    "input_domain": "raw_frozen_float_logits",
+    "manual_score_or_threshold_adjustment_allowed": false,
+    "normal_score": 0.0,
+    "numeric_type_for_A1": "float64",
+    "path_logits": "p[16]",
+    "source_logits": "s[16]",
+    "tau_selected_on": "immutable E1 validation archive only",
+    "transit_logits": "t[16]",
+    "victim_logits": "v[16]",
+    "weight_origin": "Inherited exactly from the frozen B1/Task-D multitask loss weights; no validation grid over score weights is allowed.",
+    "weights": {
+      "alpha_count": 0.5,
+      "alpha_graph": 1.0,
+      "alpha_path": 0.5,
+      "alpha_source": 1.0,
+      "alpha_transit": 0.5,
+      "alpha_victim": 0.75
+    }
+  },
+  "security_boundary": {
+    "dataset_directories_scanned_by_L0": false,
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false
+  },
+  "selected_epoch": 25,
+  "selected_full_architecture": "Causal Depthwise-Separable Conv1D Temporal Encoder + Two-Layer GraphConv",
+  "selected_seed": 107,
+  "stage": "V5_P2_L0_STRUCTURED_DECODER_PROTOCOL_LOCK",
+  "state_after_L0": {
+    "architecture_selected": true,
+    "beam_decoder_implemented": false,
+    "checkpoint_selected": true,
+    "decoder_frozen": false,
+    "decoder_parameters_frozen": false,
+    "exact_decoder_implemented": false,
+    "next_stage": "V5_P2_L1_ROUTE_LIBRARY_AND_UNIT_TESTS",
+    "raw_decoder_boundary_locked": true,
+    "raw_thresholds_frozen": false,
+    "ready_for_one_shot_test": false,
+    "route_library_frozen": false,
+    "structured_decoder_protocol_locked": true,
+    "threshold_protocol_locked": true,
+    "validation_predictions_exported": false
+  },
+  "status": "COMPLETE",
+  "temporal_frontend_reference": "B3",
+  "tie_break_contract": {
+    "exact_score_tie_tolerance": 1e-12,
+    "hypothesis_tie_break_order": [
+      "lower K",
+      "lexicographically lower sorted route_id tuple"
+    ],
+    "no_semantic_shorter_route_tie_break": true,
+    "route_candidate_tie_break": [
+      "higher candidate score",
+      "lower route_id"
+    ],
+    "threshold_tie_break_order": [
+      "higher graph balanced accuracy",
+      "lower graph false-positive rate",
+      "higher strict all-task exactness",
+      "higher macro role F1",
+      "threshold closest to zero",
+      "lower numeric threshold"
+    ]
+  },
+  "validation_selection_policy": {
+    "beam_margin_threshold_candidates": {
+      "candidate_generation": "same as A1",
+      "prediction_rule": "attack iff margin >= tau_A2",
+      "source": "unique A2 validation margins for each frozen grid configuration"
+    },
+    "exact_margin_threshold_candidates": {
+      "candidates": [
+        "np.nextafter(minimum_margin, -infinity)",
+        "0.0",
+        "midpoint between each adjacent pair of unique margins",
+        "np.nextafter(maximum_margin, +infinity)"
+      ],
+      "prediction_rule": "attack iff margin >= tau",
+      "source": "unique A1 validation margins from immutable E1 archive"
+    },
+    "macro_role_F1_definition": "arithmetic mean of flattened source, transit, victim, and path F1",
+    "per_attack_kind_selection_allowed": false,
+    "per_router_selection_allowed": false,
+    "per_scenario_selection_allowed": false,
+    "primary_objective": "maximize graph balanced accuracy",
+    "strict_all_task_exactness_definition": "graph decision correct, decoded count correct, and source, transit, victim, and path masks all exactly match their targets",
+    "test_based_selection_allowed": false,
+    "tie_break_order": [
+      "lower graph false-positive rate",
+      "higher strict all-task exactness",
+      "higher macro role F1",
+      "threshold closest to zero",
+      "lower numeric threshold"
+    ]
+  }
+}

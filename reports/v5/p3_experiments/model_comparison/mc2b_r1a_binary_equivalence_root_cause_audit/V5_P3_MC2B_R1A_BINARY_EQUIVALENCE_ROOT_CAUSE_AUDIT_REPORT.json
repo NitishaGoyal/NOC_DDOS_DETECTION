@@ -1,0 +1,453 @@
+{
+  "authoritative_forward_source": "    def forward(self, x: torch.Tensor, physical_port_mask: torch.Tensor) -> dict[str, torch.Tensor]:\n        node_embedding = self.encode_pre_graph(x, physical_port_mask)\n        batch_size, num_nodes, embedding_dim = node_embedding.shape\n        flat = node_embedding.reshape(batch_size * num_nodes, embedding_dim)\n        edges = batched_edge_index(self.base_edge_index, batch_size, num_nodes, flat.device)\n        flat = self.activation(self.graph1(flat, edges))\n        flat = self.activation(self.graph2(flat, edges))\n        node_embedding = flat.reshape(batch_size, num_nodes, embedding_dim)\n        source_logits = self.source_head(node_embedding).squeeze(-1)\n        transit_logits = self.transit_head(node_embedding).squeeze(-1)\n        victim_logits = self.victim_head(node_embedding).squeeze(-1)\n        path_logits = self.path_head(node_embedding).squeeze(-1)\n        pooled = torch.cat((node_embedding.mean(dim=1), node_embedding.amax(dim=1)), dim=-1)\n        graph_embedding = self.graph_projection(pooled)\n        outputs = {'attack_logits': self.attack_head(graph_embedding).squeeze(-1), 'count_logits': self.count_head(graph_embedding), 'source_logits': source_logits, 'transit_logits': transit_logits, 'victim_logits': victim_logits, 'path_logits': path_logits}\n        expected = {'attack_logits': (batch_size,), 'count_logits': (batch_size, 4), 'source_logits': (batch_size, 16), 'transit_logits': (batch_size, 16), 'victim_logits': (batch_size, 16), 'path_logits': (batch_size, 16)}\n        for key, shape in expected.items():\n            if tuple(outputs[key].shape) != shape:\n                raise RuntimeError(f'{key} shape={tuple(outputs[key].shape)}, expected {shape}')\n        return outputs\n",
+  "binary_forward_source": "    def forward(self, x, physical_port_mask):\n        b, n, f, t = x.shape\n        flat = x.reshape(b * n, f, t)\n        h = self.input_projection(flat)\n        for block in self.temporal_blocks:\n            h = block(h)\n        h = h[:, :, -1].view(b, n, NODE_DIM)\n        node = self.activation(\n            self.node_projection(\n                torch.cat(\n                    (h, physical_port_mask.to(dtype=h.dtype)),\n                    dim=-1,\n                )\n            )\n        )\n        if self.with_graphconv:\n            edge = _batch_edges(self.base_edge_index, b, n, x.device)\n            node_flat = node.reshape(b * n, NODE_DIM)\n            node_flat = self.activation(self.graph1(node_flat, edge))\n            node_flat = self.activation(self.graph2(node_flat, edge))\n            node = node_flat.view(b, n, NODE_DIM)\n        pooled = torch.cat((node.mean(dim=1), node.amax(dim=1)), dim=-1)\n        graph_embedding = self.graph_projection(pooled)\n        return {\"attack_logits\": self.attack_head(graph_embedding).squeeze(-1)}\n",
+  "checkpoint_deserialization": false,
+  "classification": "ENGINEERING_DIAGNOSTIC",
+  "conv1d": {
+    "final_attack_logit_max_abs_diff": 0.0014457404613494873,
+    "first_divergent_module": "temporal_blocks.0",
+    "trace": [
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.0
+        ],
+        "module": "input_projection",
+        "shape_equal": true,
+        "status": "MATCH"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09110745787620544
+        ],
+        "module": "temporal_blocks.0",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09298628568649292
+        ],
+        "module": "temporal_blocks.1",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09111759066581726
+        ],
+        "module": "temporal_blocks.2",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09219241142272949
+        ],
+        "module": "temporal_blocks.3",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            2,
+            16,
+            64
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            2,
+            16,
+            64
+          ]
+        ],
+        "max_abs_diffs": [
+          0.02363741397857666
+        ],
+        "module": "node_projection",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            2,
+            64
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            2,
+            64
+          ]
+        ],
+        "max_abs_diffs": [
+          0.008384570479393005
+        ],
+        "module": "graph_projection",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            2,
+            1
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            2,
+            1
+          ]
+        ],
+        "max_abs_diffs": [
+          0.0014457404613494873
+        ],
+        "module": "attack_head",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      }
+    ]
+  },
+  "cuda_used": false,
+  "dataset_constructed": false,
+  "final_source_sha256": "ce1ae2fb24ca251c1fd11097be94ec50d21f7f4bf4bc1cf61f622bc5fe966150",
+  "graphconv": {
+    "final_attack_logit_max_abs_diff": 0.0009369254112243652,
+    "first_divergent_module": "temporal_blocks.0",
+    "trace": [
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.0
+        ],
+        "module": "input_projection",
+        "shape_equal": true,
+        "status": "MATCH"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09110745787620544
+        ],
+        "module": "temporal_blocks.0",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09298628568649292
+        ],
+        "module": "temporal_blocks.1",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09111759066581726
+        ],
+        "module": "temporal_blocks.2",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64,
+            32
+          ]
+        ],
+        "max_abs_diffs": [
+          0.09219241142272949
+        ],
+        "module": "temporal_blocks.3",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            2,
+            16,
+            64
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            2,
+            16,
+            64
+          ]
+        ],
+        "max_abs_diffs": [
+          0.02363741397857666
+        ],
+        "module": "node_projection",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64
+          ]
+        ],
+        "max_abs_diffs": [
+          0.046057432889938354
+        ],
+        "module": "graph1",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            32,
+            64
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            32,
+            64
+          ]
+        ],
+        "max_abs_diffs": [
+          0.043294817209243774
+        ],
+        "module": "graph2",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            2,
+            64
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            2,
+            64
+          ]
+        ],
+        "max_abs_diffs": [
+          0.017157375812530518
+        ],
+        "module": "graph_projection",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      },
+      {
+        "binary_present": true,
+        "binary_shapes": [
+          [
+            2,
+            1
+          ]
+        ],
+        "full_present": true,
+        "full_shapes": [
+          [
+            2,
+            1
+          ]
+        ],
+        "max_abs_diffs": [
+          0.0009369254112243652
+        ],
+        "module": "attack_head",
+        "shape_equal": true,
+        "status": "DIVERGE"
+      }
+    ]
+  },
+  "observed_original_stop_mismatch_conv1d": 0.0014457404613494873,
+  "optimizer_step": false,
+  "production_checkpoint_loaded": false,
+  "scientific_model_inference": false,
+  "sealed_test_access": false,
+  "stage": "V5_P3_MC2B_R1A_BINARY_EQUIVALENCE_ROOT_CAUSE_AUDIT",
+  "status": "PASS",
+  "synthetic_inputs_only": true,
+  "test_evaluation": false,
+  "training_performed": false,
+  "validation_evaluation": false,
+  "zoo_source_sha256": "30c38e54eaf775755995a9c0002517608eb105a17bc9de5a80da929962fa5637"
+}

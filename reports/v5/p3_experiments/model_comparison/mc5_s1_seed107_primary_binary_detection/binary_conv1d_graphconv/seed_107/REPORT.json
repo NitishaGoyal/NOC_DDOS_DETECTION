@@ -1,0 +1,61 @@
+{
+  "artifacts": {
+    "best_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s1_seed107_primary_binary_detection/binary_conv1d_graphconv/seed_107/BEST.pt",
+    "best_checkpoint_sha256": "99cf2d7e3e0d011b8cac3bbb71fb040f5d9b248639a0426e6d20fe4f0cae5c9d",
+    "history_csv": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s1_seed107_primary_binary_detection/binary_conv1d_graphconv/seed_107/EPOCHS.csv",
+    "history_csv_sha256": "b2d0ffda1b46062196949c9424f2471fb7ef55188abc09533de37a906e0d6910",
+    "last_checkpoint": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/model_comparison/mc5_s1_seed107_primary_binary_detection/binary_conv1d_graphconv/seed_107/LAST.pt",
+    "last_checkpoint_sha256": "d4547191088b0cdfe70aad926977c953db2892f854a676fc2525672bfcab6727"
+  },
+  "batch_size": 256,
+  "best_epoch": 4,
+  "best_validation": {
+    "graph": {
+      "accuracy": 0.7991486905706658,
+      "auroc": 0.8913023922023641,
+      "average_precision": 0.6703118351280661,
+      "f1": 0.723836920940383,
+      "fn": 227,
+      "fp": 5341,
+      "fpr": 0.26443212199227645,
+      "precision": 0.5773856622883368,
+      "recall": 0.9698298777246146,
+      "threshold": 0.5,
+      "tn": 14857,
+      "tp": 7297
+    },
+    "loss": {
+      "graph": 0.5026519957503327,
+      "total": 0.5026519957503327
+    },
+    "selection_components": {
+      "graph_auroc": 0.8913023922023641,
+      "graph_average_precision": 0.6703118351280661
+    },
+    "selection_score": 0.780807113665215
+  },
+  "elapsed_seconds_this_invocation": 1695.2769331932068,
+  "epochs_completed": 16,
+  "governance": {
+    "decoder_applied": false,
+    "persistence_applied": false,
+    "sealed_test_access": false,
+    "selection_rule_frozen_before_mc5_training": true,
+    "test_dataset_constructed": false,
+    "test_tensor_loaded": false,
+    "threshold_fixed_0_5": true,
+    "threshold_tuning_performed": false,
+    "validation_used_for_checkpoint_selection": true
+  },
+  "model_id": "binary_conv1d_graphconv",
+  "parameter_count": 51841,
+  "peak_cuda_memory_bytes": 624126464,
+  "resumed": false,
+  "seed": 107,
+  "selection_rule": "mean(graph_AUROC, graph_AP)",
+  "stage": "V5_P3_MC5_S1_SEED107_PRIMARY_BINARY_DETECTION",
+  "status": "PASS",
+  "stopped_early": true,
+  "train_items": 221773,
+  "validation_items": 27722
+}

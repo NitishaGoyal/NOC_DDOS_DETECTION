@@ -1,0 +1,32 @@
+{
+  "first_clean_blind_graph_comparison": "V6",
+  "g0": {
+    "b4_validation_cache_accessed": false,
+    "b6_test_cache_accessed": false,
+    "inference_performed": false,
+    "test_directory_enumerated": false,
+    "test_tensor_contents_accessed": false,
+    "training_performed": false
+  },
+  "g1_to_g6": {
+    "allowed_data": [
+      "P2 train",
+      "P2 validation"
+    ],
+    "b6_cache_model_comparison_allowed": false,
+    "p2_test_directory_enumeration_allowed": false,
+    "p2_test_model_inference_allowed": false,
+    "p2_test_tensor_access_allowed": false,
+    "reason": "B6 contains only frozen B3 outputs and cannot evaluate newly trained graph models"
+  },
+  "name": "V5_P2_G0_P2_TEST_ACCESS_POLICY",
+  "policy_sha256": "ce3d1a51a80fbb997980f09a9e9ec97dde5a44ac9bd8c2b4a9bb0eb8061fda4b",
+  "selection_boundary": {
+    "architecture_selection": "validation_only",
+    "checkpoint_selection": "validation_only",
+    "quantization_calibration": "validation_only",
+    "rtl_golden_vectors": "validation_and_hand_constructed_only",
+    "threshold_selection": "validation_only"
+  },
+  "version": 1
+}

@@ -1,0 +1,87 @@
+{
+  "alignment": {
+    "active_alignment_fraction": 1.0,
+    "active_windows_aligned": 29902,
+    "active_windows_total": 29902,
+    "gate": 0.99,
+    "mode": "metadata_key",
+    "pair_key": "pair_id",
+    "pairs": 600,
+    "run_key": "pair_member",
+    "time_key": "window_start"
+  },
+  "artifacts": {
+    "attacker_count_group_effects": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_ATTACKER_COUNT_GROUP_EFFECTS.csv",
+    "figure": {
+      "exception": null,
+      "generated": true,
+      "pdf": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_ROLE_FEATURE_RESPONSE_HEATMAP.pdf",
+      "png": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_ROLE_FEATURE_RESPONSE_HEATMAP.png"
+    },
+    "pair_alignment_audit": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_PAIR_ALIGNMENT_AUDIT.json",
+    "pair_level_effects": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_PAIR_LEVEL_EFFECTS.npz",
+    "per_channel_role_effects": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_PER_CHANNEL_ROLE_EFFECTS.csv",
+    "per_group_role_effects": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_PER_GROUP_ROLE_EFFECTS.csv",
+    "shared_victim_group_effects": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_SHARED_VICTIM_GROUP_EFFECTS.csv",
+    "temporal_phase_group_effects": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/paired_analysis/F3_TEMPORAL_PHASE_GROUP_EFFECTS.csv"
+  },
+  "campaign": "V5-P3-F0-D70-FEATURE-STUDY",
+  "classification": "Tranche-A training-only matched-pair response study",
+  "created_utc": "2026-08-05T19:58:14.212426+00:00",
+  "decision": {
+    "F3_complete": true,
+    "F4_authorized": true,
+    "constant_channel_removal_authorized": false,
+    "next_stage": "V5_P3_F4_FROZEN_CHECKPOINT_VALIDATION_BASELINE_REPRODUCTION",
+    "sealed_test_access_authorized": false,
+    "validation_access_authorized_now": false
+  },
+  "governance": {
+    "A_test_loaded": false,
+    "model_loaded": false,
+    "sealed_test_tensors_loaded": false,
+    "training_feature_arrays_consumed_in_recovery": false,
+    "training_samples_loaded_for_recovery_metadata": true,
+    "validation_tensors_loaded": false
+  },
+  "integrity": {
+    "F2R_constant_channel_max_abs_response": 0.0,
+    "basis": "The original run would have failed before committing pair effects if any of these integrity checks had failed.",
+    "label_inconsistency_count": 0,
+    "nonfinite_delta_count": 0,
+    "physical_mask_mismatch_count": 0
+  },
+  "method": {
+    "active_windows_only": true,
+    "bootstrap_repeats": 1000,
+    "bootstrap_seed": 607,
+    "comparison": "attack-bearing run minus matched control run at the same metadata time key or certified within-run ordinal",
+    "early_fraction": 0.25,
+    "pair_cluster_unit": true,
+    "physical_invalid_ports_excluded": true
+  },
+  "provenance": {
+    "F0_lock_sha256": "632c494b4796e55d37c6c9d6211d858c7b96e6b739285d646ecd380c8687eba2",
+    "F2R_amendment_sha256": "c26d238b7469adfd000b76422fab1d580ec4857ac8d1c609c256b3c03f6ec237",
+    "F2R_lock_sha256": "8cdd2511649cf3277a29c2d0e03cee7c4d8259208710b0f175822c782f0dc4c3",
+    "F2R_report_sha256": "e75266949246187955e26eb55863a9824d75f2b4347dc1bc6c89398347c70fce",
+    "F2_lock_sha256": "9e4ccbe6d561efaa387c56f59163214b8fe5101c9d29dd01072edd56f4595a3f",
+    "F2_report_sha256": "9dc63fd055dd7f7c037e794f948d81ef541843efe31fe347b66b6c10c0ecd6a4",
+    "data_access_contract_sha256": "ba352d5cb194ae15df0eb28b925744353bb66e0e5721fc03816b4a0a705666f4",
+    "feature_group_contract_sha256": "9e23e4ecebc2e518cafad407f71ba97cd07dda7f8676f3da81cd5a8a1db811d2",
+    "metric_contract_sha256": "281088d61dcf557e43fad6f09ab02f0d98508d0d6b34718435fb64a1b6447a28",
+    "original_failed_script_sha256": "c995a6c56801f0799a03e1446654082eeca3073013c43336e16922e49d65f757",
+    "pair_level_effects_sha256": "77e69761fa474cf70775353c1c9492575d38a6f10688a034e42ba4f78e7969e2",
+    "recovery_script_sha256": "0ddb2d3d2d6b273a8c1e9e125377b169e261100af373eca668c58ce1d120f26c"
+  },
+  "recovery": {
+    "metadata_alignment_rediscovered": true,
+    "pair_effect_arrays_recomputed": false,
+    "pair_effect_arrays_reused": true,
+    "reason": "The original run completed all 29,902 aligned-window calculations and committed pair-level/CSV outputs, then failed while serializing numpy.int64 alignment metadata.",
+    "recovery_stage": "V5_P3_F3_R1_JSON_SERIALIZATION_RECOVERY_AND_FINALIZATION",
+    "scientific_result_changed": false
+  },
+  "stage": "V5_P3_F3_DYNAMIC70_TRAINING_ONLY_MATCHED_CONTROL_ATTACK_RESPONSE_ANALYSIS",
+  "status": "PASS"
+}

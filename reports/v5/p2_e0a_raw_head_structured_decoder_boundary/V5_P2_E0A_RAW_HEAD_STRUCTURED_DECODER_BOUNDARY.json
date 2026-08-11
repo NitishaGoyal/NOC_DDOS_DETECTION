@@ -1,0 +1,206 @@
+{
+  "append_only_policy": {
+    "architecture_freeze_preserved_unchanged": true,
+    "checkpoint_freeze_preserved_unchanged": true,
+    "e0_preserved_unchanged": true,
+    "e0a_is_clarification_not_replacement": true
+  },
+  "authorization_boundary": {
+    "E0A_authorizes_decoder_implementation": false,
+    "E0A_authorizes_validation_export": false,
+    "E2_required_before_L5": true,
+    "L0_required_before_L1": true,
+    "L1_required_before_L2_and_L3": true,
+    "L2_and_L3_required_before_E1": true,
+    "L4_required_before_L5": true,
+    "L5_required_before_preflight": true,
+    "preflight_required_before_test": true
+  },
+  "created_utc": "2026-07-27T20:00:03.704756+00:00",
+  "evidence_hashes": {
+    "E0_json_sha256": "caff30754e6371427834a577f454200393f0f43d4aacb867fd83842492fa191d",
+    "E0_markdown_sha256": "f8d3f5d31e146eab568258a03cea0e34918ae9bc7f38c350ae4116f9ba1c7f90",
+    "E0_marker_sha256": "f2be6e1c2b6eb98697dd0a55a357e8d935d9964525ae01d9783874309923aec6",
+    "architecture_selection_json_sha256": "a722f47aacdcf598b1e09e0423b45dcf5586869ef0833a927291c629cce1bb25",
+    "checkpoint_selection_json_sha256": "b5483ef18342e6ee21e35fbb2241e5ab40eef5bf1725999314c6685d8e4848b2",
+    "selected_checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc"
+  },
+  "frozen_neural_candidate": {
+    "architecture_change_allowed": false,
+    "checkpoint_change_allowed": false,
+    "checkpoint_path": "/home/zira/research/projects/GNN-2d/reports/v5/p2_task_d_checkpoint_selection_freeze/selected_graphconv_checkpoint.pt",
+    "checkpoint_sha256": "82314baedb4bf3969842abf9076679682369daae2e57db07d4b4aeaa8623f7cc",
+    "retraining_allowed": false,
+    "selected_architecture": "graphconv",
+    "selected_epoch": 25,
+    "selected_seed": 107,
+    "technical_name": "Causal Depthwise-Separable Conv1D Temporal Encoder + Two-Layer GraphConv",
+    "temporal_frontend_reference": "B3"
+  },
+  "naming": {
+    "paper_short_name": "Temporal Conv1D-GraphConv",
+    "prohibited_ambiguous_usage": "Do not refer to the complete selected model only as B3; B3 identifies the temporal frontend reference.",
+    "selected_full_architecture": "Causal Depthwise-Separable Conv1D Temporal Encoder + Two-Layer GraphConv",
+    "temporal_frontend_reference": "B3"
+  },
+  "official_P2_one_shot_policy": {
+    "all_predeclared_systems_must_be_reported": true,
+    "no_variant_may_be_selected_after_test": true,
+    "predeclared_systems": [
+      "A0",
+      "A1",
+      "A2"
+    ],
+    "raw_logits_and_all_decoded_outputs_saved_in_one_cache": true,
+    "single_authorized_test_execution": true,
+    "test_checkpoint_reselection_allowed": false,
+    "test_currently_untouched": true,
+    "test_decoder_reselection_allowed": false,
+    "test_threshold_reselection_allowed": false
+  },
+  "reporting_boundary": {
+    "A0_metrics_may_be_overwritten_by_decoder": false,
+    "A1_metrics_may_be_reported_as_raw_metrics": false,
+    "A2_metrics_may_be_reported_as_exact_metrics": false,
+    "all_three_systems_reported_on_test": true,
+    "post_test_decoder_change_allowed": false,
+    "post_test_system_selection_allowed": false,
+    "post_test_threshold_change_allowed": false,
+    "raw_logits_shared_across_A0_A1_A2": true
+  },
+  "security_boundary": {
+    "selection_basis": "validation_only",
+    "test_directory_enumerated": false,
+    "test_directory_existence_checked": false,
+    "test_evaluation_performed": false,
+    "test_tensor_files_opened": false,
+    "test_tensors_deserialized": false
+  },
+  "stage": "V5_P2_E0A_RAW_HEAD_STRUCTURED_DECODER_BOUNDARY",
+  "stage_order": [
+    {
+      "name": "raw_threshold_protocol_lock",
+      "order": 0,
+      "stage": "E0",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "raw_head_structured_decoder_boundary",
+      "order": 1,
+      "stage": "E0A",
+      "status": "COMPLETE"
+    },
+    {
+      "name": "structured_decoder_protocol_lock",
+      "order": 2,
+      "stage": "L0",
+      "status": "NEXT"
+    },
+    {
+      "name": "route_library_and_unit_tests",
+      "order": 3,
+      "stage": "L1",
+      "status": "PENDING"
+    },
+    {
+      "name": "exact_decoder_implementation",
+      "order": 4,
+      "stage": "L2",
+      "status": "PENDING"
+    },
+    {
+      "name": "hardware_beam_decoder_implementation",
+      "order": 5,
+      "stage": "L3",
+      "status": "PENDING"
+    },
+    {
+      "name": "immutable_validation_logit_export",
+      "order": 6,
+      "stage": "E1",
+      "status": "PENDING"
+    },
+    {
+      "name": "raw_threshold_selection_and_freeze",
+      "order": 7,
+      "stage": "E2",
+      "status": "PENDING"
+    },
+    {
+      "name": "decoder_validation_selection_and_freeze",
+      "order": 8,
+      "stage": "L4",
+      "status": "PENDING"
+    },
+    {
+      "name": "final_pretest_freeze_bundle",
+      "order": 9,
+      "stage": "L5",
+      "status": "PENDING"
+    },
+    {
+      "name": "non_test_execution_preflight",
+      "order": 10,
+      "stage": "PREFLIGHT",
+      "status": "PENDING"
+    },
+    {
+      "name": "one_shot_blind_evaluation",
+      "order": 11,
+      "stage": "P2_ONE_SHOT",
+      "status": "PENDING"
+    }
+  ],
+  "state_after_E0A": {
+    "architecture_selected": true,
+    "beam_decoder_implemented": false,
+    "checkpoint_selected": true,
+    "decoder_frozen": false,
+    "decoder_parameters_frozen": false,
+    "exact_decoder_implemented": false,
+    "raw_decoder_boundary_locked": true,
+    "raw_thresholds_frozen": false,
+    "ready_for_one_shot_test": false,
+    "route_library_frozen": false,
+    "structured_decoder_protocol_locked": false,
+    "threshold_protocol_locked": true,
+    "validation_predictions_exported": false
+  },
+  "status": "COMPLETE",
+  "systems": {
+    "A0_raw_neural_baseline": {
+      "count_decision": "Argmax over K1-K4; graph-negative maps to count zero only in explicit A0 output policy",
+      "graph_decision": "Use the E2 graph threshold selected under E0",
+      "metrics_reported_separately": true,
+      "name": "Independently Thresholded Temporal Conv1D-GraphConv",
+      "role_decisions": "Apply independently frozen E2 source, transit, victim, and path thresholds",
+      "structured_route_cleanup_allowed": false
+    },
+    "A1_exact_structured_decoder": {
+      "configuration_selected_by": "L4",
+      "continuous_margin_required": true,
+      "full_count_logits_used": true,
+      "graph_head_is_hard_gate": false,
+      "implementation_frozen_by": "L2",
+      "legal_route_semantics_frozen_by": "L0",
+      "metrics_reported_separately": true,
+      "name": "Exact Deterministic Legal-Route Decoder"
+    },
+    "A2_hardware_beam_decoder": {
+      "configuration_selected_by": "L4",
+      "exact_decoder_equivalence_report_required": true,
+      "implementation_frozen_by": "L3",
+      "legal_route_semantics_frozen_by": "L0",
+      "metrics_reported_separately": true,
+      "name": "Hardware-Oriented Deterministic Beam Decoder"
+    }
+  },
+  "validation_archive_policy": {
+    "archive_source": "selected seed-107 epoch-25 Temporal Conv1D-GraphConv checkpoint",
+    "fresh_E1_archive_required": true,
+    "legacy_B4_cache_reuse_allowed": false,
+    "legacy_B6_cache_reuse_allowed": false,
+    "raw_logits_required": true,
+    "validation_only": true
+  }
+}

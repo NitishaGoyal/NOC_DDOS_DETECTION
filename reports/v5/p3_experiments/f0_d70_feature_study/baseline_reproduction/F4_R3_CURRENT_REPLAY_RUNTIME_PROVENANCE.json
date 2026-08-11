@@ -1,0 +1,85 @@
+{
+  "current_runtime_snapshot": {
+    "cuda_available": true,
+    "cuda_device_count": 1,
+    "cuda_devices": [
+      {
+        "index": 0,
+        "major": 8,
+        "minor": 9,
+        "multi_processor_count": 36,
+        "name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+        "total_memory": 8184725504
+      }
+    ],
+    "cuda_matmul_allow_tf32": false,
+    "cudnn_allow_tf32": true,
+    "cudnn_available": true,
+    "cudnn_benchmark": false,
+    "cudnn_deterministic": false,
+    "cudnn_version": 92000,
+    "deterministic_algorithms_enabled": false,
+    "float32_matmul_precision": "highest",
+    "machine": "x86_64",
+    "numpy_version": "2.5.1",
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.39",
+    "processor": "x86_64",
+    "python_executable": "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+    "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "torch_cuda_version": "13.0",
+    "torch_version": "2.12.1+cu130"
+  },
+  "exporter_log_runtime_lines": [
+    {
+      "line": 1,
+      "text": "validation_batches_exported=20/55; items=5120/13863"
+    },
+    {
+      "line": 2,
+      "text": "validation_batches_exported=40/55; items=10240/13863"
+    },
+    {
+      "line": 3,
+      "text": "validation_batches_exported=55/55; items=13863/13863"
+    },
+    {
+      "line": 8,
+      "text": "validation_batches=55"
+    }
+  ],
+  "inferred_current_device": null,
+  "invocation": {
+    "command": [
+      "/home/zira/research/projects/GNN-2d/.venv/bin/python",
+      "-u",
+      "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+      "--repo",
+      "/home/zira/research/projects/GNN-2d",
+      "--data-link",
+      "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+      "--output-dir",
+      "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z",
+      "--installed-script",
+      "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py"
+    ],
+    "environment": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "PYTHONHASHSEED": "107"
+    },
+    "mapped_values": {
+      "data": "/home/zira/research/projects/GNN-2d/data/processed/v5/p3_1500_d70_tranche_a_preliminary",
+      "installed_script": "/home/zira/research/projects/GNN-2d/scripts/v5/p3/run_v5_p3_d1_immutable_validation_logit_export.py",
+      "output_dir": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z",
+      "repo": "/home/zira/research/projects/GNN-2d"
+    },
+    "recovery": {
+      "mapping_correction": "--installed-script is mapped to the exact frozen official D1 exporter path",
+      "previous_failure": "pre-execution CLI mapping rejected the required --installed-script argument",
+      "previous_validation_execution_started": false,
+      "stage": "V5_P3_F4_R1_INSTALLED_SCRIPT_CLI_RECOVERY"
+    }
+  },
+  "run_directory": "/home/zira/research/projects/GNN-2d/reports/v5/p3_experiments/f0_d70_feature_study/baseline_reproduction/f4_replay_runs/run_20260805T203052Z"
+}

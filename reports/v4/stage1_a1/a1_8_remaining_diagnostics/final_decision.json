@@ -1,0 +1,107 @@
+{
+  "analysis_pass": true,
+  "decision": {
+    "count_head_decision": "yes_in_next_structural_model",
+    "decoder_selection": {
+      "fraction_of_oracle_gap_recovered": 0.2597016906409172,
+      "frozen_validation_attack_exact": 0.13074477776844498,
+      "gap_recovered": 0.0505682589115532,
+      "oracle_gap": 0.19471671049486014,
+      "oracle_validation_attack_exact": 0.3254614882633051,
+      "selected_validation_attack_exact": 0.18131303667999818,
+      "selected_validation_method": "topology_calibrated_learned_count_topk",
+      "selection_rule": "max validation attack-only exact; tie attack node F1; tie overall exact",
+      "test_used_for_selection": false
+    },
+    "frozen_test": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 0.19446907581739042,
+      "attack_count_mae": 1.562048790363397,
+      "attack_empty_prediction_fraction": 0.3833991294665452,
+      "attack_exact_localization": 0.11460269258022067,
+      "attack_fn": 249017,
+      "attack_fp": 260506,
+      "attack_mean_predicted_count": 1.9131855450956574,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.4541969237163494,
+      "attack_node_precision": 0.44867505169213706,
+      "attack_node_recall": 0.4598564053620233,
+      "attack_tp": 212003,
+      "method": "frozen_threshold",
+      "overall_exact_localization": 0.40669602186456116,
+      "sample_count": 395160
+    },
+    "graph_readout_decision": "test_mean_plus_max_ablation_for_single_attacker_detection",
+    "interpretation_gates": {
+      "decoder_gap_recovery_ge_0_20": true,
+      "decoder_gap_recovery_ge_0_50": false,
+      "oracle_test_attack_exact_below_0_50": true,
+      "ranking_representation_problem_remains": true,
+      "topology_calibration_gain_ge_0_03": false
+    },
+    "message_passing_decision": "use_one_graph_layer_plus_local_skip_or_gated_propagation",
+    "more_gcn_layers_decision": "do_not_add_more_gcn_layers; neighbour spreading is already a dominant failure",
+    "oracle_test": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 1.0,
+      "attack_count_mae": 0.0,
+      "attack_empty_prediction_fraction": 0.0,
+      "attack_exact_localization": 0.3135904443769612,
+      "attack_fn": 228970,
+      "attack_fp": 228970,
+      "attack_mean_predicted_count": 1.8666666666666667,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.5033404190707561,
+      "attack_node_precision": 0.5033404190707561,
+      "attack_node_recall": 0.5033404190707561,
+      "attack_tp": 232050,
+      "method": "oracle_true_count_topk",
+      "overall_exact_localization": 0.5709940277356008,
+      "sample_count": 395160
+    },
+    "plain_a2_decision": "optional_secondary_capacity_probe",
+    "recommended_next_model_action": "run_plain_a2_only_as_one_seed_capacity_probe_then_structural_model",
+    "selected_method_test_transfer": {
+      "attack_attack_sample_count": 246975,
+      "attack_count_accuracy": 0.3257698147585788,
+      "attack_count_mae": 1.004279785403381,
+      "attack_empty_prediction_fraction": 0.1850389715558255,
+      "attack_exact_localization": 0.14112764449843102,
+      "attack_fn": 243100,
+      "attack_fp": 242036,
+      "attack_mean_predicted_count": 1.8623585383135945,
+      "attack_mean_true_count": 1.8666666666666667,
+      "attack_node_f1": 0.47323708761140354,
+      "attack_node_precision": 0.4737844489472906,
+      "attack_node_recall": 0.4726909895449221,
+      "attack_tp": 217920,
+      "method": "topology_calibrated_learned_count_topk",
+      "overall_exact_localization": 0.37030569895738435,
+      "sample_count": 395160
+    },
+    "temporal_encoder_decision": "test_mean_plus_max_temporal pooling or a shallow dilated TCN; do not jump to RNN",
+    "topology_calibration_validation_attack_exact_gain": 0.0025844634976836534,
+    "topology_gate": "small_posthoc_gain_but_masks_still_required_for_dataset_validity",
+    "wider_model_decision": "width_only_is_secondary; use width inside a source_preserving architecture"
+  },
+  "hard_checks": {
+    "all_predeclared_decoders_evaluated": true,
+    "dataset_modified": false,
+    "model_inference_performed": false,
+    "neural_model_training_performed": false,
+    "required_inputs_present": true,
+    "test_used_for_fit_or_selection": false,
+    "validation_only_fitting": true
+  },
+  "limitations": [
+    "Current V4 active-core matched-control shortcut remains a publication blocker",
+    "No explicit valid/idle/clipped port masks",
+    "Mean-readout causality requires an embedding/readout ablation",
+    "Temporal-max causality requires an encoder ablation",
+    "Test is a development-comparison set, not an independent publication holdout"
+  ],
+  "thresholds": {
+    "graph": 0.6,
+    "node": 0.71
+  }
+}

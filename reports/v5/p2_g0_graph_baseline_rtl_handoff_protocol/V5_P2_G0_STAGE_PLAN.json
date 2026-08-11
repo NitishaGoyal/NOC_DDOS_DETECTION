@@ -1,0 +1,45 @@
+{
+  "append_only": true,
+  "c2_modified": false,
+  "c2a_modified": false,
+  "name": "V5_P2_G0_STAGE_PLAN",
+  "plan_sha256": "6ce218a9aa18e210464812d3fc418fef84628f81bc6d636ab0208e699e331ac5",
+  "stages": [
+    {
+      "action": "train Conv1D, GCNConv, GraphConv, and screening GAT for source-only localization using three seeds",
+      "data": "P2 train/validation only",
+      "stage": "V5_P2_G1_SOURCE_ONLY_GRAPH_BASELINES"
+    },
+    {
+      "action": "train direct graph-detection variants using identical readout and three seeds",
+      "data": "P2 train/validation only",
+      "stage": "V5_P2_G2_GRAPH_DETECTION_BASELINES"
+    },
+    {
+      "action": "promote justified operators into role-aware and one full-multitask comparison",
+      "data": "P2 train/validation only",
+      "stage": "V5_P2_G3_ROLE_AWARE_GRAPH_BASELINES"
+    },
+    {
+      "action": "run finalists across five seeds and freeze scientific conclusion plus RTL candidate recommendation",
+      "data": "P2 validation only for selection",
+      "stage": "V5_P2_G4_GRAPH_OPERATOR_STABILITY_AND_SELECTION"
+    },
+    {
+      "action": "freeze selected validation-only architecture, seed, checkpoint, operator equation, interfaces, and quantization policy",
+      "data": "no P2 test access",
+      "stage": "V5_P2_G5_RTL_GRAPH_BASELINE_SELECTION_CONTRACT"
+    },
+    {
+      "action": "build and freeze complete software/integer/golden-vector handoff package for RTL team",
+      "data": "validation and hand-constructed vectors only",
+      "stage": "V5_P2_G6_RTL_GRAPH_BASELINE_HANDOFF_FREEZE"
+    },
+    {
+      "action": "resume Legal NoC decoder branch from first principles",
+      "data": "none",
+      "stage": "V5_P2_L0_LEGAL_XY_DECODER_CONTRACT"
+    }
+  ],
+  "version": 1
+}
